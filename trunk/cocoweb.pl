@@ -61,9 +61,9 @@ my %actions = (
 );
 
 my $ua;
-my $host        = 'http://178.32.99.91:1027';
-my $port        = 10627;
-my %userFound   = ();
+my $host      = 'http://178.32.99.91:1027';
+my $port      = 10627;
+my %userFound = ();
 my $loginName;
 my %dememeMatch = ();
 my $searchUser;
@@ -76,6 +76,7 @@ my $maxOfWrite = 1;
 my $message;
 
 init();
+
 #print writo("123é5à7") . "\n"; exit;
 run();
 
@@ -131,6 +132,7 @@ sub postSentences {
     for ( my $i = 0 ; $i < $maxOfUsers ; $i++ ) {
         my $sentence = $sentences_ref->[ randum( scalar @$sentences_ref ) ];
         writus( $users[$i], $sentence, $searchId );
+
         #sleep 2;
     }
 }
@@ -174,33 +176,37 @@ sub actionHello {
                 die sayError("$searchUser user was not found");
             }
             $searchId = $login_ref->{'id'};
-            if (defined $loginName) {
+            if ( defined $loginName ) {
                 $username = $loginName;
-            } else {
+            }
+            else {
                 $username = $login_ref->{'login'};
             }
-            $username =~s{[^a-zA-Z]+.*$}{};
+            $username =~ s{[^a-zA-Z]+.*$}{};
         }
         my $sentence = $sentences_ref->[ randum( scalar @$sentences_ref ) ];
-        my @phrases = split(/\*n\*r/, $sentence);
+        my @phrases = split( /\*n\*r/, $sentence );
         for ( my $i = 0 ; $i < $maxOfWrite ; $i++ ) {
             my $r = randum(10);
             my $user;
-            if ($r < 4) {
+            if ( $r < 4 ) {
                 $user = $username;
-                $r = randum(10);
-                if ($r < 3) {
+                $r    = randum(10);
+                if ( $r < 3 ) {
                     $user = ucfirst($user);
-                } elsif ($r >= 3 and $r < 8) {
+                }
+                elsif ( $r >= 3 and $r < 8 ) {
                     $user = lc($user);
-                } else {
+                }
+                else {
                     $user = uc($user);
                 }
-            } else {
+            }
+            else {
                 $user = '';
             }
             foreach my $phrase (@phrases) {
-                $phrase =~s{\[% LOGIN %\]}{$user}g;
+                $phrase =~ s{\[% LOGIN %\]}{$user}g;
                 writus( $user_ref, $phrase, $searchId );
             }
         }
@@ -243,11 +249,11 @@ sub actionSearch {
     my $login_ref = searchLogin( $user_ref, $searchUser );
 
     my $max = 1;
-    foreach my $k (keys %$login_ref) {
-        $max = length($k) if length($k) > $max
+    foreach my $k ( keys %$login_ref ) {
+        $max = length($k) if length($k) > $max;
     }
-    foreach my $k (sort keys %$login_ref) {
-        printf('%-' . $max . 's: '. $login_ref->{$k} . "\n", $k);
+    foreach my $k ( sort keys %$login_ref ) {
+        printf( '%-' . $max . 's: ' . $login_ref->{$k} . "\n", $k );
     }
 }
 
@@ -364,7 +370,7 @@ sub agir {
 }
 
 ## @method void process1()
-# @brief 
+# @brief
 sub process1 {
     my ( $user_ref, $urlu ) = @_;
     my ($todo) = ('');
@@ -383,10 +389,12 @@ sub process1 {
     my $molki = ord($firstChar);
 
     sayDebug("firstChar: $firstChar; molki = $molki");
+
     #
     if ( $molki < 58 ) {
         process1Int( $user_ref, $urlo );
-    } else {
+    }
+    else {
         sayInfo("process1() $molki code unknown");
     }
 }
@@ -401,9 +409,10 @@ sub searchLogin {
         'old'   => 37,
         'niv'   => 0,
         'ok'    => 2,
-        'city' => 30926,
-        'id' => 174135
-    } if $isTest;
+        'city'  => 30926,
+        'id'    => 174135
+      }
+      if $isTest;
     sayDebug("searchLogin() login = $login");
     my $login_ref;
     $login_ref = checkIfLoginExists($login);
@@ -438,7 +447,7 @@ sub checkIfLoginExists {
 ## @method void process1Int($user_ref, $urlo)
 sub process1Int {
     my ( $user_ref, $urlo ) = @_;
-    my $olko = parseInt (substr( $urlo, 0, 2 ));
+    my $olko = parseInt( substr( $urlo, 0, 2 ) );
     sayInfo("olko: $olko");
     if ( $olko == 12 ) {
         my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
@@ -465,11 +474,13 @@ sub process1Int {
     }
 
     if ( $olko == 99 ) {
-        my $bud = parseInt (substr( $urlo, 2, 3 ));
+        my $bud = parseInt( substr( $urlo, 2, 3 ) );
         sayInfo("bud: $bud");
-        # 
-        if ($bud == 556) {
+
+        #
+        if ( $bud == 556 ) {
         }
+
         #searchnow($user_ref);
     }
 
@@ -935,17 +946,17 @@ sub initializeTables {
         94   => "*l",
         95   => "*0",
         8364 => "*d",
-        224  => "*a", # à
-        226  => "*k", # â
-        231  => "*c", # ç
-        232  => "*e", # è
-        233  => "*r", # é
-        234  => "*b", # ê
-        238  => "*i", # î
-        239  => "*k", # ï
-        244  => "*o", # ô
-        249  => "*f", # ù
-        251  => "*u"  # û
+        224  => "*a",    # à
+        226  => "*k",    # â
+        231  => "*c",    # ç
+        232  => "*e",    # è
+        233  => "*r",    # é
+        234  => "*b",    # ê
+        238  => "*i",    # î
+        239  => "*k",    # ï
+        244  => "*o",    # ô
+        249  => "*f",    # ù
+        251  => "*u"     # û
     );
 }
 
@@ -1028,19 +1039,19 @@ sub readConfig {
 sub getOptions {
     my %opt;
     getopts( 'dvnl:o:s:z:a:u:i:m:x:w:', \%opt ) || HELP_MESSAGE();
-    $isVerbose     = 1         if exists $opt{'v'};
-    $isTest        = 1         if exists $opt{'n'};
-    $isDebug       = 1         if exists $opt{'d'};
-    $searchUser    = $opt{'u'} if exists $opt{'u'};
-    $searchId      = $opt{'i'} if exists $opt{'i'};
-    $loginName     = $opt{'l'} if exists $opt{'l'};
-    $user{'old'}   = $opt{'o'} if exists $opt{'o'};
-    $sex           = $opt{'s'} if exists $opt{'s'};
-    $user{'zip'}   = $opt{'z'} if exists $opt{'z'};
-    $action        = $opt{'a'} if exists $opt{'a'};
-    $message       = $opt{'m'} if exists $opt{'m'};
-    $maxOfLoop     = $opt{'x'} if exists $opt{'x'};
-    $maxOfWrite    = $opt{'w'} if exists $opt{'w'};
+    $isVerbose   = 1         if exists $opt{'v'};
+    $isTest      = 1         if exists $opt{'n'};
+    $isDebug     = 1         if exists $opt{'d'};
+    $searchUser  = $opt{'u'} if exists $opt{'u'};
+    $searchId    = $opt{'i'} if exists $opt{'i'};
+    $loginName   = $opt{'l'} if exists $opt{'l'};
+    $user{'old'} = $opt{'o'} if exists $opt{'o'};
+    $sex         = $opt{'s'} if exists $opt{'s'};
+    $user{'zip'} = $opt{'z'} if exists $opt{'z'};
+    $action      = $opt{'a'} if exists $opt{'a'};
+    $message     = $opt{'m'} if exists $opt{'m'};
+    $maxOfLoop   = $opt{'x'} if exists $opt{'x'};
+    $maxOfWrite  = $opt{'w'} if exists $opt{'w'};
     if ( !defined $action ) {
         sayError("Please specify an action (option -a)");
         HELP_MESSAGE();
