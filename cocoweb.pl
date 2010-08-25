@@ -8,12 +8,12 @@
 # copyright (c) Simon Rubinstein 2010
 # $Id$
 #
-# kkwww is free software; you can redistribute it and/or modify
+# cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
 # (at your option) any later version.
 #
-# kkwww is distributed in the hope that it will be useful, but
+# cocobot is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
@@ -35,7 +35,7 @@ use Encode qw( from_to is_utf8 );
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.0.1';
+$VERSION                            = '0.1.0';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -56,7 +56,8 @@ my %actions = (
     'search' => \&actionSearch,
     'list'   => \&actionList,
     'write'  => \&actionWrite,
-    'hello'  => \&actionHello
+    'hello'  => \&actionHello,
+    'alert'  => \&actionAlert
 );
 
 my $ua;
@@ -205,6 +206,28 @@ sub actionHello {
         }
         next if $isTest;
         sleep 17 if $i < $maxOfLoop - 1;
+    }
+}
+
+## @method void actionAlert()
+sub actionAlert {
+    my $user_ref = getRandomLogin(2);
+    process($user_ref);
+    my $login_ref = searchLogin( $user_ref, '' );
+    foreach my $id ( keys %userFound ) {
+        my $login_ref = $userFound{$id};
+        if ( defined $sex ) {
+            if ( $sex == 1 ) {
+                next if $login_ref->{'sex'} != 1 and $login_ref->{'sex'} != 6;
+            }
+            elsif ( $sex == 2 ) {
+                next if $login_ref->{'sex'} != 2 and $login_ref->{'sex'} != 7;
+            }
+            else {
+                next;
+            }
+        }
+        writus( $user_ref, $message, $id );
     }
 }
 
@@ -1054,7 +1077,7 @@ sub HELP_MESSAGE {
     my $lst = join( ', ', keys %actions );
     print <<ENDTXT;
 Usage: 
- kkwww.pl [-d -v -u searchUser -i searchId -m message -x writeLoop -w writeRepeat]  
+ cocobot.pl [-d -v -u searchUser -i searchId -m message -x writeLoop -w writeRepeat]  
   -m message    Message
   -a action       Actions: $lst
   -u searchUser   A username
