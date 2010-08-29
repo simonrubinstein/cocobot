@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2010-08-25
+# @date 2010-08-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -352,7 +352,7 @@ sub agir {
         return;
     }
     sayInfo("agir() url = $url");
-    my $response = getUrl($url);
+    my $response = HttpRequest('GET', $url);
     my $res      = $response->content();
     sayDebug($res);
     die sayError("$res: function not found")
@@ -489,9 +489,20 @@ sub process1Int {
         populate( $urlo, 0 );
     }
 
-    #A sentence has been sent to the chat.
+    # No more private conversation is accepted
+    if ( $olko == 98 ) {
+        sayInfo("No more private conversation is accepted.");
+        $olko = 967;
+    }
+    
+    # No more male user message is accepted 
+    if ( $olko == 96 ) {
+        sayInfo("No more male user message is accepted.");
+        $olko = 967;
+    }
+
+    #A message has been sent to the chat.
     if ( $olko == 97 ) {
-        sayDebug("$urlo");
         $olko = 967;
     }
     if ( $olko == 66 ) {
@@ -565,7 +576,7 @@ sub getCityco {
         $zip = substr( $zip, 1, 5 );
     }
     my $url      = 'http://www.coco.fr/cocoland/' . $zip . '.js';
-    my $response = getUrl($url);
+    my $response = HttpRequest('GET', $url);
     my $res      = $response->content();
 
     # var cityco='30926*PARIS*';
@@ -666,6 +677,8 @@ sub initial {
     $user_ref->{'mypass'}              = $mypass;
     $infor                             = $myavatar + $mypass;
     $user_ref->{'cookies'}->{'samedi'} = $infor;
+    $user_ref->{'ifravatar'} = $coco_ref->{'avaref'} . $myavatar;
+    sayInfo("ifravatar: " . $user_ref->{'ifravatar'});
 
 }
 
@@ -726,6 +739,11 @@ sub writo {
     return $s2;
 }
 
+sub transformix {
+    my ($sx, $tyb) = @_;
+
+}
+
 ## @method string dememe($numix)
 # @param integer $numix
 # @return string
@@ -735,11 +753,11 @@ sub dememe {
     return $dememeMatch{$numix};
 }
 
-## @method object getUrl($url, $cookie_ref)
-sub getUrl {
-    my ( $url, $cookie_ref ) = @_;
-    my $req = HTTP::Request->new( 'GET' => $url );
-    sayDebug( 'getUrl() ' . $url );
+## @method object HttpRequest($url, $cookie_ref)
+sub HttpRequest {
+    my ( $method, $url, $cookie_ref ) = @_;
+    my $req = HTTP::Request->new( $method => $url );
+    sayDebug( 'HttpRequest() ' . $url );
     foreach my $field ( keys %{ $agent_ref->{'header'} } ) {
         $req->header( $field => $agent_ref->{'header'}->{$field} );
     }
@@ -1024,6 +1042,10 @@ sub readConfig {
     $coco_ref = confGetHash( \%config, 'coco' );
     confIsString( $coco_ref, 'hostname' );
     confIsString( $coco_ref, 'urlprinc' );
+    confIsString( $coco_ref, 'urly0' );
+    confIsString( $coco_ref, 'avatar-url' );
+    confIsString( $coco_ref, 'current-url' );
+    confIsString( $coco_ref, 'avaref' );
 
     my $firstnamer_ref = confGetHash( \%config, 'firstname' );
     $girlname_ref = confGetArray( $firstnamer_ref, 'girl' );
@@ -1106,7 +1128,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2010-08-22) 
+    $Script $VERSION (2010-08-29) 
      Copyright (C) 2010 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
