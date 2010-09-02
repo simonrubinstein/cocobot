@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2010-08-29
+# @date 2010-09-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -35,7 +35,7 @@ use Encode qw( from_to is_utf8 );
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.0';
+$VERSION                            = '0.1.1';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -45,6 +45,7 @@ my $coco_ref     = {};
 my %user         = ();
 my $boyname_ref  = [];
 my $girlname_ref = [];
+my $zipCode_ref  = [];
 ## 0 = all; 1 = mens;  womens: 2
 my $genru = 0;
 ## 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
@@ -61,8 +62,6 @@ my %actions = (
 );
 
 my $ua;
-my $host      = 'http://178.32.99.91:1027';
-my $port      = 10627;
 my %userFound = ();
 my $loginName;
 my %dememeMatch = ();
@@ -74,6 +73,7 @@ my %sentences  = ();
 my $maxOfLoop  = 1;
 my $maxOfWrite = 1;
 my $message;
+my $inputZipCode;
 
 init();
 
@@ -328,10 +328,10 @@ sub process {
 ## @method void initUser($user_ref)
 sub initUser {
     my ($user_ref) = @_;
-    $user_ref->{'login'} = 'Laurent' if !defined $user_ref->{'login'};
-    $user_ref->{'old'}   = 40        if !defined $user_ref->{'old'};
-    $user_ref->{'sex'}   = 1         if !defined $user_ref->{'sex'};
-    $user_ref->{'zip'}   = '75001'   if !defined $user_ref->{'zip'};
+    $user_ref->{'login'} = 'Laurent' if !exists $user_ref->{'login'};
+    $user_ref->{'old'}   = 40        if !exists $user_ref->{'old'};
+    $user_ref->{'sex'}   = 1         if !exists $user_ref->{'sex'};
+    $user_ref->{'zip'}   = '75001'   if !exists $user_ref->{'zip'};
     $user_ref->{'cookav'}   = floor( rand(890000000) + 100000000 );
     $user_ref->{'referenz'} = 0;
     $user_ref->{'speco'}    = 0;
@@ -565,9 +565,9 @@ sub chang {
 ## @method void getCityco($user_ref)
 sub getCityco {
     my ($user_ref) = @_;
-    $user_ref->{'citydio'} = '30926';
-    $user_ref->{'townzz'}  = 'PARIS';
-    return;
+    #$user_ref->{'citydio'} = '30926';
+    #$user_ref->{'townzz'}  = 'PARIS';
+    #return;
 
     my $zip = $user_ref->{'zip'};
     die "$zip zip code is invalide" if length($zip) != 5;
@@ -932,8 +932,15 @@ sub getRandomLogin {
     elsif ( $r > 7 ) {
         $login = uc($login);
     }
-    sayInfo("getRandomLogin() login: $login; sex: $sex, old: $old");
-    return { 'login' => $login, 'sex' => $sex, 'old' => $old };
+    my $zip;
+    if (defined $inputZipCode) {
+        $zip = $inputZipCode;
+    } else {
+        $zip = $zipCode_ref->[ randum( scalar @$zipCode_ref ) ]
+
+    }
+    sayInfo("getRandomLogin() login: $login; sex: $sex, old: $old, zip: $zip");
+    return { 'login' => $login, 'sex' => $sex, 'old' => $old, 'zip' => $zip };
 }
 
 ## @method void init()
@@ -1055,25 +1062,28 @@ sub readConfig {
     $sentences{'pb'}    = confGetArray( $sentences_ref, 'pb' );
     $sentences{'idiot'} = confGetArray( $sentences_ref, 'idiot' );
     $sentences{'hi'}    = confGetArray( $sentences_ref, 'hi' );
+
+    my $zip_ref = confGetHash ( \%config, 'zip-code');
+    $zipCode_ref = confGetArray($zip_ref, 'code');
 }
 
 ## @method void getOptions()
 sub getOptions {
     my %opt;
     getopts( 'dvnl:o:s:z:a:u:i:m:x:w:', \%opt ) || HELP_MESSAGE();
-    $isVerbose   = 1         if exists $opt{'v'};
-    $isTest      = 1         if exists $opt{'n'};
-    $isDebug     = 1         if exists $opt{'d'};
-    $searchUser  = $opt{'u'} if exists $opt{'u'};
-    $searchId    = $opt{'i'} if exists $opt{'i'};
-    $loginName   = $opt{'l'} if exists $opt{'l'};
-    $user{'old'} = $opt{'o'} if exists $opt{'o'};
-    $sex         = $opt{'s'} if exists $opt{'s'};
-    $user{'zip'} = $opt{'z'} if exists $opt{'z'};
-    $action      = $opt{'a'} if exists $opt{'a'};
-    $message     = $opt{'m'} if exists $opt{'m'};
-    $maxOfLoop   = $opt{'x'} if exists $opt{'x'};
-    $maxOfWrite  = $opt{'w'} if exists $opt{'w'};
+    $isVerbose    = 1         if exists $opt{'v'};
+    $isTest       = 1         if exists $opt{'n'};
+    $isDebug      = 1         if exists $opt{'d'};
+    $searchUser   = $opt{'u'} if exists $opt{'u'};
+    $searchId     = $opt{'i'} if exists $opt{'i'};
+    $loginName    = $opt{'l'} if exists $opt{'l'};
+    $user{'old'}  = $opt{'o'} if exists $opt{'o'};
+    $sex          = $opt{'s'} if exists $opt{'s'};
+    $inputZipCode = $opt{'z'} if exists $opt{'z'};
+    $action       = $opt{'a'} if exists $opt{'a'};
+    $message      = $opt{'m'} if exists $opt{'m'};
+    $maxOfLoop    = $opt{'x'} if exists $opt{'x'};
+    $maxOfWrite   = $opt{'w'} if exists $opt{'w'};
     if ( !defined $action ) {
         sayError("Please specify an action (option -a)");
         HELP_MESSAGE();
@@ -1110,7 +1120,8 @@ sub HELP_MESSAGE {
     my $lst = join( ', ', keys %actions );
     print <<ENDTXT;
 Usage: 
- cocobot.pl [-d -v -u searchUser -i searchId -m message -x writeLoop -w writeRepeat]  
+ cocobot.pl -a action [-u searchUser -i searchId -m message 
+                       -x writeLoop -w writeRepeat -z zipCode -l loginName -d -v -n]  
   -m message    Message
   -a action       Actions: $lst
   -u searchUser   A username
@@ -1118,9 +1129,11 @@ Usage:
   -x writeLoop    Number of loops of the 'write' action
   -w writeRepeat  Number of repetition of the same message
   -s sex          M for man or W for women
+  -z zipCode      A postal code (i.g. 75001)
   -l loginName    The name written in the messages
   -v verbose mode
   -d debug mode
+  -n test mode
 ENDTXT
     exit 0;
 }
@@ -1128,7 +1141,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2010-08-29) 
+    $Script $VERSION (2010-09-02) 
      Copyright (C) 2010 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
