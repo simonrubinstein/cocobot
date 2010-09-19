@@ -31,6 +31,7 @@ use Config::General;
 use Getopt::Std;
 use LWP::UserAgent;
 use POSIX;
+
 #use Encode qw( from_to is_utf8 );
 use utf8;
 no utf8;
@@ -75,6 +76,7 @@ my $maxOfLoop  = 1;
 my $maxOfWrite = 1;
 my $message;
 my $inputZipCode;
+my $currentYear;
 
 init();
 
@@ -359,8 +361,8 @@ sub agir {
         return;
     }
     sayInfo("agir() url = $url");
-    my $response = HttpRequest('GET', $url);
-    my $res      = $response->content();
+    my $response = HttpRequest( 'GET', $url );
+    my $res = $response->content();
     sayDebug($res);
     die sayError("$res: function not found")
       if $res !~ m{^([^\(]+)\('([^\)]*)'\)}xms;
@@ -501,8 +503,8 @@ sub process1Int {
         sayInfo("No more private conversation is accepted.");
         $olko = 967;
     }
-    
-    # No more male user message is accepted 
+
+    # No more male user message is accepted
     if ( $olko == 96 ) {
         sayInfo("No more male user message is accepted.");
         $olko = 967;
@@ -572,6 +574,7 @@ sub chang {
 ## @method void getCityco($user_ref)
 sub getCityco {
     my ($user_ref) = @_;
+
     #$user_ref->{'citydio'} = '30926';
     #$user_ref->{'townzz'}  = 'PARIS';
     #return;
@@ -583,7 +586,7 @@ sub getCityco {
         $zip = substr( $zip, 1, 5 );
     }
     my $url      = 'http://www.coco.fr/cocoland/' . $zip . '.js';
-    my $response = HttpRequest('GET', $url);
+    my $response = HttpRequest( 'GET', $url );
     my $res      = $response->content();
 
     # var cityco='30926*PARIS*';
@@ -684,8 +687,8 @@ sub initial {
     $user_ref->{'mypass'}              = $mypass;
     $infor                             = $myavatar + $mypass;
     $user_ref->{'cookies'}->{'samedi'} = $infor;
-    $user_ref->{'ifravatar'} = $coco_ref->{'avaref'} . $myavatar;
-    sayInfo("ifravatar: " . $user_ref->{'ifravatar'});
+    $user_ref->{'ifravatar'}           = $coco_ref->{'avaref'} . $myavatar;
+    sayInfo( "ifravatar: " . $user_ref->{'ifravatar'} );
 
 }
 
@@ -747,7 +750,7 @@ sub writo {
 }
 
 sub transformix {
-    my ($sx, $tyb) = @_;
+    my ( $sx, $tyb ) = @_;
 
 }
 
@@ -918,6 +921,16 @@ sub getRandomLogin {
     $sex = randum(2) + 1 if !defined $sex;
     my $old = randum(35) + 15;
 
+    my $zip;
+    if ( defined $inputZipCode ) {
+        $zip = $inputZipCode;
+    }
+    else {
+        $zip = $zipCode_ref->[ randum( scalar @$zipCode_ref ) ]
+
+    }
+
+    # Generate a random nickname.
     my $login_ref;
     if ( $sex == 2 ) {
         $login_ref = $girlname_ref;
@@ -925,32 +938,48 @@ sub getRandomLogin {
     else {
         $login_ref = $boyname_ref;
     }
-    my $i = randum( scalar @$login_ref ) - 1;
-
+    my $i     = randum( scalar @$login_ref ) - 1;
     my $login = $login_ref->[$i];
 
-    my $r = randum(10);
+    my $r = randum(11);
+    if ( $r >= 0 and $r < 5 ) {
+        $login = lc($login);
+    }
+    elsif ( $r == 6 and length($login) < 5 ) {
+        $login = uc($login);
+    }
+
+    $r = randum(12);
     if ( $r == 0 ) {
         $r = randum(2);
-        if ($r == 1) {
+        if ( $r == 1 ) {
             $login .= $old . 'ans';
-        } else {
+        }
+        else {
             $login .= $old . 'a';
         }
     }
-    elsif ( $r >= 1 and $r < 6 ) {
-        $login = lc($login);
+    elsif ( $r == 1 ) {
+        my $birthYear = $currentYear - $old;
+        $r = randum(2);
+        if ( $r == 1 ) {
+            $login .= $birthYear;
+        }
+        else {
+            $login .= substr( $birthYear, 2, 2 );
+        }
     }
-    elsif ( $r > 7 ) {
-        $login = uc($login);
-    }
-    my $zip;
-    if (defined $inputZipCode) {
-        $zip = $inputZipCode;
-    } else {
-        $zip = $zipCode_ref->[ randum( scalar @$zipCode_ref ) ]
+    elsif ( $r == 2 ) {
+        $r = randum(2);
+        if ( $r == 1 ) {
+            $login .= $zip;
+        }
+        else {
+            $login .= substr( $zip, 0, 2 );
+        }
 
     }
+
     sayInfo("getRandomLogin() login: $login; sex: $sex, old: $old, zip: $zip");
     return { 'login' => $login, 'sex' => $sex, 'old' => $old, 'zip' => $zip };
 }
@@ -964,7 +993,9 @@ sub init {
         'timeout' => $agent_ref->{'timeout'}
     );
     initializeTables();
-
+    my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) =
+      localtime(time);
+    $currentYear = $year + 1900;
 }
 
 ## @method void initializeTables()
@@ -1066,32 +1097,33 @@ sub readConfig {
     confIsString( $coco_ref, 'current-url' );
     confIsString( $coco_ref, 'avaref' );
 
-    file2array('nickname-man.txt', $boyname_ref),
-    file2array('nickname-women.txt', $girlname_ref);
+    file2array( 'nickname-man.txt',   $boyname_ref );
+    file2array( 'nickname-women.txt', $girlname_ref );
 
     my $sentences_ref = confGetHash( \%config, 'sentences' );
     $sentences{'pb'}    = confGetArray( $sentences_ref, 'pb' );
     $sentences{'idiot'} = confGetArray( $sentences_ref, 'idiot' );
     $sentences{'hi'}    = confGetArray( $sentences_ref, 'hi' );
 
-    my $zip_ref = confGetHash ( \%config, 'zip-code');
-    $zipCode_ref = confGetArray($zip_ref, 'code');
+    my $zip_ref = confGetHash( \%config, 'zip-code' );
+    $zipCode_ref = confGetArray( $zip_ref, 'code' );
 }
 
 ## @method void file2array($filename, $array_ref)
 # @brief Reads a file and pushes each row in a table.
 # @param string $filename
-# @param arrayref $array_ref 
+# @param arrayref $array_ref
 sub file2array {
-    my ($filename, $array_ref) = @_;
+    my ( $filename, $array_ref ) = @_;
     $filename = $Bin . '/' . $filename;
     my $fh;
     die sayError("open($filename) was failed: $!")
-            if !open($fh, '<', $filename);
-    while (my $line = <$fh>) {
+      if !open( $fh, '<', $filename );
+    while ( my $line = <$fh> ) {
         chomp($line);
         push @$array_ref, $line;
     }
+    close $fh;
 }
 
 ## @method void getOptions()
