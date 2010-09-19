@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2010-09-02
+# @date 2010-09-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -31,11 +31,11 @@ use Config::General;
 use Getopt::Std;
 use LWP::UserAgent;
 use POSIX;
-use Encode qw( from_to is_utf8 );
+#use Encode qw( from_to is_utf8 );
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.1';
+$VERSION                            = '0.1.2';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -58,7 +58,8 @@ my %actions = (
     'list'   => \&actionList,
     'write'  => \&actionWrite,
     'hello'  => \&actionHello,
-    'alert'  => \&actionAlert
+    'alert'  => \&actionAlert,
+    'login'  => \&actionLogin
 );
 
 my $ua;
@@ -156,6 +157,12 @@ sub actionWrite {
             writus( $user_ref, $message, $searchId );
         }
         sleep 15;
+    }
+}
+
+sub actionLogin {
+    for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
+        my $user_ref = getRandomLogin($sex);
     }
 }
 
@@ -924,7 +931,12 @@ sub getRandomLogin {
 
     my $r = randum(10);
     if ( $r == 0 ) {
-        $login .= $old . 'ans';
+        $r = randum(2);
+        if ($r == 1) {
+            $login .= $old . 'ans';
+        } else {
+            $login .= $old . 'a';
+        }
     }
     elsif ( $r >= 1 and $r < 6 ) {
         $login = lc($login);
@@ -1054,9 +1066,8 @@ sub readConfig {
     confIsString( $coco_ref, 'current-url' );
     confIsString( $coco_ref, 'avaref' );
 
-    my $firstnamer_ref = confGetHash( \%config, 'firstname' );
-    $girlname_ref = confGetArray( $firstnamer_ref, 'girl' );
-    $boyname_ref  = confGetArray( $firstnamer_ref, 'boy' );
+    file2array('nickname-man.txt', $boyname_ref),
+    file2array('nickname-women.txt', $girlname_ref);
 
     my $sentences_ref = confGetHash( \%config, 'sentences' );
     $sentences{'pb'}    = confGetArray( $sentences_ref, 'pb' );
@@ -1065,6 +1076,22 @@ sub readConfig {
 
     my $zip_ref = confGetHash ( \%config, 'zip-code');
     $zipCode_ref = confGetArray($zip_ref, 'code');
+}
+
+## @method void file2array($filename, $array_ref)
+# @brief Reads a file and pushes each row in a table.
+# @param string $filename
+# @param arrayref $array_ref 
+sub file2array {
+    my ($filename, $array_ref) = @_;
+    $filename = $Bin . '/' . $filename;
+    my $fh;
+    die sayError("open($filename) was failed: $!")
+            if !open($fh, '<', $filename);
+    while (my $line = <$fh>) {
+        chomp($line);
+        push @$array_ref, $line;
+    }
 }
 
 ## @method void getOptions()
@@ -1141,7 +1168,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2010-09-02) 
+    $Script $VERSION (2010-09-19) 
      Copyright (C) 2010 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
