@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2010-09-19
+# @date 2010-11-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,7 +36,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.2';
+$VERSION                            = '0.1.3';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -365,7 +365,7 @@ sub agir {
     my $res = $response->content();
     sayDebug($res);
     die sayError("$res: function not found")
-      if $res !~ m{^([^\(]+)\('([^\)]*)'\)}xms;
+      if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
 
@@ -1200,7 +1200,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2010-09-19) 
+    $Script $VERSION (2010-11-19) 
      Copyright (C) 2010 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
