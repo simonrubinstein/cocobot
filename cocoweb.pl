@@ -60,7 +60,8 @@ my %actions = (
     'write'  => \&actionWrite,
     'hello'  => \&actionHello,
     'alert'  => \&actionAlert,
-    'login'  => \&actionLogin
+    'login'  => \&actionLogin,
+    'string' => \&actionString,
 );
 
 my $ua;
@@ -244,6 +245,38 @@ sub actionAlert {
         }
         writus( $user_ref, $message, $id );
     }
+}
+
+sub actionString {
+    if ( !defined $searchUser and !defined $searchId ) {
+        die sayError("You must specify a username (-u option)");
+    }
+    if ( !defined $message ) {
+        die sayError("You must specify a string (-m option)");
+    }
+    my $username = '';
+    my $user_ref = getRandomLogin(2);
+    process($user_ref);
+    if ( !defined $searchId ) {
+        my $login_ref = searchLogin( $user_ref, $searchUser );
+        if ( !defined $login_ref ) {
+            die sayError("$searchUser user was not found");
+        }
+        $searchId = $login_ref->{'id'};
+    }
+    $message = ' ' . $message;
+    my $str = '';
+    my $i;
+    my $max = 477 - length($message); 
+    for($i = 0; $i < 100; $i++) {
+        last if length($str) > $max;
+        $str = $str . ' ' . $message;
+    }
+    for ( my $i = 0 ; $i < $maxOfWrite ; $i++ ) {
+        writus( $user_ref, $str, $searchId );
+        sleep 1;
+    }
+    print length($str) . "\n";
 }
 
 ## @method void actionSearch()
