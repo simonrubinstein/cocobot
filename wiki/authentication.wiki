@@ -1,0 +1,18 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Cette page explique le processus d'authentification du site Web Coco.fr
+
+
+= Authentification sur le site Web =
+
+L'authentification se fait sur la page « http://coco.fr/index.htm ».
+
+Un formulaire demande :
+  * Pseudo : un pseudonyme de 4 à 16 caractères. Variable *nicko*.  
+  * Le sexe : homme ou femme. Variable *typeo2*. 
+  * Âge : un âge de 15 à 89 ans. Variable *ageu*.
+  * Code postal : Variable *zipo*.
+
+Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du script « 
