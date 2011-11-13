@@ -17,7 +17,27 @@ Un formulaire demande :
   * Âge : un âge de 15 à 89 ans. Variable *ageu*.
   * Code postal : Variable *zipo*.
 
-Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du script « http://coco.fr/codipos.js ».
+== La fonction verifPseudo() ==
+
+Un évènement *onKeyUp* est associé au champ *zipo* lorsque l'utilisateur entre son code postal. À chaque fois qu'une touche est relâchée, la fonction « verifPseudo() » du script « http://coco.fr/codipos.js ». est appelée.
+
+Comme son nom ne l'indique pas la fonction « verifPseudo() » vérifie le code postal et charge un fichier JavaScript différent suivant le code postal entré.
+
+Par exemple si l'utilisateur entre le code postal « _75001_ » le fichier « http://coco.fr/cocoland/75001.js » sera chargé. Le fichier chargé assigne une chaîne de caractère à la variable *cityco* et appel la fonction « procecodo() »
+
+
+Voici l'exemple du script « 75001.js » chargé :
+
+{{{
+var cityco='30915*PARIS*';
+procecodo();
+}}}
+
+
+
 
 
 == La fonction validatio() ==
+
+
+Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du script « http://coco.fr/codipos.js ».
