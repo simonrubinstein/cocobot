@@ -7,7 +7,9 @@ Cette page explique le processus d'authentification du site Web Coco.fr
 
 = Authentification sur le site Web =
 
-L'authentification se fait sur la page « http://coco.fr/index.htm ».
+== Le formulaire HTML ==
+
+L'authentification se fait sur la page « http://coco.fr/index.htm », qui contient un formulaire assez simple.
 
 Un formulaire demande :
   * Pseudo : un pseudonyme de 4 à 16 caractères. Variable *nicko*.  
@@ -15,4 +17,7 @@ Un formulaire demande :
   * Âge : un âge de 15 à 89 ans. Variable *ageu*.
   * Code postal : Variable *zipo*.
 
-Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du script « 
+Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du script « http://coco.fr/codipos.js ».
+
+
+== La fonction validatio() ==
