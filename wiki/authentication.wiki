@@ -51,9 +51,7 @@ Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du
     # *townzz* : PARIS
     # *citygood* :30915
     # *cooka* : 186767980
-    # Ce qui donne la variable *infom* suivante : `Simon#1#37#PARIS#30915#0#186767980#"`
-
-
+    # Ce qui donne la variable *infom* suivante : `Simon#1#37#PARIS#30915#0#186767980#`
 
 
 
