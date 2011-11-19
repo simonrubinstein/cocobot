@@ -21,7 +21,7 @@ Un formulaire demande :
 
 Un évènement *onKeyUp* est associé au champ *zipo* lorsque l'utilisateur entre son code postal. À chaque fois qu'une touche est relâchée, la fonction « verifPseudo() » du script « http://coco.fr/codipos.js ». est appelée.
 
-Comme son nom ne l'indique pas la fonction « verifPseudo() » vérifie le code postal et charge un fichier JavaScript différent suivant le code postal entré.
+Comme son nom ne l'indique pas la fonction « verifPseudo() » vérifie le code postal et charge un fichier !JavaScript différent suivant le code postal entré.
 
 Par exemple si l'utilisateur entre le code postal « _75001_ » le fichier « http://coco.fr/cocoland/75001.js » sera chargé. Le fichier chargé assigne une chaîne de caractère à la variable *cityco* et appel la fonction « procecodo() »
 
@@ -39,5 +39,25 @@ procecodo();
 
 == La fonction validatio() ==
 
-
 Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du script « http://coco.fr/codipos.js ».
+
+  * Vérifie que la longueur de chaîne de caractères *nickidol* , le pseudonyme,  est supérieure à trois caractères.
+  * Vérifie que la variable  *ageuq*, l'âge, est supérieure à quatorze.
+  * Vérifie que le code postal a bien été entré en vérifiant la variable *citydio* et fabrique une chaîne de caractères *citygood* en copiant la valeur *citydio* précédée du nombre de caractères zéros nécessaires.
+  * Créé la variable *infom* basé sur la concaténation des variables : `nickidol + "#" + typum + "#" + ageuq + "#" + townzz + "#" + citygood + "#0#" + cookav +"#"`. Voici un exemple :
+    # nickidol : Simon
+    # typum :
+    # ageuq : 37
+    # townzz :
+    # citygood :
+    # cookav :
+
+
+
+
+
+
+
+
+
+
