@@ -34,8 +34,8 @@ procecodo();
 }}}
 
 La fonction « procecodo() » initialise les variables *townzz* et *citydio*. Dans notre exemple :
-  * townzz : PARIS
-  * citydio : 30915
+  * *townzz* : PARIS
+  * *citydio* : 30915
 
 
 
@@ -56,3 +56,6 @@ Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du
     # *cooka* : 186767980
     # Ce qui donne la variable *infom* suivante : `Simon#1#37#PARIS#30915#0#186767980#`
   * Un cookie du de nom de *coda* est écrit avec une date durée de vie de dix ans. La valeur du cookie est la chaîne de caractères *infom*.
+  * Ensuite l'URL suivante est appelée dans une nouvelle fenêtre : 
+
+http://www.coco.fr/chat/#Simon#1#37#30915#0#sauvy#0#
