@@ -52,8 +52,6 @@ Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du
     # *citygood* :30915
     # *cooka* : 186767980
     # Ce qui donne la variable *infom* suivante : `Simon#1#37#PARIS#30915#0#186767980#`
-
-
-
+  * Un cookie du de nom de *coda* est écrit avec une date durée de vie de dix ans.
 
 
