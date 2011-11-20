@@ -1,0 +1,13 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+{{{
+function agir(txt3)
+{
+txt3 = "" + txt3;
+agix(url1 + txt3.substring(0,2) + mynickID + monpass + txt3.substring(2),4);
+}
+
+
+}}}
