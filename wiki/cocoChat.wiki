@@ -33,11 +33,21 @@ Certaines variables sont initialisées à partir de ce tableau :
   * *mylownick* = "simon"
   * *mygender*  = "1"
   * *mysex*     = 1 
+  * *myage*     = 37
+  * *mycityID*   = 30915
 
 
-La chaîne de l'agent utilisateur du navigateur Web « Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0 » est transformé par la fonction « writo() » et assigné dans la variable *agento* :
+La chaîne de l'agent utilisateur du navigateur Web « Mozilla/5.0 (Ubuntu; X11; Linux x86_64; rv:8.0) Gecko/20100101 Firefox/8.0 » est transformé par la fonction « writo() » et assigné dans la variable *agento* :
 
   * *agento*     = "Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0"
+
+La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 000 ». Exemple :
+  * *myport* : 3661
+
+La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port.
+
+  * *url1* = "http://178.33.122.73:3661/"
+
 
 
 {{{
