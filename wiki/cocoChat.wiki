@@ -23,8 +23,8 @@ parami = [
     "1",
     "37",
     "30915",
-    0,
-    186767980 ];
+    "0",
+    "186767980" ];
 }}}
 
 Certaines variables sont initialisées à partir de ce tableau :
@@ -35,6 +35,9 @@ Certaines variables sont initialisées à partir de ce tableau :
   * *mysex*     = 1 
 
 
+La chaîne de l'agent utilisateur du navigateur Web « Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0 » est transformé par la fonction « writo() » et assigné dans la variable *agento* :
+
+  * *agento*     = "Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0"
 
 
 {{{
