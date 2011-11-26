@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Cette page explique le processus d'authentification du site Web Coco.fr
+Cette page explique le processus d'authentification du site Web « Coco.fr ».
 
 
 = Authentification sur le site Web =
@@ -30,7 +30,7 @@ Par exemple si la chaîne de caractères du cookie *coda* est la suivante : « S
   * *citydio* = 30915
 
 
-== La fonction verifPseudo() ==
+== La fonction verifPseudo() qui vérifie le code postal ==
 
 Un évènement *onKeyUp* est associé au champ *zipo* lorsque l'utilisateur entre son code postal. À chaque fois qu'une touche est relâchée, la fonction « verifPseudo() » du script « http://coco.fr/codipos.js ». est appelée.
 
@@ -69,6 +69,17 @@ Lorsque le bouton « _Entrée_ » est pressée, la fonction « validatio() » du
     # *cookav* : 186767980
     # Ce qui donne la variable *infom* suivante : `Simon#1#37#PARIS#30915#0#186767980#`
   * Un cookie du de nom de *coda* est écrit avec une date durée de vie de dix ans. La valeur du cookie est la chaîne de caractères *infom*.
-  * Ensuite l'URL suivante est appelée dans une nouvelle fenêtre : 
 
-http://www.coco.fr/chat/#Simon#1#37#30915#0#sauvy#0#
+=== Ouverture de la fenêtre de chat ===
+
+Le script va ensuite construire l'URL suivante :
+{{{
+ urlprinc + "#" + nickidol + "#" + typum + "#" + ageuq + "#" + citygood + "#0#" + sauvy + "#" + referenz +"#" 
+}}}
+Où les variables suivantes sont toujours initialiser à :
+  * *urlprinc* = "http://www.coco.fr/chat/"
+  * *referenz* = "0" 
+  * *sauvy*    = *cookav*
+
+
+Dans notre exemple 'URL « http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# » est appelée dans une nouvelle fenêtre.
