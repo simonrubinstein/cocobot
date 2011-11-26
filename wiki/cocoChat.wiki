@@ -2,6 +2,41 @@
 
 = Introduction =
 
+
+== Initialisation de la page ==
+
+
+Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée les trois fonctions suivants sont exécutées séquentiellement :
+  * primo()
+  * initial()
+  * resinit()
+
+
+=== Fonction « primo() » ===
+
+La fonction « primo()» va lire le contenu de la barre d'adresse. Dans notre exemple la barre d'adresse est égale à «  http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# ». 
+
+Les paramètres passées à l'URL sont éclatées dans le tableau de la variable *parami* :
+{{{
+parami = [
+    "Simon",
+    "1",
+    "37",
+    "30915",
+    0,
+    186767980 ];
+}}}
+
+Certaines variables sont initialisées à partir de ce tableau :
+
+  * *mynickname* = "Simon"
+  * *mylownick* = "simon"
+  * *mygender*  = "1"
+  * *mysex*     = 1 
+
+
+
+
 {{{
 function agir(txt3)
 {
