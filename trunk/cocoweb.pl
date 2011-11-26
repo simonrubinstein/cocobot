@@ -382,7 +382,7 @@ sub initUser {
     $user_ref->{'roulix'}   = 0;
     $user_ref->{'sauvy'}    = '';
     $user_ref->{'cookies'}  = {};
-    chang( $user_ref, 10000 + randum(3000) );
+    chang( $user_ref, 3000 + randum(1000) );
 }
 
 ## @method void agir($user_ref, $txt1);
@@ -767,9 +767,9 @@ sub writo {
             $toulon = 0;
         }
         if ( $toulon < 24 ) {
-            if (   $numerox < 42
+            if (   $numerox < 43
                 or ( $numerox > 59 and $numerox < 64 )
-                or ( $numerox > 90 and $numerox < 97 )
+                or ( $numerox > 90 and $numerox < 96 )
                 or $numerox > 122 )
             {
                 $s2 .= dememe($numerox);
