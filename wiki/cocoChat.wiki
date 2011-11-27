@@ -14,6 +14,8 @@ Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygo
 
 === Fonction « primo() » ===
 
+La fonction « primo() » est déclaré à la ligne 983 du fichier « http://www.coco.fr/chat/initio.js ».
+
 La fonction « primo()» va lire le contenu de la barre d'adresse. Dans notre exemple la barre d'adresse est égale à «  http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# ». 
 
 Les paramètres passées à l'URL sont éclatées dans le tableau de la variable *parami* :
