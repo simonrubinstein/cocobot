@@ -14,7 +14,7 @@ Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygo
 
 === Fonction « primo() » ===
 
-La fonction « primo() » est déclaré à la ligne 983 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « primo() » est déclarée à la ligne 983 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « primo()» va lire le contenu de la barre d'adresse. Dans notre exemple la barre d'adresse est égale à «  http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# ». 
 
@@ -39,8 +39,9 @@ Certaines variables sont initialisées à partir de ce tableau :
   * *mycityID*   = 30915
 
 
-La chaîne de l'agent utilisateur du navigateur Web « Mozilla/5.0 (Ubuntu; X11; Linux x86_64; rv:8.0) Gecko/20100101 Firefox/8.0 » est transformé par la fonction « writo() » et assigné dans la variable *agento* :
+La chaîne de l'agent utilisateur du navigateur Web est transformé par la fonction « writo() » et assigné dans la variable *agento*.
 
+Dans notre exemple notre agent utilisateur est « Mozilla/5.0 (Ubuntu; X11; Linux x86_64; rv:8.0) Gecko/20100101 Firefox/8.0 » ce qui donnera la chaîne de caractères suivante :
   * *agento*     = "Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0"
 
 La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 000 ». Exemple :
@@ -49,6 +50,22 @@ La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 
 La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port.
 
   * *url1* = "http://178.33.122.73:3661/"
+
+
+=== Fonction « initial() » ===
+
+La fonction « initial() » est déclarée à la ligne 1280 du fichier « http://www.coco.fr/chat/initio.js ».
+
+La fonction « initial() » va lire le cookie « samedi » et l'assigné dans la variable *infor*.
+
+Dans notre exemple :
+* *infor* = "570685428"
+
+La variable *myavatar* est initialisée avec les les caractères 0 à 9 de la chaîne de caractères *infor* :
+* *myavatar* = "570685428"
+
+La *mypass* est initialisée avec les caractères 9 à 29 de *infor* :
+*  *mypass* = ""
 
 
 
