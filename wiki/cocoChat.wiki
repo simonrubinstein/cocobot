@@ -54,7 +54,7 @@ La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » 
 
 === Fonction « initial() » ===
 
-La fonction « initial() » est déclarée à la ligne 1280 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « initial() » est déclarée à la ligne 1 280 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « initial() » va lire le cookie « samedi » et l'assigné dans la variable *infor*.
 
@@ -62,10 +62,17 @@ Dans notre exemple :
 * *infor* = "570685428"
 
 La variable *myavatar* est initialisée avec les les caractères 0 à 9 de la chaîne de caractères *infor* :
-* *myavatar* = "570685428"
+  * *myavatar* = "570685428"
 
 La *mypass* est initialisée avec les caractères 9 à 29 de *infor* :
-*  *mypass* = ""
+  *  *mypass* = ""
+
+Une minuterie est initialisée de 200 millisecondes avant d'appeler la fonction « quasi() ».
+
+=== Fonction « quasi() » ===
+
+La fonction « quasi() » est déclarée à la ligne 1 338 du fichier « http://www.coco.fr/chat/initio.js ».
+
 
 
 
