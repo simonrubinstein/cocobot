@@ -74,7 +74,7 @@ Une minuterie est initialisée de 200 millisecondes avant d'appeler la fonction 
 La fonction « quasi() » est déclarée à la ligne 1 338 du fichier « http://www.coco.fr/chat/initio.js ».
 
 
-
+http://178.33.122.73:3244/51288231UigvGzMozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0
 
 {{{
 function agir(txt3)
