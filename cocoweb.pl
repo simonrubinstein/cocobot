@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2010-11-19
+# @date 2011-11-27 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010
+# copyright (c) Simon Rubinstein 2010-2011
 # $Id$
 #
 # cocobot is free software; you can redistribute it and/or modify
@@ -36,7 +36,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.3';
+$VERSION                            = '0.1.4';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -82,6 +82,8 @@ my $currentYear;
 init();
 
 #print writo("123é5à7") . "\n"; exit;
+#print writo( $agent_ref->{'agent'}) . "\n"; exit;
+#exit;
 run();
 
 ## @method void run()
@@ -512,7 +514,7 @@ sub process1Int {
                 '51'
               . $user_ref->{'mynickID'}
               . $user_ref->{'monpass'}
-              . $agent_ref->{'agent'} );
+              . writo( $agent_ref->{'agent'}) );
     }
 
     if ( $olko == 99 ) {
