@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2011-11-27 
+# @date 2011-12-01 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -46,6 +46,7 @@ my $coco_ref     = {};
 my %user         = ();
 my $boyname_ref  = [];
 my $girlname_ref = [];
+my $customName_ref;
 my $zipCode_ref  = [];
 ## 0 = all; 1 = mens;  womens: 2
 my $genru = 0;
@@ -71,6 +72,7 @@ my %dememeMatch = ();
 my $searchUser;
 my $searchId;
 my $sex;
+my $oldDesired;
 my $maxOfUsers = 1;
 my %sentences  = ();
 my $maxOfLoop  = 1;
@@ -954,7 +956,12 @@ sub generateLogins {
 sub getRandomLogin {
     my ($sex) = @_;
     $sex = randum(2) + 1 if !defined $sex;
-    my $old = randum(35) + 15;
+    my $old;
+    if ( defined $oldDesired ) {
+        $old = $oldDesired;
+    } else {
+        my $old = randum(35) + 15;
+    }
 
     my $zip;
     if ( defined $inputZipCode ) {
@@ -967,11 +974,15 @@ sub getRandomLogin {
 
     # Generate a random nickname.
     my $login_ref;
-    if ( $sex == 2 ) {
-        $login_ref = $girlname_ref;
-    }
-    else {
-        $login_ref = $boyname_ref;
+    if ( defined $customName_ref ) {
+        $login_ref = $customName_ref;
+    } else {
+        if ( $sex == 2 ) {
+            $login_ref = $girlname_ref;
+        }
+        else {
+            $login_ref = $boyname_ref;
+        }
     }
     my $i     = randum( scalar @$login_ref ) - 1;
     my $login = $login_ref->[$i];
@@ -985,6 +996,7 @@ sub getRandomLogin {
     }
 
     $r = randum(12);
+    $r = 12 if defined $customName_ref;
     if ( $r == 0 ) {
         $r = randum(2);
         if ( $r == 1 ) {
@@ -1164,20 +1176,23 @@ sub file2array {
 ## @method void getOptions()
 sub getOptions {
     my %opt;
-    getopts( 'dvnl:o:s:z:a:u:i:m:x:w:', \%opt ) || HELP_MESSAGE();
-    $isVerbose    = 1         if exists $opt{'v'};
-    $isTest       = 1         if exists $opt{'n'};
-    $isDebug      = 1         if exists $opt{'d'};
-    $searchUser   = $opt{'u'} if exists $opt{'u'};
-    $searchId     = $opt{'i'} if exists $opt{'i'};
-    $loginName    = $opt{'l'} if exists $opt{'l'};
-    $user{'old'}  = $opt{'o'} if exists $opt{'o'};
-    $sex          = $opt{'s'} if exists $opt{'s'};
-    $inputZipCode = $opt{'z'} if exists $opt{'z'};
-    $action       = $opt{'a'} if exists $opt{'a'};
-    $message      = $opt{'m'} if exists $opt{'m'};
-    $maxOfLoop    = $opt{'x'} if exists $opt{'x'};
-    $maxOfWrite   = $opt{'w'} if exists $opt{'w'};
+    my $fileOfnicknames;
+    getopts( 'dvnl:o:s:z:a:u:i:m:x:w:f:y:', \%opt ) || HELP_MESSAGE();
+    $isVerbose       = 1         if exists $opt{'v'};
+    $isTest          = 1         if exists $opt{'n'};
+    $isDebug         = 1         if exists $opt{'d'};
+    $searchUser      = $opt{'u'} if exists $opt{'u'};
+    $searchId        = $opt{'i'} if exists $opt{'i'};
+    $loginName       = $opt{'l'} if exists $opt{'l'};
+    $user{'old'}     = $opt{'o'} if exists $opt{'o'};
+    $sex             = $opt{'s'} if exists $opt{'s'};
+    $inputZipCode    = $opt{'z'} if exists $opt{'z'};
+    $action          = $opt{'a'} if exists $opt{'a'};
+    $message         = $opt{'m'} if exists $opt{'m'};
+    $maxOfLoop       = $opt{'x'} if exists $opt{'x'};
+    $maxOfWrite      = $opt{'w'} if exists $opt{'w'};
+    $fileOfnicknames = $opt{'f'} if exists $opt{'f'};
+    $oldDesired      = $opt{'y'} if exists $opt{'y'};
     if ( !defined $action ) {
         sayError("Please specify an action (option -a)");
         HELP_MESSAGE();
@@ -1189,7 +1204,12 @@ sub getOptions {
         exit;
     }
     if ( defined $searchId and $searchId !~ m{^\d+$} ) {
-        sayError("searchId value must be an integer.");
+        sayError("searchId value must be an integer. (-i option)");
+        HELP_MESSAGE();
+        exit;
+    }
+    if ( defined $oldDesired and $oldDesired !~ m{^\d+$} ) {
+        sayError("The age should be an integer. (-y option)");
         HELP_MESSAGE();
         exit;
     }
@@ -1201,10 +1221,14 @@ sub getOptions {
             $sex = 2;
         }
         else {
-            sayError("The sex argument value must be either M or W");
+            sayError("The sex argument value must be either M or W. (-s option)");
             HELP_MESSAGE();
             exit;
         }
+    }
+    if ( defined $fileOfnicknames ) {
+        $customName_ref = [];
+        file2array( $fileOfnicknames,   $customName_ref );
     }
 }
 
