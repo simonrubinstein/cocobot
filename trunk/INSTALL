@@ -1,0 +1,11 @@
+The following Perl modules are prerequisites:
+sudo aptitude install libconfig-general-perl libwww-perl
+
+Lists the nicknames connected:
+./cocoweb.pl -a list
+
+Lists the nicknames of women connected:
+./cocoweb.pl -a list -s W
+
+Lists the nicknames of men connected:
+./cocoweb.pl -a list -s M
