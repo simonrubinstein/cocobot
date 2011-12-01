@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2011-12-01 
+# @date 2011-12-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,7 +36,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.4';
+$VERSION                            = '0.1.5';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -47,7 +47,7 @@ my %user         = ();
 my $boyname_ref  = [];
 my $girlname_ref = [];
 my $customName_ref;
-my $zipCode_ref  = [];
+my $zipCode_ref = [];
 ## 0 = all; 1 = mens;  womens: 2
 my $genru = 0;
 ## 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
@@ -271,8 +271,8 @@ sub actionString {
     $message = ' ' . $message;
     my $str = '';
     my $i;
-    my $max = 477 - length($message); 
-    for($i = 0; $i < 100; $i++) {
+    my $max = 477 - length($message);
+    for ( $i = 0 ; $i < 100 ; $i++ ) {
         last if length($str) > $max;
         $str = $str . ' ' . $message;
     }
@@ -516,7 +516,7 @@ sub process1Int {
                 '51'
               . $user_ref->{'mynickID'}
               . $user_ref->{'monpass'}
-              . writo( $agent_ref->{'agent'}) );
+              . writo( $agent_ref->{'agent'} ) );
     }
 
     if ( $olko == 99 ) {
@@ -662,7 +662,7 @@ sub validatio {
     my $typum      = $user_ref->{'sex'};
     my $citydio    = $user_ref->{'citydio'};
     die sayError("bad nickidol value") if length($nickidol) < 3;
-    die sayError("bad ageuq") if $ageuq < 15;
+    die sayError("bad ageuq! ageuq = $ageuq") if $ageuq < 15;
     my $citygood = $citydio;
     $citygood = "0" x ( 5 - length($citygood) ) . $citygood
       if length($citygood) < 5;
@@ -959,8 +959,9 @@ sub getRandomLogin {
     my $old;
     if ( defined $oldDesired ) {
         $old = $oldDesired;
-    } else {
-        my $old = randum(35) + 15;
+    }
+    else {
+        $old = randum(35) + 15;
     }
 
     my $zip;
@@ -976,7 +977,8 @@ sub getRandomLogin {
     my $login_ref;
     if ( defined $customName_ref ) {
         $login_ref = $customName_ref;
-    } else {
+    }
+    else {
         if ( $sex == 2 ) {
             $login_ref = $girlname_ref;
         }
@@ -1221,14 +1223,15 @@ sub getOptions {
             $sex = 2;
         }
         else {
-            sayError("The sex argument value must be either M or W. (-s option)");
+            sayError(
+                "The sex argument value must be either M or W. (-s option)");
             HELP_MESSAGE();
             exit;
         }
     }
     if ( defined $fileOfnicknames ) {
         $customName_ref = [];
-        file2array( $fileOfnicknames,   $customName_ref );
+        file2array( $fileOfnicknames, $customName_ref );
     }
 }
 
@@ -1239,19 +1242,22 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
  cocobot.pl -a action [-u searchUser -i searchId -m message 
-                       -x writeLoop -w writeRepeat -z zipCode -l loginName -d -v -n]  
+                       -x writeLoop -w writeRepeat -z zipCode -y old -l loginName -d -v -n
+                       -f customNickname]  
   -m message    Message
-  -a action       Actions: $lst
-  -u searchUser   A username
-  -i searchId     A numeric identifiant
-  -x writeLoop    Number of loops of the 'write' action
-  -w writeRepeat  Number of repetition of the same message
-  -s sex          M for man or W for women
-  -z zipCode      A postal code (i.g. 75001)
-  -l loginName    The name written in the messages
+  -a action        Actions: $lst
+  -u searchUser    A username
+  -i searchId      A numeric identifiant
+  -x writeLoop     Number of loops of the 'write' action
+  -w writeRepeat   Number of repetition of the same message
+  -s sex           M for man or W for women
+  -z zipCode       A postal code (i.g. 75001)
+  -y old           A old year (i.g. 37)     
+  -l loginName     The name written in the messages
   -v verbose mode
   -d debug mode
   -n test mode
+  -f customNickname A list of nickmanes
 ENDTXT
     exit 0;
 }
@@ -1259,8 +1265,8 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2010-11-19) 
-     Copyright (C) 2010 Simon Rubinstein 
+    $Script $VERSION (2011-12-01) 
+     Copyright (C) 2010-11 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
 }
