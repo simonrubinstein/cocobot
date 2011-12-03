@@ -19,6 +19,7 @@ La page « http://www.coco.fr/chat/index.html » comporte une animation [http://
 <param name='movie' value='chat.swf' />
 <embed src='chat.swf' name='flash' width='1' height='1' type='application/x-shockwave-flash' />
 </object>
+</code>
 
 La valeur du _cookies Flash_ est lue par la fonction « crocu() ».
 
