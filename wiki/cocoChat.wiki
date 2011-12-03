@@ -25,7 +25,7 @@ La valeur du _cookies Flash_ est lue par la fonction « crocu() ».
 
 === Fonction « primo() » ===
 
-La fonction « primo() » est déclarée à la ligne 983 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « primo() » déclarée à la ligne 983 du fichier « http://www.coco.fr/chat/initio.js » est la première fonction appelée déclarée dans l'attribut `onload()` de la balise `<body>`.
 
 La fonction « primo()» va lire le contenu de la barre d'adresse. Dans notre exemple la barre d'adresse est égale à «  http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# ». 
 
