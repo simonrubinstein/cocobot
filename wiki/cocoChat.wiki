@@ -13,7 +13,7 @@ Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygo
 
 === Cookie Flash ===
 
-La page « http://www.coco.fr/chat/index.html » comporte une animation [http://fr.wikipedia.org/wiki/Adobe_Flash_Player Abobe Flash] invisible « http://www.coco.fr/chat/chat.swf » utilisée uniquement pour disposer des _cookies Flash_, appelé les [http://fr.wikipedia.org/wiki/Local_Shared_Object objets locaux partagés (en anglais _Local Shared Objects_ ou _LSO_]).
+La page « http://www.coco.fr/chat/index.html » comporte une animation [http://fr.wikipedia.org/wiki/Adobe_Flash_Player Abobe Flash] invisible « http://www.coco.fr/chat/chat.swf » utilisée uniquement pour disposer des _cookies Flash_, appelé les [http://fr.wikipedia.org/wiki/Local_Shared_Object objets locaux partagés (en anglais Local Shared Objects ou _LSO_]).
 <code language="html">
 <object classid='clsid:d27cdb6e-ae6d-11cf-96b8-444553540000' id='flash' width='1' height='1'>
 <param name='movie' value='chat.swf' />
