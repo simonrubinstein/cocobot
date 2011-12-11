@@ -56,7 +56,7 @@ Dans notre exemple notre agent utilisateur est « Mozilla/5.0 (Ubuntu; X11; Linu
   * *agento*     = "Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0"
 
 La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 000 ». Exemple :
-  * *myport* : 3661
+  * *myport* = 3661
 
 La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port.
 
@@ -92,9 +92,9 @@ La fonction « presk() » appelle la fonction « croco() » qui essaie de lire l
 
 Les variables !JavaScript suivantes sont initialisées :
 
-* *myavatar* avec les caractères 0 à 9 de la variable *infor* ou avec un valeur de aléatoire 890 000 000 à 900 000 000 si *infor* est initialisée à « "null" ». Si *myavatar* est générée aléatoirement la chaîne « zx » est inséré dans une balise HTML `<div>` possédant l'ID « zerob ».
+  * *myavatar* avec les caractères 0 à 9 de la variable *infor* ou avec un valeur de aléatoire 890 000 000 à 900 000 000 si *infor* est initialisée à « "null" ». Si *myavatar* est générée aléatoirement la chaîne « zx » est inséré dans une balise HTML `<div>` possédant l'ID « zerob ».
 
-* *mypass* avec les caractères 9 à 29 de la variable *infor* ou à « "" » si  si *infor* est initialisée à « "null" ». Si *mypass* est gune chaîne vide  la chaîne « fw » est insérée dans une balise HTML `<div>` possédant l'ID « zerob ».
+  * *mypass* avec les caractères 9 à 29 de la variable *infor* ou à « "" » si  si *infor* est initialisée à « "null" ». Si *mypass* est gune chaîne vide  la chaîne « fw » est insérée dans une balise HTML `<div>` possédant l'ID « zerob ».
 
 
 
