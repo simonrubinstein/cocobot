@@ -6,7 +6,7 @@
 == Initialisation de la page ==
 
 
-Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée les trois fonctions suivants sont exécutées séquentiellement :
+Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée et chargée les trois fonctions suivants sont exécutées séquentiellement :
   * primo()
   * initial()
   * resinit()
@@ -113,22 +113,13 @@ La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « ag
  agix( url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass ,4);
 }}}
 
+  * La valeur *parami[3]*  correspond à la valeur de *mycityID* qui est le code identifiant la ville. Dans notre exemple la valeur 30 915.
+  * La valeur *speco* est toujours initialisée à zéro.
+
 Dans notre cas :
 {{{
- agix( "http://178.33.122.73:3495/40Simon*371309157636446650" );
+ agix( "http://178.33.122.73:3495/40Simon*371309157636446650", 4);
 }}}
 
- url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass ,4);
-}}}
 
-http://178.33.122.73:3244/51288231UigvGzMozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0
-
-{{{
-function agir(txt3)
-{
-txt3 = "" + txt3;
-agix(url1 + txt3.substring(0,2) + mynickID + monpass + txt3.substring(2),4);
-}
-
-
-}}}
+La fonction « agix() » est la base de la communication de type _Ajax_ entre le client et le serveur.
