@@ -96,11 +96,30 @@ Les variables !JavaScript suivantes sont initialisées :
 
   * *mypass* avec les caractères 9 à 29 de la variable *infor* ou à « "" » si  si *infor* est initialisée à « "null" ». Si *mypass* est gune chaîne vide  la chaîne « fw » est insérée dans une balise HTML `<div>` possédant l'ID « zerob ».
 
+Le cookie « samedi » est réécrit avec la chaînes de caractère *infor*.
 
+La fonction « crocu() est appelée pour relire le cookie flash ?
 
+Deux minuteries sont initialisée avec la fonction !JavaScript « setTimeout() » :
+  * Pour appeler la méthode « firsty() » au bout de 200 millisecondes.
+  * Pour appeler la méthode « pret() » au bout de 300 millisecondes.
+   
+=== Fonction « firsty() » ===
 
+La fonction « firsty() » est déclarée à la ligne 1 415 du fichier « http://www.coco.fr/chat/initio.js ».
 
+La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « agix() » : 
+{{{
+ agix( url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass ,4);
+}}}
 
+Dans notre cas :
+{{{
+ agix( "http://178.33.122.73:3495/40Simon*371309157636446650" );
+}}}
+
+ url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass ,4);
+}}}
 
 http://178.33.122.73:3244/51288231UigvGzMozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0
 
