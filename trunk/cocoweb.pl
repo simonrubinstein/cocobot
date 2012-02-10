@@ -675,7 +675,7 @@ sub validatio {
         $sume++ if $ujm < 95 && $ujm > 59;
     }
     if ( $sume > 4 ) {
-        $user_ref->{'login'} = $nickidol = lc($nickidol);
+        #$user_ref->{'login'} = $nickidol = lc($nickidol);
     }
 
     my $cookav;
