@@ -9,3 +9,6 @@ Lists the nicknames of women connected:
 
 Lists the nicknames of men connected:
 ./cocoweb.pl -a list -s M
+
+./cocoweb.pl -v -a hello -i 211589 -x 10000
+./cocoweb.pl -v -a hello -i 215789 -x 10000
