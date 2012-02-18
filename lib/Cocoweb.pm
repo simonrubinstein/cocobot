@@ -26,6 +26,7 @@ use strict;
 use warnings;
 use Carp;
 use Cocoweb::Logger;
+use POSIX;
 
 our $VERSION   = '0.2000';
 our $AUTHORITY = 'TEST';
@@ -37,6 +38,7 @@ our @EXPORT = qw(
   debug
   info
   message
+  randum
 );
 
 sub info {
@@ -53,6 +55,12 @@ sub error {
 
 sub debug {
     $logger->debug(@_);
+}
+
+##@method integer randum($qxq)
+sub randum {
+    my ($qxq) = @_;
+    return floor( rand($qxq) );
 }
 
 sub BEGIN {

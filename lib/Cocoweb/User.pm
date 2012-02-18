@@ -4,7 +4,11 @@
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# $Id$
+# Id: $Id$
+# Revision: $Revision$
+# Date: $Date$
+# Author: $Author$
+# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,7 +31,7 @@ use Carp;
 
 use base 'Cocoweb::Object';
  
- __PACKAGE__->attributes('pseudonym', 'year', 'sex', 'zip', 'nickId', 'password');
+ __PACKAGE__->attributes('pseudonym', 'year', 'sex', 'zip', 'nickId', 'password', 'sauvy', 'inform', 'cookies');
 
 ## @method void init($args)
 sub init {
@@ -39,10 +43,66 @@ sub init {
         'zip'       => 75001,
         'nickId'    => 99999,
         'password'  => 0,
+        'sauvy'     => '',
+        'inform'    => '',
+        'cookies'   => {}
     );
 
 
 }
+
+## @method void validatio($user_ref)
+sub validatio {
+    my ($self) = @_;
+    my $nickidol   = $self->pseudonym(); 
+    my $ageuq      = $self->year();
+    my $typum      = $self->sex();
+    my $citydio    = $self->zip);
+    croak error("bad nickidol value") if length($nickidol) < 3;
+    croak error("bad ageuq! ageuq = $ageuq") if $ageuq < 15;
+    my $citygood = $citydio;
+    $citygood = "0" x ( 5 - length($citygood) ) . $citygood
+      if length($citygood) < 5;
+
+    # Check if the login name does not contain too many capital letters
+    my $sume = 0;
+    for ( my $i = 0 ; $i < length($nickidol) ; $i++ ) {
+        my $c = substr( $nickidol, $i, 1 );
+        my $ujm = ord($c);
+        $sume++ if $ujm < 95 && $ujm > 59;
+    }
+    if ( $sume > 4 ) {
+        $nickidol = lc($nickidol);
+        $self->pseudonym($nickidol);
+    }
+    my $cookav;
+    my $inform =
+        $nickidol . '#' 
+      . $typum . '#' 
+      . $ageuq . '#'
+      . $user_ref->{'townzz'} . '#'
+      . $citygood . '#0#'
+      . $user_ref->{'cookav'} . '#';
+    debug("$inform");
+    $self->inform($inform);
+
+    $user_ref->{'cookies'}->{'coda'} = $inform;
+
+    $user_ref->{'sauvy'} = $user_ref->{'cookav'}
+      if length( $user_ref->{'sauvy'} ) < 2;
+
+    my $location =
+        $coco_ref->{'urlprinc'} . "#"
+      . $nickidol . '#'
+      . $typum . '#'
+      . $ageuq . '#'
+      . $citygood . '#0#'
+      . $user_ref->{'sauvy'} . '#'
+      . $user_ref->{'referenz'} . '#';
+    debug("location: $location");
+}
+
+
 
 sub show {
     my $self = shift;
