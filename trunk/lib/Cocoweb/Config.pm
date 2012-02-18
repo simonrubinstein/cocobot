@@ -1,11 +1,15 @@
 # @author
-# @created 2012-01-27 
-# @date 2011-12-31
+# @created 2012-01-27
+# @date 2012-02-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# $Id$
+# Id: $Id$
+# Revision: $Revision$
+# Date: $Date$
+# Author: $Author$
+# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,34 +34,36 @@ use Config::General;
 use Data::Dumper;
 use strict;
 use warnings;
- __PACKAGE__->attributes('pathnames');
+__PACKAGE__->attributes('pathnames');
 my %instances;
 
+##@method object init($class, $instance)
 sub init {
-    my ($class, $instance) = @_;
-    $instance->pathnames(['../conf', './conf', '/etc/cocoweb', $ENV{'HOME'} . '/.cocoweb']);
+    my ( $class, $instance ) = @_;
+    $instance->pathnames(
+        [ '../conf', './conf', '/etc/cocoweb', $ENV{'HOME'} . '/.cocoweb' ] );
     return $instance;
 }
 
-
+##@method object getConfigFile($class, $filename)
 sub getConfigFile {
     my ( $self, $filename ) = @_;
     return $instances{$filename} if exists $instances{$filename};
-    croak error('Error: Required parameter "filename" is missing!') if !defined $filename; 
+    croak error('Error: Required parameter "filename" is missing!')
+      if !defined $filename;
     my $pathnames_ref = $self->pathnames();
 
     my $configPath;
-    foreach my $pathname ( @$pathnames_ref ) {
+    foreach my $pathname (@$pathnames_ref) {
         my $path = $pathname . '/' . $filename;
-        next if ! -f $path;
+        next if !-f $path;
         $configPath = $path;
     }
-    croak error("Error $filename filename was not found!") if !defined $configPath;
+    croak error("Error: $filename filename was not found!")
+      if !defined $configPath;
     debug("$configPath was found");
-
-    my $instance = new Cocoweb::Config::File('pathname' => $configPath);
-    return $instances{$filename} = $instance; 
-
+    my $instance = new Cocoweb::Config::File( 'pathname' => $configPath );
+    return $instances{$filename} = $instance;
 }
 
 1;

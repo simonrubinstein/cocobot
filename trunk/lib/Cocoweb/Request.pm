@@ -1,10 +1,14 @@
 # @created 2012-02-17 
-# @date 2012-02-17
+# @date 2012-02-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# $Id$
+# Id: $Id$
+# Revision: $Revision$
+# Date: $Date$
+# Author: $Author$
+# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,39 +29,86 @@ use strict;
 use warnings;
 use Cocoweb;
 use Cocoweb::Config;
+use Cocoweb::Config::Hash;
 use base 'Cocoweb::Object';
 use Carp;
+use Data::Dumper;
 use LWP::UserAgent;
  
  __PACKAGE__->attributes('myport', 'url1');
 
-my $hostname;
-my $urly0;
-my $urlprinc;
-my $currentUrl;
-my $avatarUrl;
-my $avaref;
 
+my $conf_ref;
+my $agent_ref;
+my $userAgent;
 
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
-    if (!defined $hostname) {
-        my $config  = Cocoweb::Config->instance();
-        my $conf    = $config->getConfigFile('request.conf');
-        $hostname   = $conf->getString('hostname');
-        $urly0      = $conf->getString('urly0');
-        $urlprinc   = $conf->getString('urlprinc');
-        $currentUrl = $conf->getString('current-url');
-        $avatarUrl  = $conf->getString('avatar-url');
-        $avaref     = $conf->getString('avaref');
+    if (!defined $conf_ref) {
+        my $conf    = Cocoweb::Config->instance()->getConfigFile('request.conf');
+        $conf_ref = $conf->all();
+        foreach my $name ('urly0', 'urlprinc', 'current-url', 'avatar-url', 'avaref') {
+            $conf->isString($name);
+            debug("$name $conf_ref->{$name}" );
+        }
+        $agent_ref  = $conf->getHash('user-agent');
+        my $uaConf     = Cocoweb::Config::Hash->new('hash' => $agent_ref);
+        $uaConf->isString('agent');
+        $uaConf->isInt('timeout');
+        $uaConf->isHash('header');
+        $userAgent = LWP::UserAgent->new(
+                'agent'   => $agent_ref->{'agent'},
+                'timeout' => $agent_ref->{'timeout'}
+                );
+ 
     }
 
+    my $myport = 3000 + randum(1000); 
+
     $self->attributes_defaults(
-       'myport'    => 0, 
+       'myport'    => $myport, 
+       'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/'
     );
+    debug("url1: " . $self->url1());  
 
 }
+
+## @method object execute($url, $cookie_ref)
+sub execute {
+    my ( $self, $method, $url, $cookie_ref ) = @_;
+    my $req = HTTP::Request->new( $method => $url );
+    debug( 'HttpRequest() ' . $url );
+    foreach my $field ( keys %{ $agent_ref->{'header'} } ) {
+        $req->header( $field => $agent_ref->{'header'}->{$field} );
+    }
+    if ( defined $cookie_ref and scalar %$cookie_ref > 0 ) {
+        my $cookieStr = '';
+        foreach my $k ( keys %$cookie_ref ) {
+            my $val = $self->jsEscape( $cookie_ref->{$k} );
+            $cookieStr .= $k . "=" . $val . ';';
+        }
+        chop($cookieStr);
+        $req->header( 'Cookie' => $cookieStr );
+    }
+    my $response = $userAgent->request($req);
+    if ( !$response->is_success() ) {
+        die error( $response->status_line() );
+    }
+    return $response;
+}
+
+## @method string jsEscape($string)
+# @brief works to escape a string to JavaScript's URI-escaped string.
+# @author Koichi Taniguchi
+sub jsEscape {
+    my ($self, $string) = @_;
+    $string =~ s{([\x00-\x29\x2C\x3A-\x40\x5B-\x5E\x60\x7B-\x7F])}
+    {'%' . uc(unpack('H2', $1))}eg;    # XXX JavaScript compatible
+    $string = encode( 'ascii', $string, sub { sprintf '%%u%04X', $_[0] } );
+    return $string;
+}
+
 
 1;
  
