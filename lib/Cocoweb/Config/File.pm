@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-17
+# @date 2012-02-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -42,8 +42,5 @@ sub init {
     )->getall();
     croak error("'conf' section was not found!") if !exists $config{'conf'};
     $self->all( $config{'conf'} );
-
-    #print Dumper \%config;
 }
-
 1;

@@ -1,6 +1,6 @@
 # @author
 # @created 2012-01-27
-# @date 2012-02-18
+# @date 2012-02-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -61,7 +61,7 @@ sub getConfigFile {
     }
     croak error("Error: $filename filename was not found!")
       if !defined $configPath;
-    debug("$configPath was found");
+    debug("The file '$configPath' was found.");
     my $instance = new Cocoweb::Config::File( 'pathname' => $configPath );
     return $instances{$filename} = $instance;
 }
