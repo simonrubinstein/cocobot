@@ -1,5 +1,5 @@
-# @created 2012-01-26 
-# @date 2012-01-29 
+# @created 2012-01-26
+# @date 2012-02-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,36 +28,71 @@ package Cocoweb::User;
 use strict;
 use warnings;
 use Carp;
+use Data::Dumper;
+use POSIX;
 
 use base 'Cocoweb::Object';
- 
- __PACKAGE__->attributes('pseudonym', 'year', 'sex', 'zip', 'nickId', 'password', 'sauvy', 'inform', 'cookies');
+
+__PACKAGE__->attributes(
+    'pseudonym',
+    'year',
+    'sex',
+    'zip',
+    'cookav',
+    'referenz',
+    'speco',
+    'nickId',
+    'password',
+    'roulix',
+    'sauvy',
+    'inform',
+    'cookies',
+    'townzz',
+    'citydio'
+
+);
 
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
+
+    $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
+
+    if ( $args{'generateRandom'} ) {
+        $args{'year'} = randum(35) + 15 if !exists $args{'year'};
+        $args{'sex'}  = randum(2) + 1   if !exists $args{'sex'};
+    }
+
+    $args{'pseudonym'} = 'nobody' if !exists $args{'pseudonym'};
+    $args{'year'}      = 89       if !exists $args{'year'};
+    $args{'sex'}       = 1        if !exists $args{'sex'};
+    $args{'zip'}       = 75001    if !exists $args{'zip'};
+
     $self->attributes_defaults(
-        'pseudonym' => 'nobody',
-        'year'      => 89,
-        'sex'       => 'male',
-        'zip'       => 75001,
+        'pseudonym' => $args{'pseudonym'},
+        'year'      => $args{'year'},
+        'sex'       => $args{'sex'},
+        'zip'       => $args{'zip'},
+        'cookav'    => floor( rand(890000000) + 100000000 ),
+        'referenz'  => 0,
+        'speco'     => 0,
         'nickId'    => 99999,
         'password'  => 0,
+        'roulix'    => 0,
         'sauvy'     => '',
         'inform'    => '',
-        'cookies'   => {}
+        'cookies'   => {},
+        'citydio'   => 0
     );
-
-
 }
 
 ## @method void validatio($user_ref)
 sub validatio {
-    my ($self) = @_;
-    my $nickidol   = $self->pseudonym(); 
-    my $ageuq      = $self->year();
-    my $typum      = $self->sex();
-    my $citydio    = $self->zip);
+    my ($self)   = @_;
+    my $nickidol = $self->pseudonym();
+    my $ageuq    = $self->year();
+    my $typum    = $self->sex();
+    my $citydio  = $self->zip();
     croak error("bad nickidol value") if length($nickidol) < 3;
     croak error("bad ageuq! ageuq = $ageuq") if $ageuq < 15;
     my $citygood = $citydio;
@@ -80,29 +115,27 @@ sub validatio {
         $nickidol . '#' 
       . $typum . '#' 
       . $ageuq . '#'
-      . $user_ref->{'townzz'} . '#'
+      . $self->townzz() . '#'
       . $citygood . '#0#'
-      . $user_ref->{'cookav'} . '#';
+      . $self->cookav() . '#';
     debug("$inform");
     $self->inform($inform);
 
-    $user_ref->{'cookies'}->{'coda'} = $inform;
+    #$user_ref->{'cookies'}->{'coda'} = $inform;
 
-    $user_ref->{'sauvy'} = $user_ref->{'cookav'}
-      if length( $user_ref->{'sauvy'} ) < 2;
+    $self->sauvy() = $self->cookav()
+      if length( $self->sauvy() ) < 2;
 
-    my $location =
-        $coco_ref->{'urlprinc'} . "#"
-      . $nickidol . '#'
-      . $typum . '#'
-      . $ageuq . '#'
-      . $citygood . '#0#'
-      . $user_ref->{'sauvy'} . '#'
-      . $user_ref->{'referenz'} . '#';
-    debug("location: $location");
+    #my $location =
+    #    $coco_ref->{'urlprinc'} . "#"
+    #  . $nickidol . '#'
+    #  . $typum . '#'
+    #  . $ageuq . '#'
+    #  . $citygood . '#0#'
+    #  . $user_ref->{'sauvy'} . '#'
+    #  . $user_ref->{'referenz'} . '#';
+    #debug("location: $location");
 }
-
-
 
 sub show {
     my $self = shift;
@@ -114,7 +147,5 @@ sub show {
     print STDOUT 'password:  ' . $self->password . "\n";
 
 }
-
-
 
 1;

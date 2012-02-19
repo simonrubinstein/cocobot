@@ -1,4 +1,4 @@
-# @created 2012-02-17 
+# @created 2012-02-17
 # @date 2012-02-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -34,9 +34,8 @@ use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
 use LWP::UserAgent;
- 
- __PACKAGE__->attributes('myport', 'url1');
 
+__PACKAGE__->attributes( 'myport', 'url1' );
 
 my $conf_ref;
 my $agent_ref;
@@ -45,32 +44,34 @@ my $userAgent;
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
-    if (!defined $conf_ref) {
-        my $conf    = Cocoweb::Config->instance()->getConfigFile('request.conf');
+    if ( !defined $conf_ref ) {
+        my $conf = Cocoweb::Config->instance()->getConfigFile('request.conf');
         $conf_ref = $conf->all();
-        foreach my $name ('urly0', 'urlprinc', 'current-url', 'avatar-url', 'avaref') {
+        foreach my $name ( 'urly0', 'urlprinc', 'current-url', 'avatar-url',
+            'avaref' )
+        {
             $conf->isString($name);
-            debug("$name $conf_ref->{$name}" );
+            debug("$name $conf_ref->{$name}");
         }
-        $agent_ref  = $conf->getHash('user-agent');
-        my $uaConf     = Cocoweb::Config::Hash->new('hash' => $agent_ref);
+        $agent_ref = $conf->getHash('user-agent');
+        my $uaConf = Cocoweb::Config::Hash->new( 'hash' => $agent_ref );
         $uaConf->isString('agent');
         $uaConf->isInt('timeout');
         $uaConf->isHash('header');
         $userAgent = LWP::UserAgent->new(
-                'agent'   => $agent_ref->{'agent'},
-                'timeout' => $agent_ref->{'timeout'}
-                );
- 
+            'agent'   => $agent_ref->{'agent'},
+            'timeout' => $agent_ref->{'timeout'}
+        );
+
     }
 
-    my $myport = 3000 + randum(1000); 
+    my $myport = 3000 + randum(1000);
 
     $self->attributes_defaults(
-       'myport'    => $myport, 
-       'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/'
+        'myport' => $myport,
+        'url1'   => $conf_ref->{'urly0'} . ':' . $myport . '/'
     );
-    debug("url1: " . $self->url1());  
+    debug( "url1: " . $self->url1() );
 
 }
 
@@ -102,15 +103,58 @@ sub execute {
 # @brief works to escape a string to JavaScript's URI-escaped string.
 # @author Koichi Taniguchi
 sub jsEscape {
-    my ($self, $string) = @_;
+    my ( $self, $string ) = @_;
     $string =~ s{([\x00-\x29\x2C\x3A-\x40\x5B-\x5E\x60\x7B-\x7F])}
     {'%' . uc(unpack('H2', $1))}eg;    # XXX JavaScript compatible
     $string = encode( 'ascii', $string, sub { sprintf '%%u%04X', $_[0] } );
     return $string;
 }
 
+## @method void getCityco($user_ref)
+sub getCityco {
+    my ( $self, $user ) = @_;
+
+    my $zip = $user->zip();
+    croak error("Error: The '$zip' zip code is invalid!") if $zip !~ /^\d{5}$/;
+    my $i = index( $zip, '0' );
+    if ( $i == 0 ) {
+        $zip = substr( $zip, 1, 5 );
+    }
+    my $url      = 'http://www.coco.fr/cocoland/' . $zip . '.js';
+    my $response = $self->execute( 'GET', $url );
+    my $res      = $response->content();
+
+    # Retrieves a string like "var cityco='30926*PARIS*';"
+    if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
+        die error( 'Error: cityco have not been found!'
+              . 'The HTTP requests "'
+              . $url
+              . '" return: '
+              . $res );
+    }
+    my $cityco = $1;
+    debug("cityco: $cityco");
+    my @tmp = split( /\*/, $cityco );
+    my ( $citydio, $townzz );
+    my $count = scalar @tmp;
+    die error("Error: The cityco is not valid (cityco: $cityco)")
+      if $count % 2 != 0
+          or $count == 0;
+
+    if ( $count == 2 ) {
+        $citydio = $tmp[0];
+        $townzz  = $tmp[1];
+    }
+    else {
+        my $r = int( rand( $count / 2 ) );
+        $r += $r;
+        $citydio = $tmp[$r];
+        $townzz  = $tmp[ $r + 1 ];
+    }
+    debug("citydio: $citydio; townzz: $townzz");
+    $user->citydio() = $citydio;
+    $user->townzz()  = $townzz;
+}
 
 1;
- 
-
 
