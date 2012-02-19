@@ -42,18 +42,28 @@ sub init {
     my $user    = Cocoweb::User->new(%args);
     my $request = Cocoweb::Request->new();
     $self->attributes_defaults( 'user' => $user, 'request' => $request );
-
-
 }
 
+##@method process()
 sub process {
-    my ($self) = @_;
-    $self->request()->getCityco($self->user());
-
+    my ($self)  = @_;
+    my $user    = $self->user();
+    my $request = $self->request();
+    $request->getCityco($user);
+    $user->validatio( $request->getValue('urlprinc') );
+    $user->initial( $request->getValue('avaref') );
+    $self->request()->agir( $user,
+            '40'
+          . $user->pseudonym() . '*'
+          . $user->year()
+          . $user->sex()
+          . $user->citydio()
+          . $user->myavatar()
+          . $user->password() );
 }
-sub info {
+
+sub show {
     my ($self) = @_;
     $self->user()->show();
 }
-
 1;

@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-18
+# @date 2012-02-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -47,11 +47,14 @@ sub init {
     if ( !defined $conf_ref ) {
         my $conf = Cocoweb::Config->instance()->getConfigFile('request.conf');
         $conf_ref = $conf->all();
-        foreach my $name ( 'urly0', 'urlprinc', 'current-url', 'avatar-url',
-            'avaref' )
+        foreach my $name (
+            'urly0',  'urlprinc', 'current-url', 'avatar-url',
+            'avaref', 'urlcocoland'
+          )
         {
             $conf->isString($name);
-            debug("$name $conf_ref->{$name}");
+
+            #debug("$name $conf_ref->{$name}");
         }
         $agent_ref = $conf->getHash('user-agent');
         my $uaConf = Cocoweb::Config::Hash->new( 'hash' => $agent_ref );
@@ -73,6 +76,19 @@ sub init {
     );
     debug( "url1: " . $self->url1() );
 
+}
+
+##@method string getValue($name)
+sub getValue {
+    my ( $self, $name ) = @_;
+    if ( exists $conf_ref->{$name} ) {
+        return $conf_ref->{$name};
+    }
+    else {
+        croak error( 'Error: The "' 
+              . $name
+              . '" value was not found in the configuration.' );
+    }
 }
 
 ## @method object execute($url, $cookie_ref)
@@ -120,7 +136,7 @@ sub getCityco {
     if ( $i == 0 ) {
         $zip = substr( $zip, 1, 5 );
     }
-    my $url      = 'http://www.coco.fr/cocoland/' . $zip . '.js';
+    my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
     my $response = $self->execute( 'GET', $url );
     my $res      = $response->content();
 
@@ -152,8 +168,68 @@ sub getCityco {
         $townzz  = $tmp[ $r + 1 ];
     }
     debug("citydio: $citydio; townzz: $townzz");
-    $user->citydio() = $citydio;
-    $user->townzz()  = $townzz;
+    $user->citydio($citydio);
+    $user->townzz($townzz);
+}
+
+##@method void agir($user, $txt1)
+#@param $user
+#@param $txt1
+sub agir {
+    my ( $self, $user, $txt1 ) = @_;
+    my $url = $self->url1() . $txt1;
+    info("agir() url = $url");
+    my $response = $self->execute( 'GET', $url );
+    my $res = $response->content();
+    debug($res);
+    die error("Error: $res: function not found")
+      if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
+    my $function = $1;
+    my $arg      = $2;
+
+    #info('function: '. $function . '; arg: ' . $arg);
+    my $process;
+    eval( '$process = \&' . $function );
+    if ($@) {
+        die sayError($@);
+    }
+    $self->$process( $user, $arg );
+}
+
+## @method void process1()
+# @brief
+sub process1 {
+    my ( $self, $user, $urlu ) = @_;
+    my ($todo) = ('');
+
+    #sayDebug("process1($urlu)");
+    my $urlo = $urlu;
+    my $hzy = index( $urlo, '#' );
+    $urlo = substr( $urlo, $hzy + 1, length($urlo) - $hzy - 1 );
+
+    my $urlw = index( $urlo, '|' );
+    if ( $urlw > 0 ) {
+        $todo = '#' . substr( $urlo, $urlw + 1, length($urlo) - $urlw - 1 );
+    }
+
+    my $firstChar = substr( $urlo, 0, 1 );
+    my $molki = ord($firstChar);
+
+    debug("firstChar: $firstChar; molki = $molki");
+
+    #
+    if ( $molki < 58 ) {
+        process1Int( $user, $urlo );
+    }
+    else {
+        info("process1() $molki code unknown");
+    }
+}
+
+## @method void process1Int($user_ref, $urlo)
+sub process1Int {
+    my ( $self, $user, $urlo ) = @_;
+    print STDOUT "OK\n";
 }
 
 1;

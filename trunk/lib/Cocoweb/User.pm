@@ -31,6 +31,7 @@ use Carp;
 use Data::Dumper;
 use POSIX;
 
+use Cocoweb;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes(
@@ -48,7 +49,9 @@ __PACKAGE__->attributes(
     'inform',
     'cookies',
     'townzz',
-    'citydio'
+    'citydio',
+    'myavatar',
+    'ifravatar'
 
 );
 
@@ -82,19 +85,21 @@ sub init {
         'sauvy'     => '',
         'inform'    => '',
         'cookies'   => {},
-        'citydio'   => 0
+        'citydio'   => 0,
+        'myavatar'  => 0,
+        'ifravatar' => 0
     );
 }
 
 ## @method void validatio($user_ref)
 sub validatio {
-    my ($self)   = @_;
+    my ( $self, $url ) = @_;
     my $nickidol = $self->pseudonym();
     my $ageuq    = $self->year();
     my $typum    = $self->sex();
     my $citydio  = $self->zip();
-    croak error("bad nickidol value") if length($nickidol) < 3;
-    croak error("bad ageuq! ageuq = $ageuq") if $ageuq < 15;
+    croak error("Error: bad nickidol value") if length($nickidol) < 3;
+    croak error("Error: bad ageuq! ageuq = $ageuq") if $ageuq < 15;
     my $citygood = $citydio;
     $citygood = "0" x ( 5 - length($citygood) ) . $citygood
       if length($citygood) < 5;
@@ -121,20 +126,73 @@ sub validatio {
     debug("$inform");
     $self->inform($inform);
 
-    #$user_ref->{'cookies'}->{'coda'} = $inform;
+    $self->setCookie( 'coda', $inform );
 
-    $self->sauvy() = $self->cookav()
+    $self->sauvy( $self->cookav() )
       if length( $self->sauvy() ) < 2;
 
-    #my $location =
-    #    $coco_ref->{'urlprinc'} . "#"
-    #  . $nickidol . '#'
-    #  . $typum . '#'
-    #  . $ageuq . '#'
-    #  . $citygood . '#0#'
-    #  . $user_ref->{'sauvy'} . '#'
-    #  . $user_ref->{'referenz'} . '#';
-    #debug("location: $location");
+    my $location =
+        $url . "#"
+      . $nickidol . '#'
+      . $typum . '#'
+      . $ageuq . '#'
+      . $citygood . '#0#'
+      . $self->sauvy() . '#'
+      . $self->referenz() . '#';
+    debug("location: $location");
+}
+
+## @method void initial()
+sub initial {
+    my ( $self, $url ) = @_;
+    my ( $infor, $myavatar, $mypass ) = ( '', 0, '' );
+    my $cookie_ref = $self->getCookie('samedi');
+    if ( defined $cookie_ref ) {
+        $infor    = $cookie_ref->{'samedi'};
+        $myavatar = substr( $infor, 0, 9 );
+        $mypass   = substr( $infor, 9, 29 );
+    }
+    $myavatar = randum(890000000) + 100000000
+      if ( !defined $myavatar
+        or $myavatar !~ m{^\d+$}
+        or $myavatar < 100000000
+        or $myavatar > 1000000000 );
+
+    $self->myavatar($myavatar);
+    $self->password($mypass);
+    $infor = $myavatar . $mypass;
+    $self->setCookie( 'samedi', $infor );
+    $self->ifravatar( $url . $myavatar );
+    info( 'ifravatar: ' . $self->ifravatar() );
+}
+
+## @method void setCookie($name, $value)
+#@brief
+#@value string $name Cookie name
+#@value string $value
+sub setCookie {
+    my ( $self, $name, $value ) = @_;
+    croak error('Error: Required parameter "name" is missing!')
+      if !defined $name;
+    croak error('Error: Required parameter "value" is missing!')
+      if !defined $value;
+    my $cookies_ref = $self->cookies();
+    $cookies_ref->{$name} = $value;
+}
+
+##@method void getCookie($name)
+#@value string $name Cookie name
+sub getCookie {
+    my ( $self, $name ) = @_;
+    croak error('Error: Required parameter "name" is missing!')
+      if !defined $name;
+    my $cookies_ref = $self->cookies();
+    if ( exists $cookies_ref->{$name} ) {
+        return $cookies_ref->{$name};
+    }
+    else {
+        return;
+    }
 }
 
 sub show {
@@ -145,7 +203,9 @@ sub show {
     print STDOUT 'zip:       ' . $self->zip . "\n";
     print STDOUT 'nickId:    ' . $self->nickId . "\n";
     print STDOUT 'password:  ' . $self->password . "\n";
-
+    print STDOUT 'townzz:    ' . $self->townzz . "\n";
+    print STDOUT 'citydio:  ' . $self->citydio . "\n";
+    print Dumper $self->cookies();
 }
 
 1;
