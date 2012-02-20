@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-19
+# @date 2012-02-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,12 +34,15 @@ use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
 use LWP::UserAgent;
+use utf8;
+no utf8;
 
 __PACKAGE__->attributes( 'myport', 'url1' );
 
 my $conf_ref;
 my $agent_ref;
 my $userAgent;
+my %dememeMatch = ();
 
 ## @method void init($args)
 sub init {
@@ -65,7 +68,7 @@ sub init {
             'agent'   => $agent_ref->{'agent'},
             'timeout' => $agent_ref->{'timeout'}
         );
-
+        $self->initializeTables();
     }
 
     my $myport = 3000 + randum(1000);
@@ -172,6 +175,15 @@ sub getCityco {
     $user->townzz($townzz);
 }
 
+## @method void searchnow($user, $genru, $yearu)
+sub searchnow {
+    my ($self, $user, $genru, $yearu) = @_;
+    debug("genru: $genru; yearu: $yearu");
+    my $searchito =
+      '10' . $user->nickID() . $user->password() . $genru . $yearu;
+    $self->agir( $user, $searchito );
+}
+
 ##@method void agir($user, $txt1)
 #@param $user
 #@param $txt1
@@ -197,12 +209,13 @@ sub agir {
 }
 
 ## @method void process1()
-# @brief
+# @brief object $user An user objet
+# @brief string $urlu
 sub process1 {
     my ( $self, $user, $urlu ) = @_;
     my ($todo) = ('');
 
-    #sayDebug("process1($urlu)");
+    #debug("process1($urlu)");
     my $urlo = $urlu;
     my $hzy = index( $urlo, '#' );
     $urlo = substr( $urlo, $hzy + 1, length($urlo) - $hzy - 1 );
@@ -230,7 +243,150 @@ sub process1 {
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
     print STDOUT "OK\n";
+    my $olko = parseInt( substr( $urlo, 0, 2 ) );
+    info("olko: $olko");
+    if ( $olko == 12 ) {
+        my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
+        $user->nickId( '' . $lebonnick);
+        $user->password(substr( $urlo, 8, 14 - 8 ));
+        $user->{'mycrypt'}  = parseInt( substr( $urlo, 14, 21 - 14 ) );
+        debug( 'mynickID: '
+              . $user->nickId()
+              . '; monpass: '
+              . $user->password()
+              . '; mycrypt: '
+              . $user->mycrypt() );
+
+        $olko = 51;
+
+    }
+
+    if ( $olko == 51 ) {
+         $self->agir( $user,
+                '51'
+              . $user->nickId()
+              . $user->password()
+              . $self->writo( $agent_ref->{'agent'} ) );
+    }
+
+    if ( $olko == 99 ) {
+        my $bud = parseInt( substr( $urlo, 2, 3 ) );
+        sayInfo("bud: $bud");
+
+        #
+        if ( $bud == 556 ) {
+        }
+
+        #searchnow($user_ref);
+    }
+
+    #A search command was sent
+    if ( $olko == 34 ) {
+        populate( $urlo, 0 );
+    }
+
+    # No more private conversation is accepted
+    if ( $olko == 98 ) {
+        sayInfo("No more private conversation is accepted.");
+        $olko = 967;
+    }
+
+    # No more male user message is accepted
+    if ( $olko == 96 ) {
+        sayInfo("No more male user message is accepted.");
+        $olko = 967;
+    }
+
+    #A message has been sent to the chat.
+    if ( $olko == 97 ) {
+        $olko = 967;
+    }
+    if ( $olko == 66 ) {
+        $olko = 967;
+    }
+    if ( $olko == 967 ) {
+    }
+
 }
+
+
+
+## @method string writo($s1)
+# @param string $s1
+# @return string
+sub writo {
+    my ($self, $s1) = @_;
+    utf8::decode($s1);
+    my $s2     = '';
+    my $toulon = 0;
+    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
+        my $c = substr( $s1, $i, 1 );
+        my $numerox = ord($c);
+        if ( $numerox != 32 ) {
+            $toulon++;
+        }
+        else {
+            $toulon = 0;
+        }
+        if ( $toulon < 24 ) {
+            if (   $numerox < 43
+                or ( $numerox > 59 and $numerox < 64 )
+                or ( $numerox > 90 and $numerox < 96 )
+                or $numerox > 122 )
+            {
+                $s2 .= dememe($numerox);
+            }
+            else {
+                $s2 .= $c;
+            }
+        }
+    }
+    return $s2;
+}
+
+## @method string dememe($numix)
+# @param integer $numix
+# @return string
+sub dememe {
+    my ($self, $numix) = @_;
+    return '' if !exists $dememeMatch{$numix};
+    return $dememeMatch{$numix};
+}
+
+
+## @method void initializeTables()
+sub initializeTables {
+    my ($self) = @_;
+    %dememeMatch = (
+        32   => "~",
+        33   => '!',
+        36   => "*7",
+        37   => "%",
+        39   => "*8",
+        40   => "(",
+        41   => ")",
+        42   => "*s",
+        61   => "=",
+        63   => "?",
+        94   => "*l",
+        95   => "*0",
+        8364 => "*d",
+        224  => "*a",    # à
+        226  => "*k",    # â
+        231  => "*c",    # ç
+        232  => "*e",    # è
+        233  => "*r",    # é
+        234  => "*b",    # ê
+        238  => "*i",    # î
+        239  => "*k",    # ï
+        244  => "*o",    # ô
+        249  => "*f",    # ù
+        251  => "*u"     # û
+    );
+}
+
+
+
 
 1;
 
