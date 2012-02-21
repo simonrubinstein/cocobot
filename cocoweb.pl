@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2011-12-01
+# @date 2012-02-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -24,6 +24,7 @@
 # MA  02110-1301, USA.
 
 use strict;
+use warnings;
 use Data::Dumper;
 use Encode qw(encode FB_PERLQQ);
 use FindBin qw($Script $Bin);
@@ -722,7 +723,7 @@ sub initial {
 
     $user_ref->{'myavatar'}            = $myavatar;
     $user_ref->{'mypass'}              = $mypass;
-    $infor                             = $myavatar + $mypass;
+    $infor                             = $myavatar . $mypass;
     $user_ref->{'cookies'}->{'samedi'} = $infor;
     $user_ref->{'ifravatar'}           = $coco_ref->{'avaref'} . $myavatar;
     sayInfo( "ifravatar: " . $user_ref->{'ifravatar'} );
@@ -886,6 +887,8 @@ sub jsEscape {
 # @author Father Chrysostomo
 sub parseInt {
     my ( $str, $radix ) = @_;
+    $radix = 10 if !defined $radix;
+    #print "str:$str, radix:$radix\n";
     $str = 'undefined' if !defined $str;
     my $sign =
       $str =~ s/^([+-])//
@@ -1265,8 +1268,8 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2011-12-01) 
-     Copyright (C) 2010-11 Simon Rubinstein 
+    $Script $VERSION (2012-02-02) 
+     Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
 }
