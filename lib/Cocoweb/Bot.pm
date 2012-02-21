@@ -62,6 +62,11 @@ sub process {
           . $user->password() );
 }
 
+sub writeMessage {
+    my ( $self, $message, $destinationId ) = @_;
+    $self->request()->writus($self->user(), $message, $destinationId );
+}
+
 sub show {
     my ($self) = @_;
     $self->user()->show();

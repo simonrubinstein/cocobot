@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-20
+# @date 2012-02-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -177,7 +177,7 @@ sub getCityco {
 
 ## @method void searchnow($user, $genru, $yearu)
 sub searchnow {
-    my ($self, $user, $genru, $yearu) = @_;
+    my ( $self, $user, $genru, $yearu ) = @_;
     debug("genru: $genru; yearu: $yearu");
     my $searchito =
       '10' . $user->nickID() . $user->password() . $genru . $yearu;
@@ -199,7 +199,7 @@ sub agir {
     my $function = $1;
     my $arg      = $2;
 
-    #info('function: '. $function . '; arg: ' . $arg);
+    info( 'function: ' . $function . '; arg: ' . $arg );
     my $process;
     eval( '$process = \&' . $function );
     if ($@) {
@@ -232,7 +232,7 @@ sub process1 {
 
     #
     if ( $molki < 58 ) {
-        process1Int( $user, $urlo );
+        $self->process1Int( $user, $urlo );
     }
     else {
         info("process1() $molki code unknown");
@@ -242,27 +242,25 @@ sub process1 {
 ## @method void process1Int($user_ref, $urlo)
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
-    print STDOUT "OK\n";
+    #debug("urlo: $urlo");
     my $olko = parseInt( substr( $urlo, 0, 2 ) );
     info("olko: $olko");
     if ( $olko == 12 ) {
         my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
-        $user->nickId( '' . $lebonnick);
-        $user->password(substr( $urlo, 8, 14 - 8 ));
-        $user->{'mycrypt'}  = parseInt( substr( $urlo, 14, 21 - 14 ) );
-        debug( 'mynickID: '
+        $user->nickId( '' . $lebonnick );
+        $user->password( substr( $urlo, 8, 14 - 8 ) );
+        $user->{'crypt'} = parseInt( substr( $urlo, 14, 21 - 14 ) );
+        debug(  'mynickID: '
               . $user->nickId()
               . '; monpass: '
               . $user->password()
-              . '; mycrypt: '
-              . $user->mycrypt() );
-
+              . '; crypt: '
+              . $user->crypt() );
         $olko = 51;
-
     }
 
     if ( $olko == 51 ) {
-         $self->agir( $user,
+        $self->agir( $user,
                 '51'
               . $user->nickId()
               . $user->password()
@@ -271,7 +269,7 @@ sub process1Int {
 
     if ( $olko == 99 ) {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
-        sayInfo("bud: $bud");
+        info("bud: $bud");
 
         #
         if ( $bud == 556 ) {
@@ -309,13 +307,40 @@ sub process1Int {
 
 }
 
+## @method void writus($user, $s1, $destId)
+#@brief
+#@param object $user
+#@param string $s1
+sub writus {
+    my ( $self, $user, $s1, $destId ) = @_;
+    return if !defined $s1 or length($s1) == 0;
+
+    my $s2 = '';
+    $s2 = $self->writo($s1);
+    my $sendito = '99'
+      . $user->nickId()
+      . $user->password()
+      . $destId
+      . $user->roulix()
+      . $s2;
+    $self->agir( $user, $sendito );
+
+    info("writus() sendito: $sendito");
+
+    my $roulix = $user->roulix();
+    if ( ++$roulix > 8 ) {
+        $roulix = 0;
+    }
+    $user->roulix($roulix);
+}
+
 
 
 ## @method string writo($s1)
 # @param string $s1
 # @return string
 sub writo {
-    my ($self, $s1) = @_;
+    my ( $self, $s1 ) = @_;
     utf8::decode($s1);
     my $s2     = '';
     my $toulon = 0;
@@ -334,7 +359,7 @@ sub writo {
                 or ( $numerox > 90 and $numerox < 96 )
                 or $numerox > 122 )
             {
-                $s2 .= dememe($numerox);
+                $s2 .= $self->dememe($numerox);
             }
             else {
                 $s2 .= $c;
@@ -348,11 +373,10 @@ sub writo {
 # @param integer $numix
 # @return string
 sub dememe {
-    my ($self, $numix) = @_;
+    my ( $self, $numix ) = @_;
     return '' if !exists $dememeMatch{$numix};
     return $dememeMatch{$numix};
 }
-
 
 ## @method void initializeTables()
 sub initializeTables {
@@ -384,9 +408,6 @@ sub initializeTables {
         251  => "*u"     # û
     );
 }
-
-
-
 
 1;
 

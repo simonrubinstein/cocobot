@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-20
+# @date 2012-02-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -69,6 +69,7 @@ sub randum {
 sub parseInt {
     my ( $str, $radix ) = @_;
     $str = 'undefined' if !defined $str;
+    $radix = 10 if !defined $radix;
     my $sign =
       $str =~ s/^([+-])//
       ? ( -1, 1 )[ $1 eq '+' ]

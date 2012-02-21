@@ -1,6 +1,6 @@
 # @author
 # @created 2012-02-17
-# @date 2011-02-17
+# @date 2011-02-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -68,6 +68,7 @@ sub _log {
     ( $pack, $filename, $line ) = caller(2);
     my $identity = "file: $Script; method: $function; line: $line";
     my @dt       = localtime(time);
+    $message =~s{\%}{}g;
     my $string =
       sprintf( "%02d:%02d:%02d [$identity][$$]: ($priority) $message\n",
         $dt[2], $dt[1], $dt[0] );
