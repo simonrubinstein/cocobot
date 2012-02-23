@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-21
+# @date 2012-02-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,7 +37,15 @@ use LWP::UserAgent;
 use utf8;
 no utf8;
 
-__PACKAGE__->attributes( 'myport', 'url1' );
+__PACKAGE__->attributes(
+    'myport',
+    'url1',
+    ## 0 = all; 1 = mens;  womens: 2
+    'genru',
+    ## 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
+    'yearu',
+    'userFound'
+);
 
 my $conf_ref;
 my $agent_ref;
@@ -56,8 +64,6 @@ sub init {
           )
         {
             $conf->isString($name);
-
-            #debug("$name $conf_ref->{$name}");
         }
         $agent_ref = $conf->getHash('user-agent');
         my $uaConf = Cocoweb::Config::Hash->new( 'hash' => $agent_ref );
@@ -74,8 +80,11 @@ sub init {
     my $myport = 3000 + randum(1000);
 
     $self->attributes_defaults(
-        'myport' => $myport,
-        'url1'   => $conf_ref->{'urly0'} . ':' . $myport . '/'
+        'myport'    => $myport,
+        'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
+        'genru'     => 0,
+        'yearu'     => 1,
+        'userFound' => {},
     );
     debug( "url1: " . $self->url1() );
 
@@ -175,15 +184,6 @@ sub getCityco {
     $user->townzz($townzz);
 }
 
-## @method void searchnow($user, $genru, $yearu)
-sub searchnow {
-    my ( $self, $user, $genru, $yearu ) = @_;
-    debug("genru: $genru; yearu: $yearu");
-    my $searchito =
-      '10' . $user->nickID() . $user->password() . $genru . $yearu;
-    $self->agir( $user, $searchito );
-}
-
 ##@method void agir($user, $txt1)
 #@param $user
 #@param $txt1
@@ -242,6 +242,7 @@ sub process1 {
 ## @method void process1Int($user_ref, $urlo)
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
+
     #debug("urlo: $urlo");
     my $olko = parseInt( substr( $urlo, 0, 2 ) );
     info("olko: $olko");
@@ -280,18 +281,18 @@ sub process1Int {
 
     #A search command was sent
     if ( $olko == 34 ) {
-        populate( $urlo, 0 );
+        $self->populate( $urlo, 0 );
     }
 
     # No more private conversation is accepted
     if ( $olko == 98 ) {
-        sayInfo("No more private conversation is accepted.");
+        info("No more private conversation is accepted.");
         $olko = 967;
     }
 
     # No more male user message is accepted
     if ( $olko == 96 ) {
-        sayInfo("No more male user message is accepted.");
+        info("No more male user message is accepted.");
         $olko = 967;
     }
 
@@ -305,6 +306,53 @@ sub process1Int {
     if ( $olko == 967 ) {
     }
 
+}
+
+## @method void populate($urlo, $offsat)
+sub populate {
+    my ( $self, $urlo, $offsat ) = @_;
+    my $countNew      = 0;
+    my $userFound_ref = $self->userFound();
+    if ( length($urlo) > 12 ) {
+        my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
+        while ( $mopo < 1 ) {
+            $indux = index( $urlo, '#', $hzy );
+            if ( $indux < 2 ) {
+                $mopo = 2;
+            }
+            else {
+
+                my $id = parseInt( substr( $urlo, 8 + $hzy, 6 ) );
+                $countNew++ if !exists $userFound_ref->{$id};
+                $userFound_ref->{$id} = {
+                    'id'   => $id,
+                    'old'  => parseInt( substr( $urlo, $hzy, 2 ) ),
+                    'sex'  => parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
+                    'city' => parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
+                    'login' => substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
+                    'niv'  => parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
+                    'stat' => parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
+                    'ok'   => parseInt( substr( $urlo, 16 + $hzy, 1 ) )
+                };
+                $hzy = $indux + 1;
+            }
+        }
+    }
+    debug("$countNew new logins was found");
+}
+
+## @method void searchnow($user)
+#@brief Call the remote method to retrieve the list of pseudonyms.
+#@param object @user An User object
+sub searchnow {
+    my ( $self, $user ) = @_;
+    debug( 'genru: ' . $self->genru() . 'yearu: '->$self->yearu() );
+    my $searchito = '10'
+      . $user->nickId()
+      . $user->password()
+      . $self->genru()
+      . $self->yearu();
+    $self->agir( $user, $searchito );
 }
 
 ## @method void writus($user, $s1, $destId)
@@ -333,8 +381,6 @@ sub writus {
     }
     $user->roulix($roulix);
 }
-
-
 
 ## @method string writo($s1)
 # @param string $s1
@@ -376,6 +422,40 @@ sub dememe {
     my ( $self, $numix ) = @_;
     return '' if !exists $dememeMatch{$numix};
     return $dememeMatch{$numix};
+}
+
+## @method hashref searchLogin($user, $pseudonym)
+sub searchLogin {
+    my ( $self, $user, $pseudonym ) = @_;
+    debug("searchLogin() login = $pseudonym");
+    my $pseudonym_ref;
+    $pseudonym_ref = $self->checkIfLoginExists($pseudonym);
+    return $pseudonym_ref if defined $pseudonym_ref;
+    foreach my $g ( 1, 2 ) {
+        $self->genru($g);
+        foreach my $y ( 1, 2, 3, 4 ) {
+            $self->yearu($y);
+            $self->searchnow($user);
+            $pseudonym_ref = $self->checkIfLoginExists($pseudonym);
+            return $pseudonym_ref if defined $pseudonym_ref;
+        }
+    }
+    debug("$pseudonym was not found");
+}
+
+## @method hashref checkIfLoginExists($pseudonym)
+sub checkIfLoginExists {
+    my ( $self, $pseudonym ) = @_;
+    my $userFound_ref = $self->userFound();
+    foreach my $id ( keys %$userFound_ref ) {
+        my $name = $userFound_ref->{$id}->{'login'};
+        if ( lc($name) eq lc($pseudonym) ) {
+            debug("$pseudonym login was found");
+            return $userFound_ref->{$id};
+        }
+    }
+    debug("The $pseudonym pseudonym was not found");
+    return;
 }
 
 ## @method void initializeTables()

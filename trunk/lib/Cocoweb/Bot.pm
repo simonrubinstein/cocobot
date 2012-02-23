@@ -1,5 +1,5 @@
 # @created 2012-02-19
-# @date 2012-02-19
+# @date 2012-02-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,15 +33,19 @@ use Cocoweb;
 use Cocoweb::Request;
 use Cocoweb::User;
 
+
 use base 'Cocoweb::Object';
-__PACKAGE__->attributes( 'user', 'request' );
+__PACKAGE__->attributes(
+    'user',
+    'request',
+    );
 
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
     my $user    = Cocoweb::User->new(%args);
     my $request = Cocoweb::Request->new();
-    $self->attributes_defaults( 'user' => $user, 'request' => $request );
+    $self->attributes_defaults( 'user' => $user, 'request' => $request, 'genru' => 0, 'yearu' => 1 );
 }
 
 ##@method process()
@@ -71,4 +75,22 @@ sub show {
     my ($self) = @_;
     $self->user()->show();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1;
+
+
+
