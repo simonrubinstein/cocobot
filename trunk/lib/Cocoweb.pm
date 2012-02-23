@@ -4,7 +4,11 @@
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# $Id$
+# Id: $Id$
+# Revision: $Revision$
+# Date: $Date$
+# Author: $Author$
+# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
