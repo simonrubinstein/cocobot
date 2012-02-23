@@ -193,13 +193,14 @@ sub agir {
     info("agir() url = $url");
     my $response = $self->execute( 'GET', $url );
     my $res = $response->content();
-    debug($res);
+
+    #debug($res);
     die error("Error: $res: function not found")
       if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
 
-    info( 'function: ' . $function . '; arg: ' . $arg );
+    #info( 'function: ' . $function . '; arg: ' . $arg );
     my $process;
     eval( '$process = \&' . $function );
     if ($@) {
@@ -346,7 +347,7 @@ sub populate {
 #@param object @user An User object
 sub searchnow {
     my ( $self, $user ) = @_;
-    debug( 'genru: ' . $self->genru() . 'yearu: '->$self->yearu() );
+    debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     my $searchito = '10'
       . $user->nickId()
       . $user->password()
@@ -424,37 +425,43 @@ sub dememe {
     return $dememeMatch{$numix};
 }
 
-## @method hashref searchLogin($user, $pseudonym)
-sub searchLogin {
+## @method hashref searchPseudonym($user, $pseudonym)
+#@param string The pseudonym wanted
+sub searchPseudonym {
     my ( $self, $user, $pseudonym ) = @_;
-    debug("searchLogin() login = $pseudonym");
+    debug("pseudonym: $pseudonym");
     my $pseudonym_ref;
-    $pseudonym_ref = $self->checkIfLoginExists($pseudonym);
+    $pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
     return $pseudonym_ref if defined $pseudonym_ref;
     foreach my $g ( 1, 2 ) {
         $self->genru($g);
         foreach my $y ( 1, 2, 3, 4 ) {
             $self->yearu($y);
             $self->searchnow($user);
-            $pseudonym_ref = $self->checkIfLoginExists($pseudonym);
+            $pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
             return $pseudonym_ref if defined $pseudonym_ref;
         }
     }
-    debug("$pseudonym was not found");
+    return $self->userFound() if !defined $pseudonym or length($pseudonym) == 0;
+    debug("The pseudonym '$pseudonym' was not found");
 }
 
-## @method hashref checkIfLoginExists($pseudonym)
-sub checkIfLoginExists {
+## @method hashref checkIfPseudonymExists($pseudonym)
+#@brief Check if a pseudonym already exists in the list
+#       of pseudonym already read.
+#@param string The pseudonym wanted
+sub checkIfPseudonymExists {
     my ( $self, $pseudonym ) = @_;
+    return if !defined $pseudonym or length($pseudonym) == 0;
     my $userFound_ref = $self->userFound();
     foreach my $id ( keys %$userFound_ref ) {
         my $name = $userFound_ref->{$id}->{'login'};
         if ( lc($name) eq lc($pseudonym) ) {
-            debug("$pseudonym login was found");
+            debug("The pseudonym '$pseudonym' was found");
             return $userFound_ref->{$id};
         }
     }
-    debug("The $pseudonym pseudonym was not found");
+    debug("The pseudonym '$pseudonym' was not found");
     return;
 }
 

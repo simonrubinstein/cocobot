@@ -27,28 +27,30 @@
 package Cocoweb::Bot;
 use strict;
 use warnings;
+use Data::Dumper;
 use Carp;
 
 use Cocoweb;
 use Cocoweb::Request;
 use Cocoweb::User;
 
-
 use base 'Cocoweb::Object';
-__PACKAGE__->attributes(
-    'user',
-    'request',
-    );
+__PACKAGE__->attributes( 'user', 'request', );
 
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
     my $user    = Cocoweb::User->new(%args);
     my $request = Cocoweb::Request->new();
-    $self->attributes_defaults( 'user' => $user, 'request' => $request, 'genru' => 0, 'yearu' => 1 );
+    $self->attributes_defaults(
+        'user'    => $user,
+        'request' => $request,
+        'genru'   => 0,
+        'yearu'   => 1
+    );
 }
 
-##@method process()
+##@method void process()
 sub process {
     my ($self)  = @_;
     my $user    = $self->user();
@@ -66,9 +68,17 @@ sub process {
           . $user->password() );
 }
 
+##@method void writeMessage()
 sub writeMessage {
     my ( $self, $message, $destinationId ) = @_;
-    $self->request()->writus($self->user(), $message, $destinationId );
+    $self->request()->writus( $self->user(), $message, $destinationId );
+}
+
+##@method hashref getUsersList()
+sub getUsersList {
+    my ($self) = @_;
+    my $pseudonyms_ref = $self->request()->searchPseudonym( $self->user(), '' );
+    return $pseudonyms_ref;
 }
 
 sub show {
@@ -76,21 +86,5 @@ sub show {
     $self->user()->show();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 1;
-
-
 
