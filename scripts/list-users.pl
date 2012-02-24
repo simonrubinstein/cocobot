@@ -30,6 +30,7 @@ use warnings;
 use FindBin qw($Script $Bin);
 use Data::Dumper;
 use Getopt::Std;
+$Getopt::Std::STANDARD_HELP_VERSION = 1;
 use utf8;
 no utf8;
 use lib "../lib";
@@ -108,9 +109,47 @@ sub run {
 ## @method void getOptions()
 sub init {
     my %opt;
-    getopts( 'dvs:', \%opt ) || HELP_MESSAGE();
+    if ( !getopts( 'dvs:', \%opt ) ) {
+        HELP_MESSAGE();
+        exit;
+    }
     $Cocoweb::isVerbose = 1         if exists $opt{'v'};
     $Cocoweb::isDebug   = 1         if exists $opt{'d'};
     $sex                = $opt{'s'} if exists $opt{'s'};
+    if ( defined $sex ) {
+        if ( $sex eq 'M' ) {
+            $sex = 1;
+        }
+        elsif ( $sex eq 'W' ) {
+            $sex = 2;
+        }
+        else {
+            error("The sex argument value must be either M or W. (-s option)");
+            HELP_MESSAGE();
+            exit;
+        }
+    }
+}
+
+## @method void HELP_MESSAGE()
+# Display help message
+sub HELP_MESSAGE {
+    print <<ENDTXT;
+Usage: 
+ $Script [-v -d -s sex]
+  -s sex  M for man or W for women
+  -v      Verbose mode
+  -d      Debug mode
+ENDTXT
+    exit 0;
+}
+
+## @method void VERSION_MESSAGE()
+sub VERSION_MESSAGE {
+    print STDOUT <<ENDTXT;
+    $Script $Cocoweb::VERSION (2012-02-24) 
+     Copyright (C) 2010-2012 Simon Rubinstein 
+     Written by Simon Rubinstein 
+ENDTXT
 }
 
