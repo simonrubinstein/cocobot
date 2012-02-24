@@ -106,14 +106,14 @@ Deux minuteries sont initialisée avec la fonction !JavaScript « setTimeout() �
    
 === Fonction « firsty() » ===
 
-La fonction « firsty() » est déclarée à la ligne 1 415 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « firsty() » est déclarée à la ligne 1 409 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « agix() » : 
 {{{
  agix( url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass ,4);
 }}}
 
-  * La valeur *parami[3]*  correspond à la valeur de *mycityID* qui est le code identifiant la ville. Dans notre exemple la valeur 30 915.
+  * La valeur *`parami[3]`*  correspond à la valeur de *mycityID* qui est le code identifiant la ville. Dans notre exemple la valeur 30 915.
   * La valeur *speco* est toujours initialisée à zéro.
 
 Dans notre cas :
