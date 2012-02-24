@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-21
+# @date 2012-02-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,6 +34,8 @@ use POSIX;
 
 our $VERSION   = '0.2000';
 our $AUTHORITY = 'TEST';
+our $isVerbose = 0;
+our $isDebug   = 0;
 my $logger;
 
 use base 'Exporter';
@@ -47,6 +49,7 @@ our @EXPORT = qw(
 );
 
 sub info {
+    return if !$isVerbose;
     $logger->info(@_);
 }
 
@@ -59,6 +62,7 @@ sub error {
 }
 
 sub debug {
+    return if !$isDebug; 
     $logger->debug(@_);
 }
 
