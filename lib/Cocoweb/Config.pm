@@ -1,6 +1,6 @@
 # @author
 # @created 2012-01-27
-# @date 2012-02-19
+# @date 2012-02-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -29,6 +29,7 @@ package Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 use Cocoweb;
 use Cocoweb::Config::File;
+use Cocoweb::Config::Plaintext;
 use Carp;
 use Config::General;
 use Data::Dumper;
@@ -45,9 +46,16 @@ sub init {
     return $instance;
 }
 
-##@method object getConfigFile($class, $filename)
+##@method object getConfigFile($class, $filename, $isPlaintext)
+#@brief Creates and returns a configuration object.
+#@param string $filename The file name to download.
+#@param boolean $isPlaintext True if file is a plaintext file,
+#                            or false if the file is a configuration
+#                            file Apache like.
+#@return object Cocoweb::Config::File or Cocoweb::Config::Plaintext objet
 sub getConfigFile {
-    my ( $self, $filename ) = @_;
+    my ( $self, $filename, $isPlaintext ) = @_;
+    $isPlaintext = 0 if !defined $isPlaintext;
     return $instances{$filename} if exists $instances{$filename};
     croak error('Error: Required parameter "filename" is missing!')
       if !defined $filename;
@@ -62,7 +70,13 @@ sub getConfigFile {
     croak error("Error: $filename filename was not found!")
       if !defined $configPath;
     debug("The file '$configPath' was found.");
-    my $instance = new Cocoweb::Config::File( 'pathname' => $configPath );
+    my $instance;
+    if ($isPlaintext) {
+        $instance = new Cocoweb::Config::Plaintext( 'pathname' => $configPath );
+    }
+    else {
+        $instance = new Cocoweb::Config::File( 'pathname' => $configPath );
+    }
     return $instances{$filename} = $instance;
 }
 

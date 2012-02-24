@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-22
-# @date 2012-02-23
+# @date 2012-02-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -27,6 +27,7 @@
 # MA  02110-1301, USA.
 use strict;
 use warnings;
+use FindBin qw($Script $Bin);
 use Data::Dumper;
 use Getopt::Std;
 use utf8;
@@ -34,19 +35,15 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::Bot;
-my $isVerbose = 0;
-my $isDebug   = 0;
 my $sex;
 
 init();
 run();
 
 sub run {
-    my $bot = Cocoweb::Bot->new( 'pseudonym' => 'Simon' );
+    my $bot = Cocoweb::Bot->new( 'generateRandom' => 1 );
     $bot->process();
-    $bot->show();
     my $userFound_ref = $bot->getUsersList();
-    info("The script was completed successfully.");
 
     my @codes = ( 'login', 'sex', 'old', 'city', 'id', 'niv', 'ok', 'stat' );
     my %max = ();
@@ -85,7 +82,7 @@ sub run {
               '! ' . sprintf( '%-' . $max{$k} . 's', $login_ref->{$k} ) . ' ';
         }
         $line .= '!';
-        print $line . "\n";
+        print STDOUT $line . "\n";
         $count++;
     }
 
@@ -105,14 +102,15 @@ sub run {
     print STDOUT "- $count users displayed\n";
     print STDOUT "- Number of woman: $womanCount\n";
     print STDOUT "- Number of man:   $manCount\n";
+    info("The $Bin script was completed successfully.");
 }
 
 ## @method void getOptions()
 sub init {
     my %opt;
     getopts( 'dvs:', \%opt ) || HELP_MESSAGE();
-    $isVerbose = 1         if exists $opt{'v'};
-    $isDebug   = 1         if exists $opt{'d'};
-    $sex       = $opt{'s'} if exists $opt{'s'};
+    $Cocoweb::isVerbose = 1         if exists $opt{'v'};
+    $Cocoweb::isDebug   = 1         if exists $opt{'d'};
+    $sex                = $opt{'s'} if exists $opt{'s'};
 }
 

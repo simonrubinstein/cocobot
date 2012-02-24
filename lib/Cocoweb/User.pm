@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-02-21
+# @date 2012-02-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,6 +33,8 @@ use POSIX;
 
 use Cocoweb;
 use base 'Cocoweb::Object';
+my $nicknameMan;
+my $nicknameWoman;
 
 __PACKAGE__->attributes(
     'pseudonym',
@@ -59,12 +61,18 @@ __PACKAGE__->attributes(
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
-
+    if ( !defined $nicknameMan ) {
+        $nicknameMan =
+          Cocoweb::Config->instance()->getConfigFile( 'nickname-man.txt', 1 );
+        $nicknameWoman =
+          Cocoweb::Config->instance()->getConfigFile( 'nickname-woman.txt', 1 );
+    }
     $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
 
     if ( $args{'generateRandom'} ) {
         $args{'year'} = randum(35) + 15 if !exists $args{'year'};
         $args{'sex'}  = randum(2) + 1   if !exists $args{'sex'};
+        $args{'pseudonym'} = $self->getRandomPseudonym( $args{'sex'} );
     }
 
     $args{'pseudonym'} = 'nobody' if !exists $args{'pseudonym'};
@@ -91,6 +99,26 @@ sub init {
         'myavatar'  => 0,
         'ifravatar' => 0
     );
+    info(   'pseudonym: '
+          . $self->pseudonym()
+          . '; sex: '
+          . $args{'sex'}
+          . '; year: '
+          . $args{'year'} );
+}
+
+sub getRandomPseudonym {
+    my ( $self, $sex ) = @_;
+    my $nickname;
+    if ( $sex == 2 ) {
+        $nickname = $nicknameWoman;
+    }
+    else {
+        $nickname = $nicknameMan;
+    }
+    my $pseudonym = $nickname->getRandomLine();
+
+    return $pseudonym;
 }
 
 ## @method void validatio($user_ref)
