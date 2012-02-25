@@ -144,11 +144,9 @@ La chaîne de caractères *urlu* contient la réponse du serveur.
 
 Les deux premiers caractères contiennent le code de la réponse qui est un entier naturel à deux chiffres. Dans notre cas le code de la réponse est « 12 », qui correspond à l'authentification.
 
-  * olko = 12
-  * mynickID = 106177BV
-  * monpass
-  * mycryp =
-
-
+  * *olko* = 12
+  * *mynickID* = 106177
+  * *monpass* = BVgfBQ
+  * *mycrypt* = 7573894
 
 
