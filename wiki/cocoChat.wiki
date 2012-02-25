@@ -136,9 +136,19 @@ process1('/#12106177BVgfBQ75738949435055320*FR');
 
 La fonction « process1(urlu) » déclarée à la ligne 581 du fichier « rasmus.js » sera exécutée.
 
-===  Fonction « process1() » ===
+===  Fonction « process1(urlu) » ===
 
-La fonction « process1() » exécute toutes les réponses du serveur.
+La fonction « process1(urlu) » exécute toutes les réponses du serveur.
+
+La chaîne de caractères *urlu* contient la réponse du serveur. 
+
+Les deux premiers caractères contiennent le code de la réponse qui est un entier naturel à deux chiffres. Dans notre cas le code de la réponse est « 12 », qui correspond à l'authentification.
+
+  * olko = 12
+  * mynickID = 106177BV
+  * monpass
+  * mycryp =
+
 
 
 
