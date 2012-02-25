@@ -122,4 +122,23 @@ Dans notre cas :
 }}}
 
 
-La fonction « agix() » est la base de la communication de type _Ajax_ entre le client et le serveur.
+===  Fonction « agix() » ===
+
+La fonction « agix() » est la base de la communication de type _Ajax_ entre le client et le serveur et est déclarée à la ligne 406 du fichier « recherche.js ».
+
+Cette fonction crée un nouvelle balise « {{{<script>}}} » pour l'arborescence avec comme valeur de l'attribut « src » l'URL « http://178.33.122.73:3495/40Simon*371309157636446650 ».
+
+L'URL précédente charge le fichier suivant qui sera exécuté en !JavaScript :
+
+{{{
+process1('/#12106177BVgfBQ75738949435055320*FR');
+}}}
+
+La fonction « process1(urlu) » déclarée à la ligne 581 du fichier « rasmus.js » sera exécutée.
+
+===  Fonction « process1() » ===
+
+La fonction « process1() » exécute toutes les réponses du serveur.
+
+
+
