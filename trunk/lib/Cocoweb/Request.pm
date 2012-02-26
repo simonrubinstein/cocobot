@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-02-23
+# @date 2012-02-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -244,18 +244,18 @@ sub process1 {
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
 
-    #debug("urlo: $urlo");
+    debug("urlo: $urlo");
     my $olko = parseInt( substr( $urlo, 0, 2 ) );
     info("olko: $olko");
     if ( $olko == 12 ) {
         my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
-        $user->nickId( '' . $lebonnick );
-        $user->password( substr( $urlo, 8, 14 - 8 ) );
-        $user->{'crypt'} = parseInt( substr( $urlo, 14, 21 - 14 ) );
+        $user->mynickID( '' . $lebonnick );
+        $user->monpass( substr( $urlo, 8, 14 - 8 ) );
+        $user->crypt (parseInt( substr( $urlo, 14, 21 - 14 ) ));
         debug(  'mynickID: '
-              . $user->nickId()
+              . $user->mynickID()
               . '; monpass: '
-              . $user->password()
+              . $user->monpass()
               . '; crypt: '
               . $user->crypt() );
         $olko = 51;
@@ -264,8 +264,8 @@ sub process1Int {
     if ( $olko == 51 ) {
         $self->agir( $user,
                 '51'
-              . $user->nickId()
-              . $user->password()
+              . $user->mynickID()
+              . $user->monpass()
               . $self->writo( $agent_ref->{'agent'} ) );
     }
 
@@ -276,13 +276,16 @@ sub process1Int {
         #
         if ( $bud == 556 ) {
         }
-
-        #searchnow($user_ref);
     }
 
     #A search command was sent
     if ( $olko == 34 ) {
         $self->populate( $urlo, 0 );
+    }
+
+    if ($olko == 39) {
+        my $infor = substr( $urlo, 2); 
+        die error("cookie bug. infor: $infor ($urlo)");
     }
 
     # No more private conversation is accepted
@@ -349,8 +352,8 @@ sub searchnow {
     my ( $self, $user ) = @_;
     debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     my $searchito = '10'
-      . $user->nickId()
-      . $user->password()
+      . $user->mynickID()
+      . $user->monpass()
       . $self->genru()
       . $self->yearu();
     $self->agir( $user, $searchito );
@@ -367,8 +370,8 @@ sub writus {
     my $s2 = '';
     $s2 = $self->writo($s1);
     my $sendito = '99'
-      . $user->nickId()
-      . $user->password()
+      . $user->mynickID()
+      . $user->monpass()
       . $destId
       . $user->roulix()
       . $s2;

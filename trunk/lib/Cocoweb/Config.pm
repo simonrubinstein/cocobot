@@ -1,6 +1,6 @@
-# @author
+# @brief
 # @created 2012-01-27
-# @date 2012-02-24
+# @date 2012-02-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #

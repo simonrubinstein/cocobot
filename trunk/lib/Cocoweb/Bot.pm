@@ -1,5 +1,6 @@
+# @brief
 # @created 2012-02-19
-# @date 2012-02-23
+# @date 2012-02-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -60,12 +61,12 @@ sub process {
     $user->initial( $request->getValue('avaref') );
     $self->request()->agir( $user,
             '40'
-          . $user->pseudonym() . '*'
-          . $user->year()
-          . $user->sex()
+          . $user->mynickname() . '*'
+          . $user->myage()
+          . $user->mysex()
           . $user->citydio()
           . $user->myavatar()
-          . $user->password() );
+          . $user->mypass() );
 }
 
 ##@method void writeMessage()

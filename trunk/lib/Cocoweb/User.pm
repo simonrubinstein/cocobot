@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-02-24
+# @date 2012-02-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,15 +37,18 @@ my $nicknameMan;
 my $nicknameWoman;
 
 __PACKAGE__->attributes(
-    'pseudonym',
-    'year',
-    'sex',
+    'mynickname',
+    'myage',
+    'mysex',
     'zip',
     'cookav',
     'referenz',
     'speco',
-    'nickId',
-    'password',
+    'mynickID',
+    'mypass',
+
+    #
+    'monpass',
     'crypt',
     'roulix',
     'sauvy',
@@ -70,41 +73,44 @@ sub init {
     $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
 
     if ( $args{'generateRandom'} ) {
-        $args{'year'} = randum(35) + 15 if !exists $args{'year'};
-        $args{'sex'}  = randum(2) + 1   if !exists $args{'sex'};
-        $args{'pseudonym'} = $self->getRandomPseudonym( $args{'sex'} );
+        $args{'myage'} = randum(35) + 15 if !exists $args{'myage'};
+        $args{'mysex'} = randum(2) + 1   if !exists $args{'mysex'};
+        $args{'mynickname'} = $self->getRandomPseudonym( $args{'mysex'} );
     }
 
-    $args{'pseudonym'} = 'nobody' if !exists $args{'pseudonym'};
-    $args{'year'}      = 89       if !exists $args{'year'};
-    $args{'sex'}       = 1        if !exists $args{'sex'};
-    $args{'zip'}       = 75001    if !exists $args{'zip'};
+    $args{'mynickname'} = 'nobody' if !exists $args{'mynickname'};
+    $args{'myage'}      = 89       if !exists $args{'myage'};
+    $args{'mysex'}      = 1        if !exists $args{'mysex'};
+    $args{'zip'}        = 75001    if !exists $args{'zip'};
+    $args{'myavatar'}   = 0        if !exists $args{'myavatar'};
+    $args{'mypass'}     = 0        if !exists $args{'mypass'};
 
     $self->attributes_defaults(
-        'pseudonym' => $args{'pseudonym'},
-        'year'      => $args{'year'},
-        'sex'       => $args{'sex'},
-        'zip'       => $args{'zip'},
-        'cookav'    => floor( rand(890000000) + 100000000 ),
-        'referenz'  => 0,
-        'speco'     => 0,
-        'nickId'    => 99999,
-        'password'  => 0,
-        'crypt'     => 0,
-        'roulix'    => 0,
-        'sauvy'     => '',
-        'inform'    => '',
-        'cookies'   => {},
-        'citydio'   => 0,
-        'myavatar'  => 0,
-        'ifravatar' => 0
+        'mynickname' => $args{'mynickname'},
+        'myage'      => $args{'myage'},
+        'mysex'      => $args{'mysex'},
+        'zip'        => $args{'zip'},
+        'cookav'     => floor( rand(890000000) + 100000000 ),
+        'referenz'   => 0,
+        'speco'      => 0,
+        'mynickID'   => 99999,
+        'mypass'     => $args{'mypass'},
+        'monpass'    => 0,
+        'crypt'      => 0,
+        'roulix'     => 0,
+        'sauvy'      => '',
+        'inform'     => '',
+        'cookies'    => {},
+        'citydio'    => 0,
+        'myavatar'   => $args{'myavatar'},
+        'ifravatar'  => 0
     );
-    info(   'pseudonym: '
-          . $self->pseudonym()
-          . '; sex: '
-          . $args{'sex'}
-          . '; year: '
-          . $args{'year'} );
+    info(   'mynickname: '
+          . $self->mynickname()
+          . '; mysex: '
+          . $args{'mysex'}
+          . '; myage: '
+          . $args{'myage'} );
 }
 
 sub getRandomPseudonym {
@@ -124,9 +130,9 @@ sub getRandomPseudonym {
 ## @method void validatio($user_ref)
 sub validatio {
     my ( $self, $url ) = @_;
-    my $nickidol = $self->pseudonym();
-    my $ageuq    = $self->year();
-    my $typum    = $self->sex();
+    my $nickidol = $self->mynickname();
+    my $ageuq    = $self->myage();
+    my $typum    = $self->mysex();
     my $citydio  = $self->zip();
     croak error("Error: bad nickidol value") if length($nickidol) < 3;
     croak error("Error: bad ageuq! ageuq = $ageuq") if $ageuq < 15;
@@ -143,7 +149,7 @@ sub validatio {
     }
     if ( $sume > 4 ) {
         $nickidol = lc($nickidol);
-        $self->pseudonym($nickidol);
+        $self->mynickname($nickidol);
     }
     my $cookav;
     my $inform =
@@ -175,21 +181,25 @@ sub validatio {
 ## @method void initial()
 sub initial {
     my ( $self, $url ) = @_;
-    my ( $infor, $myavatar, $mypass ) = ( '', 0, '' );
+    my ( $infor, $myavatar, $mypass ) =
+      ( '', $self->myavatar(), $self->mypass() );
+    debug("1> myavatar:$myavatar; mypass: $mypass");
     my $cookie_ref = $self->getCookie('samedi');
     if ( defined $cookie_ref ) {
         $infor    = $cookie_ref->{'samedi'};
         $myavatar = substr( $infor, 0, 9 );
         $mypass   = substr( $infor, 9, 29 );
     }
+    debug("2> myavatar:$myavatar; mypass: $mypass");
     $myavatar = randum(890000000) + 100000000
       if ( !defined $myavatar
         or $myavatar !~ m{^\d+$}
         or $myavatar < 100000000
         or $myavatar > 1000000000 );
 
+    debug("3> myavatar:$myavatar; mypass: $mypass");
     $self->myavatar($myavatar);
-    $self->password($mypass);
+    $self->mypass($mypass);
     $infor = $myavatar . $mypass;
     $self->setCookie( 'samedi', $infor );
     $self->ifravatar( $url . $myavatar );
@@ -227,14 +237,14 @@ sub getCookie {
 
 sub show {
     my $self = shift;
-    print STDOUT 'pseudonym: ' . $self->pseudonym . "\n";
-    print STDOUT 'year:      ' . $self->year . "\n";
-    print STDOUT 'sexe:      ' . $self->sex . "\n";
+    print STDOUT 'mynickname:' . $self->mynickname . "\n";
+    print STDOUT 'myage:     ' . $self->myage . "\n";
+    print STDOUT 'mysex:     ' . $self->mysex . "\n";
     print STDOUT 'zip:       ' . $self->zip . "\n";
-    print STDOUT 'nickId:    ' . $self->nickId . "\n";
-    print STDOUT 'password:  ' . $self->password . "\n";
+    print STDOUT 'mynickID:  ' . $self->mynickID . "\n";
+    print STDOUT 'mypass:    ' . $self->mypass . "\n";
     print STDOUT 'townzz:    ' . $self->townzz . "\n";
-    print STDOUT 'citydio:  ' . $self->citydio . "\n";
+    print STDOUT 'citydio:   ' . $self->citydio . "\n";
     print Dumper $self->cookies();
 }
 

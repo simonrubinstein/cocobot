@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-22
-# @date 2012-02-24
+# @date 2012-02-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,15 +36,18 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::Bot;
-my $sex;
+use Cocoweb::CLI;
+my $CLI;
 
 init();
 run();
 
+##@method ivoid run()
 sub run {
-    my $bot = Cocoweb::Bot->new( 'generateRandom' => 1 );
+    my $bot = $CLI->getBot('generateRandom' => 1);
     $bot->process();
     my $userFound_ref = $bot->getUsersList();
+    my $sex           = $CLI->mysex();
 
     my @codes = ( 'login', 'sex', 'old', 'city', 'id', 'niv', 'ok', 'stat' );
     my %max = ();
@@ -106,28 +109,13 @@ sub run {
     info("The $Bin script was completed successfully.");
 }
 
-## @method void getOptions()
+## @method void init()
 sub init {
-    my %opt;
-    if ( !getopts( 'dvs:', \%opt ) ) {
+    $CLI = Cocoweb::CLI->instance();
+    my $opt_ref = $CLI->getOpts();
+    if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
-    }
-    $Cocoweb::isVerbose = 1         if exists $opt{'v'};
-    $Cocoweb::isDebug   = 1         if exists $opt{'d'};
-    $sex                = $opt{'s'} if exists $opt{'s'};
-    if ( defined $sex ) {
-        if ( $sex eq 'M' ) {
-            $sex = 1;
-        }
-        elsif ( $sex eq 'W' ) {
-            $sex = 2;
-        }
-        else {
-            error("The sex argument value must be either M or W. (-s option)");
-            HELP_MESSAGE();
-            exit;
-        }
     }
 }
 
@@ -136,10 +124,14 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-v -d -s sex]
-  -s sex  M for man or W for women
-  -v      Verbose mode
-  -d      Debug mode
+ $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
+  -u mynickname  An username
+  -y myage       Year old
+  -s mysex       M for man or W for women
+  -a myavatar    Code 
+  -p mypass
+  -v             Verbose mode
+  -d             Debug mode
 ENDTXT
     exit 0;
 }
