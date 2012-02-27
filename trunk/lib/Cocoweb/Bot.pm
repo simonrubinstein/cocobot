@@ -59,14 +59,8 @@ sub process {
     $request->getCityco($user);
     $user->validatio( $request->getValue('urlprinc') );
     $user->initial( $request->getValue('avaref') );
-    $self->request()->agir( $user,
-            '40'
-          . $user->mynickname() . '*'
-          . $user->myage()
-          . $user->mysex()
-          . $user->citydio()
-          . $user->myavatar()
-          . $user->mypass() );
+    $self->request()->firsty($user);
+
 }
 
 ##@method void writeMessage()
