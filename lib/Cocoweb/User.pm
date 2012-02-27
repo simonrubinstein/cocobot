@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-02-25
+# @date 2012-02-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -49,7 +49,7 @@ __PACKAGE__->attributes(
 
     #
     'monpass',
-    'crypt',
+    'mycrypt',
     'roulix',
     'sauvy',
     'inform',
@@ -96,7 +96,7 @@ sub init {
         'mynickID'   => 99999,
         'mypass'     => $args{'mypass'},
         'monpass'    => 0,
-        'crypt'      => 0,
+        'mycrypt'    => 0,
         'roulix'     => 0,
         'sauvy'      => '',
         'inform'     => '',

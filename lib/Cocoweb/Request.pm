@@ -1,5 +1,6 @@
+# @brief
 # @created 2012-02-17
-# @date 2012-02-25
+# @date 2012-02-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,6 +34,7 @@ use Cocoweb::Config::Hash;
 use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
+use Encode qw(encode FB_PERLQQ);
 use LWP::UserAgent;
 use utf8;
 no utf8;
@@ -42,9 +44,10 @@ __PACKAGE__->attributes(
     'url1',
     ## 0 = all; 1 = mens;  womens: 2
     'genru',
-    ## 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
+    ## 0 = all; 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
     'yearu',
-    'userFound'
+    'userFound',
+    'speco'
 );
 
 my $conf_ref;
@@ -60,7 +63,7 @@ sub init {
         $conf_ref = $conf->all();
         foreach my $name (
             'urly0',  'urlprinc', 'current-url', 'avatar-url',
-            'avaref', 'urlcocoland'
+            'avaref', 'urlcocoland', 'urlav'
           )
         {
             $conf->isString($name);
@@ -83,14 +86,18 @@ sub init {
         'myport'    => $myport,
         'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
         'genru'     => 0,
-        'yearu'     => 1,
+        'yearu'     => 0,
         'userFound' => {},
+        ''
     );
     debug( "url1: " . $self->url1() );
 
 }
 
 ##@method string getValue($name)
+#@brief Returns a value in the configuration file 'request.conf'
+#@param string $name A name value to return
+#@rerturn string The requested value
 sub getValue {
     my ( $self, $name ) = @_;
     if ( exists $conf_ref->{$name} ) {
@@ -104,14 +111,23 @@ sub getValue {
 }
 
 ## @method object execute($url, $cookie_ref)
+#@brief Executes a HTTP request with the object HTTP::Request
+#@param string An HTTP request method, e.g. 'GET' or 'POST'
+#@param string An URL for the HTTP request
+#@param hashref
+#@return object A HTTP::Response object
 sub execute {
     my ( $self, $method, $url, $cookie_ref ) = @_;
+    print Dumper $cookie_ref;
+    croak error("The HTTP method is missing") if !defined $method;
+    croak error("The URL of the HTTP request is missing") if !defined $url;
     my $req = HTTP::Request->new( $method => $url );
-    debug( 'HttpRequest() ' . $url );
+    debug( '$method => ' . $url );
     foreach my $field ( keys %{ $agent_ref->{'header'} } ) {
         $req->header( $field => $agent_ref->{'header'}->{$field} );
     }
-    if ( defined $cookie_ref and scalar %$cookie_ref > 0 ) {
+    if ( defined $cookie_ref and scalar keys %$cookie_ref > 0 ) {
+        debug((scalar keys %$cookie_ref ) . ' cookies where found');
         my $cookieStr = '';
         foreach my $k ( keys %$cookie_ref ) {
             my $val = $self->jsEscape( $cookie_ref->{$k} );
@@ -120,10 +136,15 @@ sub execute {
         chop($cookieStr);
         $req->header( 'Cookie' => $cookieStr );
     }
+    print $req->as_string;
     my $response = $userAgent->request($req);
+
+
+
     if ( !$response->is_success() ) {
-        die error( $response->status_line() );
+        croak error( $response->status_line() );
     }
+    debug(ref($response));
     return $response;
 }
 
@@ -184,23 +205,50 @@ sub getCityco {
     $user->townzz($townzz);
 }
 
+##@method void firsty($user)
+#@brief The first HTTP request sent to the server
+#@param object $user An Cocoweb::User object
+sub firsty {
+    my ( $self, $user) = @_;
+    $self->agir( $user,
+            '40'
+          . $user->mynickname() . '*'
+          . $user->myage()
+          . $user->mysex()
+          . $user->citydio()
+          . $user->myavatar()
+          . $self->speco()
+          . $user->mypass() );
+}
+
 ##@method void agir($user, $txt1)
-#@param $user
-#@param $txt1
+#@brief Initiates a standard request to the server
+#@param object $user An Cocoweb::User object
+#@param string $txt1 The parameter of the HTTP request
 sub agir {
     my ( $self, $user, $txt1 ) = @_;
     my $url = $self->url1() . $txt1;
-    info("agir() url = $url");
-    my $response = $self->execute( 'GET', $url );
+    $self->agix($user, $url);
+}
+
+##@method void agix($user, $url, $cookie_ref)
+#@param object $user An Cocoweb::User object
+#@param string An URL for the HTTP request
+#@param hashref $cookie_ref
+sub agix {    
+    my ( $self, $user, $url, $cookie_ref ) = @_;
+    croak error("The URL of the HTTP request is missing") if !defined $url;
+    info("url: $url");
+    my $response = $self->execute( 'GET', $url, $cookie_ref );
     my $res = $response->content();
 
     #debug($res);
-    die error("Error: $res: function not found")
+    die error('Error: the JavaScript function not found in the string: ' . $res)
       if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
 
-    #info( 'function: ' . $function . '; arg: ' . $arg );
+    info( 'function: ' . $function . '; arg: ' . $arg );
     my $process;
     eval( '$process = \&' . $function );
     if ($@) {
@@ -216,7 +264,7 @@ sub process1 {
     my ( $self, $user, $urlu ) = @_;
     my ($todo) = ('');
 
-    #debug("process1($urlu)");
+    debug("urlu: $urlu");
     my $urlo = $urlu;
     my $hzy = index( $urlo, '#' );
     $urlo = substr( $urlo, $hzy + 1, length($urlo) - $hzy - 1 );
@@ -251,13 +299,13 @@ sub process1Int {
         my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
         $user->mynickID( '' . $lebonnick );
         $user->monpass( substr( $urlo, 8, 14 - 8 ) );
-        $user->crypt (parseInt( substr( $urlo, 14, 21 - 14 ) ));
+        $user->mycrypt (parseInt( substr( $urlo, 14, 21 - 14 ) ));
         debug(  'mynickID: '
               . $user->mynickID()
               . '; monpass: '
               . $user->monpass()
-              . '; crypt: '
-              . $user->crypt() );
+              . '; mycrypt: '
+              . $user->mycrypt() );
         $olko = 51;
     }
 
@@ -272,9 +320,23 @@ sub process1Int {
     if ( $olko == 99 ) {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         info("bud: $bud");
+        $self->searchnow($user);
 
         #
         if ( $bud == 556 ) {
+            #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
+            #agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
+            $self->agix( 
+            $user,
+            $conf_ref->{'urlav'}
+          . $user->myage()
+          . $user->mysex()
+          . $user->citydio()
+          . $user->myavatar()
+          . $user->mynickID()
+          . $user->monpass() 
+          . $user->mycrypt(),
+          $user->cookies());
         }
     }
 
