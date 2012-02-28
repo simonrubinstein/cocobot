@@ -1,0 +1,16 @@
+#Communication avec le serveur
+
+= Communication avec le serveur =
+
+Le code JavaScript communique avec le serveur en exécutant des requêtes HTTP sur une adresse IP et un port donné. 
+
+Il existe deux types de requêtes :
+  * La requête initiale lancée avant toutes les autres.
+  * Les autres requêtes.
+
+Le second type de requête est constitué ainsi :
+{{{ http:// adresseIP : myport / code  mynickID monpass params}}}
+
+  * *adresseIP* est toujours l'adresse IP « 178.33.122.73 »
+
+{{{ http://178.33.122.73:3436/10327709RObSoa00 }}}
