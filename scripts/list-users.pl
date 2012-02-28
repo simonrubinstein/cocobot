@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-22
-# @date 2012-02-26
+# @date 2012-02-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,14 +28,10 @@
 use strict;
 use warnings;
 use FindBin qw($Script $Bin);
-use Data::Dumper;
-use Getopt::Std;
-$Getopt::Std::STANDARD_HELP_VERSION = 1;
 use utf8;
 no utf8;
 use lib "../lib";
 use Cocoweb;
-use Cocoweb::Bot;
 use Cocoweb::CLI;
 my $CLI;
 
@@ -44,15 +40,21 @@ run();
 
 ##@method ivoid run()
 sub run {
-    my $bot = $CLI->getBot('generateRandom' => 1);
+    my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     my $userFound_ref = $bot->getUsersList();
     my $sex           = $CLI->mysex();
+    my $old           = $CLI->myage();
+    my $nickmaneWanted;
+    if ( defined $CLI->searchNickname() ) {
+        $nickmaneWanted = $CLI->searchNickname();
+        print STDOUT 'Search nickename: ' . $nickmaneWanted . "\n";
+    }
 
     my @codes = ( 'login', 'sex', 'old', 'city', 'id', 'niv', 'ok', 'stat' );
     my %max = ();
     foreach my $k (@codes) {
-        $max{$k} = 0;
+        $max{$k} = length($k);
     }
     my %sexCount = ();
     foreach my $id ( keys %$userFound_ref ) {
@@ -65,6 +67,13 @@ sub run {
         }
         $sexCount{ $login_ref->{'sex'} }++;
     }
+
+    my $line = '';
+    foreach my $k (@codes) {
+        $line .= '! ' . sprintf( '%-' . $max{$k} . 's', $k ) . ' ';
+    }
+    $line .= '!';
+    print STDOUT $line . "\n";
 
     my $count = 0,;
     foreach my $id ( keys %$userFound_ref ) {
@@ -80,7 +89,11 @@ sub run {
                 next;
             }
         }
-        my $line = '';
+        next
+          if defined $nickmaneWanted
+              and $login_ref->{'login'} !~ m{^.*$nickmaneWanted.*$}i;
+        next if defined $old and $login_ref->{'old'} != $old;
+        $line = '';
         foreach my $k (@codes) {
             $line .=
               '! ' . sprintf( '%-' . $max{$k} . 's', $login_ref->{$k} ) . ' ';
@@ -103,16 +116,16 @@ sub run {
             die error("$sex sex code was not found");
         }
     }
-    print STDOUT "- $count users displayed\n";
-    print STDOUT "- Number of woman: $womanCount\n";
-    print STDOUT "- Number of man:   $manCount\n";
+    print STDOUT "- $count user(s) displayed\n";
+    print STDOUT "- Number of woman(s): $womanCount\n";
+    print STDOUT "- Number of man(s):   $manCount\n";
     info("The $Bin script was completed successfully.");
 }
 
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts();
+    my $opt_ref = $CLI->getOpts( 'argumentative' => 'l:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -124,14 +137,15 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-  -u mynickname  An username
-  -y myage       Year old
-  -s mysex       M for man or W for women
-  -a myavatar    Code 
+ $Script [-l nickmaneWanted -u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
+  -l nickmaneWanted
+  -u mynickname      An username
+  -y myage           Year old
+  -s mysex           M for man or W for women
+  -a myavatar        Code 
   -p mypass
-  -v             Verbose mode
-  -d             Debug mode
+  -v                 Verbose mode
+  -d                 Debug mode
 ENDTXT
     exit 0;
 }
@@ -139,7 +153,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-02-24) 
+    $Script $Cocoweb::VERSION (2012-02-28) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT

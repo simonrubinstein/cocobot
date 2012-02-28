@@ -62,7 +62,7 @@ sub init {
         my $conf = Cocoweb::Config->instance()->getConfigFile('request.conf');
         $conf_ref = $conf->all();
         foreach my $name (
-            'urly0',  'urlprinc', 'current-url', 'avatar-url',
+            'urly0',  'urlprinc',    'current-url', 'avatar-url',
             'avaref', 'urlcocoland', 'urlav'
           )
         {
@@ -88,7 +88,7 @@ sub init {
         'genru'     => 0,
         'yearu'     => 0,
         'userFound' => {},
-        ''
+        'speco'     => 0
     );
     debug( "url1: " . $self->url1() );
 
@@ -118,8 +118,7 @@ sub getValue {
 #@return object A HTTP::Response object
 sub execute {
     my ( $self, $method, $url, $cookie_ref ) = @_;
-    print Dumper $cookie_ref;
-    croak error("The HTTP method is missing") if !defined $method;
+    croak error("The HTTP method is missing")             if !defined $method;
     croak error("The URL of the HTTP request is missing") if !defined $url;
     my $req = HTTP::Request->new( $method => $url );
     debug( '$method => ' . $url );
@@ -127,7 +126,7 @@ sub execute {
         $req->header( $field => $agent_ref->{'header'}->{$field} );
     }
     if ( defined $cookie_ref and scalar keys %$cookie_ref > 0 ) {
-        debug((scalar keys %$cookie_ref ) . ' cookies where found');
+        debug( ( scalar keys %$cookie_ref ) . ' cookies where found' );
         my $cookieStr = '';
         foreach my $k ( keys %$cookie_ref ) {
             my $val = $self->jsEscape( $cookie_ref->{$k} );
@@ -136,15 +135,13 @@ sub execute {
         chop($cookieStr);
         $req->header( 'Cookie' => $cookieStr );
     }
-    print $req->as_string;
+
+    #print $req->as_string();
     my $response = $userAgent->request($req);
-
-
-
     if ( !$response->is_success() ) {
         croak error( $response->status_line() );
     }
-    debug(ref($response));
+    debug( ref($response) );
     return $response;
 }
 
@@ -209,9 +206,9 @@ sub getCityco {
 #@brief The first HTTP request sent to the server
 #@param object $user An Cocoweb::User object
 sub firsty {
-    my ( $self, $user) = @_;
-    $self->agir( $user,
-            '40'
+    my ( $self, $user ) = @_;
+    $self->agix( $user,
+            $self->url1() . '40'
           . $user->mynickname() . '*'
           . $user->myage()
           . $user->mysex()
@@ -228,14 +225,26 @@ sub firsty {
 sub agir {
     my ( $self, $user, $txt1 ) = @_;
     my $url = $self->url1() . $txt1;
-    $self->agix($user, $url);
+    $self->agix( $user, $url );
+}
+
+sub _agir {
+    my ( $self, $user, $txt3 ) = @_;
+    $self->agix( $user,
+            $self->url1()
+          . substr( $txt3, 0, 2 )
+          . $user->mynickID()
+          . $user->monpass()
+          . substr( $txt3, 2 ) );
+
+    #agix(url1+txt3.substring(0,2)+mynickID+monpass+txt3.substring(2),4);
 }
 
 ##@method void agix($user, $url, $cookie_ref)
 #@param object $user An Cocoweb::User object
 #@param string An URL for the HTTP request
 #@param hashref $cookie_ref
-sub agix {    
+sub agix {
     my ( $self, $user, $url, $cookie_ref ) = @_;
     croak error("The URL of the HTTP request is missing") if !defined $url;
     info("url: $url");
@@ -243,7 +252,8 @@ sub agix {
     my $res = $response->content();
 
     #debug($res);
-    die error('Error: the JavaScript function not found in the string: ' . $res)
+    die error(
+        'Error: the JavaScript function not found in the string: ' . $res )
       if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
@@ -299,7 +309,7 @@ sub process1Int {
         my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
         $user->mynickID( '' . $lebonnick );
         $user->monpass( substr( $urlo, 8, 14 - 8 ) );
-        $user->mycrypt (parseInt( substr( $urlo, 14, 21 - 14 ) ));
+        $user->mycrypt( parseInt( substr( $urlo, 14, 21 - 14 ) ) );
         debug(  'mynickID: '
               . $user->mynickID()
               . '; monpass: '
@@ -310,33 +320,32 @@ sub process1Int {
     }
 
     if ( $olko == 51 ) {
-        $self->agir( $user,
-                '51'
-              . $user->mynickID()
-              . $user->monpass()
-              . $self->writo( $agent_ref->{'agent'} ) );
+        $self->_agir( $user, '51' . $self->writo( $agent_ref->{'agent'} ) );
     }
 
     if ( $olko == 99 ) {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         info("bud: $bud");
-        $self->searchnow($user);
+
+        if ( $bud == 447 or $bud == 444 or $bud == 445 ) {
+            die error( substr( $urlo, 5 ) );
+        }
 
         #
+        $self->searchnow($user);
         if ( $bud == 556 ) {
-            #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
-            #agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
-            $self->agix( 
-            $user,
-            $conf_ref->{'urlav'}
-          . $user->myage()
-          . $user->mysex()
-          . $user->citydio()
-          . $user->myavatar()
-          . $user->mynickID()
-          . $user->monpass() 
-          . $user->mycrypt(),
-          $user->cookies());
+
+  #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
+  #agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
+            $self->agix( $user,
+                    $conf_ref->{'urlav'}
+                  . $user->myage()
+                  . $user->mysex()
+                  . $user->citydio()
+                  . $user->myavatar()
+                  . $user->mynickID()
+                  . $user->monpass()
+                  . $user->mycrypt() );
         }
     }
 
@@ -345,8 +354,8 @@ sub process1Int {
         $self->populate( $urlo, 0 );
     }
 
-    if ($olko == 39) {
-        my $infor = substr( $urlo, 2); 
+    if ( $olko == 39 ) {
+        my $infor = substr( $urlo, 2 );
         die error("cookie bug. infor: $infor ($urlo)");
     }
 
@@ -413,12 +422,7 @@ sub populate {
 sub searchnow {
     my ( $self, $user ) = @_;
     debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
-    my $searchito = '10'
-      . $user->mynickID()
-      . $user->monpass()
-      . $self->genru()
-      . $self->yearu();
-    $self->agir( $user, $searchito );
+    $self->_agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
 ## @method void writus($user, $s1, $destId)
