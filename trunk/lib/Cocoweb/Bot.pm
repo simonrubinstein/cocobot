@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-02-26
+# @date 2012-02-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -75,6 +75,15 @@ sub getUsersList {
     my $pseudonyms_ref = $self->request()->searchPseudonym( $self->user(), '' );
     return $pseudonyms_ref;
 }
+
+##@method hashref searchUser($pseudonym)
+sub searchUser {
+    my ($self, $pseudonym) = @_;
+    my $pseudonyms_ref = $self->request()->searchPseudonym( $self->user(), $pseudonym );
+    return $pseudonyms_ref;
+}
+
+
 
 sub show {
     my ($self) = @_;

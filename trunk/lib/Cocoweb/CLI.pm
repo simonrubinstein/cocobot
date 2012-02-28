@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-02-26
+# @date 2011-02-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,17 +37,22 @@ use Getopt::Std;
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 use strict;
 use warnings;
-__PACKAGE__->attributes( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass' );
+__PACKAGE__->attributes(
+    'mynickname', 'myage',    'mysex', 'myavatar',
+    'mypass',     'searchId', 'searchNickname'
+);
 
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
     $instance->attributes_defaults(
-        'mynickname' => undef,
-        'myage'      => undef,
-        'mysex'      => undef,
-        'myavatar'   => undef,
-        'mypass'     => undef,
+        'mynickname'     => undef,
+        'myage'          => undef,
+        'mysex'          => undef,
+        'myavatar'       => undef,
+        'mypass'         => undef,
+        'searchId'       => undef,
+        'searchNickname' => undef
     );
     return $instance;
 }
@@ -57,8 +62,12 @@ sub init {
 #@param string $argumentative
 #@return hashref The values found in arguments
 sub getOpts {
-    my ( $self, $argumentative ) = @_;
-    $argumentative = '' if !defined $argumentative;
+    my ( $self, %argv ) = @_;
+
+    my ( $searchEnable, $argumentative ) = ( 0, '' );
+
+    $searchEnable  = $argv{'searchEnable'}  if exists $argv{'searchEnable'};
+    $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
     $argumentative .= 'dvu:s:y:a:p:';
     my %opt;
     if ( !getopts( $argumentative, \%opt ) ) {
@@ -66,11 +75,13 @@ sub getOpts {
     }
     $Cocoweb::isVerbose = 1 if exists $opt{'v'};
     $Cocoweb::isDebug   = 1 if exists $opt{'d'};
-    $self->mynickname( $opt{'u'} ) if exists $opt{'u'};
-    $self->myage( $opt{'y'} )      if exists $opt{'y'};
-    $self->mysex( $opt{'s'} )      if exists $opt{'s'};
-    $self->myavatar( $opt{'a'} )   if exists $opt{'a'};
-    $self->mypass( $opt{'p'} )     if exists $opt{'p'};
+    $self->mynickname( $opt{'u'} )     if exists $opt{'u'};
+    $self->myage( $opt{'y'} )          if exists $opt{'y'};
+    $self->mysex( $opt{'s'} )          if exists $opt{'s'};
+    $self->myavatar( $opt{'a'} )       if exists $opt{'a'};
+    $self->mypass( $opt{'p'} )         if exists $opt{'p'};
+    $self->searchId( $opt{'i'} )       if exists $opt{'i'};
+    $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
 
     if ( defined $self->mysex() ) {
         if ( $self->mysex() eq 'M' ) {
@@ -88,7 +99,25 @@ sub getOpts {
         error("The age should be an integer. (-y option)");
         return;
     }
- 
+    if ( defined $self->searchId() and $self->searchId() !~ m{^\d+$} ) {
+        error("searchId value must be an integer. (-i option)");
+        return;
+    }
+    if (    $searchEnable
+        and !defined $self->searchNickname()
+        and !defined $self->searchId() )
+    {
+        error("You must specify an username (-l) or ID (-i)");
+        return;
+    }
+    if (    $searchEnable
+        and defined $self->searchNickname()
+        and defined $self->searchId() )
+    {
+        error("You must specify either a user or an id (-l) or ID -i");
+        return;
+    }
+
     return \%opt;
 }
 
@@ -96,7 +125,7 @@ sub getOpts {
 #@brief Creates an instance of an Cocoweb::Bot object.
 #@return object A Cocoweb::Bot object
 sub getBot {
-    my ($self, @params) = @_;
+    my ( $self, @params ) = @_;
     foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass' ) {
         push @params, $name, $self->$name() if defined $self->$name();
     }
@@ -105,3 +134,4 @@ sub getBot {
 }
 
 1;
+
