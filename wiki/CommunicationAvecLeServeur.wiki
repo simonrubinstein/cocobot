@@ -8,9 +8,26 @@ Il existe deux types de requêtes :
   * La requête initiale lancée avant toutes les autres.
   * Les autres requêtes.
 
+== Les autres requêtes ==
+
 Le second type de requête est constitué ainsi :
 {{{ http:// adresseIP : myport / code  mynickID monpass params}}}
 
-  * *adresseIP* est toujours l'adresse IP « 178.33.122.73 »
+  * *adresseIP* : toujours l'adresse IP « 178.33.122.73 »
+  * *myport*    : un numéro de port TCP compris entre 
+  * *code*      : un code numérique identifié la commande
+  * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours
+  * *monpass*   : le mot de passe de la session en cours
+  * *params*    : les éventuelles paramètres 
 
+Exemple d'une requête :
 {{{ http://178.33.122.73:3436/10327709RObSoa00 }}}
+ * *adresseIP* : 178.33.122.73
+ * *myport*    : 3436
+ * *code*      : 10
+ * *mynickID*  : 10327709 
+ * *monpass*   : RObSoa
+ * *params*    : 00 
+
+Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » demande la recherche des pseudonymes. 
+
