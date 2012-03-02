@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-02-27
+# @date 2012-03-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -121,7 +121,6 @@ sub execute {
     croak error("The HTTP method is missing")             if !defined $method;
     croak error("The URL of the HTTP request is missing") if !defined $url;
     my $req = HTTP::Request->new( $method => $url );
-    debug( '$method => ' . $url );
     foreach my $field ( keys %{ $agent_ref->{'header'} } ) {
         $req->header( $field => $agent_ref->{'header'}->{$field} );
     }
@@ -333,6 +332,7 @@ sub process1Int {
 
         #
         $self->searchnow($user);
+        $self->cherchasalon($user);
         if ( $bud == 556 ) {
 
   #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
@@ -423,6 +423,11 @@ sub searchnow {
     my ( $self, $user ) = @_;
     debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     $self->_agir( $user, '10' . $self->genru() . $self->yearu() );
+}
+
+sub cherchasalon {
+    my ( $self, $user ) = @_;
+    $self->_agir( $user, '89' );
 }
 
 ## @method void writus($user, $s1, $destId)
