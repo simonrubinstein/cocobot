@@ -1,4 +1,4 @@
-#Documentation sur le formulaire d'authentification
+#documentation sur le formulaire d'authentification.
 
 = Introduction =
 
