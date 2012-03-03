@@ -1,15 +1,16 @@
-#summary One-sentence summary of this page.
+#summary Initialisation de la fenêtre de chat et authentification de l'utilisateur.
 
 = Introduction =
 
+Cette page documente le processus d'initialisation et authentification de l'utilisateur.
 
 == Initialisation de la page ==
 
 
 Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée et chargée les trois fonctions suivants sont exécutées séquentiellement :
-  * primo() à la ligne 977 du fichier « initio.js ».
-  * initial() à la ligne 1 274 du fichier « initio.js ».
-  * resinit() à la ligne 578 du fichier « onglet.js ».
+  * *primo()* à la ligne 977 du fichier « initio.js ».
+  * *initial()* à la ligne 1 274 du fichier « initio.js ».
+  * *resinit()* à la ligne 578 du fichier « onglet.js ».
 
 === Cookie Flash ===
 
@@ -25,11 +26,11 @@ La valeur du _cookie Flash_ est lue par la fonction « crocu() ».
 
 === Fonction « primo() » ===
 
-La fonction « primo() » déclarée à la ligne 983 du fichier « http://www.coco.fr/chat/initio.js » est la première fonction appelée déclarée dans l'attribut `onload()` de la balise `<body>`.
+La fonction « primo() » déclarée à la ligne 977 du fichier « http://www.coco.fr/chat/initio.js » est la première fonction appelée déclarée dans l'attribut `onload()` de la balise `<body>`.
 
 La fonction « primo()» va lire le contenu de la barre d'adresse. Dans notre exemple la barre d'adresse est égale à «  http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# ». 
 
-Les paramètres passées à l'URL sont éclatées dans le tableau de la variable *parami* :
+Les paramètres passées dans l'URL sont éclatés dans le tableau de la variable *parami* :
 {{{
 parami = [
     "Simon",
@@ -50,7 +51,7 @@ Certaines variables sont initialisées à partir de ce tableau :
   * *mycityID*   = 30915
 
 
-La chaîne de l'agent utilisateur du navigateur Web est transformé par la fonction « writo() » et assigné dans la variable *agento*.
+La chaîne de l'agent utilisateur du navigateur Web est transformé par la fonction « writo() » et assigné dans la variable *agento*. Cette variable sera par la suite envoyée au serveur.
 
 Dans notre exemple notre agent utilisateur est « Mozilla/5.0 (Ubuntu; X11; Linux x86_64; rv:8.0) Gecko/20100101 Firefox/8.0 » ce qui donnera la chaîne de caractères suivante :
   * *agento*     = "Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0"
@@ -62,12 +63,13 @@ La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » 
 
   * *url1* = "http://178.33.122.73:3661/"
 
+Cette URL est l'URL utilisée pour communiquer avec le serveur. Toute communication avec le serveur se fera par une commande `HTTP GET` sur cette URL.
 
 === Fonction « initial() » ===
 
-La fonction « initial() » est déclarée à la ligne 1 280 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « initial() » est déclarée à la ligne 1 274 du fichier « http://www.coco.fr/chat/initio.js ».
 
-La fonction « initial() » va lire le cookie « samedi » et l'assigné dans la variable *infor*.
+La fonction « initial() » va lire le cookie « samedi » et l'assigner dans la variable *infor*.
 
 Dans notre exemple :
 * *infor* = "570685428"
@@ -82,11 +84,11 @@ Une minuterie est initialisée de 200 millisecondes avant d'appeler la fonction 
 
 === Fonction « quasi() » ===
 
-La fonction « quasi() » est déclarée à la ligne 1 338 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « quasi() » est déclarée à la ligne 1 332 du fichier « http://www.coco.fr/chat/initio.js ».
 
 === Fonction « presk() » ===
 
-La fonction « presk() » est déclarée à la ligne 1 349 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « presk() » est déclarée à la ligne 1 343 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « presk() » appelle la fonction « croco() » qui essaie de lire le _cookie Flash_.
 
