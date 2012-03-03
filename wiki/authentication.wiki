@@ -1,4 +1,4 @@
-#documentation sur le formulaire d'authentification.
+#summary One-sentence summary of this page.
 
 = Introduction =
 
