@@ -7,9 +7,9 @@
 
 
 Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée et chargée les trois fonctions suivants sont exécutées séquentiellement :
-  * primo()
-  * initial()
-  * resinit()
+  * primo() à la ligne 977 du fichier « initio.js ».
+  * initial() à la ligne 1 274 du fichier « initio.js ».
+  * resinit() à la ligne 578 du fichier « onglet.js ».
 
 === Cookie Flash ===
 
@@ -148,5 +148,3 @@ Les deux premiers caractères contiennent le code de la réponse qui est un enti
   * *mynickID* = 106177
   * *monpass* = BVgfBQ
   * *mycrypt* = 7573894
-
-
