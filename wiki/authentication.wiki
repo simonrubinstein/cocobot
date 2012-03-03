@@ -1,14 +1,11 @@
 #summary Formulaire d'authentification du site Web « Coco.fr »
 
 = Introduction =
-
-Cette page explique le processus d'authentification du site Web « Coco.fr ».
-
+Cette page documente le formulaire d'authentification du site Web « Coco.fr ».
 
 = Authentification sur le site Web =
 
 == Le formulaire HTML ==
-
 L'authentification se fait sur la page « http://coco.fr/index.htm », qui contient un formulaire assez simple.
 
 Le formulaire demande :
@@ -16,7 +13,6 @@ Le formulaire demande :
   * Le sexe : homme ou femme. Variable *typeo2*. 
   * L'âge : un âge de 15 à 89 ans. Variable *ageu*.
   * Le code postal. Variable *zipo*.
-
 
 La page HTML inclut le !JavaScript « http://coco.fr/codipos.js ». Les premières lignes du script vont :
   * Attribuer une valeur aléatoire à la variable *cookav* comprise entre 100 000 000 et 990 000 000.
@@ -29,9 +25,7 @@ Par exemple si la chaîne de caractères du cookie *coda* est la suivante : « S
   * *zipo* = *townzz* = "PARIS"
   * *citydio* = 30915
 
-
 == La fonction verifPseudo() qui vérifie le code postal ==
-
 Un évènement *onKeyUp* est associé au champ *zipo* lorsque l'utilisateur entre son code postal. À chaque fois qu'une touche est relâchée, la fonction « verifPseudo() » du script « http://coco.fr/codipos.js ». est appelée.
 
 Comme son nom ne l'indique pas la fonction « verifPseudo() » vérifie le code postal et charge un fichier !JavaScript différent suivant le code postal entré.
