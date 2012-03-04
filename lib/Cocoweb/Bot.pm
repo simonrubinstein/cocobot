@@ -83,6 +83,11 @@ sub searchUser {
     return $pseudonyms_ref;
 }
 
+sub getUserInfo {
+    my ($self) = @_;
+    $self->request()->getUserInfo($self->user());
+}
+
 
 
 sub show {

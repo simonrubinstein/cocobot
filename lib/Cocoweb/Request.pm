@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-02
+# @date 2012-03-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,6 +36,7 @@ use Carp;
 use Data::Dumper;
 use Encode qw(encode FB_PERLQQ);
 use LWP::UserAgent;
+use Time::HiRes qw(usleep nanosleep);
 use utf8;
 no utf8;
 
@@ -140,7 +141,6 @@ sub execute {
     if ( !$response->is_success() ) {
         croak error( $response->status_line() );
     }
-    debug( ref($response) );
     return $response;
 }
 
@@ -206,6 +206,7 @@ sub getCityco {
 #@param object $user An Cocoweb::User object
 sub firsty {
     my ( $self, $user ) = @_;
+    # agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
     $self->agix( $user,
             $self->url1() . '40'
           . $user->mynickname() . '*'
@@ -257,7 +258,7 @@ sub agix {
     my $function = $1;
     my $arg      = $2;
 
-    info( 'function: ' . $function . '; arg: ' . $arg );
+    #info( 'function: ' . $function . '; arg: ' . $arg );
     my $process;
     eval( '$process = \&' . $function );
     if ($@) {
@@ -319,6 +320,8 @@ sub process1Int {
     }
 
     if ( $olko == 51 ) {
+        setTimeout("agir('51'+agento)",500);
+        usleep(1000 * 500);
         $self->_agir( $user, '51' . $self->writo( $agent_ref->{'agent'} ) );
     }
 
@@ -428,6 +431,11 @@ sub searchnow {
 sub cherchasalon {
     my ( $self, $user ) = @_;
     $self->_agir( $user, '89' );
+}
+
+sub getUserInfo {
+    my ( $self, $user ) = @_;
+    $self->_agir( $user, '77369' );
 }
 
 ## @method void writus($user, $s1, $destId)
