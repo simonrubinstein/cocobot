@@ -12,3 +12,19 @@ function firsty()
 agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
 }
 }}}
+
+{{{
+if(olko==12)
+{
+    pretsalon=true;
+    var lebonnick=parseInt(urlo.substring(2,8));
+    mynickID=""+lebonnick;  
+    monpass=urlo.substring(8,14);
+    mycrypt=parseInt(urlo.substring(14,21));
+    olko=51;
+}
+if(olko==51)
+{
+    setTimeout("agir('51'+agento)",500);
+}
+}}}
