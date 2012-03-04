@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-02-28
+# @date 2011-03-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,8 +38,8 @@ $Getopt::Std::STANDARD_HELP_VERSION = 1;
 use strict;
 use warnings;
 __PACKAGE__->attributes(
-    'mynickname', 'myage',    'mysex', 'myavatar',
-    'mypass',     'searchId', 'searchNickname'
+    'mynickname', 'myage',  'mysex',    'myavatar',
+    'mypass',     'cookav', 'searchId', 'searchNickname'
 );
 
 ##@method object init($class, $instance)
@@ -68,7 +68,7 @@ sub getOpts {
 
     $searchEnable  = $argv{'searchEnable'}  if exists $argv{'searchEnable'};
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'dvu:s:y:a:p:';
+    $argumentative .= 'dvu:s:y:a:p:c:';
     my %opt;
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
@@ -80,6 +80,7 @@ sub getOpts {
     $self->mysex( $opt{'s'} )          if exists $opt{'s'};
     $self->myavatar( $opt{'a'} )       if exists $opt{'a'};
     $self->mypass( $opt{'p'} )         if exists $opt{'p'};
+    $self->cookav( $opt{'c'} )         if exists $opt{'c'};
     $self->searchId( $opt{'i'} )       if exists $opt{'i'};
     $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
 
@@ -91,7 +92,8 @@ sub getOpts {
             $self->mysex(2);
         }
         else {
-            error("The sex argument value must be either M or W. (-s option)");
+            error(
+                "The sex argument value must be either M or W. (-s option)");
             return;
         }
     }
@@ -126,7 +128,9 @@ sub getOpts {
 #@return object A Cocoweb::Bot object
 sub getBot {
     my ( $self, @params ) = @_;
-    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass' ) {
+    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass',
+        'cookav' )
+    {
         push @params, $name, $self->$name() if defined $self->$name();
     }
     my $bot = Cocoweb::Bot->new(@params);

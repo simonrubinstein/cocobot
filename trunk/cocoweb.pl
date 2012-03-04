@@ -248,6 +248,7 @@ sub actionAlert {
                 next;
             }
         }
+	sleep 1;
         writus( $user_ref, $message, $id );
     }
 }
