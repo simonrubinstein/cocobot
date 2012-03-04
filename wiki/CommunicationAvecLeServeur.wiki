@@ -1,8 +1,8 @@
-#Communication avec le serveur
+##summary Communication avec le serveur de Coco.fr
 
 = Communication avec le serveur =
 
-Le code JavaScript communique avec le serveur en exécutant des requêtes HTTP sur une adresse IP et un port donné. 
+Le code !JavaScript communique avec le serveur en exécutant des requêtes HTTP avec la méthode GET sur une adresse IP et un port donné. 
 
 Il existe deux types de requêtes :
   * La requête initiale lancée avant toutes les autres.
@@ -13,21 +13,21 @@ Il existe deux types de requêtes :
 Le second type de requête est constitué ainsi :
 {{{ http:// adresseIP : myport / code  mynickID monpass params}}}
 
-  * *adresseIP* : toujours l'adresse IP « 178.33.122.73 »
-  * *myport*    : un numéro de port TCP compris entre 
-  * *code*      : un code numérique identifié la commande
-  * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours
-  * *monpass*   : le mot de passe de la session en cours
-  * *params*    : les éventuelles paramètres 
+  * *adresseIP* : toujours l'adresse IP « 178.33.122.73 ».
+  * *myport*    : un numéro de port TCP compris entre 3 000 et 4 000 .
+  * *code*      : un code numérique identifié la commande, comme par exemple 10, 89, 48, ...
+  * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours.
+  * *monpass*   : le mot de passe de la session en cours.
+  * *params*    : les éventuelles paramètres. 
 
 Exemple d'une requête :
 {{{ http://178.33.122.73:3436/10327709RObSoa00 }}}
  * *adresseIP* : 178.33.122.73
  * *myport*    : 3436
- * *code*      : 10
+ * *code*      : 10 
  * *mynickID*  : 10327709 
  * *monpass*   : RObSoa
  * *params*    : 00 
 
-Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » demande la recherche des pseudonymes. 
+Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » demande la recherche des pseudonymes.  Les paramètres sont deux valeurs numériques collées des variables *genru* et *yearu*.
 
