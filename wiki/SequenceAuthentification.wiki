@@ -28,3 +28,26 @@ if(olko==51)
     setTimeout("agir('51'+agento)",500);
 }
 }}}
+
+
+
+{{{
+if(olko==99)
+{
+  var bud=parseInt(urlo.substring(2,5));
+  ...
+  if(bud==556)
+  { 
+     minitimo();
+     clearTimeout(stopserv);
+     stopserv=setTimeout("lancetimer()",4000);
+     
+
+  }
+}
+}}}
+  
+
+
+
+
