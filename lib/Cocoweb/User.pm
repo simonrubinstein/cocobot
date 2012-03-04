@@ -57,7 +57,11 @@ __PACKAGE__->attributes(
     'townzz',
     'citydio',
     'myavatar',
-    'ifravatar'
+    'ifravatar',
+
+    'mystat',
+    'myXP',
+    'myver'
 );
 
 ##@method void init(%args)
@@ -84,7 +88,7 @@ sub init {
     $args{'myavatar'}   = 0        if !exists $args{'myavatar'};
     $args{'mypass'}     = 0        if !exists $args{'mypass'};
     $args{'cookav'} = floor( rand(890000000) + 100000000 )
-        if !exists $args{'mypass'};
+        if !exists $args{'cookav'};
 
     $self->attributes_defaults(
         'mynickname' => $args{'mynickname'},
@@ -104,7 +108,11 @@ sub init {
         'cookies'    => {},
         'citydio'    => 0,
         'myavatar'   => $args{'myavatar'},
-        'ifravatar'  => 0
+        'ifravatar'  => 0,
+        'mystat'     => 0,
+        'myXP'       => 0,
+        'myver'      => 0
+
     );
     info(     'mynickname: '
             . $self->mynickname()
@@ -233,7 +241,7 @@ sub setCookie {
 #@param string $name cookie name
 #@return string The string that matches the name of the cookie
 #        or an undefined value if the cookie does not exist.
-sub getCookie { 
+sub getCookie {
     my ( $self, $name ) = @_;
     croak error('Error: Required parameter "name" is missing!')
         if !defined $name;
@@ -251,9 +259,10 @@ sub getCookie {
 sub show {
     my $self  = shift;
     my @names = (
-        'mynickname', 'myage',  'mysex',  'zip',
-        'mynickID',   'mypass', 'cookav', 'sauvy',
-        'townzz',     'citydio'
+        'mynickname', 'myage',   'mysex',    'zip',
+        'mynickID',   'monpass', 'myavatar', 'mypass',
+        'cookav',     'sauvy',   'townzz',   'citydio',
+        'mystat',     'myXP',    'myver'
     );
     my $max = 1;
     foreach my $name (@names) {
@@ -268,7 +277,7 @@ sub show {
     my $cookies_ref = $self->cookies();
     print STDOUT "Cookies:\n";
     $max = 1;
-    foreach my $name (keys %$cookies_ref) {
+    foreach my $name ( keys %$cookies_ref ) {
         $max = length($name) if length($name) > $max;
     }
     $max++;

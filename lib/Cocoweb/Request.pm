@@ -65,7 +65,7 @@ sub init {
         foreach my $name (
             'urly0',  'urlprinc',    'current-url', 'avatar-url',
             'avaref', 'urlcocoland', 'urlav'
-          )
+            )
         {
             $conf->isString($name);
         }
@@ -106,8 +106,8 @@ sub getValue {
     }
     else {
         croak error( 'Error: The "' 
-              . $name
-              . '" value was not found in the configuration.' );
+                . $name
+                . '" value was not found in the configuration.' );
     }
 }
 
@@ -160,7 +160,8 @@ sub getCityco {
     my ( $self, $user ) = @_;
 
     my $zip = $user->zip();
-    croak error("Error: The '$zip' zip code is invalid!") if $zip !~ /^\d{5}$/;
+    croak error("Error: The '$zip' zip code is invalid!")
+        if $zip !~ /^\d{5}$/;
     my $i = index( $zip, '0' );
     if ( $i == 0 ) {
         $zip = substr( $zip, 1, 5 );
@@ -171,11 +172,11 @@ sub getCityco {
 
     # Retrieves a string like "var cityco='30926*PARIS*';"
     if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
-        die error( 'Error: cityco have not been found!'
-              . 'The HTTP requests "'
-              . $url
-              . '" return: '
-              . $res );
+        die error('Error: cityco have not been found!'
+                . 'The HTTP requests "'
+                . $url
+                . '" return: '
+                . $res );
     }
     my $cityco = $1;
     debug("cityco: $cityco");
@@ -183,8 +184,8 @@ sub getCityco {
     my ( $citydio, $townzz );
     my $count = scalar @tmp;
     die error("Error: The cityco is not valid (cityco: $cityco)")
-      if $count % 2 != 0
-          or $count == 0;
+        if $count % 2 != 0
+            or $count == 0;
 
     if ( $count == 2 ) {
         $citydio = $tmp[0];
@@ -206,16 +207,17 @@ sub getCityco {
 #@param object $user An Cocoweb::User object
 sub firsty {
     my ( $self, $user ) = @_;
-    # agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
+
+# agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
     $self->agix( $user,
-            $self->url1() . '40'
-          . $user->mynickname() . '*'
-          . $user->myage()
-          . $user->mysex()
-          . $user->citydio()
-          . $user->myavatar()
-          . $self->speco()
-          . $user->mypass() );
+              $self->url1() . '40'
+            . $user->mynickname() . '*'
+            . $user->myage()
+            . $user->mysex()
+            . $user->citydio()
+            . $user->myavatar()
+            . $self->speco()
+            . $user->mypass() );
 }
 
 ##@method void agir($user, $txt1)
@@ -231,11 +233,11 @@ sub agir {
 sub _agir {
     my ( $self, $user, $txt3 ) = @_;
     $self->agix( $user,
-            $self->url1()
-          . substr( $txt3, 0, 2 )
-          . $user->mynickID()
-          . $user->monpass()
-          . substr( $txt3, 2 ) );
+              $self->url1()
+            . substr( $txt3, 0, 2 )
+            . $user->mynickID()
+            . $user->monpass()
+            . substr( $txt3, 2 ) );
 
     #agix(url1+txt3.substring(0,2)+mynickID+monpass+txt3.substring(2),4);
 }
@@ -254,7 +256,7 @@ sub agix {
     #debug($res);
     die error(
         'Error: the JavaScript function not found in the string: ' . $res )
-      if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
+        if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
 
@@ -302,7 +304,7 @@ sub process1 {
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
 
-    debug("urlo: $urlo");
+    #debug("urlo: $urlo");
     my $olko = parseInt( substr( $urlo, 0, 2 ) );
     info("olko: $olko");
     if ( $olko == 12 ) {
@@ -310,18 +312,20 @@ sub process1Int {
         $user->mynickID( '' . $lebonnick );
         $user->monpass( substr( $urlo, 8, 14 - 8 ) );
         $user->mycrypt( parseInt( substr( $urlo, 14, 21 - 14 ) ) );
-        debug(  'mynickID: '
-              . $user->mynickID()
-              . '; monpass: '
-              . $user->monpass()
-              . '; mycrypt: '
-              . $user->mycrypt() );
+
+        debug(    'mynickID: '
+                . $user->mynickID()
+                . '; monpass: '
+                . $user->monpass()
+                . '; mycrypt: '
+                . $user->mycrypt() );
         $olko = 51;
     }
 
     if ( $olko == 51 ) {
-        setTimeout("agir('51'+agento)",500);
-        usleep(1000 * 500);
+
+        #setTimeout("agir('51'+agento)",500);
+        usleep( 1000 * 500 );
         $self->_agir( $user, '51' . $self->writo( $agent_ref->{'agent'} ) );
     }
 
@@ -334,21 +338,25 @@ sub process1Int {
         }
 
         #
-        $self->searchnow($user);
-        $self->cherchasalon($user);
+        #$self->searchnow($user);
+        #$self->cherchasalon($user);
         if ( $bud == 556 ) {
 
-  #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
-  #agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
-            $self->agix( $user,
-                    $conf_ref->{'urlav'}
-                  . $user->myage()
-                  . $user->mysex()
-                  . $user->citydio()
-                  . $user->myavatar()
-                  . $user->mynickID()
-                  . $user->monpass()
-                  . $user->mycrypt() );
+#agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
+#agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
+            #$self->agix( $user,
+            #          $conf_ref->{'urlav'}
+            #        . $user->myage()
+            #        . $user->mysex()
+            #        . $user->citydio()
+            #        . $user->myavatar()
+            #        . $user->mynickID()
+            #        . $user->monpass()
+            #        . $user->mycrypt() );
+            $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
+            $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
+            $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );
+
         }
     }
 
@@ -448,12 +456,13 @@ sub writus {
 
     my $s2 = '';
     $s2 = $self->writo($s1);
-    my $sendito = '99'
-      . $user->mynickID()
-      . $user->monpass()
-      . $destId
-      . $user->roulix()
-      . $s2;
+    my $sendito
+        = '99'
+        . $user->mynickID()
+        . $user->monpass()
+        . $destId
+        . $user->roulix()
+        . $s2;
     $self->agir( $user, $sendito );
 
     info("writus() sendito: $sendito");
@@ -473,7 +482,7 @@ sub writo {
     utf8::decode($s1);
     my $s2     = '';
     my $toulon = 0;
-    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
+    for ( my $i = 0; $i < length($s1); $i++ ) {
         my $c = substr( $s1, $i, 1 );
         my $numerox = ord($c);
         if ( $numerox != 32 ) {
@@ -524,7 +533,9 @@ sub searchPseudonym {
             return $pseudonym_ref if defined $pseudonym_ref;
         }
     }
-    return $self->userFound() if !defined $pseudonym or length($pseudonym) == 0;
+    return $self->userFound()
+        if !defined $pseudonym
+            or length($pseudonym) == 0;
     debug("The pseudonym '$pseudonym' was not found");
 }
 
