@@ -38,16 +38,33 @@ if(olko==99)
   ...
   if(bud==556)
   { 
-     minitimo();
-     clearTimeout(stopserv);
-     stopserv=setTimeout("lancetimer()",4000);
-     
+    minitimo();
+    clearTimeout(stopserv);
+    stopserv=setTimeout("lancetimer()",4000);
+    if(finito>0)
+    {
+      ...
+    }
+    else 
+    {
+      setTimeout("agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)",1800);
+      var ind=0;
+      var ind2=0;
+      var ind3=0;
+      var tro=true;
+      mystat=parseInt(urlo.substring(6,7));
+      myXP=parseInt(urlo.substring(5,6));
+      myver=parseInt(urlo.substring(7,8));
+      if(myver>3)
+      {
+        reche();
+        document.getElementById("critero").innerHTML=rechum;
+      }
+      ...
+
 
   }
 }
 }}}
   
-
-
-
 
