@@ -1,4 +1,4 @@
-##summary Communication avec le serveur de Coco.fr
+#summary Communication avec le serveur de Coco.fr
 
 = Communication avec le serveur =
 
@@ -29,5 +29,4 @@ Exemple d'une requête :
  * *monpass*   : RObSoa
  * *params*    : 00 
 
-Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » demande la recherche des pseudonymes.  Les paramètres sont deux valeurs numériques collées des variables *genru* et *yearu*.
-
+Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » demande la recherche des pseudonymes.  Les paramètres sont les deux valeurs numériques collées des variables *genru* et *yearu*.
