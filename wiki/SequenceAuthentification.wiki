@@ -1,0 +1,14 @@
+#summary Séquence d'authentification
+
+= Introduction =
+
+Liste des fonctions appelées pour l'authentification
+
+= Details =
+
+{{{
+function firsty()
+{
+agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
+}
+}}}
