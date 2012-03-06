@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-28
-# @date 2012-02-28
+# @date 2012-03-06
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -52,6 +52,7 @@ sub run {
     foreach my $k ( sort keys %$userFound_ref ) {
         printf( '%-' . $max . 's: ' . $userFound_ref->{$k} . "\n", $k );
     }
+    print $bot->infuz($userFound_ref->{'id'}) . "\n";
 }
 
 ## @method void init()

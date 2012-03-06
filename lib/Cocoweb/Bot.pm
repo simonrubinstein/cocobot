@@ -88,6 +88,10 @@ sub getUserInfo {
     $self->request()->getUserInfo($self->user());
 }
 
+sub infuz {
+    my ($self, $nickId) = @_;
+    $self->request()->infuz($self->user(), $nickId);
+}
 
 
 sub show {
