@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-04
+# @date 2012-03-06
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -300,7 +300,7 @@ sub process1 {
     }
 }
 
-## @method void process1Int($user_ref, $urlo)
+## @method void process1Int($user, $urlo)
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
 
@@ -333,8 +333,18 @@ sub process1Int {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         info("bud: $bud");
 
-        if ( $bud == 447 or $bud == 444 or $bud == 445 ) {
+        if ( $bud == 444) {
+            print STDOUT substr( $urlo, 5 ) . "\n";
+        }
+
+        if ( $bud == 447 or $bud == 445 ) {
             die error( substr( $urlo, 5 ) );
+        }
+
+        #Retrieves information about a user, for Premium subscribers only
+        if ($bud == 555) {
+            my $urlu = substr( $urlo, 5);
+            return $urlu;
         }
 
         #
@@ -356,6 +366,7 @@ sub process1Int {
             $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
             $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
             $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );
+            info('mystat: ' . $user->mystat() . '; myXP:' . $user->myXP() . '; myver: ' . $user->myver());
 
         }
     }
@@ -472,6 +483,11 @@ sub writus {
         $roulix = 0;
     }
     $user->roulix($roulix);
+}
+
+sub infuz {
+    my ( $self, $user, $nickId) = @_;
+    $self->_agir( $user, '83555' . $nickId );
 }
 
 ## @method string writo($s1)

@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-04
+# @date 2012-03-06
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -208,10 +208,10 @@ sub initial {
     }
     debug("2> myavatar:$myavatar; mypass: $mypass");
     $myavatar = randum(890000000) + 100000000
-        if ( !defined $myavatar
+        if !defined $myavatar
         or $myavatar !~ m{^\d+$}
         or $myavatar < 100000000
-        or $myavatar > 1000000000 );
+        or $myavatar > 1000000000;
 
     debug("3> myavatar:$myavatar; mypass: $mypass");
     $self->myavatar($myavatar);
