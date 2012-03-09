@@ -30,3 +30,17 @@ Exemple d'une requête :
  * *params*    : 00 
 
 Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » demande la recherche des pseudonymes.  Les paramètres sont les deux valeurs numériques collées des variables *genru* et *yearu*.
+
+
+== Les codes de retour ==
+
+  * 12 : réponse à une commande  « 40 », première authentification avec l'identifiant de l'avatar et le mot de passe réussie.
+  * 995555 : réponse à une commande  « 51 », deuxième authentification avec l'identifiant et le mot de passe de la session réussie.
+  * 34 : réponse à une commande « 10 », retourne la liste des pseudos
+  * 89 : réponse à une commande « 89 », retourne la liste des salons
+
+
+
+
+
+
