@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-06
+# @date 2012-03-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -55,8 +55,11 @@ my $conf_ref;
 my $agent_ref;
 my $userAgent;
 my %dememeMatch = ();
+my %shiftuMatch = ();
+my %demeleMatch = ();
 
-## @method void init($args)
+##@method void init($args)
+#@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
     if ( !defined $conf_ref ) {
@@ -65,7 +68,7 @@ sub init {
         foreach my $name (
             'urly0',  'urlprinc',    'current-url', 'avatar-url',
             'avaref', 'urlcocoland', 'urlav'
-            )
+          )
         {
             $conf->isString($name);
         }
@@ -91,8 +94,8 @@ sub init {
         'userFound' => {},
         'speco'     => 0
     );
-    debug( "url1: " . $self->url1() );
 
+    #debug( "url1: " . $self->url1() );
 }
 
 ##@method string getValue($name)
@@ -106,8 +109,8 @@ sub getValue {
     }
     else {
         croak error( 'Error: The "' 
-                . $name
-                . '" value was not found in the configuration.' );
+              . $name
+              . '" value was not found in the configuration.' );
     }
 }
 
@@ -136,7 +139,7 @@ sub execute {
         $req->header( 'Cookie' => $cookieStr );
     }
 
-    #print $req->as_string();
+    #debug($req->as_string());
     my $response = $userAgent->request($req);
     if ( !$response->is_success() ) {
         croak error( $response->status_line() );
@@ -161,7 +164,7 @@ sub getCityco {
 
     my $zip = $user->zip();
     croak error("Error: The '$zip' zip code is invalid!")
-        if $zip !~ /^\d{5}$/;
+      if $zip !~ /^\d{5}$/;
     my $i = index( $zip, '0' );
     if ( $i == 0 ) {
         $zip = substr( $zip, 1, 5 );
@@ -172,20 +175,21 @@ sub getCityco {
 
     # Retrieves a string like "var cityco='30926*PARIS*';"
     if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
-        die error('Error: cityco have not been found!'
-                . 'The HTTP requests "'
-                . $url
-                . '" return: '
-                . $res );
+        die error( 'Error: cityco have not been found!'
+              . 'The HTTP requests "'
+              . $url
+              . '" return: '
+              . $res );
     }
     my $cityco = $1;
-    debug("cityco: $cityco");
+
+    #debug("cityco: $cityco");
     my @tmp = split( /\*/, $cityco );
     my ( $citydio, $townzz );
     my $count = scalar @tmp;
     die error("Error: The cityco is not valid (cityco: $cityco)")
-        if $count % 2 != 0
-            or $count == 0;
+      if $count % 2 != 0
+          or $count == 0;
 
     if ( $count == 2 ) {
         $citydio = $tmp[0];
@@ -197,32 +201,31 @@ sub getCityco {
         $citydio = $tmp[$r];
         $townzz  = $tmp[ $r + 1 ];
     }
-    debug("citydio: $citydio; townzz: $townzz");
+
+    #debug("citydio: $citydio; townzz: $townzz");
     $user->citydio($citydio);
     $user->townzz($townzz);
 }
 
 ##@method void firsty($user)
 #@brief The first HTTP request sent to the server
-#@param object $user An Cocoweb::User object
+#@param object $user An 'Cocoweb::User' object
 sub firsty {
     my ( $self, $user ) = @_;
-
-# agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
     $self->agix( $user,
-              $self->url1() . '40'
-            . $user->mynickname() . '*'
-            . $user->myage()
-            . $user->mysex()
-            . $user->citydio()
-            . $user->myavatar()
-            . $self->speco()
-            . $user->mypass() );
+            $self->url1() . '40'
+          . $user->mynickname() . '*'
+          . $user->myage()
+          . $user->mysex()
+          . $user->citydio()
+          . $user->myavatar()
+          . $self->speco()
+          . $user->mypass() );
 }
 
 ##@method void agir($user, $txt1)
 #@brief Initiates a standard request to the server
-#@param object $user An Cocoweb::User object
+#@param object $user An 'Cocoweb::User' object
 #@param string $txt1 The parameter of the HTTP request
 sub agir {
     my ( $self, $user, $txt1 ) = @_;
@@ -233,19 +236,20 @@ sub agir {
 sub _agir {
     my ( $self, $user, $txt3 ) = @_;
     $self->agix( $user,
-              $self->url1()
-            . substr( $txt3, 0, 2 )
-            . $user->mynickID()
-            . $user->monpass()
-            . substr( $txt3, 2 ) );
+            $self->url1()
+          . substr( $txt3, 0, 2 )
+          . $user->mynickID()
+          . $user->monpass()
+          . substr( $txt3, 2 ) );
 
     #agix(url1+txt3.substring(0,2)+mynickID+monpass+txt3.substring(2),4);
 }
 
 ##@method void agix($user, $url, $cookie_ref)
-#@param object $user An Cocoweb::User object
+#@brief Performs an HTTP Requests to invoke a remote method
+#@param object $user An 'Cocoweb::User' object
 #@param string An URL for the HTTP request
-#@param hashref $cookie_ref
+#@param hashref $cookie_ref A hash that contains possible cookies.
 sub agix {
     my ( $self, $user, $url, $cookie_ref ) = @_;
     croak error("The URL of the HTTP request is missing") if !defined $url;
@@ -256,7 +260,7 @@ sub agix {
     #debug($res);
     die error(
         'Error: the JavaScript function not found in the string: ' . $res )
-        if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
+      if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
 
@@ -269,9 +273,10 @@ sub agix {
     $self->$process( $user, $arg );
 }
 
-## @method void process1()
-# @brief object $user An user objet
-# @brief string $urlu
+##@method void process1($user, $urlu)
+#@brief Method called back after an HTTP request to the server
+#@param object $user An 'Cocoweb::User' object
+#@param string $urlu String returned by the server
 sub process1 {
     my ( $self, $user, $urlu ) = @_;
     my ($todo) = ('');
@@ -307,18 +312,20 @@ sub process1Int {
     #debug("urlo: $urlo");
     my $olko = parseInt( substr( $urlo, 0, 2 ) );
     info("olko: $olko");
-    if ( $olko == 12 ) {
-        my $lebonnick = parseInt( substr( $urlo, 2, 8 - 2 ) );
-        $user->mynickID( '' . $lebonnick );
-        $user->monpass( substr( $urlo, 8, 14 - 8 ) );
-        $user->mycrypt( parseInt( substr( $urlo, 14, 21 - 14 ) ) );
 
-        debug(    'mynickID: '
-                . $user->mynickID()
-                . '; monpass: '
-                . $user->monpass()
-                . '; mycrypt: '
-                . $user->mycrypt() );
+    # The first part of authentication was performed successfully
+    # The server returns an ID and a password for the current session
+    if ( $olko == 12 ) {
+        my $lebonnick = parseInt( substr( $urlo, 2, 6 ) );
+        $user->mynickID( '' . $lebonnick );
+        $user->monpass( substr( $urlo, 8, 6 ) );
+        $user->mycrypt( parseInt( substr( $urlo, 14, 21 - 14 ) ) );
+        info(   'mynickID: '
+              . $user->mynickID()
+              . '; monpass: '
+              . $user->monpass()
+              . '; mycrypt: '
+              . $user->mycrypt() );
         $olko = 51;
     }
 
@@ -333,47 +340,78 @@ sub process1Int {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         info("bud: $bud");
 
-        if ( $bud == 444) {
-            print STDOUT substr( $urlo, 5 ) . "\n";
+        if ( $bud == 444 ) {
+            my $urlu = $self->transformix( substr( $urlo, 5 ), -1, 0 );
+            return $urlu;
         }
 
         if ( $bud == 447 or $bud == 445 ) {
             die error( substr( $urlo, 5 ) );
         }
 
-        #Retrieves information about a user, for Premium subscribers only
-        if ($bud == 555) {
-            my $urlu = substr( $urlo, 5);
+        # Retrieves information about an user, for Premium subscribers only
+        if ( $bud == 555 ) {
+            my $urlu = $self->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
-        #
-        #$self->searchnow($user);
-        #$self->cherchasalon($user);
+        # The second part of the authentication is completed successfully
+        # The server returns some information about the user account.
         if ( $bud == 556 ) {
 
-#agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
-#agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
-            #$self->agix( $user,
-            #          $conf_ref->{'urlav'}
-            #        . $user->myage()
-            #        . $user->mysex()
-            #        . $user->citydio()
-            #        . $user->myavatar()
-            #        . $user->mynickID()
-            #        . $user->monpass()
-            #        . $user->mycrypt() );
+  #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
+  #agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
+  #$self->agix( $user,
+  #          $conf_ref->{'urlav'}
+  #        . $user->myage()
+  #        . $user->mysex()
+  #        . $user->citydio()
+  #        . $user->myavatar()
+  #        . $user->mynickID()
+  #        . $user->monpass()
+  #        . $user->mycrypt() );
             $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
             $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
             $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );
-            info('mystat: ' . $user->mystat() . '; myXP:' . $user->myXP() . '; myver: ' . $user->myver());
+            info(   'mystat: '
+                  . $user->mystat()
+                  . '; myXP:'
+                  . $user->myXP()
+                  . '; myver: '
+                  . $user->myver() );
 
         }
     }
 
-    #A search command was sent
+    # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
         $self->populate( $urlo, 0 );
+    }
+    elsif ( $olko == 13 ) {
+        die error("You have been disconnected. Log back on Coco.fr");
+    }
+    elsif ( $olko == 10 ) {
+        die error( 'You are disconnected because someone with the'
+              . ' same IP is already connected to the chat server.'
+              . ' Otherwise try to connect in 30 seconds.' );
+    }
+    elsif ( $olko == 36 ) {
+        if ( $user->mystat() < 6 ) {
+            $user->mystat( parseInt( substr( $user, 2 ) ) % 10 );
+        }
+    }
+
+    if ( $olko == 87 ) {
+        $olko = 89;
+    }
+
+    if ( $olko == 23 ) {
+
+        #$self->yabon();
+    }
+
+    # Retrieves the list of rooms
+    if ( $olko == 89 ) {
     }
 
     if ( $olko == 39 ) {
@@ -402,6 +440,12 @@ sub process1Int {
     }
     if ( $olko == 967 ) {
     }
+
+}
+
+sub clearUsersList {
+    
+    $self->userFound({});
 
 }
 
@@ -438,20 +482,26 @@ sub populate {
     debug("$countNew new logins was found");
 }
 
-## @method void searchnow($user)
+##@method void searchnow($user)
 #@brief Call the remote method to retrieve the list of pseudonyms.
-#@param object @user An User object
+#@param object @user An 'User object' object
 sub searchnow {
     my ( $self, $user ) = @_;
     debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     $self->_agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
+##@method void cherchasalon($user)
+#@brief
 sub cherchasalon {
     my ( $self, $user ) = @_;
     $self->_agir( $user, '89' );
 }
 
+##@method void getUserInfo()
+#@brief Get the number of days remaining until the end of
+#       the Premium subscription.
+#@param object @user An 'User object' object
 sub getUserInfo {
     my ( $self, $user ) = @_;
     $self->_agir( $user, '77369' );
@@ -459,7 +509,7 @@ sub getUserInfo {
 
 ## @method void writus($user, $s1, $destId)
 #@brief
-#@param object $user
+#@param object @user An 'User object' object
 #@param string $s1
 sub writus {
     my ( $self, $user, $s1, $destId ) = @_;
@@ -467,13 +517,12 @@ sub writus {
 
     my $s2 = '';
     $s2 = $self->writo($s1);
-    my $sendito
-        = '99'
-        . $user->mynickID()
-        . $user->monpass()
-        . $destId
-        . $user->roulix()
-        . $s2;
+    my $sendito = '99'
+      . $user->mynickID()
+      . $user->monpass()
+      . $destId
+      . $user->roulix()
+      . $s2;
     $self->agir( $user, $sendito );
 
     info("writus() sendito: $sendito");
@@ -485,9 +534,16 @@ sub writus {
     $user->roulix($roulix);
 }
 
+##@method string infuz($user, $nickId );
 sub infuz {
-    my ( $self, $user, $nickId) = @_;
-    $self->_agir( $user, '83555' . $nickId );
+    my ( $self, $user, $nickId ) = @_;
+    if ( $user->isPremiumSubscription() ) {
+        $self->_agir( $user, '83555' . $nickId );
+    }
+    else {
+        warning('The command "infuz" is reserved for users with a'
+              . ' Premium subscription.' );
+    }
 }
 
 ## @method string writo($s1)
@@ -498,7 +554,7 @@ sub writo {
     utf8::decode($s1);
     my $s2     = '';
     my $toulon = 0;
-    for ( my $i = 0; $i < length($s1); $i++ ) {
+    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
         my $c = substr( $s1, $i, 1 );
         my $numerox = ord($c);
         if ( $numerox != 32 ) {
@@ -523,15 +579,6 @@ sub writo {
     return $s2;
 }
 
-## @method string dememe($numix)
-# @param integer $numix
-# @return string
-sub dememe {
-    my ( $self, $numix ) = @_;
-    return '' if !exists $dememeMatch{$numix};
-    return $dememeMatch{$numix};
-}
-
 ## @method hashref searchPseudonym($user, $pseudonym)
 #@param string The pseudonym wanted
 sub searchPseudonym {
@@ -550,15 +597,17 @@ sub searchPseudonym {
         }
     }
     return $self->userFound()
-        if !defined $pseudonym
-            or length($pseudonym) == 0;
+      if !defined $pseudonym
+          or length($pseudonym) == 0;
     debug("The pseudonym '$pseudonym' was not found");
+    return;
 }
 
-## @method hashref checkIfPseudonymExists($pseudonym)
+##@method hashref checkIfPseudonymExists($pseudonym)
 #@brief Check if a pseudonym already exists in the list
 #       of pseudonym already read.
 #@param string The pseudonym wanted
+#@return hashref
 sub checkIfPseudonymExists {
     my ( $self, $pseudonym ) = @_;
     return if !defined $pseudonym or length($pseudonym) == 0;
@@ -603,6 +652,130 @@ sub initializeTables {
         249  => "*f",    # ù
         251  => "*u"     # û
     );
+    %shiftuMatch = (
+        108 => '^',
+        100 => '€',
+        107 => 'â',
+        97  => 'à',
+        98  => 'ê',
+        99  => 'ç',
+        101 => 'è',
+        114 => 'é',
+        106 => 'ï',
+        105 => 'î',
+        111 => 'ô',
+        117 => 'û',
+        102 => 'ù',
+        115 => '*',
+        48  => '_',
+        56  => "'",
+        55  => '$'
+    );
+
+    %demeleMatch = (
+        32  => ' ',
+        33  => '!',
+        36  => '$',
+        37  => '%',
+        38  => '{',
+        40  => '(',
+        41  => ')',
+        42  => '*',
+        61  => '=',
+        63  => '?',
+        96  => '',
+        95  => '_',
+        126 => ' '
+    );
+}
+
+##@method string dememe($numix)
+#@param integer $numix
+#@return string
+sub dememe {
+    my ( $self, $numix ) = @_;
+    return '' if !exists $dememeMatch{$numix};
+    return $dememeMatch{$numix};
+}
+
+##@method string demele($numix)
+#@param integer $numix
+#@param integer $wyb
+#@return string
+sub demele {
+    my ( $self, $numix, $wyb ) = @_;
+    return "\n" if $numix == 96 and $wyb < 0;
+    return '' if !exists $demeleMatch{$numix};
+    return $demeleMatch{$numix};
+}
+
+##@method string shiftu($numix)
+#@param integer $numix
+#@return string
+sub shiftu {
+    my ( $self, $numix ) = @_;
+    return '' if !exists $shiftuMatch{$numix};
+    return $shiftuMatch{$numix};
+}
+
+##@method string transformix($sx, $tyb, $syx)
+#@param string $sx A string to convert
+#@param integer $tyb -1 or -23
+#@param integer $syx
+#@return string The string of characters converted
+sub transformix {
+    my ( $self, $sx, $tyb, $syx ) = @_;
+    $tyb = -1 if !defined $tyb;
+    $syx = 0  if !defined $syx;
+    my $s1 = $sx;
+    my ( $numerox, $shifto, $s2, $toolong, $unefoi ) = ( 0, 0, '', 0, 0 );
+    $s1 =~ s{http://}{}g;
+    my $mmj = index( $s1, 'www' );
+    $toolong = -70 if $syx > 7 and $mmj > -1;
+
+    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
+        my $c = substr( $s1, $i, 1 );
+        $numerox = ord($c);
+        $toolong++ if $tyb != 23;
+        $toolong = 0 if $numerox == 126 or $numerox == 32 or $tyb == 117;
+        next if $toolong >= 27;
+        if ( $shifto != 0 ) {
+            $s2 .= $self->shiftu($numerox);
+            $shifto = 0;
+            next;
+        }
+
+        # The asterisk character announces an accented character
+        if ( $numerox == 42 ) {
+            $shifto = 1;
+            next;
+        }
+        if (   ( $numerox < 43 )
+            or ( ( $numerox > 58 ) and ( $numerox < 64 ) )
+            or ( ( $numerox > 90 ) and ( $numerox < 97 ) )
+            or ( $numerox > 122 ) )
+        {
+
+            # 59 = ';'
+            if ( $numerox == 59 ) {
+                my $resiz = ';';
+                my $numoz = parseInt( substr( $i + 1, 2 ), 10 );
+
+                #TODO: emoticons suppport
+                warning("The support of smileys is not implemented");
+                $s2 .= $resiz;
+            }
+            else {
+                $s2 .= $self->demele( $numerox, $tyb );
+            }
+
+        }
+        else {
+            $s2 .= $c;
+        }
+
+    }
+    return $s2;
 }
 
 1;

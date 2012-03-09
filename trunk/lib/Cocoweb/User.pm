@@ -61,10 +61,12 @@ __PACKAGE__->attributes(
 
     'mystat',
     'myXP',
+    ## 4 = Premium Subscription
     'myver'
 );
 
 ##@method void init(%args)
+#@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
     if ( !defined $nicknameMan ) {
@@ -120,6 +122,18 @@ sub init {
             . $args{'mysex'}
             . '; myage: '
             . $args{'myage'} );
+}
+
+##@method boolean isPremiumSubscription()
+#@brief Verifies whether the user has a subscription premium
+#@return boolean 1 if the user has a subscription premium or 0 otherwise
+sub isPremiumSubscription {
+    my ($self) = @_;
+    if ($self->myver() > 3) {
+        return 1;
+    } else {
+        return 0;
+    }
 }
 
 ##@method string getRandomPseudonym($sex)

@@ -1,7 +1,8 @@
 #!/usr/bin/perl
-# @created 2012-02-22
-# @date 2012-02-28
-# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+#@brief 
+#@created 2012-02-22
+#@date 2012-02-28
+#@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012

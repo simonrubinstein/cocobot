@@ -78,21 +78,34 @@ sub getUsersList {
 
 ##@method hashref searchUser($pseudonym)
 sub searchUser {
-    my ($self, $pseudonym) = @_;
-    my $pseudonyms_ref = $self->request()->searchPseudonym( $self->user(), $pseudonym );
+    my ( $self, $pseudonym ) = @_;
+    my $pseudonyms_ref =
+      $self->request()->searchPseudonym( $self->user(), $pseudonym );
+    print Dumper $pseudonyms_ref;
     return $pseudonyms_ref;
 }
 
+##method void getUserInfo()
 sub getUserInfo {
     my ($self) = @_;
-    $self->request()->getUserInfo($self->user());
+    $self->request()->getUserInfo( $self->user() );
 }
 
+##@method string infuz($nickId)
 sub infuz {
-    my ($self, $nickId) = @_;
-    $self->request()->infuz($self->user(), $nickId);
+    my ( $self, $nickId ) = @_;
+    $self->request()->infuz( $self->user(), $nickId );
 }
 
+##@method boolean isPremiumSubscription()
+#@brief Verifies whether the user has a subscription premium
+#@return boolean 1 if the user has a subscription premium or 0 otherwise
+sub isPremiumSubscription {
+    my ($self) = @_;
+    return $self->user()->isPremiumSubscription();
+}
+
+ 
 
 sub show {
     my ($self) = @_;
