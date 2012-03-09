@@ -1,11 +1,12 @@
 #!/usr/bin/perl
-# @created 2012-03-03
-# @date 2012-03-04
-# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+#@brief 
+#@created 2012-03-09
+#@date 2012-03-09
+#@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# Id: $Id$
+# Id: $Id
 # Revision: $Revision$
 # Date: $Date$
 # Author: $Author$
@@ -28,7 +29,7 @@
 use strict;
 use warnings;
 use FindBin qw($Script $Bin);
-use Data::Dumper;
+use Time::HiRes;
 use utf8;
 no utf8;
 use lib "../lib";
@@ -39,16 +40,31 @@ my $CLI;
 init();
 run();
 
-##@method void run
+##@method ivoid run()
 sub run {
-    my $bot = $CLI->getBot('generateRandom' => 1);
+    my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
-    $bot->show();
-    print STDOUT . $bot->getUserInfo() ;. "\n";
+    if ( !$bot->isPremiumSubscription() ) {
+        die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
+    }
+    while(1) {
+        my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
+        my $userFound_ref = $bot->getUsersList();
+        my $t0 = [Time::HiRes::gettimeofday];
+        print "t0 = $t0\n";
+        my $elapsed = Time::HiRes::tv_interval ( $t0 );
+        print "$elapsed\n";
+
+        sleep(4);
+
+    }
+
     info("The $Bin script was completed successfully.");
 }
 
-##@method void init()
+
+
+## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts();
@@ -62,14 +78,15 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print <<ENDTXT;
-Get the number of days left of Premium subscription.
 Usage: 
- $Script [-v -d -a myavatar -p mypass]
-  -a myavatar
+ $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
+  -u mynickname      An username
+  -y myage           Year old
+  -s mysex           M for man or W for women
+  -a myavatar        Code 
   -p mypass
-  -c cookav
-  -v          Verbose mode
-  -d          Debug mode
+  -v                 Verbose mode
+  -d                 Debug mode
 ENDTXT
     exit 0;
 }
@@ -77,7 +94,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-02-24) 
+    $Script $Cocoweb::VERSION (2012-03-09) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT

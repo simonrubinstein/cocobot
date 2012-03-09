@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-28
-# @date 2012-03-06
+# @date 2012-03-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,7 +44,13 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
-    my $userFound_ref = $bot->searchUser($CLI->searchNickname());
+    my $userFound_ref = $bot->searchUser( $CLI->searchNickname() );
+    if ( !defined $userFound_ref ) {
+        print STDOUT 'The pseudonym "'
+          . $CLI->searchNickname()
+          . '" was not found.' . "\n";
+        return;
+    }
     my $max = 1;
     foreach my $k ( keys %$userFound_ref ) {
         $max = length($k) if length($k) > $max;
@@ -52,10 +58,11 @@ sub run {
     foreach my $k ( sort keys %$userFound_ref ) {
         printf( '%-' . $max . 's: ' . $userFound_ref->{$k} . "\n", $k );
     }
-    print $bot->infuz($userFound_ref->{'id'}) . "\n";
+    print $bot->infuz( $userFound_ref->{'id'} ) . "\n";
 }
 
-## @method void init()
+##@method void init()
+#@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts( 'argumentative' => 'l:' );
@@ -63,7 +70,7 @@ sub init {
         HELP_MESSAGE();
         exit;
     }
-    if (!defined $CLI->searchNickname()) {
+    if ( !defined $CLI->searchNickname() ) {
         error("You must specify an username (-l)");
         HELP_MESSAGE();
         exit;
@@ -95,6 +102,4 @@ sub VERSION_MESSAGE {
      Written by Simon Rubinstein 
 ENDTXT
 }
-
-
 
