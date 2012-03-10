@@ -354,7 +354,7 @@ sub display {
     my @names = (
         'mynickname', 'myage',   'mysex',    'zip',
         'mynickID',   'monpass', 'myavatar', 'mypass',
-        'townzz',     'citydio', 'myver'
+        'townzz',     'myver'
     );
     foreach my $name (@names) {
         print STDOUT $name . ':' . $self->$name() . '; ';

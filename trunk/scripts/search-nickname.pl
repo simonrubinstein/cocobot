@@ -44,6 +44,7 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
+    $bot->display();
     my $userFound_ref = $bot->searchUser( $CLI->searchNickname() );
     if ( !defined $userFound_ref ) {
         print STDOUT 'The pseudonym "'
