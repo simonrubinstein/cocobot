@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-09
+# @date 2012-03-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -444,6 +444,7 @@ sub process1Int {
 }
 
 sub clearUsersList {
+    my ($self) = @_;
     
     $self->userFound({});
 

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-03-04
+# @date 2011-03-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -39,7 +39,7 @@ use strict;
 use warnings;
 __PACKAGE__->attributes(
     'mynickname', 'myage',  'mysex',    'myavatar',
-    'mypass',     'cookav', 'searchId', 'searchNickname'
+    'mypass',     'searchId', 'searchNickname'
 );
 
 ##@method object init($class, $instance)
@@ -68,7 +68,8 @@ sub getOpts {
 
     $searchEnable  = $argv{'searchEnable'}  if exists $argv{'searchEnable'};
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'dvu:s:y:a:p:c:';
+    $argumentative .= 'dvu:s:y:a:p:';
+    $argumentative .= 'l:i:' if $argv{'searchEnable'};
     my %opt;
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
@@ -80,7 +81,6 @@ sub getOpts {
     $self->mysex( $opt{'s'} )          if exists $opt{'s'};
     $self->myavatar( $opt{'a'} )       if exists $opt{'a'};
     $self->mypass( $opt{'p'} )         if exists $opt{'p'};
-    $self->cookav( $opt{'c'} )         if exists $opt{'c'};
     $self->searchId( $opt{'i'} )       if exists $opt{'i'};
     $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
 
@@ -128,8 +128,7 @@ sub getOpts {
 #@return object A Cocoweb::Bot object
 sub getBot {
     my ( $self, @params ) = @_;
-    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass',
-        'cookav' )
+    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass')
     {
         push @params, $name, $self->$name() if defined $self->$name();
     }

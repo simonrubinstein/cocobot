@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-02-28
+# @date 2012-03-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -81,7 +81,6 @@ sub searchUser {
     my ( $self, $pseudonym ) = @_;
     my $pseudonyms_ref =
       $self->request()->searchPseudonym( $self->user(), $pseudonym );
-    print Dumper $pseudonyms_ref;
     return $pseudonyms_ref;
 }
 
