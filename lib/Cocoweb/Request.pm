@@ -334,7 +334,7 @@ sub process1Int {
 
         if ( $bud == 444 ) {
             my $urlu =
-              $self->$self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
+              $self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
@@ -345,7 +345,7 @@ sub process1Int {
         # Retrieves information about an user, for Premium subscribers only
         if ( $bud == 555 ) {
             my $urlu =
-              $self->$self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
+              $self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
