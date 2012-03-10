@@ -62,7 +62,9 @@ __PACKAGE__->attributes(
     'mystat',
     'myXP',
     ## 4 = Premium Subscription
-    'myver'
+    'myver',
+
+    'amiz'
 );
 
 ##@method void init(%args)
@@ -116,7 +118,8 @@ sub init {
         'ifravatar'  => 0,
         'mystat'     => 0,
         'myXP'       => 0,
-        'myver'      => 0
+        'myver'      => 0,
+        'amiz'       => {}
 
     );
     info(   'mynickname: '

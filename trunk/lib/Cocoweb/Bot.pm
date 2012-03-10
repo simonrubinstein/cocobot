@@ -98,6 +98,15 @@ sub infuz {
     $self->request()->infuz( $self->user(), $nickId );
 }
 
+##@method void actuam($user)
+#@brief Get the list of contacts, nicknamed 'amiz'
+#@param object @user An 'User object' object
+#@return string
+sub actuam {
+    my ( $self ) = @_;
+    $self->request()->actuam($self->user());
+}
+
 ##@method boolean isPremiumSubscription()
 #@brief Verifies whether the user has a subscription premium
 #@return boolean 1 if the user has a subscription premium or 0 otherwise

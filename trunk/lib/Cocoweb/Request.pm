@@ -379,7 +379,7 @@ sub process1Int {
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-        $self->populate( $urlo, 0 );
+        $self->populate( $self->userFound(), $urlo, 0 );
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -432,6 +432,11 @@ sub process1Int {
     if ( $olko == 66 ) {
         $olko = 967;
     }
+    if ( $olko == 48 ) {
+        $self->populate( $user->amiz(), $urlo, 0 );
+        return $user->amiz();
+    }
+
     if ( $olko == 967 ) {
     }
 
@@ -444,11 +449,10 @@ sub clearUsersList {
 
 }
 
-## @method void populate($urlo, $offsat)
+## @method void populate($userFound_ref, $urlo, $offsat)
 sub populate {
-    my ( $self, $urlo, $offsat ) = @_;
+    my ( $self, $userFound_ref, $urlo, $offsat ) = @_;
     my $countNew      = 0;
-    my $userFound_ref = $self->userFound();
     if ( length($urlo) > 12 ) {
         my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
         while ( $mopo < 1 ) {
@@ -491,6 +495,15 @@ sub searchnow {
 sub cherchasalon {
     my ( $self, $user ) = @_;
     $self->agir( $user, '89' );
+}
+
+##@method void actuam($user)
+#@brief Get the list of contacts, nicknamed 'amiz'
+#@param object @user An 'User object' object
+#@return string
+sub actuam {
+    my ( $self, $user ) = @_;
+    $self->agir( $user, '48' );
 }
 
 ##@method void getUserInfo()
