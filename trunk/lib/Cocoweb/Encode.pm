@@ -26,6 +26,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
 package Cocoweb::Encode;
+use Cocoweb;
 use base 'Cocoweb::Object::Singleton';
 use Carp;
 use FindBin qw($Script);
@@ -38,11 +39,13 @@ use warnings;
 my %dememeMatch = ();
 my %shiftuMatch = ();
 my %demeleMatch = ();
+my $hasBeenInitialized = 0;
 
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
-    $instance->initializeTables();
+    $instance->initializeTables()
+    if !$hasBeenInitialized;
     return $instance;
 }
 
@@ -75,9 +78,8 @@ sub shiftu {
     return $shiftuMatch{$numix};
 }
 
-#
-
-## @method void initializeTables()
+##@method void initializeTables()
+#@brief Initializes hashed tables
 sub initializeTables {
     my ($self) = @_;
     %dememeMatch = (
@@ -141,6 +143,7 @@ sub initializeTables {
         95  => '_',
         126 => ' '
     );
+    $hasBeenInitialized = 1;
 }
 
 ##@method string writo($s1)
