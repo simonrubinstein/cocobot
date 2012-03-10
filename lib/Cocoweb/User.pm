@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-06
+# @date 2012-03-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -70,27 +70,29 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     if ( !defined $nicknameMan ) {
-        $nicknameMan = Cocoweb::Config->instance()
-            ->getConfigFile( 'nickname-man.txt', 1 );
-        $nicknameWoman = Cocoweb::Config->instance()
-            ->getConfigFile( 'nickname-woman.txt', 1 );
+        $nicknameMan =
+          Cocoweb::Config->instance()->getConfigFile( 'nickname-man.txt', 1 );
+        $nicknameWoman =
+          Cocoweb::Config->instance()->getConfigFile( 'nickname-woman.txt', 1 );
     }
     $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
 
+    $args{'zip'} = 75001 if !exists $args{'zip'};
     if ( $args{'generateRandom'} ) {
         $args{'myage'} = randum(35) + 15 if !exists $args{'myage'};
         $args{'mysex'} = randum(2) + 1   if !exists $args{'mysex'};
-        $args{'mynickname'} = $self->getRandomPseudonym( $args{'mysex'} );
+        $args{'mynickname'} =
+          $self->getRandomPseudonym( $args{'mysex'}, $args{'myage'},
+            $args{'zip'} );
     }
 
     $args{'mynickname'} = 'nobody' if !exists $args{'mynickname'};
     $args{'myage'}      = 89       if !exists $args{'myage'};
     $args{'mysex'}      = 1        if !exists $args{'mysex'};
-    $args{'zip'}        = 75001    if !exists $args{'zip'};
     $args{'myavatar'}   = 0        if !exists $args{'myavatar'};
     $args{'mypass'}     = 0        if !exists $args{'mypass'};
     $args{'cookav'} = floor( rand(890000000) + 100000000 )
-        if !exists $args{'cookav'};
+      if !exists $args{'cookav'};
 
     $self->attributes_defaults(
         'mynickname' => $args{'mynickname'},
@@ -108,6 +110,7 @@ sub init {
         'sauvy'      => '',
         'inform'     => '',
         'cookies'    => {},
+        'townzz'     => '',
         'citydio'    => 0,
         'myavatar'   => $args{'myavatar'},
         'ifravatar'  => 0,
@@ -116,12 +119,12 @@ sub init {
         'myver'      => 0
 
     );
-    info(     'mynickname: '
-            . $self->mynickname()
-            . '; mysex: '
-            . $args{'mysex'}
-            . '; myage: '
-            . $args{'myage'} );
+    info(   'mynickname: '
+          . $self->mynickname()
+          . '; mysex: '
+          . $args{'mysex'}
+          . '; myage: '
+          . $args{'myage'} );
 }
 
 ##@method boolean isPremiumSubscription()
@@ -129,9 +132,10 @@ sub init {
 #@return boolean 1 if the user has a subscription premium or 0 otherwise
 sub isPremiumSubscription {
     my ($self) = @_;
-    if ($self->myver() > 3) {
+    if ( $self->myver() > 3 ) {
         return 1;
-    } else {
+    }
+    else {
         return 0;
     }
 }
@@ -139,9 +143,11 @@ sub isPremiumSubscription {
 ##@method string getRandomPseudonym($sex)
 #@brief Returns a random pseudonym
 #@param integer $sex Pseudonym of sex: 1 if male or 2 if it is a woman
+#@param integer $old
+#@param integer $zip
 #@return string A pseudonym
 sub getRandomPseudonym {
-    my ( $self, $sex ) = @_;
+    my ( $self, $sex, $old, $zip ) = @_;
     my $nickname;
     if ( $sex == 2 ) {
         $nickname = $nicknameWoman;
@@ -151,6 +157,45 @@ sub getRandomPseudonym {
     }
     my $pseudonym = $nickname->getRandomLine();
 
+    my $r = randum(11);
+    if ( $r >= 0 and $r < 5 ) {
+        $pseudonym = lc($pseudonym);
+    }
+    elsif ( $r == 6 and length($pseudonym) < 5 ) {
+        $pseudonym = uc($pseudonym);
+    }
+
+    $r = randum(12);
+    if ( $r == 0 ) {
+        $r = randum(2);
+        if ( $r == 1 ) {
+            $pseudonym .= $old . 'ans';
+        }
+        else {
+            $pseudonym .= $old . 'a';
+        }
+    }
+    elsif ( $r == 1 ) {
+        my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) =
+          localtime(time);
+        my $birthYear = $year - $old;
+        $r = randum(2);
+        if ( $r == 1 ) {
+            $pseudonym .= $birthYear;
+        }
+        else {
+            $pseudonym .= substr( $birthYear, 2, 2 );
+        }
+    }
+    elsif ( $r == 2 ) {
+        $r = randum(2);
+        if ( $r == 1 ) {
+            $pseudonym .= $zip;
+        }
+        else {
+            $pseudonym .= substr( $zip, 0, 2 );
+        }
+    }
     return $pseudonym;
 }
 
@@ -167,11 +212,11 @@ sub validatio {
     croak error("Error: bad ageuq! ageuq = $ageuq") if $ageuq < 15;
     my $citygood = $citydio;
     $citygood = "0" x ( 5 - length($citygood) ) . $citygood
-        if length($citygood) < 5;
+      if length($citygood) < 5;
 
     # Check if the login name does not contain too many capital letters
     my $sume = 0;
-    for ( my $i = 0; $i < length($nickidol); $i++ ) {
+    for ( my $i = 0 ; $i < length($nickidol) ; $i++ ) {
         my $c = substr( $nickidol, $i, 1 );
         my $ujm = ord($c);
         $sume++ if $ujm < 95 && $ujm > 59;
@@ -181,53 +226,54 @@ sub validatio {
         $self->mynickname($nickidol);
     }
     my $cookav;
-    my $inform
-        = $nickidol . '#' 
-        . $typum . '#' 
-        . $ageuq . '#'
-        . $self->townzz() . '#'
-        . $citygood . '#0#'
-        . $self->cookav() . '#';
+    my $inform =
+        $nickidol . '#' 
+      . $typum . '#' 
+      . $ageuq . '#'
+      . $self->townzz() . '#'
+      . $citygood . '#0#'
+      . $self->cookav() . '#';
     debug("$inform");
     $self->inform($inform);
 
     $self->setCookie( 'coda', $inform );
 
     $self->sauvy( $self->cookav() )
-        if length( $self->sauvy() ) < 2;
+      if length( $self->sauvy() ) < 2;
 
-    my $location
-        = $url . "#"
-        . $nickidol . '#'
-        . $typum . '#'
-        . $ageuq . '#'
-        . $citygood . '#0#'
-        . $self->sauvy() . '#'
-        . $self->referenz() . '#';
+    my $location =
+        $url . "#"
+      . $nickidol . '#'
+      . $typum . '#'
+      . $ageuq . '#'
+      . $citygood . '#0#'
+      . $self->sauvy() . '#'
+      . $self->referenz() . '#';
     debug("location: $location");
 }
 
 ##@method void initial($url)
-#
+#@param string $url
 sub initial {
     my ( $self, $url ) = @_;
-    my ( $infor, $myavatar, $mypass )
-        = ( '', $self->myavatar(), $self->mypass() );
-    debug("1> myavatar:$myavatar; mypass: $mypass");
+    my ( $infor, $myavatar, $mypass ) =
+      ( '', $self->myavatar(), $self->mypass() );
     my $cookie_ref = $self->getCookie('samedi');
     if ( defined $cookie_ref ) {
         $infor    = $cookie_ref->{'samedi'};
         $myavatar = substr( $infor, 0, 9 );
         $mypass   = substr( $infor, 9, 29 );
     }
-    debug("2> myavatar:$myavatar; mypass: $mypass");
-    $myavatar = randum(890000000) + 100000000
-        if !defined $myavatar
+    if (   !defined $myavatar
         or $myavatar !~ m{^\d+$}
         or $myavatar < 100000000
-        or $myavatar > 1000000000;
+        or $myavatar > 1000000000 )
+    {
+        warning('The value of myavatar is not valid');
+        $myavatar = randum(890000000) + 100000000;
+    }
 
-    debug("3> myavatar:$myavatar; mypass: $mypass");
+    debug("myavatar:$myavatar; mypass: $mypass");
     $self->myavatar($myavatar);
     $self->mypass($mypass);
     $infor = $myavatar . $mypass;
@@ -243,9 +289,9 @@ sub initial {
 sub setCookie {
     my ( $self, $name, $value ) = @_;
     croak error('Error: Required parameter "name" is missing!')
-        if !defined $name;
+      if !defined $name;
     croak error('Error: Required parameter "value" is missing!')
-        if !defined $value;
+      if !defined $value;
     my $cookies_ref = $self->cookies();
     $cookies_ref->{$name} = $value;
 }
@@ -258,7 +304,7 @@ sub setCookie {
 sub getCookie {
     my ( $self, $name ) = @_;
     croak error('Error: Required parameter "name" is missing!')
-        if !defined $name;
+      if !defined $name;
     my $cookies_ref = $self->cookies();
     if ( exists $cookies_ref->{$name} ) {
         return $cookies_ref->{$name};
@@ -284,9 +330,8 @@ sub show {
     }
     $max++;
     foreach my $name (@names) {
-        print STDOUT
-            sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
-            . "\n";
+        print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
+          . "\n";
     }
     my $cookies_ref = $self->cookies();
     print STDOUT "Cookies:\n";
@@ -297,9 +342,25 @@ sub show {
     $max++;
     foreach my $name ( keys %$cookies_ref ) {
         print STDOUT
-            sprintf( '%-' . $max . 's ' . $cookies_ref->{$name}, $name . ':' )
-            . "\n";
+          sprintf( '%-' . $max . 's ' . $cookies_ref->{$name}, $name . ':' )
+          . "\n";
     }
+}
+
+##@method void display()
+#@brief Prints on one line some member variables to the console of the user object
+sub display {
+    my $self  = shift;
+    my @names = (
+        'mynickname', 'myage',   'mysex',    'zip',
+        'mynickID',   'monpass', 'myavatar', 'mypass',
+        'townzz',     'citydio', 'myver'
+    );
+    foreach my $name (@names) {
+        print STDOUT $name . ':' . $self->$name() . '; ';
+    }
+    print STDOUT "\n";
+
 }
 
 1;

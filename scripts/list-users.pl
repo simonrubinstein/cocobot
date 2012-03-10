@@ -43,6 +43,7 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
+    $bot->display();
     my $userFound_ref = $bot->getUsersList();
     my $sex           = $CLI->mysex();
     my $old           = $CLI->myage();

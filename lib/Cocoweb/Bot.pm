@@ -106,12 +106,18 @@ sub isPremiumSubscription {
     return $self->user()->isPremiumSubscription();
 }
 
- 
-
+##@method void show()
+#@brief Prints some member variables to the console of the user object
 sub show {
     my ($self) = @_;
     $self->user()->show();
 }
 
+##@method void display()
+#@brief Prints on one line some member variables to the console of the user object
+sub display {
+    my ($self) = @_;
+    $self->user()->display();
+}
 1;
 
