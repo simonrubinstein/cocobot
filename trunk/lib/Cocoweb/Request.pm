@@ -228,12 +228,6 @@ sub firsty {
 #@param object $user An 'Cocoweb::User' object
 #@param string $txt1 The parameter of the HTTP request
 sub agir {
-    my ( $self, $user, $txt1 ) = @_;
-    my $url = $self->url1() . $txt1;
-    $self->agix( $user, $url );
-}
-
-sub _agir {
     my ( $self, $user, $txt3 ) = @_;
     $self->agix( $user,
             $self->url1()
@@ -241,8 +235,6 @@ sub _agir {
           . $user->mynickID()
           . $user->monpass()
           . substr( $txt3, 2 ) );
-
-    #agix(url1+txt3.substring(0,2)+mynickID+monpass+txt3.substring(2),4);
 }
 
 ##@method void agix($user, $url, $cookie_ref)
@@ -333,7 +325,7 @@ sub process1Int {
 
         #setTimeout("agir('51'+agento)",500);
         usleep( 1000 * 500 );
-        $self->_agir( $user, '51' . $self->writo( $agent_ref->{'agent'} ) );
+        $self->agir( $user, '51' . $self->writo( $agent_ref->{'agent'} ) );
     }
 
     if ( $olko == 99 ) {
@@ -489,14 +481,14 @@ sub populate {
 sub searchnow {
     my ( $self, $user ) = @_;
     debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
-    $self->_agir( $user, '10' . $self->genru() . $self->yearu() );
+    $self->agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
 ##@method void cherchasalon($user)
-#@brief
+#@param object @user An 'User object' object
 sub cherchasalon {
     my ( $self, $user ) = @_;
-    $self->_agir( $user, '89' );
+    $self->agir( $user, '89' );
 }
 
 ##@method void getUserInfo()
@@ -505,29 +497,20 @@ sub cherchasalon {
 #@param object @user An 'User object' object
 sub getUserInfo {
     my ( $self, $user ) = @_;
-    $self->_agir( $user, '77369' );
+    $self->agir( $user, '77369' );
 }
 
-## @method void writus($user, $s1, $destId)
+## @method void writus($user, $s1, $nickId)
 #@brief
 #@param object @user An 'User object' object
 #@param string $s1
 sub writus {
-    my ( $self, $user, $s1, $destId ) = @_;
+    my ( $self, $user, $s1, $nickId ) = @_;
     return if !defined $s1 or length($s1) == 0;
-
     my $s2 = '';
     $s2 = $self->writo($s1);
-    my $sendito = '99'
-      . $user->mynickID()
-      . $user->monpass()
-      . $destId
-      . $user->roulix()
-      . $s2;
-    $self->agir( $user, $sendito );
-
-    info("writus() sendito: $sendito");
-
+    my $sendito = '99' . $nickId . $user->roulix() . $s2;
+    $self->agir( $user, '99' . $nickId . $user->roulix() . $s2 );
     my $roulix = $user->roulix();
     if ( ++$roulix > 8 ) {
         $roulix = 0;
@@ -535,15 +518,23 @@ sub writus {
     $user->roulix($roulix);
 }
 
-##@method string infuz($user, $nickId );
+##@method string infuz($user, $nickId)
+#@brief Retrieves information about an user
+#       for Premium subscribers only
+#@param object  $user   An 'User object' object
+#@param integer $nickId the nickname ID which information is requested
+#@return string Nickname information. The information includes:
+#               a unique code, ISP, status, level, connection time,
+#               a country code and city. This information is not reliable.
 sub infuz {
     my ( $self, $user, $nickId ) = @_;
     if ( $user->isPremiumSubscription() ) {
-        $self->_agir( $user, '83555' . $nickId );
+        return $self->agir( $user, '83555' . $nickId );
     }
     else {
         warning('The command "infuz" is reserved for users with a'
               . ' Premium subscription.' );
+        return;
     }
 }
 
