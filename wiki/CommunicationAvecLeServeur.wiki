@@ -39,7 +39,4 @@ Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » 
   * 99556 : réponse à une commande  « 51 », deuxième authentification avec l'identifiant et le mot de passe de la session réussie.
   * 34 : réponse à une commande « 10 », retourne la liste des pseudos
   * 89 : réponse à une commande « 89 », retourne la liste des salons
-  * 48 : retourne la liste des « amiz ».
-
-
-
+  * 48 : réponse à une commande « 48 », retourne la liste des « amiz », c'est à dire les pseudonymes de la liste de contacts.
