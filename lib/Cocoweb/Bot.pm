@@ -91,6 +91,8 @@ sub getUserInfo {
 }
 
 ##@method string infuz($nickId)
+#@brief Retrieves information about an user
+#       for Premium subscribers only
 sub infuz {
     my ( $self, $nickId ) = @_;
     $self->request()->infuz( $self->user(), $nickId );
