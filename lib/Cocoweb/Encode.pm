@@ -34,18 +34,19 @@ use Data::Dumper;
 use Term::ANSIColor;
 use strict;
 use warnings;
+
 #__PACKAGE__->attributes('pathnames');
 
-my %dememeMatch = ();
-my %shiftuMatch = ();
-my %demeleMatch = ();
+my %dememeMatch        = ();
+my %shiftuMatch        = ();
+my %demeleMatch        = ();
 my $hasBeenInitialized = 0;
 
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
     $instance->initializeTables()
-    if !$hasBeenInitialized;
+      if !$hasBeenInitialized;
     return $instance;
 }
 
@@ -238,6 +239,5 @@ sub transformix {
     }
     return $s2;
 }
-
 
 1;
