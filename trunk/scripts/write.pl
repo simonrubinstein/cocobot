@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-22
-# @date 2012-03-04
+# @date 2012-03-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -27,6 +27,7 @@
 # MA  02110-1301, USA.
 use strict;
 use warnings;
+use Data::Dumper;
 use FindBin qw($Script $Bin);
 use utf8;
 no utf8;
@@ -34,6 +35,7 @@ use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 my $CLI;
+my $message;
 
 init();
 run();
@@ -42,14 +44,32 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
-    $bot->writeMessage("Hello!", 263281);
+    my $id;
+    if ( defined $CLI->searchNickname() ) {
+        my $userFound_ref = $bot->searchUser( $CLI->searchNickname() );
+        if ( !defined $userFound_ref ) {
+            print STDOUT 'The pseudonym "'
+              . $CLI->searchNickname()
+              . '" was not found.' . "\n";
+            return;
+        }
+        $id = $userFound_ref->{'id'};
+    }
+    else {
+        $id = $CLI->searchId();
+    }
+    $bot->writeMessage( $message, $id );
     info("The script was completed successfully.");
 }
- 
+
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'searchEnable' => 1 );
+    my $opt_ref = $CLI->getOpts( 'searchEnable' => 1, 'argumentative' => 'm:' );
+    $message = $opt_ref->{'m'} if exists $opt_ref->{'m'};
+    if ( !defined $message ) {
+        die error("You must specify a message string (-m option)");
+    }
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -82,5 +102,4 @@ sub VERSION_MESSAGE {
      Written by Simon Rubinstein 
 ENDTXT
 }
-
 
