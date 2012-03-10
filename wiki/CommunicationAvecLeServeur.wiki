@@ -35,12 +35,11 @@ Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » 
 == Les codes de retour ==
 
   * 12 : réponse à une commande  « 40 », première authentification avec l'identifiant de l'avatar et le mot de passe réussie.
-  * 995555 : réponse à une commande  « 51 », deuxième authentification avec l'identifiant et le mot de passe de la session réussie.
+  * 99555 : information sur un pseudonyme utilisé en pressant le bouton « ? ». Réservé à un abonnement Premium.
+  * 99556 : réponse à une commande  « 51 », deuxième authentification avec l'identifiant et le mot de passe de la session réussie.
   * 34 : réponse à une commande « 10 », retourne la liste des pseudos
   * 89 : réponse à une commande « 89 », retourne la liste des salons
-
-
-
+  * 48 : retourne la liste des « amiz ».
 
 
 
