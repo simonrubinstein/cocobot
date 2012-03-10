@@ -31,6 +31,7 @@ use warnings;
 use Cocoweb;
 use Cocoweb::Config;
 use Cocoweb::Config::Hash;
+use Cocoweb::Encode;
 use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
@@ -48,15 +49,13 @@ __PACKAGE__->attributes(
     ## 0 = all; 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
     'yearu',
     'userFound',
-    'speco'
+    'speco',
+    'convert'
 );
 
 my $conf_ref;
 my $agent_ref;
 my $userAgent;
-my %dememeMatch = ();
-my %shiftuMatch = ();
-my %demeleMatch = ();
 
 ##@method void init($args)
 #@brief Perform some initializations
@@ -81,7 +80,6 @@ sub init {
             'agent'   => $agent_ref->{'agent'},
             'timeout' => $agent_ref->{'timeout'}
         );
-        $self->initializeTables();
     }
 
     my $myport = 3000 + randum(1000);
@@ -92,7 +90,8 @@ sub init {
         'genru'     => 0,
         'yearu'     => 0,
         'userFound' => {},
-        'speco'     => 0
+        'speco'     => 0,
+        'convert'   => Cocoweb::Encode->instance()
     );
 
     #debug( "url1: " . $self->url1() );
@@ -325,7 +324,8 @@ sub process1Int {
 
         #setTimeout("agir('51'+agento)",500);
         usleep( 1000 * 500 );
-        $self->agir( $user, '51' . $self->writo( $agent_ref->{'agent'} ) );
+        $self->agir( $user,
+            '51' . $self->convert()->writo( $agent_ref->{'agent'} ) );
     }
 
     if ( $olko == 99 ) {
@@ -333,7 +333,8 @@ sub process1Int {
         info("bud: $bud");
 
         if ( $bud == 444 ) {
-            my $urlu = $self->transformix( substr( $urlo, 5 ), -1, 0 );
+            my $urlu =
+              $self->$self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
@@ -343,7 +344,8 @@ sub process1Int {
 
         # Retrieves information about an user, for Premium subscribers only
         if ( $bud == 555 ) {
-            my $urlu = $self->transformix( substr( $urlo, 5 ), -1, 0 );
+            my $urlu =
+              $self->$self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
@@ -437,8 +439,8 @@ sub process1Int {
 
 sub clearUsersList {
     my ($self) = @_;
-    
-    $self->userFound({});
+
+    $self->userFound( {} );
 
 }
 
@@ -508,7 +510,7 @@ sub writus {
     my ( $self, $user, $s1, $nickId ) = @_;
     return if !defined $s1 or length($s1) == 0;
     my $s2 = '';
-    $s2 = $self->writo($s1);
+    $s2 = $self->convert()->writo($s1);
     my $sendito = '99' . $nickId . $user->roulix() . $s2;
     $self->agir( $user, '99' . $nickId . $user->roulix() . $s2 );
     my $roulix = $user->roulix();
@@ -536,39 +538,6 @@ sub infuz {
               . ' Premium subscription.' );
         return;
     }
-}
-
-## @method string writo($s1)
-# @param string $s1
-# @return string
-sub writo {
-    my ( $self, $s1 ) = @_;
-    utf8::decode($s1);
-    my $s2     = '';
-    my $toulon = 0;
-    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
-        my $c = substr( $s1, $i, 1 );
-        my $numerox = ord($c);
-        if ( $numerox != 32 ) {
-            $toulon++;
-        }
-        else {
-            $toulon = 0;
-        }
-        if ( $toulon < 24 ) {
-            if (   $numerox < 43
-                or ( $numerox > 59 and $numerox < 64 )
-                or ( $numerox > 90 and $numerox < 96 )
-                or $numerox > 122 )
-            {
-                $s2 .= $self->dememe($numerox);
-            }
-            else {
-                $s2 .= $c;
-            }
-        }
-    }
-    return $s2;
 }
 
 ## @method hashref searchPseudonym($user, $pseudonym)
@@ -613,161 +582,6 @@ sub checkIfPseudonymExists {
     }
     debug("The pseudonym '$pseudonym' was not found");
     return;
-}
-
-## @method void initializeTables()
-sub initializeTables {
-    my ($self) = @_;
-    %dememeMatch = (
-        32   => "~",
-        33   => '!',
-        36   => "*7",
-        37   => "%",
-        39   => "*8",
-        40   => "(",
-        41   => ")",
-        42   => "*s",
-        61   => "=",
-        63   => "?",
-        94   => "*l",
-        95   => "*0",
-        8364 => "*d",
-        224  => "*a",    # à
-        226  => "*k",    # â
-        231  => "*c",    # ç
-        232  => "*e",    # è
-        233  => "*r",    # é
-        234  => "*b",    # ê
-        238  => "*i",    # î
-        239  => "*k",    # ï
-        244  => "*o",    # ô
-        249  => "*f",    # ù
-        251  => "*u"     # û
-    );
-    %shiftuMatch = (
-        108 => '^',
-        100 => '€',
-        107 => 'â',
-        97  => 'à',
-        98  => 'ê',
-        99  => 'ç',
-        101 => 'è',
-        114 => 'é',
-        106 => 'ï',
-        105 => 'î',
-        111 => 'ô',
-        117 => 'û',
-        102 => 'ù',
-        115 => '*',
-        48  => '_',
-        56  => "'",
-        55  => '$'
-    );
-
-    %demeleMatch = (
-        32  => ' ',
-        33  => '!',
-        36  => '$',
-        37  => '%',
-        38  => '{',
-        40  => '(',
-        41  => ')',
-        42  => '*',
-        61  => '=',
-        63  => '?',
-        96  => '',
-        95  => '_',
-        126 => ' '
-    );
-}
-
-##@method string dememe($numix)
-#@param integer $numix
-#@return string
-sub dememe {
-    my ( $self, $numix ) = @_;
-    return '' if !exists $dememeMatch{$numix};
-    return $dememeMatch{$numix};
-}
-
-##@method string demele($numix)
-#@param integer $numix
-#@param integer $wyb
-#@return string
-sub demele {
-    my ( $self, $numix, $wyb ) = @_;
-    return "\n" if $numix == 96 and $wyb < 0;
-    return '' if !exists $demeleMatch{$numix};
-    return $demeleMatch{$numix};
-}
-
-##@method string shiftu($numix)
-#@param integer $numix
-#@return string
-sub shiftu {
-    my ( $self, $numix ) = @_;
-    return '' if !exists $shiftuMatch{$numix};
-    return $shiftuMatch{$numix};
-}
-
-##@method string transformix($sx, $tyb, $syx)
-#@param string $sx A string to convert
-#@param integer $tyb -1 or -23
-#@param integer $syx
-#@return string The string of characters converted
-sub transformix {
-    my ( $self, $sx, $tyb, $syx ) = @_;
-    $tyb = -1 if !defined $tyb;
-    $syx = 0  if !defined $syx;
-    my $s1 = $sx;
-    my ( $numerox, $shifto, $s2, $toolong, $unefoi ) = ( 0, 0, '', 0, 0 );
-    $s1 =~ s{http://}{}g;
-    my $mmj = index( $s1, 'www' );
-    $toolong = -70 if $syx > 7 and $mmj > -1;
-
-    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
-        my $c = substr( $s1, $i, 1 );
-        $numerox = ord($c);
-        $toolong++ if $tyb != 23;
-        $toolong = 0 if $numerox == 126 or $numerox == 32 or $tyb == 117;
-        next if $toolong >= 27;
-        if ( $shifto != 0 ) {
-            $s2 .= $self->shiftu($numerox);
-            $shifto = 0;
-            next;
-        }
-
-        # The asterisk character announces an accented character
-        if ( $numerox == 42 ) {
-            $shifto = 1;
-            next;
-        }
-        if (   ( $numerox < 43 )
-            or ( ( $numerox > 58 ) and ( $numerox < 64 ) )
-            or ( ( $numerox > 90 ) and ( $numerox < 97 ) )
-            or ( $numerox > 122 ) )
-        {
-
-            # 59 = ';'
-            if ( $numerox == 59 ) {
-                my $resiz = ';';
-                my $numoz = parseInt( substr( $i + 1, 2 ), 10 );
-
-                #TODO: emoticons suppport
-                warning("The support of smileys is not implemented");
-                $s2 .= $resiz;
-            }
-            else {
-                $s2 .= $self->demele( $numerox, $tyb );
-            }
-
-        }
-        else {
-            $s2 .= $c;
-        }
-
-    }
-    return $s2;
 }
 
 1;
