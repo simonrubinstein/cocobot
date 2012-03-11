@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-10
+# @date 2012-03-11
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -98,6 +98,14 @@ sub infuz {
     $self->request()->infuz( $self->user(), $nickId );
 }
 
+##@method hashref getInfuz($nickId)
+#@brief Retrieves information about an user
+#       for Premium subscribers only
+sub getInfuz {
+    my ( $self, $nickId ) = @_;
+    $self->request()->getInfuz( $self->user(), $nickId );
+}
+
 ##@method void actuam($user)
 #@brief Get the list of contacts, nicknamed 'amiz'
 #@param object @user An 'User object' object
@@ -128,5 +136,15 @@ sub display {
     my ($self) = @_;
     $self->user()->display();
 }
+
+##@method void clearUsersList()
+#@brief Clears the list of users
+sub clearUsersList {
+    my ($self) = @_;
+    $self->request()->clearUsersList();
+}
+
+
+
 1;
 

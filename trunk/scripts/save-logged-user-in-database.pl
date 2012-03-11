@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief 
 #@created 2012-03-09
-#@date 2012-03-09
+#@date 2012-03-11
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -29,7 +29,10 @@
 use strict;
 use warnings;
 use FindBin qw($Script $Bin);
+use Data::Dumper;
 use Time::HiRes;
+use Term::ANSIColor;
+$Term::ANSIColor::AUTORESET = 1;
 use utf8;
 no utf8;
 use lib "../lib";
@@ -40,27 +43,53 @@ my $CLI;
 init();
 run();
 
+my %user = ();
+my $bot;
+
 ##@method ivoid run()
 sub run {
-    my $bot = $CLI->getBot( 'generateRandom' => 1 );
+    $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     if ( !$bot->isPremiumSubscription() ) {
         die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
     }
+    my $count = 0;
     while(1) {
+        $count++;
         my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
+        $bot->clearUsersList();
         my $userFound_ref = $bot->getUsersList();
+        checkUsers($userFound_ref);
         my $t0 = [Time::HiRes::gettimeofday];
-        print "t0 = $t0\n";
         my $elapsed = Time::HiRes::tv_interval ( $t0 );
-        print "$elapsed\n";
-
-        sleep(4);
-
+        my @e = split(/\./, $elapsed);
+        my $sleepVal = Time::HiRes::tv_interval (\@e, [4, 0]);
+        info("time looop interval: $elapsed; sleep: $sleepVal");
+        Time::HiRes::sleep($sleepVal);
+        $elapsed = Time::HiRes::tv_interval ( $t0 );
+        info("time looop interval: $elapsed");
+        last if $count > 10;
     }
 
     info("The $Bin script was completed successfully.");
 }
+
+sub checkUsers {
+    my ($userFound_ref) = @_;
+
+    foreach my $id (%$userFound_ref) {
+        next if exists $user{$id};
+        my $login_ref = $userFound_ref->{$id};
+        foreach my $name (keys %$login_ref) {
+            $user{$id}->{$name} = $login_ref->{$name};
+            my $infuz_ref = $bot->getInfuz($id);
+            print Dumper $infuz_ref;
+
+        }
+    }
+}
+
+
 
 
 
