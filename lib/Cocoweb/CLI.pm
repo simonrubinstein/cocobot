@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-03-10
+# @date 2011-03-11
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,12 +33,13 @@ use Carp;
 use FindBin qw($Script);
 use Data::Dumper;
 use Term::ANSIColor;
+$Term::ANSIColor::AUTORESET = 1;
 use Getopt::Std;
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 use strict;
 use warnings;
 __PACKAGE__->attributes(
-    'mynickname', 'myage',  'mysex',    'myavatar',
+    'mynickname', 'myage',    'mysex', 'myavatar',
     'mypass',     'searchId', 'searchNickname'
 );
 
@@ -57,7 +58,7 @@ sub init {
     return $instance;
 }
 
-##@method hashref getOptos($argumentative)
+##@method hashref getOpts($argumentative)
 #@brief Processes single-character switches with switch clustering.
 #@param string $argumentative
 #@return hashref The values found in arguments
@@ -92,8 +93,8 @@ sub getOpts {
             $self->mysex(2);
         }
         else {
-            error(
-                "The sex argument value must be either M or W. (-s option)");
+            error(  'The sex argument value must be either M or W.'
+                  . ' (-s option)' );
             return;
         }
     }
@@ -116,10 +117,28 @@ sub getOpts {
         and defined $self->searchNickname()
         and defined $self->searchId() )
     {
-        error("You must specify either a user or an id (-l) or ID -i");
+        error('You must specify either a user or an id (-l) or ID -i');
         return;
     }
 
+    return \%opt;
+}
+
+##@method hashref getMinimumOpts($argumentative)
+#@brief Processes single-character switches with switch clustering.
+#@param string $argumentative
+#@return hashref The values found in arguments
+sub getMinimumOpts {
+    my ( $self, %argv ) = @_;
+    my $argumentative = '';
+    $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
+    $argumentative .= 'dv';
+    my %opt;
+    if ( !getopts( $argumentative, \%opt ) ) {
+        return;
+    }
+    $Cocoweb::isVerbose = 1 if exists $opt{'v'};
+    $Cocoweb::isDebug   = 1 if exists $opt{'d'};
     return \%opt;
 }
 
@@ -128,8 +147,7 @@ sub getOpts {
 #@return object A Cocoweb::Bot object
 sub getBot {
     my ( $self, @params ) = @_;
-    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass')
-    {
+    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass' ) {
         push @params, $name, $self->$name() if defined $self->$name();
     }
     my $bot = Cocoweb::Bot->new(@params);

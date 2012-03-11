@@ -1,5 +1,5 @@
 The following Perl modules are prerequisites:
-sudo aptitude install libconfig-general-perl libwww-perl
+sudo aptitude install libconfig-general-perl libwww-perl libdbd-sqlite3-perl
 
 Lists the nicknames connected:
 ./cocoweb.pl -a list

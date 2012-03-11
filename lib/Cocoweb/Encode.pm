@@ -1,6 +1,6 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2012-03-10
+# @date 2012-03-11
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -207,7 +207,7 @@ sub transformix {
             next;
         }
 
-        # The asterisk character announces an accented character
+        # The asterisk character announces a no ASCII char
         if ( $numerox == 42 ) {
             $shifto = 1;
             next;

@@ -442,11 +442,11 @@ sub process1Int {
 
 }
 
+##@method void clearUsersList()
+#@brief Clears the list of users
 sub clearUsersList {
     my ($self) = @_;
-
     $self->userFound( {} );
-
 }
 
 ## @method void populate($userFound_ref, $urlo, $offsat)
@@ -552,6 +552,46 @@ sub infuz {
         return;
     }
 }
+
+##@method hashref getInfuz($user, $nickId)
+sub getInfuz {
+    my ( $self, $user, $nickId ) = @_;
+    my $str = $self->infuz( $user, $nickId );
+    my @lines = split( /\n/, $str );
+    my %infuz = ();
+    if ( $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
+                        \s\-(.*)$}xms ) {
+        $infuz{'code'} = $1;
+        $infuz{'ISP'}  = $2;
+    }
+    else {
+        die error("string $str is bad");
+    }
+    if ( $lines[1] =~
+        m{.*statut:\s([0-9]+)
+          \sniveau:\s([0-9]+)
+          \sdepuis\s([0-9])+.*$}xms )
+    {
+        $infuz{'status'} = $1;
+        $infuz{'level'}  = $2;
+        $infuz{'since'}  = $3;
+    }
+    else {
+        die error("string $str is bad");
+    }
+    if ( $lines[2] =~ m{Ville: (.*)$} ) {
+        $infuz{'town'} = $1;
+    }
+    else {
+        die error("string $str is bad");
+    }
+    return \%infuz;
+}
+
+
+
+
+
 
 ## @method hashref searchPseudonym($user, $pseudonym)
 #@param string The pseudonym wanted
