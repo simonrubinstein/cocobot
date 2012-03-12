@@ -107,11 +107,14 @@ sub checkUsers {
 
     dumpToFile(\%townCount, '_townCount.pl');
 
+    my $count = 0;
     foreach my $town (keys %townCount) {
         next if exists $town_ref->{$town};
         print "$town => $townCount{$town}\n";
+        $count++;
     }
-    print Dumper $town_ref;
+    print "------------------ $count\n";
+    #print Dumper $town_ref;
 
 
 

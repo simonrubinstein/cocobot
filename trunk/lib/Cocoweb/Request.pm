@@ -578,7 +578,7 @@ sub getInfuz {
       )
     {
         $infuz{'code'} = $1;
-        $infuz{'ISP'}  = $2;
+        $infuz{'ISP'}  = trim($2);
     }
     else {
         die error("string '$lines[0]' is bad");
@@ -600,7 +600,7 @@ sub getInfuz {
         die error("string '$lines[1]' is bad");
     }
     if ( $lines[2] =~ m{Ville: (.*)$} ) {
-        $infuz{'town'} = $1;
+        $infuz{'town'} = trim($1);
     }
     else {
         die error("string '$lines[2]' is bad");
