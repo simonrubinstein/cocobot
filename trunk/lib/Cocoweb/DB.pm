@@ -41,12 +41,18 @@ __PACKAGE__->attributes( 'dbh', 'filename' );
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
-    my $config = Cocoweb::Config->instance()->getConfigFile('database.sql');
+    my $config = Cocoweb::Config->instance()->getConfigFile('database.conf');
     $instance->attributes_defaults(
         'dbh'      => undef,
         'filename' => $config->getString('filename')
     );
     return $instance;
+}
+
+sub getInitTowns {
+    my ($self) = @_;
+    my $town = Cocoweb::Config->instance()->getConfigFile('towns.txt', 1);
+    return $town->getAsHash();
 }
 
 ##@method void connect()

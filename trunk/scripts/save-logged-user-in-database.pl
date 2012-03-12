@@ -38,7 +38,14 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
+use Cocoweb::DB;
+my $DB;
 my $CLI;
+
+my %ispCount = ();
+my %townCount = ();
+my $premiumCount = 0;
+
 
 init();
 run();
@@ -68,7 +75,7 @@ sub run {
         Time::HiRes::sleep($sleepVal);
         $elapsed = Time::HiRes::tv_interval ( $t0 );
         info("time looop interval: $elapsed");
-        last if $count > 10;
+        last if $count > 1;
     }
 
     info("The $Bin script was completed successfully.");
@@ -76,17 +83,38 @@ sub run {
 
 sub checkUsers {
     my ($userFound_ref) = @_;
+    my $count = 0;
+    my $town_ref = $DB->getInitTowns();
 
-    foreach my $id (%$userFound_ref) {
+    foreach my $id (keys %$userFound_ref) {
         next if exists $user{$id};
         my $login_ref = $userFound_ref->{$id};
         foreach my $name (keys %$login_ref) {
             $user{$id}->{$name} = $login_ref->{$name};
-            my $infuz_ref = $bot->getInfuz($id);
-            print Dumper $infuz_ref;
-
         }
+        my $infuz_ref = $bot->getInfuz($id);
+        print Dumper $infuz_ref;
+        $count++;
+        $ispCount{$infuz_ref->{'ISP'}}++;
+        $townCount{$infuz_ref->{'town'}}++;
+        $premiumCount++ if $infuz_ref->{'premium'};
     }
+
+    debug("$count users checked / $premiumCount premium");
+    
+    #print Dumper \%ispCount;
+    #print Dumper \%townCount;
+
+    dumpToFile(\%townCount, '_townCount.pl');
+
+    foreach my $town (keys %townCount) {
+        next if exists $town_ref->{$town};
+        print "$town => $townCount{$town}\n";
+    }
+    print Dumper $town_ref;
+
+
+
 }
 
 
@@ -95,6 +123,7 @@ sub checkUsers {
 
 ## @method void init()
 sub init {
+    $DB  = Cocoweb::DB->instance();
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts();
     if ( !defined $opt_ref ) {

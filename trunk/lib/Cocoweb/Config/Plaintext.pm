@@ -1,5 +1,5 @@
 # @created 2012-02-24
-# @date 2012-02-24
+# @date 2012-03-12
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -47,6 +47,7 @@ sub init {
       if !open( $fh, '<', $filename );
     while ( my $line = <$fh> ) {
         chomp($line);
+        next if substr($line, 0, 1) eq '#' or $line =~m{^\s*$};
         push @file, $line;
     }
     close $fh;
@@ -60,6 +61,25 @@ sub init {
 sub getAll {
     my ($self) = @_;
     return $self->all();
+}
+
+sub getAsHash {
+    my ($self) = @_;
+    my $file_ref = $self->all();
+    my %hashtable = ();
+    my %ctrl      = ();
+    my $count = 1;
+    foreach my $line (@$file_ref) {
+        $line =~s{^\s+}{}g;
+        $line =~s{\s+$}{}g;
+        die error("The key $line exists") if exists  $hashtable{$line};
+        $hashtable{$line} = $count;
+        $line = lc($line);
+        die error("The key $line exists") if exists  $ctrl{$line};
+        $ctrl{$line} = 1;
+        $count++;
+    }
+    return \%hashtable;
 }
 
 ##@method string getRandomLine()

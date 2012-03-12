@@ -27,11 +27,14 @@
 package Cocoweb;
 use strict;
 use warnings;
+use Data::Dumper;
 use Carp;
-use Cocoweb::Logger;
+use IO::File;
 use POSIX;
+use File::stat;
+use Cocoweb::Logger;
 
-our $VERSION   = '0.2000';
+our $VERSION   = '0.2001';
 our $AUTHORITY = 'TEST';
 our $isVerbose = 0;
 our $isDebug   = 0;
@@ -40,7 +43,9 @@ my $logger;
 use base 'Exporter';
 our @EXPORT = qw(
   debug
+  dumpToFile
   error
+  fileToVars
   info
   message
   parseInt
@@ -71,7 +76,7 @@ sub warning {
 
 ##@method void debug(@_)
 sub debug {
-    return if !$isDebug; 
+    return if !$isDebug;
     $logger->debug(@_);
 }
 
@@ -93,8 +98,8 @@ sub randum {
 # @author Father Chrysostomo
 sub parseInt {
     my ( $str, $radix ) = @_;
-    $str = 'undefined' if !defined $str;
-    $radix = 10 if !defined $radix;
+    $str   = 'undefined' if !defined $str;
+    $radix = 10          if !defined $radix;
     my $sign =
       $str =~ s/^([+-])//
       ? ( -1, 1 )[ $1 eq '+' ]
@@ -143,6 +148,33 @@ sub parseInt {
         $ret = $num * $sign;
     }
     return $ret;
+}
+
+##@method dumpToFile($vars, $filename)
+sub dumpToFile {
+    my ( $vars, $filename ) = @_;
+    $Data::Dumper::Purity = 1;
+    $Data::Dumper::Indent = 1;
+    $Data::Dumper::Terse  = 1;
+    my $fh;
+    die error("open($filename) was failed: $!") if !open( $fh, '>', $filename );
+    print $fh Dumper $vars;
+    die error("open($filename) was failed: $!") if !close($fh);
+}
+
+##@method fileToVars($filename)
+sub fileToVars {
+    my ($filename) = @_;
+    my $stat = stat($filename);
+    die error("stat($filename) was failed: $!") if !defined $stat;
+    my $fh;
+    die error("open($filename) was failed: $!") if !open( $fh, '<', $filename );
+    my ( $contentSize, $content ) = ( 0, '' );
+    sysread( $fh, $content, $stat->size(), $contentSize );
+    close $fh;
+    my $vars = eval($content);
+    die error($@) if $@;
+    return $vars;
 }
 
 ##@method void BEGIN()
