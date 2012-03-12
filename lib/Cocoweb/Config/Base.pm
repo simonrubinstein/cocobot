@@ -93,7 +93,7 @@ sub getArray {
         $array_ref = [ $hash->{$key} ];
     }
     else {
-        croak error("$key is wrong");
+        croak error("$key is wrong: $r");
     }
     return $array_ref;
 }

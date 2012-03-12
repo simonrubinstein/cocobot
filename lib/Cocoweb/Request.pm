@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-10
+# @date 2012-03-12
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -111,6 +111,14 @@ sub getValue {
               . $name
               . '" value was not found in the configuration.' );
     }
+}
+
+##@method void checkNickId($nickId)
+#@brief Checks if the nickname ID value is correct
+#@param integer $nickId The nickname ID which information is requested
+sub checkNickId {
+    my ( $self, $nickId ) = @_;
+    croak error("The $nickId nickname ID is wrong") if $nickId !~ m{^\d+$};
 }
 
 ## @method object execute($url, $cookie_ref)
@@ -449,10 +457,10 @@ sub clearUsersList {
     $self->userFound( {} );
 }
 
-## @method void populate($userFound_ref, $urlo, $offsat)
+##@method void populate($userFound_ref, $urlo, $offsat)
 sub populate {
     my ( $self, $userFound_ref, $urlo, $offsat ) = @_;
-    my $countNew      = 0;
+    my $countNew = 0;
     if ( length($urlo) > 12 ) {
         my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
         while ( $mopo < 1 ) {
@@ -521,12 +529,14 @@ sub getUserInfo {
 #@param string $s1
 sub writus {
     my ( $self, $user, $s1, $nickId ) = @_;
+    $self->checkNickId($nickId);
     return if !defined $s1 or length($s1) == 0;
     my $s2 = '';
     $s2 = $self->convert()->writo($s1);
     my $sendito = '99' . $nickId . $user->roulix() . $s2;
     $self->agir( $user, '99' . $nickId . $user->roulix() . $s2 );
     my $roulix = $user->roulix();
+
     if ( ++$roulix > 8 ) {
         $roulix = 0;
     }
@@ -537,12 +547,13 @@ sub writus {
 #@brief Retrieves information about an user
 #       for Premium subscribers only
 #@param object  $user   An 'User object' object
-#@param integer $nickId the nickname ID which information is requested
+#@param integer $nickId The nickname ID which information is requested
 #@return string Nickname information. The information includes:
 #               a unique code, ISP, status, level, connection time,
 #               a country code and city. This information is not reliable.
 sub infuz {
     my ( $self, $user, $nickId ) = @_;
+    $self->checkNickId($nickId);
     if ( $user->isPremiumSubscription() ) {
         return $self->agir( $user, '83555' . $nickId );
     }
@@ -554,47 +565,52 @@ sub infuz {
 }
 
 ##@method hashref getInfuz($user, $nickId)
+#@param object  $user   An 'User object' object
+#@param integer $nickId The nickname ID which information is requested
 sub getInfuz {
     my ( $self, $user, $nickId ) = @_;
     my $str = $self->infuz( $user, $nickId );
     my @lines = split( /\n/, $str );
     my %infuz = ();
-    if ( $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
-                        \s\-(.*)$}xms ) {
+    if (
+        $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
+                        \s\-(.*)$}xms
+      )
+    {
         $infuz{'code'} = $1;
         $infuz{'ISP'}  = $2;
     }
     else {
-        die error("string $str is bad");
+        die error("string '$lines[0]' is bad");
     }
-    if ( $lines[1] =~
-        m{.*statut:\s([0-9]+)
-          \sniveau:\s([0-9]+)
-          \sdepuis\s([0-9])+.*$}xms )
+    if (
+        $lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)
+                       \s*(PREMIUM)?
+                       \s*niveau:\s([0-9]+)
+                       \sdepuis
+                       \s([0-9]+).*$}xms
+      )
     {
-        $infuz{'status'} = $1;
-        $infuz{'level'}  = $2;
-        $infuz{'since'}  = $3;
+        $infuz{'status'}  = $1;
+        $infuz{'premium'} = defined $2 ? 1 : 0;
+        $infuz{'level'}   = $3;
+        $infuz{'since'}   = $4;
     }
     else {
-        die error("string $str is bad");
+        die error("string '$lines[1]' is bad");
     }
     if ( $lines[2] =~ m{Ville: (.*)$} ) {
         $infuz{'town'} = $1;
     }
     else {
-        die error("string $str is bad");
+        die error("string '$lines[2]' is bad");
     }
     return \%infuz;
 }
 
-
-
-
-
-
-## @method hashref searchPseudonym($user, $pseudonym)
-#@param string The pseudonym wanted
+##@method hashref searchPseudonym($user, $pseudonym)
+#@param object $user      An 'User object' object
+#@param string $pseudonym The pseudonym wanted
 sub searchPseudonym {
     my ( $self, $user, $pseudonym ) = @_;
     debug("pseudonym: $pseudonym");
