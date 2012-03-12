@@ -51,8 +51,12 @@ sub init {
 
 sub getInitTowns {
     my ($self) = @_;
-    my $town = Cocoweb::Config->instance()->getConfigFile('towns.txt', 1);
-    return $town->getAsHash();
+    my $towns = Cocoweb::Config->instance()->getConfigFile('towns.txt', 1);
+    my $towns_ref = $towns->getAsHash();
+    foreach my $town (keys %$towns_ref) {
+        die error("The string $town is not valid") if $town !~m{^(MQ|FR)\-};
+    }
+    return $towns_ref;
 }
 
 ##@method void connect()

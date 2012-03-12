@@ -50,6 +50,7 @@ our @EXPORT = qw(
   message
   parseInt
   randum
+  trim
   warning
 );
 
@@ -87,6 +88,17 @@ sub debug {
 sub randum {
     my ($qxq) = @_;
     return floor( rand($qxq) );
+}
+
+##@method string trim($str)
+#@brief Strip whitespace from the beginning and end of a string
+#@param string $str The string that will be trimmed
+#@return string The trimmed string
+sub trim {
+    my ($str) = @_;
+    $str =~ s{^\s+}{};
+    $str =~ s{\s+$}{};
+    return $str;
 }
 
 ##@method int parseInt($str, $radix)
