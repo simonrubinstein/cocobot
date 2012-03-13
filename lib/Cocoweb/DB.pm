@@ -53,15 +53,15 @@ sub init {
 
 sub getInitTowns {
     my ($self) = @_;
-    my $towns = Cocoweb::Config->instance()->getConfigFile('towns.txt', 1);
+    my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 1 );
 
     my $ISO3166Regex = $self->ISO3166Regex();
     $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
-    foreach my $town (keys %$towns_ref) {
+    foreach my $town ( keys %$towns_ref ) {
         die error("The string $town is not valid") if $town !~ $ISO3166Regex;
     }
-    info('number of towns: ' . scalar(keys %$towns_ref));
+    info( 'number of towns: ' . scalar( keys %$towns_ref ) );
     return $towns_ref;
 }
 
@@ -132,7 +132,7 @@ ENDTXT
 }
 
 sub insertTown {
-    my ($self, $name) = @_;
+    my ( $self, $name ) = @_;
 
 }
 
