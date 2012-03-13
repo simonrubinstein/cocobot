@@ -36,26 +36,32 @@ use Term::ANSIColor;
 use strict;
 use warnings;
 
-__PACKAGE__->attributes( 'dbh', 'filename' );
+__PACKAGE__->attributes( 'dbh', 'filename', 'ISO3166Regex' );
 
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
     my $config = Cocoweb::Config->instance()->getConfigFile('database.conf');
     $instance->attributes_defaults(
-        'dbh'      => undef,
-        'filename' => $config->getString('filename')
+        'dbh'          => undef,
+        'filename'     => $config->getString('filename'),
+        'ISO3166Regex' => $config->getString('ISO-3166-1-alpha-2')
     );
+
     return $instance;
 }
 
 sub getInitTowns {
     my ($self) = @_;
     my $towns = Cocoweb::Config->instance()->getConfigFile('towns.txt', 1);
+
+    my $ISO3166Regex = $self->ISO3166Regex();
+    $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
     foreach my $town (keys %$towns_ref) {
-        die error("The string $town is not valid") if $town !~m{^(MQ|FR)\-};
+        die error("The string $town is not valid") if $town !~ $ISO3166Regex;
     }
+    info('number of towns: ' . scalar(keys %$towns_ref));
     return $towns_ref;
 }
 

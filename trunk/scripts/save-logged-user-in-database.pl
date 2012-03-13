@@ -67,6 +67,7 @@ sub run {
         $bot->clearUsersList();
         my $userFound_ref = $bot->getUsersList();
         checkUsers($userFound_ref);
+        last;
         my $t0 = [Time::HiRes::gettimeofday];
         my $elapsed = Time::HiRes::tv_interval ( $t0 );
         my @e = split(/\./, $elapsed);
@@ -107,13 +108,16 @@ sub checkUsers {
 
     dumpToFile(\%townCount, '_townCount.pl');
 
-    my $count = 0;
+    my ($count, $found) = (0, 0);
     foreach my $town (keys %townCount) {
-        next if exists $town_ref->{$town};
+        if (exists $town_ref->{$town}) {
+            $found++;
+            next;
+        }
         print "$town => $townCount{$town}\n";
         $count++;
     }
-    print "------------------ $count\n";
+    print "------------------ found: $found; not found: $count\n";
     #print Dumper $town_ref;
 
 
