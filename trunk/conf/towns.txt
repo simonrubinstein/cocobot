@@ -3,6 +3,7 @@ FR- Paris
 
 # 91: Essonne
 FR- Angervilliers
+FR- Arpajon
 FR- Athis-mons
 FR- Bouray-sur-juine
 FR- Breuillet
@@ -24,6 +25,7 @@ FR- Igny
 FR- Juvisy-sur-orge
 FR- Leudeville
 FR- Longjumeau
+FR- Massy
 FR- Marolles-en-hurepoix
 FR- Mennecy
 FR- Orsay
@@ -32,6 +34,8 @@ FR- Saint-pierre-du-perray
 FR- Saintry-sur-seine
 FR- Saulx-les-chartreux
 FR- Savigny-sur-orge
+FR- Vigneux-sur-seine
+FR- Villemoisson-sur-orge
 FR- Yerres 
 
 # 92: Hauts-de-Seine
@@ -50,6 +54,7 @@ FR- Fontenay-aux-roses
 FR- Rueil-malmaison
 FR- Gagny
 FR- Issy-les-moulineaux
+FR- La Garenne-colombes
 FR- La Defense
 FR- Le Plessis
 FR- Levallois-perret
@@ -104,6 +109,7 @@ FR- Villepinte
 # 94: Val-de-Marne
 FR- Alfortville
 FR- Arcueil
+FR- Bry-sur-marne
 FR- Cachan
 FR- Champigny-sur-marne
 FR- Charenton
@@ -129,6 +135,7 @@ FR- Ormesson
 FR- Ormesson-sur-marne
 FR- Orly
 FR- Rungis
+FR- Saint-mande
 FR- Saint-maur-des-fosses
 FR- Sucy-en-brie
 FR- Thiais
@@ -145,6 +152,7 @@ FR- Baillet-en-france
 FR- Beaumont-sur-oise
 FR- Bezons
 FR- Chaumontel
+FR- Deuil-la-barre
 FR- Domont
 FR- Eaubonne
 FR- Ermont
@@ -181,6 +189,8 @@ FR- Bailly-romainvilliers
 FR- Brou-sur-chantereine
 FR- Brie-comte-robert
 FR- Bussy-saint-georges
+FR- Cely-en-biere
+FR- Changis-sur-marne
 FR- Cesson
 FR- Champs-sur-marne
 FR- Champdeuil
@@ -188,11 +198,13 @@ FR- Chateau-landon
 FR- Chelles
 FR- Combs-la-ville
 FR- Cormeilles-en-parisis
+FR- Coubert
 FR- Couilly-pont-aux-dames
 FR- Coulommiers
 FR- Dammartin-en-goele
 FR- Dampmart
 FR- Emerainville
+FR- Fontenay-tresigny
 FR- Gouaix 
 FR- Jouy-sur-morin
 FR- Le Chatelet
@@ -216,6 +228,7 @@ FR- Pontault
 FR- Pontcarre
 FR- Rebais
 FR- Roissy-en-brie
+FR- Saint-cyr-sur-morin
 FR- Saint-mammes
 FR- Saint-pathus
 FR- Thorigny-sur-marne
@@ -305,6 +318,7 @@ FR- Arles
 FR- Aubagne
 FR- Bouc-bel-air
 FR- Calas
+FR- Entressen
 FR- Gardanne
 FR- Gignac-la-nerthe
 FR- Istres
@@ -348,6 +362,7 @@ FR- Dijon
 FR- Genlis
 
 # 22: Cotes-d'Armor
+FR- Plerin
 FR- Plouha
 FR- Saint-quay-portrieux
 
@@ -358,6 +373,7 @@ FR- Dambenois
 FR- Montbeliard 
 
 # 26: Drome
+FR- Jaillans
 FR- Savasse
 FR- Valence
 
@@ -372,12 +388,15 @@ FR- Chartres
 FR- Cloyes-sur-le-loir
 FR- Gallardon
 FR- Luce
+FR- Mainvilliers
 
 # 29: Finistere
 FR- Brest
 FR- Ergue-gaberic
+FR- Pleyber-christ
 
 # 30: Gard
+FR- Aimargues
 FR- Milhaud
 FR- Nimes
 FR- Villeneuve-les-avignon
@@ -405,6 +424,7 @@ FR- Saint-medard-en-jalles
 FR- Talence
 
 # 34: Herault
+FR- Alignan-du-vent
 FR- Beziers
 FR- Frontignan
 FR- Jacou
@@ -459,6 +479,7 @@ FR- Saint-priest-en-jarez
 
 # 43: Haute-Loire 
 FR- Allegre
+FR- Le Puy
 
 # 44: Loire-Atlantique 
 FR- Carquefou
@@ -467,6 +488,7 @@ FR- Donges
 FR- La Chapelle
 FR- Lege
 FR- Machecoul
+FR- Mouzillon
 FR- Nantes
 FR- Saffre
 FR- Saint-herblain
@@ -502,6 +524,7 @@ FR- Montigne-les-rairies
 # 50: Manche
 FR- Agon-coutainville
 FR- Granville
+FR- Tourlaville
 
 # 51: Marne
 FR- Chalons-en-champagne
@@ -510,6 +533,7 @@ FR- Reims
 FR- Tinqueux
 
 # 53: Mayenne
+FR- Laval
 FR- Mayenne
 FR- Place
 
@@ -517,6 +541,7 @@ FR- Place
 FR- Dombasle-sur-meurthe 
 FR- Ecrouves
 FR- Faulx
+FR- Joeuf
 FR- Leyr
 FR- Nancy
 FR- Ville-au-val
@@ -532,6 +557,7 @@ FR- Tredion
 
 # 57: Moselle
 FR- Abreschviller
+FR- Farebersviller
 FR- Hayange
 FR- Hombourg-haut
 FR- La Maxe
@@ -629,6 +655,7 @@ FR- Rixheim
 # 69: Rhone
 FR- Amplepuis
 FR- Brignais
+FR- Charly
 FR- Ecully
 FR- Francheville
 FR- Lyon
@@ -655,6 +682,7 @@ FR- Le Mans
 FR- Jacob-bellecombette
 
 # 74: Haute-Savoie 
+FR- Beaumont
 FR- Chavanod
 FR- Lugrin
 FR- Megeve
@@ -726,12 +754,17 @@ FR- Vecoux
 
 # 89: Yonne
 FR- Auxerre
+FR- Avesnes-sur-helpe
+FR- Mezilles
 FR- Sens
 
 # 90: Territoire de Belfort
 FR- Belfort
 FR- Danjoutin
 FR- Valdoie
+
+# 971: Guadeloupe 
+GP- Petit-bourg
 
 # 972: Martinique
 MQ- Ducos
@@ -745,6 +778,8 @@ RE- Saint-benoit
 RE- La Riviere
 RE- Saint-andre
 RE- Saint-denis
+RE- Saint-leu
+RE- Saint-paul
 RE- Sainte-marie
 
 # 987: Polynesie française
