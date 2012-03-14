@@ -36,6 +36,7 @@ FR- Marolles-en-hurepoix
 FR- Massy
 FR- Mennecy
 FR- Mereville
+FR- Montgeron
 FR- Morangis
 FR- Orsay
 FR- Palaiseau
@@ -160,6 +161,7 @@ FR- Thiais
 FR- Valenton
 FR- Villecresnes
 FR- Villejuif
+FR- Villeneuve-le-roi
 FR- Villiers-sur-marne
 FR- Vincennes
 FR- Vitry-sur-seine
@@ -206,6 +208,7 @@ FR- Soisy-sous-montmorency
 FR- Taverny
 FR- Viarmes
 FR- Villiers
+FR- Villiers-le-bel
 
 # 77: Seine-et-Marne
 FR- Bailly-romainvilliers
@@ -339,6 +342,7 @@ FR- Juan-les-pins
 FR- Le Cannet
 FR- Menton
 FR- Nice
+FR- Puget-theniers
 FR- Saint-laurent-du-var
 FR- Thorenc
 FR- Valbonne
@@ -355,6 +359,7 @@ FR- Rocroi
 FR- Saint-girons
 
 # 10: Aube
+FR- Mesnil-sellieres
 FR- Saint-andre-les-vergers
 FR- Troyes
 
@@ -367,6 +372,7 @@ FR- Aix-en-provence
 FR- Arles
 FR- Aubagne
 FR- Bouc-bel-air
+FR- Cabries
 FR- Calas
 FR- Entressen
 FR- Gardanne
@@ -514,6 +520,7 @@ FR- Valros
 FR- Vendargues
 
 # 35: Ille-et-Vilaine
+FR- Bourgbarre
 FR- Cesson-sevigne
 FR- Maure-de-bretagne
 FR- Montfort-sur-meu
@@ -555,6 +562,9 @@ FR- Geloux
 FR- Moliets-et-maa
 FR- Seignosse
 
+# 41: Loir-et-Cher
+FR- Onzain
+
 # 42: Loire
 FR- La Fouillouse
 FR- La Ricamarie
@@ -566,6 +576,7 @@ FR- Saint-priest-en-jarez
 
 # 43: Haute-Loire
 FR- Allegre
+FR- Langeac
 FR- Le Puy
 
 # 44: Loire-Atlantique
@@ -608,6 +619,7 @@ FR- Sainte-bazeille
 
 # 49: Maine-et-Loire
 FR- Angers
+FR- Avrille
 FR- Champtoceaux
 FR- La Menitre
 FR- Le Pont
@@ -671,11 +683,13 @@ FR- Merlebach
 FR- Metz
 FR- Pange
 FR- Saint-avold
+FR- Sarreguemines
 FR- Saulny
 FR- Thionville
 
 # 58: Nievre
 FR- Vauzelles
+FR- Venissieux
 
 # 59: Nord
 FR- Armentieres
@@ -814,6 +828,7 @@ FR- Change
 FR- Arnage
 FR- Chateau-du-loir
 FR- Le Mans
+FR- Notre-dame-du-pe
 
 # 73: Savoie
 FR- Jacob-bellecombette
