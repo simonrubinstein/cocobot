@@ -21,6 +21,7 @@ FR- Corbeil-essonnes
 FR- Courcouronnes
 FR- Dourdan
 FR- Draveil
+FR- Epinay-sur-orge
 FR- Etampes
 FR- Evry
 FR- Gif-sur-yvette
@@ -92,6 +93,7 @@ FR- Bagnolet
 FR- Bobigny
 FR- Bondy
 FR- Clichy-sous-bois
+FR- Coubron
 FR- Drancy
 FR- Dugny
 FR- Epinay-sur-seine
@@ -164,8 +166,8 @@ FR- Vitry-sur-seine
 FR- Argenteuil
 FR- Asnieres
 FR- Baillet-en-france
-FR- Beaumont-sur-oise
 FR- Beauchamp
+FR- Beaumont-sur-oise
 FR- Bezons
 FR- Cergy
 FR- Chaumontel
@@ -193,6 +195,7 @@ FR- Montmorency
 FR- Persan
 FR- Pierrelaye
 FR- Pontoise
+FR- Saint-brice-sous-foret
 FR- Saint-gratien
 FR- Saint-leu-la-foret
 FR- Sannois
@@ -200,9 +203,11 @@ FR- Sarcelles
 FR- Soisy-sous-montmorency
 FR- Taverny
 FR- Viarmes
+FR- Villiers
 
 # 77: Seine-et-Marne
 FR- Bailly-romainvilliers
+FR- Bois-le-roi
 FR- Brie-comte-robert
 FR- Brou-sur-chantereine
 FR- Bussy-saint-georges
@@ -263,6 +268,8 @@ FR- Villeneuve-sur-bellot
 FR- Villeparisis
 
 # 78: Yvelines
+FR- Acheres
+FR- Andresy
 FR- Beynes
 FR- Bonnieres-sur-seine
 FR- Chanteloup-les-vignes
@@ -305,6 +312,7 @@ FR- Villeneuve-le-comte
 FR- Voisins-le-bretonneux
 
 # 01: Ain
+FR- Culoz
 FR- Gex
 FR- Jassans-riottier
 FR- Maillat
@@ -313,6 +321,7 @@ FR- Oyonnax
 # 02: Aisne
 FR- Chateau-thierry
 FR- Domptin
+FR- Haramont
 FR- Origny-en-thierache
 FR- Saint Quentin
 FR- Soissons
@@ -331,6 +340,7 @@ FR- Thorenc
 
 # 07: Ardeche
 FR- Cruas
+FR- Thorrenc
 
 # 08: Ardennes
 FR- Charleville-mezieres
@@ -357,7 +367,9 @@ FR- Entressen
 FR- Gardanne
 FR- Gignac-la-nerthe
 FR- Istres
+FR- Les-pennes-mirabeau
 FR- Marseille
+FR- Mouries
 FR- Saint-mitre-les-remparts
 FR- Salon-de-provence
 FR- Vitrolles
@@ -368,6 +380,7 @@ FR- Cahagnes
 FR- Deauville
 FR- Epron
 FR- Ifs
+FR- Le Molay
 FR- Mezidon
 
 # 16: Charente
@@ -505,8 +518,8 @@ FR- Chatillon-sur-indre
 FR- Chambray-les-tours
 FR- Cinq-mars-la-pile
 FR- Fondettes
-FR- Monts
 FR- Joue-les-tours
+FR- Monts
 FR- Saint-cyr-sur-loire
 FR- Tours
 
@@ -581,6 +594,7 @@ FR- Cahors
 
 # 47: Lot-et-Garonne
 FR- Laussou
+FR- Prayssas
 FR- Sainte-bazeille
 
 # 49: Maine-et-Loire
@@ -589,6 +603,7 @@ FR- La Menitre
 FR- Le Pont
 FR- Loire
 FR- Montigne-les-rairies
+FR- Saint-laurent-des-autels
 FR- Saint-pierre-montlimart
 
 # 50: Manche
@@ -610,6 +625,7 @@ FR- Montier-en-der
 FR- Laval
 FR- Mayenne
 FR- Place
+FR- Quelaines
 
 # 54: Meurthe-et-Moselle
 FR- Dombasle-sur-meurthe
@@ -628,8 +644,10 @@ FR- Bar-le-duc
 # 56: Morbihan
 FR- Languidic
 FR- Lauzach
+FR- Lorient
 FR- Montertelot
 FR- Muzillac
+FR- Noyal-pontivy
 FR- Ploemeur
 FR- Tredion
 
@@ -656,6 +674,7 @@ FR- Bailleul
 FR- Croix
 FR- Dunkirk
 FR- Fournes-en-weppes
+FR- Fretin
 FR- Genech
 FR- Grande-synthe
 FR- Hallennes-lez-haubourdin
@@ -667,6 +686,7 @@ FR- Marly
 FR- Maubeuge
 FR- Peronne-en-melantois
 FR- Phalempin
+FR- Ronchin
 FR- Roubaix
 FR- Rubrouck
 FR- Saint Andre
@@ -676,10 +696,12 @@ FR- Valenciennes
 FR- Wavrin
 
 # 60: Oise
+FR- Bazicourt
 FR- Beauvais
 FR- Breuil-le-sec
 FR- Chantilly
 FR- Compiegne
+FR- Creil
 FR- Crepy-en-valois
 FR- Epineuse
 FR- Ercuis
@@ -730,6 +752,9 @@ FR- Mazeres-lezons
 FR- Mouguerre
 FR- Pau
 
+# 65: Hautes-Pyrenees
+FR- Tarbes
+
 # 66: Pyrenees-Orientales
 FR- Bompas
 FR- Perpignan
@@ -747,6 +772,7 @@ FR- Bitschwiller-les-thann
 FR- Lauw
 FR- Mulhouse
 FR- Rixheim
+FR- Soultz-haut-rhin
 
 # 69: Rhone
 FR- Amplepuis
@@ -797,6 +823,7 @@ FR- Le Houlme
 FR- Petit Couronne
 FR- Rouen
 FR- Sotteville-les-rouen
+FR- Yvetot
 
 # 79: Deux-Sevres
 FR- Adilly
@@ -853,6 +880,7 @@ FR- Saint-brice-sur-vienne
 FR- Saint-junien
 
 # 88: Vosges
+FR- Cornimont
 FR- Darnieulles
 FR- Plombieres-les-bains
 FR- Remiremont
