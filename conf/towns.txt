@@ -30,6 +30,7 @@ FR- Grigny
 FR- Igny
 FR- Juvisy-sur-orge
 FR- Leudeville
+FR- Limours
 FR- Longjumeau
 FR- Marolles-en-hurepoix
 FR- Massy
@@ -46,6 +47,7 @@ FR- Saintry-sur-seine
 FR- Saulx-les-chartreux
 FR- Savigny-sur-orge
 FR- Vigneux-sur-seine
+FR- Villabe
 FR- Villebon-sur-yvette
 FR- Villemoisson-sur-orge
 FR- Yerres
@@ -312,6 +314,7 @@ FR- Villeneuve-le-comte
 FR- Voisins-le-bretonneux
 
 # 01: Ain
+FR- Ceyzeriat
 FR- Culoz
 FR- Gex
 FR- Jassans-riottier
@@ -336,7 +339,9 @@ FR- Juan-les-pins
 FR- Le Cannet
 FR- Menton
 FR- Nice
+FR- Saint-laurent-du-var
 FR- Thorenc
+FR- Valbonne
 
 # 07: Ardeche
 FR- Cruas
@@ -408,6 +413,7 @@ FR- Malemort
 FR- Uzerche
 
 # 21: Cote-d’Or
+FR- Arnay-le-duc
 FR- Auxonne
 FR- Chatillon-sur-seine
 FR- Dijon
@@ -436,6 +442,7 @@ FR- Savasse
 FR- Valence
 
 # 27: Eure
+FR- Aubevoye
 FR- Evreux
 FR- Le Vaudreuil
 FR- Louviers
@@ -460,6 +467,7 @@ FR- Pleyber-christ
 
 # 30: Gard
 FR- Aimargues
+FR- Aubord
 FR- Milhaud
 FR- Nimes
 FR- Rochefort-du-gard
@@ -519,6 +527,7 @@ FR- Chambray-les-tours
 FR- Cinq-mars-la-pile
 FR- Fondettes
 FR- Joue-les-tours
+FR- La Membrolle
 FR- Monts
 FR- Saint-cyr-sur-loire
 FR- Tours
@@ -599,6 +608,7 @@ FR- Sainte-bazeille
 
 # 49: Maine-et-Loire
 FR- Angers
+FR- Champtoceaux
 FR- La Menitre
 FR- Le Pont
 FR- Loire
@@ -680,6 +690,7 @@ FR- Grande-synthe
 FR- Hallennes-lez-haubourdin
 FR- Houplines
 FR- Illies
+FR- Lille
 FR- Loon-plage
 FR- Loos
 FR- Marly
@@ -729,12 +740,14 @@ FR- Auchy-les-mines
 FR- Bavincourt
 FR- Calais
 FR- Carvin
+FR- Etaples
 FR- Frethun
 FR- Henin-beaumont
 FR- Lens
 FR- Lillers
 FR- Marles-les-mines
 FR- Noeux-les-mines
+FR- Pronville
 FR- Saint-floris
 
 # 63: Puy-de-Dome
@@ -761,6 +774,7 @@ FR- Perpignan
 
 # 67: Bas-Rhin
 FR- Fegersheim
+FR- Gingsheim
 FR- Illkirch-graffenstaden
 FR- Nordheim
 FR- Rosheim
@@ -803,6 +817,7 @@ FR- Le Mans
 
 # 73: Savoie
 FR- Jacob-bellecombette
+FR- La Ravoire
 
 # 74: Haute-Savoie
 FR- Beaumont
@@ -817,6 +832,7 @@ FR- Vulbens
 FR- Belleville-en-caux
 FR- Bonsecours
 FR- Carrieres-sur-seine
+FR- Elbeuf
 FR- Harfleur
 FR- Le Havre
 FR- Le Houlme
@@ -831,6 +847,7 @@ FR- Cours
 
 # 80: Somme
 FR- Amiens
+FR- Beauchamps
 FR- Corbie
 FR- Dreuil-les-amiens
 FR- Rue
@@ -847,6 +864,7 @@ FR- Caussade
 
 # 83: Var
 FR- Hyeres
+FR- La Roquette
 FR- Saint-raphael
 FR- Toulon
 
