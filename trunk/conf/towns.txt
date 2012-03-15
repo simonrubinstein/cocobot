@@ -46,6 +46,7 @@ FR- Morangis
 FR- Morsang-sur-orge
 FR- Orsay
 FR- Palaiseau
+FR- Quincy-sous-senart
 FR- Ris-orangis
 FR- Saint-michel-sur-orge
 FR- Saint-pierre-du-perray
@@ -398,11 +399,13 @@ FR- Aubagne
 FR- Bouc-bel-air
 FR- Cabries
 FR- Calas
+FR- Chateauneuf-les-martigues
 FR- Entressen
 FR- Gardanne
 FR- Gignac-la-nerthe
 FR- Grans
 FR- Istres
+FR- La Bouilladisse
 FR- Les-pennes-mirabeau
 FR- Marseille
 FR- Meyreuil
@@ -425,6 +428,7 @@ FR- Mezidon
 FR- Mouen
 
 # 16: Charente
+FR- La Faye
 FR- Saint-sornin
 FR- Soyaux
 
@@ -451,6 +455,9 @@ FR- Brive-la-gaillarde
 FR- Malemort
 FR- Tulle
 FR- Uzerche
+
+# 20: Haute-Corse
+FR- Bastia
 
 # 21: Cote-d’Or
 FR- Arnay-le-duc
@@ -502,6 +509,7 @@ FR- Gallardon
 FR- Gasville
 FR- Luce
 FR- Mainvilliers
+FR- Pontgouin
 
 # 29: Finistere
 FR- Brest
@@ -532,6 +540,7 @@ FR- Villeneuve-tolosane
 FR- Bordeaux
 FR- Burdigala
 FR- Cadaujac
+FR- Coutras
 FR- Eysines
 FR- Gradignan
 FR- Le Barp
@@ -552,6 +561,7 @@ FR- Frontignan
 FR- Gigean
 FR- Jacou
 FR- Lattes
+FR- Lodeve
 FR- Mauguio
 FR- Montpellier
 FR- Sauvian
@@ -588,6 +598,7 @@ FR- Diemoz
 FR- Grenoble
 FR- L isle-d abeau
 FR- La Buissiere
+FR- La Tronche
 FR- Moidieu
 FR- Pont-Eveque
 FR- Saint-martin-d heres
@@ -616,6 +627,7 @@ FR- Roanne
 FR- Saint Etienne
 FR- Saint-Etienne
 FR- Saint-priest-en-jarez
+FR- Saint-romain-le-puy
 
 # 43: Haute-Loire
 FR- Allegre
@@ -662,6 +674,7 @@ FR- Cahors
 FR- Laussou
 FR- Prayssas
 FR- Sainte-bazeille
+FR- Samazan
 
 # 49: Maine-et-Loire
 FR- Angers
@@ -720,6 +733,7 @@ FR- Montertelot
 FR- Muzillac
 FR- Noyal-pontivy
 FR- Ploemeur
+FR- Saint-ave
 FR- Tredion
 
 # 57: Moselle
@@ -734,6 +748,7 @@ FR- Pange
 FR- Saint-avold
 FR- Sarreguemines
 FR- Saulny
+FR- Talange
 FR- Thionville
 FR- Uckange
 
@@ -794,6 +809,7 @@ FR- Liancourt
 FR- Mello
 FR- Montataire
 FR- Mortefontaine
+FR- Noyon
 FR- Puiseux-en-bray
 FR- Senlis
 FR- Silly-le-long
@@ -841,6 +857,7 @@ FR- Mazeres-lezons
 FR- Mouguerre
 FR- Pau
 FR- Saint-pee-sur-nivelle
+FR- Salies-de-bearn
 
 # 65: Hautes-Pyrenees
 FR- Tarbes
@@ -939,6 +956,7 @@ FR- Amiens
 FR- Beauchamps
 FR- Corbie
 FR- Dreuil-les-amiens
+FR- Peronne
 FR- Rue
 FR- Saleux
 FR- Villers-bretonneux
@@ -969,12 +987,15 @@ FR- Monteux
 FR- Orange
 
 # 85: Vendee
+FR- Belleville-sur-vie
 FR- Bois-de-cene
 FR- Cugand
 FR- Fontenay-le-comte
 FR- La Ferriere
+FR- La Roche
 FR- Le Poire
 FR- Les Essarts
+FR- Rocheserviere
 FR- Saint-jean-de-monts
 FR- Venansault
 
@@ -982,6 +1003,7 @@ FR- Venansault
 FR- Chatellerault
 FR- Chauvigny
 FR- Lencloitre
+FR- Migne-auxances
 FR- Poitiers
 FR- Saint-sauvant
 
