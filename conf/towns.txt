@@ -9,7 +9,9 @@ FR- Athis-mons
 FR- Ballancourt
 FR- Ballancourt-sur-essonne
 FR- Bievres
+FR- Bondoufle
 FR- Bouray-sur-juine
+FR- Bretigny-sur-orge
 FR- Breuillet
 FR- Brunoy
 FR- Bruyeres-le-chatel
@@ -230,6 +232,7 @@ FR- Cesson
 FR- Champdeuil
 FR- Champs-sur-marne
 FR- Changis-sur-marne
+FR- Chartrettes
 FR- Chateau-landon
 FR- Chelles
 FR- Combs-la-ville
@@ -241,6 +244,7 @@ FR- Cregy-les-meaux
 FR- Dammartin-en-goele
 FR- Dampmart
 FR- Emerainville
+FR- Esbly
 FR- Fontainebleau
 FR- Fontenay-tresigny
 FR- Gouaix
@@ -325,6 +329,7 @@ FR- Triel-sur-seine
 FR- Velizy-villacoublay
 FR- Versailles
 FR- Villeneuve-le-comte
+FR- Viroflay
 FR- Voisins-le-bretonneux
 
 # 01: Ain
@@ -406,6 +411,7 @@ FR- Salon-de-provence
 FR- Vitrolles
 
 # 14: Calvados
+FR- Bretteville-l orgueilleuse
 FR- Caen
 FR- Cahagnes
 FR- Deauville
@@ -415,6 +421,7 @@ FR- Ifs
 FR- Le Molay
 FR- Lisieux
 FR- Mezidon
+FR- Mouen
 
 # 16: Charente
 FR- Saint-sornin
@@ -479,6 +486,7 @@ FR- Le Vaudreuil
 FR- Louviers
 FR- Pacy-sur-eure
 FR- Saint-didier-des-bois
+FR- Saint-germain-village
 
 # 28: Eure-et-Loir
 FR- Auneau
@@ -560,6 +568,7 @@ FR- Chatillon-sur-indre
 
 # 37: Indre-et-Loire
 FR- Chambray-les-tours
+FR- Chanceaux-sur-choisille
 FR- Cinq-mars-la-pile
 FR- Fondettes
 FR- Joue-les-tours
@@ -659,6 +668,7 @@ FR- Loire
 FR- Montigne-les-rairies
 FR- Saint-laurent-des-autels
 FR- Saint-pierre-montlimart
+FR- Vivy
 
 # 50: Manche
 FR- Agon-coutainville
@@ -673,6 +683,7 @@ FR- Reims
 FR- Tinqueux
 
 # 52: Haute-Marne
+FR- Langres
 FR- Montier-en-der
 
 # 53: Mayenne
@@ -718,6 +729,7 @@ FR- Saint-avold
 FR- Sarreguemines
 FR- Saulny
 FR- Thionville
+FR- Uckange
 
 # 58: Nievre
 FR- Vauzelles
@@ -746,6 +758,7 @@ FR- Maubeuge
 FR- Mouvaux
 FR- Peronne-en-melantois
 FR- Phalempin
+FR- Pont-a-marcq
 FR- Ronchin
 FR- Roubaix
 FR- Rubrouck
@@ -756,6 +769,7 @@ FR- Valenciennes
 FR- Wavrin
 
 # 60: Oise
+FR- Abbecourt
 FR- Bazicourt
 FR- Beauvais
 FR- Breuil-le-sec
@@ -769,6 +783,7 @@ FR- Estrees-saint-denis
 FR- Gouvieux
 FR- Jouy-sous-thelle
 FR- Lagny
+FR- Lassigny
 FR- Liancourt
 FR- Mello
 FR- Montataire
@@ -805,6 +820,7 @@ FR- Saint-floris
 # 63: Puy-de-Dome
 FR- Blanzat
 FR- Chamalieres
+FR- Champeix
 FR- Clermont-ferrand
 FR- Cournon
 FR- Ours
@@ -860,6 +876,7 @@ FR- Saint-priest
 FR- Sathonay-camp
 FR- Tassin-la-demi-lune
 FR- Thurins
+FR- Vaulx-en-velin
 FR- Villeurbanne
 
 # 70: Haute-Saone
@@ -888,6 +905,7 @@ FR- Bonneville
 FR- Chavanod
 FR- La Ville
 FR- Lugrin
+FR- Marnaz
 FR- Megeve
 FR- Meythet
 FR- Vulbens
@@ -947,6 +965,7 @@ FR- Orange
 FR- Bois-de-cene
 FR- Cugand
 FR- Fontenay-le-comte
+FR- La Ferriere
 FR- Le Poire
 FR- Les Essarts
 FR- Saint-jean-de-monts
@@ -991,6 +1010,7 @@ GP- Petit-bourg
 
 # 972: Martinique
 MQ- Ducos
+MQ- Fort-de-france
 MQ- La Trinite
 MQ- Le Lamentin
 MQ- Le Robert
