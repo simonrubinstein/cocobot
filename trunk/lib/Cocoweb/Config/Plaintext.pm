@@ -1,5 +1,5 @@
 # @created 2012-02-24
-# @date 2012-03-12
+# @date 2012-03-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -40,6 +40,12 @@ __PACKAGE__->attributes( 'all', 'pathname' );
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults( 'pathname' => $args{'pathname'} );
+    $self->readFile();
+}
+
+##@method void readFile()
+sub readFile {
+    my ($self) = @_;
     my $fh;
     my $filename = $self->pathname();
     my @file     = ();
@@ -52,6 +58,7 @@ sub init {
     }
     close $fh;
     $self->all( \@file );
+    debug($filename  . ' file was read successfully');
 }
 
 ##@method arrayref getAll()
@@ -63,6 +70,8 @@ sub getAll {
     return $self->all();
 }
 
+##@method hashref getAsHash()
+#@brief  
 sub getAsHash {
     my ($self) = @_;
     my $file_ref = $self->all();
@@ -74,9 +83,9 @@ sub getAsHash {
         $line =~s{\s+$}{}g;
         die error("The key $line exists") if exists  $hashtable{$line};
         $hashtable{$line} = $count;
-        $line = lc($line);
-        die error("The key $line exists") if exists  $ctrl{$line};
-        $ctrl{$line} = 1;
+        my $check = lc($line);
+        die error("The key $check exists") if exists $ctrl{$check};
+        $ctrl{$check} = 1;
         $count++;
     }
     return \%hashtable;

@@ -47,10 +47,10 @@ sub init {
         'filename'     => $config->getString('filename'),
         'ISO3166Regex' => $config->getString('ISO-3166-1-alpha-2')
     );
-
     return $instance;
 }
 
+##@method hashref getInitTowns()
 sub getInitTowns {
     my ($self) = @_;
     my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 1 );
@@ -62,7 +62,8 @@ sub getInitTowns {
         die error("The string $town is not valid") if $town !~ $ISO3166Regex;
     }
     info( 'number of towns: ' . scalar( keys %$towns_ref ) );
-    return $towns_ref;
+    #print Dumper $towns->all();
+    return ($towns_ref, $towns);
 }
 
 ##@method void connect()
