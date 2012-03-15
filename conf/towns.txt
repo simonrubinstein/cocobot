@@ -36,8 +36,10 @@ FR- Marolles-en-hurepoix
 FR- Massy
 FR- Mennecy
 FR- Mereville
+FR- Milly-la-foret
 FR- Montgeron
 FR- Morangis
+FR- Morsang-sur-orge
 FR- Orsay
 FR- Palaiseau
 FR- Ris-orangis
@@ -232,6 +234,7 @@ FR- Cregy-les-meaux
 FR- Dammartin-en-goele
 FR- Dampmart
 FR- Emerainville
+FR- Fontainebleau
 FR- Fontenay-tresigny
 FR- Gouaix
 FR- Grandpuits
@@ -334,6 +337,9 @@ FR- Soissons
 
 # 03: Allier
 FR- Montluon
+
+# 05: Hautes-Alpes
+FR- Saint-laurent-du-cros
 
 # 06: Alpes-Maritimes
 FR- Antibes
@@ -709,6 +715,7 @@ FR- Loon-plage
 FR- Loos
 FR- Marly
 FR- Maubeuge
+FR- Mouvaux
 FR- Peronne-en-melantois
 FR- Phalempin
 FR- Ronchin
@@ -778,6 +785,7 @@ FR- Lons
 FR- Mazeres-lezons
 FR- Mouguerre
 FR- Pau
+FR- Saint-pee-sur-nivelle
 
 # 65: Hautes-Pyrenees
 FR- Tarbes
@@ -791,6 +799,7 @@ FR- Fegersheim
 FR- Gingsheim
 FR- Illkirch-graffenstaden
 FR- Nordheim
+FR- Otterswiller
 FR- Rosheim
 FR- Selestat
 FR- Strasbourg
@@ -828,6 +837,7 @@ FR- Change
 FR- Arnage
 FR- Chateau-du-loir
 FR- Le Mans
+FR- Mamers
 FR- Notre-dame-du-pe
 
 # 73: Savoie
@@ -918,6 +928,7 @@ FR- Darnieulles
 FR- Plombieres-les-bains
 FR- Remiremont
 FR- Saint-die
+FR- Saint-maurice-sur-moselle
 FR- Thaon-les-vosges
 FR- Vecoux
 
