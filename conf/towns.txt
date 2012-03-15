@@ -8,6 +8,7 @@ FR- Arpajon
 FR- Athis-mons
 FR- Ballancourt
 FR- Ballancourt-sur-essonne
+FR- Bievres
 FR- Bouray-sur-juine
 FR- Breuillet
 FR- Brunoy
@@ -38,6 +39,7 @@ FR- Mennecy
 FR- Mereville
 FR- Milly-la-foret
 FR- Montgeron
+FR- Montlhery
 FR- Morangis
 FR- Morsang-sur-orge
 FR- Orsay
@@ -117,6 +119,7 @@ FR- Noisy
 FR- Noisy-le-grand
 FR- Pantin
 FR- Pierrefitte-sur-seine
+FR- Romainville
 FR- Rosny-sous-bois
 FR- Saint Denis
 FR- Saint-ouen
@@ -183,6 +186,7 @@ FR- Eaubonne
 FR- Enghien-les-bains
 FR- Ermont
 FR- Ezanville
+FR- Fosses
 FR- Franconville
 FR- Frepillon
 FR- Garges-les-gonesse
@@ -198,6 +202,7 @@ FR- Mery-sur-oise
 FR- Montigny-les-cormeilles
 FR- Montmagny
 FR- Montmorency
+FR- Osny
 FR- Persan
 FR- Pierrelaye
 FR- Pontoise
@@ -208,6 +213,7 @@ FR- Sannois
 FR- Sarcelles
 FR- Soisy-sous-montmorency
 FR- Taverny
+FR- Vemars
 FR- Viarmes
 FR- Villiers
 FR- Villiers-le-bel
@@ -268,6 +274,7 @@ FR- Roissy-en-brie
 FR- Saint-cyr-sur-morin
 FR- Saint-mammes
 FR- Saint-pathus
+FR- Samois-sur-seine
 FR- Savigny-le-temple
 FR- Thorigny-sur-marne
 FR- Torcy
@@ -334,11 +341,13 @@ FR- Haramont
 FR- Origny-en-thierache
 FR- Saint Quentin
 FR- Soissons
+FR- Tergnier
 
 # 03: Allier
 FR- Montluon
 
 # 05: Hautes-Alpes
+FR- Gap
 FR- Saint-laurent-du-cros
 
 # 06: Alpes-Maritimes
@@ -370,6 +379,7 @@ FR- Saint-andre-les-vergers
 FR- Troyes
 
 # 11: Aude
+FR- Caudebronde
 FR- Narbonne
 FR- Sainte-valiere
 
@@ -383,6 +393,7 @@ FR- Calas
 FR- Entressen
 FR- Gardanne
 FR- Gignac-la-nerthe
+FR- Grans
 FR- Istres
 FR- Les-pennes-mirabeau
 FR- Marseille
@@ -396,6 +407,7 @@ FR- Caen
 FR- Cahagnes
 FR- Deauville
 FR- Epron
+FR- Herouville-saint-clair
 FR- Ifs
 FR- Le Molay
 FR- Mezidon
@@ -436,6 +448,7 @@ FR- Saulon-la-chapelle
 # 22: Cotes-d'Armor
 FR- Plerin
 FR- Plouha
+FR- Quessoy
 FR- Saint-brieuc
 FR- Saint-quay-portrieux
 FR- Saint-vran
@@ -502,6 +515,7 @@ FR- Burdigala
 FR- Eysines
 FR- Gradignan
 FR- Le Barp
+FR- Le Tourne
 FR- Lormont
 FR- Merignac
 FR- Parempuyre
@@ -521,6 +535,7 @@ FR- Lattes
 FR- Mauguio
 FR- Montpellier
 FR- Sauvian
+FR- Teyran
 FR- Valergues
 FR- Valros
 FR- Vendargues
@@ -531,6 +546,7 @@ FR- Cesson-sevigne
 FR- Maure-de-bretagne
 FR- Montfort-sur-meu
 FR- Rennes
+FR- Saint-pere
 
 # 36: Indre
 FR- Chatillon-sur-indre
@@ -594,6 +610,7 @@ FR- Lege
 FR- Machecoul
 FR- Mouzillon
 FR- Nantes
+FR- Reze
 FR- Saffre
 FR- Saint-herblain
 FR- Saint-jean-de-boiseau
@@ -603,6 +620,7 @@ FR- Saint-mars-du-desert
 FR- Baule
 FR- Beaugency
 FR- Checy
+FR- Chevilly
 FR- Coullons
 FR- Fleury-les-aubrais
 FR- Malesherbes
@@ -611,6 +629,7 @@ FR- Montargis
 FR- Montereau
 FR- Nogent-sur-vernisson
 FR- Orleans
+FR- Saint-denis-en-val
 FR- Saint-jean-de-la-ruelle
 FR- Saint-jean-le-blanc
 FR- Villemandeur
@@ -752,6 +771,7 @@ FR- Ver-sur-launette
 # 61: Orne
 FR- Alenon
 FR- Bagnoles-de-l orne
+FR- Damigny
 
 # 62: Pas-de-Calais
 FR- Achicourt
@@ -803,6 +823,7 @@ FR- Otterswiller
 FR- Rosheim
 FR- Selestat
 FR- Strasbourg
+FR- Zinswiller
 
 # 68: Haut-Rhin
 FR- Bitschwiller-les-thann
@@ -843,6 +864,7 @@ FR- Notre-dame-du-pe
 # 73: Savoie
 FR- Jacob-bellecombette
 FR- La Ravoire
+FR- Le Bois
 
 # 74: Haute-Savoie
 FR- Beaumont
@@ -881,6 +903,7 @@ FR- Villers-bretonneux
 FR- Yzeux
 
 # 81: Tarn
+FR- Aussac
 FR- Dourgne
 FR- Lagrave
 
@@ -890,6 +913,7 @@ FR- Caussade
 # 83: Var
 FR- Hyeres
 FR- La Roquette
+FR- Montauroux
 FR- Saint-raphael
 FR- Toulon
 
@@ -961,6 +985,7 @@ RE- Saint-andre
 RE- Saint-benoit
 RE- Saint-denis
 RE- Saint-leu
+RE- Saint-louis
 RE- Saint-paul
 RE- Sainte-marie
 
