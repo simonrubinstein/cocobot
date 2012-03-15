@@ -202,6 +202,7 @@ FR- Mery-sur-oise
 FR- Montigny-les-cormeilles
 FR- Montmagny
 FR- Montmorency
+FR- Montsoult
 FR- Osny
 FR- Persan
 FR- Pierrelaye
@@ -374,6 +375,7 @@ FR- Rocroi
 FR- Saint-girons
 
 # 10: Aube
+FR- Bar-sur-seine
 FR- Mesnil-sellieres
 FR- Saint-andre-les-vergers
 FR- Troyes
@@ -397,6 +399,7 @@ FR- Grans
 FR- Istres
 FR- Les-pennes-mirabeau
 FR- Marseille
+FR- Meyreuil
 FR- Mouries
 FR- Saint-mitre-les-remparts
 FR- Salon-de-provence
@@ -410,6 +413,7 @@ FR- Epron
 FR- Herouville-saint-clair
 FR- Ifs
 FR- Le Molay
+FR- Lisieux
 FR- Mezidon
 
 # 16: Charente
@@ -429,6 +433,8 @@ FR- Boulleret
 FR- Bourges
 FR- Cours-les-barres
 FR- Saint-doulchard
+FR- Trouy
+FR- Valenay
 FR- Vierzon
 
 # 19: Correze
@@ -512,6 +518,7 @@ FR- Villeneuve-tolosane
 # 33: Gironde
 FR- Bordeaux
 FR- Burdigala
+FR- Cadaujac
 FR- Eysines
 FR- Gradignan
 FR- Le Barp
@@ -727,8 +734,10 @@ FR- Fretin
 FR- Genech
 FR- Grande-synthe
 FR- Hallennes-lez-haubourdin
+FR- Halluin
 FR- Houplines
 FR- Illies
+FR- La Gorgue
 FR- Lille
 FR- Loon-plage
 FR- Loos
@@ -764,6 +773,7 @@ FR- Liancourt
 FR- Mello
 FR- Montataire
 FR- Mortefontaine
+FR- Puiseux-en-bray
 FR- Senlis
 FR- Silly-le-long
 FR- Ver-sur-launette
@@ -784,6 +794,7 @@ FR- Carvin
 FR- Etaples
 FR- Frethun
 FR- Henin-beaumont
+FR- Houlle
 FR- Lens
 FR- Lillers
 FR- Marles-les-mines
@@ -793,6 +804,7 @@ FR- Saint-floris
 
 # 63: Puy-de-Dome
 FR- Blanzat
+FR- Chamalieres
 FR- Clermont-ferrand
 FR- Cournon
 FR- Ours
@@ -800,6 +812,7 @@ FR- Saint-Eloy-les-mines
 FR- Saint-sylvestre-pragoulin
 
 # 64: Pyrenees-Atlantiques
+FR- Anglet
 FR- Hendaye
 FR- Lons
 FR- Mazeres-lezons
@@ -831,10 +844,12 @@ FR- Lauw
 FR- Mulhouse
 FR- Rixheim
 FR- Soultz-haut-rhin
+FR- Turckheim
 
 # 69: Rhone
 FR- Amplepuis
 FR- Brignais
+FR- Cabannes
 FR- Charly
 FR- Ecully
 FR- Francheville
@@ -857,6 +872,7 @@ FR- Change
 # 72: Sarthe
 FR- Arnage
 FR- Chateau-du-loir
+FR- La Bazoge
 FR- Le Mans
 FR- Mamers
 FR- Notre-dame-du-pe
@@ -870,6 +886,7 @@ FR- Le Bois
 FR- Beaumont
 FR- Bonneville
 FR- Chavanod
+FR- La Ville
 FR- Lugrin
 FR- Megeve
 FR- Meythet
@@ -906,6 +923,7 @@ FR- Yzeux
 FR- Aussac
 FR- Dourgne
 FR- Lagrave
+FR- Lavaur
 
 # 82: Tarn-et-Garonne
 FR- Caussade
