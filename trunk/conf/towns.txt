@@ -361,6 +361,7 @@ FR- Toussus-le-noble
 FR- Trappes
 FR- Triel-sur-seine
 FR- Velizy-villacoublay
+FR- Vernouillet
 FR- Versailles
 FR- Villeneuve-le-comte
 FR- Viroflay
@@ -824,6 +825,7 @@ FR- Agneaux
 FR- Agon-coutainville
 FR- Coutances
 FR- Granville
+FR- Martinvast
 FR- Montpinchon
 FR- Tourlaville
 
@@ -960,6 +962,7 @@ FR- Epineuse
 FR- Ercuis
 FR- Estrees-saint-denis
 FR- Gouvieux
+FR- Hardivillers
 FR- Jouy-sous-thelle
 FR- Lagny
 FR- Lassigny
@@ -1131,6 +1134,7 @@ FR- Les Avanchers
 
 # 74: Haute-Savoie
 FR- Allinges
+FR- Annecy
 FR- Annecy-le-vieux
 FR- Ballaison
 FR- Beaumont
@@ -1298,3 +1302,4 @@ PF- Papeete
 
 # 000: Unknow
 FR- Epne
+
