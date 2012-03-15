@@ -345,6 +345,7 @@ FR- Chateau-thierry
 FR- Domptin
 FR- Haramont
 FR- Origny-en-thierache
+FR- Romeny-sur-marne
 FR- Saint Quentin
 FR- Soissons
 FR- Tergnier
@@ -436,6 +437,7 @@ FR- Muron
 FR- Soubise
 
 # 18: Cher
+FR- Bengy-sur-craon
 FR- Boulleret
 FR- Bourges
 FR- Cours-les-barres
@@ -447,6 +449,7 @@ FR- Vierzon
 # 19: Correze
 FR- Brive-la-gaillarde
 FR- Malemort
+FR- Tulle
 FR- Uzerche
 
 # 21: Cote-d’Or
@@ -476,11 +479,13 @@ FR- Montbeliard
 FR- Claveyson
 FR- Jaillans
 FR- Saint-paul-trois-chateaux
+FR- Saint-rambert-d albon
 FR- Savasse
 FR- Valence
 
 # 27: Eure
 FR- Aubevoye
+FR- Breuilpont
 FR- Evreux
 FR- Le Vaudreuil
 FR- Louviers
@@ -662,6 +667,7 @@ FR- Sainte-bazeille
 FR- Angers
 FR- Avrille
 FR- Champtoceaux
+FR- Cholet
 FR- La Menitre
 FR- Le Pont
 FR- Loire
@@ -895,6 +901,7 @@ FR- Mamers
 FR- Notre-dame-du-pe
 
 # 73: Savoie
+FR- Chambery
 FR- Jacob-bellecombette
 FR- La Ravoire
 FR- Le Bois
