@@ -194,6 +194,7 @@ FR- Beauchamp
 FR- Beaumont-sur-oise
 FR- Bezons
 FR- Cergy
+FR- Cergy-pontoise
 FR- Chaumontel
 FR- Deuil-la-barre
 FR- Domont
@@ -417,6 +418,7 @@ FR- Vence
 FR- Champagne
 FR- Cruas
 FR- Guilherand
+FR- Joyeuse
 FR- Thorrenc
 FR- Villevocance
 
@@ -447,6 +449,7 @@ FR- Sainte-valiere
 FR- Sigean
 
 # 12: Aveyron
+FR- Castanet
 FR- Saint-affrique
 
 # 13: Bouches-du-Rhone
@@ -492,6 +495,7 @@ FR- Verson
 FR- Angouleme
 FR- La Faye
 FR- Saint-sornin
+FR- Segonzac
 FR- Soyaux
 
 # 17: Charente-Maritime
@@ -656,6 +660,7 @@ FR- Grabels
 FR- Jacou
 FR- Lattes
 FR- Lodeve
+FR- Marseillan
 FR- Mauguio
 FR- Montpellier
 FR- Saint-jean-de-vedas
@@ -708,6 +713,7 @@ FR- Satolas-et-bonce
 FR- Septeme
 FR- Tullins
 FR- Valencin
+FR- Vif
 FR- Viriville
 
 # 39: Jura
@@ -1022,6 +1028,7 @@ FR- Ours
 FR- Saint-Eloy-les-mines
 FR- Saint-germain-lembron
 FR- Saint-sylvestre-pragoulin
+FR- Thiers
 FR- Vic-le-comte
 
 # 64: Pyrenees-Atlantiques
@@ -1142,6 +1149,7 @@ FR- Belleville-en-caux
 FR- Bonsecours
 FR- Canteleu
 FR- Carrieres-sur-seine
+FR- Dieppe
 FR- Elbeuf
 FR- Harfleur
 FR- Le Havre
@@ -1184,6 +1192,7 @@ FR- Villemade
 
 # 83: Var
 FR- Hyeres
+FR- La Garde
 FR- La Roquette
 FR- Montauroux
 FR- Saint-raphael
@@ -1287,3 +1296,5 @@ RE- Sainte-marie
 # 987: Polynesie française
 PF- Papeete
 
+# 000: Unknow
+FR- Epne
