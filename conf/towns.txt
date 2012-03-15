@@ -1035,6 +1035,7 @@ FR- Danjoutin
 FR- Valdoie
 
 # 971: Guadeloupe
+GP-
 GP- Petit-bourg
 
 # 972: Martinique

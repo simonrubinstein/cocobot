@@ -41,7 +41,8 @@ sub init {
 
 sub message {
     my ( $self, $message ) = @_;
-    $self->_log( 'info', $message );
+    print STDOUT $message . "\n";
+    #$self->_log( 'info', $message );
 }
 
 sub info {
