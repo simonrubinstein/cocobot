@@ -33,6 +33,7 @@ FR- Epinay-sous-senart
 FR- Epinay-sur-orge
 FR- Etampes
 FR- Evry
+FR- Forges-les-bains
 FR- Gif-sur-yvette
 FR- Gometz-la-ville
 FR- Grigny
@@ -308,6 +309,7 @@ FR- Meaux
 FR- Melun
 FR- Melz-sur-seine
 FR- Messy
+FR- Misy-sur-yonne
 FR- Mitry-mory
 FR- Moissy-cramayel
 FR- Montevrain
@@ -457,6 +459,7 @@ FR- Vence
 FR- Annonay
 FR- Champagne
 FR- Cruas
+FR- Davezieux
 FR- Guilherand
 FR- Joyeuse
 FR- Thorrenc
@@ -497,6 +500,7 @@ FR- Saint-affrique
 
 # 13: Bouches-du-Rhone
 FR- Aix-en-provence
+FR- Allauch
 FR- Arles
 FR- Aubagne
 FR- Bouc-bel-air
@@ -523,6 +527,7 @@ FR- Salon-de-provence
 FR- Vitrolles
 
 # 14: Calvados
+FR- Anguerny
 FR- Bretteville-l orgueilleuse
 FR- Caen
 FR- Cahagnes
@@ -670,6 +675,7 @@ FR- Locronan
 FR- Pleyber-christ
 FR- Ploneour-lanvern
 FR- Quimperle
+FR- Rosporden
 
 # 30: Gard
 FR- Aimargues
@@ -696,6 +702,9 @@ FR- Toulouse
 FR- Tournefeuille
 FR- Villemur-sur-tarn
 FR- Villeneuve-tolosane
+
+# 32: Gers
+FR- Sauvimont
 
 # 33: Gironde
 FR- Bordeaux
@@ -746,6 +755,7 @@ FR- Teyran
 FR- Valergues
 FR- Valros
 FR- Vendargues
+FR- Vic-la-gardiole
 
 # 35: Ille-et-Vilaine
 FR- Bourgbarre
@@ -880,6 +890,7 @@ FR- Montereau
 FR- Nogent-sur-vernisson
 FR- Orleans
 FR- Saint-denis-en-val
+FR- Saint-jean-de-braye
 FR- Saint-jean-de-la-ruelle
 FR- Saint-jean-le-blanc
 FR- Villemandeur
@@ -901,6 +912,7 @@ FR- Angers
 FR- Avrille
 FR- Champtoceaux
 FR- Cholet
+FR- Durtal
 FR- Ecouflant
 FR- La Menitre
 FR- Le Pont
@@ -949,6 +961,7 @@ FR- Port-brillet
 FR- Quelaines
 
 # 54: Meurthe-et-Moselle
+FR- Benamenil
 FR- Dombasle-sur-meurthe
 FR- Ecrouves
 FR- Essey-les-nancy
@@ -1032,6 +1045,7 @@ FR- Cambrai
 FR- Coudekerque-branche
 FR- Croix
 FR- Dunkirk
+FR- Feignies
 FR- Fenain
 FR- Fournes-en-weppes
 FR- Fretin
@@ -1181,9 +1195,11 @@ FR- Vic-le-comte
 
 # 64: Pyrenees-Atlantiques
 FR- Anglet
+FR- Ascain
 FR- Biarritz
 FR- Bidart
 FR- Boucau
+FR- Gelos
 FR- Hendaye
 FR- Lons
 FR- Mazeres-lezons
@@ -1206,6 +1222,7 @@ FR- Sainte-marie-la-mer
 FR- Bischoffsheim
 FR- Chatenois
 FR- Drulingen
+FR- Ebersheim
 FR- Fegersheim
 FR- Gerstheim
 FR- Gingsheim
@@ -1328,6 +1345,7 @@ FR- Mont-saint-aignan
 FR- Petit Couronne
 FR- Rouen
 FR- Sotteville-les-rouen
+FR- Valliquerville
 FR- Varengeville
 FR- Yvetot
 
@@ -1379,6 +1397,7 @@ FR- Apt
 FR- Aubignan
 FR- Avignon
 FR- Cadenet
+FR- Cavaillon
 FR- Le Pontet
 FR- Monteux
 FR- Orange
@@ -1444,6 +1463,7 @@ FR- Ligny-le-chatel
 FR- Mezilles
 FR- Migennes
 FR- Sens
+FR- Serbonnes
 FR- Veron
 FR- Villeneuve-sur-yonne
 
