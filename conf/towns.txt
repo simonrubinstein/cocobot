@@ -271,6 +271,7 @@ FR- Changis-sur-marne
 FR- Chartrettes
 FR- Chateau-landon
 FR- Chelles
+FR- Claye-souilly
 FR- Combs-la-ville
 FR- Cormeilles-en-parisis
 FR- Coubert
@@ -733,6 +734,7 @@ FR- Grabels
 FR- Jacou
 FR- Lattes
 FR- Lodeve
+FR- Magalas
 FR- Marseillan
 FR- Mauguio
 FR- Montpellier
@@ -971,6 +973,7 @@ FR- Ville-au-val
 # 55: Meuse
 FR- Bar-le-duc
 FR- Montmedy
+FR- Remoiville
 FR- Verdun
 
 # 56: Morbihan
@@ -1103,8 +1106,8 @@ FR- Mello
 FR- Meru
 FR- Montataire
 FR- Mortefontaine
-FR- Noyon
 FR- Noailles
+FR- Noyon
 FR- Puiseux-en-bray
 FR- Senlis
 FR- Silly-le-long
