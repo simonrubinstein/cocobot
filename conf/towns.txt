@@ -62,11 +62,13 @@ FR- Sainte-genevieve-des-bois
 FR- Saintry-sur-seine
 FR- Saulx-les-chartreux
 FR- Savigny-sur-orge
+FR- Tigery
 FR- Verrieres-le-buisson
 FR- Vigneux-sur-seine
 FR- Villabe
 FR- Villebon-sur-yvette
 FR- Villemoisson-sur-orge
+FR- Villiers-sur-orge
 FR- Viry-chatillon
 FR- Yerres
 
@@ -208,6 +210,7 @@ FR- Domont
 FR- Eaubonne
 FR- Ecouen
 FR- Enghien-les-bains
+FR- Eragny
 FR- Ermont
 FR- Ezanville
 FR- Fosses
@@ -219,8 +222,8 @@ FR- Goussainville
 FR- Groslay
 FR- Herblay
 FR- Jouy-le-moutier
-FR- La Frette
 FR- L isle-adam
+FR- La Frette
 FR- Maffliers
 FR- Marines
 FR- Marly-la-ville
@@ -331,6 +334,7 @@ FR- Soisy-bouy
 FR- Thieux
 FR- Thorigny-sur-marne
 FR- Torcy
+FR- Tournan-en-brie
 FR- Trilbardou
 FR- Vert-saint-denis
 FR- Villeneuve-sur-bellot
@@ -400,6 +404,7 @@ FR- Jassans-riottier
 FR- Maillat
 FR- Oyonnax
 FR- Pougny
+FR- Replonges
 
 # 02: Aisne
 FR- Bourg-et-comin
@@ -507,6 +512,7 @@ FR- Meyreuil
 FR- Miramas
 FR- Mouries
 FR- Saint-mitre-les-remparts
+FR- Saint-remy-de-provence
 FR- Salon-de-provence
 FR- Vitrolles
 
@@ -611,6 +617,7 @@ FR- Villers-le-lac
 # 26: Drome
 FR- Claveyson
 FR- Etoile-sur-rhne
+FR- Grignan
 FR- Jaillans
 FR- Montchenu
 FR- Romans-sur-isere
@@ -749,6 +756,7 @@ FR- Chatillon-sur-indre
 FR- Chambray-les-tours
 FR- Chanceaux-sur-choisille
 FR- Cinq-mars-la-pile
+FR- Dolus-le-sec
 FR- Fondettes
 FR- Joue-les-tours
 FR- La Membrolle
@@ -778,7 +786,7 @@ FR- Vif
 FR- Viriville
 
 # 39: Jura
-FR- Dole 
+FR- Dole
 FR- La Ferte
 FR- Le Deschaux
 FR- Montmorot
@@ -790,6 +798,7 @@ FR- Biscarrosse
 FR- Geloux
 FR- Labouheyre
 FR- Moliets-et-maa
+FR- Rion-des-landes
 FR- Saint-vincent-de-tyrosse
 FR- Seignosse
 FR- Sort-en-chalosse
@@ -822,6 +831,7 @@ FR- Le Puy
 
 # 44: Loire-Atlantique
 FR- Aigrefeuille-sur-maine
+FR- Basse-goulaine
 FR- Campbon
 FR- Carquefou
 FR- Chateaubriant
@@ -885,6 +895,7 @@ FR- La Menitre
 FR- Le Pont
 FR- Loire
 FR- Montigne-les-rairies
+FR- Saint-germain-sur-moine
 FR- Saint-laurent-des-autels
 FR- Saint-pierre-montlimart
 FR- Trelaze
@@ -933,6 +944,7 @@ FR- Essey-les-nancy
 FR- Faulx
 FR- Heillecourt
 FR- Joeuf
+FR- Laneuveville-devant-nancy
 FR- Laxou
 FR- Leyr
 FR- Liverdun
@@ -954,9 +966,11 @@ FR- Verdun
 
 # 56: Morbihan
 FR- Arradon
+FR- Billiers
 FR- Languidic
 FR- Lauzach
 FR- Lorient
+FR- Loyat
 FR- Montertelot
 FR- Muzillac
 FR- Noyal-pontivy
@@ -964,6 +978,7 @@ FR- Ploemeur
 FR- Plumergat
 FR- Saint-ave
 FR- Tredion
+FR- Vannes
 
 # 57: Moselle
 FR- Abreschviller
@@ -1009,16 +1024,17 @@ FR- Fenain
 FR- Fournes-en-weppes
 FR- Fretin
 FR- Genech
+FR- Godewaersvelde
 FR- Grande-synthe
 FR- Hallennes-lez-haubourdin
 FR- Halluin
-FR- Hem
 FR- Hellemmes
+FR- Hem
 FR- Houplines
 FR- Illies
 FR- Jeumont
-FR- La Madeleine
 FR- La Gorgue
+FR- La Madeleine
 FR- Lambersart
 FR- Lille
 FR- Linselles
@@ -1112,6 +1128,7 @@ FR- Dieval
 FR- Etaples
 FR- Evin-malmaison
 FR- Frethun
+FR- Guarbecque
 FR- Haplincourt
 FR- Henin-beaumont
 FR- Herlincourt
@@ -1250,6 +1267,7 @@ FR- La Fleche
 FR- Le Mans
 FR- Mamers
 FR- Notre-dame-du-pe
+FR- Vouvray-sur-loir
 
 # 73: Savoie
 FR- Chambery
@@ -1261,6 +1279,7 @@ FR- Le Bois
 FR- Les Avanchers
 
 # 74: Haute-Savoie
+FR- Alby-sur-cheran
 FR- Allinges
 FR- Annecy
 FR- Annecy-le-vieux
@@ -1269,13 +1288,14 @@ FR- Beaumont
 FR- Bonneville
 FR- Chavanod
 FR- Cruseilles
-FR- Julien
 FR- Faverges
+FR- Julien
 FR- La Ville
 FR- Lugrin
 FR- Marnaz
 FR- Megeve
 FR- Meythet
+FR- Thonon-les-bains
 FR- Vulbens
 
 # 76: Seine-Maritime
@@ -1286,6 +1306,7 @@ FR- Carrieres-sur-seine
 FR- Dieppe
 FR- Elbeuf
 FR- Harfleur
+FR- Le Grand-quevilly
 FR- Le Havre
 FR- Le Houlme
 FR- Le Treport
@@ -1372,6 +1393,7 @@ FR- Vix
 # 86: Vienne
 FR- Chatellerault
 FR- Chauvigny
+FR- Jaunay-clan
 FR- Lencloitre
 FR- Migne-auxances
 FR- Naintre
@@ -1386,8 +1408,10 @@ FR- Saint-junien
 # 88: Vosges
 FR- Cornimont
 FR- Darnieulles
+FR- Epinal
 FR- Essegney
 FR- Faverolles
+FR- Granges-sur-vologne
 FR- La Bresse
 FR- Plombieres-les-bains
 FR- Remiremont
