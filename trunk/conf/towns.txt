@@ -6,6 +6,7 @@ FR- Paris
 FR- Angervilliers
 FR- Arpajon
 FR- Athis-mons
+FR- Ballainvilliers
 FR- Ballancourt
 FR- Ballancourt-sur-essonne
 FR- Bievres
@@ -147,6 +148,8 @@ FR- Villepinte
 # 94: Val-de-Marne
 FR- Alfortville
 FR- Arcueil
+FR- Boissy
+FR- Bonneuil
 FR- Bry-sur-marne
 FR- Cachan
 FR- Champigny-sur-marne
@@ -245,6 +248,7 @@ FR- Villiers
 FR- Villiers-le-bel
 
 # 77: Seine-et-Marne
+FR- Avon
 FR- Bailly-romainvilliers
 FR- Bois-le-roi
 FR- Boissise-le-roi
@@ -272,6 +276,7 @@ FR- Dammartin-en-goele
 FR- Dampmart
 FR- Emerainville
 FR- Esbly
+FR- Ferolles-attilly
 FR- Fontainebleau
 FR- Fontenay-tresigny
 FR- Fublaines
@@ -333,12 +338,16 @@ FR- Acheres
 FR- Andresy
 FR- Aubergenville
 FR- Beynes
+FR- Bois-d arcy
 FR- Bonnieres-sur-seine
 FR- Carrieres-sous-poissy
+FR- Cernay-la-ville
+FR- Chambourcy
 FR- Chanteloup-les-vignes
 FR- Chapet
 FR- Chatou
 FR- Conflans-sainte-honorine
+FR- Cravent
 FR- Croissy-sur-seine
 FR- Elancourt
 FR- Fontenay-le-fleury
@@ -430,6 +439,7 @@ FR- Valbonne
 FR- Vence
 
 # 07: Ardeche
+FR- Annonay
 FR- Champagne
 FR- Cruas
 FR- Guilherand
@@ -438,6 +448,7 @@ FR- Thorrenc
 FR- Villevocance
 
 # 08: Ardennes
+FR- Asfeld
 FR- Bazeilles
 FR- Charleville-mezieres
 FR- Haraucourt
@@ -457,6 +468,7 @@ FR- Saint-julien-les-villas
 FR- Troyes
 
 # 11: Aude
+FR- Capendu
 FR- Carcassonne
 FR- Caudebronde
 FR- Marseillette
@@ -541,6 +553,7 @@ FR- Vierzon
 
 # 19: Correze
 FR- Brive-la-gaillarde
+FR- Egletons
 FR- Malemort
 FR- Tulle
 FR- Uzerche
@@ -567,11 +580,13 @@ FR- Plerin
 FR- Plouha
 FR- Quessoy
 FR- Saint-brieuc
+FR- Saint-caradec
 FR- Saint-quay-portrieux
 FR- Saint-vran
 
 # 24: Dordogne
 FR- Bergerac
+FR- Jumilhac-le-grand
 FR- Menesplet
 FR- Perigueux
 FR- Thiviers
@@ -618,6 +633,7 @@ FR- Chartres
 FR- Chateaudun
 FR- Cloyes-sur-le-loir
 FR- Dammarie
+FR- Dreux
 FR- Gallardon
 FR- Gasville
 FR- Luce
@@ -675,10 +691,12 @@ FR- Le Tourne
 FR- Lormont
 FR- Ludon-medoc
 FR- Merignac
+FR- Montussan
 FR- Parempuyre
 FR- Pessac
 FR- Portets
 FR- Roquebrune
+FR- Saint-Emilion
 FR- Saint-medard-de-guizieres
 FR- Saint-medard-en-jalles
 FR- Talence
@@ -687,6 +705,7 @@ FR- Talence
 FR- Adissan
 FR- Alignan-du-vent
 FR- Beziers
+FR- Florensac
 FR- Frontignan
 FR- Gigean
 FR- Grabels
@@ -728,6 +747,7 @@ FR- Joue-les-tours
 FR- La Membrolle
 FR- Monts
 FR- Saint-cyr-sur-loire
+FR- Saint-pierre-des-corps
 FR- Tours
 
 # 38: Isere
@@ -759,6 +779,7 @@ FR- Poligny
 # 40: Landes
 FR- Biscarrosse
 FR- Geloux
+FR- Labouheyre
 FR- Moliets-et-maa
 FR- Saint-vincent-de-tyrosse
 FR- Seignosse
@@ -774,6 +795,7 @@ FR- Craintilleux
 FR- La Fouillouse
 FR- La Ricamarie
 FR- Marcenod
+FR- Panissieres
 FR- Pouilly-les-nonains
 FR- Precieux
 FR- Roanne
@@ -868,6 +890,7 @@ FR- Granville
 FR- Martinvast
 FR- Montpinchon
 FR- Notre-dame-de-cenilly
+FR- Querqueville
 FR- Saint-fromond
 FR- Tourlaville
 
@@ -964,6 +987,7 @@ FR- Venissieux
 # 59: Nord
 FR- Annoeullin
 FR- Armentieres
+FR- Aulnoye-aymeries
 FR- Awoingt
 FR- Bailleul
 FR- Bergues
@@ -1012,9 +1036,11 @@ FR- Wavrin
 
 # 60: Oise
 FR- Abbecourt
+FR- Baill
 FR- Bazicourt
 FR- Beauvais
 FR- Berthecourt
+FR- Bethisy-saint-martin
 FR- Breuil-le-sec
 FR- Breuil-le-vert
 FR- Chamant
@@ -1026,6 +1052,7 @@ FR- Cuise-la-motte
 FR- Epineuse
 FR- Ercuis
 FR- Estrees-saint-denis
+FR- Fosseuse
 FR- Gouvieux
 FR- Hardivillers
 FR- Jouy-sous-thelle
@@ -1053,11 +1080,15 @@ FR- Ranes
 
 # 62: Pas-de-Calais
 FR- Achicourt
+FR- Annequin
 FR- Arques
 FR- Auchel
 FR- Auchy-les-hesdin
 FR- Auchy-les-mines
+FR- Avion
 FR- Bavincourt
+FR- Berck
+FR- Bethune
 FR- Boulogne-sur-mer
 FR- Bully-les-mines
 FR- Calais
@@ -1104,6 +1135,7 @@ FR- Vic-le-comte
 
 # 64: Pyrenees-Atlantiques
 FR- Anglet
+FR- Biarritz
 FR- Bidart
 FR- Boucau
 FR- Hendaye
@@ -1116,6 +1148,7 @@ FR- Salies-de-bearn
 FR- Urrugne
 
 # 65: Hautes-Pyrenees
+FR- Lannemezan
 FR- Tarbes
 
 # 66: Pyrenees-Orientales
@@ -1126,11 +1159,13 @@ FR- Sainte-marie-la-mer
 # 67: Bas-Rhin
 FR- Bischoffsheim
 FR- Chatenois
+FR- Drulingen
 FR- Fegersheim
 FR- Gerstheim
 FR- Gingsheim
 FR- Haguenau
 FR- Illkirch-graffenstaden
+FR- Lingolsheim
 FR- Mackenheim
 FR- Nordheim
 FR- Otterswiller
@@ -1166,6 +1201,7 @@ FR- Ecully
 FR- Francheville
 FR- Lyon
 FR- Meyzieu
+FR- Mornant
 FR- Oullins
 FR- Rillieux
 FR- Saint Priest
@@ -1360,6 +1396,7 @@ FR- Valdoie
 
 # 971: Guadeloupe
 GP-
+GP- Jarry
 GP- Les Abymes
 GP- Petit-bourg
 GP- Saint-louis
@@ -1374,12 +1411,15 @@ MQ- Le Robert
 MQ- Saint-joseph
 
 # 974: La Reunion
+RE- Bras-panon
 RE- La Riviere
 RE- Le Tampon
 RE- Les Avirons
+RE- Saint Gilles
 RE- Saint-andre
 RE- Saint-benoit
 RE- Saint-denis
+RE- Saint-joseph
 RE- Saint-leu
 RE- Saint-louis
 RE- Saint-paul
