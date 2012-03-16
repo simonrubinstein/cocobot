@@ -169,6 +169,7 @@ FR- Le Perreux
 FR- Limeil-brevannes
 FR- Maisons-alfort
 FR- Mandres-les-roses
+FR- Marolles-en-brie
 FR- Montesson
 FR- Nogent-sur-marne
 FR- Noisy-le-sec
@@ -219,6 +220,7 @@ FR- Groslay
 FR- Herblay
 FR- Jouy-le-moutier
 FR- La Frette
+FR- L isle-adam
 FR- Maffliers
 FR- Marines
 FR- Marly-la-ville
@@ -236,6 +238,7 @@ FR- Roissy-en-france
 FR- Saint-brice-sous-foret
 FR- Saint-gratien
 FR- Saint-leu-la-foret
+FR- Saint-ouen-l aumone
 FR- Saint-prix
 FR- Sannois
 FR- Sarcelles
@@ -337,6 +340,7 @@ FR- Villeparisis
 FR- Acheres
 FR- Andresy
 FR- Aubergenville
+FR- Bailly
 FR- Beynes
 FR- Bois-d arcy
 FR- Bonnieres-sur-seine
@@ -545,6 +549,7 @@ FR- Bengy-sur-craon
 FR- Boulleret
 FR- Bourges
 FR- Cours-les-barres
+FR- Linieres
 FR- Saint-denis-de-palin
 FR- Saint-doulchard
 FR- Trouy
@@ -605,6 +610,7 @@ FR- Villers-le-lac
 
 # 26: Drome
 FR- Claveyson
+FR- Etoile-sur-rhne
 FR- Jaillans
 FR- Montchenu
 FR- Romans-sur-isere
@@ -626,6 +632,7 @@ FR- Louviers
 FR- Pacy-sur-eure
 FR- Saint-didier-des-bois
 FR- Saint-germain-village
+FR- Vernon
 
 # 28: Eure-et-Loir
 FR- Auneau
@@ -771,10 +778,12 @@ FR- Vif
 FR- Viriville
 
 # 39: Jura
+FR- Dole 
 FR- La Ferte
 FR- Le Deschaux
 FR- Montmorot
 FR- Poligny
+FR- Saint-claude
 
 # 40: Landes
 FR- Biscarrosse
@@ -910,6 +919,7 @@ FR- Montier-en-der
 FR- Rolampont
 
 # 53: Mayenne
+FR- Bree
 FR- Laval
 FR- Mayenne
 FR- Place
@@ -1002,10 +1012,12 @@ FR- Genech
 FR- Grande-synthe
 FR- Hallennes-lez-haubourdin
 FR- Halluin
+FR- Hem
 FR- Hellemmes
 FR- Houplines
 FR- Illies
 FR- Jeumont
+FR- La Madeleine
 FR- La Gorgue
 FR- Lambersart
 FR- Lille
@@ -1044,6 +1056,7 @@ FR- Bethisy-saint-martin
 FR- Breuil-le-sec
 FR- Breuil-le-vert
 FR- Chamant
+FR- Chambly
 FR- Chantilly
 FR- Compiegne
 FR- Creil
@@ -1076,6 +1089,7 @@ FR- Alenon
 FR- Bagnoles-de-l orne
 FR- Damigny
 FR- Messei
+FR- Rai
 FR- Ranes
 
 # 62: Pas-de-Calais
@@ -1106,6 +1120,7 @@ FR- Lens
 FR- Lillers
 FR- Longuenesse
 FR- Marles-les-mines
+FR- Marquise
 FR- Meurchin
 FR- Noeux-les-mines
 FR- Pronville
@@ -1197,6 +1212,7 @@ FR- Cabannes
 FR- Charly
 FR- Communay
 FR- Craponne
+FR- Dommartin
 FR- Ecully
 FR- Francheville
 FR- Lyon
@@ -1253,6 +1269,7 @@ FR- Beaumont
 FR- Bonneville
 FR- Chavanod
 FR- Cruseilles
+FR- Julien
 FR- Faverges
 FR- La Ville
 FR- Lugrin
@@ -1293,6 +1310,7 @@ FR- Beauchamps
 FR- Corbie
 FR- Dreuil-les-amiens
 FR- Ennemain
+FR- Ham
 FR- Peronne
 FR- Rue
 FR- Saleux
@@ -1331,6 +1349,7 @@ FR- Monteux
 FR- Orange
 FR- Pertuis
 FR- Sablet
+FR- Sorgues
 
 # 85: Vendee
 FR- Beauvoir-sur-mer
@@ -1348,6 +1367,7 @@ FR- Rocheserviere
 FR- Saint-jean-de-monts
 FR- Saint-philbert-de-bouaine
 FR- Venansault
+FR- Vix
 
 # 86: Vienne
 FR- Chatellerault
