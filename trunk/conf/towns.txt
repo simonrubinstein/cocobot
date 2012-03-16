@@ -504,6 +504,7 @@ FR- Aix-en-provence
 FR- Allauch
 FR- Arles
 FR- Aubagne
+FR- Auriol
 FR- Bouc-bel-air
 FR- Cabries
 FR- Calas
