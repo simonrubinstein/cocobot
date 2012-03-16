@@ -412,6 +412,7 @@ FR- Pougny
 FR- Replonges
 
 # 02: Aisne
+FR- Bohain
 FR- Bourg-et-comin
 FR- Chateau-thierry
 FR- Dercy
@@ -808,6 +809,7 @@ FR- Septeme
 FR- Tullins
 FR- Valencin
 FR- Vif
+FR- Villefontaine
 FR- Viriville
 
 # 39: Jura
@@ -878,6 +880,7 @@ FR- Saffre
 FR- Saint-herblain
 FR- Saint-jean-de-boiseau
 FR- Saint-mars-du-desert
+FR- Saint-molf
 FR- Saint-nazaire
 FR- Saint-philbert-de-grand-li
 FR- Vay
@@ -889,6 +892,7 @@ FR- Checy
 FR- Chevilly
 FR- Coullons
 FR- Fleury-les-aubrais
+FR- Lion-en-sullias
 FR- Malesherbes
 FR- Marigny-les-usages
 FR- Meung-sur-loire
@@ -1357,6 +1361,7 @@ FR- Le Grand-quevilly
 FR- Le Havre
 FR- Le Houlme
 FR- Le Treport
+FR- Lintot
 FR- Mont-saint-aignan
 FR- Petit Couronne
 FR- Rouen
@@ -1368,6 +1373,7 @@ FR- Yvetot
 # 79: Deux-Sevres
 FR- Adilly
 FR- Cours
+FR- Niort
 FR- Thenezay
 FR- Thouars
 
