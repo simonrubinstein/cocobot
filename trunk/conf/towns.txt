@@ -577,6 +577,7 @@ FR- Vierzon
 FR- Brive-la-gaillarde
 FR- Egletons
 FR- Malemort
+FR- Pompadour
 FR- Tulle
 FR- Uzerche
 
@@ -760,6 +761,7 @@ FR- Vic-la-gardiole
 # 35: Ille-et-Vilaine
 FR- Bourgbarre
 FR- Cesson-sevigne
+FR- Chanteloup
 FR- L hermitage
 FR- Maure-de-bretagne
 FR- Melesse
@@ -785,6 +787,7 @@ FR- Saint-pierre-des-corps
 FR- Tours
 
 # 38: Isere
+FR- Bourgoin
 FR- Chasse-sur-rhne
 FR- Culin
 FR- Diemoz
@@ -939,6 +942,7 @@ FR- Tourlaville
 
 # 51: Marne
 FR- Chalons-en-champagne
+FR- Jalons
 FR- Gaye
 FR- Nuisement-sur-coole
 FR- Pleurs
@@ -1086,6 +1090,7 @@ FR- Saint-pol-sur-mer
 FR- Sebourg
 FR- Tourcoing
 FR- Valenciennes
+FR- Villefranche-sur-sane
 FR- Wavrin
 
 # 60: Oise
