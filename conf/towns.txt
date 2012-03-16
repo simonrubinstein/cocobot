@@ -246,6 +246,7 @@ FR- Saint-prix
 FR- Sannois
 FR- Sarcelles
 FR- Soisy-sous-montmorency
+FR- Survilliers
 FR- Taverny
 FR- Vaureal
 FR- Vemars
@@ -330,6 +331,7 @@ FR- Saint-mammes
 FR- Saint-pathus
 FR- Samois-sur-seine
 FR- Savigny-le-temple
+FR- Serris
 FR- Soisy-bouy
 FR- Thieux
 FR- Thorigny-sur-marne
@@ -425,6 +427,9 @@ FR- Tergnier
 
 # 03: Allier
 FR- Montluon
+
+# 04: Alpes-de-Haute-Provence
+FR- Riez
 
 # 05: Hautes-Alpes
 FR- Gap
@@ -637,6 +642,7 @@ FR- Le Vaudreuil
 FR- Les Andelys
 FR- Louviers
 FR- Pacy-sur-eure
+FR- Saint-andre-de-l eure
 FR- Saint-didier-des-bois
 FR- Saint-germain-village
 FR- Vernon
@@ -702,6 +708,7 @@ FR- Gradignan
 FR- Le Barp
 FR- Le Taillan-medoc
 FR- Le Tourne
+FR- Libourne
 FR- Lormont
 FR- Ludon-medoc
 FR- Merignac
@@ -846,12 +853,14 @@ FR- Mesanger
 FR- Mouzillon
 FR- Nantes
 FR- Orvault
+FR- Pornichet
 FR- Reze
 FR- Saffre
 FR- Saint-herblain
 FR- Saint-jean-de-boiseau
 FR- Saint-mars-du-desert
 FR- Saint-nazaire
+FR- Saint-philbert-de-grand-li
 FR- Vay
 
 # 45: Loiret
@@ -1091,9 +1100,11 @@ FR- Liancourt
 FR- Longueil-annel
 FR- Machemont
 FR- Mello
+FR- Meru
 FR- Montataire
 FR- Mortefontaine
 FR- Noyon
+FR- Noailles
 FR- Puiseux-en-bray
 FR- Senlis
 FR- Silly-le-long
@@ -1441,6 +1452,7 @@ FR- Valdoie
 # 971: Guadeloupe
 GP-
 GP- Jarry
+GP- Lamentin
 GP- Les Abymes
 GP- Petit-bourg
 GP- Saint-louis
