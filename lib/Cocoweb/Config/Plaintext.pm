@@ -1,5 +1,5 @@
 # @created 2012-02-24
-# @date 2012-03-15
+# @date 2012-03-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -30,16 +30,22 @@ use warnings;
 use Cocoweb;
 use Carp;
 use Data::Dumper;
+use IO::File;
+use File::stat;
 
 use Cocoweb;
 use base 'Cocoweb::Object';
 
-__PACKAGE__->attributes( 'all', 'pathname' );
+__PACKAGE__->attributes( 'all', 'pathname', 'mtime' );
 
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
-    $self->attributes_defaults( 'pathname' => $args{'pathname'} );
+    $self->attributes_defaults(
+        'all'      => {},
+        'pathname' => $args{'pathname'},
+        'mtime'    => 0
+    );
     $self->readFile();
 }
 
@@ -49,16 +55,32 @@ sub readFile {
     my $fh;
     my $filename = $self->pathname();
     my @file     = ();
-    die sayError("open($filename) was failed: $!")
-      if !open( $fh, '<', $filename );
-    while ( my $line = <$fh> ) {
+    $fh = IO::File->new( $filename, 'r' );
+    die error("open($filename) was failed: $!")
+      if !defined $fh;
+    my $stat = stat($fh);
+    die error("stat($filename) was failed: $!")
+      if !defined $stat;
+    my $mtime = $stat->mtime();
+
+    if ( $stat->mtime() == $self->mtime() ) {
+        debug("The file $filename was not changed");
+        close $fh;
+        return;
+    }
+    $self->mtime( $stat->mtime() );
+    while ( defined( my $line = $fh->getline() ) ) {
+
+        #die error("open($filename) was failed: $!")
+        #  if !open( $fh, '<', $filename );
+        #while ( my $line = <$fh> ) {
         chomp($line);
-        next if substr($line, 0, 1) eq '#' or $line =~m{^\s*$};
+        next if substr( $line, 0, 1 ) eq '#' or $line =~ m{^\s*$};
         push @file, $line;
     }
     close $fh;
     $self->all( \@file );
-    debug($filename  . ' file was read successfully');
+    debug( $filename . ' file was read successfully' );
 }
 
 ##@method arrayref getAll()
@@ -71,17 +93,18 @@ sub getAll {
 }
 
 ##@method hashref getAsHash()
-#@brief  
+#@brief
 sub getAsHash {
     my ($self) = @_;
-    my $file_ref = $self->all();
+    $self->readFile();
+    my $file_ref  = $self->all();
     my %hashtable = ();
     my %ctrl      = ();
-    my $count = 1;
+    my $count     = 1;
     foreach my $line (@$file_ref) {
-        $line =~s{^\s+}{}g;
-        $line =~s{\s+$}{}g;
-        die error("The key $line exists") if exists  $hashtable{$line};
+        $line =~ s{^\s+}{}g;
+        $line =~ s{\s+$}{}g;
+        die error("The key $line exists") if exists $hashtable{$line};
         $hashtable{$line} = $count;
         my $check = lc($line);
         die error("The key $check exists") if exists $ctrl{$check};

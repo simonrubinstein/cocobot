@@ -1,6 +1,6 @@
 # @brief Handle SQLite database
 # @created 2012-03-11
-# @date 2012-03-11
+# @date 2012-03-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -50,11 +50,10 @@ sub init {
     return $instance;
 }
 
-##@method hashref getInitTowns()
+##@method array getInitTowns()
 sub getInitTowns {
     my ($self) = @_;
     my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 1 );
-
     my $ISO3166Regex = $self->ISO3166Regex();
     $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
@@ -62,8 +61,7 @@ sub getInitTowns {
         die error("The string $town is not valid") if $town !~ $ISO3166Regex;
     }
     info( 'number of towns: ' . scalar( keys %$towns_ref ) );
-    #print Dumper $towns->all();
-    return ($towns_ref, $towns);
+    return ( $towns_ref, $towns );
 }
 
 ##@method void connect()
@@ -80,6 +78,8 @@ sub connect {
     $self->dbh($dbh);
 }
 
+##@method void createTables()
+#@brief Creates the tables in the database
 sub createTables {
     my ($self) = @_;
 
@@ -96,7 +96,7 @@ ENDTXT
 
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `nicknames` (
-    `id`            INTEGER UNSIGNED NOT NULL PRIMARY KEY,
+    `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
     `login`         VARCHAR(16) NOT NULL,
     `sex`           INTEGER NOT NULL,
     `old`           INTEGER NOT NULL,
@@ -111,6 +111,7 @@ ENDTXT
     `level`         INTEGER NOT NULL,
     `since`         INTEGER NOT NULL,
     `town`          INTEGER NOT NULL,
+    `premimum`      INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL)
 ENDTXT
@@ -118,23 +119,30 @@ ENDTXT
 
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `ISPs` (
-    `id`            INTEGER UNSIGNED NOT NULL PRIMARY KEY,
+    `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
     `name`          VARCHAR(255) UNIQUE NOT NULL)
 ENDTXT
     $self->dbh()->do($query);
 
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `towns` (
-    `id`            INTEGER UNSIGNED NOT NULL PRIMARY KEY,
+    `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
     `name`          VARCHAR(255) UNIQUE NOT NULL)
 ENDTXT
     $self->dbh()->do($query);
-
 }
 
+##@method void insertTown($name)
+#@param string An town code, i.e. 'FR- Sevran'
 sub insertTown {
     my ( $self, $name ) = @_;
-
+    my $query = q/
+      INSERT INTO `towns`
+        (`name`) 
+        VALUES
+        (?);
+      /;
+    $self->dbh()->do( $query, undef, $name );
 }
 
 1;
