@@ -749,6 +749,7 @@ FR- Marseillan
 FR- Mauguio
 FR- Montpellier
 FR- Notre-dame-de-londres
+FR- Puechabon
 FR- Saint-jean-de-vedas
 FR- Sauvian
 FR- Sete
@@ -780,6 +781,7 @@ FR- Cinq-mars-la-pile
 FR- Dolus-le-sec
 FR- Fondettes
 FR- Joue-les-tours
+FR- La Guerche
 FR- La Membrolle
 FR- Monts
 FR- Saint-cyr-sur-loire
@@ -791,6 +793,7 @@ FR- Bourgoin
 FR- Chasse-sur-rhne
 FR- Culin
 FR- Diemoz
+FR- Echirolles
 FR- Grenoble
 FR- L isle-d abeau
 FR- La Buissiere
@@ -862,6 +865,7 @@ FR- Clisson
 FR- Coueron
 FR- Donges
 FR- La Chapelle
+FR- Le Cellier
 FR- Lege
 FR- Machecoul
 FR- Mesanger
@@ -942,8 +946,8 @@ FR- Tourlaville
 
 # 51: Marne
 FR- Chalons-en-champagne
-FR- Jalons
 FR- Gaye
+FR- Jalons
 FR- Nuisement-sur-coole
 FR- Pleurs
 FR- Reims
@@ -971,6 +975,7 @@ FR- Ecrouves
 FR- Essey-les-nancy
 FR- Faulx
 FR- Heillecourt
+FR- Jarny
 FR- Joeuf
 FR- Laneuveville-devant-nancy
 FR- Laxou
@@ -1023,6 +1028,7 @@ FR- Merlebach
 FR- Metz
 FR- Mondelange
 FR- Montigny-les-metz
+FR- Nilvange
 FR- Pange
 FR- Saint-avold
 FR- Sarreguemines
@@ -1060,6 +1066,7 @@ FR- Hallennes-lez-haubourdin
 FR- Halluin
 FR- Hellemmes
 FR- Hem
+FR- Houplin-ancoisne
 FR- Houplines
 FR- Illies
 FR- Jeumont
@@ -1092,9 +1099,11 @@ FR- Tourcoing
 FR- Valenciennes
 FR- Villefranche-sur-sane
 FR- Wavrin
+FR- Wormhout
 
 # 60: Oise
 FR- Abbecourt
+FR- Agnetz
 FR- Baill
 FR- Bazicourt
 FR- Beauvais
@@ -1184,6 +1193,7 @@ FR- Wizernes
 
 # 63: Puy-de-Dome
 FR- Aubiere
+FR- Billom
 FR- Blanzat
 FR- Chamalieres
 FR- Champeix
@@ -1309,6 +1319,7 @@ FR- Vouvray-sur-loir
 FR- Chambery
 FR- Cognin
 FR- Jacob-bellecombette
+FR- La Biolle
 FR- La Chavanne
 FR- La Ravoire
 FR- Le Bois
@@ -1369,6 +1380,7 @@ FR- Corbie
 FR- Dreuil-les-amiens
 FR- Ennemain
 FR- Ham
+FR- Marcheville
 FR- Peronne
 FR- Rue
 FR- Saleux
@@ -1452,6 +1464,7 @@ FR- Faverolles
 FR- Granges-sur-vologne
 FR- La Bresse
 FR- Plombieres-les-bains
+FR- Raon-l etape
 FR- Remiremont
 FR- Remoncourt
 FR- Saint-die
