@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-12
+# @date 2012-03-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -27,11 +27,13 @@
 package Cocoweb;
 use strict;
 use warnings;
-use Data::Dumper;
 use Carp;
+use FindBin qw($Script $Bin);
+use Data::Dumper;
+use File::stat;
+use File::Temp;
 use IO::File;
 use POSIX;
-use File::stat;
 use Cocoweb::Logger;
 
 our $VERSION   = '0.2001';
@@ -162,19 +164,56 @@ sub parseInt {
     return $ret;
 }
 
-##@method dumpToFile($vars, $filename)
+##@method void dumpToFile($vars, $filename)
+#@brief Save a Perl data structure into a file
+#@param hashref $vars     A reference to a Perl structure:
+#                         an array or a hash table
+#@param string  $filename A filename
 sub dumpToFile {
     my ( $vars, $filename ) = @_;
+    my @args = ( 'UNLINK' => 0 );
+    my ( $template, $suffix );
+    if ( $Script =~ m{^([^.]+)(\..+)}xms ) {
+        $template = $1 . '_';
+        $suffix   = $2;
+    }
+    else {
+        $template = $Script . '_';
+    }
+    if ( $filename =~ m{^(.+)/([^/]+)$} ) {
+        push @args, 'DIR', $1;
+        $template .= $2;
+    }
+    else {
+        $template .= $filename;
+    }
+    if ( $template =~ m{^(.+)(\..+)$} ) {
+        $template = $1;
+        $suffix   = $2;
+    }
+    else {
+        $suffix = '.pl' if !defined $suffix;
+    }
+    $template .= '_XXXXXXXXXXXXXX';
+    push @args, 'TEMPLATE', $template, 'SUFFIX', $suffix;
+    my $fh          = File::Temp->new(@args);
+    my $tmpFilename = $fh->filename();
+    debug(  'filename: '
+          . $filename
+          . '; template: '
+          . $template
+          . '; tmpFilename: '
+          . $tmpFilename );
     $Data::Dumper::Purity = 1;
     $Data::Dumper::Indent = 1;
     $Data::Dumper::Terse  = 1;
-    my $fh;
-    die error("open($filename) was failed: $!") if !open( $fh, '>', $filename );
     print $fh Dumper $vars;
-    die error("open($filename) was failed: $!") if !close($fh);
+    die error("close($filename) was failed: $!") if !close($fh);
+    die error("rename($tmpFilename, $filename) was failed: $!")
+      if !rename( $tmpFilename, $filename );
 }
 
-##@method fileToVars($filename)
+##@method void fileToVars($filename)
 sub fileToVars {
     my ($filename) = @_;
     my $stat = stat($filename);
