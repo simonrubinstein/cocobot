@@ -39,6 +39,8 @@ use Cocoweb::CLI;
 use Cocoweb::DB;
 my $CLI;
 my $DB;
+my $dumpTownsFilename = '_townCount.pl';
+my $dumpISPsFilename  = '_ISPCount.pl';
 
 init();
 run();
@@ -46,7 +48,7 @@ run();
 ##@method void run()
 sub run {
     my ( $town_ref, $townConf ) = $DB->getInitTowns();
-    my $townCount_ref = fileToVars('_townCount.pl');
+    my $townCount_ref = fileToVars($dumpTownsFilename);
     my ( $count, $found, $notFound ) = ( 0, 0, 0 );
     foreach my $town ( sort keys %$townCount_ref ) {
         $count++;
@@ -57,8 +59,29 @@ sub run {
         message( $town . ' => ' . $townCount_ref->{$town} );
         $notFound++;
     }
-    message( 'Number of town code(s) found: ' . $found );
+    message( 'Number total of town code(s)    : ' . $count );
+    message( 'Number of town code(s) found    : ' . $found );
     message( 'Number of town code(s) not found: ' . $notFound );
+
+    my ( $ISP_ref,  $ISPConf )  = $DB->getInitISPs();
+    my $ISPCount_ref  = fileToVars($dumpISPsFilename)  if -f $dumpISPsFilename;
+    ( $count, $found, $notFound ) = ( 0, 0, 0 );
+    foreach my $isp ( sort keys %$ISPCount_ref ) {
+        $count++;
+        #message( $isp . ' => ' . $ISPCount_ref->{$isp} );
+        if ( exists $ISP_ref->{$isp} ) {
+            $found++;
+            next;
+        }
+        message($isp);
+        $notFound++;
+    }
+    message( 'Number total of IPS code(s)    : ' . $count );
+    message( 'Number of ISP code(s) found    : ' . $found );
+    message( 'Number of ISP code(s) not found: ' . $notFound );
+
+
+
     info("The $Bin script was completed successfully.");
 }
 
