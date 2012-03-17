@@ -244,6 +244,7 @@ FR- Persan
 FR- Pierrelaye
 FR- Pontoise
 FR- Presles
+FR- Puiseux-en-france
 FR- Puiseux-pontoise
 FR- Roissy-en-france
 FR- Saint-brice-sous-foret
@@ -828,6 +829,7 @@ FR- Chatillon-sur-indre
 # 37: Indre-et-Loire
 FR- Chambray-les-tours
 FR- Chanceaux-sur-choisille
+FR- Chateau-renault
 FR- Cinq-mars-la-pile
 FR- Dolus-le-sec
 FR- Fondettes
@@ -958,6 +960,7 @@ FR- Saint-denis-en-val
 FR- Saint-jean-de-braye
 FR- Saint-jean-de-la-ruelle
 FR- Saint-jean-le-blanc
+FR- Sermaises
 FR- Villemandeur
 
 # 46: Lot
@@ -1131,6 +1134,7 @@ FR- Dunkirk
 FR- Feignies
 FR- Fenain
 FR- Fournes-en-weppes
+FR- Frelinghien
 FR- Fretin
 FR- Genech
 FR- Godewaersvelde
@@ -1156,6 +1160,7 @@ FR- Marly
 FR- Maubeuge
 FR- Mouvaux
 FR- Obies
+FR- Onnaing
 FR- Peronne-en-melantois
 FR- Petite Foret
 FR- Phalempin
@@ -1170,9 +1175,11 @@ FR- Saint-amand-les-eaux
 FR- Saint-pol-sur-mer
 FR- Sebourg
 FR- Spycker
+FR- Steenvoorde
 FR- Tourcoing
 FR- Valenciennes
 FR- Villefranche-sur-sane
+FR- Wattrelos
 FR- Wavrin
 FR- Wormhout
 
@@ -1205,6 +1212,7 @@ FR- Lassigny
 FR- Liancourt
 FR- Longueil-annel
 FR- Machemont
+FR- Melicocq
 FR- Mello
 FR- Meru
 FR- Montataire
@@ -1306,6 +1314,7 @@ FR- Pau
 FR- Saint-pee-sur-nivelle
 FR- Salies-de-bearn
 FR- Urrugne
+FR- Vignes
 
 # 65: Hautes-Pyrenees
 FR- Lannemezan
@@ -1359,6 +1368,7 @@ FR- Brignais
 FR- Brindas
 FR- Bron
 FR- Cabannes
+FR- Chaponost
 FR- Charly
 FR- Communay
 FR- Craponne
@@ -1388,6 +1398,7 @@ FR- Ancier
 FR- Arc-les-gray
 FR- Fontaine-les-luxeuil
 FR- Genevreuille
+FR- La Cte
 FR- Vesoul
 
 # 71: Saone-et-Loire
@@ -1454,8 +1465,10 @@ FR- Harfleur
 FR- Le Grand-quevilly
 FR- Le Havre
 FR- Le Houlme
+FR- Le Petit-quevilly
 FR- Le Treport
 FR- Lintot
+FR- Mesnil-esnard
 FR- Mont-saint-aignan
 FR- Petit Couronne
 FR- Rouen
@@ -1510,6 +1523,7 @@ FR- Hyeres
 FR- La Farlede
 FR- La Garde
 FR- La Roquette
+FR- Le Luc
 FR- Le Pradet
 FR- Les Mayons
 FR- Lorgues
@@ -1537,6 +1551,7 @@ FR- Beauvoir-sur-mer
 FR- Belleville-sur-vie
 FR- Bois-de-cene
 FR- Challans
+FR- Chateau-d olonne
 FR- Cugand
 FR- Fontenay-le-comte
 FR- La Chaize
