@@ -185,7 +185,7 @@ sub insertCode {
         VALUES
         (?);
       /;
-    $self->dbh()->do( $query, undef, $name );
+    $self->dbh()->do( $query, undef, $code );
 }
 
 1;
