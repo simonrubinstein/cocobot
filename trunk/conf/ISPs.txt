@@ -10,6 +10,7 @@ COMPLETEL SAS France
 Digicube sas
 DIMEDIA LLC
 Ecritel
+ESTVIDEOCOMMUNICATION cable { broadband operator
 euNetworks Services GmbH
 France Telecom
 Free SAS
@@ -17,6 +18,8 @@ Herault Telecom
 Ikoula Net SAS
 Liberia Telecommunications Corporation (LIBTELCO)
 MANCHE TELECOM
+Mediaserv
+Nerim SAS
 Neuf Cegetel
 NC Numericable S.A.
 NordNet
