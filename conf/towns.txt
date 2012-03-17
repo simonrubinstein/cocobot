@@ -242,6 +242,7 @@ FR- Osny
 FR- Persan
 FR- Pierrelaye
 FR- Pontoise
+FR- Puiseux-pontoise
 FR- Roissy-en-france
 FR- Saint-brice-sous-foret
 FR- Saint-gratien
@@ -270,6 +271,7 @@ FR- Bussy-saint-georges
 FR- Cannes-Ecluse
 FR- Cely-en-biere
 FR- Cesson
+FR- Chalmaison
 FR- Champdeuil
 FR- Champs-sur-marne
 FR- Changis-sur-marne
@@ -602,8 +604,8 @@ FR- Vierzon
 
 # 19: Correze
 FR- Brive-la-gaillarde
-FR- Larche
 FR- Egletons
+FR- Larche
 FR- Malemort
 FR- Pompadour
 FR- Tulle
@@ -635,6 +637,7 @@ FR- Saint-brieuc
 FR- Saint-caradec
 FR- Saint-quay-portrieux
 FR- Saint-vran
+FR- Trigavou
 
 # 24: Dordogne
 FR- Bergerac
@@ -701,6 +704,7 @@ FR- Senonches
 
 # 29: Finistere
 FR- Brest
+FR- Clohars-fouesnant
 FR- Ergue-gaberic
 FR- Landerneau
 FR- Locronan
@@ -1032,6 +1036,7 @@ FR- Liverdun
 FR- Maxeville
 FR- Moineville
 FR- Nancy
+FR- Neuves-maisons
 FR- Rosieres-aux-salines
 FR- Saint-nicolas-de-port
 FR- Saulnes
@@ -1061,6 +1066,7 @@ FR- Ploemeur
 FR- Plumergat
 FR- Pluneret
 FR- Saint-ave
+FR- Saint-dolay
 FR- Tredion
 FR- Vannes
 
@@ -1073,6 +1079,7 @@ FR- Grosbliederstroff
 FR- Hayange
 FR- Hombourg-haut
 FR- La Maxe
+FR- Longeville-les-saint-avold
 FR- Macheren
 FR- Marange-silvange
 FR- Merlebach
@@ -1127,6 +1134,7 @@ FR- Jeumont
 FR- La Gorgue
 FR- La Madeleine
 FR- Lambersart
+FR- Leers
 FR- Lille
 FR- Linselles
 FR- Lomme
@@ -1212,6 +1220,7 @@ FR- Ranes
 FR- Achicourt
 FR- Annequin
 FR- Arques
+FR- Arras
 FR- Auchel
 FR- Auchy-les-hesdin
 FR- Auchy-les-mines
@@ -1275,9 +1284,9 @@ FR- Ascain
 FR- Biarritz
 FR- Bidart
 FR- Boucau
-FR- Juranon
 FR- Gelos
 FR- Hendaye
+FR- Juranon
 FR- Lons
 FR- Mazeres-lezons
 FR- Mouguerre
@@ -1310,6 +1319,7 @@ FR- Lingolsheim
 FR- Mackenheim
 FR- Nordheim
 FR- Otterswiller
+FR- Pfaffenhoffen
 FR- Rosheim
 FR- Saverne
 FR- Schiltigheim
@@ -1348,8 +1358,8 @@ FR- Mornant
 FR- Oullins
 FR- Pierre-benite
 FR- Rillieux
-FR- Saint-bonnet-de-mure
 FR- Saint Priest
+FR- Saint-bonnet-de-mure
 FR- Saint-priest
 FR- Sathonay-camp
 FR- Tassin-la-demi-lune
@@ -1370,6 +1380,7 @@ FR- Champforgeuil
 FR- Change
 FR- Gergy
 FR- Igornay
+FR- La Clayette
 FR- Macon
 
 # 72: Sarthe
@@ -1487,8 +1498,8 @@ FR- Le Pradet
 FR- Les Mayons
 FR- Lorgues
 FR- Montauroux
-FR- Saint-maximin-la-sainte-ba
 FR- Saint-aygulf
+FR- Saint-maximin-la-sainte-ba
 FR- Saint-raphael
 FR- Toulon
 
@@ -1602,13 +1613,13 @@ RE- Les Avirons
 RE- Saint Gilles
 RE- Saint-andre
 RE- Saint-benoit
-RE- Sainte-clotilde
 RE- Saint-denis
 RE- Saint-joseph
 RE- Saint-leu
 RE- Saint-louis
 RE- Saint-paul
 RE- Saint-pierre
+RE- Sainte-clotilde
 RE- Sainte-marie
 
 # 987: Polynesie française
