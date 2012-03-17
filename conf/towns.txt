@@ -25,6 +25,7 @@ FR- Cheptainville
 FR- Chilly-mazarin
 FR- Clichy
 FR- Corbeil-essonnes
+FR- Corbreuse
 FR- Courcouronnes
 FR- Courson-monteloup
 FR- Dourdan
@@ -355,6 +356,7 @@ FR- Savigny-le-temple
 FR- Serris
 FR- Soisy-bouy
 FR- Thieux
+FR- Thomery
 FR- Thorigny-sur-marne
 FR- Torcy
 FR- Tournan-en-brie
@@ -384,6 +386,7 @@ FR- Croissy-sur-seine
 FR- Elancourt
 FR- Follainville-dennemont
 FR- Fontenay-le-fleury
+FR- Fourqueux
 FR- Gambais
 FR- Gargenville
 FR- Guyancourt
@@ -1087,6 +1090,7 @@ FR- Ville-au-val
 
 # 55: Meuse
 FR- Bar-le-duc
+FR- Bouligny
 FR- Montmedy
 FR- Remoiville
 FR- Verdun
@@ -1127,6 +1131,7 @@ FR- Mondelange
 FR- Montigny-les-metz
 FR- Nilvange
 FR- Pange
+FR- Petite-rosselle
 FR- Puttelange
 FR- Rechicourt-le-chateau
 FR- Saint-avold
@@ -1154,6 +1159,7 @@ FR- Bailleul
 FR- Bergues
 FR- Cambrai
 FR- Capelle
+FR- Comines
 FR- Coudekerque-branche
 FR- Croix
 FR- Dunkirk
@@ -1167,6 +1173,7 @@ FR- Godewaersvelde
 FR- Grande-synthe
 FR- Hallennes-lez-haubourdin
 FR- Halluin
+FR- Haubourdin
 FR- Hellemmes
 FR- Hem
 FR- Houplin-ancoisne
@@ -1349,6 +1356,7 @@ FR- Urrugne
 FR- Vignes
 
 # 65: Hautes-Pyrenees
+FR- Labastide
 FR- Lannemezan
 FR- Tarbes
 
@@ -1596,6 +1604,7 @@ FR- Cugand
 FR- Fontenay-le-comte
 FR- La Chaize
 FR- La Ferriere
+FR- La Guyonniere
 FR- La Roche
 FR- Le Poire
 FR- Les Essarts
