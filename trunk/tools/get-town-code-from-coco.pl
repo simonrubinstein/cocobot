@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief
 #@created 2012-03-09
-#@date 2012-03-15
+#@date 2012-03-17
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -41,11 +41,12 @@ use Cocoweb::CLI;
 use Cocoweb::DB;
 my $DB;
 my $CLI;
-my %ispCount      = ();
-my $townCount_ref = {};
-my $premiumCount  = 0;
-my $isLoop        = 0;
-my $dumpFilename  = '_townCount.pl';
+my $ISPCount_ref      = {};
+my $townCount_ref     = {};
+my $premiumCount      = 0;
+my $isLoop            = 0;
+my $dumpTownsFilename = '_townCount.pl';
+my $dumpISPsFilename  = '_ISPCount.pl';
 
 init();
 run();
@@ -93,9 +94,11 @@ sub process {
 ##@method void getTownsFromInfuz()
 sub getTownsFromInfuz {
     my ($userFound_ref) = @_;
-    my ( $count, $found, $notfound ) = ( 0, 0, 0 );
+    my ( $count, $found, $notFound ) = ( 0, 0, 0 );
     my ( $town_ref, $townConf ) = $DB->getInitTowns();
-    my $townCount_ref = fileToVars($dumpFilename) if -f $dumpFilename;
+    my ( $ISP_ref,  $ISPConf )  = $DB->getInitISPs();
+    $townCount_ref = fileToVars($dumpTownsFilename) if -f $dumpTownsFilename;
+    $ISPCount_ref  = fileToVars($dumpISPsFilename)  if -f $dumpISPsFilename;
 
     foreach my $id ( keys %$userFound_ref ) {
         next if exists $user{$id};
@@ -105,14 +108,15 @@ sub getTownsFromInfuz {
         }
         my $infuz_ref = $bot->getInfuz($id);
         $count++;
-        $ispCount{ $infuz_ref->{'ISP'} }++;
+        $ISPCount_ref->{ $infuz_ref->{'ISP'} }++;
         $townCount_ref->{ $infuz_ref->{'town'} }++;
         $premiumCount++ if $infuz_ref->{'premium'};
     }
     message( 'Number of checked users: : ' . $count );
     message(
         'The number of users with a Premium subscription: ' . $premiumCount );
-    dumpToFile( $townCount_ref, '_townCount.pl' );
+    dumpToFile( $townCount_ref, $dumpTownsFilename );
+    dumpToFile( $ISPCount_ref,  $dumpISPsFilename );
     $count = 0;
     foreach my $town ( sort keys %$townCount_ref ) {
         $count++;
@@ -122,11 +126,27 @@ sub getTownsFromInfuz {
         }
 
         #message( $town . ' => ' . $townCount_ref->{$town} );
-        $notfound++;
+        $notFound++;
     }
     message( 'Number total of town code(s)    : ' . $count );
     message( 'Number of town code(s) found    : ' . $found );
-    message( 'Number of town code(s) not found: ' . $notfound );
+    message( 'Number of town code(s) not found: ' . $notFound );
+
+    ( $count, $found, $notFound ) = ( 0, 0, 0 );
+    foreach my $isp ( sort keys %$ISPCount_ref ) {
+        $count++;
+        if ( exists $ISP_ref->{$isp} ) {
+            $found++;
+            next;
+        }
+
+        #message( $town . ' => ' . $townCount_ref->{$town} );
+        $notFound++;
+    }
+    message( 'Number total of IPS code(s)    : ' . $count );
+    message( 'Number of ISP code(s) found    : ' . $found );
+    message( 'Number of ISP code(s) not found: ' . $notFound );
+
 }
 
 ## @method void init()
@@ -161,7 +181,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-15) 
+    $Script $Cocoweb::VERSION (2012-03-17) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
