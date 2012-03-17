@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-16
+# @date 2012-03-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -48,9 +48,11 @@ our @EXPORT = qw(
   dumpToFile
   error
   fileToVars
+  indexOf
   info
   message
   parseInt
+  substring 
   randum
   trim
   warning
@@ -105,7 +107,7 @@ sub trim {
 
 ##@method int parseInt($str, $radix)
 #@brief Parses a string and returns an integer
-#       Emulates the JavaScript function parseInt
+#       Emulates the JavaScript function parseInt()
 #@param string $str Required. The string to be parsed
 #@param $radix Optional. A number (from 2 to 36) that represents the
 #              numeral system to be used
@@ -162,6 +164,43 @@ sub parseInt {
         $ret = $num * $sign;
     }
     return $ret;
+}
+
+##@method string indexOf($string, $searchString, $start)
+#@brief Returns the position of the first occurrence
+#       of a specified value in a string
+#       Emulates the JavaScript function indexOf()
+#@param string $searchstring Required. The string to search for
+#@param strint $start       Optional. The start position in the string
+#                           to start the search. If omitted, the search
+#                           starts from position 0
+#@return integer the position of the first occurrence
+#                or -1 if the value to search for never occurs.
+sub indexOf {
+    my ( $string, $searchString, $start ) = @_;
+    $start = 0 if !defined $start;
+    return index( $string, $searchString ) if $start == 0;
+    my $substing = substr( $string, $start );
+    return
+      index( $substing, $searchString ) + length($string) - length($substing);
+}
+
+##@method string substring($string, $from, $to)
+#@brief Extracts the characters in a string between $from and $to,
+#       not including $to itself
+#       Emulates the JavaScript function substring()
+#@return string The characters extracted
+sub substring {
+    my ( $string, $from, $to ) = @_;
+    $to = 0 if !defined $to;
+    return substr( $string, $from ) if $to == 0;
+    if ( $to < $from ) {
+        # swap variables
+        $from += $to;
+        $to   = $from - $to;
+        $from = $from - $to;
+    }
+    return substr( $string, $from, $to - $from );
 }
 
 ##@method void dumpToFile($vars, $filename)

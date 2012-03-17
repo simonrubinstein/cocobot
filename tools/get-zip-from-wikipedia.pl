@@ -2,7 +2,7 @@
 # @brief This script tries to get a zip code from city name from the
 #        website of Wikipedia.
 # @created 2012-03-14
-# @date 2012-03-15
+# @date 2012-03-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -102,6 +102,7 @@ sub GetZipFromWikipedia {
     my ($town) = @_;
     my $city = $town;
     $city =~ s{^[A-Z]{2}\-\s}{}xms;
+    $city =~ s{\-(l|d)\ (a|e|i|o|u|y|h)}{-$1'$2}xms;
     debug( 'Performs an HTTP request to the URL ' . $url . $city );
     my $response = $req->execute( 'GET', $url . $city );
 

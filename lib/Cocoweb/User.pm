@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-10
+# @date 2012-03-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -64,7 +64,10 @@ __PACKAGE__->attributes(
     ## 4 = Premium Subscription
     'myver',
 
-    'amiz'
+    'amiz',
+
+    'camon',
+    'typcam'
 );
 
 ##@method void init(%args)
@@ -119,7 +122,9 @@ sub init {
         'mystat'     => 0,
         'myXP'       => 0,
         'myver'      => 0,
-        'amiz'       => {}
+        'amiz'       => {},
+        'camon'      => 95,
+        'typcam'     => ''
 
     );
     info(   'mynickname: '
@@ -228,28 +233,29 @@ sub validatio {
         $nickidol = lc($nickidol);
         $self->mynickname($nickidol);
     }
-#    my $inform =
-#        $nickidol . '#' 
-#      . $typum . '#' 
-#      . $ageuq . '#'
-#      . $self->townzz() . '#'
-#      . $citygood . '#0#'
-#      . $self->cookav() . '#';
-#    $self->inform($inform);
-#
-#    $self->setCookie( 'coda', $inform );
-#
-#    $self->sauvy( $self->cookav() )
-#      if length( $self->sauvy() ) < 2;
-#
-#    my $location =
-#        $url . "#"
-#      . $nickidol . '#'
-#      . $typum . '#'
-#      . $ageuq . '#'
-#      . $citygood . '#0#'
-#      . $self->sauvy() . '#'
-#      . $self->referenz() . '#';
+
+    #    my $inform =
+    #        $nickidol . '#'
+    #      . $typum . '#'
+    #      . $ageuq . '#'
+    #      . $self->townzz() . '#'
+    #      . $citygood . '#0#'
+    #      . $self->cookav() . '#';
+    #    $self->inform($inform);
+    #
+    #    $self->setCookie( 'coda', $inform );
+    #
+    #    $self->sauvy( $self->cookav() )
+    #      if length( $self->sauvy() ) < 2;
+    #
+    #    my $location =
+    #        $url . "#"
+    #      . $nickidol . '#'
+    #      . $typum . '#'
+    #      . $ageuq . '#'
+    #      . $citygood . '#0#'
+    #      . $self->sauvy() . '#'
+    #      . $self->referenz() . '#';
 }
 
 ##@method void initial($url)
@@ -258,12 +264,13 @@ sub initial {
     my ( $self, $url ) = @_;
     my ( $infor, $myavatar, $mypass ) =
       ( '', $self->myavatar(), $self->mypass() );
-#    my $cookie_ref = $self->getCookie('samedi');
-#    if ( defined $cookie_ref ) {
-#        $infor    = $cookie_ref->{'samedi'};
-#        $myavatar = substr( $infor, 0, 9 );
-#        $mypass   = substr( $infor, 9, 29 );
-#    }
+
+    #    my $cookie_ref = $self->getCookie('samedi');
+    #    if ( defined $cookie_ref ) {
+    #        $infor    = $cookie_ref->{'samedi'};
+    #        $myavatar = substr( $infor, 0, 9 );
+    #        $mypass   = substr( $infor, 9, 29 );
+    #    }
     if (   !defined $myavatar
         or $myavatar !~ m{^\d+$}
         or $myavatar < 100000000
@@ -276,8 +283,9 @@ sub initial {
     debug("myavatar:$myavatar; mypass: $mypass");
     $self->myavatar($myavatar);
     $self->mypass($mypass);
-#    $infor = $myavatar . $mypass;
-#    $self->setCookie( 'samedi', $infor );
+
+    #    $infor = $myavatar . $mypass;
+    #    $self->setCookie( 'samedi', $infor );
     $self->ifravatar( $url . $myavatar );
     info( 'ifravatar: ' . $self->ifravatar() );
 }
@@ -321,8 +329,8 @@ sub show {
     my @names = (
         'mynickname', 'myage',   'mysex',    'zip',
         'mynickID',   'monpass', 'myavatar', 'mypass',
-        'townzz',   'citydio',
-        'mystat',     'myXP',    'myver'
+        'townzz',     'citydio', 'mystat',   'myXP',
+        'myver'
     );
     my $max = 1;
     foreach my $name (@names) {
@@ -334,17 +342,18 @@ sub show {
           . "\n";
     }
     my $cookies_ref = $self->cookies();
-#    print STDOUT "Cookies:\n";
-#    $max = 1;
-#    foreach my $name ( keys %$cookies_ref ) {
-#        $max = length($name) if length($name) > $max;
-#    }
-#    $max++;
-#    foreach my $name ( keys %$cookies_ref ) {
-#        print STDOUT
-#          sprintf( '%-' . $max . 's ' . $cookies_ref->{$name}, $name . ':' )
-#          . "\n";
-#    }
+
+   #    print STDOUT "Cookies:\n";
+   #    $max = 1;
+   #    foreach my $name ( keys %$cookies_ref ) {
+   #        $max = length($name) if length($name) > $max;
+   #    }
+   #    $max++;
+   #    foreach my $name ( keys %$cookies_ref ) {
+   #        print STDOUT
+   #          sprintf( '%-' . $max . 's ' . $cookies_ref->{$name}, $name . ':' )
+   #          . "\n";
+   #    }
 }
 
 ##@method void display()
