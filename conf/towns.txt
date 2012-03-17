@@ -13,6 +13,7 @@ FR- Bievres
 FR- Boissy-sous-saint-yon
 FR- Bondoufle
 FR- Bouray-sur-juine
+FR- Boussy-saint-antoine
 FR- Bretigny-sur-orge
 FR- Breuillet
 FR- Brunoy
@@ -422,6 +423,7 @@ FR- Culoz
 FR- Gex
 FR- Jassans-riottier
 FR- Maillat
+FR- Ornex
 FR- Oyonnax
 FR- Pougny
 FR- Replonges
@@ -711,6 +713,7 @@ FR- Clohars-fouesnant
 FR- Ergue-gaberic
 FR- Landerneau
 FR- Locronan
+FR- Morlaix
 FR- Pleyber-christ
 FR- Ploneour-lanvern
 FR- Plougonvelin
@@ -726,6 +729,7 @@ FR- Caveirac
 FR- Lussan
 FR- Manduel
 FR- Milhaud
+FR- Montaren
 FR- Nimes
 FR- Rochefort-du-gard
 FR- Saint-pons-la-calm
@@ -1097,6 +1101,7 @@ FR- Pange
 FR- Puttelange
 FR- Rechicourt-le-chateau
 FR- Saint-avold
+FR- Sarrebourg
 FR- Sarreguemines
 FR- Saulny
 FR- Schoeneck
@@ -1357,10 +1362,12 @@ FR- Cabannes
 FR- Charly
 FR- Communay
 FR- Craponne
+FR- Dardilly
 FR- Dommartin
 FR- Ecully
 FR- Feyzin
 FR- Francheville
+FR- Givors
 FR- Lyon
 FR- Meyzieu
 FR- Mornant
