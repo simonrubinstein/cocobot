@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-12
+# @date 2012-03-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -383,6 +383,42 @@ sub process1Int {
                   . $user->myver() );
 
         }
+    }
+
+    if ( $olko == 92 ) {
+        warning("olko: $olko not implemented");
+    }
+    if ( $olko == 37 ) {
+        info('Successful authentication. Good chat.');
+        $user->myver(1);
+    }
+    if ( $olko == 35 ) {
+        warning("olko: $olko not implemented");
+    }
+    if ( $olko == 29 ) {
+        if ( length( $user->mypass() ) != 20 ) {
+            warning("olko: $olko not implemented");
+        }
+    }
+    if ( $olko == 39 ) {
+        warning("olko: $olko not implemented");
+    }
+    if ( $olko == 95 ) {
+        warning("olko: $olko not implemented");
+    }
+    if ( $olko == 19 ) {
+        warning("olko: $olko not implemented");
+    }
+    if ( $olko == 24 ) {
+        warning("olko: $olko not implemented");
+    }
+
+    #A user or users have disconnected the chat.
+    if ( $olko == 90 ) {
+        my $yyg = ( length($urlo) - 2 ) / 7;
+        if ( $yyg > 0 ) {
+        }
+
     }
 
     # Retrieves the list of pseudonyms

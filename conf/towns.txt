@@ -1269,6 +1269,7 @@ FR- Lillers
 FR- Longuenesse
 FR- Marles-les-mines
 FR- Marquise
+FR- Mazingarbe
 FR- Meurchin
 FR- Noeux-les-mines
 FR- Outreau
@@ -1487,6 +1488,7 @@ FR- Thouars
 # 80: Somme
 FR- Abbeville
 FR- Ailly-sur-noye
+FR- Ailly-sur-somme
 FR- Amiens
 FR- Beauchamps
 FR- Boves

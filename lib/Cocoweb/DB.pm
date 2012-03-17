@@ -1,6 +1,6 @@
 # @brief Handle SQLite database
 # @created 2012-03-11
-# @date 2012-03-16
+# @date 2012-03-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -51,6 +51,10 @@ sub init {
 }
 
 ##@method array getInitTowns()
+#@brief Returns a list of town codes from the configuration file
+#@return array A list of two elements:
+#              - a hash table containing town codes
+#              - an Cocoweb::Config::Plaintext object
 sub getInitTowns {
     my ($self) = @_;
     my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 1 );
@@ -60,8 +64,21 @@ sub getInitTowns {
     foreach my $town ( keys %$towns_ref ) {
         die error("The string $town is not valid") if $town !~ $ISO3166Regex;
     }
-    info( 'number of towns: ' . scalar( keys %$towns_ref ) );
+    info( 'number of town codes: ' . scalar( keys %$towns_ref ) );
     return ( $towns_ref, $towns );
+}
+
+##@method array getInitISPs()
+#@brief Returns a list of ISP codes from the configuration file
+#@return array A list of two elements:
+#              - a hash table containing ISP codes
+#              - an Cocoweb::Config::Plaintext object
+sub getInitISPs() {
+    my ($self) = @_;
+    my $ISPs = Cocoweb::Config->instance()->getConfigFile( 'ISPs.txt', 1 );
+    my $ISPs_ref = $ISPs->getAsHash();
+    info( 'number of ISP codes: ' . scalar( keys %$ISPs_ref ) );
+    return ( $ISPs_ref, $ISPs );
 }
 
 ##@method void connect()
@@ -133,11 +150,37 @@ ENDTXT
 }
 
 ##@method void insertTown($name)
-#@param string An town code, i.e. 'FR- Sevran'
+#@brief Inserts a new town code in the table "towns"
+#@param string An town code, i.e. "FR- Sevran"
 sub insertTown {
     my ( $self, $name ) = @_;
     my $query = q/
       INSERT INTO `towns`
+        (`name`) 
+        VALUES
+        (?);
+      /;
+    $self->dbh()->do( $query, undef, $name );
+}
+
+##@method void insertISP($name)
+#@brief Inserts a new ISP code in the table "towns"
+#@param string An ISP code, i.e. "Free SAS"
+sub insertISP {
+    my ( $self, $name ) = @_;
+    my $query = q/
+      INSERT INTO `ISPs`
+        (`name`) 
+        VALUES
+        (?);
+      /;
+    $self->dbh()->do( $query, undef, $name );
+}
+
+sub insertCode {
+    my ( $self, $code ) = @_;
+    my $query = q/
+      INSERT INTO `codes`
         (`name`) 
         VALUES
         (?);
