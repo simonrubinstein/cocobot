@@ -1,8 +1,13 @@
+Ajova Network
 Alsace Connexia
 Bouygues Telecom
 British Telecommunications
 CEGETEL LA REUNION
+Centre de Ressources Informatique (CRI)
 COMPLETEL SAS France
+Digicube sas
+DIMEDIA LLC
+Ecritel
 euNetworks Services GmbH
 France Telecom
 Free SAS
@@ -12,6 +17,8 @@ Neuf Cegetel
 NC Numericable S.A.
 NordNet
 ONLINE S.A.S.
+Outremer Telecom
+Ovh Systems
 Pays Voironnais Network
 RENATER
 SFR
