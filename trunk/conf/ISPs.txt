@@ -1,6 +1,8 @@
 AB CONNECT
 Ajova Network
 Alsace Connexia
+America Online
+Auvea Ingenierie
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
@@ -16,8 +18,11 @@ France Telecom
 Free SAS
 Herault Telecom
 Ikoula Net SAS
+INOLIA
 Liberia Telecommunications Corporation (LIBTELCO)
 MANCHE TELECOM
+MEDI@LYS
+MOBIUS TECHNOLOGY
 Mediaserv
 Nerim SAS
 Neuf Cegetel
@@ -28,7 +33,11 @@ Outremer Telecom
 Ovh Systems
 Pays Voironnais Network
 RENATER
+Rigas Tikli, SIA
+RMI SAS
 SFR
 Teloise
+TUTOR S.A.
 Verizon France SAS
+WIBOX SASU
 Wifirst S.A.S.
