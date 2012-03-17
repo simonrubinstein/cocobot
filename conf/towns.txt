@@ -206,6 +206,7 @@ FR- Vitry-sur-seine
 FR- Argenteuil
 FR- Arnouville-les-gonesse
 FR- Asnieres
+FR- Attainville
 FR- Auvers-sur-oise
 FR- Baillet-en-france
 FR- Beauchamp
@@ -456,6 +457,7 @@ FR- Domptin
 FR- Guise
 FR- Haramont
 FR- Laon
+FR- Marchais-en-brie
 FR- Marle
 FR- Origny-en-thierache
 FR- Pavant
@@ -536,6 +538,7 @@ FR- Capendu
 FR- Carcassonne
 FR- Caudebronde
 FR- Coursan
+FR- Leuc
 FR- Marseillette
 FR- Narbonne
 FR- Sainte-valiere
@@ -571,6 +574,7 @@ FR- Martigues
 FR- Meyreuil
 FR- Miramas
 FR- Mouries
+FR- Peynier
 FR- Port-de-bouc
 FR- Saint-mitre-les-remparts
 FR- Saint-remy-de-provence
@@ -615,6 +619,7 @@ FR- Marennes
 FR- Massac
 FR- Muron
 FR- Saint-agnant
+FR- Saint-georges-de-didonne
 FR- Soubise
 
 # 18: Cher
@@ -673,6 +678,7 @@ FR- Trigavou
 FR- Bergerac
 FR- Jumilhac-le-grand
 FR- Menesplet
+FR- Montpon
 FR- Perigueux
 FR- Thiviers
 
@@ -809,6 +815,7 @@ FR- Saint-Emilion
 FR- Saint-medard-de-guizieres
 FR- Saint-medard-en-jalles
 FR- Talence
+FR- Vayres
 
 # 34: Herault
 FR- Adissan
@@ -874,6 +881,7 @@ FR- Saint-pierre-des-corps
 FR- Tours
 
 # 38: Isere
+FR- Bevenais
 FR- Bourgoin
 FR- Chasse-sur-rhne
 FR- Culin
@@ -922,6 +930,7 @@ FR- Sort-en-chalosse
 FR- Blois
 FR- Montrichard
 FR- Onzain
+FR- Vendme
 
 # 42: Loire
 FR- Andrezieux
@@ -992,6 +1001,7 @@ FR- Montargis
 FR- Montereau
 FR- Nogent-sur-vernisson
 FR- Orleans
+FR- Patay
 FR- Saint-denis-en-val
 FR- Saint-jean-de-braye
 FR- Saint-jean-de-la-ruelle
@@ -1165,6 +1175,7 @@ FR- Venissieux
 # 59: Nord
 FR- Annoeullin
 FR- Armentieres
+FR- Auby
 FR- Aulnoye-aymeries
 FR- Awoingt
 FR- Bailleul
@@ -1203,6 +1214,7 @@ FR- Loon-plage
 FR- Loos
 FR- Marly
 FR- Maubeuge
+FR- Mons-en-baroeul
 FR- Mouvaux
 FR- Obies
 FR- Onnaing
@@ -1340,6 +1352,7 @@ FR- Billom
 FR- Blanzat
 FR- Chamalieres
 FR- Champeix
+FR- Champs
 FR- Clermont-ferrand
 FR- Cournon
 FR- Cournon-d auvergne
@@ -1378,6 +1391,7 @@ FR- Tarbes
 
 # 66: Pyrenees-Orientales
 FR- Bompas
+FR- Cabestany
 FR- Perpignan
 FR- Rivesaltes
 FR- Sainte-marie-la-mer
@@ -1448,6 +1462,7 @@ FR- Saint-priest
 FR- Sathonay-camp
 FR- Tassin-la-demi-lune
 FR- Thurins
+FR- Toussieu
 FR- Vaulx-en-velin
 FR- Villeurbanne
 
@@ -1510,6 +1525,7 @@ FR- Megeve
 FR- Meythet
 FR- Sallanches
 FR- Scionzier
+FR- Thnes
 FR- Thonon-les-bains
 FR- Veigy-foncenex
 FR- Vulbens
@@ -1558,6 +1574,7 @@ FR- Ham
 FR- La Chaussee-tirancourt
 FR- Marcheville
 FR- Peronne
+FR- Rivery
 FR- Rue
 FR- Saleux
 FR- Villers-bretonneux
@@ -1658,6 +1675,7 @@ FR- Essegney
 FR- Faverolles
 FR- Granges-sur-vologne
 FR- La Bresse
+FR- Nomexy
 FR- Plombieres-les-bains
 FR- Raon-l etape
 FR- Remiremont
