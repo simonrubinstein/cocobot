@@ -216,6 +216,7 @@ FR- Cergy
 FR- Cergy-pontoise
 FR- Champagne-sur-oise
 FR- Chaumontel
+FR- Cormeilles-en-vexin
 FR- Deuil-la-barre
 FR- Domont
 FR- Eaubonne
@@ -309,7 +310,9 @@ FR- Fublaines
 FR- Gouaix
 FR- Grandpuits
 FR- Gretz-armainvilliers
+FR- Grisy-suisnes
 FR- Guignes
+FR- Jouarre
 FR- Jouy-sur-morin
 FR- Larchant
 FR- Le Chatelet
@@ -343,6 +346,7 @@ FR- Othis
 FR- Ozoir-la-ferriere
 FR- Pontault
 FR- Pontcarre
+FR- Ponthierry
 FR- Provins
 FR- Quincy-voisins
 FR- Rebais
@@ -417,6 +421,7 @@ FR- Saint-nom-la-breteche
 FR- Sartrouville
 FR- Toussus-le-noble
 FR- Trappes
+FR- Trevoux
 FR- Triel-sur-seine
 FR- Velizy-villacoublay
 FR- Verneuil-sur-seine
@@ -463,6 +468,7 @@ FR- Soissons
 FR- Tergnier
 
 # 03: Allier
+FR- Bourbon-l archambault
 FR- Montluon
 FR- Vichy
 
@@ -490,6 +496,7 @@ FR- Saint-jeannet
 FR- Saint-laurent-du-var
 FR- Thorenc
 FR- Valbonne
+FR- Vallauris
 FR- Vence
 
 # 07: Ardeche
@@ -638,6 +645,7 @@ FR- Olmeto
 # 21: Cote-d’Or
 FR- Arnay-le-duc
 FR- Auxonne
+FR- Beaune
 FR- Chatillon-sur-seine
 FR- Dijon
 FR- Genlis
@@ -901,6 +909,7 @@ FR- Saint-claude
 
 # 40: Landes
 FR- Biscarrosse
+FR- Capbreton
 FR- Geloux
 FR- Labouheyre
 FR- Moliets-et-maa
@@ -1063,6 +1072,7 @@ FR- Quelaines
 
 # 54: Meurthe-et-Moselle
 FR- Benamenil
+FR- Chennevieres
 FR- Dombasle-sur-meurthe
 FR- Ecrouves
 FR- Essey-les-nancy
@@ -1110,6 +1120,7 @@ FR- Plumergat
 FR- Pluneret
 FR- Saint-ave
 FR- Saint-dolay
+FR- Sene
 FR- Tredion
 FR- Vannes
 
@@ -1119,6 +1130,7 @@ FR- Fameck
 FR- Farebersviller
 FR- Forbach
 FR- Grosbliederstroff
+FR- Hagondange
 FR- Hayange
 FR- Hombourg-haut
 FR- La Maxe
@@ -1224,6 +1236,7 @@ FR- Bazicourt
 FR- Beauvais
 FR- Berthecourt
 FR- Bethisy-saint-martin
+FR- Bresles
 FR- Breuil-le-sec
 FR- Breuil-le-vert
 FR- Chamant
@@ -1235,6 +1248,7 @@ FR- Crepy-en-valois
 FR- Cuise-la-motte
 FR- Epineuse
 FR- Ercuis
+FR- Esches
 FR- Estrees-saint-denis
 FR- Fosseuse
 FR- Gouvieux
@@ -1253,6 +1267,7 @@ FR- Mortefontaine
 FR- Nanteuil-le-haudouin
 FR- Noailles
 FR- Noyon
+FR- Orvillers-sorel
 FR- Puiseux-en-bray
 FR- Rantigny
 FR- Senlis
@@ -1302,6 +1317,7 @@ FR- Houlle
 FR- Lens
 FR- Les Attaques
 FR- Lillers
+FR- Longfosse
 FR- Longuenesse
 FR- Marles-les-mines
 FR- Marquise
@@ -1452,6 +1468,7 @@ FR- Gergy
 FR- Igornay
 FR- La Clayette
 FR- Macon
+FR- Saint-leger-sur-dheune
 
 # 72: Sarthe
 FR- Arnage

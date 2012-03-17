@@ -2,6 +2,7 @@ AB CONNECT
 Ajova Network
 Alsace Connexia
 Bouygues Telecom
+Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
 CEGETEL LA REUNION
 Centre de Ressources Informatique (CRI)
@@ -12,6 +13,8 @@ Ecritel
 euNetworks Services GmbH
 France Telecom
 Free SAS
+Herault Telecom
+Ikoula Net SAS
 Liberia Telecommunications Corporation (LIBTELCO)
 MANCHE TELECOM
 Neuf Cegetel
