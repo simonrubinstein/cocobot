@@ -305,6 +305,7 @@ FR- Le Chatelet
 FR- Le Chesnay
 FR- Le Mee-sur-seine
 FR- Lesigny
+FR- Lieusaint
 FR- Lizy-sur-ourcq
 FR- Lognes
 FR- Longperrier
@@ -360,6 +361,7 @@ FR- Bailly
 FR- Beynes
 FR- Bois-d arcy
 FR- Bonnieres-sur-seine
+FR- Buc
 FR- Carrieres-sous-poissy
 FR- Cernay-la-ville
 FR- Chambourcy
@@ -479,6 +481,7 @@ FR- Cruas
 FR- Davezieux
 FR- Guilherand
 FR- Joyeuse
+FR- Saint Cyr
 FR- Thorrenc
 FR- Villevocance
 
@@ -524,6 +527,7 @@ FR- Auriol
 FR- Bouc-bel-air
 FR- Cabries
 FR- Calas
+FR- Cassis
 FR- Chateauneuf-les-martigues
 FR- Entressen
 FR- Eyguieres
@@ -544,10 +548,12 @@ FR- Port-de-bouc
 FR- Saint-mitre-les-remparts
 FR- Saint-remy-de-provence
 FR- Salon-de-provence
+FR- Tarascon
 FR- Vitrolles
 
 # 14: Calvados
 FR- Anguerny
+FR- Beaumont-en-auge
 FR- Bretteville-l orgueilleuse
 FR- Caen
 FR- Cahagnes
@@ -596,6 +602,7 @@ FR- Vierzon
 
 # 19: Correze
 FR- Brive-la-gaillarde
+FR- Larche
 FR- Egletons
 FR- Malemort
 FR- Pompadour
@@ -834,6 +841,7 @@ FR- La Tronche
 FR- Les Abrets
 FR- Moidieu
 FR- Pont-Eveque
+FR- Roussillon
 FR- Sablons
 FR- Saint-martin-d heres
 FR- Satolas-et-bonce
@@ -987,6 +995,7 @@ FR- Tourlaville
 FR- Chalons-en-champagne
 FR- Gaye
 FR- Jalons
+FR- Montmirail
 FR- Nuisement-sur-coole
 FR- Pleurs
 FR- Reims
@@ -1076,6 +1085,7 @@ FR- Rechicourt-le-chateau
 FR- Saint-avold
 FR- Sarreguemines
 FR- Saulny
+FR- Schoeneck
 FR- Talange
 FR- Thionville
 FR- Uckange
@@ -1095,6 +1105,7 @@ FR- Awoingt
 FR- Bailleul
 FR- Bergues
 FR- Cambrai
+FR- Capelle
 FR- Coudekerque-branche
 FR- Croix
 FR- Dunkirk
@@ -1190,6 +1201,7 @@ FR- Verberie
 # 61: Orne
 FR- Alenon
 FR- Bagnoles-de-l orne
+FR- Bouce
 FR- Chailloue
 FR- Damigny
 FR- Messei
@@ -1263,6 +1275,7 @@ FR- Ascain
 FR- Biarritz
 FR- Bidart
 FR- Boucau
+FR- Juranon
 FR- Gelos
 FR- Hendaye
 FR- Lons
@@ -1335,6 +1348,7 @@ FR- Mornant
 FR- Oullins
 FR- Pierre-benite
 FR- Rillieux
+FR- Saint-bonnet-de-mure
 FR- Saint Priest
 FR- Saint-priest
 FR- Sathonay-camp
@@ -1450,6 +1464,7 @@ FR- Yzeux
 
 # 81: Tarn
 FR- Aussac
+FR- Cordes
 FR- Dourgne
 FR- Lagrave
 FR- Lavaur
@@ -1463,6 +1478,7 @@ FR- Saint-porquier
 FR- Villemade
 
 # 83: Var
+FR- Artigues
 FR- Hyeres
 FR- La Farlede
 FR- La Garde
@@ -1471,6 +1487,7 @@ FR- Le Pradet
 FR- Les Mayons
 FR- Lorgues
 FR- Montauroux
+FR- Saint-maximin-la-sainte-ba
 FR- Saint-aygulf
 FR- Saint-raphael
 FR- Toulon
@@ -1516,6 +1533,7 @@ FR- Lencloitre
 FR- Migne-auxances
 FR- Naintre
 FR- Poitiers
+FR- Saint-benoit
 FR- Saint-sauvant
 
 # 87: Haute-Vienne
@@ -1584,6 +1602,7 @@ RE- Les Avirons
 RE- Saint Gilles
 RE- Saint-andre
 RE- Saint-benoit
+RE- Sainte-clotilde
 RE- Saint-denis
 RE- Saint-joseph
 RE- Saint-leu
