@@ -242,6 +242,7 @@ FR- Osny
 FR- Persan
 FR- Pierrelaye
 FR- Pontoise
+FR- Presles
 FR- Puiseux-pontoise
 FR- Roissy-en-france
 FR- Saint-brice-sous-foret
@@ -841,6 +842,7 @@ FR- Echirolles
 FR- Grenoble
 FR- L isle-d abeau
 FR- La Buissiere
+FR- La Mure
 FR- La Tronche
 FR- Les Abrets
 FR- Moidieu
@@ -993,6 +995,7 @@ FR- Montpinchon
 FR- Notre-dame-de-cenilly
 FR- Querqueville
 FR- Saint-fromond
+FR- Saint-l
 FR- Tourlaville
 
 # 51: Marne
@@ -1088,6 +1091,7 @@ FR- Mondelange
 FR- Montigny-les-metz
 FR- Nilvange
 FR- Pange
+FR- Puttelange
 FR- Rechicourt-le-chateau
 FR- Saint-avold
 FR- Sarreguemines
