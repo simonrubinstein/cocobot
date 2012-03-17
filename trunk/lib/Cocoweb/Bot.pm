@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-11
+# @date 2012-03-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -111,8 +111,8 @@ sub getInfuz {
 #@param object @user An 'User object' object
 #@return string
 sub actuam {
-    my ( $self ) = @_;
-    $self->request()->actuam($self->user());
+    my ($self) = @_;
+    $self->request()->actuam( $self->user() );
 }
 
 ##@method boolean isPremiumSubscription()
@@ -144,7 +144,12 @@ sub clearUsersList {
     $self->request()->clearUsersList();
 }
 
-
+##@method void lancetimer($user)
+#@brief Method that periodically performs requests to the server
+sub lancetimer {
+    my ($self) = @_;
+    $self->request()->lancetimer( $self->user() );
+}
 
 1;
 

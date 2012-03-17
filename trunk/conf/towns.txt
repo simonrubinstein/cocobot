@@ -420,6 +420,7 @@ FR- Maisons-laffitte
 FR- Mantes-la-jolie
 FR- Mantes-la-ville
 FR- Marly-le-roi
+FR- Maule
 FR- Maurepas
 FR- Meulan
 FR- Montigny-le-bretonneux
@@ -732,6 +733,7 @@ FR- Valdahon
 FR- Villers-le-lac
 
 # 26: Drome
+FR- Bourdeaux
 FR- Claveyson
 FR- Etoile-sur-rhne
 FR- Grignan
@@ -776,6 +778,7 @@ FR- Gallardon
 FR- Gasville
 FR- Luce
 FR- Mainvilliers
+FR- Pierres
 FR- Pontgouin
 FR- Saint-lubin-des-joncherets
 FR- Senonches
@@ -970,6 +973,7 @@ FR- Dole
 FR- La Ferte
 FR- Le Deschaux
 FR- Montmorot
+FR- Offlanges
 FR- Poligny
 FR- Saint-claude
 FR- Sellieres
@@ -1243,6 +1247,7 @@ FR- Schoeneck
 FR- Talange
 FR- Thionville
 FR- Uckange
+FR- Vany
 FR- Vaudreching
 
 # 58: Nievre
@@ -1716,6 +1721,7 @@ FR- Villemade
 
 # 83: Var
 FR- Artigues
+FR- Cogolin
 FR- Hyeres
 FR- La Farlede
 FR- La Garde

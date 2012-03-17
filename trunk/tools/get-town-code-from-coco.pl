@@ -45,10 +45,11 @@ my $ISPCount_ref      = {};
 my $townCount_ref     = {};
 my $premiumCount      = 0;
 my $isLoop            = 0;
+my $isReconnect       = 0;
 my $dumpTownsFilename = '_townCount.pl';
 my $dumpISPsFilename  = '_ISPCount.pl';
 
-init();
+init(); 
 run();
 
 my %user = ();
@@ -80,13 +81,16 @@ sub run {
 
 ##@method void process()
 sub process {
-    $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
-    $bot->display();
-    if ( !$bot->isPremiumSubscription() ) {
-        die error( 'The script is reserved for users with a'
-              . ' Premium subscription.' );
+    if ($isReconnect or !defined $bot) {
+        $bot = $CLI->getBot( 'generateRandom' => 1 );
+        $bot->process();
+        $bot->display();
+        if ( !$bot->isPremiumSubscription() ) {
+            die error( 'The script is reserved for users with a'
+                    . ' Premium subscription.' );
+        }
     }
+    $bot->lancetimer();
     my $userFound_ref = $bot->getUsersList();
     getTownsFromInfuz($userFound_ref);
 }
@@ -153,8 +157,9 @@ sub getTownsFromInfuz {
 sub init {
     $DB  = Cocoweb::DB->instance();
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'argumentative' => 'l' );
-    $isLoop = 1 if exists $opt_ref->{'l'};
+    my $opt_ref = $CLI->getOpts( 'argumentative' => 'lr' );
+    $isLoop      = 1 if exists $opt_ref->{'l'};
+    $isReconnect = 1 if exists $opt_ref->{'r'};
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -166,12 +171,16 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
+ $Script -a myavatar -p mypass
+         [-u mynickname -y myage -s mysex -v -d]
+         [-l -r]
+  -a myavatar        A unique identifier for your account 
+  -p mypass          The password for your account
+  -l                 The script is running in loop mode constantly
+  -r                 Reconnect with each new loop
   -u mynickname      An username
   -y myage           Year old
   -s mysex           M for man or W for women
-  -a myavatar        Code 
-  -p mypass
   -v                 Verbose mode
   -d                 Debug mode
 ENDTXT

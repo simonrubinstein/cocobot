@@ -236,6 +236,11 @@ sub firsty {
 #@param string $txt1 The parameter of the HTTP request
 sub agir {
     my ( $self, $user, $txt3 ) = @_;
+    my $code = substr( $txt3, 0, 2 );
+    if ( $code != 10 and $code != 89 and $code != 48 and $code != 83 ) {
+        info($txt3);
+    }
+
     $self->agix( $user,
             $self->url1()
           . substr( $txt3, 0, 2 )
@@ -252,7 +257,8 @@ sub agir {
 sub agix {
     my ( $self, $user, $url, $cookie_ref ) = @_;
     croak error("The URL of the HTTP request is missing") if !defined $url;
-    info("url: $url");
+
+    #info("url: $url");
     my $response = $self->execute( 'GET', $url, $cookie_ref );
     my $res = $response->content();
 
@@ -279,6 +285,8 @@ sub agix {
 sub process1 {
     my ( $self, $user, $urlu ) = @_;
     my ($todo) = ('');
+
+    #info($urlu);
 
     debug("urlu: $urlu");
     my $urlo = $urlu;
@@ -310,7 +318,11 @@ sub process1Int {
 
     #debug("urlo: $urlo");
     my $olko = parseInt( substr( $urlo, 0, 2 ) );
-    info("olko: $olko");
+
+    #debug("olko: $olko");
+    if ( $olko != 12 and $olko != 34 and $olko != 89 and $olko != 48 ) {
+        info("olko: $olko / urlo = $urlo");
+    }
 
     # The first part of authentication was performed successfully
     # The server returns an ID and a password for the current session
@@ -338,7 +350,7 @@ sub process1Int {
 
     if ( $olko == 99 ) {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
-        info("bud: $bud");
+        debug("bud: $bud");
 
         if ( $bud == 444 ) {
             my $urlu =
@@ -481,7 +493,59 @@ sub process1Int {
         return $user->amiz();
     }
 
+    # Another user is writing a message
+    # A message was received from another user
+    # The message that this user has sent has been received or not ???
     if ( $olko == 967 ) {
+        my $hzq = 3;
+        my $klk = parseInt( substr( $urlo, 2, 1 ) );
+        if ( $klk < 9 ) {
+        }
+        my $lengus = length($urlo);
+        if ( $lengus > 8 ) {
+            my ( $kopo, $gooi, $coom ) = ( 0, 1, 0 );
+            while ( $kopo == 0 ) {
+                my $diase = indexOf( $urlo, '#', $hzq ) + 1;
+                if ( ( $diase - $hzq ) < 9 ) {
+                    if ( $diase < 3 ) {
+                        $kopo = 1;
+                        my $idgars = parseInt( substr( $urlo, $hzq, 6 ) );
+                        warning("The user $idgars is disconnected");
+                    }
+                    else {
+                        my $zami = parseInt( substr( $urlo, $hzq, 6 ) );
+                        if ( ( $diase - $hzq ) == 7 ) {
+                            message("The user $zami writing");
+                        }
+                    }
+                }
+                else {
+                    my $toilo = indexOf( $urlo, '#', $hzq );
+                    my $mokage = parseInt( substr( $urlo, $hzq,     2 ) );
+                    my $moksex = parseInt( substr( $urlo, 2 + $hzq, 3 ) );
+                    my $mokville = parseInt( substr( $urlo, 3 + $hzq, 8 ), 10 );
+                    my $moknickID = parseInt( substr( $urlo, 8 + $hzq,  14 ) );
+                    my $statq     = parseInt( substr( $urlo, 15 + $hzq, 16 ) );
+                    my $okb       = parseInt( substr( $urlo, 16 + $hzq, 17 ) );
+                    my $mokpseudo = substring( $urlo, 17 + $hzq, $toilo );
+                    $diase = indexOf( $urlo, '#', $toilo + 1 ) + 1;
+                    my $mokmess = substring( $urlo, $toilo + 1, $diase - 1 );
+                    message( "$mokpseudo: " . $mokmess );
+                }
+                $hzq = $diase;
+                $kopo = 1 if $hzq > $lengus - 3;
+            }
+
+        }
+        else {
+            if ( $lengus == 5 ) {
+                if ( index( $urlo, '111' ) > -1 ) {
+                    die error( 'The servers are being restarted.'
+                          . ' Log back in a moment' );
+                }
+            }
+        }
+
     }
 
 }
@@ -548,6 +612,14 @@ sub cherchasalon {
 sub actuam {
     my ( $self, $user ) = @_;
     $self->agir( $user, '48' );
+}
+
+##@method void lancetimer($user)
+#@brief Method that periodically performs requests to the server
+#@param object @user An 'User object' object
+sub lancetimer {
+    my ( $self, $user ) = @_;
+    $self->agir( $user, $user->camon() . $user->typcam() );
 }
 
 ##@method void getUserInfo()
