@@ -512,6 +512,7 @@ FR- Troyes
 FR- Capendu
 FR- Carcassonne
 FR- Caudebronde
+FR- Coursan
 FR- Marseillette
 FR- Narbonne
 FR- Sainte-valiere
@@ -586,6 +587,7 @@ FR- Bois
 FR- Bourgneuf
 FR- Dompierre-sur-mer
 FR- La Rochelle
+FR- Marennes
 FR- Massac
 FR- Muron
 FR- Saint-agnant
@@ -720,6 +722,7 @@ FR- Saint-yvi
 FR- Aimargues
 FR- Aubord
 FR- Boisset-et-gaujac
+FR- Caveirac
 FR- Lussan
 FR- Manduel
 FR- Milhaud
@@ -1319,6 +1322,7 @@ FR- Gerstheim
 FR- Gingsheim
 FR- Haguenau
 FR- Illkirch-graffenstaden
+FR- Ingwiller
 FR- Lingolsheim
 FR- Mackenheim
 FR- Nordheim
@@ -1348,6 +1352,7 @@ FR- Wittenheim
 FR- Amplepuis
 FR- Brignais
 FR- Brindas
+FR- Bron
 FR- Cabannes
 FR- Charly
 FR- Communay
