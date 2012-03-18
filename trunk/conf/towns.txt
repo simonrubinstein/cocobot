@@ -363,6 +363,7 @@ FR- Roissy-en-brie
 FR- Rubelles
 FR- Saint-cyr-sur-morin
 FR- Saint-mammes
+FR- Saint-ouen-en-brie
 FR- Saint-pathus
 FR- Samois-sur-seine
 FR- Savigny-le-temple
@@ -473,6 +474,7 @@ FR- Bohain
 FR- Bourg-et-comin
 FR- Chateau-thierry
 FR- Corcy
+FR- Cuffies
 FR- Dercy
 FR- Domptin
 FR- Etreaupont
@@ -659,6 +661,7 @@ FR- Massac
 FR- Muron
 FR- Rochefort
 FR- Saint-agnant
+FR- Saint-andre-de-lidon
 FR- Saint-georges-de-didonne
 FR- Soubise
 
@@ -709,6 +712,7 @@ FR- Talant
 # 22: Cotes-d'Armor
 FR- Brehand
 FR- La Bouillie
+FR- Loudeac
 FR- Plerin
 FR- Plouha
 FR- Quessoy
@@ -820,6 +824,7 @@ FR- Manduel
 FR- Milhaud
 FR- Montaren
 FR- Nimes
+FR- Pont-saint-esprit
 FR- Rochefort-du-gard
 FR- Saint-pons-la-calm
 FR- Salindres
