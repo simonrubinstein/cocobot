@@ -41,6 +41,7 @@ FR- Gometz-la-ville
 FR- Grigny
 FR- Igny
 FR- Juvisy-sur-orge
+FR- Lardy
 FR- Leudeville
 FR- Limours
 FR- Longjumeau
@@ -373,10 +374,12 @@ FR- Thorigny-sur-marne
 FR- Torcy
 FR- Tournan-en-brie
 FR- Trilbardou
+FR- Veneux-les-sablons
 FR- Verneuil-l etang
 FR- Vert-saint-denis
 FR- Villeneuve-sur-bellot
 FR- Villeparisis
+FR- Vulaines-sur-seine
 
 # 78: Yvelines
 FR- Acheres
@@ -386,6 +389,7 @@ FR- Bailly
 FR- Beynes
 FR- Bois-d arcy
 FR- Bonnieres-sur-seine
+FR- Bouafle
 FR- Buc
 FR- Carrieres-sous-poissy
 FR- Cernay-la-ville
@@ -471,6 +475,7 @@ FR- Chateau-thierry
 FR- Corcy
 FR- Dercy
 FR- Domptin
+FR- Etreaupont
 FR- Guise
 FR- Haramont
 FR- Laon
@@ -549,6 +554,7 @@ FR- Saint-girons
 
 # 10: Aube
 FR- Bar-sur-seine
+FR- Clerey
 FR- Lusigny-sur-barse
 FR- Mesnil-sellieres
 FR- Romilly-sur-seine
@@ -753,6 +759,7 @@ FR- Breuilpont
 FR- Evreux
 FR- Fleury-sur-andelle
 FR- Foulbec
+FR- Fourges
 FR- Le Vaudreuil
 FR- Les Andelys
 FR- Louviers
@@ -819,6 +826,7 @@ FR- Vergeze
 FR- Villeneuve-les-avignon
 
 # 31: Haute-Garonne
+FR- Aureville
 FR- Blagnac
 FR- Bouloc
 FR- Castanet-tolosan
@@ -854,6 +862,7 @@ FR- Le Barp
 FR- Le Taillan-medoc
 FR- Le Teich
 FR- Le Tourne
+FR- Langon
 FR- Libourne
 FR- Lormont
 FR- Ludon-medoc
@@ -967,6 +976,7 @@ FR- Varces
 FR- Vif
 FR- Villefontaine
 FR- Viriville
+FR- Vizille
 
 # 39: Jura
 FR- Dole
@@ -1089,6 +1099,7 @@ FR- Agen
 FR- Bazens
 FR- Casteljaloux
 FR- Laussou
+FR- Marmande
 FR- Prayssas
 FR- Sainte-bazeille
 FR- Samazan
@@ -1237,6 +1248,7 @@ FR- Montigny-les-metz
 FR- Nilvange
 FR- Pange
 FR- Petite-rosselle
+FR- Pournoy-la-chetive
 FR- Puttelange
 FR- Rechicourt-le-chateau
 FR- Saint-avold
@@ -1480,6 +1492,7 @@ FR- Juranon
 FR- Lons
 FR- Mazeres-lezons
 FR- Mouguerre
+FR- Ogenne-camptort
 FR- Pau
 FR- Saint-pee-sur-nivelle
 FR- Salies-de-bearn
@@ -1500,6 +1513,7 @@ FR- Rivesaltes
 FR- Sainte-marie-la-mer
 
 # 67: Bas-Rhin
+FR- Betschdorf
 FR- Bischoffsheim
 FR- Chatenois
 FR- Drulingen
@@ -1653,6 +1667,7 @@ FR- Canteleu
 FR- Carrieres-sur-seine
 FR- Dieppe
 FR- Elbeuf
+FR- Grand-couronne
 FR- Harfleur
 FR- Le Grand-quevilly
 FR- Le Havre
@@ -1694,6 +1709,7 @@ FR- Ham
 FR- La Chaussee-tirancourt
 FR- Longueau
 FR- Marcheville
+FR- Moreuil
 FR- Peronne
 FR- Rivery
 FR- Rue
@@ -1756,6 +1772,7 @@ FR- Valreas
 FR- Beauvoir-sur-mer
 FR- Belleville-sur-vie
 FR- Bois-de-cene
+FR- Boulogne
 FR- Challans
 FR- Chateau-d olonne
 FR- Cugand
@@ -1819,6 +1836,7 @@ FR- Joigny
 FR- Ligny-le-chatel
 FR- Mezilles
 FR- Migennes
+FR- Paron
 FR- Sens
 FR- Serbonnes
 FR- Veron
