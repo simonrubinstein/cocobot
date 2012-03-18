@@ -9,6 +9,7 @@ FR- Athis-mons
 FR- Ballainvilliers
 FR- Ballancourt
 FR- Ballancourt-sur-essonne
+FR- Beuvillers
 FR- Bievres
 FR- Boissy-sous-saint-yon
 FR- Bondoufle
@@ -66,6 +67,7 @@ FR- Pussay
 FR- Quincy-sous-senart
 FR- Ris-orangis
 FR- Saclas
+FR- Saint-maximin
 FR- Saint-michel-sur-orge
 FR- Saint-pierre-du-perray
 FR- Sainte-genevieve-des-bois
@@ -151,6 +153,7 @@ FR- Pierrefitte-sur-seine
 FR- Romainville
 FR- Rosny-sous-bois
 FR- Saint Denis
+FR- Saint-denis
 FR- Saint-ouen
 FR- Sevran
 FR- Stains
@@ -327,6 +330,7 @@ FR- Larchant
 FR- Le Chatelet
 FR- Le Chesnay
 FR- Le Mee-sur-seine
+FR- Lechelle
 FR- Lesigny
 FR- Lieusaint
 FR- Lizy-sur-ourcq
@@ -470,6 +474,7 @@ FR- Jayat
 FR- Maillat
 FR- Ornex
 FR- Oyonnax
+FR- Port
 FR- Pougny
 FR- Replonges
 FR- Saint-andre-de-corcy
@@ -478,6 +483,7 @@ FR- Saint-andre-de-corcy
 FR- Beuvardes
 FR- Bohain
 FR- Bourg-et-comin
+FR- Braye
 FR- Chateau-thierry
 FR- Corcy
 FR- Cuffies
@@ -499,6 +505,7 @@ FR- Saulchery
 FR- Sinceny
 FR- Soissons
 FR- Tergnier
+FR- Urvillers
 
 # 03: Allier
 FR- Bellerive-sur-allier
@@ -718,6 +725,7 @@ FR- Arnay-le-duc
 FR- Auxonne
 FR- Beaune
 FR- Chatillon-sur-seine
+FR- Chenve
 FR- Comblanchien
 FR- Dijon
 FR- Genlis
@@ -798,6 +806,7 @@ FR- Les Andelys
 FR- Louviers
 FR- Pacy-sur-eure
 FR- Pont-audemer
+FR- Saint Marcel
 FR- Saint-andre-de-l eure
 FR- Saint-didier-des-bois
 FR- Saint-germain-village
@@ -860,9 +869,11 @@ FR- Montfrin
 FR- Nimes
 FR- Pont-saint-esprit
 FR- Rochefort-du-gard
+FR- Roquemaure
 FR- Saint-martin-de-valgalgues
 FR- Saint-pons-la-calm
 FR- Salindres
+FR- Uzes
 FR- Vergeze
 FR- Villeneuve-les-avignon
 
@@ -888,6 +899,7 @@ FR- Sauvimont
 
 # 33: Gironde
 FR- Arcachon
+FR- Ares
 FR- Bordeaux
 FR- Bouliac
 FR- Burdigala
@@ -1073,6 +1085,7 @@ FR- Marcenod
 FR- Panissieres
 FR- Pouilly-les-nonains
 FR- Precieux
+FR- Rive-de-gier
 FR- Roanne
 FR- Saint Etienne
 FR- Saint-Etienne
@@ -1108,6 +1121,7 @@ FR- Machecoul
 FR- Maisdon-sur-sevre
 FR- Mesanger
 FR- Missillac
+FR- Monnieres
 FR- Mouzillon
 FR- Nantes
 FR- Orvault
@@ -1301,7 +1315,10 @@ FR- Vannes
 
 # 57: Moselle
 FR- Abreschviller
+FR- Carling
 FR- Cattenom
+FR- Chateau-salins
+FR- Creutzwald
 FR- Distroff
 FR- Fameck
 FR- Farebersviller
@@ -1344,6 +1361,7 @@ FR- Venissieux
 
 # 59: Nord
 FR- Annoeullin
+FR- Anzin
 FR- Armentieres
 FR- Auby
 FR- Aulnoye-aymeries
@@ -1419,6 +1437,7 @@ FR- Tourcoing
 FR- Valenciennes
 FR- Vieux Conde
 FR- Villefranche-sur-sane
+FR- Villers-guislain
 FR- Wahagnies
 FR- Wambrechies
 FR- Wattrelos
@@ -1562,6 +1581,7 @@ FR- Wizernes
 FR- Aubiere
 FR- Billom
 FR- Blanzat
+FR- Ceyrat
 FR- Chamalieres
 FR- Champeix
 FR- Champs
@@ -1569,6 +1589,7 @@ FR- Clermont-ferrand
 FR- Cournon
 FR- Cournon-d auvergne
 FR- Courpiere
+FR- Egliseneuve-des-liards
 FR- Entraigues
 FR- Issoire
 FR- Lezoux
@@ -1639,6 +1660,7 @@ FR- Rosheim
 FR- Saverne
 FR- Schiltigheim
 FR- Selestat
+FR- Soultz
 FR- Strasbourg
 FR- Vendenheim
 FR- Wasselonne
@@ -1661,6 +1683,7 @@ FR- Wittenheim
 
 # 69: Rhone
 FR- Amplepuis
+FR- Belleville
 FR- Brignais
 FR- Brindas
 FR- Bron
@@ -1676,6 +1699,7 @@ FR- Dommartin
 FR- Ecully
 FR- Feyzin
 FR- Francheville
+FR- Genas
 FR- Givors
 FR- Lyon
 FR- Meyzieu
@@ -1703,6 +1727,7 @@ FR- Fleurey-les-saint-loup
 FR- Fontaine-les-luxeuil
 FR- Genevreuille
 FR- La Cte
+FR- Pusey
 FR- Ronchamp
 FR- Saint Barthelemy
 FR- Vesoul
@@ -1711,6 +1736,7 @@ FR- Vesoul
 FR- Autun
 FR- Champforgeuil
 FR- Change
+FR- Ciry-le-noble
 FR- Creches-sur-sane
 FR- Gergy
 FR- Igornay
@@ -1781,6 +1807,7 @@ FR- Canteleu
 FR- Carrieres-sur-seine
 FR- Dieppe
 FR- Elbeuf
+FR- Fecamp
 FR- Grand-couronne
 FR- Harfleur
 FR- Le Grand-quevilly
@@ -1825,6 +1852,7 @@ FR- Ham
 FR- La Chaussee-tirancourt
 FR- Longueau
 FR- Marcheville
+FR- Meaulte
 FR- Moreuil
 FR- Peronne
 FR- Rivery
@@ -1856,6 +1884,7 @@ FR- Villemade
 # 83: Var
 FR- Artigues
 FR- Cogolin
+FR- Frejus
 FR- Hyeres
 FR- La Farlede
 FR- La Garde
@@ -1943,6 +1972,7 @@ FR- Essegney
 FR- Faverolles
 FR- Granges-sur-vologne
 FR- La Bresse
+FR- Neufchateau
 FR- Nomexy
 FR- Plombieres-les-bains
 FR- Raon-l etape
@@ -1979,6 +2009,7 @@ FR- Valdoie
 GP-
 GP- Jarry
 GP- Lamentin
+GP- Le Moule
 GP- Les Abymes
 GP- Petit-bourg
 GP- Saint-franois

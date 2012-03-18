@@ -19,6 +19,7 @@ ESTVIDEOCOMMUNICATION cable { broadband operator
 euNetworks Services GmbH
 France Telecom
 Free SAS
+Haut-Rhin Telecom
 Herault Telecom
 Ikoula Net SAS
 INOLIA
