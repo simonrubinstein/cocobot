@@ -21,6 +21,7 @@ Herault Telecom
 Ikoula Net SAS
 INOLIA
 Liberia Telecommunications Corporation (LIBTELCO)
+MANA Internet Service Provider
 MANCHE TELECOM
 MEDI@LYS
 MOBIUS TECHNOLOGY
@@ -29,6 +30,7 @@ Nerim SAS
 Neuf Cegetel
 NC Numericable S.A.
 NordNet
+OFFRATEL
 ONLINE S.A.S.
 Outremer Telecom
 Ovh Systems
@@ -36,6 +38,7 @@ Pays Voironnais Network
 RENATER
 Rigas Tikli, SIA
 RMI SAS
+SCGS
 SFR
 Teloise
 TUTOR S.A.
