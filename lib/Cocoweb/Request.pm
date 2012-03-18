@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-17
+# @date 2012-03-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -165,7 +165,10 @@ sub jsEscape {
     return $string;
 }
 
-## @method void getCityco($user_ref)
+##@method void getCityco($user)
+#@brief Performs an HTTP request to retrieve the custime code
+#       corresponding to zip code.
+#@param object $user An 'Cocoweb::User' object
 sub getCityco {
     my ( $self, $user ) = @_;
 
@@ -435,7 +438,9 @@ sub process1Int {
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-        $self->populate( $self->userFound(), $urlo, 0 );
+
+        #$self->populate( $self->userFound(), $urlo, 0 );
+        $self->populate( $user, 'populateUserList', $urlo, 0 );
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -489,7 +494,9 @@ sub process1Int {
         $olko = 967;
     }
     if ( $olko == 48 ) {
-        $self->populate( $user->amiz(), $urlo, 0 );
+
+        #$self->populate( $user->amiz(), $urlo, 0 );
+        $self->populate( $user, 'populateAmizList', $urlo, 0 );
         return $user->amiz();
     }
 
@@ -557,10 +564,26 @@ sub clearUsersList {
     $self->userFound( {} );
 }
 
-##@method void populate($userFound_ref, $urlo, $offsat)
+sub populateAmizList {
+    my ( $self, $user, $userId, $attribute_ref ) = @_;
+    my $amiz = $user->amiz();
+    push @$amiz, $attribute_ref;
+}
+
+sub populateUserList {
+    my ( $self, $user, $userId, $attribute_ref ) = @_;
+    my $userFound_ref = $self->userFound();
+    my $countNew      = 0;
+    if ( exists $userFound_ref->{$userId} ) {
+        $countNew++;
+    }
+    $userFound_ref->{$userId} = $attribute_ref;
+    debug("$countNew new logins was found");
+}
+
+##@method void populate($user, $populateList, $urlo, $offsat)
 sub populate {
-    my ( $self, $userFound_ref, $urlo, $offsat ) = @_;
-    my $countNew = 0;
+    my ( $self, $user, $populateList, $urlo, $offsat ) = @_;
     if ( length($urlo) > 12 ) {
         my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
         while ( $mopo < 1 ) {
@@ -569,10 +592,8 @@ sub populate {
                 $mopo = 2;
             }
             else {
-
                 my $id = parseInt( substr( $urlo, 8 + $hzy, 6 ) );
-                $countNew++ if !exists $userFound_ref->{$id};
-                $userFound_ref->{$id} = {
+                my %attribute = (
                     'id'   => $id,
                     'old'  => parseInt( substr( $urlo, $hzy, 2 ) ),
                     'sex'  => parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
@@ -581,12 +602,12 @@ sub populate {
                     'niv'  => parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
                     'stat' => parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
                     'ok'   => parseInt( substr( $urlo, 16 + $hzy, 1 ) )
-                };
+                );
                 $hzy = $indux + 1;
+                $self->$populateList( $user, $id, \%attribute );
             }
         }
     }
-    debug("$countNew new logins was found");
 }
 
 ##@method void searchnow($user)
