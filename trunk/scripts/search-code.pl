@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# @created 2012-03-03
+# @created 2012-03-18
 # @date 2012-03-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -35,6 +35,7 @@ use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 my $CLI;
+my $code;
 
 init();
 run();
@@ -43,19 +44,25 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
-    $bot->show();
-    message( $bot->getUserInfo() );
+    $bot->display();
+    my $user_ref = $bot->searchCode($code);
+    print Dumper $user_ref;
     info("The $Bin script was completed successfully.");
 }
 
 ##@method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts();
+    my $opt_ref = $CLI->getOpts('argumentative' => 'c:');
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
+    $code = $opt_ref->{'c'} if exists $opt_ref->{'c'};
+    if ( !defined $code ) {
+        die error("You must specify a nickname code (-c option)");
+    }
+ 
 }
 
 ## @method void HELP_MESSAGE()
@@ -64,7 +71,9 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 Get the number of days left of Premium subscription.
 Usage: 
- $Script [-v -d -a myavatar -p mypass]
+ $Script [-v -d] -a myavatar -p mypass -c
+  -c code     The nickname code searched, an alphanumeric code
+              of three characters, i.e. WcL
   -a myavatar A unique identifier for your account 
               The first 9 digits of cookie "samedi"
   -p mypass   The password for your account

@@ -122,7 +122,7 @@ sub init {
         'mystat'     => 0,
         'myXP'       => 0,
         'myver'      => 0,
-        'amiz'       => {},
+        'amiz'       => [],
         'camon'      => 95,
         'typcam'     => ''
 

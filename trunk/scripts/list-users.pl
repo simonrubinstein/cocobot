@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief 
 #@created 2012-02-22
-#@date 2012-02-28
+#@date 2012-03-18
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -61,7 +61,8 @@ sub run {
     my %sexCount = ();
     foreach my $id ( keys %$userFound_ref ) {
         my $login_ref = $userFound_ref->{$id};
-        foreach my $k ( keys %$login_ref ) {
+        #foreach my $k ( keys %$login_ref ) {
+        foreach my $k ( @codes ) {
             my $l = length( $login_ref->{$k} );
             if ( $l > $max{$k} ) {
                 $max{$k} = $l;

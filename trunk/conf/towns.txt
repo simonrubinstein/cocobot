@@ -322,6 +322,7 @@ FR- Fontenay-tresigny
 FR- Fublaines
 FR- Gouaix
 FR- Grandpuits
+FR- Gretz
 FR- Gretz-armainvilliers
 FR- Grisy-suisnes
 FR- Guignes
@@ -540,8 +541,10 @@ FR- Le Cannet
 FR- Le Rouret
 FR- Mandelieu
 FR- Menton
+FR- Mouans-sartoux
 FR- Mougins
 FR- Nice
+FR- Pegomas
 FR- Puget-theniers
 FR- Saint-jeannet
 FR- Saint-laurent-du-var
@@ -649,6 +652,7 @@ FR- Vitrolles
 # 14: Calvados
 FR- Anguerny
 FR- Beaumont-en-auge
+FR- Bernieres-sur-mer
 FR- Bretteville-l orgueilleuse
 FR- Caen
 FR- Cahagnes
@@ -725,6 +729,7 @@ FR- Vignols
 
 # 20: Haute-Corse
 FR- Ajaccio
+FR- Appietto
 FR- Bastia
 FR- Olmeto
 
@@ -749,6 +754,7 @@ FR- Talant
 
 # 22: Cotes-d'Armor
 FR- Brehand
+FR- Dinan
 FR- La Bouillie
 FR- Lamballe
 FR- Loudeac
@@ -846,6 +852,7 @@ FR- Saint-lubin-des-joncherets
 FR- Senonches
 
 # 29: Finistere
+FR- Bodilis
 FR- Brest
 FR- Chateaulin
 FR- Clohars-fouesnant
@@ -1213,6 +1220,7 @@ FR- Durtal
 FR- Ecouflant
 FR- Geste
 FR- La Menitre
+FR- Le Marillais
 FR- Le Pont
 FR- Loire
 FR- Montigne-les-rairies
@@ -1253,6 +1261,7 @@ FR- Nuisement-sur-coole
 FR- Pleurs
 FR- Reims
 FR- Reuil
+FR- Saint-cheron
 FR- Sezanne
 FR- Tinqueux
 FR- Witry-les-reims
@@ -1325,6 +1334,7 @@ FR- Lorient
 FR- Loyat
 FR- Montertelot
 FR- Muzillac
+FR- Nivillac
 FR- Noyal-pontivy
 FR- Ploemeur
 FR- Plumergat
@@ -1403,6 +1413,7 @@ FR- Croix
 FR- Douai
 FR- Dunkirk
 FR- Escaudain
+FR- Faches-thumesnil
 FR- Feignies
 FR- Fenain
 FR- Fourmies
@@ -1573,6 +1584,7 @@ FR- Etaples
 FR- Evin-malmaison
 FR- Farbus
 FR- Frethun
+FR- Givenchy-en-gohelle
 FR- Gouy-sous-bellonne
 FR- Guarbecque
 FR- Guines
@@ -1770,6 +1782,7 @@ FR- Autun
 FR- Champforgeuil
 FR- Change
 FR- Ciry-le-noble
+FR- Chalon-sur-sane
 FR- Creches-sur-sane
 FR- Gergy
 FR- Igornay
@@ -1811,6 +1824,7 @@ FR- Allinges
 FR- Annecy
 FR- Annecy-le-vieux
 FR- Annemasse
+FR- Ayse
 FR- Ballaison
 FR- Beaumont
 FR- Bonneville
@@ -1844,6 +1858,7 @@ FR- Carrieres-sur-seine
 FR- Dieppe
 FR- Elbeuf
 FR- Fecamp
+FR- Fontaine-le-bourg
 FR- Grand-couronne
 FR- Harfleur
 FR- Le Grand-quevilly
@@ -1854,9 +1869,11 @@ FR- Le Treport
 FR- Lintot
 FR- Mesnil-esnard
 FR- Mont-saint-aignan
+FR- Notre-dame-de-gravenchon
 FR- Petit Couronne
 FR- Rouen
 FR- Saint-Etienne-du-rouvray
+FR- Saint-aubin-les-elbeuf
 FR- Saint-valery-en-caux
 FR- Sainte-adresse
 FR- Sotteville-les-rouen
@@ -1872,6 +1889,7 @@ FR- Cherveux
 FR- Cours
 FR- Les Aubiers
 FR- Niort
+FR- Saint-varent
 FR- Thenezay
 FR- Thouars
 
@@ -1953,6 +1971,7 @@ FR- Monteux
 FR- Orange
 FR- Pertuis
 FR- Sablet
+FR- Saint Didier
 FR- Sorgues
 FR- Valreas
 
@@ -2040,6 +2059,7 @@ FR- Villeneuve-sur-yonne
 FR- Belfort
 FR- Danjoutin
 FR- Delle
+FR- Denney
 FR- Valdoie
 
 # 971: Guadeloupe

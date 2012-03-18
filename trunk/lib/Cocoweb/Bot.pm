@@ -85,9 +85,23 @@ sub searchUser {
 }
 
 ##method void getUserInfo()
+#@brief Get the number of days remaining until the end of
+#       the Premium subscription.
+#       This method works only for user with a Premium subscription
+#
 sub getUserInfo {
     my ($self) = @_;
     $self->request()->getUserInfo( $self->user() );
+}
+
+##@method void searchCode()
+#@brief Search a nickname from his code of 3 characters 
+#       This method works only for user with a Premium subscription
+#@param object $user An 'User object' object
+#@param string $code A nickname code (i.e. WcL)
+sub searchCode {
+    my ( $self, $code ) = @_;
+    $self->request()->searchCode( $self->user(), $code );
 }
 
 ##@method string infuz($nickId)
