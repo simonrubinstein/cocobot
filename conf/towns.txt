@@ -260,6 +260,7 @@ FR- Neuville-sur-oise
 FR- Osny
 FR- Persan
 FR- Pierrelaye
+FR- Plessis-bouchard
 FR- Pontoise
 FR- Presles
 FR- Puiseux-en-france
@@ -457,6 +458,7 @@ FR- Verneuil-sur-seine
 FR- Vernouillet
 FR- Versailles
 FR- Villeneuve-le-comte
+FR- Villennes-sur-seine
 FR- Viroflay
 FR- Voisins-le-bretonneux
 
@@ -565,6 +567,7 @@ FR- Asfeld
 FR- Bazeilles
 FR- Charleville-mezieres
 FR- Haraucourt
+FR- Linay
 FR- Rethel
 FR- Rocroi
 FR- Sedan
@@ -646,6 +649,7 @@ FR- Beaumont-en-auge
 FR- Bretteville-l orgueilleuse
 FR- Caen
 FR- Cahagnes
+FR- Courseulles-sur-mer
 FR- Deauville
 FR- Demouville
 FR- Epron
@@ -730,6 +734,7 @@ FR- Comblanchien
 FR- Dijon
 FR- Genlis
 FR- Gevrey-chambertin
+FR- Les Maillys
 FR- Longvic
 FR- Marcilly-sur-tille
 FR- Norges-la-ville
@@ -825,6 +830,7 @@ FR- Dammarie
 FR- Dreux
 FR- Gallardon
 FR- Gasville
+FR- Gilles
 FR- Illiers
 FR- Luce
 FR- Maintenon
@@ -926,6 +932,7 @@ FR- Pessac
 FR- Portets
 FR- Roquebrune
 FR- Saint-Emilion
+FR- Saint-estephe
 FR- Saint-medard-de-guizieres
 FR- Saint-medard-en-jalles
 FR- Talence
@@ -955,6 +962,7 @@ FR- Puechabon
 FR- Saint-jean-de-vedas
 FR- Sauvian
 FR- Sete
+FR- Sussargues
 FR- Teyran
 FR- Valergues
 FR- Valros
@@ -1172,6 +1180,7 @@ FR- Lalbenque
 
 # 47: Lot-et-Garonne
 FR- Agen
+FR- Barbaste
 FR- Bazens
 FR- Casteljaloux
 FR- Laussou
@@ -1433,6 +1442,7 @@ FR- Sebourg
 FR- Solesmes
 FR- Spycker
 FR- Steenvoorde
+FR- Thun
 FR- Tourcoing
 FR- Valenciennes
 FR- Vieux Conde
@@ -1483,6 +1493,7 @@ FR- Liancourt
 FR- Longueil-annel
 FR- Longueil-sainte-marie
 FR- Machemont
+FR- Mareuil-la-motte
 FR- Marseille-en-beauvaisis
 FR- Melicocq
 FR- Mello
@@ -1627,6 +1638,7 @@ FR- Lannemezan
 FR- Tarbes
 
 # 66: Pyrenees-Orientales
+FR- Argeles-sur-mer
 FR- Bompas
 FR- Cabestany
 FR- Perpignan
@@ -2057,5 +2069,6 @@ NC- Dumbea
 NC- Noumea
 
 # 000: Unknow
+FR- Clement
 FR- Epne
 
