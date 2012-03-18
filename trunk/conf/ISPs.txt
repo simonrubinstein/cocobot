@@ -1,7 +1,9 @@
 AB CONNECT
 Ajova Network
 Alsace Connexia
+Altitude Infrastructure Exploitation SAS
 America Online
+Assistance Publique-Hopitaux de Paris
 Auvea Ingenierie
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
@@ -43,5 +45,6 @@ SFR
 Teloise
 TUTOR S.A.
 Verizon France SAS
+VIALIS - REGIE MUNICIPALE DE COLMAR
 WIBOX SASU
 Wifirst S.A.S.
