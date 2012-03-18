@@ -507,6 +507,7 @@ FR- Saint-laurent-du-cros
 
 # 06: Alpes-Maritimes
 FR- Antibes
+FR- Biot
 FR- Cagnes-sur-mer
 FR- Cannes
 FR- Carros
@@ -858,11 +859,11 @@ FR- Gradignan
 FR- Gujan-mestras
 FR- Jau-dignac-et-loirac
 FR- La Teste-de-buch
+FR- Langon
 FR- Le Barp
 FR- Le Taillan-medoc
 FR- Le Teich
 FR- Le Tourne
-FR- Langon
 FR- Libourne
 FR- Lormont
 FR- Ludon-medoc
@@ -1286,6 +1287,7 @@ FR- Dunkirk
 FR- Escaudain
 FR- Feignies
 FR- Fenain
+FR- Fourmies
 FR- Fournes-en-weppes
 FR- Frelinghien
 FR- Fretin
@@ -1329,6 +1331,7 @@ FR- Roubaix
 FR- Rubrouck
 FR- Saint Andre
 FR- Saint-amand-les-eaux
+FR- Saint-jans-cappel
 FR- Saint-pol-sur-mer
 FR- Sebourg
 FR- Solesmes
@@ -1391,6 +1394,7 @@ FR- Puiseux-en-bray
 FR- Rantigny
 FR- Senlis
 FR- Silly-le-long
+FR- Troissereux
 FR- Ver-sur-launette
 FR- Verberie
 
@@ -1714,6 +1718,7 @@ FR- Peronne
 FR- Rivery
 FR- Rue
 FR- Saleux
+FR- Vignacourt
 FR- Villers-bretonneux
 FR- Yzeux
 
