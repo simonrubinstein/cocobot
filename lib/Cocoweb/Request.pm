@@ -41,6 +41,7 @@ use Time::HiRes qw(usleep nanosleep);
 use utf8;
 no utf8;
 
+
 __PACKAGE__->attributes(
     'myport',
     'url1',
@@ -316,6 +317,7 @@ sub process1 {
 }
 
 ## @method void process1Int($user, $urlo)
+#@param object $user An 'User object' object
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
 
@@ -371,6 +373,23 @@ sub process1Int {
               $self->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
+
+#/#9955720289399221011fifilou
+
+       #Result of a search query of a nickname code
+       if ($bud == 557) {
+           return {
+               'login'=> substr($urlo, 19),
+               'old'  => substr($urlo, 11, 2),
+               'city' => substr($urlo, 13, 5),
+               'sex'  => substr($urlo, 18, 1),
+               'id'   => substr($urlo, 5, 6),
+               'ok'   => 0,
+               'stat' => 5 };
+#(numius,agius,townius,sexius,nickIDf,verok,nickstat
+#creatab(urlo.substring(19),urlo.substring(11,13),urlo.substring(13,18),urlo.substring(18,19),urlo.substring(5,11),0,5);
+       }
+
 
         # The second part of the authentication is completed successfully
         # The server returns some information about the user account.
@@ -438,9 +457,13 @@ sub process1Int {
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-
-        #$self->populate( $self->userFound(), $urlo, 0 );
-        $self->populate( $user, 'populateUserList', $urlo, 0 );
+        my $userFound_ref = $self->userFound();
+        for my $id (keys %$userFound_ref) {
+            my $attribute_ref = $userFound_ref->{$id};
+            $attribute_ref->{'_new'}  = 0; 
+            $attribute_ref->{'_view'} = 0; 
+        }
+        $self->populate( $user, '_populateUsersList', $urlo, 0 );
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -494,9 +517,8 @@ sub process1Int {
         $olko = 967;
     }
     if ( $olko == 48 ) {
-
-        #$self->populate( $user->amiz(), $urlo, 0 );
-        $self->populate( $user, 'populateAmizList', $urlo, 0 );
+        $user->amiz([]);
+        $self->populate( $user, '_populateAmizList', $urlo, 0 );
         return $user->amiz();
     }
 
@@ -564,17 +586,31 @@ sub clearUsersList {
     $self->userFound( {} );
 }
 
-sub populateAmizList {
+##@method void populateAmizList($user, $userId, $attribute_ref)
+#@param object  $user          An 'User object' object
+#@param integer $userId        A nickname ID 
+#@param hashref $attribute_ref The nickname attributes: age,
+#                              zip code, gender, ...
+sub _populateAmizList {
     my ( $self, $user, $userId, $attribute_ref ) = @_;
     my $amiz = $user->amiz();
     push @$amiz, $attribute_ref;
 }
 
-sub populateUserList {
+##@method void populateUserList($user, $userId, $attribute_ref)
+#@param object  $user          An 'User object' object
+#@param integer $userId        A nickname ID 
+#@param hashref $attribute_ref The nickname attributes: age,
+#                              zip code, gender, ...
+sub _populateUsersList {
     my ( $self, $user, $userId, $attribute_ref ) = @_;
     my $userFound_ref = $self->userFound();
     my $countNew      = 0;
+    $attribute_ref->{'_view'} = 1;
     if ( exists $userFound_ref->{$userId} ) {
+        $attribute_ref->{'_new'} = 0; 
+    } else {
+        $attribute_ref->{'_new'} = 1; 
         $countNew++;
     }
     $userFound_ref->{$userId} = $attribute_ref;
@@ -582,6 +618,12 @@ sub populateUserList {
 }
 
 ##@method void populate($user, $populateList, $urlo, $offsat)
+#@brief Extract the pseudonyms of the string returned by the server
+#       and call the method passed as parameter
+#@param object $user         An 'User object' object
+#@param string $populateList The method to invoke for each user found 
+#@param string $urlo         The string returned by the server
+#@param string $offsat
 sub populate {
     my ( $self, $user, $populateList, $urlo, $offsat ) = @_;
     if ( length($urlo) > 12 ) {
@@ -612,15 +654,15 @@ sub populate {
 
 ##@method void searchnow($user)
 #@brief Call the remote method to retrieve the list of pseudonyms.
-#@param object @user An 'User object' object
+#@param object $user An 'User object' object
 sub searchnow {
     my ( $self, $user ) = @_;
-    debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
+    #debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     $self->agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
 ##@method void cherchasalon($user)
-#@param object @user An 'User object' object
+#@param object $user An 'User object' object
 sub cherchasalon {
     my ( $self, $user ) = @_;
     $self->agir( $user, '89' );
@@ -628,7 +670,7 @@ sub cherchasalon {
 
 ##@method void actuam($user)
 #@brief Get the list of contacts, nicknamed 'amiz'
-#@param object @user An 'User object' object
+#@param object $user An 'User object' object
 #@return string
 sub actuam {
     my ( $self, $user ) = @_;
@@ -637,7 +679,7 @@ sub actuam {
 
 ##@method void lancetimer($user)
 #@brief Method that periodically performs requests to the server
-#@param object @user An 'User object' object
+#@param object $user An 'User object' object
 sub lancetimer {
     my ( $self, $user ) = @_;
     $self->agir( $user, $user->camon() . $user->typcam() );
@@ -646,15 +688,27 @@ sub lancetimer {
 ##@method void getUserInfo()
 #@brief Get the number of days remaining until the end of
 #       the Premium subscription.
-#@param object @user An 'User object' object
+#       This method works only for user with a Premium subscription
+#@param object $user An 'User object' object
 sub getUserInfo {
     my ( $self, $user ) = @_;
     $self->agir( $user, '77369' );
 }
 
+##@method void searchCode()
+#@brief Search a nickname from his code of 3 characters 
+#       This method works only for user with a Premium subscription
+#@param object $user An 'User object' object
+#@param string $code A nickname code (i.e. WcL)
+sub searchCode {
+    my ( $self, $user, $code ) = @_;
+    #agir("83733000000"+s1);
+    $self->agir( $user, '83733000000' . $code );
+}
+
 ## @method void writus($user, $s1, $nickId)
 #@brief
-#@param object @user An 'User object' object
+#@param object $user An 'User object' object
 #@param string $s1
 sub writus {
     my ( $self, $user, $s1, $nickId ) = @_;

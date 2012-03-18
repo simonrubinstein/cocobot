@@ -175,7 +175,9 @@ Usage:
          [-u mynickname -y myage -s mysex -v -d]
          [-l -r]
   -a myavatar        A unique identifier for your account 
+                     The first 9 digits of cookie "samedi"
   -p mypass          The password for your account
+                     The last 20 alphabetic characters of cookie "samedi"
   -l                 The script is running in loop mode constantly
   -r                 Reconnect with each new loop
   -u mynickname      An username
@@ -190,7 +192,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-17) 
+    $Script $Cocoweb::VERSION (2012-03-18) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
