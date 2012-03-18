@@ -8,6 +8,7 @@ Auvea Ingenierie
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
+CANL DYNAMIC IP
 CEGETEL LA REUNION
 Centre de Ressources Informatique (CRI)
 COLT Telecom Group Limited
@@ -21,6 +22,7 @@ France Telecom
 Free SAS
 Haut-Rhin Telecom
 Herault Telecom
+iBrowse SARL
 Ikoula Net SAS
 INOLIA
 Liberia Telecommunications Corporation (LIBTELCO)
