@@ -1,0 +1,144 @@
+# @created 2012-03-19
+# @date 2012-03-19
+# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+# http://code.google.com/p/cocobot/
+#
+# copyright (c) Simon Rubinstein 2010-2012
+# Id: $Id$
+# Revision: $Revision$
+# Date: $Date$
+# Author: $Author$
+# HeadURL: $HeadURL$
+#
+# cocobot is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# cocobot is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA  02110-1301, USA.
+package Cocoweb::User::List;
+use strict;
+use warnings;
+use Carp;
+use Data::Dumper;
+use POSIX;
+
+use Cocoweb;
+use Cocoweb::User;
+use base 'Cocoweb::Object';
+
+__PACKAGE__->attributes('all');
+
+##@method void init(%args)
+#@brief Perform some initializations
+sub init {
+    my ( $self, %args ) = @_;
+    $self->attributes_defaults( 'all' => {} );
+}
+
+
+##@method vois display(%args)
+sub display {
+    my ( $self, %args ) = @_;
+    my ( $sex, $nickmaneWanted, $old );
+    $sex            = $args{'mysex'}     if exists $args{'mysex'};
+    $old            = $args{'myage'}     if exists $args{'myage'};
+    $nickmaneWanted = $args{'mynickame'} if exists $args{'mynickame'};
+    my @titles =
+      ( 'Id', 'Nickname', 'Sex', 'Old', 'City', 'Ver', 'Stat', 'XP' );
+    my @names = (
+        'mynickID', 'mynickname', 'mysex',  'myage',
+        'citydio',  'myver',      'mystat', 'myXP'
+    );
+    my %max = ();
+
+    for ( my $i = 0 ; $i < scalar(@names) ; $i++ ) {
+        $max{ $names[$i] } = length( $titles[$i] );
+    }
+    my %sexCount = ();
+    my $user_ref = $self->all();
+    foreach my $id ( keys %$user_ref ) {
+        my $user = $user_ref->{$id};
+        foreach my $name (@names) {
+            my $l = length( $user->$name );
+            $max{$name} = $l if  $l > $max{$name};
+        }
+        $sexCount{ $user->mysex() }++;
+    }
+
+    my $lineSize  = 0;
+    foreach my $name (@names) {
+        $lineSize += $max{$name} + 3;
+    }
+    $lineSize--;
+    my $separator = '!' . ( '-' x $lineSize ) . '!';
+
+    print STDOUT $separator . "\n";
+    my $line = '';
+    for ( my $i = 0 ; $i < scalar(@names) ; $i++ ) {
+        $line .=
+          '! ' . sprintf( '%-' . $max{ $names[$i] } . 's', $titles[$i] ) . ' ';
+    }
+    $line .= '!';
+    print STDOUT $line . "\n";
+    print STDOUT $separator . "\n";
+
+    my $count = 0,;
+    foreach my $id ( keys %$user_ref ) {
+        my $user = $user_ref->{$id};
+
+        if ( defined $sex ) {
+
+            my $mysex = $user->mysex();
+            if ( $sex == 1 ) {
+                next if !$user->isMan();
+            }
+            elsif ( $sex == 2 ) {
+                next if !$user->isWoman();
+            }
+            else {
+                next;
+            }
+        }
+        next
+          if defined $nickmaneWanted
+              and $user->mynickname() !~ m{^.*$nickmaneWanted.*$}i;
+        next if defined $old and $user->myage() != $old;
+        $line = '';
+        foreach my $k (@names) {
+            $line .= '! ' . sprintf( '%-' . $max{$k} . 's', $user->$k ) . ' ';
+        }
+        $line .= '!';
+        print STDOUT $line . "\n";
+        $count++;
+    }
+    print STDOUT $separator . "\n";
+
+    my ( $womanCount, $manCount ) = ( 0, 0 );
+    foreach my $sex ( keys %sexCount ) {
+        my $cnt = $sexCount{$sex};
+        if ( $sex == 2 or $sex == 7 ) {
+            $womanCount += $cnt;
+        }
+        elsif ( $sex == 1 or $sex == 6 ) {
+            $manCount += $cnt;
+        }
+        else {
+            die error("$sex sex code was not found");
+        }
+    }
+    print STDOUT "- $count user(s) displayed\n";
+    print STDOUT "- Number of woman(s): $womanCount\n";
+    print STDOUT "- Number of man(s):   $manCount\n";
+
+}
+
+1

@@ -32,6 +32,7 @@ use Cocoweb;
 use Cocoweb::Config;
 use Cocoweb::Config::Hash;
 use Cocoweb::Encode;
+use Cocoweb::User::HashList;
 use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
@@ -90,7 +91,8 @@ sub init {
         'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
         'genru'     => 0,
         'yearu'     => 0,
-        'userFound' => {},
+        #'userFound' => {},
+        'userFound' => Cocoweb::User::HashList->new(),
         'speco'     => 0,
         'convert'   => Cocoweb::Encode->instance()
     );
@@ -457,13 +459,14 @@ sub process1Int {
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-        my $userFound_ref = $self->userFound();
-        for my $id (keys %$userFound_ref) {
-            my $attribute_ref = $userFound_ref->{$id};
-            $attribute_ref->{'_new'}  = 0; 
-            $attribute_ref->{'_view'} = 0; 
-        }
-        $self->populate( $user, '_populateUsersList', $urlo, 0 );
+        #my $userFound_ref = $self->userFound();
+        #for my $id (keys %$userFound_ref) {
+        #    my $attribute_ref = $userFound_ref->{$id};
+        #    $attribute_ref->{'_new'}  = 0; 
+        #    $attribute_ref->{'_view'} = 0; 
+        #}
+        #$self->populate( $user, $self->_populateUsersList, $urlo, 0 );
+        $self->populate( $user, $self->userFound(), $urlo, 0 );
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -517,8 +520,8 @@ sub process1Int {
         $olko = 967;
     }
     if ( $olko == 48 ) {
-        $user->amiz([]);
-        $self->populate( $user, '_populateAmizList', $urlo, 0 );
+        $user->amiz(Cocoweb::User::Friend->new());
+        $self->populate( $user, $user->amiz(), $urlo, 0 );
         return $user->amiz();
     }
 
@@ -586,37 +589,6 @@ sub clearUsersList {
     $self->userFound( {} );
 }
 
-##@method void populateAmizList($user, $userId, $attribute_ref)
-#@param object  $user          An 'User object' object
-#@param integer $userId        A nickname ID 
-#@param hashref $attribute_ref The nickname attributes: age,
-#                              zip code, gender, ...
-sub _populateAmizList {
-    my ( $self, $user, $userId, $attribute_ref ) = @_;
-    my $amiz = $user->amiz();
-    push @$amiz, $attribute_ref;
-}
-
-##@method void populateUserList($user, $userId, $attribute_ref)
-#@param object  $user          An 'User object' object
-#@param integer $userId        A nickname ID 
-#@param hashref $attribute_ref The nickname attributes: age,
-#                              zip code, gender, ...
-sub _populateUsersList {
-    my ( $self, $user, $userId, $attribute_ref ) = @_;
-    my $userFound_ref = $self->userFound();
-    my $countNew      = 0;
-    $attribute_ref->{'_view'} = 1;
-    if ( exists $userFound_ref->{$userId} ) {
-        $attribute_ref->{'_new'} = 0; 
-    } else {
-        $attribute_ref->{'_new'} = 1; 
-        $countNew++;
-    }
-    $userFound_ref->{$userId} = $attribute_ref;
-    debug("$countNew new logins was found");
-}
-
 ##@method void populate($user, $populateList, $urlo, $offsat)
 #@brief Extract the pseudonyms of the string returned by the server
 #       and call the method passed as parameter
@@ -625,7 +597,7 @@ sub _populateUsersList {
 #@param string $urlo         The string returned by the server
 #@param string $offsat
 sub populate {
-    my ( $self, $user, $populateList, $urlo, $offsat ) = @_;
+    my ( $self, $user, $usersList, $urlo, $offsat ) = @_;
     if ( length($urlo) > 12 ) {
         my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
         while ( $mopo < 1 ) {
@@ -635,26 +607,48 @@ sub populate {
             }
             else {
                 my $id = parseInt( substr( $urlo, 8 + $hzy, 6 ) );
-                my %attribute = (
+                
+                $usersList->populate(
                     #mynickID
-                    'id'   => $id,
+                    parseInt( substr( $urlo, 8 + $hzy, 6 ) ),
                     #myage:
-                    'old'  => parseInt( substr( $urlo, $hzy, 2 ) ),
+                    parseInt( substr( $urlo, $hzy, 2 ) ),
                     #mysex:
-                    'sex'  => parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
+                    parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
                      # citydio:
-                    'city' => parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
+                    parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
                      #mynickname
-                    'login' => substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
+                    substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
                     #myXP
-                    'niv'  => parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
+                    parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
                     #myStat
-                    'stat' => parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
+                    parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
                     #myver
-                    'ok'   => parseInt( substr( $urlo, 16 + $hzy, 1 ) )
-                );
+                    parseInt( substr( $urlo, 16 + $hzy, 1 ) ) );
+ 
+
+
+
+            #    my %attribute = (
+                    #mynickID
+            #        'id'   => $id,
+                    #myage:
+            #        'old'  => parseInt( substr( $urlo, $hzy, 2 ) ),
+                    #mysex:
+            #        'sex'  => parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
+                     # citydio:
+            #        'city' => parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
+                     #mynickname
+            #        'login' => substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
+                    #myXP
+            #        'niv'  => parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
+                    #myStat
+            #        'stat' => parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
+                    #myver
+            #        'ok'   => parseInt( substr( $urlo, 16 + $hzy, 1 ) )
+             #   );
                 $hzy = $indux + 1;
-                $self->$populateList( $user, $id, \%attribute );
+                #&$populateList->( $user, $id, \%attribute );
             }
         }
     }
@@ -805,19 +799,24 @@ sub getInfuz {
 sub searchPseudonym {
     my ( $self, $user, $pseudonym ) = @_;
     debug("pseudonym: $pseudonym");
-    my $pseudonym_ref;
-    $pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
-    return $pseudonym_ref if defined $pseudonym_ref;
+    my $userWanted = $self->userFound()->checkIfNicknameExists($pseudonym);
+    return $userWanted if defined $userWanted;
+    #my $pseudonym_ref;
+    #$pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
+    #return $pseudonym_ref if defined $pseudonym_ref;
     foreach my $g ( 1, 2 ) {
         $self->genru($g);
         foreach my $y ( 1, 2, 3, 4 ) {
             $self->yearu($y);
             $self->searchnow($user);
-            $pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
-            return $pseudonym_ref if defined $pseudonym_ref;
+            $userWanted = $self->userFound()->checkIfNicknameExists($pseudonym);
+            return $userWanted if defined $userWanted;
+            #$pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
+            #return $pseudonym_ref if defined $pseudonym_ref;
         }
     }
     return $self->userFound()
+    #return $self->userFound()
       if !defined $pseudonym
           or length($pseudonym) == 0;
     debug("The pseudonym '$pseudonym' was not found");
@@ -829,20 +828,20 @@ sub searchPseudonym {
 #       of pseudonym already read.
 #@param string The pseudonym wanted
 #@return hashref
-sub checkIfPseudonymExists {
-    my ( $self, $pseudonym ) = @_;
-    return if !defined $pseudonym or length($pseudonym) == 0;
-    my $userFound_ref = $self->userFound();
-    foreach my $id ( keys %$userFound_ref ) {
-        my $name = $userFound_ref->{$id}->{'login'};
-        if ( lc($name) eq lc($pseudonym) ) {
-            debug("The pseudonym '$pseudonym' was found");
-            return $userFound_ref->{$id};
-        }
-    }
-    debug("The pseudonym '$pseudonym' was not found");
-    return;
-}
+#sub checkIfPseudonymExists {
+#    my ( $self, $pseudonym ) = @_;
+#    return if !defined $pseudonym or length($pseudonym) == 0;
+#    my $userFound_ref = $self->userFound();
+#    foreach my $id ( keys %$userFound_ref ) {
+#        my $name = $userFound_ref->{$id}->{'login'};
+#        if ( lc($name) eq lc($pseudonym) ) {
+#            debug("The pseudonym '$pseudonym' was found");
+#            return $userFound_ref->{$id};
+#        }
+#    }
+#    debug("The pseudonym '$pseudonym' was not found");
+#    return;
+#}
 
 1;
 

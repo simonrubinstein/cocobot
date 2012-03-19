@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
-package Cocoweb::User::HashList;
+package Cocoweb::User::Friend;
 use strict;
 use warnings;
 use Carp;
@@ -36,12 +36,13 @@ use Cocoweb::User;
 use Cocoweb::User::List;
 use base 'Cocoweb::User::List';
 
+__PACKAGE__->attributes('count');
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    $self->attributes_defaults( 'all' => {} );
+    $self->attributes_defaults( 'all' => {}, 'count' => 0 );
 }
 
 sub populate {
@@ -50,12 +51,10 @@ sub populate {
         $mynickname, $myXP,     $mystat, $myver
     ) = @_;
     my $users_ref = $self->all();
-    if ( exists $users_ref->{$mynickID} ) {
-        $users_ref->{$mynickID}->{'isNew'}  = 0;
-        $users_ref->{$mynickID}->{'isView'} = 1;
-    }
-    else {
-        $users_ref->{$mynickID} = Cocoweb::User->new(
+    my $count = $self->count();
+    $count++;
+    $self->count($count);
+    $users_ref->{$count} = Cocoweb::User->new(
             'mynickID'   => $mynickID,
             'myage'      => $myage,
             'mysex'      => $mysex,
@@ -65,28 +64,7 @@ sub populate {
             'mystat'     => $mystat,
             'myver'      => $myver
         );
-    }
-
 }
 
-##@method hashref checkIfNicknameExists($pseudonym)
-#@brief Check if a pseudonym already exists in the list
-#       of pseudonym already read.
-#@param string The pseudonym wanted
-#@return hashref
-sub checkIfNicknameExists {
-    my ( $self, $pseudonym ) = @_;
-    return if !defined $pseudonym or length($pseudonym) == 0;
-    my $user_ref = $self->all();
-    foreach my $id ( keys %$user_ref ) {
-        my $name = $user_ref->{$id}->{'mynickname'};
-        if ( lc($name) eq lc($pseudonym) ) {
-            debug("The pseudonym '$pseudonym' was found");
-            return $user_ref->{$id};
-        }
-    }
-    debug("The pseudonym '$pseudonym' was not found");
-    return;
-}
+1;
 
-1
