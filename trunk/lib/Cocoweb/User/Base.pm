@@ -1,4 +1,4 @@
-# @created 2012-01-26
+# @created 2012-03-19
 # @date 2012-03-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
-package Cocoweb::User;
+package Cocoweb::User::Base;
 use strict;
 use warnings;
 use Carp;
@@ -32,35 +32,44 @@ use Data::Dumper;
 use POSIX;
 
 use Cocoweb;
-use base 'Cocoweb::User::Base';
+use base 'Cocoweb::Object';
 
-__PACKAGE__->attributes( 'isNew', 'isView' );
-
-##@method void init(%args)
-#@brief Perform some initializations
+__PACKAGE__->attributes(
+    ## A nickname from 4 to 16 characters.
+    'mynickname',
+    ## Age from 15 to 89 years.
+    'myage',
+    ## Sex: 1 = male or 2 = female.
+    'mysex',
+    ## nickname ID for current session
+    'mynickID',
+    ## Custom code that corresponds to zip code.
+    'citydio',
+    'mystat',
+    'myXP',
+    ## 4 = Premium Subscription
+    'myver',
+);
 sub init {
     my ( $self, %args ) = @_;
-    die error("Missing argument")
-      if !exists $args{'mynickname'}
-          or !exists $args{'myage'}
-          or !exists $args{'mysex'}
-          or !exists $args{'mynickID'}
-          or !exists $args{'citydio'}
-          or !exists $args{'mystat'}
-          or !exists $args{'mystat'};
-
-    $self->attributes_defaults(
-        'mynickname' => $args{'mynickname'},
-        'myage'      => $args{'myage'},
-        'mysex'      => $args{'mysex'},
-        'mynickID'   => $args{'mynickID'},
-        'citydio'    => $args{'citydio'},
-        'mystat'     => $args{'mystat'},
-        'myXP'       => $args{'myXP'},
-        'myver'      => $args{'myver'},
-        'isNew'      => 1,
-        'isView'     => 1
-    );
 }
 
+##@method void display()
+#@brief Prints on one line some member variables to the console of the user object
+sub display {
+    my $self  = shift;
+    my @names = (
+        'mynickname', 'myage',   'mysex',   
+        'mynickID',  'citydio',  'mystat', 
+        'myXP', 'myver'
+    );
+    foreach my $name (@names) {
+        print STDOUT $name . ':' . $self->$name() . '; ';
+    }
+    print STDOUT "\n";
+
+}
+ 
 1;
+ 
+

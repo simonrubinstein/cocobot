@@ -167,7 +167,7 @@ sub jsEscape {
 }
 
 ##@method void getCityco($user)
-#@brief Performs an HTTP request to retrieve the custime code
+#@brief Performs an HTTP request to retrieve the custom code
 #       corresponding to zip code.
 #@param object $user An 'Cocoweb::User' object
 sub getCityco {
@@ -636,13 +636,21 @@ sub populate {
             else {
                 my $id = parseInt( substr( $urlo, 8 + $hzy, 6 ) );
                 my %attribute = (
+                    #mynickID
                     'id'   => $id,
+                    #myage:
                     'old'  => parseInt( substr( $urlo, $hzy, 2 ) ),
+                    #mysex:
                     'sex'  => parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
+                     # citydio:
                     'city' => parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
+                     #mynickname
                     'login' => substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
+                    #myXP
                     'niv'  => parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
+                    #myStat
                     'stat' => parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
+                    #myver
                     'ok'   => parseInt( substr( $urlo, 16 + $hzy, 1 ) )
                 );
                 $hzy = $indux + 1;

@@ -1,4 +1,4 @@
-# @created 2012-01-26
+# @created 2012-03-19
 # @date 2012-03-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
-package Cocoweb::User;
+package Cocoweb::User::HashList;
 use strict;
 use warnings;
 use Carp;
@@ -32,35 +32,41 @@ use Data::Dumper;
 use POSIX;
 
 use Cocoweb;
-use base 'Cocoweb::User::Base';
+use Cocoweb::User;
+use base 'Cocoweb::Object';
 
-__PACKAGE__->attributes( 'isNew', 'isView' );
+__PACKAGE__->attributes('list');
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    die error("Missing argument")
-      if !exists $args{'mynickname'}
-          or !exists $args{'myage'}
-          or !exists $args{'mysex'}
-          or !exists $args{'mynickID'}
-          or !exists $args{'citydio'}
-          or !exists $args{'mystat'}
-          or !exists $args{'mystat'};
-
-    $self->attributes_defaults(
-        'mynickname' => $args{'mynickname'},
-        'myage'      => $args{'myage'},
-        'mysex'      => $args{'mysex'},
-        'mynickID'   => $args{'mynickID'},
-        'citydio'    => $args{'citydio'},
-        'mystat'     => $args{'mystat'},
-        'myXP'       => $args{'myXP'},
-        'myver'      => $args{'myver'},
-        'isNew'      => 1,
-        'isView'     => 1
-    );
+    $self->attributes_defaults( 'users' => {} );
 }
 
-1;
+sub popuplate {
+    my (
+        $self,       $mynickID, $myage,  $mysex, $citydio,
+        $mynickname, $myXP,     $mystat, $myver
+    ) = @_;
+    my $users_ref = $self->user();
+    if ( exists $users_ref->{$mynickID} ) {
+        $users_ref->{$mynickID}->{'isNew'}  = 0;
+        $users_ref->{$mynickID}->{'isView'} = 1;
+    }
+    else {
+        $users_ref->{$mynickID} = Cocoweb::User->new(
+            'mynickID'   => $mynickID,
+            'myage'      => $myage,
+            'mysex'      => $mysex,
+            'citydio'    => $citydio,
+            'mynickname' => $mynickname,
+            'myXP'       => $myXP,
+            'mystat'     => $mystat,
+            'myver'      => $myver
+        );
+    }
+
+}
+
+1
