@@ -2,7 +2,7 @@
 # @brief This script checks that the town codes froms '_townCount.pl'
 #        file exist in the file 'towns.txt'.
 # @created 2012-03-11
-# @date 2012-03-15
+# @date 2012-03-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -31,6 +31,7 @@ use strict;
 use warnings;
 use FindBin qw($Script $Bin);
 use Data::Dumper;
+use IO::File;
 use utf8;
 no utf8;
 use lib "../lib";
@@ -63,16 +64,18 @@ sub run {
     message( 'Number of town code(s) found    : ' . $found );
     message( 'Number of town code(s) not found: ' . $notFound );
 
-    my ( $ISP_ref,  $ISPConf )  = $DB->getInitISPs();
-    my $ISPCount_ref  = fileToVars($dumpISPsFilename)  if -f $dumpISPsFilename;
+    my ( $ISP_ref, $ISPConf ) = $DB->getInitISPs();
+    my $ISPCount_ref = fileToVars($dumpISPsFilename) if -f $dumpISPsFilename;
     ( $count, $found, $notFound ) = ( 0, 0, 0 );
     foreach my $isp ( sort keys %$ISPCount_ref ) {
         $count++;
+
         #message( $isp . ' => ' . $ISPCount_ref->{$isp} );
         if ( exists $ISP_ref->{$isp} ) {
             $found++;
             next;
         }
+        $ISP_ref->{$isp} = 1;
         message($isp);
         $notFound++;
     }
@@ -80,7 +83,15 @@ sub run {
     message( 'Number of ISP code(s) found    : ' . $found );
     message( 'Number of ISP code(s) not found: ' . $notFound );
 
-
+    if ( $notFound > 0 ) {
+        my $filename = '/tmp/ISPs.txt';
+        my $fh = IO::File->new( $filename, 'w' );
+        die error("open($filename) was failed: $!") if !defined $fh;
+        foreach my $isp ( sort { lc($a) cmp lc($b) } keys %$ISP_ref ) {
+            print $fh $isp . "\n";
+        }
+        die error("close($filename) was failed: $!") if !$fh->close();
+    }
 
     info("The $Bin script was completed successfully.");
 }
@@ -112,7 +123,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-15) 
+    $Script $Cocoweb::VERSION (2012-03-17) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT

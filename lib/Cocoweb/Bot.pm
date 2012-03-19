@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-17
+# @date 2012-03-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -30,18 +30,16 @@ use strict;
 use warnings;
 use Data::Dumper;
 use Carp;
-
 use Cocoweb;
 use Cocoweb::Request;
-use Cocoweb::User;
-
+use Cocoweb::User::Connected;
 use base 'Cocoweb::Object';
 __PACKAGE__->attributes( 'user', 'request', );
 
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
-    my $user    = Cocoweb::User->new(%args);
+    my $user    = Cocoweb::User::Connected->new(%args);
     my $request = Cocoweb::Request->new();
     $self->attributes_defaults(
         'user'    => $user,
@@ -60,7 +58,6 @@ sub process {
     $user->validatio( $request->getValue('urlprinc') );
     $user->initial( $request->getValue('avaref') );
     $self->request()->firsty($user);
-
 }
 
 ##@method void writeMessage()
