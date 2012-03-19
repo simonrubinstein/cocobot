@@ -252,6 +252,7 @@ FR- Jouy-le-moutier
 FR- L isle-adam
 FR- La Frette
 FR- Le Perchay
+FR- Louvres
 FR- Maffliers
 FR- Marines
 FR- Marly-la-ville
@@ -898,6 +899,7 @@ FR- Saint-didier-des-bois
 FR- Saint-germain-village
 FR- Saint-philbert-sur-risle
 FR- Saint-pierre-de-cormeilles
+FR- Saint-pierre-la-garenne
 FR- Tilleul
 FR- Vernon
 
