@@ -4,65 +4,80 @@ Air France
 Ajova Network
 Alsace Connexia
 Altitude Infrastructure Exploitation SAS
+Altitude Telecom SAS
 America Online
 Assistance Publique-Hopitaux de Paris
 ASTRIUM SAS
 Auvea Ingenierie
 AXA-TECH
+B3G Telecom
 Bayanat Al-Oula For Network Services
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
 CANL DYNAMIC IP
 CEGETEL LA REUNION
+Celeste
 Centre de Ressources Informatique (CRI)
 COLT Telecom Group Limited
 COMPLETEL SAS France
+CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
+DECKNET
+DediPower Managed Hosting Limited
 Digicube sas
 DIMEDIA LLC
 Ecritel
 ESTVIDEOCOMMUNICATION cable { broadband operator
 euNetworks Services GmbH
+Finsecur SA
+FRANCE CITEVISION
 France Telecom
 Free SAS
+GALOP TELECOM
+Global Crossing
 Haut-Rhin Telecom
 Herault Telecom
 iBrowse SARL
+IFREMER Institut Francais de Recherche pour Exploi
 Ikoula Net SAS
 INOLIA
+Internet Services
+Interoute Communications Limited
 Liberia Telecommunications Corporation (LIBTELCO)
 MANA Internet Service Provider
+MANA S.A.
 MANCHE TELECOM
+Martinique TV Cable
 MEDI@LYS
-MOBIUS TECHNOLOGY
 Mediaserv
+MOBIUS TECHNOLOGY
+NC Numericable S.A.
 Nerim SAS
 Neuf Cegetel
-NC Numericable S.A.
+Nomotech
 NordNet
 OFFRATEL
 ONLINE S.A.S.
+Organization of the Petroleum Exporting Countries
 Outremer Telecom
 Ovh Systems
 Pays Voironnais Network
+PUBLICIS-TECHNOLOGY
 RENATER
+Reseau Optique du Campus de la Doua
 Rigas Tikli, SIA
 RMI SAS
+SAS CTS Computers and Telecommunications Systems
+SCANSAFE
 SCGS
 SFR
+Societe de developpement Informatique
 Teloise
+TRINAPS
 TUTOR S.A.
+Universite de Limoges
 Verizon France SAS
 VIALIS - REGIE MUNICIPALE DE COLMAR
+Websense Hosted R{D Ltd.
 WIBOX SASU
 Wifirst S.A.S.
-DediPower Managed Hosting Limited
-FRANCE CITEVISION
-IFREMER Institut Francais de Recherche pour Exploi
-Interoute Communications Limited
-MANA S.A.
-Martinique TV Cable
-Nomotech
-Organization of the Petroleum Exporting Countries
-Reseau Optique du Campus de la Doua
-Websense Hosted R{D Ltd.
