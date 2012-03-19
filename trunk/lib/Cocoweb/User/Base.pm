@@ -69,6 +69,31 @@ sub display {
     print STDOUT "\n";
 
 }
+
+##@method boolean isMan()
+#@brief Checks whether the user is or is not a man
+#@return boolean 
+sub isMan {
+    my ($self) = @_;
+    if ($self->mysex() == 1 or $self->mysex() == 6) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+##@method boolean isWoman()
+#@brief Checks whether the user is or is not a woman
+#@return boolean
+sub isWoman {
+    my ($self) = @_;
+    if ($self->mysex() == 2 or $self->mysex() == 7) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+ 
  
 1;
  

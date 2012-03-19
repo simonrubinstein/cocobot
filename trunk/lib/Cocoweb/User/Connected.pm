@@ -32,6 +32,7 @@ use Data::Dumper;
 use POSIX;
 
 use Cocoweb;
+use Cocoweb::User::Friend;
 use base 'Cocoweb::User::Base';
 my $nicknameMan;
 my $nicknameWoman;
@@ -113,7 +114,7 @@ sub init {
         'mystat'     => 0,
         'myXP'       => 0,
         'myver'      => 0,
-        'amiz'       => [],
+        'amiz'       => Cocoweb::User::Friend->new(),
         'camon'      => 95,
         'typcam'     => ''
 

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-10
-# @date 2012-03-10
+# @date 2012-03-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,8 +44,8 @@ sub run {
     my $bot = $CLI->getBot('generateRandom' => 1);
     $bot->process();
     $bot->show();
-    my $userFound_ref = $bot->actuam();
-    print Dumper $userFound_ref;
+    my $userList = $bot->actuam();
+    $userList->display();
     info("The $Bin script was completed successfully.");
 }
 
@@ -77,7 +77,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-10) 
+    $Script $Cocoweb::VERSION (2012-03-19) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT

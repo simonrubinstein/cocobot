@@ -45,6 +45,8 @@ sub run {
     $bot->process();
     $bot->show();
     message( $bot->getUserInfo() );
+    my $infus = $bot->infuz( $bot->user()->mynickID() );
+    print $infus . "\n" if defined $infus;
     info("The $Bin script was completed successfully.");
 }
 
