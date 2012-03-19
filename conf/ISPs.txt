@@ -1,11 +1,15 @@
 AB CONNECT
+Aeroport de Paris Telecom
 Air France
 Ajova Network
 Alsace Connexia
 Altitude Infrastructure Exploitation SAS
 America Online
 Assistance Publique-Hopitaux de Paris
+ASTRIUM SAS
 Auvea Ingenierie
+AXA-TECH
+Bayanat Al-Oula For Network Services
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
@@ -52,3 +56,13 @@ Verizon France SAS
 VIALIS - REGIE MUNICIPALE DE COLMAR
 WIBOX SASU
 Wifirst S.A.S.
+DediPower Managed Hosting Limited
+FRANCE CITEVISION
+IFREMER Institut Francais de Recherche pour Exploi
+Interoute Communications Limited
+MANA S.A.
+Martinique TV Cable
+Nomotech
+Organization of the Petroleum Exporting Countries
+Reseau Optique du Campus de la Doua
+Websense Hosted R{D Ltd.
