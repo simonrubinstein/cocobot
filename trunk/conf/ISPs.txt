@@ -1,5 +1,6 @@
 AB CONNECT
 Aeroport de Paris Telecom
+AFNIC
 Air France
 Ajova Network
 Alsace Connexia
