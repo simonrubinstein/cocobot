@@ -186,6 +186,7 @@ FR- Fresnes
 FR- Gentilly
 FR- Ivry-sur-seine
 FR- Joinville-le-pont
+FR- La Queue-en-brie
 FR- Le Kremlin-bicetre
 FR- Le Perreux
 FR- Limeil-brevannes
@@ -1037,6 +1038,7 @@ FR- Vayres
 FR- Adissan
 FR- Agde
 FR- Alignan-du-vent
+FR- Argelliers
 FR- Beziers
 FR- Clapiers
 FR- Florensac
@@ -1531,6 +1533,7 @@ FR- Vaudreching
 FR- Bazoches
 FR- Imphy
 FR- Marzy
+FR- Nevers
 FR- Vauzelles
 FR- Venissieux
 
@@ -1637,6 +1640,7 @@ FR- Agnetz
 FR- Armancourt
 FR- Arsy
 FR- Baill
+FR- Balagny-sur-therain
 FR- Bazicourt
 FR- Beauvais
 FR- Berthecourt
@@ -1997,6 +2001,7 @@ FR- Mamers
 FR- Mezeray
 FR- Notre-dame-du-pe
 FR- Noyen-sur-sarthe
+FR- Sainte-jamme-sur-sarthe
 FR- Vouvray-sur-loir
 
 # 73: Savoie
@@ -2047,6 +2052,7 @@ FR- Thnes
 FR- Thonon-les-bains
 FR- Thorens-glieres
 FR- Veigy-foncenex
+FR- Vetraz-monthoux
 FR- Vulbens
 
 # 76: Seine-Maritime
