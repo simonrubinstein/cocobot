@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-19
+# @date 2012-03-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,6 +44,17 @@ sub init {
     $self->attributes_defaults( 'all' => {} );
 }
 
+##@method void clearFlags() 
+sub clearFlags {
+    my ( $self ) = @_;
+    my $user_ref = $self->all();
+    foreach my $id (keys %$user_ref) {
+        my $user = $user_ref->{$id};
+        $user->isNew(0);
+        $user->isView(0);
+        $user->hasChange(0);
+    }
+}
 
 ##@method vois display(%args)
 sub display {
@@ -131,14 +142,10 @@ sub display {
         elsif ( $sex == 1 or $sex == 6 ) {
             $manCount += $cnt;
         }
-        else {
-            die error("$sex sex code was not found");
-        }
     }
     print STDOUT "- $count user(s) displayed\n";
     print STDOUT "- Number of woman(s): $womanCount\n";
     print STDOUT "- Number of man(s):   $manCount\n";
-
 }
 
 1

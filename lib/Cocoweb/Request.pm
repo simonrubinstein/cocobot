@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2012-03-18
+# @date 2012-03-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -42,7 +42,6 @@ use Time::HiRes qw(usleep nanosleep);
 use utf8;
 no utf8;
 
-
 __PACKAGE__->attributes(
     'myport',
     'url1',
@@ -50,7 +49,7 @@ __PACKAGE__->attributes(
     'genru',
     ## 0 = all; 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
     'yearu',
-    'userFound',
+    'usersList',
     'speco',
     'convert'
 );
@@ -91,8 +90,7 @@ sub init {
         'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
         'genru'     => 0,
         'yearu'     => 0,
-        #'userFound' => {},
-        'userFound' => Cocoweb::User::HashList->new(),
+        'usersList' => Cocoweb::User::HashList->new(),
         'speco'     => 0,
         'convert'   => Cocoweb::Encode->instance()
     );
@@ -376,22 +374,23 @@ sub process1Int {
             return $urlu;
         }
 
-#/#9955720289399221011fifilou
+        #/#9955720289399221011fifilou
 
-       #Result of a search query of a nickname code
-       if ($bud == 557) {
-           return {
-               'login'=> substr($urlo, 19),
-               'old'  => substr($urlo, 11, 2),
-               'city' => substr($urlo, 13, 5),
-               'sex'  => substr($urlo, 18, 1),
-               'id'   => substr($urlo, 5, 6),
-               'ok'   => 0,
-               'stat' => 5 };
+        #Result of a search query of a nickname code
+        if ( $bud == 557 ) {
+            return {
+                'login' => substr( $urlo, 19 ),
+                'old'   => substr( $urlo, 11, 2 ),
+                'city'  => substr( $urlo, 13, 5 ),
+                'sex'   => substr( $urlo, 18, 1 ),
+                'id'    => substr( $urlo, 5, 6 ),
+                'ok'   => 0,
+                'stat' => 5
+            };
+
 #(numius,agius,townius,sexius,nickIDf,verok,nickstat
 #creatab(urlo.substring(19),urlo.substring(11,13),urlo.substring(13,18),urlo.substring(18,19),urlo.substring(5,11),0,5);
-       }
-
+        }
 
         # The second part of the authentication is completed successfully
         # The server returns some information about the user account.
@@ -459,14 +458,15 @@ sub process1Int {
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-        #my $userFound_ref = $self->userFound();
-        #for my $id (keys %$userFound_ref) {
-        #    my $attribute_ref = $userFound_ref->{$id};
-        #    $attribute_ref->{'_new'}  = 0; 
-        #    $attribute_ref->{'_view'} = 0; 
+
+        #my $usersList_ref = $self->usersList();
+        #for my $id (keys %$usersList_ref) {
+        #    my $attribute_ref = $usersList_ref->{$id};
+        #    $attribute_ref->{'_new'}  = 0;
+        #    $attribute_ref->{'_view'} = 0;
         #}
         #$self->populate( $user, $self->_populateUsersList, $urlo, 0 );
-        $self->populate( $user, $self->userFound(), $urlo, 0 );
+        $self->populate( $user, $self->usersList(), $urlo, 0 );
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -520,7 +520,7 @@ sub process1Int {
         $olko = 967;
     }
     if ( $olko == 48 ) {
-        $user->amiz(Cocoweb::User::Friend->new());
+        $user->amiz( Cocoweb::User::Friend->new() );
         $self->populate( $user, $user->amiz(), $urlo, 0 );
         return $user->amiz();
     }
@@ -582,18 +582,11 @@ sub process1Int {
 
 }
 
-##@method void clearUsersList()
-#@brief Clears the list of users
-sub clearUsersList {
-    my ($self) = @_;
-    $self->userFound( {} );
-}
-
 ##@method void populate($user, $populateList, $urlo, $offsat)
 #@brief Extract the pseudonyms of the string returned by the server
 #       and call the method passed as parameter
 #@param object $user         An 'User object' object
-#@param string $populateList The method to invoke for each user found 
+#@param string $populateList The method to invoke for each user found
 #@param string $urlo         The string returned by the server
 #@param string $offsat
 sub populate {
@@ -607,48 +600,34 @@ sub populate {
             }
             else {
                 my $id = parseInt( substr( $urlo, 8 + $hzy, 6 ) );
-                
+
                 $usersList->populate(
-                    #mynickID
+
+                    #'mynickID'
                     parseInt( substr( $urlo, 8 + $hzy, 6 ) ),
-                    #myage:
+
+                    #'myage'
                     parseInt( substr( $urlo, $hzy, 2 ) ),
-                    #mysex:
+
+                    #'mysex'
                     parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
-                     # citydio:
+
+                    #'citydio'
                     parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
-                     #mynickname
+
+                    #'mynickname'
                     substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
-                    #myXP
+
+                    #'myXP'
                     parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
-                    #myStat
+
+                    #'myStat'
                     parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
-                    #myver
-                    parseInt( substr( $urlo, 16 + $hzy, 1 ) ) );
- 
 
-
-
-            #    my %attribute = (
-                    #mynickID
-            #        'id'   => $id,
-                    #myage:
-            #        'old'  => parseInt( substr( $urlo, $hzy, 2 ) ),
-                    #mysex:
-            #        'sex'  => parseInt( substr( $urlo, 2 + $hzy, 1 ) ),
-                     # citydio:
-            #        'city' => parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
-                     #mynickname
-            #        'login' => substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
-                    #myXP
-            #        'niv'  => parseInt( substr( $urlo, 14 + $hzy, 1 ) ),
-                    #myStat
-            #        'stat' => parseInt( substr( $urlo, 15 + $hzy, 1 ) ),
-                    #myver
-            #        'ok'   => parseInt( substr( $urlo, 16 + $hzy, 1 ) )
-             #   );
-                $hzy = $indux + 1;
-                #&$populateList->( $user, $id, \%attribute );
+                    #'myver'
+                    parseInt( substr( $urlo, 16 + $hzy, 1 ) )
+                );
+               $hzy = $indux + 1;
             }
         }
     }
@@ -659,6 +638,7 @@ sub populate {
 #@param object $user An 'User object' object
 sub searchnow {
     my ( $self, $user ) = @_;
+
     #debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     $self->agir( $user, '10' . $self->genru() . $self->yearu() );
 }
@@ -698,12 +678,13 @@ sub getUserInfo {
 }
 
 ##@method void searchCode()
-#@brief Search a nickname from his code of 3 characters 
+#@brief Search a nickname from his code of 3 characters
 #       This method works only for user with a Premium subscription
 #@param object $user An 'User object' object
 #@param string $code A nickname code (i.e. WcL)
 sub searchCode {
     my ( $self, $user, $code ) = @_;
+
     #agir("83733000000"+s1);
     $self->agir( $user, '83733000000' . $code );
 }
@@ -793,55 +774,49 @@ sub getInfuz {
     return \%infuz;
 }
 
+##@methode object getUsersList($user)
+#@brief Request and returns the list of connected users
+#@param object $user An 'User object' object
+#@return object A 'User::HashList' object
+sub getUsersList {
+    my ( $self, $user ) = @_;
+    $self->usersList()->clearFlags();
+    foreach my $g ( 1, 2 ) {
+        $self->genru($g);
+        foreach my $y ( 1, 2, 3, 4 ) {
+            $self->yearu($y);
+            $self->searchnow($user);
+        }
+    }
+    return $self->usersList();
+}
+
 ##@method hashref searchPseudonym($user, $pseudonym)
 #@param object $user      An 'User object' object
 #@param string $pseudonym The pseudonym wanted
 sub searchPseudonym {
     my ( $self, $user, $pseudonym ) = @_;
     debug("pseudonym: $pseudonym");
-    my $userWanted = $self->userFound()->checkIfNicknameExists($pseudonym);
+
+    my $userWanted = $self->usersList()->checkIfNicknameExists($pseudonym);
     return $userWanted if defined $userWanted;
-    #my $pseudonym_ref;
-    #$pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
-    #return $pseudonym_ref if defined $pseudonym_ref;
     foreach my $g ( 1, 2 ) {
         $self->genru($g);
         foreach my $y ( 1, 2, 3, 4 ) {
             $self->yearu($y);
             $self->searchnow($user);
-            $userWanted = $self->userFound()->checkIfNicknameExists($pseudonym);
+            $userWanted = $self->usersList()->checkIfNicknameExists($pseudonym);
             return $userWanted if defined $userWanted;
-            #$pseudonym_ref = $self->checkIfPseudonymExists($pseudonym);
-            #return $pseudonym_ref if defined $pseudonym_ref;
         }
     }
-    return $self->userFound()
-    #return $self->userFound()
+    return $self->usersList()
+
+      #return $self->usersList()
       if !defined $pseudonym
           or length($pseudonym) == 0;
     debug("The pseudonym '$pseudonym' was not found");
     return;
 }
-
-##@method hashref checkIfPseudonymExists($pseudonym)
-#@brief Check if a pseudonym already exists in the list
-#       of pseudonym already read.
-#@param string The pseudonym wanted
-#@return hashref
-#sub checkIfPseudonymExists {
-#    my ( $self, $pseudonym ) = @_;
-#    return if !defined $pseudonym or length($pseudonym) == 0;
-#    my $userFound_ref = $self->userFound();
-#    foreach my $id ( keys %$userFound_ref ) {
-#        my $name = $userFound_ref->{$id}->{'login'};
-#        if ( lc($name) eq lc($pseudonym) ) {
-#            debug("The pseudonym '$pseudonym' was found");
-#            return $userFound_ref->{$id};
-#        }
-#    }
-#    debug("The pseudonym '$pseudonym' was not found");
-#    return;
-#}
 
 1;
 

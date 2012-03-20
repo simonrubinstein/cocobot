@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-19
+# @date 2012-03-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,8 +44,6 @@ sub init {
     $self->attributes_defaults(
         'user'    => $user,
         'request' => $request,
-        'genru'   => 0,
-        'yearu'   => 1
     );
 }
 
@@ -66,19 +64,20 @@ sub writeMessage {
     $self->request()->writus( $self->user(), $message, $destinationId );
 }
 
-##@method hashref getUsersList()
-sub getUsersList {
-    my ($self) = @_;
-    my $pseudonyms_ref = $self->request()->searchPseudonym( $self->user(), '' );
-    return $pseudonyms_ref;
-}
-
 ##@method hashref searchUser($pseudonym)
 sub searchUser {
     my ( $self, $pseudonym ) = @_;
     my $pseudonyms_ref =
       $self->request()->searchPseudonym( $self->user(), $pseudonym );
     return $pseudonyms_ref;
+}
+
+##@methode object getUsersList()
+#@brief Request and returns the list of connected users
+#@return object A 'User::HashList' object
+sub getUsersList {
+    my ($self) = @_;
+    return $self->request()->getUsersList( $self->user() );
 }
 
 ##method void getUserInfo()
@@ -119,7 +118,6 @@ sub getInfuz {
 
 ##@method void actuam($user)
 #@brief Get the list of contacts, nicknamed 'amiz'
-#@param object @user An 'User object' object
 #@return string
 sub actuam {
     my ($self) = @_;
@@ -142,17 +140,11 @@ sub show {
 }
 
 ##@method void display()
-#@brief Prints on one line some member variables to the console of the user object
+#@brief Prints on one line some member variables to the console
+#       of the user object
 sub display {
     my ($self) = @_;
     $self->user()->display();
-}
-
-##@method void clearUsersList()
-#@brief Clears the list of users
-sub clearUsersList {
-    my ($self) = @_;
-    $self->request()->clearUsersList();
 }
 
 ##@method void lancetimer($user)
