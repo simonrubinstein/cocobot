@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-19
+# @date 2012-03-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,7 +34,7 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView' );
+__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -59,7 +59,8 @@ sub init {
         'myXP'       => $args{'myXP'},
         'myver'      => $args{'myver'},
         'isNew'      => 1,
-        'isView'     => 1
+        'isView'     => 1,
+        'hasChange'  => 0
     );
 }
 
