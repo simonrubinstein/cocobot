@@ -48,16 +48,14 @@ Exemple pour la chaîne de caractères suivante : « 28230915218969104Simona ».
  * *Pseudonyme* : Simona
 
 La fonction !JavaScript _populate()_ éclate la chaîne dans différents tableaux :
-* *resage* : l'âge.
-* *ressex* : le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme. 
-* *rescity* : le code géographique.
-* *resID* :  m'identifiant de la session en cours.
-* *resnom* : le pseudonyme.
-* *resniv* : myXP
-* *resstat*: myStat
-* *resok* : myver
-
-
+ * *resage* : l'âge.
+ * *ressex* : le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme. 
+ * *rescity* : le code géographique.
+ * *resID* :  m'identifiant de la session en cours.
+ * *resnom* : le pseudonyme.
+ * *resniv* : myXP
+ * *resstat*: myStat
+ * *resok* : myver
 
 
 
