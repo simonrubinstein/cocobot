@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-# @created 2012-02-25
+# @created 2012-03-23
 # @date 2012-03-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -27,35 +27,42 @@
 # MA  02110-1301, USA.
 use strict;
 use warnings;
-use FindBin qw($Script $Bin);
 use Data::Dumper;
+use FindBin qw($Script $Bin);
 use utf8;
 no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 my $CLI;
-my $maxOfLoop  = 1;
+my $maxOfLoop = 1;
 
 init();
 run();
 
+##@method void run()
 sub run {
-    my $bot = $CLI->getBot('generateRandom' => 1);
+    my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
-    $bot->show();
+    $bot->display();
     for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
         $bot->lancetimer();
+        $bot->isDead( $CLI->searchId() );
         sleep 4;
     }
-    info("The $Bin script was completed successfully.");
 }
 
 ##@method void init()
+#@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts('argumentative' => 'x:');
+    my $opt_ref = $CLI->getOpts( 'argumentative' => 'i:x:' );
     if ( !defined $opt_ref ) {
+        HELP_MESSAGE();
+        exit;
+    }
+    if ( !defined $CLI->searchId() or $CLI->searchId() !~ m{^\d{6}$} ) {
+        error("You must specify an nickname ID (-i)");
         HELP_MESSAGE();
         exit;
     }
@@ -65,7 +72,7 @@ sub init {
         HELP_MESSAGE();
         exit;
     }
- 
+
 }
 
 ## @method void HELP_MESSAGE()
@@ -73,17 +80,14 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-v -d -a myavatar -p mypass]
-  -x maxOfLoop    Number of loops 
-  -a myavatar     A unique identifier for your account 
-                  The first 9 digits of cookie "samedi"
-  -p mypass       The password for your account
-                  The last 20 alphabetic characters of cookie "samedi"
-  -u mynickname   An username
-  -y myage        Year old
-  -s mysex        M for man or W for women
-  -v              Verbose mode
-  -d              Debug mode
+ $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
+  -u mynickname  An username
+  -y myage       Year old
+  -s mysex       M for man or W for women
+  -a myavatar    Code 
+  -p mypass
+  -v             Verbose mode
+  -d             Debug mode
 ENDTXT
     exit 0;
 }

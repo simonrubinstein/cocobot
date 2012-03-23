@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-20
+# @date 2012-03-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -153,6 +153,13 @@ sub lancetimer {
     my ($self) = @_;
     $self->request()->lancetimer( $self->user() );
 }
+
+sub isDead {
+    my ( $self, $nickIds) = @_;
+    $self->request()->isDead( $self->user(), $nickIds );
+}
+
+
 
 1;
 
