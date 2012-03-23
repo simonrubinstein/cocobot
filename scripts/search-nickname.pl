@@ -45,21 +45,15 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->display();
-    my $userFound_ref = $bot->searchUser( $CLI->searchNickname() );
-    if ( !defined $userFound_ref ) {
+    my $user = $bot->searchUser( $CLI->searchNickname() );
+    if ( !defined $user ) {
         print STDOUT 'The pseudonym "'
           . $CLI->searchNickname()
           . '" was not found.' . "\n";
         return;
     }
-    my $max = 1;
-    foreach my $k ( keys %$userFound_ref ) {
-        $max = length($k) if length($k) > $max;
-    }
-    foreach my $k ( sort keys %$userFound_ref ) {
-        printf( '%-' . $max . 's: ' . $userFound_ref->{$k} . "\n", $k );
-    }
-    my $infus = $bot->infuz( $userFound_ref->{'id'} );
+    $user->display();
+    my $infus = $bot->infuz( $user );
     print $infus . "\n" if defined $infus;
 }
 

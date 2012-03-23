@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-19
+# @date 2012-03-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -69,6 +69,26 @@ sub display {
     print STDOUT "\n";
 
 }
+
+##@method void show()
+#@brief Prints some member variables to the console of the user object
+sub show {
+    my $self  = shift;
+    my @names = (
+        'mynickname', 'myage',   'mysex',   
+        'mynickID',  'citydio',  'mystat', 
+        'myXP', 'myver'
+    );
+    my $max = 1;
+    foreach my $name (@names) {
+        $max = length($name) if length($name) > $max;
+    }
+    $max++;
+    foreach my $name (@names) {
+        print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
+          . "\n";
+    }
+} 
 
 ##@method boolean isMan()
 #@brief Checks whether the user is or is not a man

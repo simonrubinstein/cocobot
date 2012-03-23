@@ -93,7 +93,6 @@ sub getUserInfo {
 ##@method void searchCode()
 #@brief Search a nickname from his code of 3 characters 
 #       This method works only for user with a Premium subscription
-#@param object $user An 'User object' object
 #@param string $code A nickname code (i.e. WcL)
 sub searchCode {
     my ( $self, $code ) = @_;
@@ -103,9 +102,10 @@ sub searchCode {
 ##@method string infuz($nickId)
 #@brief Retrieves information about an user
 #       for Premium subscribers only
+#@param object $user An 'User object' object
 sub infuz {
-    my ( $self, $nickId ) = @_;
-    $self->request()->infuz( $self->user(), $nickId );
+    my ( $self, $user ) = @_;
+    $self->request()->infuz( $self->user(), $user );
 }
 
 ##@method hashref getInfuz($nickId)

@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-19
+# @date 2012-03-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -47,23 +47,23 @@ sub init {
 
 sub populate {
     my (
-        $self,       $mynickID, $myage,  $mysex, $citydio,
-        $mynickname, $myXP,     $mystat, $myver
+        $self,       $myage, $mysex,  $citydio, $mynickID,
+        $mynickname, $myXP,  $mystat, $myver
     ) = @_;
     my $users_ref = $self->all();
-    my $count = $self->count();
+    my $count     = $self->count();
     $count++;
     $self->count($count);
     $users_ref->{$count} = Cocoweb::User->new(
-            'mynickID'   => $mynickID,
-            'myage'      => $myage,
-            'mysex'      => $mysex,
-            'citydio'    => $citydio,
-            'mynickname' => $mynickname,
-            'myXP'       => $myXP,
-            'mystat'     => $mystat,
-            'myver'      => $myver
-        );
+        'mynickID'   => $mynickID,
+        'myage'      => $myage,
+        'mysex'      => $mysex,
+        'citydio'    => $citydio,
+        'mynickname' => $mynickname,
+        'myXP'       => $myXP,
+        'mystat'     => $mystat,
+        'myver'      => $myver
+    );
 }
 
 1;

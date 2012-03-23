@@ -45,8 +45,8 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->display();
-    my $user_ref = $bot->searchCode($code);
-    print Dumper $user_ref;
+    my $user = $bot->searchCode($code);
+    $user->show();
     info("The $Bin script was completed successfully.");
 }
 
