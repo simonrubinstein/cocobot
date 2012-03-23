@@ -29,20 +29,43 @@ AA S CCCCC IIIIII X S V PSEUDO1
 }}}
 Où les caractères signifient :
  * *AA* : l'âge.
- * *S* : le sexe (1 pour homme, 2 pour femme).
+ * *S* : le sexe ( 1 ou 6 pour un homme, 2 ou 7 pour une femme).
  * *CCCCC* : Le code géographique. 
  * *IIIIII* : L'identifiant numérique pour la session en cours.
- * *X* : correspond à myXP
- * *S* : correspond myStat
- * *V* : correspond à myver
+ * *X* : correspond à _myXP_.
+ * *S* : correspond _myStat_.
+ * *V* : correspond à _myver_.
  * *PSEUDO1* : Le nom du pseudonyme en lui même.
 
 Exemple pour la chaîne de caractères suivante : « 28230915218969104Simona ».
- * Âge : 28 ans.
- * Sexe : 2, identifiant une femme.
- * Le code géographique : 30915.
+ * *Âge* : 28 ans.
+ * *Sexe* : 2, identifiant une femme.
+ * *Le code géographique* : 30915.
  * Identifiant de la session en cours : 220296
- * myXP : 1
- * myStat : 0
- * myver : 4
- * Pseudonyme : Simona
+ * *myXP* : 1
+ * *myStat* : 0
+ * *myver* : 4
+ * *Pseudonyme* : Simona
+
+La fonction !JavaScript _populate()_ éclate la chaîne dans différents tableaux :
+* *resage* : l'âge.
+* *ressex* : le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme. 
+* *rescity* : le code géographique.
+* *resID* :  m'identifiant de la session en cours.
+* *resnom* : le pseudonyme.
+* *resniv* : myXP
+* *resstat*: myStat
+* *resok* : myver
+
+
+
+
+
+
+
+
+
+
+
+
+
