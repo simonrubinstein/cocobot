@@ -5,7 +5,7 @@ VariablesDefinissantUnUtilisateur
 = Variables définissant un utilisateur =
 
  * mynickname : Une chaîne alphanumérique contenant le pseudonyme de l'utilisateur. 
- * mynickID   : L'identifiant numérique pour la session en cours.
+ * mynickID   : L'identifiant numérique pour la session en cours. Exemple : 218454.
  * myage : L'âge de l'utilisateur.
  * mysex : Le sexe de l'utilisateur : 1 pour homme, 2 pour femme
  * mycityID : Le code géographique spécifique à Coco.fr. Exemple le code « 30915 » correspond au code postal  « 75001 ».
