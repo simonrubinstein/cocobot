@@ -11,7 +11,9 @@ Voici une liste des variables !JavaScript identifiant un utilisateur :
  * *myage* : L'âge de l'utilisateur.
  * *mysex* : Le sexe de l'utilisateur : 1 pour homme, 2 pour femme
  * *mycityID* : Le code géographique spécifique à Coco.fr. Exemple le code « 30915 » correspond au code postal  « 75001 ».
-
+ * *myXP* :
+ * *myStat* :
+ * *myver* : Si supérieur à 4 alors l'utilisateur a un abonnement Premium.
 
 = Liste des utilisateurs =
 
