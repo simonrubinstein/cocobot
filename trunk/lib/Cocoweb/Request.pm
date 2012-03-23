@@ -1,6 +1,5 @@
-# @brief
 # @created 2012-02-17
-# @date 2012-03-20
+# @date 2012-03-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -119,7 +118,9 @@ sub getValue {
 #@param integer $nickId The nickname ID which information is requested
 sub checkNickId {
     my ( $self, $nickId ) = @_;
-    croak error("The $nickId nickname ID is wrong") if $nickId !~ m{^\d+$};
+    croak error("The $nickId nickname ID is wrong") if !defined $nickId or $nickId !~ m{^\d+$};
+
+    croak error("The $nickId nickname ID is wrong") if !defined $nickId or $nickId !~ m{^\d+$};
 }
 
 ## @method object execute($url, $cookie_ref)
@@ -133,6 +134,7 @@ sub execute {
     croak error("The HTTP method is missing")             if !defined $method;
     croak error("The URL of the HTTP request is missing") if !defined $url;
     my $req = HTTP::Request->new( $method => $url );
+    debug($url);
     foreach my $field ( keys %{ $agent_ref->{'header'} } ) {
         $req->header( $field => $agent_ref->{'header'}->{$field} );
     }
@@ -169,7 +171,7 @@ sub jsEscape {
 ##@method void getCityco($user)
 #@brief Performs an HTTP request to retrieve the custom code
 #       corresponding to zip code.
-#@param object $user An 'Cocoweb::User' object
+#@param object $user An 'Cocoweb::User::Connected' object
 sub getCityco {
     my ( $self, $user ) = @_;
 
@@ -220,7 +222,7 @@ sub getCityco {
 
 ##@method void firsty($user)
 #@brief The first HTTP request sent to the server
-#@param object $user An 'Cocoweb::User' object
+#@param object $user An 'Cocoweb::User::Connected' object
 sub firsty {
     my ( $self, $user ) = @_;
     $self->agix( $user,
@@ -236,7 +238,7 @@ sub firsty {
 
 ##@method void agir($user, $txt1)
 #@brief Initiates a standard request to the server
-#@param object $user An 'Cocoweb::User' object
+#@param object $user An 'Cocoweb::User::Connected' object
 #@param string $txt1 The parameter of the HTTP request
 sub agir {
     my ( $self, $user, $txt3 ) = @_;
@@ -255,7 +257,7 @@ sub agir {
 
 ##@method void agix($user, $url, $cookie_ref)
 #@brief Performs an HTTP Requests to invoke a remote method
-#@param object $user An 'Cocoweb::User' object
+#@param object $user An 'Cocoweb::User::Connected' object
 #@param string An URL for the HTTP request
 #@param hashref $cookie_ref A hash that contains possible cookies.
 sub agix {
@@ -284,7 +286,7 @@ sub agix {
 
 ##@method void process1($user, $urlu)
 #@brief Method called back after an HTTP request to the server
-#@param object $user An 'Cocoweb::User' object
+#@param object $user An 'Cocoweb::User::Connected' object
 #@param string $urlu String returned by the server
 sub process1 {
     my ( $self, $user, $urlu ) = @_;
@@ -317,7 +319,7 @@ sub process1 {
 }
 
 ## @method void process1Int($user, $urlo)
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
 
@@ -378,18 +380,16 @@ sub process1Int {
 
         #Result of a search query of a nickname code
         if ( $bud == 557 ) {
-            return {
-                'login' => substr( $urlo, 19 ),
-                'old'   => substr( $urlo, 11, 2 ),
-                'city'  => substr( $urlo, 13, 5 ),
-                'sex'   => substr( $urlo, 18, 1 ),
-                'id'    => substr( $urlo, 5, 6 ),
-                'ok'   => 0,
-                'stat' => 5
-            };
-
-#(numius,agius,townius,sexius,nickIDf,verok,nickstat
-#creatab(urlo.substring(19),urlo.substring(11,13),urlo.substring(13,18),urlo.substring(18,19),urlo.substring(5,11),0,5);
+            my $userFoud = new Cocoweb::User(
+             'mynickname' => substr( $urlo, 19 ),
+             'myage'      => substr( $urlo, 11, 2 ),
+             'citydio'    => substr( $urlo, 13, 5 ),
+             'mysex'      => substr( $urlo, 18, 1 ),
+             'mynickID'   => substr( $urlo, 5, 6 ),
+             'myver'      => 0,
+             'mystat'     => 5,
+             'myXP'       => 0);
+            return $userFoud;
         }
 
         # The second part of the authentication is completed successfully
@@ -458,15 +458,7 @@ sub process1Int {
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-
-        #my $usersList_ref = $self->usersList();
-        #for my $id (keys %$usersList_ref) {
-        #    my $attribute_ref = $usersList_ref->{$id};
-        #    $attribute_ref->{'_new'}  = 0;
-        #    $attribute_ref->{'_view'} = 0;
-        #}
-        #$self->populate( $user, $self->_populateUsersList, $urlo, 0 );
-        $self->populate( $user, $self->usersList(), $urlo, 0 );
+       $self->populate( $user, $self->usersList(), $urlo);
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -521,7 +513,7 @@ sub process1Int {
     }
     if ( $olko == 48 ) {
         $user->amiz( Cocoweb::User::Friend->new() );
-        $self->populate( $user, $user->amiz(), $urlo, 0 );
+        $self->populate( $user, $user->amiz(), $urlo );
         return $user->amiz();
     }
 
@@ -585,12 +577,12 @@ sub process1Int {
 ##@method void populate($user, $populateList, $urlo, $offsat)
 #@brief Extract the pseudonyms of the string returned by the server
 #       and call the method passed as parameter
-#@param object $user         An 'User object' object
-#@param string $populateList The method to invoke for each user found
+#@param object $user         An 'User::Connected' object object
+#@param object $usersList    An user list object 
 #@param string $urlo         The string returned by the server
-#@param string $offsat
 sub populate {
-    my ( $self, $user, $usersList, $urlo, $offsat ) = @_;
+    my ( $self, $user, $usersList, $urlo) = @_;
+    print "$urlo\n";
     if ( length($urlo) > 12 ) {
         my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
         while ( $mopo < 1 ) {
@@ -599,12 +591,8 @@ sub populate {
                 $mopo = 2;
             }
             else {
-                my $id = parseInt( substr( $urlo, 8 + $hzy, 6 ) );
 
                 $usersList->populate(
-
-                    #'mynickID'
-                    parseInt( substr( $urlo, 8 + $hzy, 6 ) ),
 
                     #'myage'
                     parseInt( substr( $urlo, $hzy, 2 ) ),
@@ -614,6 +602,9 @@ sub populate {
 
                     #'citydio'
                     parseInt( substr( $urlo, 3 + $hzy, 5 ), 10 ),
+
+                    #'mynickID'
+                    parseInt( substr( $urlo, 8 + $hzy, 6 ) ),
 
                     #'mynickname'
                     substr( $urlo, 17 + $hzy, $indux - 17 - $hzy ),
@@ -635,7 +626,7 @@ sub populate {
 
 ##@method void searchnow($user)
 #@brief Call the remote method to retrieve the list of pseudonyms.
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 sub searchnow {
     my ( $self, $user ) = @_;
 
@@ -644,7 +635,7 @@ sub searchnow {
 }
 
 ##@method void cherchasalon($user)
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 sub cherchasalon {
     my ( $self, $user ) = @_;
     $self->agir( $user, '89' );
@@ -652,7 +643,7 @@ sub cherchasalon {
 
 ##@method void actuam($user)
 #@brief Get the list of contacts, nicknamed 'amiz'
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 #@return string
 sub actuam {
     my ( $self, $user ) = @_;
@@ -661,7 +652,7 @@ sub actuam {
 
 ##@method void lancetimer($user)
 #@brief Method that periodically performs requests to the server
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 sub lancetimer {
     my ( $self, $user ) = @_;
     $self->agir( $user, $user->camon() . $user->typcam() );
@@ -671,7 +662,7 @@ sub lancetimer {
 #@brief Get the number of days remaining until the end of
 #       the Premium subscription.
 #       This method works only for user with a Premium subscription
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 sub getUserInfo {
     my ( $self, $user ) = @_;
     $self->agir( $user, '77369' );
@@ -680,18 +671,21 @@ sub getUserInfo {
 ##@method void searchCode()
 #@brief Search a nickname from his code of 3 characters
 #       This method works only for user with a Premium subscription
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 #@param string $code A nickname code (i.e. WcL)
 sub searchCode {
     my ( $self, $user, $code ) = @_;
-
-    #agir("83733000000"+s1);
     $self->agir( $user, '83733000000' . $code );
+}
+
+sub isDead {
+    my ( $self, $user, $nickIds) = @_;
+    agir ( $user, '90' . $nickIds);
 }
 
 ## @method void writus($user, $s1, $nickId)
 #@brief
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 #@param string $s1
 sub writus {
     my ( $self, $user, $s1, $nickId ) = @_;
@@ -712,16 +706,15 @@ sub writus {
 ##@method string infuz($user, $nickId)
 #@brief Retrieves information about an user
 #       for Premium subscribers only
-#@param object  $user   An 'User object' object
+#@param object  $user   An 'User::Connected' object object
 #@param integer $nickId The nickname ID which information is requested
 #@return string Nickname information. The information includes:
 #               a unique code, ISP, status, level, connection time,
 #               a country code and city. This information is not reliable.
 sub infuz {
-    my ( $self, $user, $nickId ) = @_;
-    $self->checkNickId($nickId);
+    my ( $self, $user, $userWanted ) = @_;
     if ( $user->isPremiumSubscription() ) {
-        return $self->agir( $user, '83555' . $nickId );
+        return $self->agir( $user, '83555' . $userWanted->mynickID() );
     }
     else {
         warning('The command "infuz" is reserved for users with a'
@@ -731,11 +724,11 @@ sub infuz {
 }
 
 ##@method hashref getInfuz($user, $nickId)
-#@param object  $user   An 'User object' object
+#@param object  $user   An 'User::Connected' object object
 #@param integer $nickId The nickname ID which information is requested
 sub getInfuz {
-    my ( $self, $user, $nickId ) = @_;
-    my $str = $self->infuz( $user, $nickId );
+    my ( $self, $user, $userWanted ) = @_;
+    my $str = $self->infuz( $user, $userWanted );
     my @lines = split( /\n/, $str );
     my %infuz = ();
     if (
@@ -776,7 +769,7 @@ sub getInfuz {
 
 ##@methode object getUsersList($user)
 #@brief Request and returns the list of connected users
-#@param object $user An 'User object' object
+#@param object $user An 'User::Connected' object object
 #@return object A 'User::HashList' object
 sub getUsersList {
     my ( $self, $user ) = @_;
@@ -792,7 +785,7 @@ sub getUsersList {
 }
 
 ##@method hashref searchPseudonym($user, $pseudonym)
-#@param object $user      An 'User object' object
+#@param object $user      An 'User::Connected' object object
 #@param string $pseudonym The pseudonym wanted
 sub searchPseudonym {
     my ( $self, $user, $pseudonym ) = @_;

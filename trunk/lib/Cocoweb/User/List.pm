@@ -44,11 +44,11 @@ sub init {
     $self->attributes_defaults( 'all' => {} );
 }
 
-##@method void clearFlags() 
+##@method void clearFlags()
 sub clearFlags {
-    my ( $self ) = @_;
+    my ($self) = @_;
     my $user_ref = $self->all();
-    foreach my $id (keys %$user_ref) {
+    foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         $user->isNew(0);
         $user->isView(0);
@@ -80,12 +80,12 @@ sub display {
         my $user = $user_ref->{$id};
         foreach my $name (@names) {
             my $l = length( $user->$name );
-            $max{$name} = $l if  $l > $max{$name};
+            $max{$name} = $l if $l > $max{$name};
         }
         $sexCount{ $user->mysex() }++;
     }
 
-    my $lineSize  = 0;
+    my $lineSize = 0;
     foreach my $name (@names) {
         $lineSize += $max{$name} + 3;
     }

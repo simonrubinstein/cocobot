@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-19
+# @date 2012-03-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,7 +36,6 @@ use Cocoweb::User;
 use Cocoweb::User::List;
 use base 'Cocoweb::User::List';
 
-
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
@@ -46,8 +45,8 @@ sub init {
 
 sub populate {
     my (
-        $self,       $mynickID, $myage,  $mysex, $citydio,
-        $mynickname, $myXP,     $mystat, $myver
+        $self,       $myage, $mysex,  $citydio, $mynickID,
+        $mynickname, $myXP,  $mystat, $myver
     ) = @_;
     my $users_ref = $self->all();
     if ( exists $users_ref->{$mynickID} ) {
