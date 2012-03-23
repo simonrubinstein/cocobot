@@ -21,9 +21,11 @@ Quand une code « _10_ » est envoyée dans une requête au serveur, celui-ci r�
 /#34AASCCCCCIIIIIIXSVPSEUDO1#AASCCCCCIIIIIIXSVPSEUDO2#AASCCCCCIIIIIIXSVPSEUDO3#...
 }}}
 
-Donc un pseudonyme et ses informations sont contenues dans une chaînes du style :
-{{{ AA S CCCCC IIIIII X S V PSEUDO1 }}}
-Où
+Donc un pseudonyme et ses informations sont contenus dans une chaînes du style :
+{{{
+AA S CCCCC IIIIII X S V PSEUDO1
+}}}
+Où les caractères signifient :
  * *AA* : l'âge.
  * *S* : le sexe (1 pour homme, 2 pour femme).
  * *CCCCC* : Le code géographique. 
