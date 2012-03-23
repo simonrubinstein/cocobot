@@ -33,7 +33,7 @@ Où
  * *V* : correspond à myver
  * *PSEUDO1* : Le nom du pseudonyme en lui même.
 
-Exemple pour la chaîne de caractères suivante : « -28230915218969104Simona_ ».
+Exemple pour la chaîne de caractères suivante : « 28230915218969104Simona ».
  * Âge : 28 ans.
  * Sexe : 2, identifiant une femme.
  * Le code géographique : 30915.
