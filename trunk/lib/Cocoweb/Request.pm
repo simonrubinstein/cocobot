@@ -118,9 +118,13 @@ sub getValue {
 #@param integer $nickId The nickname ID which information is requested
 sub checkNickId {
     my ( $self, $nickId ) = @_;
-    croak error("The $nickId nickname ID is wrong") if !defined $nickId or $nickId !~ m{^\d+$};
+    croak error("The $nickId nickname ID is wrong")
+      if !defined $nickId
+          or $nickId !~ m{^\d+$};
 
-    croak error("The $nickId nickname ID is wrong") if !defined $nickId or $nickId !~ m{^\d+$};
+    croak error("The $nickId nickname ID is wrong")
+      if !defined $nickId
+          or $nickId !~ m{^\d+$};
 }
 
 ## @method object execute($url, $cookie_ref)
@@ -381,14 +385,15 @@ sub process1Int {
         #Result of a search query of a nickname code
         if ( $bud == 557 ) {
             my $userFoud = new Cocoweb::User(
-             'mynickname' => substr( $urlo, 19 ),
-             'myage'      => substr( $urlo, 11, 2 ),
-             'citydio'    => substr( $urlo, 13, 5 ),
-             'mysex'      => substr( $urlo, 18, 1 ),
-             'mynickID'   => substr( $urlo, 5, 6 ),
-             'myver'      => 0,
-             'mystat'     => 5,
-             'myXP'       => 0);
+                'mynickname' => substr( $urlo, 19 ),
+                'myage'      => substr( $urlo, 11, 2 ),
+                'citydio'    => substr( $urlo, 13, 5 ),
+                'mysex'      => substr( $urlo, 18, 1 ),
+                'mynickID'   => substr( $urlo, 5, 6 ),
+                'myver'  => 0,
+                'mystat' => 5,
+                'myXP'   => 0
+            );
             return $userFoud;
         }
 
@@ -451,14 +456,17 @@ sub process1Int {
     #A user or users have disconnected the chat.
     if ( $olko == 90 ) {
         my $yyg = ( length($urlo) - 2 ) / 7;
+        print "**** $yyg\n";
         if ( $yyg > 0 ) {
+            for ( my $i = 0 ; $i < $yyg ; $i++ ) {
+            }
         }
 
     }
 
     # Retrieves the list of pseudonyms
     if ( $olko == 34 ) {
-       $self->populate( $user, $self->usersList(), $urlo);
+        $self->populate( $user, $self->usersList(), $urlo );
     }
     elsif ( $olko == 13 ) {
         die error("You have been disconnected. Log back on Coco.fr");
@@ -578,11 +586,10 @@ sub process1Int {
 #@brief Extract the pseudonyms of the string returned by the server
 #       and call the method passed as parameter
 #@param object $user         An 'User::Connected' object object
-#@param object $usersList    An user list object 
+#@param object $usersList    An user list object
 #@param string $urlo         The string returned by the server
 sub populate {
-    my ( $self, $user, $usersList, $urlo) = @_;
-    print "$urlo\n";
+    my ( $self, $user, $usersList, $urlo ) = @_;
     if ( length($urlo) > 12 ) {
         my ( $indux, $mopo, $hzy ) = ( 0, 0, 2 );
         while ( $mopo < 1 ) {
@@ -618,7 +625,7 @@ sub populate {
                     #'myver'
                     parseInt( substr( $urlo, 16 + $hzy, 1 ) )
                 );
-               $hzy = $indux + 1;
+                $hzy = $indux + 1;
             }
         }
     }
@@ -629,8 +636,6 @@ sub populate {
 #@param object $user An 'User::Connected' object object
 sub searchnow {
     my ( $self, $user ) = @_;
-
-    #debug( 'genru: ' . $self->genru() . '; yearu: ' . $self->yearu() );
     $self->agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
@@ -679,8 +684,8 @@ sub searchCode {
 }
 
 sub isDead {
-    my ( $self, $user, $nickIds) = @_;
-    agir ( $user, '90' . $nickIds);
+    my ( $self, $user, $nickIds ) = @_;
+    $self->agir( $user, '90' . $nickIds );
 }
 
 ## @method void writus($user, $s1, $nickId)
