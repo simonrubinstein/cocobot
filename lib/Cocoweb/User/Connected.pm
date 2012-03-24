@@ -322,19 +322,7 @@ sub show {
         print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
           . "\n";
     }
-    my $cookies_ref = $self->cookies();
-
-   #    print STDOUT "Cookies:\n";
-   #    $max = 1;
-   #    foreach my $name ( keys %$cookies_ref ) {
-   #        $max = length($name) if length($name) > $max;
-   #    }
-   #    $max++;
-   #    foreach my $name ( keys %$cookies_ref ) {
-   #        print STDOUT
-   #          sprintf( '%-' . $max . 's ' . $cookies_ref->{$name}, $name . ':' )
-   #          . "\n";
-   #    }
+    $self->showInfuz();
 }
 
 ##@method void display()

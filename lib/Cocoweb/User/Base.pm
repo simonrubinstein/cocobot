@@ -105,8 +105,19 @@ sub show {
         print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
           . "\n";
     }
+    $self->showInfuz();
+}
+
+##@method void showInfuz()
+sub showInfuz {
+    my $self  = shift;
     my $infuz_ref = $self->infuz();
     return if scalar( keys %$infuz_ref ) == 0;
+    my $max = 1;
+    foreach my $name ( keys %$infuz_ref ) {
+        $max = length($name) if length($name) > $max;
+    }
+    $max++;
     foreach my $name ( keys %$infuz_ref ) {
         print STDOUT
           sprintf( '%-' . $max . 's ' . $infuz_ref->{$name}, $name . ':' )
@@ -143,7 +154,6 @@ sub isWoman {
 ##@method void setInfuz($infuzString)
 sub setInfuz {
     my ( $self, $infuzString ) = @_;
-    print "$infuzString\n";
     $self->infuzSting($infuzString);
     my @lines = split( /\n/, $infuzString );
     my $infuz_ref = $self->infuz();

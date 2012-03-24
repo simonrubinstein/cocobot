@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-03
-# @date 2012-03-18
+# @date 2012-03-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -43,10 +43,9 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
+    $bot->infuz();
     $bot->show();
     message( $bot->getUserInfo() );
-    my $infus = $bot->infuz( $bot->user()->mynickID() );
-    print $infus . "\n" if defined $infus;
     info("The $Bin script was completed successfully.");
 }
 

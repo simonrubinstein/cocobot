@@ -107,6 +107,7 @@ sub searchCode {
 #@return object A 'CocoWeb::User::Wanted' object
 sub infuz {
     my ( $self, $user ) = @_;
+    $user = $self->user() if !defined $user;
     return $self->request()->infuz( $self->user(), $user );
 }
 
