@@ -248,7 +248,8 @@ sub agir {
     my ( $self, $user, $txt3 ) = @_;
     my $code = substr( $txt3, 0, 2 );
     if ( $code != 10 and $code != 89 and $code != 48 and $code != 83 ) {
-        info($txt3);
+
+        #info($txt3);
     }
 
     $self->agix( $user,
@@ -298,7 +299,8 @@ sub process1 {
 
     #info($urlu);
 
-    debug("urlu: $urlu");
+    #debug("urlu: $urlu");
+    debug( "urlu: " . substr( $urlu, 0, 80 ) );
     my $urlo = $urlu;
     my $hzy = index( $urlo, '#' );
     $urlo = substr( $urlo, $hzy + 1, length($urlo) - $hzy - 1 );
@@ -311,14 +313,15 @@ sub process1 {
     my $firstChar = substr( $urlo, 0, 1 );
     my $molki = ord($firstChar);
 
-    debug("firstChar: $firstChar; molki = $molki");
+    #debug("firstChar: $firstChar; molki = $molki");
 
     #
     if ( $molki < 58 ) {
         $self->process1Int( $user, $urlo );
     }
     else {
-        info("process1() $molki code unknown");
+
+        #info("process1() $molki code unknown");
     }
 }
 
@@ -456,12 +459,26 @@ sub process1Int {
     #A user or users have disconnected the chat.
     if ( $olko == 90 ) {
         my $yyg = ( length($urlo) - 2 ) / 7;
-        print "**** $yyg\n";
         if ( $yyg > 0 ) {
             for ( my $i = 0 ; $i < $yyg ; $i++ ) {
+                my $qqb = parseInt( substr( $urlo, 2 + 7 * $i, 1 ) );
+                my $qqk = parseInt( substr( $urlo, 3 + 7 * $i, 6 ), 10 );
+                my $userWanted = $self->usersList()->getUser($qqk);
+                if ( defined $userWanted ) {
+                    if ( $qqb == 0 ) {
+                        info(   "The user '"
+                              . $userWanted->mynickname()
+                              . "' has disconnected." );
+                        $self->usersList()->removeUser($userWanted);
+                    }
+                    else {
+                        info(   "The user '"
+                              . $userWanted->mynickname()
+                              . "' is still connected." );
+                    }
+                }
             }
         }
-
     }
 
     # Retrieves the list of pseudonyms
@@ -584,7 +601,7 @@ sub process1Int {
 
 ##@method void populate($user, $populateList, $urlo, $offsat)
 #@brief Extract the pseudonyms of the string returned by the server
-#       and call the method passed as parameter
+#       and call a method of object passed as parameter
 #@param object $user         An 'User::Connected' object object
 #@param object $usersList    An user list object
 #@param string $urlo         The string returned by the server
@@ -685,11 +702,11 @@ sub searchCode {
 
 sub isDead {
     my ( $self, $user, $users_ref ) = @_;
+    return if scalar(@$users_ref) < 1;
     my $nickIds = '';
     foreach my $userWanted (@$users_ref) {
         $nickIds .= $userWanted->mynickID();
     }
-    print "---> $nickIds\n";
     $self->agir( $user, '90' . $nickIds );
 }
 
@@ -702,7 +719,8 @@ sub writus {
     return if !defined $s1 or length($s1) == 0;
     my $s2 = '';
     $s2 = $self->convert()->writo($s1);
-    $self->agir( $user, '99' . $userWanted->mynickID() . $user->roulix() . $s2 );
+    $self->agir( $user,
+        '99' . $userWanted->mynickID() . $user->roulix() . $s2 );
     my $roulix = $user->roulix();
 
     if ( ++$roulix > 8 ) {
@@ -735,7 +753,7 @@ sub infuz {
 }
 
 ##@methode object getUsersList($user)
-#@brief Request and returns the list of connected users
+#@bref Request and returns the list of connected users
 #@param object $user An 'User::Connected' object object
 #@return object A 'Cocoweb::User::List' object
 sub getUsersList {
@@ -748,6 +766,8 @@ sub getUsersList {
             $self->searchnow($user);
         }
     }
+    my $users_ref = $self->usersList()->getUsersNotViewed();
+    $self->isDead( $user, $users_ref );
     return $self->usersList();
 }
 

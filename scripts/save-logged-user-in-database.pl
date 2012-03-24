@@ -1,8 +1,8 @@
 #!/usr/bin/perl
-#@brief 
-#@created 2012-03-09
-#@date 2012-03-11
-#@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+#@ brief 
+# @created 2012-03-09
+# @date 2012-03-24
+# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
@@ -53,7 +53,7 @@ run();
 my %user = ();
 my $bot;
 
-##@method ivoid run()
+##@method void run()
 sub run {
     $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
@@ -63,20 +63,29 @@ sub run {
     my $count = 0;
     while(1) {
         $count++;
-        my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
-        $bot->clearUsersList();
-        my $userFound_ref = $bot->getUsersList();
-        checkUsers($userFound_ref);
-        last;
-        my $t0 = [Time::HiRes::gettimeofday];
-        my $elapsed = Time::HiRes::tv_interval ( $t0 );
-        my @e = split(/\./, $elapsed);
-        my $sleepVal = Time::HiRes::tv_interval (\@e, [4, 0]);
-        info("time looop interval: $elapsed; sleep: $sleepVal");
-        Time::HiRes::sleep($sleepVal);
-        $elapsed = Time::HiRes::tv_interval ( $t0 );
-        info("time looop interval: $elapsed");
-        last if $count > 1;
+        my $usersList = $bot->getUsersList();
+        if ( !defined $usersList ) {
+            warning("No users found");
+            next;
+        }
+        $bot->lancetimer();
+ 
+
+#        my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
+#        $bot->clearUsersList();
+#        my $userFound_ref = $bot->getUsersList();
+#        checkUsers($userFound_ref);
+#        last;
+#        my $t0 = [Time::HiRes::gettimeofday];
+#        my $elapsed = Time::HiRes::tv_interval ( $t0 );
+#        my @e = split(/\./, $elapsed);
+#        my $sleepVal = Time::HiRes::tv_interval (\@e, [4, 0]);
+#        info("time looop interval: $elapsed; sleep: $sleepVal");
+#        Time::HiRes::sleep($sleepVal);
+#        $elapsed = Time::HiRes::tv_interval ( $t0 );
+#        info("time looop interval: $elapsed");
+#        last if $count > 1;
+        sleep 8;
     }
 
     info("The $Bin script was completed successfully.");
@@ -84,7 +93,7 @@ sub run {
 
 sub checkUsers {
     my ($userFound_ref) = @_;
-    my $count = 0;
+    my ($count, $found) = (0, 0);
     my $town_ref = $DB->getInitTowns();
 
     foreach my $id (keys %$userFound_ref) {
@@ -108,7 +117,7 @@ sub checkUsers {
 
     dumpToFile(\%townCount, '_townCount.pl');
 
-    my ($count, $found) = (0, 0);
+    ($count, $found) = (0, 0);
     foreach my $town (keys %townCount) {
         if (exists $town_ref->{$town}) {
             $found++;
@@ -132,7 +141,7 @@ sub checkUsers {
 sub init {
     $DB  = Cocoweb::DB->instance();
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts();
+    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -145,23 +154,14 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
  $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-  -u mynickname      An username
-  -y myage           Year old
-  -s mysex           M for man or W for women
-  -a myavatar        Code 
-  -p mypass
-  -v                 Verbose mode
-  -d                 Debug mode
 ENDTXT
+    $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-09) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
 

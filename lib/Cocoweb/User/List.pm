@@ -50,8 +50,8 @@ sub populate {
     ) = @_;
     my $users_ref = $self->all();
     if ( exists $users_ref->{$mynickID} ) {
-        $users_ref->{$mynickID}->{'isNew'}  = 0;
-        $users_ref->{$mynickID}->{'isView'} = 1;
+        $users_ref->{$mynickID}->isNew(0);
+        $users_ref->{$mynickID}->isView(1);
     }
     else {
         $users_ref->{$mynickID} = Cocoweb::User->new(
@@ -65,7 +65,39 @@ sub populate {
             'myver'      => $myver
         );
     }
+}
 
+sub removeUser {
+    my ( $self, $userWanted ) = @_;
+    my $id       = $userWanted->mynickID();
+    my $user_ref = $self->all();
+    if ( exists $user_ref->{$id} ) {
+        delete $user_ref->{$id};
+    }
+    else {
+        warning('The user "'
+              . $userWanted->mynickname()
+              . '" could not be removed from the list' );
+    }
+
+}
+
+##@method arrayref getUsersNotViewed()
+sub getUsersNotViewed {
+    my ($self)   = @_;
+    my $user_ref = $self->all();
+    my @users    = ();
+    foreach my $id ( keys %$user_ref ) {
+        my $user = $user_ref->{$id};
+        if ( !$user->isView() ) {
+            info(   'The user "'
+                  . $user->mynickname()
+                  . 'has not been seen in the list.' );
+            push @users, $user if !$user->isView();
+        }
+    }
+    info( scalar(@users) . ' user(s) were not found in the list' );
+    return \@users;
 }
 
 ##@method hashref checkIfNicknameExists($pseudonym)
