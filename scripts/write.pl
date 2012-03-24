@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-22
-# @date 2012-03-10
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -46,22 +46,8 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->display();
-    my $userWanted;
-    if ( defined $CLI->searchNickname() ) {
-        $userWanted =
-          Cocoweb::User::Wanted->new( 'mynickname' => $CLI->searchNickname() );
-        $userWanted = $bot->searchNickname($userWanted);
-        if ( !defined $userWanted ) {
-            print STDOUT 'The pseudonym "'
-              . $CLI->searchNickname()
-              . '" was not found.' . "\n";
-            return;
-        }
-    }
-    else {
-        $userWanted =
-          Cocoweb::User::Wanted->new( 'mynickID' => $CLI->searchId() );
-    }
+    my $userWanted = $CLI->getUserWanted($bot);
+    return if !defined $userWanted;
     $bot->writeMessage( $message, $userWanted );
     sleep 2;
     $bot->lancetimer();
@@ -72,13 +58,13 @@ sub run {
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts( 'searchEnable' => 1, 'argumentative' => 'm:' );
-    $message = $opt_ref->{'m'} if exists $opt_ref->{'m'};
-    if ( !defined $message ) {
-        die error("You must specify a message string (-m option)");
-    }
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
+    }
+    $message = $opt_ref->{'m'} if exists $opt_ref->{'m'};
+    if ( !defined $message ) {
+        die error("You must specify a message string (-m option)");
     }
 }
 
@@ -89,23 +75,13 @@ sub HELP_MESSAGE {
 Usage: 
  $Script [-l nickmaneWanted -u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
   -l nickmaneWanted
-  -u mynickname      An username
-  -y myage           Year old
-  -s mysex           M for man or W for women
-  -a myavatar        Code 
-  -p mypass
-  -v                 Verbose mode
-  -d                 Debug mode
 ENDTXT
+   $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-02-28) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
-

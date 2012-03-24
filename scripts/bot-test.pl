@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-25
-# @date 2012-03-23
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -35,16 +35,17 @@ use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 my $CLI;
-my $maxOfLoop  = 1;
 
 init();
 run();
 
+##@method void run()
 sub run {
-    my $bot = $CLI->getBot('generateRandom' => 1);
+    my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->show();
-    for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
+    for ( my $i = 1 ; $i <= $CLI->maxOfLoop() ; $i++ ) {
+        message( "Loop $i / " . $CLI->maxOfLoop() );
         $bot->lancetimer();
         sleep 4;
     }
@@ -54,18 +55,11 @@ sub run {
 ##@method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts('argumentative' => 'x:');
+    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
-    $maxOfLoop = $opt_ref->{'x'} if exists $opt_ref->{'x'};
-    if ( defined $maxOfLoop and $maxOfLoop !~ m{^\d+$} ) {
-        sayError("The max of loop  should be an integer. (-x option)");
-        HELP_MESSAGE();
-        exit;
-    }
- 
 }
 
 ## @method void HELP_MESSAGE()
@@ -75,25 +69,14 @@ sub HELP_MESSAGE {
 Usage: 
  $Script [-v -d -a myavatar -p mypass]
   -x maxOfLoop    Number of loops 
-  -a myavatar     A unique identifier for your account 
-                  The first 9 digits of cookie "samedi"
-  -p mypass       The password for your account
-                  The last 20 alphabetic characters of cookie "samedi"
-  -u mynickname   An username
-  -y myage        Year old
-  -s mysex        M for man or W for women
-  -v              Verbose mode
-  -d              Debug mode
 ENDTXT
+    $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-23) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
 

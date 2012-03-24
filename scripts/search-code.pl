@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-18
-# @date 2012-03-18
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -74,22 +74,13 @@ Usage:
  $Script [-v -d] -a myavatar -p mypass -c
   -c code     The nickname code searched, an alphanumeric code
               of three characters, i.e. WcL
-  -a myavatar A unique identifier for your account 
-              The first 9 digits of cookie "samedi"
-  -p mypass   The password for your account
-              The last 20 alphabetic characters of cookie "samedi"
-  -v          Verbose mode
-  -d          Debug mode
 ENDTXT
+   $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-18) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
-

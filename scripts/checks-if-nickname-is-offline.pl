@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-23
-# @date 2012-03-23
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -45,9 +45,12 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->display();
-    for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
+    my $userWanted = $CLI->getUserWanted($bot);
+    return if !defined $userWanted;
+    for ( my $i = 1 ; $i <= $CLI->maxOfLoop() ; $i++ ) {
+        message( "Loop $i / " . $CLI->maxOfLoop() );
         $bot->lancetimer();
-        $bot->isDead( $CLI->searchId() );
+        $bot->isDead( [$userWanted] );
         sleep 4;
     }
 }
@@ -56,23 +59,11 @@ sub run {
 #@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'argumentative' => 'i:x:' );
+    my $opt_ref = $CLI->getOpts( 'searchEnable' => 1, 'enableLoop' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
-    if ( !defined $CLI->searchId() or $CLI->searchId() !~ m{^\d{6}$} ) {
-        error("You must specify an nickname ID (-i)");
-        HELP_MESSAGE();
-        exit;
-    }
-    $maxOfLoop = $opt_ref->{'x'} if exists $opt_ref->{'x'};
-    if ( defined $maxOfLoop and $maxOfLoop !~ m{^\d+$} ) {
-        sayError("The max of loop  should be an integer. (-x option)");
-        HELP_MESSAGE();
-        exit;
-    }
-
 }
 
 ## @method void HELP_MESSAGE()
@@ -81,23 +72,13 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
  $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-  -u mynickname  An username
-  -y myage       Year old
-  -s mysex       M for man or W for women
-  -a myavatar    Code 
-  -p mypass
-  -v             Verbose mode
-  -d             Debug mode
 ENDTXT
-    exit 0;
+   $CLI->HELP();
+ exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-23) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
-

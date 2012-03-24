@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-10
-# @date 2012-03-19
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -66,20 +66,13 @@ sub HELP_MESSAGE {
 Get the number of days left of Premium subscription.
 Usage: 
  $Script [-v -d -a myavatar -p mypass]
-  -a myavatar
-  -p mypass
-  -v          Verbose mode
-  -d          Debug mode
 ENDTXT
+   $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-19) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
-
