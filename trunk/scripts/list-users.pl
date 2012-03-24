@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-02-22
-# @date 2012-03-20
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -76,25 +76,14 @@ sub HELP_MESSAGE {
 Usage: 
  $Script [-l nickmaneWanted -u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
   -l nickmaneWanted  
-  -u mynickname      An username
-  -y myage           Year old
-  -s mysex           M for man or W for women
-  -a myavatar        A unique identifier for your account 
-                     The first 9 digits of cookie "samedi"
-  -p mypass          The password for your account
-                     The last 20 alphabetic characters of cookie "samedi"
-  -v                 Verbose mode
-  -d                 Debug mode
 ENDTXT
+   $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-17) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
 

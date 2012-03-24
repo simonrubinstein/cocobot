@@ -150,8 +150,16 @@ sub lancetimer {
 }
 
 sub isDead {
-    my ( $self, $nickIds ) = @_;
-    $self->request()->isDead( $self->user(), $nickIds );
+    my ( $self, $users_ref ) = @_;
+    $self->request()->isDead( $self->user(), $users_ref );
+}
+
+##@method boolean isAuthenticated()
+##@brief Checks whether bot the  is authenticated on the website Coco.fr 
+#@return boolean 1 if the user is authenticated, otherwise 0
+sub isAuthenticated {
+    my ($self) = @_;
+    return $self->user->isAuthenticated();
 }
 
 1;

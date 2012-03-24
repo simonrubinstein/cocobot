@@ -684,7 +684,12 @@ sub searchCode {
 }
 
 sub isDead {
-    my ( $self, $user, $nickIds ) = @_;
+    my ( $self, $user, $users_ref ) = @_;
+    my $nickIds = '';
+    foreach my $userWanted (@$users_ref) {
+        $nickIds .= $userWanted->mynickID();
+    }
+    print "---> $nickIds\n";
     $self->agir( $user, '90' . $nickIds );
 }
 

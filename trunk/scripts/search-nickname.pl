@@ -80,23 +80,14 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
  $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-  -u mynickname  An username
-  -y myage       Year old
-  -s mysex       M for man or W for women
-  -a myavatar    Code 
-  -p mypass
-  -v             Verbose mode
-  -d             Debug mode
 ENDTXT
+   $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-02-28) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
 

@@ -101,7 +101,7 @@ sub init {
         'speco'      => 0,
         'mynickID'   => 99999,
         'mypass'     => $args{'mypass'},
-        'monpass'    => 0,
+        'monpass'    => '',
         'mycrypt'    => 0,
         'roulix'     => 0,
         'sauvy'      => '',
@@ -127,6 +127,18 @@ sub init {
           . $args{'mysex'}
           . '; myage: '
           . $args{'myage'} );
+}
+
+##@method boolean isAuthenticated()
+##@brief Checks whether the user is authenticated on the website Coco.fr 
+#@return boolean 1 if the user is authenticated, otherwise 0
+sub isAuthenticated {
+    my ($self) = @_;
+    if (length($self->monpass()) == 0) {
+        return 0;
+    } else {
+        return 1;
+    }
 }
 
 ##@method string getRandomPseudonym($sex)

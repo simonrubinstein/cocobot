@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-03-11
+# @date 2011-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,6 +28,7 @@
 package Cocoweb::CLI;
 use Cocoweb;
 use Cocoweb::Bot;
+use Cocoweb::User::Wanted;
 use base 'Cocoweb::Object::Singleton';
 use Carp;
 use FindBin qw($Script);
@@ -39,8 +40,8 @@ $Getopt::Std::STANDARD_HELP_VERSION = 1;
 use strict;
 use warnings;
 __PACKAGE__->attributes(
-    'mynickname', 'myage',    'mysex', 'myavatar',
-    'mypass',     'searchId', 'searchNickname'
+    'mynickname', 'myage',    'mysex',          'myavatar',
+    'mypass',     'searchId', 'searchNickname', 'maxOfLoop'
 );
 
 ##@method object init($class, $instance)
@@ -53,7 +54,8 @@ sub init {
         'myavatar'       => undef,
         'mypass'         => undef,
         'searchId'       => undef,
-        'searchNickname' => undef
+        'searchNickname' => undef,
+        'maxOfLoop'      => undef
     );
     return $instance;
 }
@@ -65,13 +67,19 @@ sub init {
 sub getOpts {
     my ( $self, %argv ) = @_;
 
-    my ( $searchEnable, $argumentative ) = ( 0, '' );
+    my ( $searchEnable, $argumentative, $avatarAndPasswdRequired, $enableLoop )
+      = ( 0, '', 0 );
 
     $searchEnable  = $argv{'searchEnable'}  if exists $argv{'searchEnable'};
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
+    $enableLoop    = $argv{'enableLoop'}    if exists $argv{'enableLoop'};
+    $avatarAndPasswdRequired = $argv{'avatarAndPasswdRequired'}
+      if exists $argv{'avatarAndPasswdRequired'};
     $argumentative .= 'dvu:s:y:a:p:';
-    $argumentative .= 'l:i:' if $argv{'searchEnable'};
+    $argumentative .= 'l:i:' if $searchEnable;
+    $argumentative .= 'x:' if $enableLoop;
     my %opt;
+
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
     }
@@ -84,6 +92,7 @@ sub getOpts {
     $self->mypass( $opt{'p'} )         if exists $opt{'p'};
     $self->searchId( $opt{'i'} )       if exists $opt{'i'};
     $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
+    $self->maxOfLoop( $opt{'x'} )      if exists $opt{'x'};
 
     if ( defined $self->mysex() ) {
         if ( $self->mysex() eq 'M' ) {
@@ -106,6 +115,8 @@ sub getOpts {
         error("searchId value must be an integer. (-i option)");
         return;
     }
+
+    # The search for a nickname or nickmae id is enabled
     if (    $searchEnable
         and !defined $self->searchNickname()
         and !defined $self->searchId() )
@@ -121,6 +132,28 @@ sub getOpts {
         return;
     }
 
+    # An avatar identifier and password are required
+    if ( $avatarAndPasswdRequired
+        and ( !defined $self->myavatar or !defined $self->mypass() ) )
+    {
+        error(  'An avatar identifier and password'
+              . ' are required for this script' );
+
+        return;
+    }
+
+    if ($enableLoop) {
+        if ( defined $self->maxOfLoop() ) {
+            if ( $self->maxOfLoop() !~ m{^\d+$} ) {
+                error(
+                    'The max of loop should be an integer.' . ' (-x option)' );
+                return;
+            }
+        }
+        else {
+            $self->maxOfLoop(1);
+        }
+    }
     return \%opt;
 }
 
@@ -152,6 +185,62 @@ sub getBot {
     }
     my $bot = Cocoweb::Bot->new(@params);
     return $bot;
+}
+
+##@method object getUserWanted($bot)
+sub getUserWanted {
+    my ( $self, $bot ) = @_;
+    $bot->process() if !$bot->isAuthenticated();
+    my $userWanted;
+    if ( defined $self->searchNickname() ) {
+        $userWanted =
+          Cocoweb::User::Wanted->new( 'mynickname' => $self->searchNickname() );
+        $userWanted = $bot->searchNickname($userWanted);
+        if ( !defined $userWanted ) {
+            print STDOUT 'The pseudonym "'
+              . $self->searchNickname()
+              . '" was not found.' . "\n";
+            return;
+        }
+    }
+    elsif ( defined $self->searchId() ) {
+        $userWanted =
+          Cocoweb::User::Wanted->new( 'mynickID' => $self->searchId() );
+    }
+    else {
+        croak error('No nickname or nickname id were found');
+    }
+    return $userWanted;
+}
+
+##@void HELP()
+#@brief Displays help standard used by all scripts.
+sub HELP {
+    print <<ENDTXT;
+  -a myavatar   A unique identifier for your account 
+                The first 9 digits of cookie "samedi".
+  -p mypass     The password for your account
+                The last 20 alphabetic characters of cookie "samedi".
+  -u mynickname A nickname will be used by the bot.
+                Otherwise a nickname will be randomly generated.
+  -y myage      An age in years that will be used by the bot. 
+                Otherwise an age will be randomly generated.
+  -s mysex      M for man or W for women
+  -v            Verbose mode
+  -d            Debug mode
+ENDTXT
+}
+
+##@method void VERSION_MESSAGE($date, $version)
+#@brief Displays the version of the script
+sub VERSION_MESSAGE {
+    my ( $self, $date, $version ) = @_;
+    $version = $Cocoweb::VERSION if !defined $version;
+    print STDOUT <<ENDTXT;
+    $version ($date) 
+    Copyright (C) 2010-2012 Simon Rubinstein 
+    Written by Simon Rubinstein 
+ENDTXT
 }
 
 1;
