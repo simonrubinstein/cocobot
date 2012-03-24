@@ -1,4 +1,4 @@
-# @created 2012-01-26
+# @created 2012-03-24
 # @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
-package Cocoweb::User;
+package Cocoweb::User::Wanted;
 use strict;
 use warnings;
 use Carp;
@@ -34,35 +34,28 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    die error("Missing argument")
-      if !exists $args{'mynickname'}
-          or !exists $args{'myage'}
-          or !exists $args{'mysex'}
-          or !exists $args{'mynickID'}
-          or !exists $args{'citydio'}
-          or !exists $args{'mystat'}
-          or !exists $args{'mystat'};
-
+    $args{'mynickname'} = 'nobody' if !exists $args{'mynickname'};
+    $args{'myage'}      = 89       if !exists $args{'myage'};
+    $args{'mysex'}      = 1        if !exists $args{'mysex'};
+    $args{'mynickID'}   = 999999   if !exists $args{'mynickID'};
+    $args{'citydio'}    = 30915    if !exists $args{'citydio'};
+ 
     $self->attributes_defaults(
         'mynickname'  => $args{'mynickname'},
         'myage'       => $args{'myage'},
         'mysex'       => $args{'mysex'},
         'mynickID'    => $args{'mynickID'},
         'citydio'     => $args{'citydio'},
-        'mystat'      => $args{'mystat'},
-        'myXP'        => $args{'myXP'},
-        'myver'       => $args{'myver'},
+        'mystat'      => 0,
+        'myXP'        => 0,
+        'myver'       => 0, 
         'infuzString' => '',
-        'infuz'       => {},
-        'isNew'       => 1,
-        'isView'      => 1,
-        'hasChange'   => 0
+        'infuz'       => {}
     );
 }
 

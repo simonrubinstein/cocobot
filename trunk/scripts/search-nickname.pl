@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-28
-# @date 2012-03-10
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,8 +34,8 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
+use Cocoweb::User::Wanted;
 my $CLI;
-my $nickmaneWanted;
 
 init();
 run();
@@ -45,16 +45,17 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->display();
-    my $user = $bot->searchUser( $CLI->searchNickname() );
-    if ( !defined $user ) {
+    my $userWanted =
+      Cocoweb::User::Wanted->new( 'mynickname' => $CLI->searchNickname() );
+    $userWanted = $bot->searchNickname($userWanted);
+    if ( !defined $userWanted ) {
         print STDOUT 'The pseudonym "'
           . $CLI->searchNickname()
           . '" was not found.' . "\n";
         return;
     }
-    $user->display();
-    my $infus = $bot->infuz( $user );
-    print $infus . "\n" if defined $infus;
+    $bot->infuz($userWanted);
+    $userWanted->show();
 }
 
 ##@method void init()

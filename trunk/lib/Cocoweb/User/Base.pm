@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-23
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -49,19 +49,37 @@ __PACKAGE__->attributes(
     'myXP',
     ## 4 = Premium Subscription
     'myver',
+    ## String retrieved by the function infuz()
+    'infuzSting',
+    ##'infuzString' exploded in a hash table
+    'infuz',
 );
+
 sub init {
     my ( $self, %args ) = @_;
 }
 
+##@method boolean isPremiumSubscription()
+#@brief Verifies whether the user has a subscription premium
+#@return boolean 1 if the user has a subscription premium or 0 otherwise
+sub isPremiumSubscription {
+    my ($self) = @_;
+    if ( $self->myver() > 3 ) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
+
 ##@method void display()
-#@brief Prints on one line some member variables to the console of the user object
+#@brief Prints on one line some member variables to the console
+#       of the user object
 sub display {
     my $self  = shift;
     my @names = (
-        'mynickname', 'myage',   'mysex',   
-        'mynickID',  'citydio',  'mystat', 
-        'myXP', 'myver'
+        'mynickname', 'myage',  'mysex', 'mynickID',
+        'citydio',    'mystat', 'myXP',  'myver'
     );
     foreach my $name (@names) {
         print STDOUT $name . ':' . $self->$name() . '; ';
@@ -75,9 +93,8 @@ sub display {
 sub show {
     my $self  = shift;
     my @names = (
-        'mynickname', 'myage',   'mysex',   
-        'mynickID',  'citydio',  'mystat', 
-        'myXP', 'myver'
+        'mynickname', 'myage',  'mysex', 'mynickID',
+        'citydio',    'mystat', 'myXP',  'myver'
     );
     my $max = 1;
     foreach my $name (@names) {
@@ -88,16 +105,24 @@ sub show {
         print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
           . "\n";
     }
-} 
+    my $infuz_ref = $self->infuz();
+    return if scalar( keys %$infuz_ref ) == 0;
+    foreach my $name ( keys %$infuz_ref ) {
+        print STDOUT
+          sprintf( '%-' . $max . 's ' . $infuz_ref->{$name}, $name . ':' )
+          . "\n";
+    }
+}
 
 ##@method boolean isMan()
 #@brief Checks whether the user is or is not a man
-#@return boolean 
+#@return boolean
 sub isMan {
     my ($self) = @_;
-    if ($self->mysex() == 1 or $self->mysex() == 6) {
+    if ( $self->mysex() == 1 or $self->mysex() == 6 ) {
         return 1;
-    } else {
+    }
+    else {
         return 0;
     }
 }
@@ -107,14 +132,55 @@ sub isMan {
 #@return boolean
 sub isWoman {
     my ($self) = @_;
-    if ($self->mysex() == 2 or $self->mysex() == 7) {
+    if ( $self->mysex() == 2 or $self->mysex() == 7 ) {
         return 1;
-    } else {
+    }
+    else {
         return 0;
     }
 }
- 
- 
+
+##@method void setInfuz($infuzString)
+sub setInfuz {
+    my ( $self, $infuzString ) = @_;
+    print "$infuzString\n";
+    $self->infuzSting($infuzString);
+    my @lines = split( /\n/, $infuzString );
+    my $infuz_ref = $self->infuz();
+    if (
+        $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
+                        \s\-(.*)$}xms
+      )
+    {
+        $infuz_ref->{'code'} = $1;
+        $infuz_ref->{'ISP'}  = trim($2);
+    }
+    else {
+        die error("string '$lines[0]' is bad");
+    }
+    if (
+        $lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)
+                       \s*(PREMIUM)?
+                       \s*niveau:\s([0-9]+)
+                       \sdepuis
+                       \s([0-9]+).*$}xms
+      )
+    {
+        $infuz_ref->{'status'}  = $1;
+        $infuz_ref->{'premium'} = defined $2 ? 1 : 0;
+        $infuz_ref->{'level'}   = $3;
+        $infuz_ref->{'since'}   = $4;
+    }
+    else {
+        die error("string '$lines[1]' is bad");
+    }
+    if ( $lines[2] =~ m{Ville: (.*)$} ) {
+        $infuz_ref->{'town'} = trim($1);
+    }
+    else {
+        die error("string '$lines[2]' is bad");
+    }
+}
+
 1;
- 
 
