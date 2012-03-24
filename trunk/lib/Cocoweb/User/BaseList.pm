@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-20
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -24,7 +24,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
-package Cocoweb::User::List;
+package Cocoweb::User::BaseList;
 use strict;
 use warnings;
 use Carp;

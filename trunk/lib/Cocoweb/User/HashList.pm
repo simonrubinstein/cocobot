@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-23
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,8 +33,8 @@ use POSIX;
 
 use Cocoweb;
 use Cocoweb::User;
-use Cocoweb::User::List;
-use base 'Cocoweb::User::List';
+use Cocoweb::User::BaseList;
+use base 'Cocoweb::User::BaseList';
 
 ##@method void init(%args)
 #@brief Perform some initializations
