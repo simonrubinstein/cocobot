@@ -56,7 +56,20 @@ sub clearFlags {
     }
 }
 
-##@method vois display(%args)
+##@method object getUser($id)
+sub getUser {
+    my ( $self, $id ) = @_;
+    my $user_ref = $self->all();
+    if (! exists $user_ref->{$id}) {
+        warning("The user ID $id has not been found");
+        return;
+    } else {
+        return $user_ref->{$id};
+    }
+}
+
+##@method void display(%args)
+#@brief Displays the whole list of nicknames in the terminal
 sub display {
     my ( $self, %args ) = @_;
     my ( $sex, $nickmaneWanted, $old );

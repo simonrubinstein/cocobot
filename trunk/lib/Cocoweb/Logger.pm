@@ -75,8 +75,9 @@ sub _log {
     my @dt       = localtime(time);
     $message =~s{\%}{}g;
     my $string =
-      sprintf( "%02d:%02d:%02d [$identity][$$]: ($priority) $message\n",
+      sprintf( "$message %02d:%02d:%02d [$identity][$$]: ($priority)\n",
         $dt[2], $dt[1], $dt[0] );
+    $string = $message ."\n";
     if ( $priority eq 'err' or $priority eq 'emerg' ) {
         print STDERR colored( $string, 'bold red' );
     }
