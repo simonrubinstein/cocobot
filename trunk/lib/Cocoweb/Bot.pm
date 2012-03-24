@@ -60,8 +60,8 @@ sub process {
 
 ##@method void writeMessage()
 sub writeMessage {
-    my ( $self, $message, $destinationId ) = @_;
-    $self->request()->writus( $self->user(), $message, $destinationId );
+    my ( $self, $message, $userWanted ) = @_;
+    $self->request()->writus( $self->user(), $userWanted, $message );
 }
 
 ##@method object searchUser($userWanted)

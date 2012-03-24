@@ -693,13 +693,11 @@ sub isDead {
 #@param object $user An 'User::Connected' object object
 #@param string $s1
 sub writus {
-    my ( $self, $user, $s1, $nickId ) = @_;
-    $self->checkNickId($nickId);
+    my ( $self, $user, $userWanted, $s1 ) = @_;
     return if !defined $s1 or length($s1) == 0;
     my $s2 = '';
     $s2 = $self->convert()->writo($s1);
-    my $sendito = '99' . $nickId . $user->roulix() . $s2;
-    $self->agir( $user, '99' . $nickId . $user->roulix() . $s2 );
+    $self->agir( $user, '99' . $userWanted->mynickID() . $user->roulix() . $s2 );
     my $roulix = $user->roulix();
 
     if ( ++$roulix > 8 ) {

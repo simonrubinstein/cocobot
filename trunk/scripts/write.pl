@@ -34,6 +34,7 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
+use Cocoweb::User::Wanted;
 my $CLI;
 my $message;
 
@@ -44,21 +45,26 @@ run();
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
-    my $id;
+    $bot->display();
+    my $userWanted;
     if ( defined $CLI->searchNickname() ) {
-        my $userFound_ref = $bot->searchUser( $CLI->searchNickname() );
-        if ( !defined $userFound_ref ) {
+        $userWanted =
+          Cocoweb::User::Wanted->new( 'mynickname' => $CLI->searchNickname() );
+        $userWanted = $bot->searchNickname($userWanted);
+        if ( !defined $userWanted ) {
             print STDOUT 'The pseudonym "'
               . $CLI->searchNickname()
               . '" was not found.' . "\n";
             return;
         }
-        $id = $userFound_ref->{'id'};
     }
     else {
-        $id = $CLI->searchId();
+        $userWanted =
+          Cocoweb::User::Wanted->new( 'mynickID' => $CLI->searchId() );
     }
-    $bot->writeMessage( $message, $id );
+    $bot->writeMessage( $message, $userWanted );
+    sleep 2;
+    $bot->lancetimer();
     info("The script was completed successfully.");
 }
 
