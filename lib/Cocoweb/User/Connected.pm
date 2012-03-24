@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-19
+# @date 2012-03-24
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -116,7 +116,9 @@ sub init {
         'myver'      => 0,
         'amiz'       => Cocoweb::User::Friend->new(),
         'camon'      => 95,
-        'typcam'     => ''
+        'typcam'     => '',
+        'infuzSting' => '',
+        'infuz'      => {}
 
     );
     info(   'mynickname: '
@@ -125,19 +127,6 @@ sub init {
           . $args{'mysex'}
           . '; myage: '
           . $args{'myage'} );
-}
-
-##@method boolean isPremiumSubscription()
-#@brief Verifies whether the user has a subscription premium
-#@return boolean 1 if the user has a subscription premium or 0 otherwise
-sub isPremiumSubscription {
-    my ($self) = @_;
-    if ( $self->myver() > 3 ) {
-        return 1;
-    }
-    else {
-        return 0;
-    }
 }
 
 ##@method string getRandomPseudonym($sex)

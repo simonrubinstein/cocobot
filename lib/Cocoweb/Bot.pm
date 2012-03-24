@@ -64,12 +64,13 @@ sub writeMessage {
     $self->request()->writus( $self->user(), $message, $destinationId );
 }
 
-##@method hashref searchUser($pseudonym)
-sub searchUser {
-    my ( $self, $pseudonym ) = @_;
-    my $pseudonyms_ref =
-      $self->request()->searchPseudonym( $self->user(), $pseudonym );
-    return $pseudonyms_ref;
+##@method object searchUser($userWanted)
+#@brief Search a nickname connected
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#@return object A CocoWeb::User
+sub searchNickname {
+    my ( $self, $userWanted ) = @_;
+    return $self->request()->searchNickname( $self->user(), $userWanted );
 }
 
 ##@methode object getUsersList()
@@ -91,7 +92,7 @@ sub getUserInfo {
 }
 
 ##@method void searchCode()
-#@brief Search a nickname from his code of 3 characters 
+#@brief Search a nickname from his code of 3 characters
 #       This method works only for user with a Premium subscription
 #@param string $code A nickname code (i.e. WcL)
 sub searchCode {
@@ -99,21 +100,14 @@ sub searchCode {
     $self->request()->searchCode( $self->user(), $code );
 }
 
-##@method string infuz($nickId)
+##@method object infuz($user)
 #@brief Retrieves information about an user
 #       for Premium subscribers only
-#@param object $user An 'User object' object
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#@return object A 'CocoWeb::User::Wanted' object
 sub infuz {
     my ( $self, $user ) = @_;
-    $self->request()->infuz( $self->user(), $user );
-}
-
-##@method hashref getInfuz($nickId)
-#@brief Retrieves information about an user
-#       for Premium subscribers only
-sub getInfuz {
-    my ( $self, $nickId ) = @_;
-    $self->request()->getInfuz( $self->user(), $nickId );
+    return $self->request()->infuz( $self->user(), $user );
 }
 
 ##@method void actuam($user)
@@ -155,11 +149,9 @@ sub lancetimer {
 }
 
 sub isDead {
-    my ( $self, $nickIds) = @_;
+    my ( $self, $nickIds ) = @_;
     $self->request()->isDead( $self->user(), $nickIds );
 }
-
-
 
 1;
 

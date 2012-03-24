@@ -708,68 +708,27 @@ sub writus {
     $user->roulix($roulix);
 }
 
-##@method string infuz($user, $nickId)
-#@brief Retrieves information about an user
-#       for Premium subscribers only
-#@param object  $user   An 'User::Connected' object object
-#@param integer $nickId The nickname ID which information is requested
-#@return string Nickname information. The information includes:
-#               a unique code, ISP, status, level, connection time,
-#               a country code and city. This information is not reliable.
+##@method string infuz($user, $userWanted)
+#@brief Retrieves informations (unique code, ISP, status, level,
+#       connection time a country code and city) about an user.
+#       This information is not reliable.
+#       this function is restricted to Premium subscribers.
+#@param object $user       An 'User::Connected' object object
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#@return object A 'CocoWeb::User::Wanted' object
 sub infuz {
     my ( $self, $user, $userWanted ) = @_;
     if ( $user->isPremiumSubscription() ) {
-        return $self->agir( $user, '83555' . $userWanted->mynickID() );
+        my $infuzString =
+          $self->agir( $user, '83555' . $userWanted->mynickID() );
+        $userWanted->setInfuz($infuzString);
+        return $userWanted;
     }
     else {
         warning('The command "infuz" is reserved for users with a'
               . ' Premium subscription.' );
         return;
     }
-}
-
-##@method hashref getInfuz($user, $nickId)
-#@param object  $user   An 'User::Connected' object object
-#@param integer $nickId The nickname ID which information is requested
-sub getInfuz {
-    my ( $self, $user, $userWanted ) = @_;
-    my $str = $self->infuz( $user, $userWanted );
-    my @lines = split( /\n/, $str );
-    my %infuz = ();
-    if (
-        $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
-                        \s\-(.*)$}xms
-      )
-    {
-        $infuz{'code'} = $1;
-        $infuz{'ISP'}  = trim($2);
-    }
-    else {
-        die error("string '$lines[0]' is bad");
-    }
-    if (
-        $lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)
-                       \s*(PREMIUM)?
-                       \s*niveau:\s([0-9]+)
-                       \sdepuis
-                       \s([0-9]+).*$}xms
-      )
-    {
-        $infuz{'status'}  = $1;
-        $infuz{'premium'} = defined $2 ? 1 : 0;
-        $infuz{'level'}   = $3;
-        $infuz{'since'}   = $4;
-    }
-    else {
-        die error("string '$lines[1]' is bad");
-    }
-    if ( $lines[2] =~ m{Ville: (.*)$} ) {
-        $infuz{'town'} = trim($1);
-    }
-    else {
-        die error("string '$lines[2]' is bad");
-    }
-    return \%infuz;
 }
 
 ##@methode object getUsersList($user)
@@ -789,30 +748,28 @@ sub getUsersList {
     return $self->usersList();
 }
 
-##@method hashref searchPseudonym($user, $pseudonym)
+##@method object searchNickname($user, $userWanted)
+#@brief Search a nickname connected
 #@param object $user      An 'User::Connected' object object
-#@param string $pseudonym The pseudonym wanted
-sub searchPseudonym {
-    my ( $self, $user, $pseudonym ) = @_;
-    debug("pseudonym: $pseudonym");
-
-    my $userWanted = $self->usersList()->checkIfNicknameExists($pseudonym);
+#@param object $userWanted A CocoWeb::User::Wanted object
+#@return object A CocoWeb::User
+sub searchNickname {
+    my ( $self, $user, $userWanted ) = @_;
+    my $nickname = $userWanted->mynickname();
+    $userWanted = $self->usersList()->checkIfNicknameExists($nickname);
     return $userWanted if defined $userWanted;
     foreach my $g ( 1, 2 ) {
         $self->genru($g);
         foreach my $y ( 1, 2, 3, 4 ) {
             $self->yearu($y);
             $self->searchnow($user);
-            $userWanted = $self->usersList()->checkIfNicknameExists($pseudonym);
+            $userWanted = $self->usersList()->checkIfNicknameExists($nickname);
             return $userWanted if defined $userWanted;
         }
     }
     return $self->usersList()
-
-      #return $self->usersList()
-      if !defined $pseudonym
-          or length($pseudonym) == 0;
-    debug("The pseudonym '$pseudonym' was not found");
+      if !defined $nickname
+          or length($nickname) == 0;
     return;
 }
 
