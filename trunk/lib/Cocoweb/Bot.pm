@@ -75,7 +75,7 @@ sub searchNickname {
 
 ##@methode object getUsersList()
 #@brief Request and returns the list of connected users
-#@return object A 'User::HashList' object
+#@return object A 'Cocoweb::User::List' object
 sub getUsersList {
     my ($self) = @_;
     return $self->request()->getUsersList( $self->user() );

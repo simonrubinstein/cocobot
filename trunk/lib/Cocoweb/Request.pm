@@ -31,7 +31,7 @@ use Cocoweb;
 use Cocoweb::Config;
 use Cocoweb::Config::Hash;
 use Cocoweb::Encode;
-use Cocoweb::User::HashList;
+use Cocoweb::User::List;
 use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
@@ -89,7 +89,7 @@ sub init {
         'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
         'genru'     => 0,
         'yearu'     => 0,
-        'usersList' => Cocoweb::User::HashList->new(),
+        'usersList' => Cocoweb::User::List->new(),
         'speco'     => 0,
         'convert'   => Cocoweb::Encode->instance()
     );
@@ -734,7 +734,7 @@ sub infuz {
 ##@methode object getUsersList($user)
 #@brief Request and returns the list of connected users
 #@param object $user An 'User::Connected' object object
-#@return object A 'User::HashList' object
+#@return object A 'Cocoweb::User::List' object
 sub getUsersList {
     my ( $self, $user ) = @_;
     $self->usersList()->clearFlags();
