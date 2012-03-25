@@ -62,13 +62,22 @@ sub run {
     }
     my $count = 0;
     while(1) {
+        message("********************************************");
         $count++;
+
         my $usersList = $bot->getUsersList();
         if ( !defined $usersList ) {
             warning("No users found");
-            next;
+        } else {
+            $bot->searchInformzForNewUsers();
         }
-        $bot->lancetimer();
+        
+        foreach  (my $i = 0; $i < 20; $i++) {
+            $bot->lancetimer();
+            print "WAIT $i\n";
+            sleep 1;
+        }
+
  
 
 #        my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
@@ -85,7 +94,7 @@ sub run {
 #        $elapsed = Time::HiRes::tv_interval ( $t0 );
 #        info("time looop interval: $elapsed");
 #        last if $count > 1;
-        sleep 8;
+        #sleep 8;
     }
 
     info("The $Bin script was completed successfully.");

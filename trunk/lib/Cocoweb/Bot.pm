@@ -159,8 +159,8 @@ sub lancetimer {
 }
 
 sub isDead {
-    my ( $self, $users_ref ) = @_;
-    $self->request()->isDead( $self->user(), $users_ref );
+    my ( $self, $users ) = @_;
+    $self->request()->isDead( $self->user(), $users );
 }
 
 ##@method boolean isAuthenticated()
@@ -168,7 +168,25 @@ sub isDead {
 #@return boolean 1 if the user is authenticated, otherwise 0
 sub isAuthenticated {
     my ($self) = @_;
-    return $self->user->isAuthenticated();
+    return $self->user()->isAuthenticated();
+}
+
+
+#@brief Search "informz" string for new users.
+sub searchInformzForNewUsers {
+    my ($self) = @_;
+    my $users_ref = $self->request()->usersList()->all();
+    foreach my $niknameId (keys %$users_ref) {
+        my $user = $users_ref->{$niknameId};
+        next if !$user->isNew();
+        $user = $self->request()->infuz( $self->user(), $user );
+        next if !defined $user;
+        my $infuz = $user->infuz();
+        $infuz =~s{\n}{; }g;
+        message('*** new user : ' .$user->mynickname() . ' ' . $infuz);
+    }
+
+
 }
 
 1;
