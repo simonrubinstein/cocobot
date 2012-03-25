@@ -61,6 +61,12 @@ my $userAgent;
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
+
+    my $logUsersListInDB =
+      ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
+      ? 1
+      : 0;
+
     if ( !defined $conf_ref ) {
         my $conf = Cocoweb::Config->instance()->getConfigFile('request.conf');
         $conf_ref = $conf->all();
@@ -89,7 +95,7 @@ sub init {
         'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
         'genru'     => 0,
         'yearu'     => 0,
-        'usersList' => Cocoweb::User::List->new(),
+        'usersList' => Cocoweb::User::List->new('logUsersListInDB' => $logUsersListInDB),
         'speco'     => 0,
         'convert'   => Cocoweb::Encode->instance()
     );
