@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-24
+# @date 2012-03-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -35,21 +35,32 @@ use Cocoweb;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
+__PACKAGE__->attributes('logUsersListInDB');
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    $self->attributes_defaults( 'all' => {} );
+    my $logUsersListInDB =
+      ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
+      ? 1
+      : 0;
+    $self->attributes_defaults( 'all' => {}, 'logUsersListInDB' => $logUsersListInDB );
 }
 
+##@method void populate($myage, $mysex, $citydio, $mynickID,
+#                       $mynickname, $myXP, $mystat, $myver)
 sub populate {
     my (
-        $self,       $myage, $mysex,  $citydio, $mynickID,
+        $self, $myage, $mysex,  $citydio, $mynickID,
         $mynickname, $myXP,  $mystat, $myver
     ) = @_;
     my $users_ref = $self->all();
     if ( exists $users_ref->{$mynickID} ) {
+        foreach my $name ('myage', 'mysex', 'citydio', 'mynickID', 'mynickname', 'myXP', 'mystat', 'myver') {
+        }
+
+
         $users_ref->{$mynickID}->isNew(0);
         $users_ref->{$mynickID}->isView(1);
     }

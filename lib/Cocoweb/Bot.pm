@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-23
+# @date 2012-03-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -39,8 +39,17 @@ __PACKAGE__->attributes( 'user', 'request', );
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
-    my $user    = Cocoweb::User::Connected->new(%args);
-    my $request = Cocoweb::Request->new();
+    my $logUsersListInDB;
+    if ( exists $args{'logUsersListInDB'} ) {
+        $logUsersListInDB = 1;
+        delete $args{'logUsersListInDB'};
+    }
+    else {
+        $logUsersListInDB = 0;
+    }
+    my $user = Cocoweb::User::Connected->new(%args);
+    my $request =
+      Cocoweb::Request->new( 'logUsersListInDB' => $logUsersListInDB );
     $self->attributes_defaults(
         'user'    => $user,
         'request' => $request,
@@ -155,7 +164,7 @@ sub isDead {
 }
 
 ##@method boolean isAuthenticated()
-##@brief Checks whether bot the  is authenticated on the website Coco.fr 
+##@brief Checks whether bot the  is authenticated on the website Coco.fr
 #@return boolean 1 if the user is authenticated, otherwise 0
 sub isAuthenticated {
     my ($self) = @_;
