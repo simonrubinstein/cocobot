@@ -1,5 +1,5 @@
 # @created 2012-03-24
-# @date 2012-03-24
+# @date 2012-03-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -54,8 +54,14 @@ sub init {
         'mystat'      => 0,
         'myXP'        => 0,
         'myver'       => 0, 
-        'infuzString' => '',
-        'infuz'       => {}
+        'infuz'       => '',
+        'code'        => '',
+        'ISP'         => '',
+        'status'      => 0,
+        'premium'     => 0,  
+        'level'       => 0,
+        'since'       => 0,
+        'town'        => ''
     );
 }
 

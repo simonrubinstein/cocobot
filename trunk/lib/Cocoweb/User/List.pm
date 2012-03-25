@@ -56,16 +56,7 @@ sub populate {
         $mynickname, $myXP,  $mystat, $myver
     ) = @_;
     my $users_ref = $self->all();
-    if ( exists $users_ref->{$mynickID} ) {
-        foreach my $name ('myage', 'mysex', 'citydio', 'mynickID', 'mynickname', 'myXP', 'mystat', 'myver') {
-        }
-
-
-        $users_ref->{$mynickID}->isNew(0);
-        $users_ref->{$mynickID}->isView(1);
-    }
-    else {
-        $users_ref->{$mynickID} = Cocoweb::User->new(
+    my @args = (
             'mynickID'   => $mynickID,
             'myage'      => $myage,
             'mysex'      => $mysex,
@@ -74,7 +65,15 @@ sub populate {
             'myXP'       => $myXP,
             'mystat'     => $mystat,
             'myver'      => $myver
-        );
+    );
+    if ( exists $users_ref->{$mynickID} ) {
+        my $user = $users_ref->{$mynickID};
+        $user->update(@args);
+        $user->isNew(0);
+        $user->isView(1);
+    }
+    else {
+        $users_ref->{$mynickID} = Cocoweb::User->new(@args);
     }
 }
 
@@ -101,9 +100,10 @@ sub getUsersNotViewed {
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         if ( !$user->isView() ) {
+            $user->incNotViewCount();
             info(   'The user "'
                   . $user->mynickname()
-                  . 'has not been seen in the list.' );
+                  . '" has not been seen in the list. Counter: ' . $user->notViewCount() );
             push @users, $user if !$user->isView();
         }
     }

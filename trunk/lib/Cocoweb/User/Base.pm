@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-24
+# @date 2012-03-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -50,11 +50,17 @@ __PACKAGE__->attributes(
     ## 4 = Premium Subscription
     'myver',
     ## String retrieved by the function infuz()
-    'infuzSting',
-    ##'infuzString' exploded in a hash table
     'infuz',
+    'code',
+    'ISP',
+    'status',
+    'premium',
+    'level',
+    'since',
+    'town'
 );
 
+##@method void init(%args)
 sub init {
     my ( $self, %args ) = @_;
 }
@@ -85,7 +91,6 @@ sub display {
         print STDOUT $name . ':' . $self->$name() . '; ';
     }
     print STDOUT "\n";
-
 }
 
 ##@method void show()
@@ -93,8 +98,9 @@ sub display {
 sub show {
     my $self  = shift;
     my @names = (
-        'mynickname', 'myage',  'mysex', 'mynickID',
-        'citydio',    'mystat', 'myXP',  'myver'
+        'mynickname', 'myage', 'mysex', 'mynickID', 'citydio', 'mystat', 'myXP',
+        'myver', 'code', 'ISP', 'status', 'premium', 'level', 'since', 'town',
+
     );
     my $max = 1;
     foreach my $name (@names) {
@@ -103,24 +109,6 @@ sub show {
     $max++;
     foreach my $name (@names) {
         print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
-          . "\n";
-    }
-    $self->showInfuz();
-}
-
-##@method void showInfuz()
-sub showInfuz {
-    my $self  = shift;
-    my $infuz_ref = $self->infuz();
-    return if scalar( keys %$infuz_ref ) == 0;
-    my $max = 1;
-    foreach my $name ( keys %$infuz_ref ) {
-        $max = length($name) if length($name) > $max;
-    }
-    $max++;
-    foreach my $name ( keys %$infuz_ref ) {
-        print STDOUT
-          sprintf( '%-' . $max . 's ' . $infuz_ref->{$name}, $name . ':' )
           . "\n";
     }
 }
@@ -151,19 +139,18 @@ sub isWoman {
     }
 }
 
-##@method void setInfuz($infuzString)
+##@method void setInfuz($infuz)
 sub setInfuz {
-    my ( $self, $infuzString ) = @_;
-    $self->infuzSting($infuzString);
-    my @lines = split( /\n/, $infuzString );
-    my $infuz_ref = $self->infuz();
+    my ( $self, $infuz ) = @_;
+    $self->infuz($infuz);
+    my @lines = split( /\n/, $infuz );
     if (
         $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
                         \s\-(.*)$}xms
       )
     {
-        $infuz_ref->{'code'} = $1;
-        $infuz_ref->{'ISP'}  = trim($2);
+        $self->code($1);
+        $self->ISP( trim($2) );
     }
     else {
         die error("string '$lines[0]' is bad");
@@ -176,16 +163,16 @@ sub setInfuz {
                        \s([0-9]+).*$}xms
       )
     {
-        $infuz_ref->{'status'}  = $1;
-        $infuz_ref->{'premium'} = defined $2 ? 1 : 0;
-        $infuz_ref->{'level'}   = $3;
-        $infuz_ref->{'since'}   = $4;
+        $self->status($1);
+        $self->premium( defined $2 ? 1 : 0 );
+        $self->level($3);
+        $self->since($4);
     }
     else {
         die error("string '$lines[1]' is bad");
     }
     if ( $lines[2] =~ m{Ville: (.*)$} ) {
-        $infuz_ref->{'town'} = trim($1);
+        $self->town( trim($1) );
     }
     else {
         die error("string '$lines[2]' is bad");
