@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-24
+# @date 2012-03-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,7 +34,7 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange' );
+__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -59,11 +59,46 @@ sub init {
         'myXP'        => $args{'myXP'},
         'myver'       => $args{'myver'},
         'infuzString' => '',
-        'infuz'       => {},
+        'infuz'       => '',
+        'code'        => '',
+        'ISP'         => '',
+        'status'      => 0,
+        'premium'     => 0,  
+        'level'       => 0,
+        'since'       => 0,
+        'town'        => '',
         'isNew'       => 1,
         'isView'      => 1,
-        'hasChange'   => 0
+        'hasChange'   => 0,
+        'notViewCount' => 0
     );
+}
+
+##@method boolean update(%args)
+sub update {
+    my ( $self, %args ) = @_;
+    $self->hasChange(0);
+    foreach my $name ( keys %args ) {
+        my $newVal = $args{$name};
+        if ( $self->$name() ne $newVal ) {
+            info(   $self->mynickname()
+                  . ': Replace "'
+                  . $name
+                  . '" from '
+                  . $self->$name() . ' to '
+                  . $newVal );
+            $self->$name($newVal);
+            $self->hasChange(1);
+        }
+    }
+    return $self->hasChange();
+}
+
+sub incNotViewCount {
+    my $self = shift;
+    my $notViewCount = $self->notViewCount();
+    $notViewCount++;
+    $self->notViewCount($notViewCount);
 }
 
 1;

@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-24
+# @date 2012-03-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,6 +38,7 @@ my $nicknameMan;
 my $nicknameWoman;
 
 __PACKAGE__->attributes(
+
     #A zip code
     'zip',
     'speco',
@@ -118,8 +119,14 @@ sub init {
         'camon'      => 95,
         'typcam'     => '',
         'infuzSting' => '',
-        'infuz'      => {}
-
+        'infuz'      => '',
+        'code'       => '',
+        'ISP'        => '',
+        'status'     => 0,
+        'premium'    => 0,
+        'level'      => 0,
+        'since'      => 0,
+        'town'       => ''
     );
     info(   'mynickname: '
           . $self->mynickname()
@@ -130,13 +137,14 @@ sub init {
 }
 
 ##@method boolean isAuthenticated()
-##@brief Checks whether the user is authenticated on the website Coco.fr 
+##@brief Checks whether the user is authenticated on the website Coco.fr
 #@return boolean 1 if the user is authenticated, otherwise 0
 sub isAuthenticated {
     my ($self) = @_;
-    if (length($self->monpass()) == 0) {
+    if ( length( $self->monpass() ) == 0 ) {
         return 0;
-    } else {
+    }
+    else {
         return 1;
     }
 }
@@ -323,7 +331,8 @@ sub show {
         'mynickname', 'myage',   'mysex',    'zip',
         'mynickID',   'monpass', 'myavatar', 'mypass',
         'townzz',     'citydio', 'mystat',   'myXP',
-        'myver'
+        'myver',      'code',    'ISP',      'status',
+        'premium',    'level',   'since',    'town',
     );
     my $max = 1;
     foreach my $name (@names) {
@@ -334,7 +343,6 @@ sub show {
         print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
           . "\n";
     }
-    $self->showInfuz();
 }
 
 ##@method void display()

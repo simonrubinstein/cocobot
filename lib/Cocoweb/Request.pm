@@ -472,7 +472,7 @@ sub process1Int {
                 my $userWanted = $self->usersList()->getUser($qqk);
                 if ( defined $userWanted ) {
                     if ( $qqb == 0 ) {
-                        info(   "The user '"
+                        info(   "(!!!) The user '"
                               . $userWanted->mynickname()
                               . "' has disconnected." );
                         $self->usersList()->removeUser($userWanted);
