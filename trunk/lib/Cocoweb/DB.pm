@@ -1,6 +1,6 @@
 # @brief Handle SQLite database
 # @created 2012-03-11
-# @date 2012-03-17
+# @date 2012-03-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,7 +36,7 @@ use Term::ANSIColor;
 use strict;
 use warnings;
 
-__PACKAGE__->attributes( 'dbh', 'filename', 'ISO3166Regex' );
+__PACKAGE__->attributes( 'dbh', 'filename', 'ISO3166Regex', 'town2id' );
 
 ##@method object init($class, $instance)
 sub init {
@@ -45,10 +45,54 @@ sub init {
     $instance->attributes_defaults(
         'dbh'          => undef,
         'filename'     => $config->getString('filename'),
-        'ISO3166Regex' => $config->getString('ISO-3166-1-alpha-2')
+        'ISO3166Regex' => $config->getString('ISO-3166-1-alpha-2'),
+        'town2id'      => {}
     );
     return $instance;
 }
+
+##@method void debug($query, $bindValues_ref)
+##@brief Log a SQL query
+##@input string $query SQL Query
+##@input arrayref $values_ref Array ref of values
+sub debugQuery {
+    my $self = shift;
+    return if !$Cocoweb::isDebug;
+    my $query          = shift;
+    my $bindValues_ref = shift;
+    $query =~ s{\s{2,}}{ }g;
+    $query .= ' [';
+    foreach my $val (@$bindValues_ref) {
+        if ( !defined $val ) {
+            $query .= 'NULL, ';
+        }
+        else {
+            $query .= $val . ', ';
+        }
+    }
+    chop($query);
+    $query .= ']';
+    debug($query);
+}
+
+##@method object select ($query, $values_ref)
+##Select raws from table(s)
+##@input string $query SQL Query
+##@input arrayref $values_ref Array ref of values
+##@return DBI::sth object
+sub execute {
+    my ( $self, $query, $values_ref ) = @_; 
+    $values_ref = [] if !defined $values_ref;
+    my $sth = $self->dbh()->prepare($query)
+        or croak 
+        error( "prepare($query) fail: " . $self->dbh()->errstr() );
+    $self->debugQuery( $query, \@$values_ref );
+    my $res = $sth->execute(@$values_ref);
+    croak error( "$query failed!" . " errstr: " . $self->dbh()->errstr() )
+        if !$res;
+    return $sth;
+}
+
 
 ##@method array getInitTowns()
 #@brief Returns a list of town codes from the configuration file
@@ -122,7 +166,6 @@ ENDTXT
     `niv`           INTEGER NOT NULL,
     `ok`            INTEGER NOT NULL,
     `stat`          INTEGER NOT NULL,
-    `code`          INTEGER NOT NULL,
     `ISP`           INTEGER NOT NULL,
     `status`        INTEGER NOT NULL,
     `level`         INTEGER NOT NULL,
@@ -130,7 +173,8 @@ ENDTXT
     `town`          INTEGER NOT NULL,
     `premimum`      INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
-    `update_date`   DATETIME NOT NULL)
+    `update_date`   DATETIME NOT NULL,
+    `end_date`      DATETIME DEFAULT NULL)
 ENDTXT
     $self->dbh()->do($query);
 
@@ -181,11 +225,27 @@ sub insertCode {
     my ( $self, $code ) = @_;
     my $query = q/
       INSERT INTO `codes`
-        (`name`) 
+        (`code`, `creation_date`, `update_date`) 
         VALUES
         (?);
       /;
-    $self->dbh()->do( $query, undef, $code );
+    $self->dbh()->do( $query, undef, $code, time, time );
+}
+
+sub initialize {
+    my ($self) = @_;
+    $self->connect();
+    $self->getAllTowns();
+}
+
+sub getAllTowns {
+    my ($self) = @_;
+    my $sth = $self->execute('SELECT `id`, `name` FROM `towns`');
+    my ($id, $town);
+    my $town2id_ref = $self->town2id();
+    while ( ($id, $town) = $sth->fetchrow_array ()) {
+        $town2id_ref->{$town} = $id;
+    }
 }
 
 1;
