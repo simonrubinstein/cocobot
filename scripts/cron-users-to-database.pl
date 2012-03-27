@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-# @created 2012-03-11
+# @brief 
+# @created 2012-03-27
 # @date 2012-03-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
@@ -29,40 +30,39 @@ use strict;
 use warnings;
 use FindBin qw($Script $Bin);
 use Data::Dumper;
+use Time::HiRes;
+use Term::ANSIColor;
+$Term::ANSIColor::AUTORESET = 1;
 use utf8;
 no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 use Cocoweb::DB;
+my $DB;
 my $CLI;
+my $bot;
 
 init();
 run();
 
+##@method void run()
 sub run {
-    my $DB = Cocoweb::DB->instance();
-    $DB->connect();
-    $DB->createTables();
-    my ( $town_ref, $towns ) = $DB->getInitTowns();
-    undef $town_ref;
-    $town_ref = $towns->all();
-    foreach my $name (@$town_ref) {
-        $DB->insertTown($name);
+    $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
+    $DB->initialize();
+    $bot->process();
+    $bot->display();
+    if ( !$bot->isPremiumSubscription() ) {
+        die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
     }
-    my ( $ISP_ref,  $ISPConf )  = $DB->getInitISPs();
-    undef $ISP_ref;
-    $ISP_ref = $ISPConf->all();
-    foreach my $name (@$ISP_ref) {
-        $DB->insertISP($name);
-    }
-    info("The $Bin script was completed successfully.");
+ 
 }
 
 ## @method void init()
 sub init {
+    $DB  = Cocoweb::DB->instance();
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts();
+    my $opt_ref = $CLI->getOpts( 'avatarAndPasswdRequired' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -74,19 +74,17 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-v -d -a myavatar -p mypass]
-  -v          Verbose mode
-  -d          Debug mode
+ $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
 ENDTXT
+    $CLI->HELP();
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-16) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-03-24');
 }
+
+
 
