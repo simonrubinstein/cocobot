@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-25
+# @date 2012-03-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -45,26 +45,29 @@ sub init {
       ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
       ? 1
       : 0;
-    $self->attributes_defaults( 'all' => {}, 'logUsersListInDB' => $logUsersListInDB );
+    $self->attributes_defaults(
+        'all'              => {},
+        'logUsersListInDB' => $logUsersListInDB
+    );
 }
 
 ##@method void populate($myage, $mysex, $citydio, $mynickID,
 #                       $mynickname, $myXP, $mystat, $myver)
 sub populate {
     my (
-        $self, $myage, $mysex,  $citydio, $mynickID,
+        $self,       $myage, $mysex,  $citydio, $mynickID,
         $mynickname, $myXP,  $mystat, $myver
     ) = @_;
     my $users_ref = $self->all();
-    my @args = (
-            'mynickID'   => $mynickID,
-            'myage'      => $myage,
-            'mysex'      => $mysex,
-            'citydio'    => $citydio,
-            'mynickname' => $mynickname,
-            'myXP'       => $myXP,
-            'mystat'     => $mystat,
-            'myver'      => $myver
+    my @args      = (
+        'mynickID'   => $mynickID,
+        'myage'      => $myage,
+        'mysex'      => $mysex,
+        'citydio'    => $citydio,
+        'mynickname' => $mynickname,
+        'myXP'       => $myXP,
+        'mystat'     => $mystat,
+        'myver'      => $myver
     );
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
@@ -82,6 +85,13 @@ sub removeUser {
     my $id       = $userWanted->mynickID();
     my $user_ref = $self->all();
     if ( exists $user_ref->{$id} ) {
+        my $user = $user_ref->{$id};
+        info(   'The user "'
+              . $user->mynickname()
+              . '" was disconnected after being seen not in the list '
+              . $user->notViewCount()
+              . ' times' );
+
         delete $user_ref->{$id};
     }
     else {
@@ -103,7 +113,8 @@ sub getUsersNotViewed {
             $user->incNotViewCount();
             info(   'The user "'
                   . $user->mynickname()
-                  . '" has not been seen in the list. Counter: ' . $user->notViewCount() );
+                  . '" has not been seen in the list. Counter: '
+                  . $user->notViewCount() );
             push @users, $user if !$user->isView();
         }
     }

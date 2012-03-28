@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@ brief 
 # @created 2012-03-09
-# @date 2012-03-25
+# @date 2012-03-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -57,46 +57,25 @@ my $bot;
 sub run {
     $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
     $bot->process();
+    my $usersList = $bot->requestUsersList();
+    $bot->requestInformzForNewUsers();
+    $bot->requestDisconnectedUsers();
+
     if ( !$bot->isPremiumSubscription() ) {
         die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
     }
     my $count = 0;
     while(1) {
-        message("********************************************");
         $count++;
-
-        my $usersList = $bot->getUsersList();
-        if ( !defined $usersList ) {
-            warning("No users found");
-        } else {
-            $bot->searchInformzForNewUsers();
+        message('Iteration number: ' . $count);
+        if ( $count % 28 == 9) {
+            $usersList = $bot->requestUsersList();
+            $bot->requestInformzForNewUsers();
+            $bot->requestDisconnectedUsers();
         }
-        
-        foreach  (my $i = 0; $i < 20; $i++) {
-            $bot->lancetimer();
-            print "WAIT $i\n";
-            sleep 1;
-        }
-
- 
-
-#        my ($seconds, $microseconds) = Time::HiRes::gettimeofday;
-#        $bot->clearUsersList();
-#        my $userFound_ref = $bot->getUsersList();
-#        checkUsers($userFound_ref);
-#        last;
-#        my $t0 = [Time::HiRes::gettimeofday];
-#        my $elapsed = Time::HiRes::tv_interval ( $t0 );
-#        my @e = split(/\./, $elapsed);
-#        my $sleepVal = Time::HiRes::tv_interval (\@e, [4, 0]);
-#        info("time looop interval: $elapsed; sleep: $sleepVal");
-#        Time::HiRes::sleep($sleepVal);
-#        $elapsed = Time::HiRes::tv_interval ( $t0 );
-#        info("time looop interval: $elapsed");
-#        last if $count > 1;
-        #sleep 8;
+        $bot->requestMessagesFromUsers();
+        sleep 1;
     }
-
     info("The $Bin script was completed successfully.");
 }
 

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-25
+# @date 2012-03-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -82,10 +82,10 @@ sub searchNickname {
     return $self->request()->searchNickname( $self->user(), $userWanted );
 }
 
-##@methode object getUsersList()
+##@methode object requestUsersList()
 #@brief Request and returns the list of connected users
 #@return object A 'Cocoweb::User::List' object
-sub getUsersList {
+sub requestUsersList {
     my ($self) = @_;
     return $self->request()->getUsersList( $self->user() );
 }
@@ -173,7 +173,7 @@ sub isAuthenticated {
 
 
 #@brief Search "informz" string for new users.
-sub searchInformzForNewUsers {
+sub requestInformzForNewUsers {
     my ($self) = @_;
     my $users_ref = $self->request()->usersList()->all();
     foreach my $niknameId (keys %$users_ref) {
@@ -188,6 +188,21 @@ sub searchInformzForNewUsers {
 
 
 }
+
+##@method void requestMessagesFromUsers()
+#@brief Returns the messages sent by other users
+sub requestMessagesFromUsers {
+    my ($self) = @_;
+    $self->request()->requestMessagesFromUsers($self->user());
+} 
+
+
+##@method void requestDisconnectedUsers()
+sub requestDisconnectedUsers {
+    my ($self) = @_;
+    $self->request()->checkDisconnectedUsers($self->user());
+}
+
 
 1;
 

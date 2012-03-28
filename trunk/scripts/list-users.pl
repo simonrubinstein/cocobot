@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-02-22
-# @date 2012-03-24
+# @date 2012-03-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -45,7 +45,7 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->process();
     $bot->display();
-    my $usersList = $bot->getUsersList();
+    my $usersList = $bot->requestUsersList();
     if ( !defined $usersList ) {
         warning("No users found");
     }
@@ -84,6 +84,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-28');
 }
 
