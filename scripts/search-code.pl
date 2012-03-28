@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-18
-# @date 2012-03-24
+# @date 2012-03-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -46,6 +46,7 @@ sub run {
     $bot->process();
     $bot->display();
     my $user = $bot->searchCode($code);
+    $bot->infuz($user);
     $user->show();
     info("The $Bin script was completed successfully.");
 }
@@ -82,5 +83,5 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-28');
 }

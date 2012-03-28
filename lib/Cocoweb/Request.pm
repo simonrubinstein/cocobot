@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-21
+# @date 2012-03-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -50,7 +50,9 @@ __PACKAGE__->attributes(
     'yearu',
     'usersList',
     'speco',
-    'convert'
+    'convert',
+    'timz1',
+    'rechrech'
 );
 
 my $conf_ref;
@@ -97,7 +99,9 @@ sub init {
         'yearu'     => 0,
         'usersList' => Cocoweb::User::List->new('logUsersListInDB' => $logUsersListInDB),
         'speco'     => 0,
-        'convert'   => Cocoweb::Encode->instance()
+        'convert'   => Cocoweb::Encode->instance(),
+        'timz1'     => 0,
+        'rechrech'  => 0
     );
 
     #debug( "url1: " . $self->url1() );
@@ -332,7 +336,7 @@ sub process1 {
 }
 
 ## @method void process1Int($user, $urlo)
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 sub process1Int {
     my ( $self, $user, $urlo ) = @_;
 
@@ -608,7 +612,7 @@ sub process1Int {
 ##@method void populate($user, $populateList, $urlo, $offsat)
 #@brief Extract the pseudonyms of the string returned by the server
 #       and call a method of object passed as parameter
-#@param object $user         An 'User::Connected' object object
+#@param object $user         An 'User::Connected' object
 #@param object $usersList    An user list object
 #@param string $urlo         The string returned by the server
 sub populate {
@@ -656,14 +660,14 @@ sub populate {
 
 ##@method void searchnow($user)
 #@brief Call the remote method to retrieve the list of pseudonyms.
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 sub searchnow {
     my ( $self, $user ) = @_;
     $self->agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
 ##@method void cherchasalon($user)
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 sub cherchasalon {
     my ( $self, $user ) = @_;
     $self->agir( $user, '89' );
@@ -671,26 +675,49 @@ sub cherchasalon {
 
 ##@method void actuam($user)
 #@brief Get the list of contacts, nicknamed 'amiz'
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 #@return string
 sub actuam {
     my ( $self, $user ) = @_;
     $self->agir( $user, '48' );
 }
 
-##@method void lancetimer($user)
-#@brief Method that periodically performs requests to the server
-#@param object $user An 'User::Connected' object object
-sub lancetimer {
+##@method void requestMessagesFromUsers($user)
+#@brief Returns the messages sent by other users
+sub requestMessagesFromUsers {
     my ( $self, $user ) = @_;
     $self->agir( $user, $user->camon() . $user->typcam() );
+} 
+
+##@method void lancetimer($user)
+#@brief Method that periodically performs requests to the server
+#@param object $user An 'User::Connected' object
+sub lancetimer {
+    my ( $self, $user ) = @_;
+    my $timz1 = $self->timz1();
+    $timz1++;
+    $self->timz1($timz1);
+
+    if (($timz1 % 160) == 39) {
+        my $users_ref = $self->usersList()->getUsersNotViewed();
+        $self->isDead( $user, $users_ref );
+    }
+
+    if(($timz1 % 28) == 9) {
+        if($self->rechrech()) {
+            $self->searchnow($user);
+        } else {
+            $self->rechrech(1);
+        }
+    }
+    $self->RequestMessagesFromUsers($user);
 }
 
 ##@method void getUserInfo()
 #@brief Get the number of days remaining until the end of
 #       the Premium subscription.
 #       This method works only for user with a Premium subscription
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 sub getUserInfo {
     my ( $self, $user ) = @_;
     $self->agir( $user, '77369' );
@@ -699,7 +726,7 @@ sub getUserInfo {
 ##@method void searchCode()
 #@brief Search a nickname from his code of 3 characters
 #       This method works only for user with a Premium subscription
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 #@param string $code A nickname code (i.e. WcL)
 sub searchCode {
     my ( $self, $user, $code ) = @_;
@@ -718,7 +745,7 @@ sub isDead {
 
 ## @method void writus($user, $s1, $nickId)
 #@brief
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 #@param string $s1
 sub writus {
     my ( $self, $user, $userWanted, $s1 ) = @_;
@@ -740,7 +767,7 @@ sub writus {
 #       connection time a country code and city) about an user.
 #       This information is not reliable.
 #       this function is restricted to Premium subscribers.
-#@param object $user       An 'User::Connected' object object
+#@param object $user       An 'User::Connected' object
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
 #@return object A 'CocoWeb::User::Wanted' object
 sub infuz {
@@ -760,7 +787,7 @@ sub infuz {
 
 ##@methode object getUsersList($user)
 #@bref Request and returns the list of connected users
-#@param object $user An 'User::Connected' object object
+#@param object $user An 'User::Connected' object
 #@return object A 'Cocoweb::User::List' object
 sub getUsersList {
     my ( $self, $user ) = @_;
@@ -772,14 +799,18 @@ sub getUsersList {
             $self->searchnow($user);
         }
     }
+    return $self->usersList();
+}
+
+sub checkDisconnectedUsers {
+    my ( $self, $user ) = @_;
     my $users_ref = $self->usersList()->getUsersNotViewed();
     $self->isDead( $user, $users_ref );
-    return $self->usersList();
 }
 
 ##@method object searchNickname($user, $userWanted)
 #@brief Search a nickname connected
-#@param object $user      An 'User::Connected' object object
+#@param object $user      An 'User::Connected' object
 #@param object $userWanted A CocoWeb::User::Wanted object
 #@return object A CocoWeb::User
 sub searchNickname {
