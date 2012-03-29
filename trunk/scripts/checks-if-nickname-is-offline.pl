@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-23
-# @date 2012-03-24
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -43,7 +43,7 @@ run();
 ##@method void run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->display();
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
@@ -80,5 +80,5 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }

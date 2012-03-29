@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-25
-# @date 2012-03-24
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -42,12 +42,19 @@ run();
 ##@method void run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->show();
-    for ( my $i = 1 ; $i <= $CLI->maxOfLoop() ; $i++ ) {
-        message( "Loop $i / " . $CLI->maxOfLoop() );
-        $bot->lancetimer();
-        sleep 4;
+    for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
+        message( "Loop $count / " . $CLI->maxOfLoop() );
+        my $usersList;
+        if ( $count % 160 == 39 ) {
+            $bot->requestDisconnectedUsers();
+        }
+        if ( $count % 28 == 9 ) {
+            $usersList = $bot->requestUsersList();
+        }
+        $bot->requestMessagesFromUsers();
+        sleep 1;
     }
     info("The $Bin script was completed successfully.");
 }
@@ -65,11 +72,8 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print <<ENDTXT;
-Usage: 
- $Script [-v -d -a myavatar -p mypass]
-  -x maxOfLoop    Number of loops 
-ENDTXT
+    print STDOUT $Script . ', just create a bot.' . "\n";
+    $CLI->printLineOfArgs();
     $CLI->HELP();
     exit 0;
 }
@@ -77,6 +81,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }
 

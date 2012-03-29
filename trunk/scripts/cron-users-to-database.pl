@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief 
 # @created 2012-03-27
-# @date 2012-03-27
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -50,7 +50,7 @@ run();
 sub run {
     $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
     $DB->initialize();
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->display();
     if ( !$bot->isPremiumSubscription() ) {
         die error( 'The script is reserved for users with a'.  ' Premium subscription.' );

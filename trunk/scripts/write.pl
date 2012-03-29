@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+# @brief Writing a message to a user
 # @created 2012-02-22
-# @date 2012-03-24
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,7 +45,7 @@ run();
 ##@method ivoid run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->display();
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
@@ -54,7 +55,8 @@ sub run {
     info("The script was completed successfully.");
 }
 
-## @method void init()
+##@method void init()
+#@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts( 'searchEnable' => 1, 'argumentative' => 'm:' );
@@ -68,20 +70,20 @@ sub init {
     }
 }
 
-## @method void HELP_MESSAGE()
-# Display help message
+##@method void HELP_MESSAGE()
+#@brief Display help message
 sub HELP_MESSAGE {
+    print STDOUT $Script . ', writing a message to a user.' . "\n";
+    $CLI->printLineOfArgs('-m message');
     print <<ENDTXT;
-Usage: 
- $Script [-l nickmaneWanted -u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-  -l nickmaneWanted
+  -m message        The text message to send. 
 ENDTXT
-   $CLI->HELP();
+    $CLI->HELP();
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }

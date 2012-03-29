@@ -1,12 +1,13 @@
 #!/usr/bin/perl
+# @brief Returns the list of friends
 # @created 2012-03-10
-# @date 2012-03-24
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# Id: $Id
-# Revision
+# Id: $Id$
+# Revision: $Revision$
 # Date: $Date$
 # Author: $Author$
 # HeadURL: $HeadURL$
@@ -41,8 +42,8 @@ run();
 
 ##@method void run
 sub run {
-    my $bot = $CLI->getBot('generateRandom' => 1);
-    $bot->process();
+    my $bot = $CLI->getBot( 'generateRandom' => 1 );
+    $bot->requestAuthentication();
     $bot->show();
     my $userList = $bot->actuam();
     $userList->display();
@@ -62,17 +63,14 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print <<ENDTXT;
-Get the number of days left of Premium subscription.
-Usage: 
- $Script [-v -d -a myavatar -p mypass]
-ENDTXT
-   $CLI->HELP();
+    print STDOUT $Script . ', Returns the list of friends' . "\n";
+    $CLI->printLineOfArgs();
+    $CLI->HELP();
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-28
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -56,8 +56,8 @@ sub init {
     );
 }
 
-##@method void process()
-sub process {
+##@method void requestAuthentication()
+sub requestAuthentication {
     my ($self)  = @_;
     my $user    = $self->user();
     my $request = $self->request();

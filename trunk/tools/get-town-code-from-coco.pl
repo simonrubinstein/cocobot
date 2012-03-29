@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief
 #@created 2012-03-09
-#@date 2012-03-17
+#@date 2012-03-29
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -83,7 +83,7 @@ sub run {
 sub process {
     if ($isReconnect or !defined $bot) {
         $bot = $CLI->getBot( 'generateRandom' => 1 );
-        $bot->process();
+        $bot->requestAuthentication();
         $bot->display();
         if ( !$bot->isPremiumSubscription() ) {
             die error( 'The script is reserved for users with a'
