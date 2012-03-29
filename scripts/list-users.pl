@@ -1,7 +1,7 @@
 #!/usr/bin/perl
-# @brief
+# @brief Displays the list of users logged on the website Coco.fr
 # @created 2012-02-22
-# @date 2012-03-28
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -43,7 +43,7 @@ run();
 ##@method void run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->display();
     my $usersList = $bot->requestUsersList();
     if ( !defined $usersList ) {
@@ -72,18 +72,20 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print <<ENDTXT;
-Usage: 
- $Script [-l nickmaneWanted -u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-  -l nickmaneWanted  
-ENDTXT
-   $CLI->HELP();
+    print STDOUT $Script
+      . ', displays the list of users logged on the website Coco.fr' . "\n";
+    $CLI->printLineOfArgs('-l nickmaneWanted');
+    print STDOUT '  -l nickmaneWanted Nickname that will be '
+      . "filtered to display the list.\n";
+    $CLI->HELP();
+    print STDOUT '  The arguments -s (sex) and -y (age) are also used'
+      . ' to filter the display of the list.' . "\n";
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-28');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }
 

@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+# @brief Search a user from its nickname code
 # @created 2012-03-18
-# @date 2012-03-28
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -40,10 +41,10 @@ my $code;
 init();
 run();
 
-##@method void run
+##@method void run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->display();
     my $user = $bot->searchCode($code);
     $bot->infuz($user);
@@ -54,7 +55,7 @@ sub run {
 ##@method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts('argumentative' => 'c:');
+    my $opt_ref = $CLI->getOpts( 'argumentative' => 'c:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -63,25 +64,23 @@ sub init {
     if ( !defined $code ) {
         die error("You must specify a nickname code (-c option)");
     }
- 
 }
 
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
+    print STDOUT $Script . ', search a user from its code.' . "\n";
+    $CLI->printLineOfArgs('-l code');
     print <<ENDTXT;
-Get the number of days left of Premium subscription.
-Usage: 
- $Script [-v -d] -a myavatar -p mypass -c
-  -c code     The nickname code searched, an alphanumeric code
-              of three characters, i.e. WcL
+  -c code           The nickname code searched, an alphanumeric code
+                    of three characters, i.e. WcL
 ENDTXT
-   $CLI->HELP();
+    $CLI->HELP();
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-28');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }

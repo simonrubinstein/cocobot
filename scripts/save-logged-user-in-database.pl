@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@ brief 
 # @created 2012-03-09
-# @date 2012-03-28
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -56,7 +56,7 @@ my $bot;
 ##@method void run()
 sub run {
     $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     my $usersList = $bot->requestUsersList();
     $bot->requestInformzForNewUsers();
     $bot->requestDisconnectedUsers();

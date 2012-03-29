@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-03-24
+# @date 2011-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -40,22 +40,29 @@ $Getopt::Std::STANDARD_HELP_VERSION = 1;
 use strict;
 use warnings;
 __PACKAGE__->attributes(
-    'mynickname', 'myage',    'mysex',          'myavatar',
-    'mypass',     'searchId', 'searchNickname', 'maxOfLoop'
+    'mynickname',     'myage',
+    'mysex',          'myavatar',
+    'mypass',         'searchId',
+    'searchNickname', 'maxOfLoop',
+    'enableLoop',     'avatarAndPasswdRequired',
+    'searchEnable'
 );
 
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
     $instance->attributes_defaults(
-        'mynickname'     => undef,
-        'myage'          => undef,
-        'mysex'          => undef,
-        'myavatar'       => undef,
-        'mypass'         => undef,
-        'searchId'       => undef,
-        'searchNickname' => undef,
-        'maxOfLoop'      => undef
+        'mynickname'              => undef,
+        'myage'                   => undef,
+        'mysex'                   => undef,
+        'myavatar'                => undef,
+        'mypass'                  => undef,
+        'searchId'                => undef,
+        'searchNickname'          => undef,
+        'maxOfLoop'               => undef,
+        'enableLoop'              => 0,
+        'avatarAndPasswdRequired' => 0,
+        'searchEnable'            => 0
     );
     return $instance;
 }
@@ -66,20 +73,17 @@ sub init {
 #@return hashref The values found in arguments
 sub getOpts {
     my ( $self, %argv ) = @_;
-
-    my ( $searchEnable, $argumentative, $avatarAndPasswdRequired, $enableLoop )
-      = ( 0, '', 0 );
-
-    $searchEnable  = $argv{'searchEnable'}  if exists $argv{'searchEnable'};
+    foreach my $name ( 'searchEnable', 'enableLoop', 'avatarAndPasswdRequired' )
+    {
+        next if !exists $argv{$name};
+        $self->$name( $argv{$name} );
+    }
+    my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $enableLoop    = $argv{'enableLoop'}    if exists $argv{'enableLoop'};
-    $avatarAndPasswdRequired = $argv{'avatarAndPasswdRequired'}
-      if exists $argv{'avatarAndPasswdRequired'};
     $argumentative .= 'dvu:s:y:a:p:';
-    $argumentative .= 'l:i:' if $searchEnable;
-    $argumentative .= 'x:' if $enableLoop;
+    $argumentative .= 'l:i:' if $self->searchEnable();
+    $argumentative .= 'x:' if $self->enableLoop();
     my %opt;
-
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
     }
@@ -117,14 +121,14 @@ sub getOpts {
     }
 
     # The search for a nickname or nickmae id is enabled
-    if (    $searchEnable
+    if (    $self->searchEnable()
         and !defined $self->searchNickname()
         and !defined $self->searchId() )
     {
         error("You must specify an username (-l) or ID (-i)");
         return;
     }
-    if (    $searchEnable
+    if (    $self->searchEnable()
         and defined $self->searchNickname()
         and defined $self->searchId() )
     {
@@ -133,7 +137,7 @@ sub getOpts {
     }
 
     # An avatar identifier and password are required
-    if ( $avatarAndPasswdRequired
+    if ( $self->avatarAndPasswdRequired()
         and ( !defined $self->myavatar or !defined $self->mypass() ) )
     {
         error(  'An avatar identifier and password'
@@ -142,7 +146,7 @@ sub getOpts {
         return;
     }
 
-    if ($enableLoop) {
+    if ( $self->enableLoop() ) {
         if ( defined $self->maxOfLoop() ) {
             if ( $self->maxOfLoop() !~ m{^\d+$} ) {
                 error(
@@ -190,7 +194,7 @@ sub getBot {
 ##@method object getUserWanted($bot)
 sub getUserWanted {
     my ( $self, $bot ) = @_;
-    $bot->process() if !$bot->isAuthenticated();
+    $bot->requestAuthentication() if !$bot->isAuthenticated();
     my $userWanted;
     if ( defined $self->searchNickname() ) {
         $userWanted =
@@ -213,21 +217,50 @@ sub getUserWanted {
     return $userWanted;
 }
 
+##@method string getLineOfArgs($addArgs)
+sub getLineOfArgs {
+    my ( $self, $addArgs ) = @_;
+    my $args = 'Usage: ' . $Script . ' ';
+    $args .= $addArgs . ' '                   if defined $addArgs;
+    $args .= '-x maxOfLoop '                  if $self->enableLoop();
+    $args .= '(-l nickname | -i nicknameId) ' if $self->searchEnable();
+    $args .= '[' if !$self->avatarAndPasswdRequired();
+    $args .= '-a myavatar -p mypass ';
+    $args .= '[' if $self->avatarAndPasswdRequired();
+    $args .= '-u mynickname -y myage -s mysex -v -d]';
+    return $args;
+}
+
+##@method void printLineOfArgs($addArgs)
+sub printLineOfArgs {
+    my ( $self, $addArgs ) = @_;
+    print STDOUT $self->getLineOfArgs($addArgs) . "\n";
+}
+
 ##@void HELP()
 #@brief Displays help standard used by all scripts.
 sub HELP {
-    print <<ENDTXT;
-  -a myavatar   A unique identifier for your account 
-                The first 9 digits of cookie "samedi".
-  -p mypass     The password for your account
-                The last 20 alphabetic characters of cookie "samedi".
-  -u mynickname A nickname will be used by the bot.
-                Otherwise a nickname will be randomly generated.
-  -y myage      An age in years that will be used by the bot. 
-                Otherwise an age will be randomly generated.
-  -s mysex      M for man or W for women
-  -v            Verbose mode
-  -d            Debug mode
+    my ($self) = @_;
+    print STDOUT "  -l nickname       The nickname wanted.\n"
+      if $self->searchEnable();
+    print STDOUT "  -i nicknameId     The nickmane ID wanted.\n"
+      if $self->searchEnable();
+    print STDOUT
+      "  -x maxOfLoop      A maximum number of iterations to perform.\n"
+      if $self->enableLoop();
+
+    print STDOUT <<ENDTXT;
+  -a myavatar       A unique identifier for your account 
+                    The first 9 digits of cookie "samedi".
+  -p mypass         The password for your account
+                    The last 20 alphabetic characters of cookie "samedi".
+  -u mynickname     A nickname will be used by the bot.
+                    Otherwise a nickname will be randomly generated.
+  -y myage          An age in years that will be used by the bot. 
+                    Otherwise an age will be randomly generated.
+  -s mysex          M for man or W for women
+  -v                Verbose mode
+  -d                Debug mode
 ENDTXT
 }
 
@@ -237,7 +270,7 @@ sub VERSION_MESSAGE {
     my ( $self, $date, $version ) = @_;
     $version = $Cocoweb::VERSION if !defined $version;
     print STDOUT <<ENDTXT;
-    $version ($date) 
+    $Script $version ($date) 
     Copyright (C) 2010-2012 Simon Rubinstein 
     Written by Simon Rubinstein 
 ENDTXT

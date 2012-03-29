@@ -1,6 +1,7 @@
 #!/usr/bin/perl
+# @brief Get the number of days left of Premium subscription
 # @created 2012-03-03
-# @date 2012-03-24
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -42,7 +43,7 @@ run();
 ##@method void run
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->infuz();
     $bot->show();
     message( $bot->getUserInfo() );
@@ -62,11 +63,9 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print <<ENDTXT;
-Get the number of days left of Premium subscription.
-Usage: 
- $Script [-v -d ] -a myavatar -p mypass
-ENDTXT
+    print STDOUT $Script
+      . ', Get the number of days left of Premium subscription' . "\n";
+    $CLI->printLineOfArgs();
     $CLI->HELP();
     exit 0;
 }
@@ -74,6 +73,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }
 

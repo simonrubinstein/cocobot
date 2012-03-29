@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-28
-# @date 2012-03-24
+# @date 2012-03-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -43,7 +43,7 @@ run();
 ##@method void run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $bot->process();
+    $bot->requestAuthentication();
     $bot->display();
     my $userWanted =
       Cocoweb::User::Wanted->new( 'mynickname' => $CLI->searchNickname() );
@@ -74,20 +74,21 @@ sub init {
     }
 }
 
-## @method void HELP_MESSAGE()
-# Display help message
+##@method void HELP_MESSAGE()
+#Display help message
 sub HELP_MESSAGE {
+    print STDOUT $Script . ', Research a nickname connected.' . "\n";
+    $CLI->printLineOfArgs('-l nickname');
     print <<ENDTXT;
-Usage: 
- $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
+  -l nickname       The nickname wanted. 
 ENDTXT
-   $CLI->HELP();
+    $CLI->HELP();
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-03-29');
 }
 
