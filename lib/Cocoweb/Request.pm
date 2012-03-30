@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-29
+# @date 2012-03-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -279,13 +279,10 @@ sub agix {
       if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
+    die error('The method called "' . $function . '()" is unknown!')
+        if $function ne 'process1';
     $response = Cocoweb::Response->new();
-    my $result;
-    eval { $result = $response->$function( $self, $user, $arg ); };
-    if ($@) {
-        die error($@);
-    }
-    return $result;
+    return $response->$function( $self, $user, $arg );
 }
 
 ##@method void searchnow($user)

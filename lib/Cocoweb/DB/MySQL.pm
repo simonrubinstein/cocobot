@@ -36,7 +36,7 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::DB::Base';
 
-__PACKAGE__->attributes( 'datasource', 'username', 'password'  );
+__PACKAGE__->attributes( 'datasource', 'username', 'password', 'timeout' );
 
 ##@method object init($class, $instance)
 sub init {
@@ -46,6 +46,7 @@ sub init {
         'datasource' => '',
         'username'   => '',
         'password'   => '',
+        'timeout'    => 0,
     );
     return $instance;
 }
@@ -54,10 +55,124 @@ sub init {
 #@brief Initializes some variables from the configuration file.
 #@param $config A 'Cocoweb::Config::File' object
 sub setConfig {
-    my ( $self, $config) = @_;
+    my ( $self, $config ) = @_;
     $self->SUPER::setConfig($config);
+    $self->datasource( $config->getString('dbi-datasource') );
+    $self->username( $config->getString('dbi-username') );
+    $self->password( $config->getString('dbi-password') );
+    $self->timeout( $config->getInt('dbi-timeout') );
 }
 
+##@method void connect()
+#@brief Establishes a database connection
+sub connect {
+    my ($self) = @_;
+    my $dbh;
+    eval {
+        local $SIG{ALRM} = sub { die "alarm\n" };
+        alarm $self->timeout();
+        $dbh =
+          DBI->connect( $self->datasource(), $self->username(),
+            $self->password(), { 'PrintError' => 0, 'RaiseError' => 0 } );
+        alarm 0;
+    };
+    if ($@) {
+        if ( $@ eq "alarm\n" ) {
+            die error( 'connection timout after' . ' '
+                  . $self->timeout()
+                  . "seconds (DSN: $self->datasource())" );
+        }
+        else {
+            die error( 'database connection error'
+                  . " (DSN: $self->datasource()): "
+                  . $@ );
+        }
+    }
+    else {
+        if ( !defined($dbh) ) {
+            my $errorStr = $DBI::errstr;
+            $errorStr = 'DBconnect() failed! '
+              if !defined $errorStr;
+            die error($errorStr);
+        }
+    }
+    debug("The connection to the database is successful");
+    $self->dbh($dbh);
+}
 
+##@method void dropTables()
+#@brief Removes all tables
+sub dropTables {
+    my $self = shift;
+    foreach my $table ( 'codes', 'nicknames', 'ISPs', 'towns' ) {
+        $self->do( 'DROP TABLE `' . $table . '` IF EXISTS' );
+    }
+}
+
+##@method void createTables()
+#@brief Creates the tables in the database
+sub createTables {
+    my ($self) = @_;
+
+    my $query;
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `codes` (
+    `id`            int(10) unsigned NOT NULL auto_increment, 
+    `code`          CHAR(3) NOT NULL,
+    `creation_date` DATETIME NOT NULL,
+    `update_date`   DATETIME NOT NULL,
+    PRIMARY KEY  (`id`),
+    UNIQUE KEY `id` (`id`),
+    UNIQUE KEY `code` (`code`)
+    )
+ENDTXT
+    $self->do($query);
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `nicknames` (
+    `id`            int(10) unsigned NOT NULL auto_increment, 
+    `login`         VARCHAR(16) NOT NULL,
+    `sex`           INTEGER NOT NULL,
+    `old`           INTEGER NOT NULL,
+    `city`          INTEGER NOT NULL,
+    `nickid`        INTEGER NOT NULL,
+    `niv`           INTEGER NOT NULL,
+    `ok`            INTEGER NOT NULL,
+    `stat`          INTEGER NOT NULL,
+    `ISP`           INTEGER NOT NULL,
+    `status`        INTEGER NOT NULL,
+    `level`         INTEGER NOT NULL,
+    `since`         INTEGER NOT NULL,
+    `town`          INTEGER NOT NULL,
+    `premimum`      INTEGER NOT NULL,
+    `creation_date` DATETIME NOT NULL,
+    `update_date`   DATETIME NOT NULL,
+    `logout_date`   DATETIME DEFAULT NULL,
+     PRIMARY KEY  (`id`)
+    )
+ENDTXT
+    $self->do($query);
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `ISPs` (
+    `id`            int(10) unsigned NOT NULL auto_increment, 
+    `name`          VARCHAR(255) NOT NULL,
+     PRIMARY KEY  (`id`),
+     UNIQUE KEY `name` (`name`)
+    )
+ENDTXT
+    $self->do($query);
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `towns` (
+    `id`            int(10) unsigned NOT NULL auto_increment, 
+    `name`          VARCHAR(255) NOT NULL,
+     PRIMARY KEY  (`id`),
+     UNIQUE KEY `name` (`name`)
+    )
+ENDTXT
+    $self->do($query);
+}
 
 1;

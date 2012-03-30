@@ -43,6 +43,7 @@ run();
 sub run {
     my $DB = Cocoweb::DB::Base->getInstance();
     $DB->connect();
+    $DB->dropTables();
     $DB->createTables();
     my ( $town_ref, $towns ) = $DB->getInitTowns();
     undef $town_ref;

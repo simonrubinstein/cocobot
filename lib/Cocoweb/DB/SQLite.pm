@@ -32,19 +32,17 @@ use Carp;
 use Data::Dumper;
 use DBI;
 use POSIX;
-
 use Cocoweb;
+use Cocoweb::Config;
 use base 'Cocoweb::DB::Base';
 
-__PACKAGE__->attributes( 'filename'  );
+__PACKAGE__->attributes('filename');
 
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
     $instance->initializesMemberVars();
-    $instance->attributes_defaults(
-        'filename'     => '',
-    );
+    $instance->attributes_defaults( 'filename' => '', );
     return $instance;
 }
 
@@ -52,9 +50,11 @@ sub init {
 #@brief Initializes some variables from the configuration file.
 #@param $config A 'Cocoweb::Config::File' object
 sub setConfig {
-    my ( $self, $config) = @_;
-    print ref($config) . "\n";
-    $self->filename($config->getString('sqlite-filename'));
+    my ( $self, $config ) = @_;
+    my $filename = $config->getString('sqlite-filename');
+    $filename = Cocoweb::Config->instance()->getVarDir() . '/' . $filename
+      if substr( $filename, 1 ) ne '/';
+    $self->filename($filename);
     $self->SUPER::setConfig($config);
 }
 
@@ -63,7 +63,7 @@ sub setConfig {
 sub connect {
     my ($self) = @_;
     my $dbh = DBI->connect( 'dbi:SQLite:dbname=' . $self->filename(),
-        '', '', { 'PrintError' => 0, 'RaiseError' => 1, 'AutoCommit' => 1 } );
+        '', '', { 'PrintError' => 0, 'RaiseError' => 0, 'AutoCommit' => 1 } );
     if ( !defined($dbh) ) {
         my $errorMsg = $DBI::errstr;
         $errorMsg = 'DBI->connect() was failed' if !defined $errorMsg;
@@ -71,6 +71,15 @@ sub connect {
     }
     debug( $self->filename() . 'database connection successful' );
     $self->dbh($dbh);
+}
+
+##@method void dropTables()
+#@brief Removes all tables
+sub dropTables {
+    my $self = shift;
+    foreach my $table ( 'codes', 'nicknames', 'ISPs', 'towns' ) {
+        $self->dbh()->do( 'DROP TABLE `' . $table . '`' );
+    }
 }
 
 ##@method void createTables()
@@ -82,7 +91,7 @@ sub createTables {
 
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `codes` (
-    `id`            INTEGER UNSIGNED NOT NULL PRIMARY KEY,
+    `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
     `code`          CHAR(3) UNIQUE NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL)
@@ -108,7 +117,7 @@ ENDTXT
     `premimum`      INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,
-    `end_date`      DATETIME DEFAULT NULL)
+    `logout_date`      DATETIME DEFAULT NULL)
 ENDTXT
     $self->dbh()->do($query);
 
@@ -127,7 +136,5 @@ ENDTXT
     $self->dbh()->do($query);
 }
 
-
 1;
-
 

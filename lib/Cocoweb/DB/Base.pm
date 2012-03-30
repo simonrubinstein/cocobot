@@ -34,6 +34,7 @@ use DBI;
 use POSIX;
 
 use Cocoweb;
+use Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 
 __PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id' );
@@ -46,7 +47,7 @@ sub getInstance {
     my $databaseClass = $config->getString('database-class');
     require 'Cocoweb/DB/' . $databaseClass . '.pm';
     my $class = 'Cocoweb::DB::' . $databaseClass;
-    my $DB = $class->instance('config' => $config);
+    my $DB = $class->instance( 'config' => $config );
     $DB->setConfig($config);
     return $DB;
 }
@@ -61,7 +62,7 @@ sub init {
 sub initializesMemberVars {
     my ($self) = @_;
     $self->dbh(undef);
-    $self->town2id([]);
+    $self->town2id( {} );
     $self->ISO3166Regex('');
 }
 
@@ -69,22 +70,28 @@ sub initializesMemberVars {
 #@brief Initializes some variables from the configuration file.
 #@param $config A 'Cocoweb::Config::File' object
 sub setConfig {
-    my ( $self, $config) = @_;
-    $self->ISO3166Regex($config->getString('ISO-3166-1-alpha-2'));
+    my ( $self, $config ) = @_;
+    $self->ISO3166Regex( $config->getString('ISO-3166-1-alpha-2') );
 }
 
 ##@method void connect()
 #@brief Establishes a database connection
 sub connect {
-    croak  error('The connect() method must be overridden!');
+    croak error('The connect() method must be overridden!');
 }
 
 ##@method void createTables()
 #@brief Creates the tables in the database
 sub createTables {
-    croak  error('The createTables() method must be overridden!');
+    croak error('The createTables() method must be overridden!');
 }
- 
+
+##@method void dropTables()
+#@brief Removes all tables
+sub dropTables {
+    croak error('The dropTables() method must be overridden!');
+}
+
 ##@method void debug($query, $bindValues_ref)
 ##@brief Log a SQL query
 ##@input string $query SQL Query
@@ -92,39 +99,53 @@ sub createTables {
 sub debugQuery {
     my $self = shift;
     return if !$Cocoweb::isDebug;
-    my $query          = shift;
+    my $query = shift;
+    $query =~ s{\n}{}g;
     my $bindValues_ref = shift;
     $query =~ s{\s{2,}}{ }g;
     $query .= ' [';
-    foreach my $val (@$bindValues_ref) {
-        if ( !defined $val ) {
-            $query .= 'NULL, ';
+    if ( scalar(@$bindValues_ref) > 0 ) {
+
+        foreach my $val (@$bindValues_ref) {
+            if ( !defined $val ) {
+                $query .= 'NULL, ';
+            }
+            else {
+                $query .= $val . ', ';
+            }
         }
-        else {
-            $query .= $val . ', ';
-        }
+        chop($query);
     }
-    chop($query);
     $query .= ']';
     debug($query);
 }
 
 ##@method object select ($query, $values_ref)
-##Select raws from table(s)
-##@input string $query SQL Query
-##@input arrayref $values_ref Array ref of values
-##@return DBI::sth object
+#@brief Select raws from table(s)
+#@input string $query SQL Query
+#@input arrayref $values_ref Array ref of values
+#@return DBI::sth object
 sub execute {
-    my ( $self, $query, $values_ref ) = @_; 
+    my ( $self, $query, $values_ref ) = @_;
     $values_ref = [] if !defined $values_ref;
     my $sth = $self->dbh()->prepare($query)
-        or croak 
-        error( "prepare($query) fail: " . $self->dbh()->errstr() );
+      or croak error( "prepare($query) fail: " . $self->dbh()->errstr() );
     $self->debugQuery( $query, \@$values_ref );
     my $res = $sth->execute(@$values_ref);
     croak error( "$query failed!" . " errstr: " . $self->dbh()->errstr() )
-        if !$res;
+      if !$res;
     return $sth;
+}
+
+##@method void do($query)
+#@input string $query SQL Query
+sub do {
+    my $self  = shift;
+    my $query = shift;
+    $self->debugQuery( $query, \@_ );
+    $self->dbh()->do( $query, undef, @_ )
+      or croak error( $self->dbh()->errstr() );
+
 }
 
 ##@method array getInitTowns()
@@ -169,7 +190,7 @@ sub insertTown {
         VALUES
         (?);
       /;
-    $self->dbh()->do( $query, undef, $name );
+    $self->do( $query, $name );
 }
 
 ##@method void insertISP($name)
@@ -183,7 +204,7 @@ sub insertISP {
         VALUES
         (?);
       /;
-    $self->dbh()->do( $query, undef, $name );
+    $self->do( $query, $name );
 }
 
 sub insertCode {
@@ -192,30 +213,28 @@ sub insertCode {
       INSERT INTO `codes`
         (`code`, `creation_date`, `update_date`) 
         VALUES
-        (?);
+        (?, ?, ?);
       /;
-    $self->dbh()->do( $query, undef, $code, time, time );
+    $self->do( $query, $code, time, time );
 }
 
+##@method void initialize()
 sub initialize {
     my ($self) = @_;
     $self->connect();
     $self->getAllTowns();
 }
 
+##@method void getAllTowns()
 sub getAllTowns {
     my ($self) = @_;
     my $sth = $self->execute('SELECT `id`, `name` FROM `towns`');
-    my ($id, $town);
+    my ( $id, $town );
     my $town2id_ref = $self->town2id();
-    while ( ($id, $town) = $sth->fetchrow_array ()) {
+    while ( ( $id, $town ) = $sth->fetchrow_array() ) {
         $town2id_ref->{$town} = $id;
     }
 }
 
-
-
 1;
-
-
 
