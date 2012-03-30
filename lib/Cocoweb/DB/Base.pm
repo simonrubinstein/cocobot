@@ -37,7 +37,7 @@ use Cocoweb;
 use Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 
-__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id' );
+__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'codesCache');
 
 ##@method object getInstance()
 #@brief Returns an instance of an database object
@@ -54,7 +54,7 @@ sub getInstance {
 
 ##@method object init($class, $instance)
 sub init {
-    die error("This class can not be instantiated");
+    confess error("This class can not be instantiated");
 }
 
 ##@method void initializesMemberVars()
@@ -64,6 +64,7 @@ sub initializesMemberVars {
     $self->dbh(undef);
     $self->town2id( {} );
     $self->ISO3166Regex('');
+    $self->codesCache({});
 }
 
 ##@method readConfiguration($config)
@@ -160,7 +161,7 @@ sub getInitTowns {
     $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
     foreach my $town ( keys %$towns_ref ) {
-        die error("The string $town is not valid") if $town !~ $ISO3166Regex;
+        confess error("The string $town is not valid") if $town !~ $ISO3166Regex;
     }
     info( 'number of town codes: ' . scalar( keys %$towns_ref ) );
     return ( $towns_ref, $towns );
@@ -207,15 +208,13 @@ sub insertISP {
     $self->do( $query, $name );
 }
 
+
+##@method void insertCode($code)
+#@brief Insert or update a code in the code tables
+#@param string A three character code
 sub insertCode {
     my ( $self, $code ) = @_;
-    my $query = q/
-      INSERT INTO `codes`
-        (`code`, `creation_date`, `update_date`) 
-        VALUES
-        (?, ?, ?);
-      /;
-    $self->do( $query, $code, time, time );
+    croak error('The dropTables() method must be overridden!');
 }
 
 ##@method void initialize()

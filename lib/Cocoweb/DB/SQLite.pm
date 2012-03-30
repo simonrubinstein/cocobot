@@ -136,5 +136,44 @@ ENDTXT
     $self->dbh()->do($query);
 }
 
+##@method void insertCode($code)
+#@brief Insert or update a code in the code tables
+#@param string A three character code
+sub insertCode {
+    my ( $self, $code ) = @_;
+    my $query;
+    my $codesCache_ref = $self->codesCache();
+    my $id;
+    if (!exists $codesCache_ref->{$code}) {
+        $query = q/
+        INSERT INTO `codes`
+          (`code`, `creation_date`, `update_date`) 
+          VALUES
+          (?, ?, ?);
+        /;
+        if ($self->dbh()->do( $query, undef, $code, time, time )) {
+            $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+            $codesCache_ref->{$code} = $id;
+            return;
+        } elsif ($self->dbh()->err() != 19) {
+            confess error($self->dbh()->errstr()) 
+        }
+        warning($self->dbh()->errstr());
+        $id = 0;
+    } else {
+        $id = $codesCache_ref->{$code};
+    }
+    $query = 'UPDATE `codes` SET `update_date` = ? WHERE';
+    if ($id > 0) {
+        $query .= ' `id` = ?';
+        $self->do($query, time, $id);
+    } else {
+        $query .= ' `code` = ?';
+        $self->do($query, time, $code);
+    }
+}
+
+
+
 1;
 
