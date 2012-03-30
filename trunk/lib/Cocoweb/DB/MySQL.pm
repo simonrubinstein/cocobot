@@ -78,12 +78,12 @@ sub connect {
     };
     if ($@) {
         if ( $@ eq "alarm\n" ) {
-            die error( 'connection timout after' . ' '
+            confess error( 'connection timout after' . ' '
                   . $self->timeout()
                   . "seconds (DSN: $self->datasource())" );
         }
         else {
-            die error( 'database connection error'
+            confess error( 'database connection error'
                   . " (DSN: $self->datasource()): "
                   . $@ );
         }
@@ -93,7 +93,7 @@ sub connect {
             my $errorStr = $DBI::errstr;
             $errorStr = 'DBconnect() failed! '
               if !defined $errorStr;
-            die error($errorStr);
+            confess error($errorStr);
         }
     }
     debug("The connection to the database is successful");
@@ -174,5 +174,22 @@ ENDTXT
 ENDTXT
     $self->do($query);
 }
+
+##@method void insertCode($code)
+#@brief Insert or update a code in the code tables
+#@param string A three character code
+sub insertCode {
+    my ( $self, $code ) = @_;
+    my $query = q/
+      INSERT INTO `codes`
+        (`code`, `creation_date`, `update_date`) 
+        VALUES
+        (?, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())
+        ON DUPLICATE KEY UPDATE `update_date` = CURRENT_TIMESTAMP()
+      /;
+    $self->do( $query, $code );
+}
+
+
 
 1;
