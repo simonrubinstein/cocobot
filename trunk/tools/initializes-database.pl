@@ -34,14 +34,14 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
-use Cocoweb::DB;
+use Cocoweb::DB::Base;
 my $CLI;
 
 init();
 run();
 
 sub run {
-    my $DB = Cocoweb::DB->instance();
+    my $DB = Cocoweb::DB::Base->getInstance();
     $DB->connect();
     $DB->createTables();
     my ( $town_ref, $towns ) = $DB->getInitTowns();

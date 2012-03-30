@@ -1,12 +1,12 @@
-# @brief Handle SQLite database
-# @created 2012-03-11
-# @date 2012-03-27
+# @brief
+# @created 2012-03-30
+# @date 2012-03-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2012
+# copyright (c) Simon Rubinstein 2010-2012
 # Id: $Id$
-# Revision$
+# Revision: $Revision$
 # Date: $Date$
 # Author: $Author$
 # HeadURL: $HeadURL$
@@ -25,37 +25,39 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
-package Cocoweb::DB;
-use Cocoweb;
-use base 'Cocoweb::Object::Singleton';
-use Carp;
-use FindBin qw($Script);
-use DBI;
-use Data::Dumper;
-use Term::ANSIColor;
+package Cocoweb::DB::MySQL;
 use strict;
 use warnings;
+use Carp;
+use Data::Dumper;
+use DBI;
+use POSIX;
 
-#__PACKAGE__->attributes( 'dbh', 'filename', 'ISO3166Regex', 'town2id' );
+use Cocoweb;
+use base 'Cocoweb::DB::Base';
+
+__PACKAGE__->attributes( 'datasource', 'username', 'password'  );
 
 ##@method object init($class, $instance)
 sub init {
-    #my ( $class, $instance ) = @_;
-    #my $config = Cocoweb::Config->instance()->getConfigFile('database.conf');
-    #$instance->attributes_defaults(
-    #    'dbh'          => undef,
-    #    'filename'     => $config->getString('filename'),
-    #    'ISO3166Regex' => $config->getString('ISO-3166-1-alpha-2'),
-    #    'town2id'      => {}
-    #);
-    #return $instance;
-    die "This class is no longer used";
+    my ( $class, $instance ) = @_;
+    $instance->initializesMemberVars();
+    $instance->attributes_defaults(
+        'datasource' => '',
+        'username'   => '',
+        'password'   => '',
+    );
+    return $instance;
+}
 
+##@method readConfiguration($config)
+#@brief Initializes some variables from the configuration file.
+#@param $config A 'Cocoweb::Config::File' object
+sub setConfig {
+    my ( $self, $config) = @_;
+    $self->SUPER::setConfig($config);
 }
 
 
 
-
-
 1;
-
