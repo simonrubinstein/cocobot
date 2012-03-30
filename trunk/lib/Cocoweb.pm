@@ -30,12 +30,9 @@ use warnings;
 use Carp;
 use FindBin qw($Script $Bin);
 use Data::Dumper;
-use File::stat;
-use File::Temp;
-use IO::File;
 use POSIX;
+use Storable;
 use Cocoweb::Logger;
-
 our $VERSION   = '0.2001';
 our $AUTHORITY = 'TEST';
 our $isVerbose = 0;
@@ -45,14 +42,12 @@ my $logger;
 use base 'Exporter';
 our @EXPORT = qw(
   debug
-  dumpToFile
   error
-  fileToVars
   indexOf
   info
   message
   parseInt
-  substring 
+  substring
   randum
   trim
   warning
@@ -195,6 +190,7 @@ sub substring {
     $to = 0 if !defined $to;
     return substr( $string, $from ) if $to == 0;
     if ( $to < $from ) {
+
         # swap variables
         $from += $to;
         $to   = $from - $to;
@@ -203,74 +199,10 @@ sub substring {
     return substr( $string, $from, $to - $from );
 }
 
-##@method void dumpToFile($vars, $filename)
-#@brief Save a Perl data structure into a file
-#@param hashref $vars     A reference to a Perl structure:
-#                         an array or a hash table
-#@param string  $filename A filename
-sub dumpToFile {
-    my ( $vars, $filename ) = @_;
-    my @args = ( 'UNLINK' => 0 );
-    my ( $template, $suffix );
-    if ( $Script =~ m{^([^.]+)(\..+)}xms ) {
-        $template = $1 . '_';
-        $suffix   = $2;
-    }
-    else {
-        $template = $Script . '_';
-    }
-    if ( $filename =~ m{^(.+)/([^/]+)$} ) {
-        push @args, 'DIR', $1;
-        $template .= $2;
-    }
-    else {
-        $template .= $filename;
-    }
-    if ( $template =~ m{^(.+)(\..+)$} ) {
-        $template = $1;
-        $suffix   = $2;
-    }
-    else {
-        $suffix = '.pl' if !defined $suffix;
-    }
-    $template .= '_XXXXXXXXXXXXXX';
-    push @args, 'TEMPLATE', $template, 'SUFFIX', $suffix;
-    my $fh          = File::Temp->new(@args);
-    my $tmpFilename = $fh->filename();
-    debug(  'filename: '
-          . $filename
-          . '; template: '
-          . $template
-          . '; tmpFilename: '
-          . $tmpFilename );
-    $Data::Dumper::Purity = 1;
-    $Data::Dumper::Indent = 1;
-    $Data::Dumper::Terse  = 1;
-    print $fh Dumper $vars;
-    die error("close($filename) was failed: $!") if !close($fh);
-    die error("rename($tmpFilename, $filename) was failed: $!")
-      if !rename( $tmpFilename, $filename );
-}
-
-##@method void fileToVars($filename)
-sub fileToVars {
-    my ($filename) = @_;
-    my $stat = stat($filename);
-    die error("stat($filename) was failed: $!") if !defined $stat;
-    my $fh;
-    die error("open($filename) was failed: $!") if !open( $fh, '<', $filename );
-    my ( $contentSize, $content ) = ( 0, '' );
-    sysread( $fh, $content, $stat->size(), $contentSize );
-    close $fh;
-    my $vars = eval($content);
-    die error($@) if $@;
-    return $vars;
-}
-
 ##@method void BEGIN()
 sub BEGIN {
     my $include = $Bin;
-    $include =~s{/[^/]+$}{/lib};
+    $include =~ s{/[^/]+$}{/lib};
     push @INC, $include if -d $include;
     $logger = Cocoweb::Logger->instance();
 }

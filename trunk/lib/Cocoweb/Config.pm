@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-01-27
-# @date 2012-02-26
+# @date 2012-03-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -26,6 +26,9 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
 package Cocoweb::Config;
+use strict;
+use warnings;
+use FindBin qw($Script $Bin);
 use base 'Cocoweb::Object::Singleton';
 use Cocoweb;
 use Cocoweb::Config::File;
@@ -33,9 +36,7 @@ use Cocoweb::Config::Plaintext;
 use Carp;
 use Config::General;
 use Data::Dumper;
-use strict;
-use warnings;
-__PACKAGE__->attributes('pathnames');
+__PACKAGE__->attributes( 'pathnames', 'varDir' );
 my %instances;
 
 ##@method object init($class, $instance)
@@ -43,6 +44,7 @@ sub init {
     my ( $class, $instance ) = @_;
     $instance->pathnames(
         [ '../conf', './conf', '/etc/cocoweb', $ENV{'HOME'} . '/.cocoweb' ] );
+    $instance->varDir('');
     return $instance;
 }
 
@@ -78,6 +80,18 @@ sub getConfigFile {
         $instance = new Cocoweb::Config::File( 'pathname' => $configPath );
     }
     return $instances{$filename} = $instance;
+}
+
+##@method string getVarDir()
+sub getVarDir {
+    my ($self) = @_;
+    print Dumper $self;
+    return $self->varDir() if length( $self->varDir() ) > 0;
+    my $varDir = $Bin;
+    $varDir =~ s{/[^/]+$}{/var};
+    die "$varDir directory was not found" if !-d $varDir;
+    $self->varDir($varDir);
+    return $varDir;
 }
 
 1;
