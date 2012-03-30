@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-17
+# @date 2012-03-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -269,6 +269,9 @@ sub fileToVars {
 
 ##@method void BEGIN()
 sub BEGIN {
+    my $include = $Bin;
+    $include =~s{/[^/]+$}{/lib};
+    push @INC, $include if -d $include;
     $logger = Cocoweb::Logger->instance();
 }
 1;
