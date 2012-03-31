@@ -117,7 +117,7 @@ ENDTXT
     `premimum`      INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,
-    `logout_date`      DATETIME DEFAULT NULL)
+    `logout_date`   DATETIME DEFAULT NULL)
 ENDTXT
     $self->dbh()->do($query);
 
@@ -144,36 +144,41 @@ sub insertCode {
     my $query;
     my $codesCache_ref = $self->codesCache();
     my $id;
-    if (!exists $codesCache_ref->{$code}) {
+    if ( !exists $codesCache_ref->{$code} ) {
         $query = q/
         INSERT INTO `codes`
           (`code`, `creation_date`, `update_date`) 
           VALUES
           (?, ?, ?);
         /;
-        if ($self->dbh()->do( $query, undef, $code, time, time )) {
+        if ( $self->dbh()->do( $query, undef, $code, time, time ) ) {
             $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
             $codesCache_ref->{$code} = $id;
             return;
-        } elsif ($self->dbh()->err() != 19) {
-            confess error($self->dbh()->errstr()) 
         }
-        warning($self->dbh()->errstr());
+        elsif ( $self->dbh()->err() != 19 ) {
+            confess error( $self->dbh()->errstr() );
+        }
+        warning( $self->dbh()->errstr() );
         $id = 0;
-    } else {
+    }
+    else {
         $id = $codesCache_ref->{$code};
     }
     $query = 'UPDATE `codes` SET `update_date` = ? WHERE';
-    if ($id > 0) {
+    if ( $id > 0 ) {
         $query .= ' `id` = ?';
-        $self->do($query, time, $id);
-    } else {
+        $self->do( $query, time, $id );
+    }
+    else {
         $query .= ' `code` = ?';
-        $self->do($query, time, $code);
+        $self->do( $query, time, $code );
     }
 }
 
-
+sub offlineNickname {
+    my ( $self, $user ) = @_;
+}
 
 1;
 

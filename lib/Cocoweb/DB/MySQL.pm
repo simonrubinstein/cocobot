@@ -105,7 +105,7 @@ sub connect {
 sub dropTables {
     my $self = shift;
     foreach my $table ( 'codes', 'nicknames', 'ISPs', 'towns' ) {
-        $self->do( 'DROP TABLE `' . $table . '` IF EXISTS' );
+        $self->do( 'DROP TABLE IF EXISTS `' . $table . '`' );
     }
 }
 
@@ -188,8 +188,11 @@ sub insertCode {
         ON DUPLICATE KEY UPDATE `update_date` = CURRENT_TIMESTAMP()
       /;
     $self->do( $query, $code );
+    return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
 
-
+sub offlineNickname {
+    my ( $self, $user ) = @_;
+}
 
 1;

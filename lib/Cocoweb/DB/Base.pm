@@ -37,7 +37,8 @@ use Cocoweb;
 use Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 
-__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'codesCache');
+__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id',
+    'codesCache' );
 
 ##@method object getInstance()
 #@brief Returns an instance of an database object
@@ -63,8 +64,9 @@ sub initializesMemberVars {
     my ($self) = @_;
     $self->dbh(undef);
     $self->town2id( {} );
+    $self->ISP2id(  {} );
     $self->ISO3166Regex('');
-    $self->codesCache({});
+    $self->codesCache( {} );
 }
 
 ##@method readConfiguration($config)
@@ -161,7 +163,8 @@ sub getInitTowns {
     $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
     foreach my $town ( keys %$towns_ref ) {
-        confess error("The string $town is not valid") if $town !~ $ISO3166Regex;
+        confess error("The string $town is not valid")
+          if $town !~ $ISO3166Regex;
     }
     info( 'number of town codes: ' . scalar( keys %$towns_ref ) );
     return ( $towns_ref, $towns );
@@ -192,6 +195,7 @@ sub insertTown {
         (?);
       /;
     $self->do( $query, $name );
+    return $self->dbh()->last_insert_id( undef, undef, 'towns', undef );
 }
 
 ##@method void insertISP($name)
@@ -206,8 +210,8 @@ sub insertISP {
         (?);
       /;
     $self->do( $query, $name );
+    return $self->dbh()->last_insert_id( undef, undef, 'ISPs', undef );
 }
-
 
 ##@method void insertCode($code)
 #@brief Insert or update a code in the code tables
@@ -222,6 +226,27 @@ sub initialize {
     my ($self) = @_;
     $self->connect();
     $self->getAllTowns();
+    $self->getAllIPSs();
+}
+
+##@method
+sub getTown {
+    my ( $self, $town ) = @_;
+    my $town2id_ref = $self->town2id();
+    return $town2id_ref->{$town} if exists $town2id_ref->{$town};
+    my $id = $self->insertTown($town);
+    $town2id_ref->{$town} = $id;
+    return $id;
+}
+
+##@method
+sub getISP {
+    my ( $self, $ISP ) = @_;
+    my $ISP2id_ref = $self->ISP2id();
+    return $ISP2id_ref->{$ISP} if exists $ISP2id_ref->{$ISP};
+    my $id = $self->insertISP($ISP);
+    $ISP2id_ref->{$ISP} = $id;
+    return $id;
 }
 
 ##@method void getAllTowns()
@@ -233,6 +258,41 @@ sub getAllTowns {
     while ( ( $id, $town ) = $sth->fetchrow_array() ) {
         $town2id_ref->{$town} = $id;
     }
+}
+
+##@method void getAllISPs()
+sub getAllIPSs {
+    my ($self) = @_;
+    my $sth = $self->execute('SELECT `id`, `name` FROM `ISPs`');
+    my ( $id, $ISP );
+    my $ISP2id_ref = $self->ISP2id();
+    while ( ( $id, $ISP ) = $sth->fetchrow_array() ) {
+        $ISP2id_ref->{$ISP} = $id;
+    }
+}
+
+sub addNewNickname {
+    my ( $self, $user ) = @_;
+
+    my $townId = $self->getTown( $user->town() );
+    my $ISPid  = $self->getISP( $user->ISP() );
+
+    croak error('The addNewNickname() method must be overridden!');
+}
+
+sub updateNickname {
+    my ( $self, $user ) = @_;
+    croak error('The updateNickname() method must be overridden!');
+}
+
+sub offlineNickname {
+    my ( $self, $user ) = @_;
+    croak error('The offlineNickname() method must be overridden!');
+}
+
+sub updateNicknameDate {
+    my ( $self, $user ) = @_;
+    croak error('The updateNicknameDate() method must be overridden!');
 }
 
 1;
