@@ -126,15 +126,15 @@ sub debugQuery {
 ##@method object select ($query, $values_ref)
 #@brief Select raws from table(s)
 #@input string $query SQL Query
-#@input arrayref $values_ref Array ref of values
+#@input array $values_ref Array of values
 #@return DBI::sth object
 sub execute {
-    my ( $self, $query, $values_ref ) = @_;
-    $values_ref = [] if !defined $values_ref;
+    my $self  = shift;
+    my $query = shift;
     my $sth = $self->dbh()->prepare($query)
       or croak error( "prepare($query) fail: " . $self->dbh()->errstr() );
-    $self->debugQuery( $query, \@$values_ref );
-    my $res = $sth->execute(@$values_ref);
+    $self->debugQuery( $query, \@_ );
+    my $res = $sth->execute(@_);
     croak error( "$query failed!" . " errstr: " . $self->dbh()->errstr() )
       if !$res;
     return $sth;
@@ -142,6 +142,7 @@ sub execute {
 
 ##@method void do($query)
 #@input string $query SQL Query
+#@input array $values_ref Array of values
 sub do {
     my $self  = shift;
     my $query = shift;
@@ -229,7 +230,7 @@ sub initialize {
     $self->getAllIPSs();
 }
 
-##@method
+##@method integer getTown($town)
 sub getTown {
     my ( $self, $town ) = @_;
     my $town2id_ref = $self->town2id();
@@ -239,7 +240,7 @@ sub getTown {
     return $id;
 }
 
-##@method
+##@method integer getISP($ISP)
 sub getISP {
     my ( $self, $ISP ) = @_;
     my $ISP2id_ref = $self->ISP2id();

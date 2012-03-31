@@ -55,6 +55,7 @@ my $bot;
 
 ##@method void run()
 sub run {
+    $DB->initialize();
     $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
     $bot->requestAuthentication();
     my $usersList = $bot->requestUsersList();

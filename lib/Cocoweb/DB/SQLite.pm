@@ -154,26 +154,24 @@ sub insertCode {
         if ( $self->dbh()->do( $query, undef, $code, time, time ) ) {
             $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
             $codesCache_ref->{$code} = $id;
-            return;
+            return $id;
         }
         elsif ( $self->dbh()->err() != 19 ) {
             confess error( $self->dbh()->errstr() );
         }
         warning( $self->dbh()->errstr() );
         $id = 0;
+        my $sth = $self->execute('SELECT `id` FROM `codes` WHERE `code` = ?  ', $code);
+        my $result = $sth->fetchrow_hashref();
+        $id = $result->{'id'};
+        $codesCache_ref->{$code} = $id;
     }
     else {
         $id = $codesCache_ref->{$code};
     }
-    $query = 'UPDATE `codes` SET `update_date` = ? WHERE';
-    if ( $id > 0 ) {
-        $query .= ' `id` = ?';
-        $self->do( $query, time, $id );
-    }
-    else {
-        $query .= ' `code` = ?';
-        $self->do( $query, time, $code );
-    }
+    $query = 'UPDATE `codes` SET `update_date` = ? WHERE `id` = ?';
+    $self->do( $query, time, $id );
+    return $id; 
 }
 
 sub offlineNickname {
