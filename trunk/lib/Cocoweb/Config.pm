@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-01-27
-# @date 2012-03-30
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -85,11 +85,10 @@ sub getConfigFile {
 ##@method string getVarDir()
 sub getVarDir {
     my ($self) = @_;
-    print Dumper $self;
     return $self->varDir() if length( $self->varDir() ) > 0;
     my $varDir = $Bin;
     $varDir =~ s{/[^/]+$}{/var};
-    die "$varDir directory was not found" if !-d $varDir;
+    confess "$varDir directory was not found" if !-d $varDir;
     $self->varDir($varDir);
     return $varDir;
 }

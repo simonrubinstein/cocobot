@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-28
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -35,7 +35,7 @@ use Cocoweb;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
-__PACKAGE__->attributes('logUsersListInDB');
+__PACKAGE__->attributes( 'logUsersListInDB', 'DB' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -45,14 +45,18 @@ sub init {
       ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
       ? 1
       : 0;
+    my $DB;
+    $DB = Cocoweb::DB::Base->getInstance() if $logUsersListInDB;
     $self->attributes_defaults(
         'all'              => {},
-        'logUsersListInDB' => $logUsersListInDB
+        'logUsersListInDB' => $logUsersListInDB,
+        'DB'               => $DB
     );
 }
 
 ##@method void populate($myage, $mysex, $citydio, $mynickID,
 #                       $mynickname, $myXP, $mystat, $myver)
+#@brief Adds or updates a user from the list
 sub populate {
     my (
         $self,       $myage, $mysex,  $citydio, $mynickID,
@@ -80,6 +84,7 @@ sub populate {
     }
 }
 
+##@method void removeUser($userWanted)
 sub removeUser {
     my ( $self, $userWanted ) = @_;
     my $id       = $userWanted->mynickID();
@@ -93,6 +98,8 @@ sub removeUser {
               . ' times' );
 
         delete $user_ref->{$id};
+        $self->DB()->offlineNickname($user) if $self->logUsersListInDB();
+
     }
     else {
         warning('The user "'
@@ -100,6 +107,30 @@ sub removeUser {
               . '" could not be removed from the list' );
     }
 
+}
+
+sub addOrUpdateInDB {
+    my ($self) = @_;
+    if ( !$self->logUsersListInDB() ) {
+        warning('The record in the database is not enabled');
+        return;
+    }
+    my $user_ref = $self->all();
+    my @users    = ();
+    foreach my $id ( keys %$user_ref ) {
+        my $user = $user_ref->{$id};
+        next !$user->isView();
+        if ( $user->isNew() or $user->hasChange() ) {
+            $self->DB()->addNewNickname($user);
+        }
+        elsif ( $user->updateDbRecord() ) {
+            $self->DB()->updateNickname($user);
+        }
+        else {
+            $self->DB()->updateNicknameDate($user);
+        }
+
+    }
 }
 
 ##@method arrayref getUsersNotViewed()

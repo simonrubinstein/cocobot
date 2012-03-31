@@ -34,7 +34,7 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount' );
+__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount', 'updateDbRecord');
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -70,7 +70,8 @@ sub init {
         'isNew'       => 1,
         'isView'      => 1,
         'hasChange'   => 0,
-        'notViewCount' => 0
+        'notViewCount' => 0,
+        'updateDbRecord' => 0
     );
 }
 
@@ -78,9 +79,12 @@ sub init {
 sub update {
     my ( $self, %args ) = @_;
     $self->hasChange(0);
+    $self->updateDbRecord(0);
     foreach my $name ( keys %args ) {
         my $newVal = $args{$name};
-        if ( $self->$name() ne $newVal ) {
+        my $oldVal = $self->$name();
+        if ( $oldVal ne $newVal ) {
+            $self->updateDbRecord(1);
             info(   $self->mynickname()
                   . ': Replace "'
                   . $name
@@ -88,6 +92,17 @@ sub update {
                   . $self->$name() . ' to '
                   . $newVal );
             $self->$name($newVal);
+            next if $name eq 'mystat' or $name eq 'myXP' and $name eq 'myver';
+            if ($name eq 'mysex') {
+                if (($oldVal == 1 and $newVal == 6) or (($oldVal == 6 and $newVal == 1))) {
+                    info("Sex is always masculine");
+                    next;
+                }
+                if (($oldVal == 2 and $newVal == 7) or ($oldVal == 7 and $newVal == 2)) {
+                    info("Sex is always feminine.");
+                    next;
+                }
+            }
             $self->hasChange(1);
         }
     }
