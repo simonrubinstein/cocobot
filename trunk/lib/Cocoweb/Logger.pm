@@ -86,9 +86,11 @@ sub _log {
     }
     elsif ( $priority eq 'info' ) {
         print STDOUT colored( $string, 'green' );
+        #print STDOUT $string;
     }
     elsif ( $priority eq 'debug' ) {
         print STDOUT colored( $string, 'bold blue' );
+        #print STDOUT $string;
     }
     else {
         print STDOUT $string;

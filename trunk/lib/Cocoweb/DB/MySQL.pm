@@ -132,24 +132,26 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `nicknames` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `login`         VARCHAR(16) NOT NULL,
+    `id_codes`      INTEGER NOT NULL,
+    `id_ISP`        INTEGER NOT NULL,
+    `id_town`       INTEGER NOT NULL,
+    `nickname`      VARCHAR(16) NOT NULL,
+    `nickid`        INTEGER NOT NULL,
     `sex`           INTEGER NOT NULL,
     `old`           INTEGER NOT NULL,
     `city`          INTEGER NOT NULL,
-    `nickid`        INTEGER NOT NULL,
     `niv`           INTEGER NOT NULL,
     `ok`            INTEGER NOT NULL,
     `stat`          INTEGER NOT NULL,
-    `ISP`           INTEGER NOT NULL,
     `status`        INTEGER NOT NULL,
     `level`         INTEGER NOT NULL,
     `since`         INTEGER NOT NULL,
-    `town`          INTEGER NOT NULL,
     `premimum`      INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,
     `logout_date`   DATETIME DEFAULT NULL,
-     PRIMARY KEY  (`id`)
+     PRIMARY KEY  (`id`),
+     UNIQUE KEY `id` (`id`)
     )
 ENDTXT
     $self->do($query);

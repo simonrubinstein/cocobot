@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-03-30
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -101,7 +101,10 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `nicknames` (
     `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
-    `login`         VARCHAR(16) NOT NULL,
+    `id_codes`      INTEGER NOT NULL,
+    `id_town`       INTEGER NOT NULL,
+    `id_ISP`        INTEGER NOT NULL,
+    `nickname`      VARCHAR(16) NOT NULL,
     `sex`           INTEGER NOT NULL,
     `old`           INTEGER NOT NULL,
     `city`          INTEGER NOT NULL,
@@ -109,11 +112,9 @@ ENDTXT
     `niv`           INTEGER NOT NULL,
     `ok`            INTEGER NOT NULL,
     `stat`          INTEGER NOT NULL,
-    `ISP`           INTEGER NOT NULL,
     `status`        INTEGER NOT NULL,
     `level`         INTEGER NOT NULL,
     `since`         INTEGER NOT NULL,
-    `town`          INTEGER NOT NULL,
     `premimum`      INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,

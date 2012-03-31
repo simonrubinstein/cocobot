@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-25
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,13 +34,14 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount', 'updateDbRecord');
+__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount',
+    'updateDbRecord' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    die error("Missing argument")
+    confess error("Missing argument")
       if !exists $args{'mynickname'}
           or !exists $args{'myage'}
           or !exists $args{'mysex'}
@@ -48,35 +49,38 @@ sub init {
           or !exists $args{'citydio'}
           or !exists $args{'mystat'}
           or !exists $args{'mystat'};
-
+    debug(  'Creates new user "'
+          . $args{'mynickname'}
+          . '" (mynickID: '
+          . $args{'mynickID'}
+          . ')' );
     $self->attributes_defaults(
-        'mynickname'  => $args{'mynickname'},
-        'myage'       => $args{'myage'},
-        'mysex'       => $args{'mysex'},
-        'mynickID'    => $args{'mynickID'},
-        'citydio'     => $args{'citydio'},
-        'mystat'      => $args{'mystat'},
-        'myXP'        => $args{'myXP'},
-        'myver'       => $args{'myver'},
-        'infuzString' => '',
-        'infuz'       => '',
-        'code'        => '',
-        'ISP'         => '',
-        'status'      => 0,
-        'premium'     => 0,  
-        'level'       => 0,
-        'since'       => 0,
-        'town'        => '',
-        'isNew'       => 1,
-        'isView'      => 1,
-        'hasChange'   => 0,
-        'notViewCount' => 0,
+        'mynickname'     => $args{'mynickname'},
+        'myage'          => $args{'myage'},
+        'mysex'          => $args{'mysex'},
+        'mynickID'       => $args{'mynickID'},
+        'citydio'        => $args{'citydio'},
+        'mystat'         => $args{'mystat'},
+        'myXP'           => $args{'myXP'},
+        'myver'          => $args{'myver'},
+        'infuz'          => '',
+        'code'           => '',
+        'ISP'            => '',
+        'status'         => 0,
+        'premium'        => 0,
+        'level'          => 0,
+        'since'          => 0,
+        'town'           => '',
+        'isNew'          => 1,
+        'isView'         => 1,
+        'hasChange'      => 0,
+        'notViewCount'   => 0,
         'updateDbRecord' => 0
     );
 }
 
-##@method boolean update(%args)
-sub update {
+##@method boolean checkAndupdate(%args)
+sub checkAndupdate {
     my ( $self, %args ) = @_;
     $self->hasChange(0);
     $self->updateDbRecord(0);
@@ -93,12 +97,16 @@ sub update {
                   . $newVal );
             $self->$name($newVal);
             next if $name eq 'mystat' or $name eq 'myXP' and $name eq 'myver';
-            if ($name eq 'mysex') {
-                if (($oldVal == 1 and $newVal == 6) or (($oldVal == 6 and $newVal == 1))) {
+            if ( $name eq 'mysex' ) {
+                if (   ( $oldVal == 1 and $newVal == 6 )
+                    or ( ( $oldVal == 6 and $newVal == 1 ) ) )
+                {
                     info("Sex is always masculine");
                     next;
                 }
-                if (($oldVal == 2 and $newVal == 7) or ($oldVal == 7 and $newVal == 2)) {
+                if (   ( $oldVal == 2 and $newVal == 7 )
+                    or ( $oldVal == 7 and $newVal == 2 ) )
+                {
                     info("Sex is always feminine.");
                     next;
                 }
@@ -109,8 +117,17 @@ sub update {
     return $self->hasChange();
 }
 
+##@method void update(%args)
+sub update {
+    my ( $self, %args ) = @_;
+    foreach my $name ( keys %args ) {
+        $self->$name( $args{$name} );
+    }
+}
+
+##@method void incNotViewCount()
 sub incNotViewCount {
-    my $self = shift;
+    my $self         = shift;
     my $notViewCount = $self->notViewCount();
     $notViewCount++;
     $self->notViewCount($notViewCount);

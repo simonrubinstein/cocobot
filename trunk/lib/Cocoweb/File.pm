@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2012-03-30
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -89,7 +89,10 @@ sub getFileTemp {
     }
 }
 
-##@methoid void serializeData($data, $filename)
+##@method void serializeData($data, $filename)
+#@brief Serialize Perl data structure in a file
+#@param hashref $data The data to be serialized
+#@param string filename A full pathname of a file
 sub serializeData {
     my ( $data, $filename ) = @_;
     my $tmpFilename = getFileTemp($filename, 0);  
@@ -101,12 +104,15 @@ sub serializeData {
         if !defined $res or $@; 
     die error("rename($tmpFilename, $filename) was failed: $!")
       if !rename( $tmpFilename, $filename );
+    debug($filename . ' file successfully serialized');
 }
 
 ##@method hashref deserializeHash($filename)
+#@param string filename A full pathname of a file
+#@return hashref The hash contained in the file
 sub deserializeHash {
     my ($filename) = @_;
-    my $data = \%{retrieve ($filename)};
+    my $data = \%{Storable::retrieve ($filename)};
     return $data;
 }
 
@@ -128,6 +134,7 @@ sub dumpToFile {
 }
 
 ##@method void fileToVars($filename)
+#@param string filename A full pathname of a file
 sub fileToVars {
     my ($filename) = @_;
     my $stat = stat($filename);

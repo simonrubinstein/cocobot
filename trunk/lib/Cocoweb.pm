@@ -38,6 +38,7 @@ our $AUTHORITY = 'TEST';
 our $isVerbose = 0;
 our $isDebug   = 0;
 my $logger;
+my $startTime;
 
 use base 'Exporter';
 our @EXPORT = qw(
@@ -201,9 +202,19 @@ sub substring {
 
 ##@method void BEGIN()
 sub BEGIN {
+    $startTime = time;
     my $include = $Bin;
     $include =~ s{/[^/]+$}{/lib};
     push @INC, $include if -d $include;
     $logger = Cocoweb::Logger->instance();
 }
+
+sub END {
+    message("execution time: " . (time - $startTime) . ' seconds');
+
+}
+
+
+
+
 1;
