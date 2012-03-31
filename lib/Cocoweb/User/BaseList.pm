@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-24
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -53,17 +53,21 @@ sub clearFlags {
         $user->isNew(0);
         $user->isView(0);
         $user->hasChange(0);
+        $user->updateDbRecord(0);
     }
 }
 
 ##@method object getUser($id)
+#@brief Returns a user object from its id or nickname id
+#@return object A 'Cocoweb::User' object
 sub getUser {
     my ( $self, $id ) = @_;
     my $user_ref = $self->all();
-    if (! exists $user_ref->{$id}) {
+    if ( !exists $user_ref->{$id} ) {
         warning("The user ID $id has not been found");
         return;
-    } else {
+    }
+    else {
         return $user_ref->{$id};
     }
 }

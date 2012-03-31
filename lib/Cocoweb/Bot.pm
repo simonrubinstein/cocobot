@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-29
+# @date 2012-03-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -54,6 +54,14 @@ sub init {
         'user'    => $user,
         'request' => $request,
     );
+}
+
+##@method object getUsersList()
+#@brief Returns list of users
+#@return object A 'Cocoweb::User::List' object
+sub getUsersList {
+    my ($self)  = @_;
+    return $self->request()->usersList();
 }
 
 ##@method void requestAuthentication()

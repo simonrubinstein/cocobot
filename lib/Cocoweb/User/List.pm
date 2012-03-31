@@ -32,6 +32,7 @@ use Data::Dumper;
 use POSIX;
 
 use Cocoweb;
+use Cocoweb::File;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
@@ -73,11 +74,17 @@ sub populate {
         'mystat'     => $mystat,
         'myver'      => $myver
     );
+    debug("populate $mynickname / $mynickID");
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
-        $user->update(@args);
-        $user->isNew(0);
-        $user->isView(1);
+        debug("The user $mynickname already exists: " . $user->isNew());
+        if ($user->isNew()) {
+            $user->update(@args);
+        } else {
+            $user->checkAndupdate(@args);
+            #$user->isNew(0);
+            $user->isView(1);
+        }
     }
     else {
         $users_ref->{$mynickID} = Cocoweb::User->new(@args);
@@ -171,6 +178,35 @@ sub checkIfNicknameExists {
     }
     debug("The pseudonym '$pseudonym' was not found");
     return;
+}
+
+##@method string getSerializedFilename()
+#@brief Returns the name of the serialized file
+#@return string Fullpathname of the serialized file
+sub getSerializedFilename {
+    my $self = shift;
+    my $filename = lc(ref($self));
+    $filename =~s{[^a-z0-9]+}{-}g;
+    $filename = Cocoweb::Config->instance()->getVarDir() . '/' . $filename . '.data';
+    return $filename;
+}
+
+##@method void serialize()
+#@brief Serialize the list of users in a file
+sub serialize {
+   my $self = shift;
+   my $user_ref = $self->all();
+   my $filename = $self->getSerializedFilename();
+   serializeData($user_ref, $filename);
+}
+
+##@method deserialize()
+#@brief Deserializes the list of users from a file
+sub deserialize {
+   my $self = shift;
+   my $filename = $self->getSerializedFilename();
+   my $user_ref =deserializeHash($filename);
+   $self->all($user_ref);
 }
 
 1
