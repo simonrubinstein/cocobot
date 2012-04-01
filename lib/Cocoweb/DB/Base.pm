@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-03-30
+# @date 2012-04-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -277,7 +277,8 @@ sub addNewNickname {
 
     my $townId = $self->getTown( $user->town() );
     my $ISPid  = $self->getISP( $user->ISP() );
-    debug("townId: $townId; ISPid: $ISPid ");
+    my $codeId = $self->insertCode($user->code());
+    debug("townId: $townId; ISPid: $ISPid; codeId: $codeId ");
 
     #croak error('The addNewNickname() method must be overridden!');
 }

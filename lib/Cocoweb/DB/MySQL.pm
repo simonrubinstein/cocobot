@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-03-30
+# @date 2012-04-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -104,7 +104,7 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'codes', 'nicknames', 'ISPs', 'towns' ) {
+    foreach my $table ( 'nicknames', 'codes', 'ISPs', 'towns' ) {
         $self->do( 'DROP TABLE IF EXISTS `' . $table . '`' );
     }
 }
@@ -125,34 +125,7 @@ sub createTables {
     PRIMARY KEY  (`id`),
     UNIQUE KEY `id` (`id`),
     UNIQUE KEY `code` (`code`)
-    )
-ENDTXT
-    $self->do($query);
-
-    $query = <<ENDTXT;
-    CREATE TABLE IF NOT EXISTS `nicknames` (
-    `id`            int(10) unsigned NOT NULL auto_increment, 
-    `id_codes`      INTEGER NOT NULL,
-    `id_ISP`        INTEGER NOT NULL,
-    `id_town`       INTEGER NOT NULL,
-    `nickname`      VARCHAR(16) NOT NULL,
-    `nickid`        INTEGER NOT NULL,
-    `sex`           INTEGER NOT NULL,
-    `old`           INTEGER NOT NULL,
-    `city`          INTEGER NOT NULL,
-    `niv`           INTEGER NOT NULL,
-    `ok`            INTEGER NOT NULL,
-    `stat`          INTEGER NOT NULL,
-    `status`        INTEGER NOT NULL,
-    `level`         INTEGER NOT NULL,
-    `since`         INTEGER NOT NULL,
-    `premimum`      INTEGER NOT NULL,
-    `creation_date` DATETIME NOT NULL,
-    `update_date`   DATETIME NOT NULL,
-    `logout_date`   DATETIME DEFAULT NULL,
-     PRIMARY KEY  (`id`),
-     UNIQUE KEY `id` (`id`)
-    )
+    ) ENGINE=InnoDB
 ENDTXT
     $self->do($query);
 
@@ -162,7 +135,7 @@ ENDTXT
     `name`          VARCHAR(255) NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
-    )
+    ) ENGINE=InnoDB
 ENDTXT
     $self->do($query);
 
@@ -172,9 +145,46 @@ ENDTXT
     `name`          VARCHAR(255) NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
-    )
+    ) ENGINE=InnoDB
 ENDTXT
     $self->do($query);
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `nicknames` (
+    `id`            int(10) unsigned NOT NULL auto_increment, 
+    `id_codes`      int(10) unsigned NOT NULL,
+    `id_ISP`        int(10) unsigned NOT NULL,
+    `id_town`       int(10) unsigned NOT NULL,
+    `nickname`      VARCHAR(16) NOT NULL,
+    `nickid`        int(10) unsigned NOT NULL,
+    `sex`           int(10) unsigned NOT NULL,
+    `old`           int(10) unsigned NOT NULL,
+    `city`          int(10) unsigned NOT NULL,
+    `niv`           int(10) unsigned NOT NULL,
+    `ok`            int(10) unsigned NOT NULL,
+    `stat`          int(10) unsigned NOT NULL,
+    `status`        int(10) unsigned NOT NULL,
+    `level`         int(10) unsigned NOT NULL,
+    `since`         int(10) unsigned NOT NULL,
+    `premimum`      int(10) unsigned NOT NULL,
+    `creation_date` DATETIME NOT NULL,
+    `update_date`   DATETIME NOT NULL,
+    `logout_date`   DATETIME DEFAULT NULL,
+     PRIMARY KEY  (`id`),
+     UNIQUE KEY `id` (`id`),
+     KEY `nicknames_FKIndex1` (`id_codes`),
+     CONSTRAINT `nicknames_ibfk_1` FOREIGN KEY (`id_codes`)
+       REFERENCES `codes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+     KEY `nicknames_FKIndex2` (`id_ISP`),
+     CONSTRAINT `nicknames_ibfk_2` FOREIGN KEY (`id_ISP`)
+       REFERENCES `ISPs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+     KEY `nicknames_FKIndex3` (`id_town`),
+     CONSTRAINT `nicknames_ibfk_3` FOREIGN KEY (`id_town`)
+       REFERENCES `towns` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE=InnoDB
+ENDTXT
+    $self->do($query);
+
 }
 
 ##@method void insertCode($code)
@@ -192,6 +202,22 @@ sub insertCode {
     $self->do( $query, $code );
     return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
+
+sub insertNickname {
+    my ( $self, $user ) = @_;
+    my $query = q/
+      INSERT INTO `codes`
+        (`id_codes`, `id_ISP`, `id_town`, `nickname`, `nickid`, `sex`,
+          `old`, `city`, `niv`, `ok`, `stat`, `status`, `level`, `since`,
+          `premium`, `creation_date`, `update_date`) 
+        VALUES
+        (?, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())
+ 
+        /;
+
+}
+
+
 
 sub offlineNickname {
     my ( $self, $user ) = @_;
