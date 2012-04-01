@@ -113,6 +113,7 @@ FR- Issy-les-moulineaux
 FR- La Defense
 FR- La Garenne-colombes
 FR- Le Plessis
+FR- Le Plessis-robinson
 FR- Levallois-perret
 FR- Malabry
 FR- Malakoff
@@ -254,6 +255,7 @@ FR- Garges-les-gonesse
 FR- Gonesse
 FR- Goussainville
 FR- Groslay
+FR- Haravilliers
 FR- Herblay
 FR- Jouy-le-moutier
 FR- L isle-adam
@@ -531,6 +533,7 @@ FR- Virieu-le-grand
 # 02: Aisne
 FR- Anizy-le-chateau
 FR- Annois
+FR- Athies-sous-laon
 FR- Beuvardes
 FR- Bohain
 FR- Bourg-et-comin
@@ -720,6 +723,7 @@ FR- Peynier
 FR- Peypin
 FR- Port-de-bouc
 FR- Roquevaire
+FR- Rousset 
 FR- Saint-cannat
 FR- Saint-chamas
 FR- Saint-mitre-les-remparts
@@ -857,6 +861,7 @@ FR- Saulon-la-chapelle
 FR- Selongey
 FR- Semur
 FR- Talant
+FR- Vitteaux
 
 # 22: Cotes-d'Armor
 FR- Brehand
@@ -864,6 +869,7 @@ FR- Dinan
 FR- La Bouillie
 FR- Lamballe
 FR- Loudeac
+FR- Mur-de-bretagne
 FR- Plerin
 FR- Ploufragan
 FR- Plouha
@@ -956,6 +962,7 @@ FR- Saint-philbert-sur-risle
 FR- Saint-pierre-de-cormeilles
 FR- Saint-pierre-la-garenne
 FR- Tilleul
+FR- Ventes
 FR- Vernon
 
 # 28: Eure-et-Loir
@@ -965,6 +972,7 @@ FR- Bu
 FR- Chartres
 FR- Chateaudun
 FR- Cloyes-sur-le-loir
+FR- Coulombs
 FR- Dammarie
 FR- Dreux
 FR- Gallardon
@@ -1124,6 +1132,7 @@ FR- Gignac
 FR- Grabels
 FR- Jacou
 FR- Juvignac
+FR- La Grande Motte
 FR- Lattes
 FR- Laverune
 FR- Le Caylar
@@ -1242,6 +1251,7 @@ FR- Seyssinet-pariset
 FR- Tullins
 FR- Valencin
 FR- Varces
+FR- Vaulx-milieu 
 FR- Vienne
 FR- Vif
 FR- Villefontaine
@@ -1273,6 +1283,7 @@ FR- Moliets-et-maa
 FR- Mont-de-marsan
 FR- Peyrehorade
 FR- Rion-des-landes
+FR- Saint-pandelon
 FR- Saint-vincent-de-tyrosse
 FR- Seignosse
 FR- Sort-en-chalosse
@@ -1319,6 +1330,7 @@ FR- Violay
 # 43: Haute-Loire
 FR- Allegre
 FR- Aurec
+FR- Brioude
 FR- Coubon
 FR- Langeac
 FR- Le Puy
@@ -1408,6 +1420,7 @@ FR- Saint-jean-de-la-ruelle
 FR- Saint-jean-le-blanc
 FR- Saran
 FR- Sermaises
+FR- Vienne-en-val
 FR- Villemandeur
 
 # 46: Lot
@@ -1549,6 +1562,7 @@ FR- Laneuveville-devant-nancy
 FR- Laxou
 FR- Leyr
 FR- Liverdun
+FR- Luneville
 FR- Malzeville
 FR- Maxeville
 FR- Moineville
@@ -1627,6 +1641,7 @@ FR- Grosbliederstroff
 FR- Hagondange
 FR- Hayange
 FR- Hombourg-haut
+FR- Illange
 FR- La Maxe
 FR- Longeville-les-saint-avold
 FR- Macheren
@@ -1829,6 +1844,7 @@ FR- Mortefontaine
 FR- Nanteuil-le-haudouin
 FR- Neufchelles
 FR- Noailles
+FR- Nogent-sur-oise
 FR- Noyon
 FR- Orvillers-sorel
 FR- Passel
@@ -1912,6 +1928,7 @@ FR- Lillers
 FR- Longfosse
 FR- Longuenesse
 FR- Loos-en-gohelle
+FR- Marck
 FR- Marles-les-mines
 FR- Marquise
 FR- Mazingarbe
@@ -1958,6 +1975,7 @@ FR- Courpiere
 FR- Egliseneuve-des-liards
 FR- Entraigues
 FR- Issoire
+FR- Lempdes
 FR- Lezoux
 FR- Malintrat
 FR- Moissat
@@ -2098,6 +2116,7 @@ FR- Genas
 FR- Genay
 FR- Givors
 FR- Lyon
+FR- Messimy
 FR- Meyzieu
 FR- Millery
 FR- Mions
@@ -2412,6 +2431,7 @@ FR- Le Poire
 FR- Les Epesses
 FR- Les Essarts
 FR- Les Herbiers
+FR- Les Lucs
 FR- Mareuil-sur-lay
 FR- Palluau
 FR- Rocheserviere
@@ -2540,6 +2560,7 @@ RE-
 RE- Bois De Nefles
 RE- Bras-panon
 RE- Entre-deux
+RE- Etang-sale
 RE- La Possession
 RE- La Riviere
 RE- Le Tampon
