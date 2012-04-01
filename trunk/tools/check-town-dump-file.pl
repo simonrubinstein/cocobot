@@ -2,7 +2,7 @@
 # @brief This script checks that the town codes froms '_townCount.pl'
 #        file exist in the file 'towns.txt'.
 # @created 2012-03-11
-# @date 2012-03-19
+# @date 2012-04-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,8 +36,9 @@ use utf8;
 no utf8;
 use lib "../lib";
 use Cocoweb;
+use Cocoweb::File;
 use Cocoweb::CLI;
-use Cocoweb::DB;
+use Cocoweb::DB::Base;
 my $CLI;
 my $DB;
 my $dumpTownsFilename = '_townCount.pl';
@@ -96,10 +97,10 @@ sub run {
     info("The $Bin script was completed successfully.");
 }
 
-## @method void init()
+##@method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    $DB  = Cocoweb::DB->instance();
+    $DB = Cocoweb::DB::Base->getInstance();
     my $opt_ref = $CLI->getMinimumOpts();
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
@@ -107,8 +108,8 @@ sub init {
     }
 }
 
-## @method void HELP_MESSAGE()
-# Display help message
+##@method void HELP_MESSAGE()
+#@brief Display help message
 sub HELP_MESSAGE {
     print <<ENDTXT;
 This script checks that the town codes froms '_townCount.pl' file
@@ -120,12 +121,9 @@ Usage:
 ENDTXT
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-17) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-04-01');
 }
 

@@ -11,6 +11,7 @@ Assistance Publique-Hopitaux de Paris
 ASTRIUM SAS
 Auvea Ingenierie
 AXA-TECH
+AXIONE S.A.S.
 B3G Telecom
 Bayanat Al-Oula For Network Services
 Bouygues Telecom
@@ -77,6 +78,7 @@ Teloise
 TRINAPS
 TUTOR S.A.
 Universite de Limoges
+Universite Pierre et Marie Curie
 Verizon France SAS
 VIALIS - REGIE MUNICIPALE DE COLMAR
 Websense Hosted R{D Ltd.

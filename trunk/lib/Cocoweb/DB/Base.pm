@@ -277,8 +277,9 @@ sub addNewNickname {
 
     my $townId = $self->getTown( $user->town() );
     my $ISPid  = $self->getISP( $user->ISP() );
+    debug("townId: $townId; ISPid: $ISPid ");
 
-    croak error('The addNewNickname() method must be overridden!');
+    #croak error('The addNewNickname() method must be overridden!');
 }
 
 sub updateNickname {
