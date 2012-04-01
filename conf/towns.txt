@@ -47,6 +47,7 @@ FR- Grigny
 FR- Igny
 FR- Juvisy-sur-orge
 FR- Lardy
+FR- Les Molieres
 FR- Leudeville
 FR- Limours
 FR- Linas
@@ -305,6 +306,7 @@ FR- Bellot
 FR- Bois-le-roi
 FR- Boissise-le-roi
 FR- Bombon
+FR- Bray-sur-seine
 FR- Brie-comte-robert
 FR- Brou-sur-chantereine
 FR- Bussy-saint-georges
@@ -334,10 +336,13 @@ FR- Cregy-les-meaux
 FR- Crouy-sur-ourcq
 FR- Dammartin-en-goele
 FR- Dampmart
+FR- Donnemarie
 FR- Emerainville
 FR- Esbly
 FR- Esmans
+FR- Faremoutiers
 FR- Ferolles-attilly
+FR- Fontaine-le-port
 FR- Fontainebleau
 FR- Fontenay-tresigny
 FR- Fublaines
@@ -631,6 +636,7 @@ FR- Charleville-mezieres
 FR- Douzy
 FR- Haraucourt
 FR- Linay
+FR- Nouzonville
 FR- Rethel
 FR- Rocroi
 FR- Sedan
@@ -674,6 +680,7 @@ FR- Sainte-valiere
 FR- Sigean
 
 # 12: Aveyron
+FR- Baraqueville
 FR- Bozouls
 FR- Capdenac-gare
 FR- Castanet
@@ -842,6 +849,7 @@ FR- Les Maillys
 FR- Longvic
 FR- Marcilly-sur-tille
 FR- Marsannay-la-cte
+FR- Meursault
 FR- Norges-la-ville
 FR- Prenois
 FR- Saint-apollinaire
@@ -1031,9 +1039,11 @@ FR- Villeneuve-les-avignon
 FR- Aureville
 FR- Blagnac
 FR- Bouloc
+FR- Bourg-saint-bernard
 FR- Castanet-tolosan
 FR- Cazeres
 FR- Colomiers
+FR- Dremil-lafage
 FR- Escalquens
 FR- Fonsorbes
 FR- Labastidette
@@ -1106,6 +1116,7 @@ FR- Argelliers
 FR- Baillargues
 FR- Beziers
 FR- Clapiers
+FR- Cournonterral
 FR- Florensac
 FR- Frontignan
 FR- Gigean
@@ -1125,6 +1136,7 @@ FR- Mauguio
 FR- Montpellier
 FR- Montpeyroux
 FR- Notre-dame-de-londres
+FR- Pomerols
 FR- Puechabon
 FR- Saint-aunes
 FR- Saint-jean-de-vedas
@@ -1150,6 +1162,7 @@ FR- Chateaubourg
 FR- Dinard
 FR- Fougeres
 FR- Geveze
+FR- Guignen
 FR- L hermitage
 FR- La Bazouge
 FR- La Fresnais
@@ -1171,6 +1184,7 @@ FR- Argenton-sur-creuse
 FR- Chateauroux
 FR- Chatillon-sur-indre
 FR- Diors
+FR- Issoudun
 FR- Luay-le-male
 FR- Poulaines
 
@@ -1323,8 +1337,10 @@ FR- Clisson
 FR- Cordemais
 FR- Coueron
 FR- Donges
+FR- Fegreac
 FR- La Bernerie-en-retz
 FR- La Chapelle
+FR- La Paquelais
 FR- Le Cellier
 FR- Le Croisic
 FR- Le Landreau
@@ -1345,6 +1361,7 @@ FR- Pornichet
 FR- Port-saint-pere
 FR- Reze
 FR- Saffre
+FR- Saint-Etienne-de-montluc
 FR- Saint-herblain
 FR- Saint-jean-de-boiseau
 FR- Saint-mars-du-desert
@@ -1397,6 +1414,7 @@ FR- Villemandeur
 FR- Cahors
 FR- Catus
 FR- Figeac
+FR- Gindou
 FR- Lalbenque
 
 # 47: Lot-et-Garonne
@@ -1431,6 +1449,7 @@ FR- La Menitre
 FR- La Varenne
 FR- Le Marillais
 FR- Le Pont
+FR- Lire
 FR- Loire
 FR- Longue
 FR- Montigne-les-rairies
@@ -1440,6 +1459,7 @@ FR- Saint-laurent-des-autels
 FR- Saint-pierre-montlimart
 FR- Trelaze
 FR- Varennes-sur-loire
+FR- Vernantes
 FR- Vivy
 
 # 50: Manche
@@ -1672,6 +1692,7 @@ FR- Escautpont
 FR- Faches-thumesnil
 FR- Feignies
 FR- Fenain
+FR- Flines-les-raches
 FR- Fourmies
 FR- Fournes-en-weppes
 FR- Frelinghien
@@ -2037,8 +2058,10 @@ FR- Burnhaupt-le-bas
 FR- Colmar
 FR- Ensisheim
 FR- Guebwiller
+FR- Hesingue
 FR- Horbourg
 FR- Huningue
+FR- Ingersheim
 FR- Kingersheim
 FR- Lauw
 FR- Merxheim
@@ -2059,6 +2082,7 @@ FR- Brignais
 FR- Brindas
 FR- Bron
 FR- Cabannes
+FR- Caluire-et-cuire
 FR- Chaponnay
 FR- Chaponost
 FR- Charly
@@ -2088,6 +2112,7 @@ FR- Saint-genis-laval
 FR- Saint-genis-les-ollieres
 FR- Saint-priest
 FR- Sainte-consorce
+FR- Sainte-foy-les-lyon
 FR- Sathonay-camp
 FR- Tassin-la-demi-lune
 FR- Thurins
@@ -2103,6 +2128,7 @@ FR- Fontaine-les-luxeuil
 FR- Genevreuille
 FR- La Cte
 FR- Lure
+FR- Luxeuil-les-bains
 FR- Pusey
 FR- Ronchamp
 FR- Saint Barthelemy
@@ -2155,6 +2181,7 @@ FR- Vouvray-sur-loir
 FR- Aiton
 FR- Arbin
 FR- Chambery
+FR- Chamoux-sur-gelon
 FR- Chignin
 FR- Cognin
 FR- Jacob-bellecombette
@@ -2162,10 +2189,12 @@ FR- La Biolle
 FR- La Chambre
 FR- La Chavanne
 FR- La Ravoire
+FR- La Rochette
 FR- Le Bois
 FR- Les Allues
 FR- Les Avanchers
 FR- Montmelian
+FR- Mouxy
 FR- Saint-jean-de-maurienne
 FR- Ugine
 
@@ -2180,6 +2209,7 @@ FR- Ayse
 FR- Ballaison
 FR- Beaumont
 FR- Bonneville
+FR- Bons
 FR- Chavanod
 FR- Cluses
 FR- Cruseilles
@@ -2219,6 +2249,7 @@ FR- Elbeuf
 FR- Fecamp
 FR- Fontaine-le-bourg
 FR- Fresne-le-plan
+FR- Gainneville
 FR- Grand-couronne
 FR- Harfleur
 FR- Le Grand-quevilly
@@ -2233,6 +2264,7 @@ FR- Mont-saint-aignan
 FR- Neufchatel-en-bray
 FR- Notre-dame-de-gravenchon
 FR- Petit Couronne
+FR- Quevillon
 FR- Rogerville
 FR- Rouen
 FR- Saint-Etienne-du-rouvray
@@ -2411,6 +2443,7 @@ FR- Vouneuil-sous-biard
 FR- Chalus
 FR- Limoges
 FR- Meilhac
+FR- Oradour-sur-glane
 FR- Peyrat-de-bellac
 FR- Saint-brice-sur-vienne
 FR- Saint-junien
@@ -2446,6 +2479,7 @@ FR- Vittel
 # 89: Yonne
 FR- Auxerre
 FR- Avesnes-sur-helpe
+FR- Dracy
 FR- Joigny
 FR- Ligny-le-chatel
 FR- Mezilles
@@ -2464,6 +2498,7 @@ FR- Chatenois-les-forges
 FR- Danjoutin
 FR- Delle
 FR- Denney
+FR- Giromagny
 FR- Salbert
 FR- Valdoie
 
@@ -2473,6 +2508,7 @@ GP- Baie Mahault
 GP- Bouillante
 GP- Jarry
 GP- Lamentin
+GP- Le Gosier
 GP- Le Moule
 GP- Les Abymes
 GP- Petit-bourg
