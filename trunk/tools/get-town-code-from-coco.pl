@@ -99,7 +99,7 @@ sub process {
         }
         checkTownAndISP() if $count == 1;
     }
-    checkTownAndISP() if $count % 28 == 9;
+    checkTownAndISP() if $count % 20 == 9;
     $bot->requestMessagesFromUsers();
 }
 

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-03-31
+# @date 2012-04-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -77,7 +77,7 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'codes', 'nicknames', 'ISPs', 'towns' ) {
+    foreach my $table ( 'nicknames', 'codes', 'ISPs', 'towns' ) {
         $self->dbh()->do( 'DROP TABLE `' . $table . '`' );
     }
 }
