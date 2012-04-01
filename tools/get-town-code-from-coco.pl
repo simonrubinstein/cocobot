@@ -78,7 +78,8 @@ sub run {
             #Time::HiRes::sleep($sleepVal);
             #sleep 5;
             #$elapsed = Time::HiRes::tv_interval($timeStartLoop);
-            message("time looop interval: $elapsed");
+            my $mynickname = $bot->user()->mynickname();
+            message("$count; $mynickname; time looop interval: $elapsed");
             sleep 1;
         }
     }
@@ -88,7 +89,7 @@ sub run {
 ##@method void process()
 sub process {
     $count++;
-    if ( $isReconnect or !defined $bot ) {
+    if ( ( $isReconnect and $count % 300 == 0 ) or !defined $bot ) {
         $bot = $CLI->getBot( 'generateRandom' => 1 );
         $bot->requestAuthentication();
         $bot->display();
@@ -96,22 +97,17 @@ sub process {
             croak error( 'The script is reserved for users with a'
                   . ' Premium subscription.' );
         }
-        $usersList = $bot->requestUsersList();
-        $bot->requestInformzForNewUsers();
-        $bot->requestDisconnectedUsers();
-        checkTownAndISP();
+        checkTownAndISP() if $count == 1;
     }
-    if ( $count % 28 == 9 ) {
-        $usersList = $bot->requestUsersList();
-        $bot->requestInformzForNewUsers();
-        $bot->requestDisconnectedUsers();
-        checkTownAndISP();
-    }
+    checkTownAndISP() if $count % 28 == 9;
     $bot->requestMessagesFromUsers();
 }
 
 ##@method void checkTownAndISP()
 sub checkTownAndISP {
+    $usersList = $bot->requestUsersList();
+    $bot->requestInformzForNewUsers();
+    $bot->requestDisconnectedUsers();
     my $user_ref = $usersList->all();
 
     my ( $count, $found, $notFound ) = ( 0, 0, 0 );
