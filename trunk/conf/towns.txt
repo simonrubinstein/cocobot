@@ -335,6 +335,7 @@ FR- Coulommiers
 FR- Coupvray
 FR- Courtry
 FR- Cregy-les-meaux
+FR- Crisenoy
 FR- Crouy-sur-ourcq
 FR- Dammartin-en-goele
 FR- Dampmart
@@ -559,8 +560,10 @@ FR- Pavant
 FR- Ribeauville
 FR- Romeny-sur-marne
 FR- Saint Quentin
+FR- Saint-gobain
 FR- Saulchery
 FR- Sinceny
+FR- Sissonne
 FR- Soissons
 FR- Tergnier
 FR- Urvillers
@@ -723,7 +726,7 @@ FR- Peynier
 FR- Peypin
 FR- Port-de-bouc
 FR- Roquevaire
-FR- Rousset 
+FR- Rousset
 FR- Saint-cannat
 FR- Saint-chamas
 FR- Saint-mitre-les-remparts
@@ -766,6 +769,7 @@ FR- Angouleme
 FR- Confolens
 FR- Fleac
 FR- Gensac-la-pallue
+FR- Jarnac
 FR- La Faye
 FR- La Roque
 FR- Magnac-lavalette
@@ -787,6 +791,7 @@ FR- Charron
 FR- Corme-royal
 FR- Dompierre-sur-mer
 FR- La Rochelle
+FR- Landes
 FR- Marennes
 FR- Massac
 FR- Muron
@@ -1251,7 +1256,7 @@ FR- Seyssinet-pariset
 FR- Tullins
 FR- Valencin
 FR- Varces
-FR- Vaulx-milieu 
+FR- Vaulx-milieu
 FR- Vienne
 FR- Vif
 FR- Villefontaine
@@ -1298,6 +1303,7 @@ FR- Mer
 FR- Monclar
 FR- Montoire-sur-le-loir
 FR- Montrichard
+FR- Naveil
 FR- Onzain
 FR- Rilly-sur-loire
 FR- Vendme
@@ -1399,6 +1405,7 @@ FR- Chevilly
 FR- Chilleurs-aux-bois
 FR- Coullons
 FR- Fleury-les-aubrais
+FR- Gien
 FR- Ingre
 FR- Ladon
 FR- Lion-en-sullias
@@ -1451,6 +1458,7 @@ FR- Beaucouze
 FR- Beaupreau
 FR- Chalonnes-sur-loire
 FR- Champtoceaux
+FR- Chanteloup-les-bois
 FR- Chaudron-en-mauges
 FR- Cheffes
 FR- Cholet
@@ -1695,6 +1703,7 @@ FR- Bailleul
 FR- Bergues
 FR- Bois-grenier
 FR- Cambrai
+FR- Cantin
 FR- Capelle
 FR- Comines
 FR- Coudekerque-branche
@@ -1822,6 +1831,7 @@ FR- Flavacourt
 FR- Fleurines
 FR- Fosseuse
 FR- Gouvieux
+FR- Grandvilliers
 FR- Guignecourt
 FR- Hardivillers
 FR- Henonville
@@ -2034,6 +2044,7 @@ FR- Chatenois
 FR- Dachstein
 FR- Dossenheim-sur-zinsel
 FR- Drulingen
+FR- Drusenheim
 FR- Ebersheim
 FR- Eschau
 FR- Fegersheim
@@ -2129,6 +2140,7 @@ FR- Saint Priest
 FR- Saint-bonnet-de-mure
 FR- Saint-genis-laval
 FR- Saint-genis-les-ollieres
+FR- Saint-maurice-sur-dargoire
 FR- Saint-priest
 FR- Sainte-consorce
 FR- Sainte-foy-les-lyon
@@ -2175,6 +2187,7 @@ FR- Saint-germain-du-bois
 FR- Saint-leger-sur-dheune
 FR- Saint-mard-de-vaux
 FR- Verdun-sur-le-doubs
+FR- Verze
 
 # 72: Sarthe
 FR- Arnage
@@ -2256,6 +2269,7 @@ FR- Vulbens
 
 # 76: Seine-Maritime
 FR- Belleville-en-caux
+FR- Bihorel
 FR- Bonsecours
 FR- Bosc
 FR- Bracquemont
@@ -2267,6 +2281,7 @@ FR- Dieppe
 FR- Elbeuf
 FR- Fecamp
 FR- Fontaine-le-bourg
+FR- Fontenay
 FR- Fresne-le-plan
 FR- Gainneville
 FR- Grand-couronne
@@ -2340,6 +2355,7 @@ FR- Villers-bretonneux
 FR- Yzeux
 
 # 81: Tarn
+FR- Albi
 FR- Aussac
 FR- Cordes
 FR- Dourgne
@@ -2420,6 +2436,7 @@ FR- Champagne-les-marais
 FR- Chateau-d olonne
 FR- Cugand
 FR- Fontenay-le-comte
+FR- Givrand
 FR- Grosbreuil
 FR- La Chaize
 FR- La Ferriere
@@ -2519,6 +2536,7 @@ FR- Danjoutin
 FR- Delle
 FR- Denney
 FR- Giromagny
+FR- Offemont
 FR- Salbert
 FR- Valdoie
 
