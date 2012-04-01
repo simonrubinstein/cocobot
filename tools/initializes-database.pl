@@ -51,7 +51,7 @@ sub run {
     foreach my $name (@$town_ref) {
         $DB->insertTown($name);
     }
-    my ( $ISP_ref,  $ISPConf )  = $DB->getInitISPs();
+    my ( $ISP_ref, $ISPConf ) = $DB->getInitISPs();
     undef $ISP_ref;
     $ISP_ref = $ISPConf->all();
     foreach my $name (@$ISP_ref) {

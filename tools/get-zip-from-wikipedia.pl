@@ -2,7 +2,7 @@
 # @brief This script tries to get a zip code from city name from the
 #        website of Wikipedia.
 # @created 2012-03-14
-# @date 2012-03-17
+# @date 2012-04-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,14 +38,15 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
-use Cocoweb::DB;
+use Cocoweb::DB::Base;
+use Cocoweb::File;
 use Cocoweb::Request;
 use HTML::Parser;
 
 my $url = 'http://fr.wikipedia.org/w/index.php?search=';
 my $req;
 my $CLI;
-my $db;
+my $DB;
 my $lastTag      = '';
 my $zipCodeFound = 0;
 my $zipCode      = 0;
@@ -105,8 +106,6 @@ sub GetZipFromWikipedia {
     $city =~ s{\-(l|d)\ (a|e|i|o|u|y|h)}{-$1'$2}xms;
     debug( 'Performs an HTTP request to the URL ' . $url . $city );
     my $response = $req->execute( 'GET', $url . $city );
-
-    #my $res = $response->content();
     my $res = $response->decoded_content();
     if ($doYouWriteHTMLFile) {
         my $fh;
@@ -136,7 +135,6 @@ sub GetZipFromWikipedia {
         warning( 'The postal code of the city ' . $town . ' was not found' );
         return;
     }
-
 }
 
 ##@method void start($tagname, $attr)
@@ -166,11 +164,11 @@ sub init {
         HELP_MESSAGE();
         exit;
     }
-    $townCodeSearched   = $opt_ref->{'t'} if exists $opt_ref->{'t'};
-    $doYouWriteHTMLFile = 1               if exists $opt_ref->{'w'};
-    $db                 = Cocoweb::DB->instance();
-    $req                = Cocoweb::Request->new();
-    ( $town_ref, $townConf ) = $db->getInitTowns();
+    $townCodeSearched = $opt_ref->{'t'} if exists $opt_ref->{'t'};
+    $doYouWriteHTMLFile = 1 if exists $opt_ref->{'w'};
+    $DB  = Cocoweb::DB::Base->getInstance();
+    $req = Cocoweb::Request->new();
+    ( $town_ref, $townConf ) = $DB->getInitTowns();
     $townFileR = $townConf->pathname();
     $townFileW = $townFileR;
     $townFileW =~ s{^.*/}{/tmp/};
@@ -246,12 +244,9 @@ ENDTXT
     exit 0;
 }
 
-## @method void VERSION_MESSAGE()
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-02-15) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
-     Written by Simon Rubinstein 
-ENDTXT
+    $CLI->VERSION_MESSAGE('2012-04-01');
 }
 
