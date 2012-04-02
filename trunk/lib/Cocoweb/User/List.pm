@@ -131,10 +131,10 @@ sub addOrUpdateInDB {
             $self->DB()->addNewUser($user);
         }
         elsif ( $user->updateDbRecord() ) {
-            $self->DB()->updateNickname($user);
+            $self->DB()->updateUser($user);
         }
         else {
-            $self->DB()->updateNicknameDate($user);
+            $self->DB()->updateUserDate($user);
         }
 
     }

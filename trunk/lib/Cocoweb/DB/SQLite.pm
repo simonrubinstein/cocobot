@@ -137,15 +137,15 @@ ENDTXT
     $self->dbh()->do($query);
 }
 
-##@method void insertCode($code)
+##@method integer _insertCode($code)
 #@brief Insert or update a code in the code tables
 #@param string A three character code
-sub insertCode {
+sub _insertCode {
     my ( $self, $code ) = @_;
     my $query;
-    my $codesCache_ref = $self->codesCache();
+    my $code2id_ref = $self->code2id();
     my $id;
-    if ( !exists $codesCache_ref->{$code} ) {
+    if ( !exists $code2id_ref->{$code} ) {
         $query = q/
         INSERT INTO `codes`
           (`code`, `creation_date`, `update_date`) 
@@ -154,7 +154,7 @@ sub insertCode {
         /;
         if ( $self->dbh()->do( $query, undef, $code, time, time ) ) {
             $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
-            $codesCache_ref->{$code} = $id;
+            $code2id_ref->{$code} = $id;
             return $id;
         }
         elsif ( $self->dbh()->err() != 19 ) {
@@ -165,15 +165,29 @@ sub insertCode {
         my $sth = $self->execute('SELECT `id` FROM `codes` WHERE `code` = ?  ', $code);
         my $result = $sth->fetchrow_hashref();
         $id = $result->{'id'};
-        $codesCache_ref->{$code} = $id;
+        $code2id_ref->{$code} = $id;
     }
     else {
-        $id = $codesCache_ref->{$code};
+        $id = $code2id_ref->{$code};
     }
     $query = 'UPDATE `codes` SET `update_date` = ? WHERE `id` = ?';
     $self->do( $query, time, $id );
     return $id; 
 }
+
+##@method void _updateCode($idCode)
+#@brief Updates the date of a record in the table `codes` 
+#@input integer $idCode The Id of the record
+sub _updateCode {
+    my ( $self, $idCode ) = @_;
+    my $query = q/
+      UPDATE `codes` SET `update_date` = ? 
+      WHERE id = ?
+   /;
+    $self->do( $query, time, $idCode );
+}
+
+
 
 sub offlineNickname {
     my ( $self, $user ) = @_;

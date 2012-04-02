@@ -35,7 +35,7 @@ use Cocoweb;
 use base 'Cocoweb::User::Base';
 
 __PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount',
-    'updateDbRecord', 'DBUserId' );
+    'updateDbRecord', 'DBCodeId', 'DBUserId' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -76,7 +76,8 @@ sub init {
         'hasChange'      => 0,
         'notViewCount'   => 0,
         'updateDbRecord' => 0,
-        'DBUserId'       => 0
+        'DBUserId'       => 0,
+        'DBCodeId'       => 0
     );
 }
 
