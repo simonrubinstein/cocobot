@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-31
+# @date 2012-04-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -128,7 +128,7 @@ sub addOrUpdateInDB {
         my $user = $user_ref->{$id};
         next !$user->isView();
         if ( $user->isNew() or $user->hasChange() ) {
-            $self->DB()->addNewNickname($user);
+            $self->DB()->addNewUser($user);
         }
         elsif ( $user->updateDbRecord() ) {
             $self->DB()->updateNickname($user);

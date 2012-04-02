@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-31
+# @date 2012-04-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -35,7 +35,7 @@ use Cocoweb;
 use base 'Cocoweb::User::Base';
 
 __PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount',
-    'updateDbRecord' );
+    'updateDbRecord', 'DBUserId' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -75,7 +75,8 @@ sub init {
         'isView'         => 1,
         'hasChange'      => 0,
         'notViewCount'   => 0,
-        'updateDbRecord' => 0
+        'updateDbRecord' => 0,
+        'DBUserId'       => 0
     );
 }
 

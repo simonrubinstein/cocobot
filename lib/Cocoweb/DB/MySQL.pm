@@ -150,30 +150,30 @@ ENDTXT
     $self->do($query);
 
     $query = <<ENDTXT;
-    CREATE TABLE IF NOT EXISTS `nicknames` (
+    CREATE TABLE IF NOT EXISTS `users` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `id_codes`      int(10) unsigned NOT NULL,
+    `id_code`       int(10) unsigned NOT NULL,
     `id_ISP`        int(10) unsigned NOT NULL,
     `id_town`       int(10) unsigned NOT NULL,
-    `nickname`      VARCHAR(16) NOT NULL,
-    `nickid`        int(10) unsigned NOT NULL,
-    `sex`           int(10) unsigned NOT NULL,
-    `old`           int(10) unsigned NOT NULL,
-    `city`          int(10) unsigned NOT NULL,
-    `niv`           int(10) unsigned NOT NULL,
-    `ok`            int(10) unsigned NOT NULL,
-    `stat`          int(10) unsigned NOT NULL,
+    `mynickname`    VARCHAR(16) NOT NULL,
+    `mynickID`        int(10) unsigned NOT NULL,
+    `mysex`           int(10) unsigned NOT NULL,
+    `myage`         int(10) unsigned NOT NULL,
+    `citydio`       int(10) unsigned NOT NULL,
+    `myXP`          int(10) unsigned NOT NULL,
+    `myver`         int(10) unsigned NOT NULL,
+    `myStat`        int(10) unsigned NOT NULL,
     `status`        int(10) unsigned NOT NULL,
     `level`         int(10) unsigned NOT NULL,
     `since`         int(10) unsigned NOT NULL,
-    `premimum`      int(10) unsigned NOT NULL,
+    `premium`       int(10) unsigned NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,
     `logout_date`   DATETIME DEFAULT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `id` (`id`),
-     KEY `nicknames_FKIndex1` (`id_codes`),
-     CONSTRAINT `nicknames_ibfk_1` FOREIGN KEY (`id_codes`)
+     KEY `nicknames_FKIndex1` (`id_code`),
+     CONSTRAINT `nicknames_ibfk_1` FOREIGN KEY (`id_code`)
        REFERENCES `codes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
      KEY `nicknames_FKIndex2` (`id_ISP`),
      CONSTRAINT `nicknames_ibfk_2` FOREIGN KEY (`id_ISP`)
@@ -203,21 +203,34 @@ sub insertCode {
     return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
 
-sub insertNickname {
-    my ( $self, $user ) = @_;
+##@method integer insertUser($user, $idCode, $idISP, $idTown)
+#@brief Inserts a new user in the "users" table
+sub insertUser {
+    my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
     my $query = q/
-      INSERT INTO `codes`
-        (`id_codes`, `id_ISP`, `id_town`, `nickname`, `nickid`, `sex`,
-          `old`, `city`, `niv`, `ok`, `stat`, `status`, `level`, `since`,
+      INSERT INTO `users`
+        (`id_code`, `id_ISP`, `id_town`, `mynickname`, `mynickID`, `mysex`,
+          `myage`, `citydio`, `myXP`, `myver`, `myStat`, `status`, `level`, `since`,
           `premium`, `creation_date`, `update_date`) 
         VALUES
-        (?, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())
- 
+        (?, ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?, ?, ?, ?,
+        ?, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())
         /;
 
+    $self->do(
+        $query,              $idCode,
+        $idISP,              $idTown,
+        $user->mynickname(), $user->mynickID(),
+        $user->mysex(),      $user->myage(),
+        $user->citydio(),    $user->myXP(),
+        $user->myver(),      $user->mystat(),
+        $user->status(),     $user->level(),
+        $user->since(),      $user->premium()
+    );
+
+    return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
-
-
 
 sub offlineNickname {
     my ( $self, $user ) = @_;
