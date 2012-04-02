@@ -1,8 +1,8 @@
 #!/usr/bin/perl
-#@brief
-#@created 2012-03-09
-#@date 2012-04-01
-#@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+# @brief
+# @created 2012-03-09
+# @date 2012-04-02
+# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
@@ -89,7 +89,7 @@ sub run {
 ##@method void process()
 sub process {
     $count++;
-    if ( ( $isReconnect and $count % 300 == 0 ) or !defined $bot ) {
+    if ( ( $isReconnect and $count % 1800 == 0 ) or !defined $bot ) {
         $bot = $CLI->getBot( 'generateRandom' => 1 );
         $bot->requestAuthentication();
         $bot->display();
