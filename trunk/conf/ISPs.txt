@@ -28,6 +28,7 @@ COLT Telecom Group Limited
 Commissariat a lEnergie Atomique
 COMPLETEL SAS France
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
+CONSEILS { SYSTEMES INFORMATIQUES
 DECKNET
 DediPower Managed Hosting Limited
 Digicube sas
@@ -57,6 +58,7 @@ MANA, Internet service Provider in French Polynesi
 MANCHE TELECOM
 Martinique TV Cable
 MEDI@LYS
+Media diffuseur TV
 Mediaserv
 MOBIUS TECHNOLOGY
 NC Numericable S.A.
