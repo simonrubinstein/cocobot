@@ -5,6 +5,7 @@ Agence France Presse
 Air France
 Ajova Network
 Alionis
+Alliance Connectic SAS
 AlphaLink
 Alsace Connexia
 Altitude Infrastructure Exploitation SAS
@@ -97,6 +98,7 @@ Societe de developpement Informatique
 TELECITYGROUP INTERNATIONAL LIMITED
 Teloise
 TRINAPS
+Trust Info SARL
 TUTOR S.A.
 Universite de Limoges
 Universite Pierre et Marie Curie
