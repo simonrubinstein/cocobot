@@ -3,6 +3,8 @@ Aeroport de Paris Telecom
 AFNIC
 Air France
 Ajova Network
+Alionis
+AlphaLink
 Alsace Connexia
 Altitude Infrastructure Exploitation SAS
 Altitude Telecom SAS
@@ -17,11 +19,13 @@ Bayanat Al-Oula For Network Services
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
+C@P CONNEXION
 CANL DYNAMIC IP
 CEGETEL LA REUNION
 Celeste
 Centre de Ressources Informatique (CRI)
 COLT Telecom Group Limited
+Commissariat a lEnergie Atomique
 COMPLETEL SAS France
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
 DECKNET
@@ -42,12 +46,14 @@ Herault Telecom
 iBrowse SARL
 IFREMER Institut Francais de Recherche pour Exploi
 Ikoula Net SAS
+Initials Online
 INOLIA
 Internet Services
 Interoute Communications Limited
 Liberia Telecommunications Corporation (LIBTELCO)
 MANA Internet Service Provider
 MANA S.A.
+MANA, Internet service Provider in French Polynesi
 MANCHE TELECOM
 Martinique TV Cable
 MEDI@LYS
@@ -65,14 +71,17 @@ Outremer Telecom
 Ovh Systems
 Pays Voironnais Network
 PUBLICIS-TECHNOLOGY
+REG.I.E.S
 RENATER
 Reseau Optique du Campus de la Doua
 Rigas Tikli, SIA
+RISC GROUP IT SOLUTIONS S.A.
 RMI SAS
 SARL MWSP
 SAS CTS Computers and Telecommunications Systems
 SCANSAFE
 SCGS
+Serveurcom SRL
 SFR
 Societe de developpement Informatique
 Teloise
