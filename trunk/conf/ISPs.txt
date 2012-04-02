@@ -24,6 +24,7 @@ CANL DYNAMIC IP
 CEGETEL LA REUNION
 Celeste
 Centre de Ressources Informatique (CRI)
+CIENUM SAS
 COLT Telecom Group Limited
 Commissariat a lEnergie Atomique
 COMPLETEL SAS France
@@ -62,6 +63,7 @@ Media diffuseur TV
 Mediaserv
 MOBIUS TECHNOLOGY
 NC Numericable S.A.
+Neo Telecoms
 Nerim SAS
 Neuf Cegetel
 Nomotech

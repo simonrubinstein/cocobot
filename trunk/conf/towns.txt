@@ -425,6 +425,7 @@ FR- Thorigny-sur-marne
 FR- Torcy
 FR- Tournan-en-brie
 FR- Trilbardou
+FR- Trilport
 FR- Vaires-sur-marne
 FR- Varennes-sur-seine
 FR- Veneux-les-sablons
@@ -471,6 +472,7 @@ FR- Houilles
 FR- Issou
 FR- Jouy-en-josas
 FR- La Celle
+FR- La Falaise
 FR- Lainville
 FR- Le Pecq
 FR- Le Port-marly
@@ -932,6 +934,7 @@ FR- La Bouillie
 FR- Lamballe
 FR- Loudeac
 FR- Mur-de-bretagne
+FR- Pledran
 FR- Plerin
 FR- Ploufragan
 FR- Plouha
@@ -1279,6 +1282,7 @@ FR- Saint-briac-sur-mer
 FR- Saint-coulomb
 FR- Saint-malon-sur-mel
 FR- Saint-pere
+FR- Vern-sur-seiche
 
 # 36: Indre
 FR- Ardentes
@@ -1296,6 +1300,7 @@ FR- Chambray-les-tours
 FR- Chanceaux-sur-choisille
 FR- Chateau-renault
 FR- Cinq-mars-la-pile
+FR- Cormery
 FR- Dolus-le-sec
 FR- Fondettes
 FR- Joue-les-tours
@@ -1391,6 +1396,7 @@ FR- Villeneuve-de-marsan
 
 # 41: Loir-et-Cher
 FR- Blois
+FR- Chaumont-sur-loire
 FR- Coulommiers-la-tour
 FR- Lamotte-beuvron
 FR- Lorges
@@ -2001,6 +2007,7 @@ FR- Marseille-en-beauvaisis
 FR- Melicocq
 FR- Mello
 FR- Meru
+FR- Monchy-humieres
 FR- Montagny-en-vexin
 FR- Montataire
 FR- Mortefontaine
@@ -2079,6 +2086,7 @@ FR- Etaples
 FR- Evin-malmaison
 FR- Farbus
 FR- Frethun
+FR- Frevent
 FR- Givenchy-en-gohelle
 FR- Gouy-sous-bellonne
 FR- Groffliers
@@ -2832,6 +2840,7 @@ NC- Noumea
 
 # 000: Unknow
 FR- Aray
+FR- Bellevue
 FR- Clement
 FR- Epne
 FR- Epreux
