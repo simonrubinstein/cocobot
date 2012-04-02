@@ -106,6 +106,7 @@ sub GetZipFromWikipedia {
     $city =~ s{\-(l|d)\ (a|e|i|o|u|y|h)}{-$1'$2}xms;
     $city =~ s{du-rhne}{du-rhône};
     $city =~ s{sur-sane}{sur-saône};
+    $city =~ s{^L a}{L'a}g;
     debug( 'Performs an HTTP request to the URL ' . $url . $city );
     my $response = $req->execute( 'GET', $url . $city );
     my $res = $response->decoded_content();

@@ -386,6 +386,7 @@ FR- Lognes
 FR- Longperrier
 FR- Luzancy
 FR- Magny-le-hongre
+FR- Maisoncelles-en-brie
 FR- Mareuil-les-meaux
 FR- Marolles-sur-seine
 FR- Meaux
@@ -396,6 +397,7 @@ FR- Misy-sur-yonne
 FR- Mitry-mory
 FR- Moissy-cramayel
 FR- Montevrain
+FR- Montigny-lencoup
 FR- Montigny-sur-loing
 FR- Montry
 FR- Moret-sur-loing
@@ -648,6 +650,7 @@ FR- Cagnes-sur-mer
 FR- Cannes
 FR- Carros
 FR- Colomars
+FR- Gattieres
 FR- Grasse
 FR- Juan-les-pins
 FR- La Napoule
@@ -722,6 +725,7 @@ FR- Mailly-le-camp
 FR- Mergey
 FR- Mesnil-sellieres
 FR- Nogent-sur-seine
+FR- Piney
 FR- Romilly-sur-seine
 FR- Rosieres-pres-troyes
 FR- Saint-andre-les-vergers
@@ -870,6 +874,7 @@ FR- Charron
 FR- Clavette
 FR- Corme-royal
 FR- Dompierre-sur-mer
+FR- La Clisse
 FR- La Rochelle
 FR- Landes
 FR- Marennes
@@ -1019,6 +1024,7 @@ FR- Villers-le-lac
 
 # 26: Drome
 FR- Allex
+FR- Anneyron
 FR- Beaumont-monteux
 FR- Bourdeaux
 FR- Chanos-curson
@@ -1262,6 +1268,7 @@ FR- Argelliers
 FR- Baillargues
 FR- Beziers
 FR- Castelnau-le-lez
+FR- Cazouls-les-beziers
 FR- Clapiers
 FR- Cournonterral
 FR- Florensac
@@ -1292,6 +1299,7 @@ FR- Pomerols
 FR- Poussan
 FR- Prades-le-lez
 FR- Puechabon
+FR- Roujan
 FR- Saint-aunes
 FR- Saint-gely-du-fesc
 FR- Saint-jean-de-vedas
@@ -1400,6 +1408,7 @@ FR- Pont-Eveque
 FR- Roussillon
 FR- Sablons
 FR- Saint-clair-du-rhne
+FR- Saint-ismier
 FR- Saint-just-chaleyssin
 FR- Saint-marcellin
 FR- Saint-martin-d heres
@@ -1440,6 +1449,7 @@ FR- Capbreton
 FR- Dax
 FR- Geloux
 FR- Labouheyre
+FR- Lit-et-mixe
 FR- Mees
 FR- Mimbaste
 FR- Moliets-et-maa
@@ -1827,11 +1837,13 @@ FR- Montertelot
 FR- Muzillac
 FR- Nivillac
 FR- Noyal-pontivy
+FR- Plescop
 FR- Ploemeur
 FR- Ploeren
 FR- Plumergat
 FR- Pluneret
 FR- Pluvigner
+FR- Pontivy
 FR- Port-louis
 FR- Remungol
 FR- Rochefort-en-terre
@@ -1918,6 +1930,7 @@ FR- Anor
 FR- Anzin
 FR- Armentieres
 FR- Attiches
+FR- Aubigny-au-bac
 FR- Auby
 FR- Aulnoye-aymeries
 FR- Awoingt
@@ -1936,6 +1949,7 @@ FR- Croix
 FR- Douai
 FR- Douchy-les-mines
 FR- Dunkirk
+FR- Erre
 FR- Escaudain
 FR- Escautpont
 FR- Faches-thumesnil
@@ -2535,6 +2549,7 @@ FR- Montmelian
 FR- Mouxy
 FR- Saint-jean-de-maurienne
 FR- Saint-martin-de-belleville
+FR- Tignes
 FR- Ugine
 
 # 74: Haute-Savoie
@@ -2641,6 +2656,7 @@ FR- Le Tallud
 FR- Les Aubiers
 FR- Niort
 FR- Saint-varent
+FR- Sepvret
 FR- Thenezay
 FR- Thouars
 FR- Villiers-en-plaine
@@ -2662,6 +2678,7 @@ FR- Dreuil-les-amiens
 FR- Embreville
 FR- Ennemain
 FR- Flesselles
+FR- Friville-escarbotin
 FR- Ham
 FR- Harbonnieres
 FR- La Chaussee-tirancourt
@@ -2884,8 +2901,10 @@ FR- Tannerre-en-puisaye
 FR- Veron
 FR- Villeblevin
 FR- Villecien
+FR- Villeneuve-la-guyard
 FR- Villeneuve-sur-yonne
 FR- Vincelles
+FR- Vinneuf
 
 # 90: Territoire de Belfort
 FR- Anjoutey
@@ -2909,6 +2928,7 @@ GP- Lamentin
 GP- Le Gosier
 GP- Le Moule
 GP- Les Abymes
+GP- Marigot
 GP- Morne-a-l eau
 GP- Petit-bourg
 GP- Pointe-a-pitre

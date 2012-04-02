@@ -32,6 +32,7 @@ Commissariat a lEnergie Atomique
 COMPLETEL SAS France
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
 CONSEILS { SYSTEMES INFORMATIQUES
+Dauphin Telecom
 DECKNET
 DediPower Managed Hosting Limited
 Digicube sas
@@ -39,6 +40,7 @@ DIMEDIA LLC
 Ecritel
 ESTVIDEOCOMMUNICATION cable { broadband operator
 euNetworks Services GmbH
+European Space Agency (ESA)
 Finsecur SA
 FRANCE CITEVISION
 France Telecom

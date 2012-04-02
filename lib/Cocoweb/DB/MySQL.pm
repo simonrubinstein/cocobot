@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-01
+# @date 2012-04-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -187,10 +187,10 @@ ENDTXT
 
 }
 
-##@method void insertCode($code)
+##@method integer _insertCode($code)
 #@brief Insert or update a code in the code tables
 #@param string A three character code
-sub insertCode {
+sub _insertCode {
     my ( $self, $code ) = @_;
     my $query = q/
       INSERT INTO `codes`
@@ -200,12 +200,27 @@ sub insertCode {
         ON DUPLICATE KEY UPDATE `update_date` = CURRENT_TIMESTAMP()
       /;
     $self->do( $query, $code );
-    return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+    my $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+    my $code2id_ref = $self->code2id();
+    $code2id_ref->{$code} = $id;
+    return $id;
+}
+
+##@method void _updateCode($idCode)
+#@brief Updates the date of a record in the table `codes`
+#@input integer $idCode The Id of the record
+sub _updateCode {
+    my ( $self, $idCode ) = @_;
+    my $query = q/
+      UPDATE `codes` SET `update_date` = CURRENT_TIMESTAMP()
+      WHERE id = ?
+   /;
+    $self->do( $query, $idCode );
 }
 
 ##@method integer insertUser($user, $idCode, $idISP, $idTown)
 #@brief Inserts a new user in the "users" table
-sub insertUser {
+sub _insertUser {
     my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
     my $query = q/
       INSERT INTO `users`
@@ -228,12 +243,51 @@ sub insertUser {
         $user->status(),     $user->level(),
         $user->since(),      $user->premium()
     );
-
     return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
 
-sub offlineNickname {
-    my ( $self, $user ) = @_;
+sub _updateUser {
+    my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
+    my $query = q/
+      UPDATE `users` SET `id_code` = ?, `id_ISP` = ? , `id_town` = ?,
+        `mynickname` = ?, `mynickID` = ?, `mysex` = ?, `myage` = ?,
+        `citydio` = ?, `myXP` = ?, `myver` = ?, `myStat` = ?, `status` = ?,
+        `level` = ?, `since` = ?, `premium` = ?,
+        `update_date` = CURRENT_TIMESTAMP()
+        WHERE `id` = ?
+        /;
+
+    $self->do(
+        $query,              $idCode,
+        $idISP,              $idTown,
+        $user->mynickname(), $user->mynickID(),
+        $user->mysex(),      $user->myage(),
+        $user->citydio(),    $user->myXP(),
+        $user->myver(),      $user->mystat(),
+        $user->status(),     $user->level(),
+        $user->since(),      $user->premium(),
+        $user->DBUserId()
+    );
+}
+
+##@method void _updateUserDate($idUser)
+#@brief Updates the date of a record in the table `users`
+sub _updateUserDate {
+    my ( $self, $idUser ) = @_;
+    my $query = q/
+      UPDATE `users` SET `update_date` = CURRENT_TIMESTAMP()
+      WHERE id = ?
+   /;
+    $self->do( $query, $idUser );
+}
+
+sub _setUserLogoutDate { 
+    my ( $self, $idUser ) = @_;
+    my $query = q/
+      UPDATE `users` SET `logout_date` = CURRENT_TIMESTAMP()
+      WHERE id = ?
+   /;
+    $self->do( $query, $idUser );
 }
 
 1;

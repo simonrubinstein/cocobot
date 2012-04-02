@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-01
+# @date 2012-04-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,7 +38,7 @@ use Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 
 __PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id',
-    'codesCache' );
+    'code2id' );
 
 ##@method object getInstance()
 #@brief Returns an instance of an database object
@@ -66,7 +66,7 @@ sub initializesMemberVars {
     $self->town2id( {} );
     $self->ISP2id(  {} );
     $self->ISO3166Regex('');
-    $self->codesCache( {} );
+    $self->code2id( {} );
 }
 
 ##@method readConfiguration($config)
@@ -278,28 +278,55 @@ sub addNewUser {
 
     my $idTown = $self->getTown( $user->town() );
     my $idISP  = $self->getISP( $user->ISP() );
-    my $idCode = $self->insertCode( $user->code() );
+    my $idCode = $self->_insertCode( $user->code() );
     debug("idTown: $idTown; idISP: $idISP; idCode: $idCode ");
+    $user->DBCodeId($idCode);
 
-    my $idUser = $self->insertUser( $user, $idCode, $idISP, $idTown );
+    my $idUser = $self->_insertUser( $user, $idCode, $idISP, $idTown );
     $user->DBUserId($idUser);
     info("idUser: $idUser");
+
     #croak error('The addNewNickname() method must be overridden!');
 }
 
-sub updateNickname {
+##@method void updateCode($user)
+#@brief Updates the date of a record in the table `codes`
+#@param $user A 'Cocoweb::User' object
+sub updateCode {
     my ( $self, $user ) = @_;
-    croak error('The updateNickname() method must be overridden!');
+    my $code        = $user->code();
+    my $code2id_ref = $self->code2id();
+    confess error("No Id of table `codes` were found (code: $code)")
+      if $user->DBCodeId() == 0; 
+    $self->_updateCode($user->DBCodeId());
+    return $user->DBCodeId(); 
 }
 
-sub offlineNickname {
+sub updateUser {
     my ( $self, $user ) = @_;
+    confess error("No Id of table `users` were found")
+      if $user->DBUserId() == 0;
+    my $idCode = $self->updateCode($user);
+    my $idTown = $self->getTown( $user->town() );
+    my $idISP  = $self->getISP( $user->ISP() );
+    $self->_updateUser( $user, $idCode, $idISP, $idTown );
+}
+
+sub setUserOffline {
+    my ( $self, $user ) = @_;
+    confess error("No Id of table `users` were found")
+      if $user->DBUserId() == 0;
     croak error('The offlineNickname() method must be overridden!');
 }
 
-sub updateNicknameDate {
+sub updateUserDate {
     my ( $self, $user ) = @_;
-    croak error('The updateNicknameDate() method must be overridden!');
+    confess error("No Id of table `users` were found")
+      if $user->DBUserId() == 0;
+    $self->updateCode($user);
+    $self->_updateUserDate( $user->DBUserId() );
+    $user->DBUserId(0);
+
 }
 
 1;
