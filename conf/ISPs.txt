@@ -49,6 +49,7 @@ Herault Telecom
 iBrowse SARL
 IFREMER Institut Francais de Recherche pour Exploi
 Ikoula Net SAS
+IMAG et UJF
 Initials Online
 INOLIA
 Intermediasud
@@ -93,6 +94,7 @@ SCGS
 Serveurcom SRL
 SFR
 Societe de developpement Informatique
+TELECITYGROUP INTERNATIONAL LIMITED
 Teloise
 TRINAPS
 TUTOR S.A.
