@@ -1,6 +1,7 @@
 AB CONNECT
 Aeroport de Paris Telecom
 AFNIC
+Agence France Presse
 Air France
 Ajova Network
 Alionis
@@ -50,6 +51,8 @@ IFREMER Institut Francais de Recherche pour Exploi
 Ikoula Net SAS
 Initials Online
 INOLIA
+Intermediasud
+InterNAP Network Services U.K. Limited
 Internet Services
 Interoute Communications Limited
 Liberia Telecommunications Corporation (LIBTELCO)
@@ -70,6 +73,7 @@ Nomotech
 NordNet
 OFFRATEL
 ONLINE S.A.S.
+OpenIP
 Organization of the Petroleum Exporting Countries
 Outremer Telecom
 Ovh Systems
@@ -81,6 +85,7 @@ Reseau Optique du Campus de la Doua
 Rigas Tikli, SIA
 RISC GROUP IT SOLUTIONS S.A.
 RMI SAS
+Rue du commerce SA
 SARL MWSP
 SAS CTS Computers and Telecommunications Systems
 SCANSAFE

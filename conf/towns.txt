@@ -85,6 +85,7 @@ FR- Saulx-les-chartreux
 FR- Savigny-sur-orge
 FR- Soisy-sur-seine
 FR- Tigery
+FR- Vauhallan
 FR- Verrieres-le-buisson
 FR- Vigneux-sur-seine
 FR- Villabe
@@ -333,6 +334,7 @@ FR- Chartrettes
 FR- Chateau-landon
 FR- Chelles
 FR- Claye-souilly
+FR- Collegien
 FR- Combs-la-ville
 FR- Conde-sainte-libiaire
 FR- Cormeilles-en-parisis
@@ -365,6 +367,7 @@ FR- Gretz-armainvilliers
 FR- Grisy-suisnes
 FR- Guignes
 FR- Jouarre
+FR- Jouy-le-chatel
 FR- Jouy-sur-morin
 FR- Larchant
 FR- Le Chatelet
@@ -537,6 +540,7 @@ FR- Culoz
 FR- Farges
 FR- Gex
 FR- Grilly
+FR- Izernore
 FR- Jassans-riottier
 FR- Jayat
 FR- Jujurieux
@@ -544,6 +548,7 @@ FR- Lagnieu
 FR- Maillat
 FR- Ornex
 FR- Oyonnax
+FR- Pont-d ain
 FR- Port
 FR- Pougny
 FR- Replonges
@@ -624,6 +629,7 @@ FR- Saint-laurent-du-cros
 
 # 06: Alpes-Maritimes
 FR- Antibes
+FR- Beaulieu-sur-mer
 FR- Beausoleil
 FR- Biot
 FR- Cagnes-sur-mer
@@ -752,9 +758,11 @@ FR- Gardanne
 FR- Gemenos
 FR- Gignac-la-nerthe
 FR- Grans
+FR- Graveson
 FR- Istres
 FR- La Bouilladisse
 FR- La Ciotat
+FR- Lambesc
 FR- Lanon
 FR- Les Baux
 FR- Les-pennes-mirabeau
@@ -817,6 +825,7 @@ FR- Cognac
 FR- Confolens
 FR- Fleac
 FR- Gensac-la-pallue
+FR- Hiersac
 FR- Jarnac
 FR- La Faye
 FR- La Roque
@@ -844,6 +853,7 @@ FR- Landes
 FR- Marennes
 FR- Massac
 FR- Muron
+FR- Puilboreau
 FR- Rochefort
 FR- Royan
 FR- Saint-agnant
@@ -857,6 +867,7 @@ FR- Varaize
 
 # 18: Cher
 FR- Argent-sur-sauldre
+FR- Aubigny-sur-nere
 FR- Baugy
 FR- Bengy-sur-craon
 FR- Boulleret
@@ -1121,6 +1132,7 @@ FR- Villeneuve-les-avignon
 
 # 31: Haute-Garonne
 FR- Aureville
+FR- Bessieres
 FR- Blagnac
 FR- Bouloc
 FR- Bourg-saint-bernard
@@ -1345,6 +1357,7 @@ FR- Roussillon
 FR- Sablons
 FR- Saint-clair-du-rhne
 FR- Saint-just-chaleyssin
+FR- Saint-marcellin
 FR- Saint-martin-d heres
 FR- Saint-martin-d uriage
 FR- Satolas-et-bonce
@@ -1378,6 +1391,7 @@ FR- Aire-sur-l adour
 FR- Arsague
 FR- Biscarrosse
 FR- Capbreton
+FR- Dax
 FR- Geloux
 FR- Labouheyre
 FR- Mees
@@ -1415,6 +1429,7 @@ FR- Vineuil
 # 42: Loire
 FR- Andrezieux
 FR- Bourg-argental
+FR- Chamboeuf
 FR- Craintilleux
 FR- Dargoire
 FR- Firminy
@@ -1610,6 +1625,7 @@ FR- Brecey
 FR- Cherbourg
 FR- Colomby
 FR- Coutances
+FR- Folligny
 FR- Gavray
 FR- Granville
 FR- Guilberville
@@ -1644,6 +1660,7 @@ FR- Pleurs
 FR- Pogny
 FR- Reims
 FR- Reuil
+FR- Saint-amand-sur-fion
 FR- Saint-cheron
 FR- Saint-martin-d ablois
 FR- Sezanne
@@ -1897,6 +1914,7 @@ FR- Lomme
 FR- Loon-plage
 FR- Loos
 FR- Lourches
+FR- Louvroil
 FR- Maing
 FR- Marchiennes
 FR- Marcq-en-baroeul
@@ -1968,6 +1986,7 @@ FR- Bresles
 FR- Breteuil
 FR- Breuil-le-sec
 FR- Breuil-le-vert
+FR- Cannectancourt
 FR- Cauffry
 FR- Chamant
 FR- Chambly
@@ -2029,6 +2048,7 @@ FR- Silly-tillard
 FR- Thourotte
 FR- Troissereux
 FR- Trumilly
+FR- Venette
 FR- Ver-sur-launette
 FR- Verberie
 
@@ -2049,6 +2069,7 @@ FR- Ranes
 # 62: Pas-de-Calais
 FR- Achicourt
 FR- Achiet-le-grand
+FR- Aire-sur-la-lys
 FR- Aix-noulette
 FR- Annequin
 FR- Annezin
@@ -2099,6 +2120,7 @@ FR- Herlincourt
 FR- Houlle
 FR- La Couture
 FR- Lapugnoy
+FR- Leforest
 FR- Lens
 FR- Les Attaques
 FR- Libercourt
@@ -2162,6 +2184,7 @@ FR- Lezoux
 FR- Malintrat
 FR- Moissat
 FR- Ours
+FR- Perrier
 FR- Romagnat
 FR- Saint-Eloy-les-mines
 FR- Saint-germain-lembron
@@ -2217,6 +2240,7 @@ FR- Toulouges
 FR- Trouillas
 
 # 67: Bas-Rhin
+FR- Barr
 FR- Betschdorf
 FR- Bischheim
 FR- Bischoffsheim
@@ -2292,6 +2316,7 @@ FR- Soultzmatt
 FR- Spechbach-le-haut
 FR- Steinbach
 FR- Turckheim
+FR- Ungersheim
 FR- Vieux-thann
 FR- Wittenheim
 FR- Zillisheim
@@ -2633,6 +2658,7 @@ FR- Le Pontet
 FR- Le Thor
 FR- Mondragon
 FR- Monteux
+FR- Montfavet
 FR- Mornas
 FR- Orange
 FR- Pernes-les-fontaines
@@ -2669,6 +2695,7 @@ FR- Les Epesses
 FR- Les Essarts
 FR- Les Herbiers
 FR- Les Lucs
+FR- Longeves
 FR- Mareuil-sur-lay
 FR- Palluau
 FR- Rocheserviere
@@ -2686,6 +2713,7 @@ FR- Biard
 FR- Bonnes
 FR- Chatellerault
 FR- Chauvigny
+FR- Cisse
 FR- Civray
 FR- Iteuil
 FR- Jaunay-clan
@@ -2749,6 +2777,7 @@ FR- Mailly-le-chateau
 FR- Merry-sur-yonne
 FR- Mezilles
 FR- Migennes
+FR- Moneteau
 FR- Paron
 FR- Saint-serotin
 FR- Sens
