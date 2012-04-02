@@ -617,6 +617,7 @@ FR- Bellerive
 FR- Bellerive-sur-allier
 FR- Bourbon-l archambault
 FR- Gannat
+FR- Huriel
 FR- Lusigny
 FR- Meillard
 FR- Monetay-sur-allier
@@ -731,6 +732,7 @@ FR- Troyes
 
 # 11: Aude
 FR- Aoste
+FR- Bizanet
 FR- Cailhau
 FR- Capendu
 FR- Carcassonne
@@ -1057,6 +1059,7 @@ FR- Jonquerets-de-livet
 FR- Le Vaudreuil
 FR- Les Andelys
 FR- Louviers
+FR- Marcilly-la-campagne
 FR- Mesnil-sur-l estree
 FR- Nonancourt
 FR- Pacy-sur-eure
@@ -1064,6 +1067,7 @@ FR- Pont-audemer
 FR- Saint Marcel
 FR- Saint-andre-de-l eure
 FR- Saint-didier-des-bois
+FR- Saint-georges-du-vievre
 FR- Saint-germain-village
 FR- Saint-paul-de-fourques
 FR- Saint-philbert-sur-risle
@@ -1152,6 +1156,8 @@ FR- Pont-saint-esprit
 FR- Poulx
 FR- Rochefort-du-gard
 FR- Roquemaure
+FR- Saint-alexandre
+FR- Saint-ambroix
 FR- Saint-martin-de-valgalgues
 FR- Saint-pons-la-calm
 FR- Salindres
@@ -1210,6 +1216,7 @@ FR- Cadaujac
 FR- Camiran
 FR- Cenon
 FR- Coutras
+FR- Creon
 FR- Eysines
 FR- Floirac
 FR- Gradignan
@@ -1231,6 +1238,7 @@ FR- Leognan
 FR- Libourne
 FR- Lormont
 FR- Ludon-medoc
+FR- Marcillac
 FR- Merignac
 FR- Montussan
 FR- Noaillan
@@ -1378,6 +1386,7 @@ FR- Culin
 FR- Diemoz
 FR- Echirolles
 FR- Eclose
+FR- Froges
 FR- Grenoble
 FR- Jarrie
 FR- L isle-d abeau
@@ -1410,6 +1419,7 @@ FR- Vizille
 FR- Voreppe
 
 # 39: Jura
+FR- Champagnole
 FR- Dole
 FR- La Ferte
 FR- Le Deschaux
@@ -1440,6 +1450,7 @@ FR- Saint-pandelon
 FR- Saint-perdon
 FR- Saint-vincent-de-tyrosse
 FR- Seignosse
+FR- Sore
 FR- Sort-en-chalosse
 FR- Tarnos
 FR- Villeneuve-de-marsan
@@ -1641,6 +1652,7 @@ FR- La Cornuaille
 FR- La Menitre
 FR- La Tourlandry
 FR- La Varenne
+FR- Le Fuilet
 FR- Le Marillais
 FR- Le Pont
 FR- Lire
@@ -1781,6 +1793,7 @@ FR- Tonnoy
 FR- Toul
 FR- Valleroy
 FR- Vandoeuvre-les-nancy
+FR- Vezelise
 FR- Vigneulles
 FR- Ville-au-val
 FR- Villers-la-montagne
@@ -2159,6 +2172,7 @@ FR- Corbehem
 FR- Coulomby
 FR- Courrieres
 FR- Croisilles
+FR- Cuinchy
 FR- Dieval
 FR- Dourges
 FR- Etaples
@@ -2429,8 +2443,10 @@ FR- Vaulx-en-velin
 FR- Villeurbanne
 
 # 70: Haute-Saone
+FR- Amblans-et-velotte
 FR- Ancier
 FR- Arc-les-gray
+FR- Conflans-sur-lanterne
 FR- Fleurey-les-saint-loup
 FR- Fontaine-les-luxeuil
 FR- Genevreuille
@@ -2447,6 +2463,7 @@ FR- Antully
 FR- Autun
 FR- Bantanges
 FR- Blanzy
+FR- Branges
 FR- Buxy
 FR- Chalon-sur-sane
 FR- Champforgeuil
@@ -2591,6 +2608,7 @@ FR- Le Houlme
 FR- Le Petit-quevilly
 FR- Le Trait
 FR- Le Treport
+FR- Lillebonne
 FR- Lintot
 FR- Mesnil-esnard
 FR- Mont-saint-aignan
@@ -2613,6 +2631,7 @@ FR- Yvetot
 
 # 79: Deux-Sevres
 FR- Adilly
+FR- Bretignolles
 FR- Celles-sur-belle
 FR- Chatillon-sur-thouet
 FR- Cherveux
@@ -2679,6 +2698,7 @@ FR- Roquecourbe
 FR- Bressols
 FR- Castelsarrasin
 FR- Caussade
+FR- Labastide-saint-pierre
 FR- Montalzat
 FR- Montauban
 FR- Saint-porquier
@@ -2755,6 +2775,7 @@ FR- Fontenay-le-comte
 FR- Foussais
 FR- Givrand
 FR- Grosbreuil
+FR- L aiguillon-sur-vie
 FR- La Chaize
 FR- La Ferriere
 FR- La Gueriniere
@@ -2939,6 +2960,7 @@ RE- Sainte-clotilde
 RE- Sainte-marie
 
 # 987: Polynesie française
+PF- Faaa
 PF- Papeete
 PF- Punaauia
 
