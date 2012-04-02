@@ -131,7 +131,7 @@ sub debugQuery {
 sub execute {
     my $self  = shift;
     my $query = shift;
-    my $sth = $self->dbh()->prepare($query)
+    my $sth   = $self->dbh()->prepare($query)
       or croak error( "prepare($query) fail: " . $self->dbh()->errstr() );
     $self->debugQuery( $query, \@_ );
     my $res = $sth->execute(@_);
@@ -272,14 +272,18 @@ sub getAllIPSs {
     }
 }
 
-sub addNewNickname {
+##@method void addNewUser($user)
+sub addNewUser {
     my ( $self, $user ) = @_;
 
-    my $townId = $self->getTown( $user->town() );
-    my $ISPid  = $self->getISP( $user->ISP() );
-    my $codeId = $self->insertCode($user->code());
-    debug("townId: $townId; ISPid: $ISPid; codeId: $codeId ");
+    my $idTown = $self->getTown( $user->town() );
+    my $idISP  = $self->getISP( $user->ISP() );
+    my $idCode = $self->insertCode( $user->code() );
+    debug("idTown: $idTown; idISP: $idISP; idCode: $idCode ");
 
+    my $idUser = $self->insertUser( $user, $idCode, $idISP, $idTown );
+    $user->DBUserId($idUser);
+    info("idUser: $idUser");
     #croak error('The addNewNickname() method must be overridden!');
 }
 

@@ -166,6 +166,11 @@ sub getRandomPseudonym {
     }
     my $pseudonym = $nickname->getRandomLine();
 
+    #If the nickname begins with a colon then it is not modified
+    if ( $pseudonym =~ m{^:(.+)$} ) {
+        return $1;
+    }
+
     my $r = randum(11);
     if ( $r >= 0 and $r < 5 ) {
         $pseudonym = lc($pseudonym);

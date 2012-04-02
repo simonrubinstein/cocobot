@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-01
+# @date 2012-04-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -99,23 +99,23 @@ ENDTXT
     $self->dbh()->do($query);
 
     $query = <<ENDTXT;
-    CREATE TABLE IF NOT EXISTS `nicknames` (
+    CREATE TABLE IF NOT EXISTS `users` (
     `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
-    `id_codes`      INTEGER NOT NULL,
+    `id_code`       INTEGER NOT NULL,
     `id_town`       INTEGER NOT NULL,
     `id_ISP`        INTEGER NOT NULL,
-    `nickname`      VARCHAR(16) NOT NULL,
+    `mynickname`    VARCHAR(16) NOT NULL,
     `sex`           INTEGER NOT NULL,
-    `old`           INTEGER NOT NULL,
-    `city`          INTEGER NOT NULL,
-    `nickid`        INTEGER NOT NULL,
-    `niv`           INTEGER NOT NULL,
-    `ok`            INTEGER NOT NULL,
-    `stat`          INTEGER NOT NULL,
+    `myage`         INTEGER NOT NULL,
+    `citydio`       INTEGER NOT NULL,
+    `mynickID`      INTEGER NOT NULL,
+    `myXP`          INTEGER NOT NULL,
+    `myver`         INTEGER NOT NULL,
+    `myStat`        INTEGER NOT NULL,
     `status`        INTEGER NOT NULL,
     `level`         INTEGER NOT NULL,
     `since`         INTEGER NOT NULL,
-    `premimum`      INTEGER NOT NULL,
+    `premium`       INTEGER NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,
     `logout_date`   DATETIME DEFAULT NULL)

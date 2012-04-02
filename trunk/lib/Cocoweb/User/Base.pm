@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-25
+# @date 2012-04-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -160,7 +160,7 @@ sub setInfuz {
                        \s*(PREMIUM)?
                        \s*niveau:\s([0-9]+)
                        \sdepuis
-                       \s([0-9]+).*$}xms
+                       \s(-?[0-9]+).*$}xms
       )
     {
         $self->status($1);

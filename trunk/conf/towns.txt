@@ -807,6 +807,7 @@ FR- Vitrolles
 # 14: Calvados
 FR- Anguerny
 FR- Auvillars
+FR- Balleroy
 FR- Beaumont-en-auge
 FR- Bernieres-sur-mer
 FR- Bretteville-l orgueilleuse
@@ -1105,6 +1106,7 @@ FR- Brest
 FR- Cast
 FR- Chateaulin
 FR- Clohars-fouesnant
+FR- Combrit
 FR- Concarneau
 FR- Crozon
 FR- Dirinon
@@ -1279,6 +1281,7 @@ FR- Montpellier
 FR- Montpeyroux
 FR- Notre-dame-de-londres
 FR- Pomerols
+FR- Poussan
 FR- Prades-le-lez
 FR- Puechabon
 FR- Saint-aunes
@@ -1444,6 +1447,7 @@ FR- Villeneuve-de-marsan
 # 41: Loir-et-Cher
 FR- Blois
 FR- Chaumont-sur-loire
+FR- Chaumont-sur-tharonne
 FR- Coulommiers-la-tour
 FR- Lamotte-beuvron
 FR- Lorges
@@ -1887,6 +1891,7 @@ FR- Woippy
 FR- Bazoches
 FR- Cosne-sur-loire
 FR- Imphy
+FR- La Machine
 FR- Marzy
 FR- Nevers
 FR- Pougues-les-eaux
@@ -2838,6 +2843,7 @@ FR- Vittel
 FR- Auxerre
 FR- Avallon
 FR- Avesnes-sur-helpe
+FR- Charny
 FR- Dracy
 FR- Guerchy
 FR- Joigny
