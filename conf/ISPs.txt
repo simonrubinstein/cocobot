@@ -13,6 +13,7 @@ Altitude Telecom SAS
 America Online
 Assistance Publique-Hopitaux de Paris
 ASTRIUM SAS
+Atos Origin Infogerance
 Auvea Ingenierie
 AXA-TECH
 AXIONE S.A.S.
@@ -23,6 +24,7 @@ Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
 C@P CONNEXION
 CANL DYNAMIC IP
+Capaix Connectic
 CEGETEL LA REUNION
 Celeste
 Centre de Ressources Informatique (CRI)
@@ -55,6 +57,7 @@ Ikoula Net SAS
 IMAG et UJF
 Initials Online
 INOLIA
+Institut Pasteur
 Intermediasud
 InterNAP Network Services U.K. Limited
 Internet Services
