@@ -1,6 +1,7 @@
 AB CONNECT
 Aeroport de Paris Telecom
 AFNIC
+AFONE
 Agence France Presse
 Air France
 Ajova Network
@@ -14,6 +15,7 @@ America Online
 Assistance Publique-Hopitaux de Paris
 ASTRIUM SAS
 Atos Origin Infogerance
+AT{T Global Network Services Europe
 Auvea Ingenierie
 AXA-TECH
 AXIONE S.A.S.
@@ -41,6 +43,7 @@ DECKNET
 DediPower Managed Hosting Limited
 Digicube sas
 DIMEDIA LLC
+Dinamics Srl
 Ecritel
 ESTVIDEOCOMMUNICATION cable { broadband operator
 euNetworks Services GmbH
@@ -66,6 +69,7 @@ InterNAP Network Services U.K. Limited
 Internet Services
 Interoute Communications Limited
 INTRINSEC
+Kuwait Industrial Bank KSC
 Liberia Telecommunications Corporation (LIBTELCO)
 MANA Internet Service Provider
 MANA Internet Service Provider in French Polynesia

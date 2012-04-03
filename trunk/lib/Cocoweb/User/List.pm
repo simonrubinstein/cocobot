@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-02
+# @date 2012-04-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -82,8 +82,8 @@ sub populate {
             $user->update(@args);
         } else {
             $user->checkAndupdate(@args);
-            #$user->isNew(0);
             $user->isView(1);
+            $user->dateLastSeen(time);
         }
     }
     else {
@@ -126,7 +126,7 @@ sub addOrUpdateInDB {
     my @users    = ();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
-        next !$user->isView();
+        next if !$user->isView();
         if ( $user->isNew() or $user->hasChange() ) {
             $self->DB()->addNewUser($user);
         }
@@ -205,6 +205,10 @@ sub serialize {
 sub deserialize {
    my $self = shift;
    my $filename = $self->getSerializedFilename();
+   if (! -f $filename) {
+       info("$filename was not found");
+       return;
+   }
    my $user_ref =deserializeHash($filename);
    $self->all($user_ref);
 }

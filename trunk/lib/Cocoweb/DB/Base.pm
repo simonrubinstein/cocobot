@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-02
+# @date 2012-04-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,8 +37,7 @@ use Cocoweb;
 use Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 
-__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id',
-    'code2id' );
+__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id');
 
 ##@method object getInstance()
 #@brief Returns an instance of an database object
@@ -66,7 +65,6 @@ sub initializesMemberVars {
     $self->town2id( {} );
     $self->ISP2id(  {} );
     $self->ISO3166Regex('');
-    $self->code2id( {} );
 }
 
 ##@method readConfiguration($config)
@@ -149,7 +147,7 @@ sub do {
     $self->debugQuery( $query, \@_ );
     $self->dbh()->do( $query, undef, @_ )
       or croak error( $self->dbh()->errstr() );
-
+    info('number of rows affected: ' . $self->dbh()->rows());
 }
 
 ##@method array getInitTowns()
@@ -273,6 +271,8 @@ sub getAllIPSs {
 }
 
 ##@method void addNewUser($user)
+#@brief
+#@param $user A 'Cocoweb::User' object
 sub addNewUser {
     my ( $self, $user ) = @_;
 
@@ -284,9 +284,7 @@ sub addNewUser {
 
     my $idUser = $self->_insertUser( $user, $idCode, $idISP, $idTown );
     $user->DBUserId($idUser);
-    info("idUser: $idUser");
-
-    #croak error('The addNewNickname() method must be overridden!');
+    debug("idUser: $idUser");
 }
 
 ##@method void updateCode($user)
@@ -295,13 +293,15 @@ sub addNewUser {
 sub updateCode {
     my ( $self, $user ) = @_;
     my $code        = $user->code();
-    my $code2id_ref = $self->code2id();
     confess error("No Id of table `codes` were found (code: $code)")
       if $user->DBCodeId() == 0; 
     $self->_updateCode($user->DBCodeId());
     return $user->DBCodeId(); 
 }
 
+##@method void updateUser($user)
+#@brief Updates the date of a record in the table `users`
+#@param $user A 'Cocoweb::User' object
 sub updateUser {
     my ( $self, $user ) = @_;
     confess error("No Id of table `users` were found")
@@ -312,21 +312,24 @@ sub updateUser {
     $self->_updateUser( $user, $idCode, $idISP, $idTown );
 }
 
+##@method void setUserOffline($user)
 sub setUserOffline {
     my ( $self, $user ) = @_;
     confess error("No Id of table `users` were found")
       if $user->DBUserId() == 0;
-    croak error('The offlineNickname() method must be overridden!');
+    $self->_setUserLogoutDate( $user->DBUserId() );
+    $user->DBUserId(0);
 }
 
+##@method void updateUserDate($user)
+#@brief Updates all field records in the table `users`
+#@param $user A 'Cocoweb::User' object
 sub updateUserDate {
     my ( $self, $user ) = @_;
     confess error("No Id of table `users` were found")
       if $user->DBUserId() == 0;
     $self->updateCode($user);
     $self->_updateUserDate( $user->DBUserId() );
-    $user->DBUserId(0);
-
 }
 
 1;
