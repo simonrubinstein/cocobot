@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@ brief 
 # @created 2012-03-09
-# @date 2012-03-29
+# @date 2012-04-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,9 +38,11 @@ no utf8;
 use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
-use Cocoweb::DB;
+use Cocoweb::DB::Base;
+my $bot;
 my $DB;
 my $CLI;
+my $usersList;
 
 my %ispCount = ();
 my %townCount = ();
@@ -50,85 +52,41 @@ my $premiumCount = 0;
 init();
 run();
 
-my %user = ();
-my $bot;
 
 ##@method void run()
 sub run {
     $DB->initialize();
     $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
     $bot->requestAuthentication();
-    my $usersList = $bot->requestUsersList();
-    $bot->requestInformzForNewUsers();
-    $bot->requestDisconnectedUsers();
-
+    $usersList = $bot->getUsersList();
+    $usersList->deserialize();
+    checkUsers();
     if ( !$bot->isPremiumSubscription() ) {
         die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
     }
     my $count = 0;
-    while(1) {
-        $count++;
+    for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
         message('Iteration number: ' . $count);
         if ( $count % 28 == 9) {
             $usersList = $bot->requestUsersList();
-            $bot->requestInformzForNewUsers();
-            $bot->requestDisconnectedUsers();
         }
         $bot->requestMessagesFromUsers();
-        sleep 1;
+        sleep 1 if $count < $CLI->maxOfLoop();
     }
+    $usersList->serialize();
     info("The $Bin script was completed successfully.");
 }
 
 sub checkUsers {
-    my ($userFound_ref) = @_;
-    my ($count, $found) = (0, 0);
-    my $town_ref = $DB->getInitTowns();
-
-    foreach my $id (keys %$userFound_ref) {
-        next if exists $user{$id};
-        my $login_ref = $userFound_ref->{$id};
-        foreach my $name (keys %$login_ref) {
-            $user{$id}->{$name} = $login_ref->{$name};
-        }
-        my $infuz_ref = $bot->getInfuz($id);
-        print Dumper $infuz_ref;
-        $count++;
-        $ispCount{$infuz_ref->{'ISP'}}++;
-        $townCount{$infuz_ref->{'town'}}++;
-        $premiumCount++ if $infuz_ref->{'premium'};
-    }
-
-    debug("$count users checked / $premiumCount premium");
-    
-    #print Dumper \%ispCount;
-    #print Dumper \%townCount;
-
-    dumpToFile(\%townCount, '_townCount.pl');
-
-    ($count, $found) = (0, 0);
-    foreach my $town (keys %townCount) {
-        if (exists $town_ref->{$town}) {
-            $found++;
-            next;
-        }
-        print "$town => $townCount{$town}\n";
-        $count++;
-    }
-    print "------------------ found: $found; not found: $count\n";
-    #print Dumper $town_ref;
-
-
-
+    $usersList = $bot->requestUsersList();
+    $bot->requestInformzForNewUsers();
+    $bot->requestDisconnectedUsers();
+    $usersList->addOrUpdateInDB();
 }
-
-
-
-
 
 ## @method void init()
 sub init {
-    $DB  = Cocoweb::DB->instance();
+    $DB = Cocoweb::DB::Base->getInstance();
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
     if ( !defined $opt_ref ) {
@@ -140,10 +98,9 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print <<ENDTXT;
-Usage: 
- $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-ENDTXT
+    print STDOUT $Script
+      . ', This script will log the user in the database.' . "\n";
+    $CLI->printLineOfArgs();
     $CLI->HELP();
     exit 0;
 }
@@ -151,6 +108,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-24');
+    $CLI->VERSION_MESSAGE('2012-04-03');
 }
 

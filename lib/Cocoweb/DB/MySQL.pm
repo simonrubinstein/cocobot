@@ -104,7 +104,7 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'nicknames', 'codes', 'ISPs', 'towns' ) {
+    foreach my $table ( 'users', 'codes', 'ISPs', 'towns' ) {
         $self->do( 'DROP TABLE IF EXISTS `' . $table . '`' );
     }
 }
@@ -201,8 +201,6 @@ sub _insertCode {
       /;
     $self->do( $query, $code );
     my $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
-    my $code2id_ref = $self->code2id();
-    $code2id_ref->{$code} = $id;
     return $id;
 }
 
@@ -285,7 +283,7 @@ sub _setUserLogoutDate {
     my ( $self, $idUser ) = @_;
     my $query = q/
       UPDATE `users` SET `logout_date` = CURRENT_TIMESTAMP()
-      WHERE id = ?
+      WHERE id = ? AND `logout_date` = NULL
    /;
     $self->do( $query, $idUser );
 }

@@ -34,7 +34,7 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView', 'hasChange', 'notViewCount',
+__PACKAGE__->attributes( 'isNew', 'isView', 'dateLastSeen', 'hasChange', 'notViewCount',
     'updateDbRecord', 'DBCodeId', 'DBUserId' );
 
 ##@method void init(%args)
@@ -73,6 +73,7 @@ sub init {
         'town'           => '',
         'isNew'          => 1,
         'isView'         => 1,
+        'dateLastSeen'   => time,
         'hasChange'      => 0,
         'notViewCount'   => 0,
         'updateDbRecord' => 0,

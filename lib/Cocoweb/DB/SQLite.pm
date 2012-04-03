@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-02
+# @date 2012-04-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -77,7 +77,7 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'nicknames', 'codes', 'ISPs', 'towns' ) {
+    foreach my $table ( 'users', 'codes', 'ISPs', 'towns' ) {
         $self->dbh()->do( 'DROP TABLE `' . $table . '`' );
     }
 }
@@ -142,37 +142,25 @@ ENDTXT
 #@param string A three character code
 sub _insertCode {
     my ( $self, $code ) = @_;
-    my $query;
-    my $code2id_ref = $self->code2id();
-    my $id;
-    if ( !exists $code2id_ref->{$code} ) {
-        $query = q/
+    my $query = q/
         INSERT INTO `codes`
-          (`code`, `creation_date`, `update_date`) 
-          VALUES
-          (?, ?, ?);
-        /;
-        if ( $self->dbh()->do( $query, undef, $code, time, time ) ) {
-            $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
-            $code2id_ref->{$code} = $id;
-            return $id;
-        }
-        elsif ( $self->dbh()->err() != 19 ) {
-            confess error( $self->dbh()->errstr() );
-        }
-        warning( $self->dbh()->errstr() );
-        $id = 0;
-        my $sth = $self->execute('SELECT `id` FROM `codes` WHERE `code` = ?  ', $code);
-        my $result = $sth->fetchrow_hashref();
-        $id = $result->{'id'};
-        $code2id_ref->{$code} = $id;
+        (`code`, `creation_date`, `update_date`) 
+        VALUES
+        (?, ?, ?);
+    /;
+    if ( $self->dbh()->do( $query, undef, $code, time, time ) ) {
+        $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+        return $id;
     }
-    else {
-        $id = $code2id_ref->{$code};
+    elsif ( $self->dbh()->err() != 19 ) {
+        confess error( $self->dbh()->errstr() );
     }
-    $query = 'UPDATE `codes` SET `update_date` = ? WHERE `id` = ?';
-    $self->do( $query, time, $id );
-    return $id; 
+    warning( $self->dbh()->errstr() );
+    my $sth = $self->execute('SELECT `id` FROM `codes` WHERE `code` = ?  ', $code);
+    my $result = $sth->fetchrow_hashref();
+    my $idCode = $result->{'id'};
+    $self->_updateCode($idCode);
+    return $idCode;
 }
 
 ##@method void _updateCode($idCode)
@@ -185,12 +173,6 @@ sub _updateCode {
       WHERE id = ?
    /;
     $self->do( $query, time, $idCode );
-}
-
-
-
-sub offlineNickname {
-    my ( $self, $user ) = @_;
 }
 
 1;
