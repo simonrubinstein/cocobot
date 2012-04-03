@@ -28,6 +28,7 @@ Capaix Connectic
 CEGETEL LA REUNION
 Celeste
 Centre de Ressources Informatique (CRI)
+Centre Interuniversitaire de Calcul de Toulouse
 CIENUM SAS
 COLT Telecom Group Limited
 Commissariat a lEnergie Atomique
@@ -49,6 +50,7 @@ France Telecom
 Free SAS
 GALOP TELECOM
 Global Crossing
+H.R.Net SARL
 Haut-Rhin Telecom
 Herault Telecom
 iBrowse SARL
