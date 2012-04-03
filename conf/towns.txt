@@ -652,6 +652,7 @@ FR- Cannes
 FR- Carros
 FR- Colomars
 FR- Gattieres
+FR- Golfe-juan
 FR- Grasse
 FR- Juan-les-pins
 FR- La Napoule
@@ -879,6 +880,7 @@ FR- Charron
 FR- Clavette
 FR- Corme-royal
 FR- Dompierre-sur-mer
+FR- Echillais
 FR- La Clisse
 FR- La Rochelle
 FR- Landes
@@ -982,6 +984,7 @@ FR- La Bouillie
 FR- Lamballe
 FR- Loudeac
 FR- Mur-de-bretagne
+FR- Plaintel
 FR- Pledran
 FR- Plerin
 FR- Ploufragan
@@ -1020,6 +1023,7 @@ FR- Besanon
 FR- Dambenois
 FR- Dasle
 FR- Franois
+FR- Les Gras
 FR- Mandeure
 FR- Miserey-salines
 FR- Montbeliard
@@ -1186,6 +1190,7 @@ FR- Vergeze
 FR- Villeneuve-les-avignon
 
 # 31: Haute-Garonne
+FR- Aigrefeuille
 FR- Aureville
 FR- Bessieres
 FR- Blagnac
@@ -1202,6 +1207,7 @@ FR- Fonsorbes
 FR- Labastidette
 FR- Montesquieu-volvestre
 FR- Muret
+FR- Pinsaguel
 FR- Pompertuzat
 FR- Portet-sur-garonne
 FR- Pouy-de-touges
@@ -1272,6 +1278,7 @@ FR- Saint-ciers-sur-gironde
 FR- Saint-estephe
 FR- Saint-medard-de-guizieres
 FR- Saint-medard-en-jalles
+FR- Saint-morillon
 FR- Saint-yzan-de-soudiac
 FR- Talence
 FR- Vayres
@@ -1338,6 +1345,7 @@ FR- Cesson-sevigne
 FR- Chanteloup
 FR- Chantepie
 FR- Chateaubourg
+FR- Corps-nuds
 FR- Dinard
 FR- Dol-de-bretagne
 FR- Fougeres
@@ -1472,6 +1480,7 @@ FR- Mees
 FR- Mimbaste
 FR- Moliets-et-maa
 FR- Mont-de-marsan
+FR- Orthevielle
 FR- Peyrehorade
 FR- Rion-des-landes
 FR- Saint-pandelon
@@ -1569,6 +1578,7 @@ FR- Machecoul
 FR- Maisdon-sur-sevre
 FR- Mesanger
 FR- Missillac
+FR- Moisdon-la-riviere
 FR- Monnieres
 FR- Mouzillon
 FR- Nantes
@@ -1629,6 +1639,7 @@ FR- Ousson-sur-loire
 FR- Pannes
 FR- Patay
 FR- Pithiviers
+FR- Rebrechien
 FR- Saint-denis-en-val
 FR- Saint-jean-de-braye
 FR- Saint-jean-de-la-ruelle
@@ -1658,6 +1669,7 @@ FR- Casteljaloux
 FR- Colayrac
 FR- Laussou
 FR- Marmande
+FR- Masquieres
 FR- Prayssas
 FR- Sainte-bazeille
 FR- Samazan
@@ -1694,6 +1706,7 @@ FR- Marigne
 FR- Montigne-les-rairies
 FR- Montreuil-bellay
 FR- Rochefort-sur-loire
+FR- Roussay
 FR- Saint-germain-sur-moine
 FR- Saint-laurent-des-autels
 FR- Saint-pierre-montlimart
@@ -1743,6 +1756,7 @@ FR- Jalons
 FR- Jonchery-sur-vesle
 FR- Le Thoult
 FR- Montmirail
+FR- Mourmelon-le-grand
 FR- Nuisement-sur-coole
 FR- Oiry
 FR- Pleurs
@@ -1793,6 +1807,7 @@ FR- Brin-sur-seille
 FR- Chaligny
 FR- Champenoux
 FR- Chennevieres
+FR- Conflans-en-jarnisy
 FR- Custines
 FR- Damelevieres
 FR- Dombasle-sur-meurthe
@@ -1916,6 +1931,7 @@ FR- Montigny-les-metz
 FR- Morhange
 FR- Moyeuvre-grande
 FR- Nilvange
+FR- Noisseville
 FR- Oeting
 FR- Pange
 FR- Petite-rosselle
@@ -1924,6 +1940,7 @@ FR- Puttelange
 FR- Rechicourt-le-chateau
 FR- Rombas
 FR- Saint-avold
+FR- Sarralbe
 FR- Sarrebourg
 FR- Sarreguemines
 FR- Saulny
@@ -2113,6 +2130,7 @@ FR- Estrees-saint-denis
 FR- Etouy
 FR- Flavacourt
 FR- Fleurines
+FR- Formerie
 FR- Fosseuse
 FR- Fresnoy-en-thelle
 FR- Gouvieux
@@ -2200,6 +2218,7 @@ FR- Berck
 FR- Bethune
 FR- Bois-en-ardres
 FR- Boulogne-sur-mer
+FR- Bourlon
 FR- Brimeux
 FR- Bruay
 FR- Bully-les-mines
@@ -2233,6 +2252,7 @@ FR- Herlincourt
 FR- Houlle
 FR- La Couture
 FR- Lapugnoy
+FR- Le Portel
 FR- Leforest
 FR- Lens
 FR- Les Attaques
@@ -2242,6 +2262,7 @@ FR- Lillers
 FR- Longfosse
 FR- Longuenesse
 FR- Loos-en-gohelle
+FR- Mametz
 FR- Marck
 FR- Marles-les-mines
 FR- Marquise
@@ -2298,6 +2319,7 @@ FR- Lempdes
 FR- Lezoux
 FR- Malintrat
 FR- Moissat
+FR- Montfermy
 FR- Ours
 FR- Perrier
 FR- Romagnat
@@ -2423,6 +2445,7 @@ FR- Lauw
 FR- Merxheim
 FR- Mulhouse
 FR- Pulversheim
+FR- Ranspach-le-bas
 FR- Richwiller
 FR- Rixheim
 FR- Saint Louis
@@ -2553,6 +2576,7 @@ FR- Notre-dame-du-pe
 FR- Noyen-sur-sarthe
 FR- Parce-sur-sarthe
 FR- Sainte-jamme-sur-sarthe
+FR- Vibraye
 FR- Vouvray-sur-loir
 
 # 73: Savoie
@@ -2576,6 +2600,7 @@ FR- Les Allues
 FR- Les Avanchers
 FR- Montmelian
 FR- Mouxy
+FR- Randens
 FR- Saint-jean-de-maurienne
 FR- Saint-martin-de-belleville
 FR- Tignes
@@ -2771,6 +2796,7 @@ FR- Le Pradet
 FR- Les Mayons
 FR- Lorgues
 FR- Montauroux
+FR- Pourrieres
 FR- Saint-aygulf
 FR- Saint-mandrier-sur-mer
 FR- Saint-maximin-la-sainte-ba
@@ -3020,6 +3046,7 @@ PF- Punaauia
 
 # 988: Nouvelle-Calédonie
 NC- Dumbea
+NC- Mont-dore
 NC- Noumea
 
 # 000: Unknow
