@@ -555,8 +555,10 @@ FR- Jayat
 FR- Jujurieux
 FR- Lagnieu
 FR- Maillat
+FR- Montreal La Cluse
 FR- Ornex
 FR- Oyonnax
+FR- Perrex
 FR- Pont-d ain
 FR- Port
 FR- Pougny
@@ -625,6 +627,7 @@ FR- Lusigny
 FR- Meillard
 FR- Monetay-sur-allier
 FR- Montluon
+FR- Serbannes
 FR- Varennes-sur-allier
 FR- Vichy
 FR- Voisenon
@@ -763,6 +766,7 @@ FR- Bozouls
 FR- Capdenac-gare
 FR- Castanet
 FR- Decazeville
+FR- Onet-le-chateau
 FR- Saint-affrique
 
 # 13: Bouches-du-Rhone
@@ -844,6 +848,7 @@ FR- Pertheville-ners
 FR- Ranville
 FR- Rots
 FR- Roullours
+FR- Saint-germain-de-tallevend
 FR- Trouville-sur-mer
 FR- Verson
 FR- Villers-sur-mer
@@ -1000,6 +1005,8 @@ FR- Plouha
 FR- Pluzunet
 FR- Pordic
 FR- Quessoy
+FR- Quevert
+FR- Rostrenen
 FR- Saint-brieuc
 FR- Saint-caradec
 FR- Saint-quay-portrieux
@@ -1219,6 +1226,7 @@ FR- Fonsorbes
 FR- Labastidette
 FR- Montesquieu-volvestre
 FR- Muret
+FR- Pibrac
 FR- Pinsaguel
 FR- Pompertuzat
 FR- Portet-sur-garonne
@@ -1303,6 +1311,7 @@ FR- Agde
 FR- Alignan-du-vent
 FR- Argelliers
 FR- Baillargues
+FR- Balaruc-le-vieux
 FR- Beziers
 FR- Castelnau-le-lez
 FR- Cazouls-les-beziers
@@ -1373,6 +1382,7 @@ FR- Laille
 FR- Liffre
 FR- Maure-de-bretagne
 FR- Melesse
+FR- Messac
 FR- Montfort-sur-meu
 FR- Pace
 FR- Quebriac
@@ -1425,6 +1435,7 @@ FR- Veretz
 
 # 38: Isere
 FR- Beaurepaire
+FR- Bernin
 FR- Bevenais
 FR- Bourgoin
 FR- Charavines
@@ -1624,6 +1635,7 @@ FR- Soudan
 FR- Trignac
 FR- Vay
 FR- Vertou
+FR- Vieillevigne
 
 # 45: Loiret
 FR- Ardon
@@ -1635,6 +1647,7 @@ FR- Chaingy
 FR- Chalette-sur-loing
 FR- Charsonville
 FR- Chateauneuf-sur-loire
+FR- Chatillon-sur-loire
 FR- Checy
 FR- Chevilly
 FR- Chilleurs-aux-bois
@@ -1665,6 +1678,7 @@ FR- Saint-jean-le-blanc
 FR- Saint-pryve-saint-mesmin
 FR- Saran
 FR- Sermaises
+FR- Sully-sur-loire
 FR- Tigy
 FR- Vienne-en-val
 FR- Villemandeur
@@ -1776,6 +1790,7 @@ FR- Gaye
 FR- Jalons
 FR- Jonchery-sur-vesle
 FR- Le Thoult
+FR- Moiremont
 FR- Montmirail
 FR- Mourmelon-le-grand
 FR- Nuisement-sur-coole
@@ -2073,6 +2088,7 @@ FR- Marly
 FR- Marpent
 FR- Marquillies
 FR- Maubeuge
+FR- Monchecourt
 FR- Mons-en-baroeul
 FR- Morbecque
 FR- Mouvaux
@@ -2303,6 +2319,7 @@ FR- Meurchin
 FR- Montigny-en-gohelle
 FR- Noeux-les-mines
 FR- Outreau
+FR- Pihen-les-guines
 FR- Pont-de-briques
 FR- Pronville
 FR- Rebreuviette
@@ -2329,6 +2346,7 @@ FR- Wingles
 FR- Wizernes
 
 # 63: Puy-de-Dome
+FR- Ambert
 FR- Aubiere
 FR- Billom
 FR- Blanzat
@@ -2428,6 +2446,7 @@ FR- Drulingen
 FR- Drusenheim
 FR- Duttlenheim
 FR- Ebersheim
+FR- Eckbolsheim
 FR- Eschau
 FR- Fegersheim
 FR- Gerstheim
@@ -2690,6 +2709,7 @@ FR- Vetraz-monthoux
 FR- Vulbens
 
 # 76: Seine-Maritime
+FR- Barentin
 FR- Belleville-en-caux
 FR- Bihorel
 FR- Bois-guillaume
@@ -2858,9 +2878,11 @@ FR- Bollene
 FR- Bonnieux
 FR- Cadenet
 FR- Caderousse
+FR- Cairanne
 FR- Carpentras
 FR- Caumont-sur-durance
 FR- Cavaillon
+FR- Chateauneuf-de-gadagne
 FR- Cucuron
 FR- Jonquieres
 FR- Le Pontet
