@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-03-09
-# @date 2012-04-02
+# @date 2012-04-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -90,8 +90,11 @@ sub run {
 sub process {
     $count++;
     if ( ( $isReconnect and $count % 1800 == 0 ) or !defined $bot ) {
+        $usersList->serialize() if $count > 1;
         $bot = $CLI->getBot( 'generateRandom' => 1 );
         $bot->requestAuthentication();
+        $usersList = $bot->getUsersList();
+        $usersList->deserialize(); 
         $bot->display();
         if ( !$bot->isPremiumSubscription() ) {
             croak error( 'The script is reserved for users with a'
@@ -108,6 +111,7 @@ sub checkTownAndISP {
     $usersList = $bot->requestUsersList();
     $bot->requestInformzForNewUsers();
     $bot->requestDisconnectedUsers();
+    $usersList->serialize();
     my $user_ref = $usersList->all();
 
     my ( $count, $found, $notFound ) = ( 0, 0, 0 );
