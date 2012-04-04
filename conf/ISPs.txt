@@ -34,6 +34,7 @@ Centre Interuniversitaire de Calcul de Toulouse
 CIENUM SAS
 COLT Telecom Group Limited
 Commissariat a lEnergie Atomique
+Communaute dAgglomeration de Montpellier
 COMPLETEL SAS France
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
 CONSEILS { SYSTEMES INFORMATIQUES
@@ -64,6 +65,7 @@ Ikoula Net SAS
 IMAG et UJF
 Initials Online
 INOLIA
+Institut National de la Recherche Agronomique
 Institut Pasteur
 Intermediasud
 InterNAP Network Services U.K. Limited
@@ -88,6 +90,7 @@ Nerim SAS
 Neuf Cegetel
 Nomotech
 NordNet
+Observatoire de Paris
 OFFRATEL
 ONLINE S.A.S.
 OpenIP
