@@ -33,6 +33,7 @@ Centre de Ressources Informatique (CRI)
 Centre Interuniversitaire de Calcul de Toulouse
 CIENUM SAS
 COLT Telecom Group Limited
+ComIT, Institute of Molecular and Cell Biology
 Commissariat a lEnergie Atomique
 Communaute dAgglomeration de Montpellier
 COMPLETEL SAS France
@@ -72,6 +73,7 @@ InterNAP Network Services U.K. Limited
 Internet Services
 Interoute Communications Limited
 INTRINSEC
+IP bloc for individual xDSL access (PPP clients)
 Kuwait Industrial Bank KSC
 Liberia Telecommunications Corporation (LIBTELCO)
 MANA Internet Service Provider
