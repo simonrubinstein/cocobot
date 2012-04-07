@@ -582,6 +582,7 @@ FR- Lagnieu
 FR- Lhuis
 FR- Maillat
 FR- Massieux
+FR- Meximieux
 FR- Montmerle
 FR- Montreal La Cluse
 FR- Nantua
@@ -613,6 +614,7 @@ FR- Bruyeres-et-montberault
 FR- Bucy-les-cerny
 FR- Chateau-thierry
 FR- Chauny
+FR- Commenchon
 FR- Corcy
 FR- Cuffies
 FR- Dallon
@@ -728,6 +730,7 @@ FR- Chomerac
 FR- Colombier-le-vieux
 FR- Cruas
 FR- Davezieux
+FR- Gluiras
 FR- Guilherand
 FR- Joyeuse
 FR- Le Teil
@@ -750,6 +753,7 @@ FR- Haraucourt
 FR- Les Ayvelles
 FR- Linay
 FR- Nouzonville
+FR- Prix-les-mezieres
 FR- Rethel
 FR- Rocroi
 FR- Saint Laurent
@@ -777,6 +781,7 @@ FR- Les Riceys
 FR- Lusigny-sur-barse
 FR- Mailly-le-camp
 FR- Mergey
+FR- Mery-sur-seine
 FR- Mesnil-sellieres
 FR- Nogent-sur-seine
 FR- Piney
@@ -1298,6 +1303,7 @@ FR- Rosporden
 FR- Saint-Evarzec
 FR- Saint-divy
 FR- Saint-yvi
+FR- Sizun
 
 # 30: Gard
 FR- Aimargues
@@ -1767,6 +1773,7 @@ FR- Monistrol-d allier
 FR- Pont-salomon
 FR- Retournac
 FR- Saint-victor-malescours
+FR- Saugues
 FR- Vals-pres-le-puy
 
 # 44: Loire-Atlantique
@@ -1866,6 +1873,7 @@ FR- Ingre
 FR- Ladon
 FR- Lailly-en-val
 FR- Lion-en-sullias
+FR- Lorris
 FR- Malesherbes
 FR- Marigny-les-usages
 FR- Meung-sur-loire
@@ -2142,6 +2150,7 @@ FR- Auray
 FR- Baud
 FR- Billiers
 FR- Branderion
+FR- Colpo
 FR- Elven
 FR- Gourin
 FR- Guer
@@ -2515,6 +2524,7 @@ FR- Bagnoles-de-l orne
 FR- Belleme
 FR- Berjou
 FR- Bouce
+FR- Ceton
 FR- Chailloue
 FR- Conde-sur-sarthe
 FR- Damigny
@@ -2591,6 +2601,7 @@ FR- Henin-beaumont
 FR- Herlincourt
 FR- Houlle
 FR- Hulluch
+FR- Isbergues
 FR- La Couture
 FR- Lapugnoy
 FR- Le Portel
@@ -3169,6 +3180,7 @@ FR- Beauchamps
 FR- Boves
 FR- Bray-les-mareuil
 FR- Candas
+FR- Cayeux-sur-mer
 FR- Chaulnes
 FR- Corbie
 FR- Crecy-en-ponthieu
