@@ -36,12 +36,14 @@ use Cocoweb::File;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
-__PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline' );
+__PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline', 'removeListDelay' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
+    croak error('removeListDelay is missing')
+        if !exists $args{'removeListDelay'};
     my $logUsersListInDB =
       ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
       ? 1
@@ -52,13 +54,14 @@ sub init {
         'all'              => {},
         'logUsersListInDB' => $logUsersListInDB,
         'DB'               => $DB,
-        'DBUsersOffline'   => []
+        'DBUsersOffline'   => [],
+        'removeListDelay'  => $args{'logUsersListInDB'} 
     );
 }
 
 ##@method void populate($myage, $mysex, $citydio, $mynickID,
 #                       $mynickname, $myXP, $mystat, $myver)
-#@brief Adds or updates a user from the list
+#@brief Adds or updates a user in the list
 sub populate {
     my (
         $self,       $myage, $mysex,  $citydio, $mynickID,
@@ -92,6 +95,44 @@ sub populate {
     else {
         $users_ref->{$mynickID} = Cocoweb::User->new(@args);
     }
+}
+
+##@method void showUsersUnseen()
+sub showUsersUnseen {
+    my ($self) = @_;
+    my $user_ref = $self->all();
+    print STDOUT '! Last seen            '
+      . '! NickID ! Nikcname          '
+      . '! seconds! Min  !Hours!' . "\n";
+    my $count = 0;
+    foreach my $id (
+        sort {
+            $user_ref->{$b}->{'dateLastSeen'} <=> $user_ref->{$a}
+              ->{'dateLastSeen'}
+        } keys %$user_ref
+      )
+    {
+        my $user = $user_ref->{$id};
+        next if $user->isView();
+
+        my @dt        = localtime( $user->dateLastSeen() );
+        my $deltaSec  = ( time - $user->dateLastSeen() );
+        my $deltaMin  = $deltaSec / 60;
+        my $deltaHour = $deltaMin / 60;
+        my $line      = sprintf(
+            '! %02d-%02d-%02d  %02d:%02d:%02d '
+              . '! %-6s !  %-16s ! %6d ! %4d ! %3d !',
+            ( $dt[5] + 1900 ), ( $dt[4] + 1 ), $dt[3],
+            $dt[2],            $dt[1],              $dt[0],
+            $user->mynickID(), $user->mynickname(), $deltaSec,
+            $deltaMin,         $deltaHour
+        );
+
+        print STDOUT $line . "\n";
+        $count++;
+
+    }
+    print STDOUT "- $count user(s) displayed\n";
 }
 
 ##@method void removeUser($userWanted)
@@ -235,6 +276,22 @@ sub checkIfNicknameExists {
     }
     debug("The nickname '$nickname' was not found");
     return;
+}
+
+##@method string nickIdToNickname($nickid)
+#@brief Returns a nickanme from a nickname id
+#@param integer $nickid A nickname ID (i.e. 314857)
+#@return string A nickname or returns the nickname if it has not found
+sub nickIdToNickname {
+    my ( $self, $nickid ) = @_;
+    my $user_ref = $self->all();
+    if ( exists $user_ref->{$nickid} ) {
+        return $user_ref->{$nickid}->{'mynickname'};
+    }
+    else {
+        warning( 'The nickmane id ' . $nickid . ' was not found in the list' );
+        return $nickid;
+    }
 }
 
 ##@method string getSerializedFilename()
