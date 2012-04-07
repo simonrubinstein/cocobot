@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@ brief 
 # @created 2012-03-09
-# @date 2012-04-03
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -68,20 +68,21 @@ sub run {
     for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
         message('Iteration number: ' . $count);
         if ( $count % 28 == 9) {
-            $usersList = $bot->requestUsersList();
+            checkUsers();
         }
         $bot->requestMessagesFromUsers();
         sleep 1 if $count < $CLI->maxOfLoop();
     }
-    $usersList->serialize();
     info("The $Bin script was completed successfully.");
 }
 
 sub checkUsers {
     $usersList = $bot->requestUsersList();
     $bot->requestInformzForNewUsers();
-    $bot->requestDisconnectedUsers();
     $usersList->addOrUpdateInDB();
+    $bot->requestDisconnectedUsers();
+    $bot->setUserOfflineInDB();
+    $usersList->serialize();
 }
 
 ## @method void init()

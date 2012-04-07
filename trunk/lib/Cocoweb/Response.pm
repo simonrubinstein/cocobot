@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2012-03-29
+# @date 2012-04-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -211,7 +211,10 @@ sub process1Int {
 
     #A user or users have disconnected the chat.
     if ( $olko == 90 ) {
-        my $yyg = ( length($urlo) - 2 ) / 7;
+        my @usersStillConnected = ();
+        my $disconnectedUsers   = '';
+        my $countDiscUsers      = 0;
+        my $yyg                 = ( length($urlo) - 2 ) / 7;
         if ( $yyg > 0 ) {
             for ( my $i = 0 ; $i < $yyg ; $i++ ) {
                 my $qqb = parseInt( substr( $urlo, 2 + 7 * $i, 1 ) );
@@ -219,18 +222,31 @@ sub process1Int {
                 my $userWanted = $request->usersList()->getUser($qqk);
                 if ( defined $userWanted ) {
                     if ( $qqb == 0 ) {
-                        info(   "(!!!) The user '"
-                              . $userWanted->mynickname()
-                              . "' has disconnected." );
+                        $disconnectedUsers .= $userWanted->mynickname() . '; ';
+                        $countDiscUsers++;
                         $request->usersList()->removeUser($userWanted);
                     }
                     else {
-                        info(   "The user '"
-                              . $userWanted->mynickname()
-                              . "' is still connected." );
+                        push @usersStillConnected, $userWanted;
                     }
                 }
             }
+        }
+        if ( scalar(@usersStillConnected) > 0 ) {
+            my $usersStr = '';
+            foreach my $user (@usersStillConnected) {
+                $usersStr .= $user->mynickname() . '; ';
+            }
+            info(
+                    scalar(@usersStillConnected)
+                  . ' user(s) are still connected: '
+                  . $usersStr );
+            undef @usersStillConnected;
+        }
+        if ( $countDiscUsers > 0 ) {
+            info(  $countDiscUsers
+                  . ' user(s) have disconnected: '
+                  . $disconnectedUsers );
         }
     }
 

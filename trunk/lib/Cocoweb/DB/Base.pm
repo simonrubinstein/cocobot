@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-03
+# @date 2012-04-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -147,7 +147,7 @@ sub do {
     $self->debugQuery( $query, \@_ );
     $self->dbh()->do( $query, undef, @_ )
       or croak error( $self->dbh()->errstr() );
-    info('number of rows affected: ' . $self->dbh()->rows());
+    #info('number of rows affected: ' . $self->dbh()->rows());
 }
 
 ##@method array getInitTowns()
@@ -275,6 +275,7 @@ sub getAllIPSs {
 #@param $user A 'Cocoweb::User' object
 sub addNewUser {
     my ( $self, $user ) = @_;
+    debug($user->mynickname());
 
     my $idTown = $self->getTown( $user->town() );
     my $idISP  = $self->getISP( $user->ISP() );
@@ -292,6 +293,7 @@ sub addNewUser {
 #@param $user A 'Cocoweb::User' object
 sub updateCode {
     my ( $self, $user ) = @_;
+    debug($user->mynickname());
     my $code        = $user->code();
     confess error("No Id of table `codes` were found (code: $code)")
       if $user->DBCodeId() == 0; 
@@ -304,6 +306,7 @@ sub updateCode {
 #@param $user A 'Cocoweb::User' object
 sub updateUser {
     my ( $self, $user ) = @_;
+    debug($user->mynickname());
     confess error("No Id of table `users` were found")
       if $user->DBUserId() == 0;
     my $idCode = $self->updateCode($user);
@@ -315,8 +318,10 @@ sub updateUser {
 ##@method void setUserOffline($user)
 sub setUserOffline {
     my ( $self, $user ) = @_;
-    confess error("No Id of table `users` were found")
-      if $user->DBUserId() == 0;
+    if ($user->DBUserId() == 0) {
+        print Dumper $user;
+        confess error("No Id of table `users` were found. Nickname: " . $user->mynickname())
+    }
     $self->_setUserLogoutDate( $user->DBUserId() );
     $user->DBUserId(0);
 }

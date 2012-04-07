@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-30
+# @date 2012-04-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,7 +33,7 @@ use Data::Dumper;
 use POSIX;
 use Storable;
 use Cocoweb::Logger;
-our $VERSION   = '0.2001';
+our $VERSION   = '0.3000';
 our $AUTHORITY = 'TEST';
 our $isVerbose = 0;
 our $isDebug   = 0;
