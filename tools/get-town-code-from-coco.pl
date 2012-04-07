@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-03-09
-# @date 2012-04-04
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -109,8 +109,8 @@ sub process {
 ##@method void checkTownAndISP()
 sub checkTownAndISP {
     $usersList = $bot->requestUsersList();
-    $bot->requestInformzForNewUsers();
-    $bot->requestDisconnectedUsers();
+    $bot->requestInfuzForNewUsers();
+    $bot->requestCheckIfUsersNotSeenAreOffline();
     $usersList->serialize();
     my $user_ref = $usersList->all();
 
@@ -197,6 +197,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-01');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }
 
