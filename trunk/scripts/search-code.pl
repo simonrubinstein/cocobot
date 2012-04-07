@@ -47,7 +47,7 @@ sub run {
     $bot->requestAuthentication();
     $bot->display();
     my $user = $bot->requestCodeSearch($code);
-    $bot->infuz($user);
+    $bot->requestUserInfuz($user);
     $user->show();
     info("The $Bin script was completed successfully.");
 }

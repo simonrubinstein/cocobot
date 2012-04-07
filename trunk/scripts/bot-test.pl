@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-25
-# @date 2012-03-29
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -48,7 +48,7 @@ sub run {
         message( "Loop $count / " . $CLI->maxOfLoop() );
         my $usersList;
         if ( $count % 160 == 39 ) {
-            $bot->requestDisconnectedUsers();
+            $bot->requestCheckIfUsersNotSeenAreOffline();
         }
         if ( $count % 28 == 9 ) {
             $usersList = $bot->requestUsersList();
@@ -60,6 +60,7 @@ sub run {
 }
 
 ##@method void init()
+#@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref = $CLI->getOpts( 'enableLoop' => 1 );
@@ -81,6 +82,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-29');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }
 

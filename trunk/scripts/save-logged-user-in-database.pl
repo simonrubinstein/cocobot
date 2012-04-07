@@ -78,9 +78,9 @@ sub run {
 
 sub checkUsers {
     $usersList = $bot->requestUsersList();
-    $bot->requestInformzForNewUsers();
+    $bot->requestInfuzForNewUsers();
     $usersList->addOrUpdateInDB();
-    $bot->requestDisconnectedUsers();
+    $bot->requestCheckIfUsersNotSeenAreOffline();
     $bot->setUserOfflineInDB();
     $usersList->serialize();
 }
@@ -109,6 +109,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-03');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }
 

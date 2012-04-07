@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-23
-# @date 2012-03-29
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -49,8 +49,8 @@ sub run {
     return if !defined $userWanted;
     for ( my $i = 1 ; $i <= $CLI->maxOfLoop() ; $i++ ) {
         message( "Loop $i / " . $CLI->maxOfLoop() );
-        $bot->lancetimer();
-        $bot->isDead( [$userWanted] );
+        $bot->requestMessagesFromUsers();
+        $bot->requestsChecksIfUserOffline( [$userWanted] );
         sleep 4;
     }
 }
@@ -69,10 +69,8 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print <<ENDTXT;
-Usage: 
- $Script [-u mynickname -y myage -s mysex -a myavatar -p mypass -v -d]
-ENDTXT
+    print STDOUT $Script . ', Checks whether a user has logged out of Coco.fr' . "\n";
+   $CLI->printLineOfArgs();
    $CLI->HELP();
  exit 0;
 }
@@ -80,5 +78,5 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-29');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }
