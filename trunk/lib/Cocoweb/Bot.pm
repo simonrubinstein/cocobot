@@ -36,7 +36,7 @@ use Cocoweb::User::Connected;
 use base 'Cocoweb::Object';
 __PACKAGE__->attributes( 'user', 'request', );
 
-## @method void init($args)
+##@method void init($args)
 sub init {
     my ( $self, %args ) = @_;
     my $logUsersListInDB;
@@ -60,7 +60,7 @@ sub init {
 #@brief Returns list of users
 #@return object A 'Cocoweb::User::List' object
 sub getUsersList {
-    my ($self)  = @_;
+    my ($self) = @_;
     return $self->request()->usersList();
 }
 
@@ -103,12 +103,12 @@ sub requestUsersList {
     return $self->request()->getUsersList( $self->user() );
 }
 
-##method void getUserInfo()
+##method void requestConnectedUserInfo()
 #@brief Get the number of days remaining until the end of
 #       the Premium subscription.
 #       This method works only for user with a Premium subscription
 #
-sub getUserInfo {
+sub requestConnectedUserInfo {
     my ($self) = @_;
     $self->request()->getUserInfo( $self->user() );
 }
@@ -116,17 +116,18 @@ sub getUserInfo {
 ##@method void requestCodeSearch()
 #@brief Search a nickname from his code of 3 characters
 #@param string $code A nickname code (i.e. WcL)
+#@return object A 'CocoWeb::User' object
 sub requestCodeSearch {
     my ( $self, $code ) = @_;
-    $self->request()->searchCode( $self->user(), $code );
+    return $self->request()->searchCode( $self->user(), $code );
 }
 
-##@method object infuz($user)
+##@method object requestUserInfuz($user)
 #@brief Retrieves information about an user
 #       for Premium subscribers only
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
 #@return object A 'CocoWeb::User::Wanted' object
-sub infuz {
+sub requestUserInfuz {
     my ( $self, $user ) = @_;
     $user = $self->user() if !defined $user;
     return $self->request()->infuz( $self->user(), $user );
@@ -163,14 +164,8 @@ sub display {
     $self->user()->display();
 }
 
-##@method void lancetimer($user)
-#@brief Method that periodically performs requests to the server
-sub lancetimer {
-    my ($self) = @_;
-    $self->request()->lancetimer( $self->user() );
-}
-
-sub isDead {
+##@method void requestsChecksIfUserOffline($user)
+sub requestsChecksIfUserOffline {
     my ( $self, $users ) = @_;
     $self->request()->isDead( $self->user(), $users );
 }
@@ -183,23 +178,24 @@ sub isAuthenticated {
     return $self->user()->isAuthenticated();
 }
 
-##@method requestInformzForNewUsers()
+##@method requestInfuzForNewUsers()
 #@brief Search "informz" string for new users.
-sub requestInformzForNewUsers {
-    my ($self) = @_;
+sub requestInfuzForNewUsers {
+    my ($self)    = @_;
     my $users_ref = $self->request()->usersList()->all();
-    my $count = 0;
-    foreach my $niknameId (keys %$users_ref) {
+    my $count     = 0;
+    foreach my $niknameId ( keys %$users_ref ) {
         my $user = $users_ref->{$niknameId};
         next if !$user->isNew();
         $user = $self->request()->infuz( $self->user(), $user );
         next if !defined $user;
         $count++;
+
         #my $infuz = $user->infuz();
         #$infuz =~s{\n}{; }g;
         #message('*** new user : ' .$user->mynickname() . ' ' . $infuz);
     }
-    info($count . ' new "infuz" was requested and returned');
+    info( $count . ' new "infuz" was requested and returned' );
 
 }
 
@@ -207,14 +203,14 @@ sub requestInformzForNewUsers {
 #@brief Returns the messages sent by other users
 sub requestMessagesFromUsers {
     my ($self) = @_;
-    $self->request()->requestMessagesFromUsers($self->user());
-} 
+    $self->request()->requestMessagesFromUsers( $self->user() );
+}
 
-
-##@method void requestDisconnectedUsers()
-sub requestDisconnectedUsers {
+##@method void requestCheckIfUsersNotSeenAreOffline()
+#@brief Checks if the not viewed users are offline
+sub requestCheckIfUsersNotSeenAreOffline {
     my ($self) = @_;
-    $self->request()->checkDisconnectedUsers($self->user());
+    $self->request()->checkIfUsersNotSeenAreOffline( $self->user() );
 }
 
 ##@method void setUserOfflineInDB()
@@ -222,7 +218,6 @@ sub setUserOfflineInDB {
     my ($self) = @_;
     $self->request()->usersList()->setUserOfflineInDB();
 }
-
 
 1;
 
