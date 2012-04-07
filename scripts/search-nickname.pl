@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-02-28
-# @date 2012-03-29
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -54,7 +54,7 @@ sub run {
           . '" was not found.' . "\n";
         return;
     }
-    $bot->infuz($userWanted);
+    $bot->requestUserInfuz($userWanted);
     $userWanted->show();
 }
 
@@ -89,6 +89,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-29');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }
 
