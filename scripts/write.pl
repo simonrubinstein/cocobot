@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief Writing a message to a user
 # @created 2012-02-22
-# @date 2012-03-29
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -49,9 +49,9 @@ sub run {
     $bot->display();
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
-    $bot->writeMessage( $message, $userWanted );
-    sleep 2;
-    $bot->lancetimer();
+    $bot->requestWriteMessage( $userWanted, $message );
+    sleep 1;
+    $bot->requestMessagesFromUsers();
     info("The script was completed successfully.");
 }
 
@@ -85,5 +85,5 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-29');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-02
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -119,7 +119,7 @@ sub createTables {
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `codes` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `code`          CHAR(3) NOT NULL,
+    `code`          CHAR(3) BINARY NOT NULL,
     `creation_date` DATETIME NOT NULL,
     `update_date`   DATETIME NOT NULL,
     PRIMARY KEY  (`id`),
@@ -156,8 +156,8 @@ ENDTXT
     `id_ISP`        int(10) unsigned NOT NULL,
     `id_town`       int(10) unsigned NOT NULL,
     `mynickname`    VARCHAR(16) NOT NULL,
-    `mynickID`        int(10) unsigned NOT NULL,
-    `mysex`           int(10) unsigned NOT NULL,
+    `mynickID`      int(10) unsigned NOT NULL,
+    `mysex`         int(10) unsigned NOT NULL,
     `myage`         int(10) unsigned NOT NULL,
     `citydio`       int(10) unsigned NOT NULL,
     `myXP`          int(10) unsigned NOT NULL,
@@ -244,6 +244,7 @@ sub _insertUser {
     return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
 
+##@method _updateUser($user, $idCode, $idISP, $idTown)
 sub _updateUser {
     my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
     my $query = q/
@@ -274,18 +275,51 @@ sub _updateUserDate {
     my ( $self, $idUser ) = @_;
     my $query = q/
       UPDATE `users` SET `update_date` = CURRENT_TIMESTAMP()
-      WHERE id = ?
+      WHERE `id` = ?
    /;
     $self->do( $query, $idUser );
 }
 
-sub _setUserLogoutDate { 
+##@method void _setUserLogoutDate($idUser)
+sub _setUserLogoutDate {
     my ( $self, $idUser ) = @_;
     my $query = q/
       UPDATE `users` SET `logout_date` = CURRENT_TIMESTAMP()
-      WHERE id = ? AND `logout_date` = NULL
+      WHERE `id` = ? AND `logout_date` = NULL
    /;
     $self->do( $query, $idUser );
+}
+
+##@method void updateCodesDate($idCodes_ref)
+sub updateCodesDate {
+    my ( $self, $idCodes_ref ) = @_;
+    return if scalar(@$idCodes_ref) == 0;
+    my $query = q/
+      UPDATE `codes` SET `update_date` = CURRENT_TIMESTAMP()
+      WHERE `id` IN ( 
+   /;
+    foreach my $code (@$idCodes_ref) {
+        $query .= ' ?,';
+    }
+    chop($query);
+    $query .= ' )';
+    $self->do( $query, @$idCodes_ref );
+}
+
+##@method void updateUsersDate($idUsers_ref)
+sub updateUsersDate {
+    my ( $self, $idUsers_ref ) = @_;
+    return if scalar(@$idUsers_ref) == 0;
+    my $query = q/
+      UPDATE `users` SET `update_date` = CURRENT_TIMESTAMP()
+      WHERE `id` IN ( 
+   /;
+    foreach my $idUser (@$idUsers_ref) {
+        $query .= ' ?,';
+    }
+    chop($query);
+    $query .= ' )';
+    $self->do( $query, @$idUsers_ref );
 }
 
 1;

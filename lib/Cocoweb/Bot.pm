@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-03-31
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -65,6 +65,7 @@ sub getUsersList {
 }
 
 ##@method void requestAuthentication()
+#@brief Performs authentication requests to the server Coco.fr
 sub requestAuthentication {
     my ($self)  = @_;
     my $user    = $self->user();
@@ -75,13 +76,17 @@ sub requestAuthentication {
     $self->request()->firsty($user);
 }
 
-##@method void writeMessage()
-sub writeMessage {
-    my ( $self, $message, $userWanted ) = @_;
+##@method void requestWriteMessage($userWanted, $message)
+#@brief Performs a request to write a message to another user
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#              The user for whom the message is intended
+#@param string $message The message to write to the user
+sub requestWriteMessage {
+    my ( $self, $userWanted, $message ) = @_;
     $self->request()->writus( $self->user(), $userWanted, $message );
 }
 
-##@method object searchUser($userWanted)
+##@method object searchNickname($userWanted)
 #@brief Search a nickname connected
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
 #@return object A CocoWeb::User
@@ -108,11 +113,10 @@ sub getUserInfo {
     $self->request()->getUserInfo( $self->user() );
 }
 
-##@method void searchCode()
+##@method void requestCodeSearch()
 #@brief Search a nickname from his code of 3 characters
-#       This method works only for user with a Premium subscription
 #@param string $code A nickname code (i.e. WcL)
-sub searchCode {
+sub requestCodeSearch {
     my ( $self, $code ) = @_;
     $self->request()->searchCode( $self->user(), $code );
 }
@@ -179,21 +183,23 @@ sub isAuthenticated {
     return $self->user()->isAuthenticated();
 }
 
-
+##@method requestInformzForNewUsers()
 #@brief Search "informz" string for new users.
 sub requestInformzForNewUsers {
     my ($self) = @_;
     my $users_ref = $self->request()->usersList()->all();
+    my $count = 0;
     foreach my $niknameId (keys %$users_ref) {
         my $user = $users_ref->{$niknameId};
         next if !$user->isNew();
         $user = $self->request()->infuz( $self->user(), $user );
         next if !defined $user;
-        my $infuz = $user->infuz();
-        $infuz =~s{\n}{; }g;
-        message('*** new user : ' .$user->mynickname() . ' ' . $infuz);
+        $count++;
+        #my $infuz = $user->infuz();
+        #$infuz =~s{\n}{; }g;
+        #message('*** new user : ' .$user->mynickname() . ' ' . $infuz);
     }
-
+    info($count . ' new "infuz" was requested and returned');
 
 }
 
@@ -209,6 +215,12 @@ sub requestMessagesFromUsers {
 sub requestDisconnectedUsers {
     my ($self) = @_;
     $self->request()->checkDisconnectedUsers($self->user());
+}
+
+##@method void setUserOfflineInDB()
+sub setUserOfflineInDB {
+    my ($self) = @_;
+    $self->request()->usersList()->setUserOfflineInDB();
 }
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief Search a user from its nickname code
 # @created 2012-03-18
-# @date 2012-03-29
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -46,7 +46,7 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->requestAuthentication();
     $bot->display();
-    my $user = $bot->searchCode($code);
+    my $user = $bot->requestCodeSearch($code);
     $bot->infuz($user);
     $user->show();
     info("The $Bin script was completed successfully.");
@@ -82,5 +82,5 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-29');
+    $CLI->VERSION_MESSAGE('2012-04-07');
 }

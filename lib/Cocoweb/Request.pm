@@ -371,10 +371,12 @@ sub isDead {
     $self->agir( $user, '90' . $nickIds );
 }
 
-## @method void writus($user, $s1, $nickId)
-#@brief
+##@method void writus($user, $userWanted, $s1) 
+#@brief Performs a request to write a message to another user
 #@param object $user An 'User::Connected' object
-#@param string $s1
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#              The user for whom the message is intended
+#@param string $s1 The message to write to the user
 sub writus {
     my ( $self, $user, $userWanted, $s1 ) = @_;
     return if !defined $s1 or length($s1) == 0;

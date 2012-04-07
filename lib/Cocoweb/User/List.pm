@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-03
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -36,7 +36,7 @@ use Cocoweb::File;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
-__PACKAGE__->attributes( 'logUsersListInDB', 'DB' );
+__PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -51,7 +51,8 @@ sub init {
     $self->attributes_defaults(
         'all'              => {},
         'logUsersListInDB' => $logUsersListInDB,
-        'DB'               => $DB
+        'DB'               => $DB,
+        'DBUsersOffline'   => []
     );
 }
 
@@ -77,13 +78,15 @@ sub populate {
     debug("populate $mynickname / $mynickID");
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
-        debug("The user $mynickname already exists: " . $user->isNew());
-        if ($user->isNew()) {
+        $user->dateLastSeen(time);
+
+        #debug("The user $mynickname already exists: " . $user->isNew());
+        if ( $user->isNew() ) {
             $user->update(@args);
-        } else {
+        }
+        else {
             $user->checkAndupdate(@args);
             $user->isView(1);
-            $user->dateLastSeen(time);
         }
     }
     else {
@@ -94,8 +97,9 @@ sub populate {
 ##@method void removeUser($userWanted)
 sub removeUser {
     my ( $self, $userWanted ) = @_;
-    my $id       = $userWanted->mynickID();
-    my $user_ref = $self->all();
+    my $id                 = $userWanted->mynickID();
+    my $user_ref           = $self->all();
+    my $DBUsersOffline_ref = $self->DBUsersOffline();
     if ( exists $user_ref->{$id} ) {
         my $user = $user_ref->{$id};
         info(   'The user "'
@@ -105,7 +109,10 @@ sub removeUser {
               . ' times' );
 
         delete $user_ref->{$id};
-        $self->DB()->offlineNickname($user) if $self->logUsersListInDB();
+
+        #$self->DB()->setUserOffline($user) if $self->logUsersListInDB();
+        push @$DBUsersOffline_ref, $user->$user->DBUserId()
+          if $self->logUsersListInDB();
 
     }
     else {
@@ -113,17 +120,31 @@ sub removeUser {
               . $userWanted->mynickname()
               . '" could not be removed from the list' );
     }
-
 }
 
+##@method void setUserOfflineInDB()
+sub setUserOfflineInDB {
+    my ($self) = @_;
+    if ( !$self->logUsersListInDB() ) {
+        warning('The record in the database is not enabled');
+        return;
+    }
+    my $DBUsersOffline_ref = $self->DBUsersOffline();
+    $self->DB()->setUsersOffline($DBUsersOffline_ref);
+    $DBUsersOffline_ref = [];
+}
+
+##@method void addOrUpdateInDB()
 sub addOrUpdateInDB {
     my ($self) = @_;
     if ( !$self->logUsersListInDB() ) {
         warning('The record in the database is not enabled');
         return;
     }
-    my $user_ref = $self->all();
-    my @users    = ();
+    my $user_ref      = $self->all();
+    my @codesToUpdate = ();
+    my @usersToUpdate = ();
+    my @users         = ();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         next if !$user->isView();
@@ -132,51 +153,87 @@ sub addOrUpdateInDB {
         }
         elsif ( $user->updateDbRecord() ) {
             $self->DB()->updateUser($user);
+
         }
         else {
-            $self->DB()->updateUserDate($user);
-        }
 
+            #$self->DB()->updateUserDate($user);
+            push @codesToUpdate, $user->DBCodeId();
+            push @usersToUpdate, $user->DBUserId();
+        }
     }
+    $self->DB()->updateCodesDate( \@codesToUpdate );
+    $self->DB()->updateUsersDate( \@usersToUpdate );
 }
 
 ##@method arrayref getUsersNotViewed()
+#@brief Returns list of users that have not been seen in the
+#       users list returned by the last query.
 sub getUsersNotViewed {
-    my ($self)   = @_;
-    my $user_ref = $self->all();
-    my @users    = ();
+    my ($self)     = @_;
+    my $user_ref   = $self->all();
+    my @users      = ();
+    my $usersCount = 0;
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         if ( !$user->isView() ) {
+            $usersCount++;
             $user->incNotViewCount();
-            info(   'The user "'
-                  . $user->mynickname()
-                  . '" has not been seen in the list. Counter: '
-                  . $user->notViewCount() );
+
+            #info(   'The user "'
+            #      . $user->mynickname()
+            #      . '" has not been seen in the list. Counter: '
+            #      . $user->notViewCount() );
+            my $notViewCount = $user->incNotViewCount();
+            if ( $notViewCount > 100 ) {
+                next if $notViewCount % 20 == 0;
+            }
+            elsif ( $notViewCount > 80 ) {
+                next if $notViewCount % 10 == 0;
+            }
+            elsif ( $notViewCount > 60 ) {
+                next if $notViewCount % 8 == 0;
+            }
+            elsif ( $notViewCount > 40 ) {
+                next if $notViewCount % 4 == 0;
+            }
+            elsif ( $notViewCount > 20 ) {
+                next if $notViewCount % 2 == 0;
+            }
             push @users, $user if !$user->isView();
         }
     }
-    info( scalar(@users) . ' user(s) were not found in the list' );
+    my $usersStr = '';
+    foreach my $user (@users) {
+        $usersStr .=
+          '[' . $user->mynickname() . ': ' . $user->notViewCount() . '] ';
+    }
+
+    info(
+        scalar(@users) . ' user(s) were not found in the list: ' . $usersStr );
+    info(   'Total size of the local list: '
+          . scalar( keys %$user_ref )
+          . '. Number of users not viewed in the remote list: '
+          . $usersCount );
     return \@users;
 }
 
-##@method hashref checkIfNicknameExists($pseudonym)
-#@brief Check if a pseudonym already exists in the list
-#       of pseudonym already read.
-#@param string The pseudonym wanted
-#@return hashref
+##@method object checkIfNicknameExists($nickname)
+#@brief Check if a nickname already exists in the list
+#@param string The nickname wanted
+#@return object The 'Cocoweb::User' object if the nickname wanted
 sub checkIfNicknameExists {
-    my ( $self, $pseudonym ) = @_;
-    return if !defined $pseudonym or length($pseudonym) == 0;
+    my ( $self, $nickname ) = @_;
+    return if !defined $nickname or length($nickname) == 0;
     my $user_ref = $self->all();
     foreach my $id ( keys %$user_ref ) {
         my $name = $user_ref->{$id}->{'mynickname'};
-        if ( lc($name) eq lc($pseudonym) ) {
-            debug("The pseudonym '$pseudonym' was found");
+        if ( lc($name) eq lc($nickname) ) {
+            debug("The nickname '$nickname' was found");
             return $user_ref->{$id};
         }
     }
-    debug("The pseudonym '$pseudonym' was not found");
+    debug("The nickname '$nickname' was not found");
     return;
 }
 
@@ -184,33 +241,35 @@ sub checkIfNicknameExists {
 #@brief Returns the name of the serialized file
 #@return string Fullpathname of the serialized file
 sub getSerializedFilename {
-    my $self = shift;
-    my $filename = lc(ref($self));
-    $filename =~s{[^a-z0-9]+}{-}g;
-    $filename = Cocoweb::Config->instance()->getVarDir() . '/' . $filename . '.data';
+    my $self     = shift;
+    my $filename = lc( ref($self) );
+    $filename =~ s{[^a-z0-9]+}{-}g;
+    $filename =
+      Cocoweb::Config->instance()->getVarDir() . '/' . $filename . '.data';
     return $filename;
 }
 
 ##@method void serialize()
 #@brief Serialize the list of users in a file
 sub serialize {
-   my $self = shift;
-   my $user_ref = $self->all();
-   my $filename = $self->getSerializedFilename();
-   serializeData($user_ref, $filename);
+    my $self     = shift;
+    my $user_ref = $self->all();
+    my $filename = $self->getSerializedFilename();
+    serializeData( $user_ref, $filename );
+    info("(*) The user list has been serialized");
 }
 
 ##@method deserialize()
 #@brief Deserializes the list of users from a file
 sub deserialize {
-   my $self = shift;
-   my $filename = $self->getSerializedFilename();
-   if (! -f $filename) {
-       info("$filename was not found");
-       return;
-   }
-   my $user_ref =deserializeHash($filename);
-   $self->all($user_ref);
+    my $self     = shift;
+    my $filename = $self->getSerializedFilename();
+    if ( !-f $filename ) {
+        warning("$filename was not found");
+        return;
+    }
+    my $user_ref = deserializeHash($filename);
+    $self->all($user_ref);
 }
 
 1
