@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-03-30
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -61,6 +61,7 @@ __PACKAGE__->attributes(
 my $conf_ref;
 my $agent_ref;
 my $userAgent;
+my $removeListDelay;
 
 ##@method void init($args)
 #@brief Perform some initializations
@@ -91,23 +92,44 @@ sub init {
             'agent'   => $agent_ref->{'agent'},
             'timeout' => $agent_ref->{'timeout'}
         );
+        my $delay = $conf->getString('remove_list_delay');
+
+        if ( $delay =~ m{^(\d+)s?$} ) {
+            $removeListDelay = $1;
+        }
+        elsif ( $delay =~ m{^(\d+)m$} ) {
+            $removeListDelay = $1 * 60;
+        }
+        elsif ( $delay =~ m{^(\d+)h$} ) {
+            $removeListDelay = $1 * 3600;
+        }
+        elsif ( $delay =~ m{^(\d+)d$} ) {
+            $removeListDelay = $1 * 86400;
+        }
+        else {
+            croak "bad delay format: $delay. "
+              . "Format excepted: 60, 60s, 60m, 24h or 15d";
+        }
+
     }
 
     my $myport = 3000 + randum(1000);
 
     $self->attributes_defaults(
-        'agent'  => $agent_ref,
-        'urlav'  => $conf_ref->{'urlav'},
-        'myport' => $myport,
-        'url1'   => $conf_ref->{'urly0'} . ':' . $myport . '/',
-        'genru'  => 0,
-        'yearu'  => 0,
-        'usersList' =>
-          Cocoweb::User::List->new( 'logUsersListInDB' => $logUsersListInDB ),
+        'agent'     => $agent_ref,
+        'urlav'     => $conf_ref->{'urlav'},
+        'myport'    => $myport,
+        'url1'      => $conf_ref->{'urly0'} . ':' . $myport . '/',
+        'genru'     => 0,
+        'yearu'     => 0,
+        'usersList' => Cocoweb::User::List->new(
+            'logUsersListInDB' => $logUsersListInDB,
+            'removeListDelay'  => $removeListDelay
+        ),
         'speco'    => 0,
         'convert'  => Cocoweb::Encode->instance(),
         'timz1'    => 0,
-        'rechrech' => 0
+        'rechrech' => 0,
     );
 }
 
@@ -279,8 +301,8 @@ sub agix {
       if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
-    die error('The method called "' . $function . '()" is unknown!')
-        if $function ne 'process1';
+    die error( 'The method called "' . $function . '()" is unknown!' )
+      if $function ne 'process1';
     $response = Cocoweb::Response->new();
     return $response->$function( $self, $user, $arg );
 }
@@ -371,7 +393,7 @@ sub isDead {
     $self->agir( $user, '90' . $nickIds );
 }
 
-##@method void writus($user, $userWanted, $s1) 
+##@method void writus($user, $userWanted, $s1)
 #@brief Performs a request to write a message to another user
 #@param object $user An 'User::Connected' object
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
@@ -432,7 +454,10 @@ sub getUsersList {
     return $self->usersList();
 }
 
-sub checkDisconnectedUsers {
+##@method void requestDisconnectedUsers($user)
+#@brief Checks if the not viewed users are offline
+#@param object $user An 'User::Connected' object
+sub checkIfUsersNotSeenAreOffline {
     my ( $self, $user ) = @_;
     my $users_ref = $self->usersList()->getUsersNotViewed();
     $self->isDead( $user, $users_ref );
@@ -440,7 +465,7 @@ sub checkDisconnectedUsers {
 
 ##@method object searchNickname($user, $userWanted)
 #@brief Search a nickname connected
-#@param object $user      An 'User::Connected' object
+#@param object $user       An 'User::Connected' object
 #@param object $userWanted A CocoWeb::User::Wanted object
 #@return object A CocoWeb::User
 sub searchNickname {

@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2012-04-04
+# @date 2012-04-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -140,7 +140,7 @@ sub process1Int {
 
         #Result of a search query of a nickname code
         if ( $bud == 557 ) {
-            my $userFoud = new Cocoweb::User(
+            my $userFound = new Cocoweb::User(
                 'mynickname' => substr( $urlo, 19 ),
                 'myage'      => substr( $urlo, 11, 2 ),
                 'citydio'    => substr( $urlo, 13, 5 ),
@@ -150,7 +150,7 @@ sub process1Int {
                 'mystat' => 5,
                 'myXP'   => 0
             );
-            return $userFoud;
+            return $userFound;
         }
 
         # The second part of the authentication is completed successfully
@@ -333,7 +333,7 @@ sub process1Int {
                     else {
                         my $zami = parseInt( substr( $urlo, $hzq, 6 ) );
                         if ( ( $diase - $hzq ) == 7 ) {
-                            message("The user $zami writing");
+                            message('The user "' . $request->usersList()->nickIdToNickname($zami) . '" writing...');
                         }
                     }
                 }
