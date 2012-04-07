@@ -70,6 +70,7 @@ FR- Morangis
 FR- Morsang-sur-orge
 FR- Morsang-sur-seine
 FR- Nozay
+FR- Ollainville
 FR- Orsay
 FR- Palaiseau
 FR- Paray-vieille-poste
@@ -380,6 +381,7 @@ FR- Grandpuits
 FR- Gretz
 FR- Gretz-armainvilliers
 FR- Grisy-suisnes
+FR- Guerard
 FR- Guermantes
 FR- Guignes
 FR- Jouarre
@@ -561,6 +563,7 @@ FR- Voisins-le-bretonneux
 FR- Amberieu-en-bugey
 FR- Amberieux-en-dombes
 FR- Belley
+FR- Bellignat
 FR- Bourg-en-bresse
 FR- Certines
 FR- Ceyzeriat
@@ -874,6 +877,7 @@ FR- Sausset-les-pins
 FR- Tarascon
 FR- Trets
 FR- Velaux
+FR- Venelles
 FR- Vitrolles
 
 # 14: Calvados
@@ -973,6 +977,7 @@ FR- Saint-agnant
 FR- Saint-andre-de-lidon
 FR- Saint-georges-d oleron
 FR- Saint-georges-de-didonne
+FR- Saint-jean-de-liversay
 FR- Saint-savinien
 FR- Saintes
 FR- Saujon
@@ -1221,6 +1226,7 @@ FR- Villiers-en-desoeuvre
 # 28: Eure-et-Loir
 FR- Auneau
 FR- Bonneval
+FR- Brou
 FR- Broue
 FR- Bu
 FR- Chartres
@@ -2347,6 +2353,7 @@ FR- Neuville-en-ferrain
 FR- Obies
 FR- Odomez
 FR- Onnaing
+FR- Ostricourt
 FR- Perenchies
 FR- Peronne-en-melantois
 FR- Petite Foret
@@ -2763,6 +2770,7 @@ FR- Hoenheim
 FR- Illkirch-graffenstaden
 FR- Ingwiller
 FR- Kilstett
+FR- La Broque
 FR- La Wantzenau
 FR- Lingolsheim
 FR- Mackenheim
@@ -2966,6 +2974,7 @@ FR- Conlie
 FR- Coulaines
 FR- Courcemont
 FR- Ecommoy
+FR- Guecelard
 FR- La Bazoge
 FR- La Fleche
 FR- Le Lude
@@ -3085,6 +3094,7 @@ FR- Darnetal
 FR- Deville-les-rouen
 FR- Dieppe
 FR- Elbeuf
+FR- Etainhus
 FR- Fecamp
 FR- Flocques
 FR- Fontaine-le-bourg
@@ -3227,6 +3237,7 @@ FR- Brignoles
 FR- Cogolin
 FR- Correns
 FR- Cuers
+FR- Draguignan
 FR- Evenos
 FR- Figanieres
 FR- Flassans-sur-issole
