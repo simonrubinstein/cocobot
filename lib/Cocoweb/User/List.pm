@@ -152,7 +152,7 @@ sub removeUser {
         delete $user_ref->{$id};
 
         #$self->DB()->setUserOffline($user) if $self->logUsersListInDB();
-        push @$DBUsersOffline_ref, $user->$user->DBUserId()
+        push @$DBUsersOffline_ref, $user->DBUserId()
           if $self->logUsersListInDB();
 
     }
