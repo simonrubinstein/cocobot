@@ -82,6 +82,7 @@ FR- Saint-germain-les-corbeil
 FR- Saint-maximin
 FR- Saint-michel-sur-orge
 FR- Saint-pierre-du-perray
+FR- Saint-vrain
 FR- Sainte-genevieve-des-bois
 FR- Saintry-sur-seine
 FR- Saulx-les-chartreux
@@ -625,6 +626,7 @@ FR- Nauroy
 FR- Origny-en-thierache
 FR- Pasly
 FR- Pavant
+FR- Pernant
 FR- Ribeauville
 FR- Romeny-sur-marne
 FR- Roupy
@@ -666,6 +668,7 @@ FR- Roumoules
 FR- Sisteron
 
 # 05: Hautes-Alpes
+FR- Brianon
 FR- Gap
 FR- Laragne
 FR- Saint-laurent-du-cros
@@ -875,6 +878,7 @@ FR- Clecy
 FR- Conde-sur-noireau
 FR- Courseulles-sur-mer
 FR- Croissanville
+FR- Cully
 FR- Deauville
 FR- Demouville
 FR- Epron
@@ -1041,6 +1045,7 @@ FR- Saint-apollinaire
 FR- Saulieu
 FR- Saulon-la-chapelle
 FR- Savigny-le-sec
+FR- Savigny-les-beaune
 FR- Selongey
 FR- Semur
 FR- Talant
@@ -1159,6 +1164,7 @@ FR- Fourges
 FR- Franqueville
 FR- Garencieres
 FR- Gasny
+FR- Gravigny
 FR- Jonquerets-de-livet
 FR- La Selle
 FR- Le Vaudreuil
@@ -1170,6 +1176,7 @@ FR- Nassandres
 FR- Nonancourt
 FR- Pacy-sur-eure
 FR- Pont-audemer
+FR- Poses
 FR- Saint Marcel
 FR- Saint-andre-de-l eure
 FR- Saint-didier-des-bois
@@ -1389,6 +1396,7 @@ FR- Podensac
 FR- Portets
 FR- Roquebrune
 FR- Ruch
+FR- Sadirac
 FR- Saint-Emilion
 FR- Saint-ciers-sur-gironde
 FR- Saint-denis-de-pile
@@ -1400,11 +1408,13 @@ FR- Saint-yzan-de-soudiac
 FR- Talence
 FR- Tresses
 FR- Vayres
+FR- Villenave-d ornon
 
 # 34: Herault
 FR- Adissan
 FR- Agde
 FR- Alignan-du-vent
+FR- Aniane
 FR- Argelliers
 FR- Baillargues
 FR- Balaruc-le-vieux
@@ -1800,6 +1810,7 @@ FR- Marigny-les-usages
 FR- Meung-sur-loire
 FR- Montargis
 FR- Montereau
+FR- Neuville-aux-bois
 FR- Nogent-sur-vernisson
 FR- Olivet
 FR- Orleans
@@ -1929,6 +1940,7 @@ FR- Valognes
 # 51: Marne
 FR- Ambonnay
 FR- Avize
+FR- Blaise
 FR- Chalons-en-champagne
 FR- Chaltrait
 FR- Charleville
@@ -2238,6 +2250,7 @@ FR- Illies
 FR- Jeumont
 FR- La Gorgue
 FR- La Madeleine
+FR- La Neuville
 FR- Lambersart
 FR- Lannoy
 FR- Lauwin-planque
@@ -2306,6 +2319,7 @@ FR- Villefranche-sur-sane
 FR- Villers-guislain
 FR- Wahagnies
 FR- Wambrechies
+FR- Warhem
 FR- Wasquehal
 FR- Wattignies
 FR- Wattrelos
@@ -2828,10 +2842,10 @@ FR- Bantanges
 FR- Blanzy
 FR- Branges
 FR- Buxy
+FR- Chagny
 FR- Chalon-sur-sane
 FR- Champforgeuil
 FR- Change
-FR- Chagny
 FR- Charnay-les-macon
 FR- Chatenoy-le-royal
 FR- Ciry-le-noble
@@ -3077,7 +3091,9 @@ FR- Moreuil
 FR- Muille-villette
 FR- Peronne
 FR- Rivery
+FR- Rubempre
 FR- Rue
+FR- Saisseval
 FR- Saleux
 FR- Salouel
 FR- Vignacourt
@@ -3120,6 +3136,7 @@ FR- Brignoles
 FR- Cogolin
 FR- Cuers
 FR- Figanieres
+FR- Flassans-sur-issole
 FR- Frejus
 FR- Hyeres
 FR- La Crau
@@ -3129,6 +3146,7 @@ FR- La Motte
 FR- La Roquebrussanne
 FR- La Roquette
 FR- La Seyne-sur-mer
+FR- La Valette-du-var
 FR- Le Beausset
 FR- Le Castellet
 FR- Le Lavandou
@@ -3238,6 +3256,7 @@ FR- Cisse
 FR- Civray
 FR- Iteuil
 FR- Jaunay-clan
+FR- Latille
 FR- Lencloitre
 FR- Les Ormes
 FR- Magne
@@ -3257,6 +3276,7 @@ FR- Limoges
 FR- Meilhac
 FR- Oradour-sur-glane
 FR- Peyrat-de-bellac
+FR- Rilhac-rancon
 FR- Saint-brice-sur-vienne
 FR- Saint-germain-les-belles
 FR- Saint-junien
@@ -3302,6 +3322,7 @@ FR- Bleneau
 FR- Charny
 FR- Cussy-les-forges
 FR- Dracy
+FR- Gron
 FR- Guerchy
 FR- Joigny
 FR- Ligny-le-chatel
