@@ -52,6 +52,7 @@ our @EXPORT = qw(
   randum
   trim
   warning
+  timeToDate
 );
 
 ##@method void info(@_)
@@ -198,6 +199,16 @@ sub substring {
         $from = $from - $to;
     }
     return substr( $string, $from, $to - $from );
+}
+
+##@method string timeToDate($myTime)
+#@brief
+#@param integer time
+#@return string
+sub timeToDate {
+    my ($myTime) = @_;
+    my @dt = localtime( $myTime );
+    return sprintf('%02d-%02d-%02d  %02d:%02d:%02d', ( $dt[5] + 1900 ), ( $dt[4] + 1 ), $dt[3], $dt[2], $dt[1], $dt[0]);
 }
 
 ##@method void BEGIN()
