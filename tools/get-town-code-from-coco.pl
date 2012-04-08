@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-03-09
-# @date 2012-04-07
+# @date 2012-04-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -47,7 +47,6 @@ my $CLI;
 my $usersList;
 my $ISPCount_ref      = {};
 my $townCount_ref     = {};
-my $premiumCount      = 0;
 my $isLoop            = 0;
 my $isReconnect       = 0;
 my $dumpTownsFilename = '_townCount.pl';
@@ -94,7 +93,7 @@ sub process {
         $bot = $CLI->getBot( 'generateRandom' => 1 );
         $bot->requestAuthentication();
         $usersList = $bot->getUsersList();
-        $usersList->deserialize(); 
+        $usersList->deserialize();
         $bot->display();
         if ( !$bot->isPremiumSubscription() ) {
             croak error( 'The script is reserved for users with a'
@@ -102,7 +101,7 @@ sub process {
         }
         checkTownAndISP() if $count == 1;
     }
-    checkTownAndISP() if $count % 20 == 9;
+    checkTownAndISP() if $count % 21 == 9;
     $bot->requestMessagesFromUsers();
 }
 
@@ -111,6 +110,7 @@ sub checkTownAndISP {
     $usersList = $bot->requestUsersList();
     $bot->requestInfuzForNewUsers();
     $bot->requestCheckIfUsersNotSeenAreOffline();
+    $usersList->purgeUsersUnseen();
     $usersList->serialize();
     my $user_ref = $usersList->all();
 
@@ -126,11 +126,8 @@ sub checkTownAndISP {
         $count++;
         $ISPCount_ref->{ $user->ISP() }++;
         $townCount_ref->{ $user->town() }++;
-        $premiumCount++ if $user->premium;
     }
-    message( 'Number of checked users: : ' . $count );
-    message(
-        'The number of users with a Premium subscription: ' . $premiumCount );
+    message( 'Number of checked users: ' . $count );
     dumpToFile( $townCount_ref, $dumpTownsFilename );
     dumpToFile( $ISPCount_ref,  $dumpISPsFilename );
     $count = 0;
@@ -144,9 +141,12 @@ sub checkTownAndISP {
         #message( $town . ' => ' . $townCount_ref->{$town} );
         $notFound++;
     }
-    message( 'Number total of town code(s)    : ' . $count );
-    message( 'Number of town code(s) found    : ' . $found );
-    message( 'Number of town code(s) not found: ' . $notFound );
+    message('Number total of town codes: ' 
+          . $count
+          . '; Found: '
+          . $found
+          . '; Not found: '
+          . $notFound );
 
     ( $count, $found, $notFound ) = ( 0, 0, 0 );
     foreach my $isp ( sort keys %$ISPCount_ref ) {
@@ -159,10 +159,12 @@ sub checkTownAndISP {
         #message( $town . ' => ' . $townCount_ref->{$town} );
         $notFound++;
     }
-    message( 'Number total of IPS code(s)    : ' . $count );
-    message( 'Number of ISP code(s) found    : ' . $found );
-    message( 'Number of ISP code(s) not found: ' . $notFound );
-
+    message('Number total of IPS codes: ' 
+          . $count
+          . '; Found: '
+          . $found
+          . '; Not found: '
+          . $notFound );
 }
 
 ## @method void init()
@@ -197,6 +199,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-07');
+    $CLI->VERSION_MESSAGE('2012-04-08');
 }
 

@@ -36,14 +36,15 @@ use Cocoweb::File;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
-__PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline', 'removeListDelay' );
+__PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline',
+    'removeListDelay' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
     croak error('removeListDelay is missing')
-        if !exists $args{'removeListDelay'};
+      if !exists $args{'removeListDelay'};
     my $logUsersListInDB =
       ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
       ? 1
@@ -55,7 +56,7 @@ sub init {
         'logUsersListInDB' => $logUsersListInDB,
         'DB'               => $DB,
         'DBUsersOffline'   => [],
-        'removeListDelay'  => $args{'logUsersListInDB'} 
+        'removeListDelay'  => $args{'logUsersListInDB'}
     );
 }
 
@@ -119,14 +120,11 @@ sub showUsersUnseen {
         my $deltaSec  = ( time - $user->dateLastSeen() );
         my $deltaMin  = $deltaSec / 60;
         my $deltaHour = $deltaMin / 60;
-        my $line      = sprintf(
-            '! %02d-%02d-%02d  %02d:%02d:%02d '
-              . '! %-6s !  %-16s ! %6d ! %4d ! %3d !',
-            ( $dt[5] + 1900 ), ( $dt[4] + 1 ), $dt[3],
-            $dt[2],            $dt[1],              $dt[0],
-            $user->mynickID(), $user->mynickname(), $deltaSec,
-            $deltaMin,         $deltaHour
-        );
+        my $dateStr   = timeToDate( $user->dateLastSeen() );
+        my $line =
+          sprintf( "! $dateStr " . '! %-6s !  %-16s ! %6d ! %4d ! %3d !',
+            $user->mynickID(), $user->mynickname(), $deltaSec, $deltaMin,
+            $deltaHour );
 
         print STDOUT $line . "\n";
         $count++;
@@ -135,7 +133,40 @@ sub showUsersUnseen {
     print STDOUT "- $count user(s) displayed\n";
 }
 
+##@method void purgeUsersUnseen()
+#@brief Purge users who have not been seen in the remote list for some time
+sub purgeUsersUnseen {
+    my ($self)          = @_;
+    my $user_ref        = $self->all();
+    my $removeListDelay = $self->removeListDelay();
+    my ( $count, $countPurge ) = ( 0, 0 );
+    foreach my $id (
+        sort {
+            $user_ref->{$a}->{'dateLastSeen'} <=> $user_ref->{$b}
+              ->{'dateLastSeen'}
+        } keys %$user_ref
+      )
+    {
+        my $user = $user_ref->{$id};
+        next if $user->isView();
+        $count++;
+        my $delta = time - $user->dateLastSeen();
+        next if $delta < $removeListDelay;
+        my $dateStr = timeToDate( $user->dateLastSeen() );
+        debug(  'Remove user '
+              . $user->mynickID() . ' '
+              . $user->mynickname()
+              . '; last seen: '
+              . $dateStr );
+        $countPurge++;
+        delete $user_ref->{$id};
+    }
+    info("$countPurge users were purged on a $count users unseen");
+}
+
 ##@method void removeUser($userWanted)
+#@brief Removes a user from the list, based on its nickname ID 
+#@param object A 'Cocoweb::user' from the user to delete
 sub removeUser {
     my ( $self, $userWanted ) = @_;
     my $id                 = $userWanted->mynickID();

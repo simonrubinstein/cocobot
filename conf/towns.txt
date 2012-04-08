@@ -641,6 +641,7 @@ FR- Origny-en-thierache
 FR- Pasly
 FR- Pavant
 FR- Pernant
+FR- Quessy
 FR- Ribeauville
 FR- Romeny-sur-marne
 FR- Roupy
@@ -885,6 +886,7 @@ FR- Saint-mitre-les-remparts
 FR- Saint-remy-de-provence
 FR- Salon-de-provence
 FR- Sausset-les-pins
+FR- Senas
 FR- Tarascon
 FR- Trets
 FR- Velaux
@@ -1023,6 +1025,7 @@ FR- Saint-germain-du-puy
 FR- Soye-en-septaine
 FR- Trouy
 FR- Valenay
+FR- Vasselay
 FR- Vierzon
 
 # 19: Correze
@@ -1059,6 +1062,7 @@ FR- Chenve
 FR- Chevigny-saint-sauveur
 FR- Comblanchien
 FR- Dijon
+FR- Fleurey-sur-ouche
 FR- Fontaine-les-dijon
 FR- Genlis
 FR- Gevrey-chambertin
@@ -1167,6 +1171,7 @@ FR- Allex
 FR- Anneyron
 FR- Beaumont-monteux
 FR- Bourdeaux
+FR- Bourg-de-peage
 FR- Chanos-curson
 FR- Claveyson
 FR- Crest
@@ -1360,6 +1365,7 @@ FR- Blagnac
 FR- Bouloc
 FR- Bourg-saint-bernard
 FR- Caraman
+FR- Carbonne
 FR- Castanet-tolosan
 FR- Castelginest
 FR- Castelnau-d estretefonds
@@ -1535,6 +1541,7 @@ FR- Villeneuve-les-beziers
 # 35: Ille-et-Vilaine
 FR- Acigne
 FR- Bain-de-bretagne
+FR- Boisgervilly
 FR- Bourgbarre
 FR- Brielles
 FR- Bruz
@@ -1578,6 +1585,7 @@ FR- Saint-thurial
 FR- Tinteniac
 FR- Vern-sur-seiche
 FR- Vezin-le-coquet
+FR- Vitre
 
 # 36: Indre
 FR- Ardentes
@@ -1717,6 +1725,7 @@ FR- Peyrehorade
 FR- Pontonx-sur-l adour
 FR- Rion-des-landes
 FR- Roquefort
+FR- Saint-jean-de-lier
 FR- Saint-pandelon
 FR- Saint-perdon
 FR- Saint-pierre-du-mont
@@ -1956,6 +1965,7 @@ FR- Beaucouze
 FR- Beaupreau
 FR- Cande
 FR- Chace
+FR- Chalonnes
 FR- Chalonnes-sur-loire
 FR- Champtoceaux
 FR- Chanteloup-les-bois
@@ -1970,6 +1980,7 @@ FR- Ingrandes-sur-loire
 FR- La Cornuaille
 FR- La Meignanne
 FR- La Menitre
+FR- La Plaine
 FR- La Tessoualle
 FR- La Tourlandry
 FR- La Varenne
@@ -2038,6 +2049,7 @@ FR- Chalons-en-champagne
 FR- Chaltrait
 FR- Charleville
 FR- Chigny-les-roses
+FR- Conde-sur-marne
 FR- Cormontreuil
 FR- Etoges
 FR- Fismes
@@ -2095,6 +2107,8 @@ FR- Quelaines
 FR- Villaines-la-juhel
 
 # 54: Meurthe-et-Moselle
+FR- Audun-le-roman
+FR- Baccarat
 FR- Benamenil
 FR- Bey-sur-seille
 FR- Bicqueley
@@ -2316,6 +2330,7 @@ FR- Comines
 FR- Conde-sur-escaut
 FR- Coudekerque-branche
 FR- Croix
+FR- Deulemont
 FR- Douai
 FR- Douchy-les-mines
 FR- Dunkirk
@@ -2461,6 +2476,7 @@ FR- Chantilly
 FR- Chaumont-en-vexin
 FR- Clermont
 FR- Compiegne
+FR- Coye-la-foret
 FR- Creil
 FR- Crepy-en-valois
 FR- Crevecoeur-le-grand
@@ -2525,6 +2541,7 @@ FR- Pontpoint
 FR- Puiseux-en-bray
 FR- Rantigny
 FR- Ribecourt
+FR- Saint-crepin-aux-bois
 FR- Saint-just-en-chaussee
 FR- Saint-leu-d esserent
 FR- Senlis
@@ -2581,6 +2598,7 @@ FR- Bapaume
 FR- Barlin
 FR- Bavincourt
 FR- Bayenghem-les-Eperlecques
+FR- Beaurains
 FR- Berck
 FR- Bethune
 FR- Bois-en-ardres
@@ -2735,6 +2753,7 @@ FR- Boucau
 FR- Buros
 FR- Garlin
 FR- Gelos
+FR- Hasparren
 FR- Hendaye
 FR- Juranon
 FR- Lescar
@@ -2847,6 +2866,7 @@ FR- Zinswiller
 FR- Altkirch
 FR- Ammerschwihr
 FR- Andolsheim
+FR- Biesheim
 FR- Bitschwiller-les-thann
 FR- Burnhaupt-le-bas
 FR- Colmar
@@ -2973,6 +2993,7 @@ FR- Charnay-les-macon
 FR- Chatenoy-le-royal
 FR- Ciry-le-noble
 FR- Creches-sur-sane
+FR- Crissey
 FR- Fontaine
 FR- Frontenaud
 FR- Gergy
@@ -3274,6 +3295,7 @@ FR- Villemade
 # 83: Var
 FR- Artigues
 FR- Brignoles
+FR- Carces
 FR- Cogolin
 FR- Correns
 FR- Cuers
@@ -3581,7 +3603,9 @@ RE- Sainte-clotilde
 RE- Sainte-marie
 
 # 987: Polynesie française
+PF- Arue
 PF- Faaa
+PF- Paea
 PF- Papara
 PF- Papeete
 PF- Punaauia
