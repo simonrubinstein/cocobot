@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-04-04
+# @date 2012-04-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,10 +33,11 @@ use Data::Dumper;
 use POSIX;
 use Storable;
 use Cocoweb::Logger;
-our $VERSION   = '0.3000';
-our $AUTHORITY = 'TEST';
-our $isVerbose = 0;
-our $isDebug   = 0;
+our $VERSION     = '0.4000';
+our $AUTHORITY   = 'TEST';
+our $isVerbose   = 0;
+our $isDebug     = 0;
+our $isMoreDebug = 0;
 my $logger;
 my $startTime;
 
@@ -47,6 +48,7 @@ our @EXPORT = qw(
   indexOf
   info
   message
+  moreDebug
   parseInt
   substring
   randum
@@ -79,6 +81,12 @@ sub warning {
 ##@method void debug(@_)
 sub debug {
     return if !$isDebug;
+    $logger->debug(@_);
+}
+
+##@method void debug(@_)
+sub moreDebug {
+    return if !$isMoreDebug;
     $logger->debug(@_);
 }
 
@@ -202,13 +210,18 @@ sub substring {
 }
 
 ##@method string timeToDate($myTime)
-#@brief
-#@param integer time
+#@brief Convert from timestamp to date and hour
+#@param integer time A timestamp
 #@return string
 sub timeToDate {
     my ($myTime) = @_;
-    my @dt = localtime( $myTime );
-    return sprintf('%02d-%02d-%02d  %02d:%02d:%02d', ( $dt[5] + 1900 ), ( $dt[4] + 1 ), $dt[3], $dt[2], $dt[1], $dt[0]);
+    my @dt = localtime($myTime);
+    return sprintf(
+        '%02d-%02d-%02d  %02d:%02d:%02d',
+        ( $dt[5] + 1900 ),
+        ( $dt[4] + 1 ),
+        $dt[3], $dt[2], $dt[1], $dt[0]
+    );
 }
 
 ##@method void BEGIN()
@@ -221,11 +234,7 @@ sub BEGIN {
 }
 
 sub END {
-    message("execution time: " . (time - $startTime) . ' seconds');
-
+    message( "execution time: " . ( time - $startTime ) . ' seconds' );
 }
-
-
-
 
 1;

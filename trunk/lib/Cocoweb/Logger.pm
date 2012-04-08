@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2011-02-26
+# @date 2011-04-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -26,22 +26,32 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA  02110-1301, USA.
 package Cocoweb::Logger;
+use Cocoweb::File;
 use base 'Cocoweb::Object::Singleton';
 use Carp;
 use FindBin qw($Script);
 use Data::Dumper;
+use IO::File;
 use Term::ANSIColor;
 use strict;
 use warnings;
 
+__PACKAGE__->attributes( 'dirname', 'filename', 'fh' );
+
 sub init {
     my ( $class, $instance ) = @_;
+    my $path = getVarDir() . '/logs';
+    croak 'mkdir(' . $path . ') was failed: ' if !-d $path and !mkdir($path);
+    $instance->dirname($path);
+    $instance->filename('');
+    $instance->fh(undef);
     return $instance;
 }
 
 sub message {
     my ( $self, $message ) = @_;
     print STDOUT $message . "\n";
+
     #$self->_log( 'info', $message );
 }
 
@@ -51,6 +61,11 @@ sub info {
 }
 
 sub debug {
+    my ( $self, $message ) = @_;
+    $self->_log( 'debug', $message );
+}
+
+sub moreDebug {
     my ( $self, $message ) = @_;
     $self->_log( 'debug', $message );
 }
@@ -73,10 +88,18 @@ sub _log {
     ( $pack, $filename, $line ) = caller(2);
     my $identity = "file: $Script; method: $function; line: $line";
     my @dt       = localtime(time);
-    $message =~s{\%}{}g;
-    my $string =
-      sprintf( "$message %02d:%02d:%02d [$identity][$$]: ($priority)\n",
-        $dt[2], $dt[1], $dt[0] );
+    $message =~ s{\%}{}g;
+    my $hourStr = sprintf('%02d:%02d:%02d', $dt[2], $dt[1], $dt[0]);
+    $self->_display ($priority, "$message $hourStr [$identity]\n")
+    if exists $ENV{'TERM'};
+
+    $self->_writeLog("[$$][$identity] " . $hourStr . " ($priority) $message\n");
+
+}
+
+sub _display {
+    my ($self, $priority, $string) = @_;
+
     #$string = $message ."\n";
     if ( $priority eq 'err' or $priority eq 'emerg' ) {
         print STDERR colored( $string, 'bold red' );
@@ -86,15 +109,59 @@ sub _log {
     }
     elsif ( $priority eq 'info' ) {
         print STDOUT colored( $string, 'green' );
+
         #print STDOUT $string;
     }
     elsif ( $priority eq 'debug' ) {
         print STDOUT colored( $string, 'bold blue' );
+
         #print STDOUT $string;
     }
     else {
         print STDOUT $string;
     }
+}
+
+##@method string _getLogFilename()
+sub _getLogFilename {
+    my ($self) = @_;
+    my @dt = localtime(time);
+    return sprintf(
+        '%02d-%02d-%02d_' . $Script . '.log',
+        ( $dt[5] + 1900 ),
+        ( $dt[4] + 1 ), $dt[3]
+    );
+}
+
+sub _openFileLog {
+    my ($self) = @_;
+    my $pathname = $self->dirname() . '/' . $self->filename();
+    my $fh = IO::File->new( $pathname, 'a' );
+    confess error("open($pathname) was failed: $!")
+      if !defined $fh;
+    $self->fh($fh);
+}
+
+sub _writeLog {
+    my ( $self, $message ) = @_;
+    my $filename = $self->_getLogFilename();
+    my $fh       = $self->fh();
+    if ( !defined $fh ) {
+        $self->filename($filename);
+        $self->_openFileLog();
+        $fh = $self->fh();
+    }
+    elsif ( $filename ne $self->filename() ) {
+        $self->filename($filename);
+        if ( defined $fh ) {
+            confess error("close() return $!") if !$fh->close();
+        }
+        $self->_openFileLog();
+        $fh = $self->fh();
+    }
+
+    print $fh $message;
+
 }
 
 1;

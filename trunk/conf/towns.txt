@@ -765,6 +765,7 @@ FR- Douzy
 FR- Haraucourt
 FR- Les Ayvelles
 FR- Linay
+FR- Montherme
 FR- Nouzonville
 FR- Prix-les-mezieres
 FR- Rethel
@@ -832,6 +833,7 @@ FR- Bozouls
 FR- Capdenac-gare
 FR- Castanet
 FR- Decazeville
+FR- Laissac
 FR- Onet-le-chateau
 FR- Rodez
 FR- Saint-affrique
@@ -1203,6 +1205,7 @@ FR- Pierrelatte
 FR- Portes-les-valence
 FR- Romans-sur-isere
 FR- Saint-marcel-les-valence
+FR- Saint-paul-les-romans
 FR- Saint-paul-trois-chateaux
 FR- Saint-rambert-d albon
 FR- Savasse
@@ -1228,6 +1231,7 @@ FR- Fourges
 FR- Franqueville
 FR- Gaillon
 FR- Garencieres
+FR- Garennes-sur-eure
 FR- Gasny
 FR- Gravigny
 FR- Jonquerets-de-livet
@@ -1444,6 +1448,7 @@ FR- Bruges
 FR- Burdigala
 FR- Cadaujac
 FR- Camiran
+FR- Castillon-la-bataille
 FR- Cenon
 FR- Coutras
 FR- Creon
@@ -1683,6 +1688,7 @@ FR- Jarrie
 FR- L isle-d abeau
 FR- La Buissiere
 FR- La Mure
+FR- La Riviere
 FR- La Tronche
 FR- Les Abrets
 FR- Meylan
@@ -1892,6 +1898,7 @@ FR- Saint-jean-de-boiseau
 FR- Saint-lumine-de-coutais
 FR- Saint-malo-de-guersac
 FR- Saint-mars-du-desert
+FR- Saint-mars-la-jaille
 FR- Saint-molf
 FR- Saint-nazaire
 FR- Saint-philbert-de-grand-li
@@ -2269,6 +2276,7 @@ FR- Abreschviller
 FR- Anzeling
 FR- Apach
 FR- Audun-le-tiche
+FR- Bambiderstroff
 FR- Basse-ham
 FR- Boulay
 FR- Bousse
@@ -2737,6 +2745,7 @@ FR- Samer
 FR- Saudemont
 FR- Serques
 FR- Tatinghem
+FR- Therouanne
 FR- Tilloy-les-mofflaines
 FR- Velu
 FR- Vendin-les-bethune
@@ -3451,6 +3460,7 @@ FR- Foussais
 FR- Givrand
 FR- Grosbreuil
 FR- L aiguillon-sur-vie
+FR- La Bruffiere
 FR- La Chaize
 FR- La Faute
 FR- La Ferriere
@@ -3610,6 +3620,7 @@ FR- Valdoie
 GP-
 GP- Baie Mahault
 GP- Baie-mahault
+GP- Basse-terre
 GP- Bouillante
 GP- Jarry
 GP- Lamentin

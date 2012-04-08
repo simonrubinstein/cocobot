@@ -80,15 +80,19 @@ sub getOpts {
     }
     my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'dvu:s:y:a:p:';
+    $argumentative .= 'dvDu:s:y:a:p:';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:' if $self->enableLoop();
     my %opt;
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
     }
-    $Cocoweb::isVerbose = 1 if exists $opt{'v'};
-    $Cocoweb::isDebug   = 1 if exists $opt{'d'};
+    $Cocoweb::isVerbose = 1
+      if exists $opt{'v'}
+          or exists $opt{'d'}
+          or exists $opt{'D'};
+    $Cocoweb::isDebug = 1 if exists $opt{'d'} or exists $opt{'D'};
+    $Cocoweb::isMoreDebug = 1 if exists $opt{'D'};
     $self->mynickname( $opt{'u'} )     if exists $opt{'u'};
     $self->myage( $opt{'y'} )          if exists $opt{'y'};
     $self->mysex( $opt{'s'} )          if exists $opt{'s'};
@@ -227,7 +231,7 @@ sub getLineOfArgs {
     $args .= '[' if !$self->avatarAndPasswdRequired();
     $args .= '-a myavatar -p mypass ';
     $args .= '[' if $self->avatarAndPasswdRequired();
-    $args .= '-u mynickname -y myage -s mysex -v -d]';
+    $args .= '-u mynickname -y myage -s mysex -v -d -D]';
     return $args;
 }
 
@@ -261,6 +265,7 @@ sub HELP {
   -s mysex          M for man or W for women
   -v                Verbose mode
   -d                Debug mode
+  -D                More debug messages
 ENDTXT
 }
 

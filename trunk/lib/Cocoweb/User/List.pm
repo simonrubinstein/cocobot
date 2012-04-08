@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-07
+# @date 2012-04-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -83,8 +83,7 @@ sub populate {
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
         $user->dateLastSeen(time);
-
-        #debug("The user $mynickname already exists: " . $user->isNew());
+        moreDebug("The user $mynickname already exists: " . $user->isNew());
         if ( $user->isNew() ) {
             $user->update(@args);
         }
@@ -332,8 +331,7 @@ sub getSerializedFilename {
     my $self     = shift;
     my $filename = lc( ref($self) );
     $filename =~ s{[^a-z0-9]+}{-}g;
-    $filename =
-      Cocoweb::Config->instance()->getVarDir() . '/' . $filename . '.data';
+    $filename = getVarDir() . '/' . $filename . '.data';
     return $filename;
 }
 
