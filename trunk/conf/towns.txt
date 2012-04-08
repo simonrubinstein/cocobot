@@ -1280,6 +1280,7 @@ FR- Gilles
 FR- Illiers
 FR- Le Coudray
 FR- Le Puiset
+FR- Les Corvees
 FR- Leves
 FR- Luce
 FR- Luisant
@@ -1301,8 +1302,10 @@ FR- Voves
 FR- Benodet
 FR- Bodilis
 FR- Brest
+FR- Briec
 FR- Cast
 FR- Chateaulin
+FR- Chateauneuf-du-faou
 FR- Clohars-fouesnant
 FR- Combrit
 FR- Concarneau
@@ -1397,6 +1400,7 @@ FR- Fonsorbes
 FR- Fronton
 FR- Gardouch
 FR- Labastidette
+FR- Montberon
 FR- Montesquieu-volvestre
 FR- Muret
 FR- Pibrac
@@ -1731,6 +1735,7 @@ FR- Villette-les-arbois
 
 # 40: Landes
 FR- Aire-sur-l adour
+FR- Amou
 FR- Arsague
 FR- Benesse-les-dax
 FR- Biscarrosse
@@ -1975,6 +1980,7 @@ FR- Casteljaloux
 FR- Cocumont
 FR- Colayrac
 FR- Laussou
+FR- Le Passage
 FR- Marmande
 FR- Masquieres
 FR- Prayssas
@@ -2085,6 +2091,7 @@ FR- Chigny-les-roses
 FR- Conde-sur-marne
 FR- Cormontreuil
 FR- Etoges
+FR- Fagnieres
 FR- Fismes
 FR- Flamanville
 FR- Gaye
@@ -2272,6 +2279,7 @@ FR- Chateau-salins
 FR- Creutzwald
 FR- Dieuze
 FR- Distroff
+FR- Enchenberg
 FR- Falck
 FR- Fameck
 FR- Farebersviller
@@ -2545,6 +2553,7 @@ FR- Laneuvilleroy
 FR- Lassigny
 FR- Laversines
 FR- Le Deluge
+FR- Le Plessier
 FR- Liancourt
 FR- Longueil-annel
 FR- Longueil-sainte-marie
@@ -2708,6 +2717,7 @@ FR- Noeux-les-mines
 FR- Noyelles-les-vermelles
 FR- Oisy-le-verger
 FR- Outreau
+FR- Oye-plage
 FR- Pihen-les-guines
 FR- Pont-a-vendin
 FR- Pont-de-briques
@@ -3338,6 +3348,7 @@ FR- Saint Sulpice
 FR- Bressols
 FR- Castelsarrasin
 FR- Caussade
+FR- Grisolles
 FR- Labastide-saint-pierre
 FR- Montalzat
 FR- Montauban
@@ -3417,6 +3428,7 @@ FR- Pertuis
 FR- Puyvert
 FR- Sablet
 FR- Saint Didier
+FR- Serignan-du-comtat
 FR- Sorgues
 FR- Vaison-la-romaine
 FR- Valreas
@@ -3458,6 +3470,7 @@ FR- Longeves
 FR- Mareuil-sur-lay
 FR- Mortagne-sur-sevre
 FR- Palluau
+FR- Port-joinville
 FR- Pouzauges
 FR- Rocheserviere
 FR- Saint-georges-de-pointindo
@@ -3514,6 +3527,7 @@ FR- Verneuil-sur-vienne
 FR- Bruyeres
 FR- Contrexeville
 FR- Cornimont
+FR- Damblain
 FR- Darnieulles
 FR- Dogneville
 FR- Dounoux
@@ -3561,6 +3575,7 @@ FR- Merry-sur-yonne
 FR- Mezilles
 FR- Migennes
 FR- Moneteau
+FR- Ouanne
 FR- Paron
 FR- Pont-sur-yonne
 FR- Raon
