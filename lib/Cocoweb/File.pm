@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2012-03-31
+# @date 2012-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,16 +28,19 @@ package Cocoweb::File;
 use strict;
 use warnings;
 use FindBin qw($Script $Bin);
+use Carp;
 use Data::Dumper;
 use File::stat;
 use File::Temp;
 use IO::File;
 use base 'Exporter';
+my $varDir;
 
 our @EXPORT = qw(
   deserializeHash
   dumpToFile
   fileToVars
+  getVarDir
   serializeData
 );
 use Cocoweb;
@@ -100,9 +103,9 @@ sub serializeData {
     eval {
         $res = Storable::store($data, $tmpFilename);
     };
-    die error("Storable::store($filename) was failed! $! / $@")
+    croak error("Storable::store($filename) was failed! $! / $@")
         if !defined $res or $@; 
-    die error("rename($tmpFilename, $filename) was failed: $!")
+    croak error("rename($tmpFilename, $filename) was failed: $!")
       if !rename( $tmpFilename, $filename );
     debug($filename . ' file successfully serialized');
 }
@@ -128,8 +131,8 @@ sub dumpToFile {
     $Data::Dumper::Indent = 1;
     $Data::Dumper::Terse  = 1;
     print $fh Dumper $vars;
-    die error("close($filename) was failed: $!") if !close($fh);
-    die error("rename($tmpFilename, $filename) was failed: $!")
+    croak error("close($filename) was failed: $!") if !close($fh);
+    croak error("rename($tmpFilename, $filename) was failed: $!")
       if !rename( $tmpFilename, $filename );
 }
 
@@ -138,16 +141,27 @@ sub dumpToFile {
 sub fileToVars {
     my ($filename) = @_;
     my $stat = stat($filename);
-    die error("stat($filename) was failed: $!") if !defined $stat;
+    croak error("stat($filename) was failed: $!") if !defined $stat;
     my $fh;
-    die error("open($filename) was failed: $!") if !open( $fh, '<', $filename );
+    croak error("open($filename) was failed: $!") if !open( $fh, '<', $filename );
     my ( $contentSize, $content ) = ( 0, '' );
     sysread( $fh, $content, $stat->size(), $contentSize );
     close $fh;
     my $vars = eval($content);
-    die error($@) if $@;
+    croak error($@) if $@;
     return $vars;
 }
+
+##@method string getVarDir()
+sub getVarDir {
+    return $varDir if defined $varDir; 
+    $varDir = $Bin;
+    $varDir =~ s{/[^/]+$}{/var};
+    confess error("$varDir directory was not found") if !-d $varDir;
+    return $varDir;
+}
+
+
 
 
  

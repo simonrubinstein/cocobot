@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-03
+# @date 2012-04-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,6 +33,7 @@ use Data::Dumper;
 use DBI;
 use POSIX;
 use Cocoweb;
+use Cocoweb::File;
 use Cocoweb::Config;
 use base 'Cocoweb::DB::Base';
 
@@ -52,7 +53,7 @@ sub init {
 sub setConfig {
     my ( $self, $config ) = @_;
     my $filename = $config->getString('sqlite-filename');
-    $filename = Cocoweb::Config->instance()->getVarDir() . '/' . $filename
+    $filename = getVarDir() . '/' . $filename
       if substr( $filename, 1 ) ne '/';
     $self->filename($filename);
     $self->SUPER::setConfig($config);

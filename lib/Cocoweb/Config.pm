@@ -82,15 +82,4 @@ sub getConfigFile {
     return $instances{$filename} = $instance;
 }
 
-##@method string getVarDir()
-sub getVarDir {
-    my ($self) = @_;
-    return $self->varDir() if length( $self->varDir() ) > 0;
-    my $varDir = $Bin;
-    $varDir =~ s{/[^/]+$}{/var};
-    confess "$varDir directory was not found" if !-d $varDir;
-    $self->varDir($varDir);
-    return $varDir;
-}
-
 1;

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-04-07
+# @date 2012-04-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -190,10 +190,10 @@ sub requestInfuzForNewUsers {
         $user = $self->request()->infuz( $self->user(), $user );
         next if !defined $user;
         $count++;
-
-        #my $infuz = $user->infuz();
-        #$infuz =~s{\n}{; }g;
-        #message('*** new user : ' .$user->mynickname() . ' ' . $infuz);
+        my $infuz = $user->infuz();
+        $infuz =~ s{\n}{; }g;
+        moreDebug(
+            '(*) new nickname: ' . $user->mynickname() . ' infuz: ' . $infuz );
     }
     info( $count . ' new "infuz" was requested and returned' );
 

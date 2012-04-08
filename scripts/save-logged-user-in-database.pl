@@ -60,6 +60,7 @@ sub run {
     $bot->requestAuthentication();
     $usersList = $bot->getUsersList();
     $usersList->deserialize();
+    $usersList->purgeUsersUnseen();
     checkUsers();
     if ( !$bot->isPremiumSubscription() ) {
         die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
@@ -81,6 +82,7 @@ sub checkUsers {
     $bot->requestInfuzForNewUsers();
     $usersList->addOrUpdateInDB();
     $bot->requestCheckIfUsersNotSeenAreOffline();
+    $usersList->purgeUsersUnseen();
     $bot->setUserOfflineInDB();
     $usersList->serialize();
 }
