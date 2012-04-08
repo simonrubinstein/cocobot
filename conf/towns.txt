@@ -328,6 +328,7 @@ FR- Bois-le-roi
 FR- Boissise-le-roi
 FR- Boissy-le-chatel
 FR- Bombon
+FR- Bourron-marlotte
 FR- Bray-sur-seine
 FR- Brie-comte-robert
 FR- Brou-sur-chantereine
@@ -491,6 +492,7 @@ FR- Croissy-sur-seine
 FR- Elancourt
 FR- Follainville-dennemont
 FR- Fontenay-le-fleury
+FR- Fontenay-saint-pere
 FR- Fourqueux
 FR- Gambais
 FR- Gargenville
@@ -1047,6 +1049,7 @@ FR- Ajaccio
 FR- Appietto
 FR- Bastia
 FR- Biguglia
+FR- Corte
 FR- Olmeto
 FR- Poggio-mezzana
 FR- Porto-vecchio
@@ -1137,6 +1140,7 @@ FR- Montpon
 FR- Perigueux
 FR- Thiviers
 FR- Trelissac
+FR- Vergt
 
 # 25: Doubs
 FR- Arcey
@@ -1604,6 +1608,7 @@ FR- Saint-maur
 FR- Amboise
 FR- Ballan-mire
 FR- Beaulieu-les-loches
+FR- Bourgueil
 FR- Chambray-les-tours
 FR- Chanceaux-sur-choisille
 FR- Chateau-renault
@@ -1719,6 +1724,7 @@ FR- Mees
 FR- Mimbaste
 FR- Moliets-et-maa
 FR- Mont-de-marsan
+FR- Ondres
 FR- Orthevielle
 FR- Parentis-en-born
 FR- Peyrehorade
@@ -2005,6 +2011,7 @@ FR- Varennes-sur-loire
 FR- Varrains
 FR- Vernantes
 FR- Vivy
+RE- La Plaine
 
 # 50: Manche
 FR- Agneaux
@@ -2095,6 +2102,7 @@ FR- Bree
 FR- Chateau-gontier
 FR- Cosse-le-vivien
 FR- Coudray
+FR- Craon
 FR- Ernee
 FR- Evron
 FR- Gorron
@@ -2437,6 +2445,7 @@ FR- Vieux Conde
 FR- Villefranche-sur-sane
 FR- Villers-guislain
 FR- Wahagnies
+FR- Walincourt
 FR- Wambrechies
 FR- Warhem
 FR- Wasquehal
@@ -2963,6 +2972,7 @@ FR- Aillevillers
 FR- Amblans-et-velotte
 FR- Ancier
 FR- Arc-les-gray
+FR- Beveuge
 FR- Cirey
 FR- Conflans-sur-lanterne
 FR- Fleurey-les-saint-loup
@@ -3151,6 +3161,7 @@ FR- Caudebec-les-elbeuf
 FR- Darnetal
 FR- Deville-les-rouen
 FR- Dieppe
+FR- Duclair
 FR- Elbeuf
 FR- Etainhus
 FR- Fecamp
@@ -3241,6 +3252,7 @@ FR- Flesselles
 FR- Framicourt
 FR- Fressenneville
 FR- Friville-escarbotin
+FR- Hallencourt
 FR- Ham
 FR- Harbonnieres
 FR- La Chaussee-tirancourt
