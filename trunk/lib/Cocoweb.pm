@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-04-08
+# @date 2012-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -32,7 +32,6 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-use Cocoweb::Logger;
 our $VERSION     = '0.4000';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
@@ -56,6 +55,7 @@ our @EXPORT = qw(
   warning
   timeToDate
 );
+use Cocoweb::Logger;
 
 ##@method void info(@_)
 sub info {

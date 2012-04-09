@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-08
+# @date 2012-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -177,8 +177,9 @@ sub removeUser {
               . $user->mynickname()
               . '" was disconnected after being seen not in the list '
               . $user->notViewCount()
-              . ' times' );
-
+              . ' times. Table `users` ID:'
+              . $user->DBUserId()
+              );
         delete $user_ref->{$id};
 
         #$self->DB()->setUserOffline($user) if $self->logUsersListInDB();
@@ -193,8 +194,8 @@ sub removeUser {
     }
 }
 
-##@method void setUserOfflineInDB()
-sub setUserOfflineInDB {
+##@method void setUsersOfflineInDB()
+sub setUsersOfflineInDB {
     my ($self) = @_;
     if ( !$self->logUsersListInDB() ) {
         warning('The record in the database is not enabled');
@@ -202,7 +203,7 @@ sub setUserOfflineInDB {
     }
     my $DBUsersOffline_ref = $self->DBUsersOffline();
     $self->DB()->setUsersOffline($DBUsersOffline_ref);
-    $DBUsersOffline_ref = [];
+    $self->logUsersListInDB([]);
 }
 
 ##@method void addOrUpdateInDB()

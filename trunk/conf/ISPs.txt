@@ -101,6 +101,7 @@ Nomotech
 NordNet
 Observatoire de Paris
 OFFRATEL
+OFFRATEL AP
 ONLINE S.A.S.
 OpenIP
 Organization of the Petroleum Exporting Countries
@@ -124,6 +125,7 @@ SCGS
 Serveurcom SRL
 SFR
 Societe de developpement Informatique
+Societe Francaise du Radiotelephone -SFR S.A.
 STELLA NET
 TELECITYGROUP INTERNATIONAL LIMITED
 Teloise
@@ -132,8 +134,10 @@ Trust Info SARL
 TUTOR S.A.
 Universite de Limoges
 Universite Pierre et Marie Curie
+USR-NETWORK
 Verizon France SAS
 VIALIS - REGIE MUNICIPALE DE COLMAR
+VIVACTION - Groupe ITN France
 Websense Hosted R{D Ltd.
 WIBOX SASU
 Wifirst S.A.S.
