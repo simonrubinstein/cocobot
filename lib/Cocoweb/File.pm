@@ -79,7 +79,7 @@ sub getFileTemp {
     push @args, 'TEMPLATE', $template, 'SUFFIX', $suffix;
     my $fh          = File::Temp->new(@args);
     my $tmpFilename = $fh->filename();
-    debug(  'filename: '
+    Cocoweb::debug(  'filename: '
           . $filename
           . '; template: '
           . $template
@@ -107,7 +107,7 @@ sub serializeData {
         if !defined $res or $@; 
     croak error("rename($tmpFilename, $filename) was failed: $!")
       if !rename( $tmpFilename, $filename );
-    debug($filename . ' file successfully serialized');
+    Cocoweb::debug($filename . ' file successfully serialized');
 }
 
 ##@method hashref deserializeHash($filename)

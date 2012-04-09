@@ -83,7 +83,7 @@ sub checkUsers {
     $usersList->addOrUpdateInDB();
     $bot->requestCheckIfUsersNotSeenAreOffline();
     $usersList->purgeUsersUnseen();
-    $bot->setUserOfflineInDB();
+    $bot->setUsersOfflineInDB();
     $usersList->serialize();
 }
 

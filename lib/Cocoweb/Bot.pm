@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-04-08
+# @date 2012-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -213,10 +213,10 @@ sub requestCheckIfUsersNotSeenAreOffline {
     $self->request()->checkIfUsersNotSeenAreOffline( $self->user() );
 }
 
-##@method void setUserOfflineInDB()
-sub setUserOfflineInDB {
+##@method void setUsersOfflineInDB()
+sub setUsersOfflineInDB {
     my ($self) = @_;
-    $self->request()->usersList()->setUserOfflineInDB();
+    $self->request()->usersList()->setUsersOfflineInDB();
 }
 
 1;

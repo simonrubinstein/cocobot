@@ -322,4 +322,22 @@ sub updateUsersDate {
     $self->do( $query, @$idUsers_ref );
 }
 
+sub setUsersOffline {
+    my ( $self, $idUsers_ref ) = @_;
+    return if scalar(@$idUsers_ref) == 0;
+    debug('Set ' . scalar(@$idUsers_ref) . ' user(s) offline into `users` table');
+    my $query = q/
+      UPDATE `users` SET `logout_date` = CURRENT_TIMESTAMP()
+      WHERE `id` IN ( 
+   /;
+    foreach my $idUser (@$idUsers_ref) {
+        $query .= ' ?,';
+    }
+    chop($query);
+    $query .= ' )';
+    $self->do( $query, @$idUsers_ref );
+}
+
+
+
 1;
