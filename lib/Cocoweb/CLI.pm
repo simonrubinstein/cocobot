@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-03-29
+# @date 2011-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,6 +28,7 @@
 package Cocoweb::CLI;
 use Cocoweb;
 use Cocoweb::Bot;
+use Cocoweb::File;
 use Cocoweb::User::Wanted;
 use base 'Cocoweb::Object::Singleton';
 use Carp;
@@ -45,7 +46,7 @@ __PACKAGE__->attributes(
     'mypass',         'searchId',
     'searchNickname', 'maxOfLoop',
     'enableLoop',     'avatarAndPasswdRequired',
-    'searchEnable'
+    'searchEnable',   'pidHandle'
 );
 
 ##@method object init($class, $instance)
@@ -62,9 +63,17 @@ sub init {
         'maxOfLoop'               => undef,
         'enableLoop'              => 0,
         'avatarAndPasswdRequired' => 0,
-        'searchEnable'            => 0
+        'searchEnable'            => 0,
+        'pidHandle'               => undef
     );
     return $instance;
+}
+
+##@method void lockSingleInstance()
+#@brief Ensure application is running as a single instance
+sub lockSingleInstance {
+    my ($self) = @_;
+    $self->pidHandle( writeProcessID() );
 }
 
 ##@method hashref getOpts($argumentative)

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2011-04-08
+# @date 2011-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -50,9 +50,8 @@ sub init {
 
 sub message {
     my ( $self, $message ) = @_;
-    print STDOUT $message . "\n";
-
-    #$self->_log( 'info', $message );
+    print STDOUT $message . "\n" if exists $ENV{'TERM'};
+    $self->_writeLog( $message . "\n" );
 }
 
 sub info {
@@ -89,16 +88,18 @@ sub _log {
     my $identity = "file: $Script; method: $function; line: $line";
     my @dt       = localtime(time);
     $message =~ s{\%}{}g;
-    my $hourStr = sprintf('%02d:%02d:%02d', $dt[2], $dt[1], $dt[0]);
-    $self->_display ($priority, "$message $hourStr [$identity]\n")
-    if exists $ENV{'TERM'};
+    my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
+    $self->_display( $priority, "$message $hourStr [$identity]\n" )
+      if exists $ENV{'TERM'};
 
-    $self->_writeLog("[$$][$identity] " . $hourStr . " ($priority) $message\n");
+    $self->_writeLog( "[$$][method: $function; line: $line] " 
+          . $hourStr
+          . " ($priority) $message\n" );
 
 }
 
 sub _display {
-    my ($self, $priority, $string) = @_;
+    my ( $self, $priority, $string ) = @_;
 
     #$string = $message ."\n";
     if ( $priority eq 'err' or $priority eq 'emerg' ) {

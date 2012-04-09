@@ -86,11 +86,7 @@ sub init {
 sub checkAndupdate {
     my ( $self, %args ) = @_;
     $self->hasChange(0);
-    if ($self->DBUserId() == 0 or $self->DBUserId() == 0) {
-        $self->updateDbRecord(1);
-    } else {
-        $self->updateDbRecord(0);
-    }
+    $self->updateDbRecord(0);
     foreach my $name ( keys %args ) {
         my $newVal = $args{$name};
         my $oldVal = $self->$name();

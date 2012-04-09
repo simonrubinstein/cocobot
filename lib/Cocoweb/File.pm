@@ -30,6 +30,7 @@ use warnings;
 use FindBin qw($Script $Bin);
 use Carp;
 use Data::Dumper;
+use Fcntl qw(:DEFAULT :flock);
 use File::stat;
 use File::Temp;
 use IO::File;
@@ -42,6 +43,7 @@ our @EXPORT = qw(
   fileToVars
   getVarDir
   serializeData
+  writeProcessID
 );
 use Cocoweb;
 
@@ -50,7 +52,7 @@ use Cocoweb;
 #@param string  $filename A filename
 #@param boolean 0 does not open the file
 sub getFileTemp {
-    my ($filename, $open) = @_;
+    my ( $filename, $open ) = @_;
     $open = 1 if !defined $open;
     my @args = ( 'UNLINK' => 0, 'OPEN' => $open );
     my ( $template, $suffix );
@@ -79,15 +81,16 @@ sub getFileTemp {
     push @args, 'TEMPLATE', $template, 'SUFFIX', $suffix;
     my $fh          = File::Temp->new(@args);
     my $tmpFilename = $fh->filename();
-    Cocoweb::debug(  'filename: '
+    Cocoweb::debug( 'filename: '
           . $filename
           . '; template: '
           . $template
           . '; tmpFilename: '
           . $tmpFilename );
     if ($open) {
-        return ($tmpFilename, $fh);
-    } else {
+        return ( $tmpFilename, $fh );
+    }
+    else {
         return $tmpFilename;
     }
 }
@@ -98,16 +101,15 @@ sub getFileTemp {
 #@param string filename A full pathname of a file
 sub serializeData {
     my ( $data, $filename ) = @_;
-    my $tmpFilename = getFileTemp($filename, 0);  
+    my $tmpFilename = getFileTemp( $filename, 0 );
     my $res;
-    eval {
-        $res = Storable::store($data, $tmpFilename);
-    };
-    croak error("Storable::store($filename) was failed! $! / $@")
-        if !defined $res or $@; 
-    croak error("rename($tmpFilename, $filename) was failed: $!")
+    eval { $res = Storable::store( $data, $tmpFilename ); };
+    croak Cocoweb::error("Storable::store($filename) was failed! $! / $@")
+      if !defined $res
+          or $@;
+    croak Cocoweb::error("rename($tmpFilename, $filename) was failed: $!")
       if !rename( $tmpFilename, $filename );
-    Cocoweb::debug($filename . ' file successfully serialized');
+    Cocoweb::debug( $filename . ' file successfully serialized' );
 }
 
 ##@method hashref deserializeHash($filename)
@@ -115,7 +117,7 @@ sub serializeData {
 #@return hashref The hash contained in the file
 sub deserializeHash {
     my ($filename) = @_;
-    my $data = \%{Storable::retrieve ($filename)};
+    my $data = \%{ Storable::retrieve($filename) };
     return $data;
 }
 
@@ -126,13 +128,13 @@ sub deserializeHash {
 #@param string  $filename A filename
 sub dumpToFile {
     my ( $vars, $filename ) = @_;
-    my ($tmpFilename, $fh) = getFileTemp($filename, 1);  
+    my ( $tmpFilename, $fh ) = getFileTemp( $filename, 1 );
     $Data::Dumper::Purity = 1;
     $Data::Dumper::Indent = 1;
     $Data::Dumper::Terse  = 1;
     print $fh Dumper $vars;
-    croak error("close($filename) was failed: $!") if !close($fh);
-    croak error("rename($tmpFilename, $filename) was failed: $!")
+    croak Cocoweb::error("close($filename) was failed: $!") if !close($fh);
+    croak Cocoweb::error("rename($tmpFilename, $filename) was failed: $!")
       if !rename( $tmpFilename, $filename );
 }
 
@@ -141,27 +143,49 @@ sub dumpToFile {
 sub fileToVars {
     my ($filename) = @_;
     my $stat = stat($filename);
-    croak error("stat($filename) was failed: $!") if !defined $stat;
+    croak Cocoweb::error("stat($filename) was failed: $!") if !defined $stat;
     my $fh;
-    croak error("open($filename) was failed: $!") if !open( $fh, '<', $filename );
+    croak Cocoweb::error("open($filename) was failed: $!")
+      if !open( $fh, '<', $filename );
     my ( $contentSize, $content ) = ( 0, '' );
     sysread( $fh, $content, $stat->size(), $contentSize );
     close $fh;
     my $vars = eval($content);
-    croak error($@) if $@;
+    croak Cocoweb::error($@) if $@;
     return $vars;
 }
 
 ##@method string getVarDir()
 sub getVarDir {
-    return $varDir if defined $varDir; 
+    return $varDir if defined $varDir;
     $varDir = $Bin;
     $varDir =~ s{/[^/]+$}{/var};
-    confess error("$varDir directory was not found") if !-d $varDir;
+    confess Cocoweb::error("$varDir directory was not found") if !-d $varDir;
     return $varDir;
 }
 
+##@method object writeProcessID()
+#@brief use file lock to ensure that application is running
+#       as a single instance
+#@return object A 'IO::File' object
+sub writeProcessID {
+    my $PIDFile = '/var/lock/' . $Script . '.pid';
+    my $ph;
+    croak Cocoweb::error( 'Cannot open or lock pidfile "' 
+          . $PIDFile
+          . '" another '
+          . $Script
+          . ' running?  Error: '
+          . $! )
+      if !( $ph = new IO::File( '+>' . $PIDFile ) )
+          or !flock( $ph, LOCK_EX | LOCK_NB );
 
+    croak Cocoweb::error( 'Cannot write to "' . $PIDFile . '". Error: ' . $! )
+      if !$ph->seek( 0, 0 )
+          or !$ph->truncate(0)
+          or !$ph->print("$$\n")
+          or !$ph->flush();
+    Cocoweb::info( 'The PID file ' . $PIDFile . ' has been written' );
+    return $ph;
+}
 
-
- 
