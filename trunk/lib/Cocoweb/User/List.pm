@@ -79,11 +79,11 @@ sub populate {
         'mystat'     => $mystat,
         'myver'      => $myver
     );
-    debug("populate $mynickname / $mynickID");
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
         $user->dateLastSeen(time);
-        moreDebug("The user $mynickname already exists: " . $user->isNew());
+        moreDebug(
+            "The user $mynickname already exists: isNew:" . $user->isNew() );
         if ( $user->isNew() ) {
             $user->update(@args);
         }
@@ -164,7 +164,7 @@ sub purgeUsersUnseen {
 }
 
 ##@method void removeUser($userWanted)
-#@brief Removes a user from the list, based on its nickname ID 
+#@brief Removes a user from the list, based on its nickname ID
 #@param object A 'Cocoweb::user' from the user to delete
 sub removeUser {
     my ( $self, $userWanted ) = @_;
@@ -178,8 +178,7 @@ sub removeUser {
               . '" was disconnected after being seen not in the list '
               . $user->notViewCount()
               . ' times. Table `users` ID:'
-              . $user->DBUserId()
-              );
+              . $user->DBUserId() );
         delete $user_ref->{$id};
 
         #$self->DB()->setUserOffline($user) if $self->logUsersListInDB();
@@ -203,7 +202,7 @@ sub setUsersOfflineInDB {
     }
     my $DBUsersOffline_ref = $self->DBUsersOffline();
     $self->DB()->setUsersOffline($DBUsersOffline_ref);
-    $self->logUsersListInDB([]);
+    $self->DBUsersOffline( [] );
 }
 
 ##@method void addOrUpdateInDB()
@@ -220,7 +219,11 @@ sub addOrUpdateInDB {
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         next if !$user->isView();
-        if ( $user->isNew() or $user->hasChange() ) {
+        if (   $user->isNew()
+            or $user->hasChange()
+            or $user->DBUserId() == 0
+            or $user->DBUserId() == 0 )
+        {
             $self->DB()->addNewUser($user);
         }
         elsif ( $user->updateDbRecord() ) {

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
-#@ brief 
+#@ brief
 # @created 2012-03-09
-# @date 2012-04-07
+# @date 2012-04-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,6 +28,7 @@
 # MA  02110-1301, USA.
 use strict;
 use warnings;
+use Carp;
 use FindBin qw($Script $Bin);
 use Data::Dumper;
 use Time::HiRes;
@@ -44,14 +45,12 @@ my $DB;
 my $CLI;
 my $usersList;
 
-my %ispCount = ();
-my %townCount = ();
+my %ispCount     = ();
+my %townCount    = ();
 my $premiumCount = 0;
-
 
 init();
 run();
-
 
 ##@method void run()
 sub run {
@@ -63,12 +62,14 @@ sub run {
     $usersList->purgeUsersUnseen();
     checkUsers();
     if ( !$bot->isPremiumSubscription() ) {
-        die error( 'The script is reserved for users with a'.  ' Premium subscription.' );
+        croak error( 'The script is reserved for users with a'
+              . ' Premium subscription.' );
     }
     my $count = 0;
     for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
-        message('Iteration number: ' . $count);
-        if ( $count % 28 == 9) {
+        my $mynickname = $bot->user()->mynickname();
+        message( 'Iteration number: ' . $count . '; mynickname: ' . $mynickname );
+        if ( $count % 28 == 9 ) {
             checkUsers();
         }
         $bot->requestMessagesFromUsers();
@@ -77,6 +78,7 @@ sub run {
     info("The $Bin script was completed successfully.");
 }
 
+##@method void checkUsers()
 sub checkUsers {
     $usersList = $bot->requestUsersList();
     $bot->requestInfuzForNewUsers();
@@ -87,11 +89,13 @@ sub checkUsers {
     $usersList->serialize();
 }
 
-## @method void init()
+##@method void init()
 sub init {
-    $DB = Cocoweb::DB::Base->getInstance();
+    $DB  = Cocoweb::DB::Base->getInstance();
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
+    $CLI->lockSingleInstance();
+    my $opt_ref =
+      $CLI->getOpts( 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -111,6 +115,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-07');
+    $CLI->VERSION_MESSAGE('2012-04-09');
 }
 

@@ -1173,6 +1173,7 @@ FR- Carsac-aillac
 FR- Chancelade
 FR- Coulounieix-chamiers
 FR- Jumilhac-le-grand
+FR- Lalinde
 FR- Menesplet
 FR- Montignac
 FR- Montpon
@@ -1766,6 +1767,7 @@ FR- Voreppe
 FR- Beaufort
 FR- Champagnole
 FR- Dole
+FR- Equevillon
 FR- La Ferte
 FR- Le Deschaux
 FR- Les Rousses
@@ -2293,6 +2295,7 @@ FR- Elven
 FR- Gourin
 FR- Guer
 FR- Guidel
+FR- Hennebont
 FR- Josselin
 FR- Languidic
 FR- Lauzach
@@ -2620,6 +2623,7 @@ FR- Hondainville
 FR- Jouy-sous-thelle
 FR- Lacroix-saint-ouen
 FR- Lagny
+FR- Lagny-le-sec
 FR- Lamorlaye
 FR- Laneuvilleroy
 FR- Lassigny
