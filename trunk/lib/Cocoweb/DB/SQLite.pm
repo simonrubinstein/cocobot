@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-08
+# @date 2012-04-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -150,8 +150,7 @@ sub _insertCode {
         (?, ?, ?);
     /;
     if ( $self->dbh()->do( $query, undef, $code, time, time ) ) {
-        $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
-        return $id;
+        return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
     }
     elsif ( $self->dbh()->err() != 19 ) {
         confess error( $self->dbh()->errstr() );

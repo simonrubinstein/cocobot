@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-05
+# @date 2012-04-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -115,7 +115,7 @@ sub debugQuery {
                 $query .= $val . ', ';
             }
         }
-        chop($query);
+        $query = substr($query, 0, -2);
     }
     $query .= ']';
     debug($query);
@@ -275,12 +275,11 @@ sub getAllIPSs {
 #@param $user A 'Cocoweb::User' object
 sub addNewUser {
     my ( $self, $user ) = @_;
-    debug($user->mynickname());
 
     my $idTown = $self->getTown( $user->town() );
     my $idISP  = $self->getISP( $user->ISP() );
     my $idCode = $self->_insertCode( $user->code() );
-    debug("idTown: $idTown; idISP: $idISP; idCode: $idCode ");
+    debug('mynickname: ' . $user->mynickname() . "idTown: $idTown; idISP: $idISP; idCode: $idCode");
     $user->DBCodeId($idCode);
 
     my $idUser = $self->_insertUser( $user, $idCode, $idISP, $idTown );

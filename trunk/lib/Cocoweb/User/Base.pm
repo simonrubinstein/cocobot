@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-02
+# @date 2012-04-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -153,7 +153,7 @@ sub setInfuz {
         $self->ISP( trim($2) );
     }
     else {
-        die error("string '$lines[0]' is bad");
+        die error("string '$lines[0]' is bad. infuz: $infuz");
     }
     if (
         $lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)
@@ -169,13 +169,17 @@ sub setInfuz {
         $self->since($4);
     }
     else {
-        die error("string '$lines[1]' is bad");
+        $self->status(0);
+        $self->premium(0);
+        $self->level(0);
+        $self->since(0);
+        error("string '$lines[1]' is bad. infuz: $infuz");
     }
     if ( $lines[2] =~ m{Ville: (.*)$} ) {
         $self->town( trim($1) );
     }
     else {
-        die error("string '$lines[2]' is bad");
+        die error("string '$lines[2]' is bad. infuz: $infuz");
     }
 }
 
