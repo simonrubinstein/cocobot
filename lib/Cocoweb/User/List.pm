@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-09
+# @date 2012-04-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -160,7 +160,8 @@ sub purgeUsersUnseen {
         $countPurge++;
         delete $user_ref->{$id};
     }
-    info("$countPurge users were purged on a $count users unseen");
+    info("$countPurge users were purged on a $count users unseen")
+        if $countPurge > 0;
 }
 
 ##@method void removeUser($userWanted)
@@ -320,7 +321,7 @@ sub nickIdToNickname {
     my ( $self, $nickid ) = @_;
     my $user_ref = $self->all();
     if ( exists $user_ref->{$nickid} ) {
-        return $user_ref->{$nickid}->{'mynickname'};
+        return $user_ref->{$nickid}->{'mynickname'} . ' (' . $nickid . ')';
     }
     else {
         warning( 'The nickmane id ' . $nickid . ' was not found in the list' );
@@ -346,7 +347,6 @@ sub serialize {
     my $user_ref = $self->all();
     my $filename = $self->getSerializedFilename();
     serializeData( $user_ref, $filename );
-    info("(*) The user list has been serialized");
 }
 
 ##@method deserialize()
@@ -355,7 +355,7 @@ sub deserialize {
     my $self     = shift;
     my $filename = $self->getSerializedFilename();
     if ( !-f $filename ) {
-        warning("$filename was not found");
+        warning("$filename file was not found");
         return;
     }
     my $user_ref = deserializeHash($filename);

@@ -36,7 +36,7 @@ use Term::ANSIColor;
 use strict;
 use warnings;
 
-__PACKAGE__->attributes( 'dirname', 'filename', 'fh' );
+__PACKAGE__->attributes( 'dirname', 'filename', 'fh', 'writeLogInFile' );
 
 sub init {
     my ( $class, $instance ) = @_;
@@ -45,6 +45,7 @@ sub init {
     $instance->dirname($path);
     $instance->filename('');
     $instance->fh(undef);
+    $instance->writeLogInFile(0);
     return $instance;
 }
 
@@ -91,13 +92,12 @@ sub _log {
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
     $self->_display( $priority, "$message $hourStr [$identity]\n" )
       if exists $ENV{'TERM'};
-
     $self->_writeLog( "[$$][method: $function; line: $line] " 
           . $hourStr
           . " ($priority) $message\n" );
-
 }
 
+##@method _display($priority, $string)
 sub _display {
     my ( $self, $priority, $string ) = @_;
 
@@ -134,6 +134,7 @@ sub _getLogFilename {
     );
 }
 
+##@method void _openFileLog()
 sub _openFileLog {
     my ($self) = @_;
     my $pathname = $self->dirname() . '/' . $self->filename();
@@ -143,8 +144,10 @@ sub _openFileLog {
     $self->fh($fh);
 }
 
+##@methdo void _writeLog($message)
 sub _writeLog {
     my ( $self, $message ) = @_;
+    return if !$self->writeLogInFile();
     my $filename = $self->_getLogFilename();
     my $fh       = $self->fh();
     if ( !defined $fh ) {

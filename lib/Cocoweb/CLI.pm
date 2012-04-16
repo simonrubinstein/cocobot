@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-04-09
+# @date 2011-04-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -29,6 +29,7 @@ package Cocoweb::CLI;
 use Cocoweb;
 use Cocoweb::Bot;
 use Cocoweb::File;
+use Cocoweb::Logger;
 use Cocoweb::User::Wanted;
 use base 'Cocoweb::Object::Singleton';
 use Carp;
@@ -46,7 +47,7 @@ __PACKAGE__->attributes(
     'mypass',         'searchId',
     'searchNickname', 'maxOfLoop',
     'enableLoop',     'avatarAndPasswdRequired',
-    'searchEnable',   'pidHandle'
+    'searchEnable',   'pidHandle', 'writeLogInFile'
 );
 
 ##@method object init($class, $instance)
@@ -64,7 +65,8 @@ sub init {
         'enableLoop'              => 0,
         'avatarAndPasswdRequired' => 0,
         'searchEnable'            => 0,
-        'pidHandle'               => undef
+        'pidHandle'               => undef,
+        'writeLogInFile'          => 1
     );
     return $instance;
 }
@@ -82,6 +84,7 @@ sub lockSingleInstance {
 #@return hashref The values found in arguments
 sub getOpts {
     my ( $self, %argv ) = @_;
+    my $writeLogInFile = 0;
     foreach my $name ( 'searchEnable', 'enableLoop', 'avatarAndPasswdRequired' )
     {
         next if !exists $argv{$name};
@@ -89,7 +92,7 @@ sub getOpts {
     }
     my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'dvDu:s:y:a:p:';
+    $argumentative .= 'wdvDu:s:y:a:p:';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:' if $self->enableLoop();
     my %opt;
@@ -102,6 +105,8 @@ sub getOpts {
           or exists $opt{'D'};
     $Cocoweb::isDebug = 1 if exists $opt{'d'} or exists $opt{'D'};
     $Cocoweb::isMoreDebug = 1 if exists $opt{'D'};
+    $writeLogInFile = 1       if exists $opt{'w'};
+    Cocoweb::Logger->instance()->writeLogInFile($writeLogInFile);
     $self->mynickname( $opt{'u'} )     if exists $opt{'u'};
     $self->myage( $opt{'y'} )          if exists $opt{'y'};
     $self->mysex( $opt{'s'} )          if exists $opt{'s'};
@@ -240,7 +245,7 @@ sub getLineOfArgs {
     $args .= '[' if !$self->avatarAndPasswdRequired();
     $args .= '-a myavatar -p mypass ';
     $args .= '[' if $self->avatarAndPasswdRequired();
-    $args .= '-u mynickname -y myage -s mysex -v -d -D]';
+    $args .= '-u mynickname -y myage -s mysex -v -d -D -w]';
     return $args;
 }
 
@@ -275,6 +280,7 @@ sub HELP {
   -v                Verbose mode
   -d                Debug mode
   -D                More debug messages
+  -w                Written logs to a file 
 ENDTXT
 }
 

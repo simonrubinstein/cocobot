@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-04-09
+# @date 2012-04-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -46,6 +46,10 @@ sub init {
     }
     else {
         $logUsersListInDB = 0;
+    }
+    if (exists $args{'mynickname'} and $args{'mynickname'} =~m{:}) {
+        my @nicknames = split(/:/, $args{'mynickname'});
+        $args{'mynickname'} = $nicknames[randum( scalar @nicknames ) - 1];
     }
     my $user = Cocoweb::User::Connected->new(%args);
     my $request =
@@ -195,8 +199,7 @@ sub requestInfuzForNewUsers {
         moreDebug(
             '(*) new nickname: ' . $user->mynickname() . ' infuz: ' . $infuz );
     }
-    info( $count . ' new "infuz" was requested and returned' );
-
+    info( $count . ' new "infuz" was requested and returned' ) if $count > 0;
 }
 
 ##@method void requestMessagesFromUsers()
