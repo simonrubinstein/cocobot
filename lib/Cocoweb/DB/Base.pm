@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-15
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -43,7 +43,7 @@ __PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id');
 #@brief Returns an instance of an database object
 #@return object An 'Cocoweb::DB::SQLite' or 'Cocoweb::DB::MySQL' object
 sub getInstance {
-    my $config = Cocoweb::Config->instance()->getConfigFile('database.conf');
+    my $config = Cocoweb::Config->instance()->getConfigFile('database.conf', 'File');
     my $databaseClass = $config->getString('database-class');
     require 'Cocoweb/DB/' . $databaseClass . '.pm';
     my $class = 'Cocoweb::DB::' . $databaseClass;
@@ -157,7 +157,7 @@ sub do {
 #              - an Cocoweb::Config::Plaintext object
 sub getInitTowns {
     my ($self) = @_;
-    my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 1 );
+    my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 'Plaintext' );
     my $ISO3166Regex = $self->ISO3166Regex();
     $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
@@ -176,7 +176,7 @@ sub getInitTowns {
 #              - an Cocoweb::Config::Plaintext object
 sub getInitISPs() {
     my ($self) = @_;
-    my $ISPs = Cocoweb::Config->instance()->getConfigFile( 'ISPs.txt', 1 );
+    my $ISPs = Cocoweb::Config->instance()->getConfigFile( 'ISPs.txt', 'Plaintext' );
     my $ISPs_ref = $ISPs->getAsHash();
     info( 'number of ISP codes: ' . scalar( keys %$ISPs_ref ) );
     return ( $ISPs_ref, $ISPs );

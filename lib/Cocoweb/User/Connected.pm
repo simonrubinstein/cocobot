@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-03-25
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -69,9 +69,9 @@ sub init {
     my ( $self, %args ) = @_;
     if ( !defined $nicknameMan ) {
         $nicknameMan =
-          Cocoweb::Config->instance()->getConfigFile( 'nickname-man.txt', 1 );
+          Cocoweb::Config->instance()->getConfigFile( 'nickname-man.txt', 'Plaintext' );
         $nicknameWoman =
-          Cocoweb::Config->instance()->getConfigFile( 'nickname-woman.txt', 1 );
+          Cocoweb::Config->instance()->getConfigFile( 'nickname-woman.txt', 'Plaintext' );
     }
     $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
 
