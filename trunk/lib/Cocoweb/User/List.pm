@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-15
+# @date 2012-04-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -223,7 +223,7 @@ sub addOrUpdateInDB {
         if (   $user->isNew()
             or $user->hasChange()
             or $user->DBUserId() == 0
-            or $user->DBUserId() == 0 )
+            or $user->DBCodeId() == 0 )
         {
             $self->DB()->addNewUser($user);
         }

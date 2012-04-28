@@ -1,5 +1,5 @@
 # @created 2012-02-24
-# @date 2012-03-16
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -50,6 +50,8 @@ sub init {
 }
 
 ##@method void readFile()
+#@brief Reads the configuration file.
+#       If the configuration file has been modified it is read again.
 sub readFile {
     my ($self) = @_;
     my $fh;
@@ -70,10 +72,6 @@ sub readFile {
     }
     $self->mtime( $stat->mtime() );
     while ( defined( my $line = $fh->getline() ) ) {
-
-        #die error("open($filename) was failed: $!")
-        #  if !open( $fh, '<', $filename );
-        #while ( my $line = <$fh> ) {
         chomp($line);
         next if substr( $line, 0, 1 ) eq '#' or $line =~ m{^\s*$};
         push @file, $line;
@@ -93,7 +91,9 @@ sub getAll {
 }
 
 ##@method hashref getAsHash()
-#@brief
+#@brief Returns the entire file into a hash table.
+#       Each line corresponds to a key.
+#@return hashref The contents of the file in a hash table.
 sub getAsHash {
     my ($self) = @_;
     $self->readFile();
@@ -116,6 +116,7 @@ sub getAsHash {
 
 ##@method string getRandomLine()
 #@brief Returns a random line
+#@return string A randomly chosen line in the file.
 sub getRandomLine {
     my ($self)   = @_;
     my $file_ref = $self->all();
