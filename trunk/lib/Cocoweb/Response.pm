@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2012-04-07
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -157,17 +157,16 @@ sub process1Int {
         # The server returns some information about the user account.
         if ( $bud == 556 ) {
 
-  #agix(urlav+myage+mysex+parami[3]+myavatar+mynickID+monpass+mycrypt,4)
-  #agix(url1+"40"+mynickname+"*"+myage+mysex+parami[3]+myavatar+speco+mypass,4);
-  #$self->agix( $user,
-  #          $request->{'urlav'}
-  #        . $user->myage()
-  #        . $user->mysex()
-  #        . $user->citydio()
-  #        . $user->myavatar()
-  #        . $user->mynickID()
-  #        . $user->monpass()
-  #        . $user->mycrypt() );
+            #First HTTP request to load the avatar image.
+            $request->agix( $user,
+                    $request->{'urlav'}
+                  . $user->myage()
+                  . $user->mysex()
+                  . $user->citydio()
+                  . $user->myavatar()
+                  . $user->mynickID()
+                  . $user->monpass()
+                  . $user->mycrypt() );
             $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
             $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
             $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );
@@ -244,7 +243,7 @@ sub process1Int {
             undef @usersStillConnected;
         }
         if ( $countDiscUsers > 0 ) {
-            info(  $countDiscUsers
+            info(   $countDiscUsers
                   . ' user(s) have disconnected: '
                   . $disconnectedUsers );
         }
@@ -272,9 +271,16 @@ sub process1Int {
         $olko = 89;
     }
 
+    #The response to the first HTTP request to load the avatar image.
     if ( $olko == 23 ) {
+        my $mysex = $user->mysex();
+        if ( $mysex < 5 ) {
+            $mysex += 5;
+            $user->mysex($mysex);
 
-        #$self->yabon();
+            #Second HTTP request to load the avatar image.
+            $request->agir( $user, '60' );
+        }
     }
 
     # Retrieves the list of rooms
@@ -333,7 +339,10 @@ sub process1Int {
                     else {
                         my $zami = parseInt( substr( $urlo, $hzq, 6 ) );
                         if ( ( $diase - $hzq ) == 7 ) {
-                            message('The user "' . $request->usersList()->nickIdToNickname($zami) . '" writing...');
+                            message( 'The user "'
+                                  . $request->usersList()
+                                  ->nickIdToNickname($zami) 
+                                  . '" writing...' );
                         }
                     }
                 }

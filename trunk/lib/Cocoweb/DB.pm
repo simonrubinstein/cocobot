@@ -1,6 +1,6 @@
 # @brief Handle SQLite database
 # @created 2012-03-11
-# @date 2012-03-27
+# @date 2012-04-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -41,7 +41,7 @@ use warnings;
 ##@method object init($class, $instance)
 sub init {
     #my ( $class, $instance ) = @_;
-    #my $config = Cocoweb::Config->instance()->getConfigFile('database.conf');
+    #my $config = Cocoweb::Config->instance()->getConfigFile('database.conf', 'File');
     #$instance->attributes_defaults(
     #    'dbh'          => undef,
     #    'filename'     => $config->getString('filename'),

@@ -74,7 +74,8 @@ sub init {
       : 0;
 
     if ( !defined $conf_ref ) {
-        my $conf = Cocoweb::Config->instance()->getConfigFile('request.conf');
+        my $conf =
+          Cocoweb::Config->instance()->getConfigFile( 'request.conf', 'File' );
         $conf_ref = $conf->all();
         foreach my $name (
             'urly0',  'urlprinc',    'current-url', 'avatar-url',
