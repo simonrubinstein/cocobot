@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-04-07
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -194,33 +194,13 @@ sub jsEscape {
     return $string;
 }
 
-##@method void getCityco($user)
+##@method void getCitydioAndTownzz($user)
 #@brief Performs an HTTP request to retrieve the custom code
 #       corresponding to zip code.
 #@param object $user An 'Cocoweb::User::Connected' object
-sub getCityco {
+sub getCitydioAndTownzz {
     my ( $self, $user ) = @_;
-
-    my $zip = $user->zip();
-    croak error("Error: The '$zip' zip code is invalid!")
-      if $zip !~ /^\d{5}$/;
-    my $i = index( $zip, '0' );
-    if ( $i == 0 ) {
-        $zip = substr( $zip, 1, 5 );
-    }
-    my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
-    my $response = $self->execute( 'GET', $url );
-    my $res      = $response->content();
-
-    # Retrieves a string like "var cityco='30926*PARIS*';"
-    if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
-        die error( 'Error: cityco have not been found!'
-              . 'The HTTP requests "'
-              . $url
-              . '" return: '
-              . $res );
-    }
-    my $cityco = $1;
+    my $cityco = $self->getCityco( $user->zip() );
 
     #debug("cityco: $cityco");
     my @tmp = split( /\*/, $cityco );
@@ -244,6 +224,35 @@ sub getCityco {
     #debug("citydio: $citydio; townzz: $townzz");
     $user->citydio($citydio);
     $user->townzz($townzz);
+}
+
+##@method string requestCityco($zip)
+#@brief Performs an HTTP request to retrieve the zip custom code
+#       and town corresponding to zip code.
+#@param integer $zip A zip code (i.e. 75001)
+#@return string cityco and town (i.e. '30915*PARIS*')
+sub getCityco {
+    my ( $self, $zip ) = @_;
+    croak error("Error: The '$zip' zip code is invalid!")
+      if $zip !~ /^\d{5}$/;
+    my $i = index( $zip, '0' );
+    if ( $i == 0 ) {
+        $zip = substr( $zip, 1, 5 );
+    }
+    my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
+    my $response = $self->execute( 'GET', $url );
+    my $res      = $response->content();
+
+    # Retrieves a string like "var cityco='30926*PARIS*';"
+    if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
+        die error( 'Error: cityco have not been found!'
+              . 'The HTTP requests "'
+              . $url
+              . '" return: '
+              . $res );
+    }
+    my $cityco = $1;
+    return $cityco;
 }
 
 ##@method void firsty($user)

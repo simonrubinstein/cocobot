@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-04-15
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -74,7 +74,7 @@ sub requestAuthentication {
     my ($self)  = @_;
     my $user    = $self->user();
     my $request = $self->request();
-    $request->getCityco($user);
+    $request->getCitydioAndTownzz($user);
     $user->validatio( $request->getValue('urlprinc') );
     $user->initial( $request->getValue('avaref') );
     $self->request()->firsty($user);
