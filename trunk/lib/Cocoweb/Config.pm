@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-01-27
-# @date 2012-03-31
+# @date 2012-04-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -31,8 +31,9 @@ use warnings;
 use FindBin qw($Script $Bin);
 use base 'Cocoweb::Object::Singleton';
 use Cocoweb;
-use Cocoweb::Config::File;
-use Cocoweb::Config::Plaintext;
+#use Cocoweb::Config::File;
+#use Cocoweb::Config::Plaintext;
+#use Cocoweb::Config::ZipCodes;
 use Carp;
 use Config::General;
 use Data::Dumper;
@@ -73,6 +74,9 @@ sub getConfigFile {
       if !defined $configPath;
     debug("The file '$configPath' was found.");
     $className = 'Cocoweb::Config::'. $className;
+    my $classPathName = $className;
+    $classPathName =~s{::}{/}g;
+    require $classPathName . '.pm';
     my $instance = $className->new( 'pathname' => $configPath );
     return $instances{$filename} = $instance;
 }
