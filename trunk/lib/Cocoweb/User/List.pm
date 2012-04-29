@@ -161,7 +161,7 @@ sub purgeUsersUnseen {
         delete $user_ref->{$id};
     }
     info("$countPurge users were purged on a $count users unseen")
-        if $countPurge > 0;
+      if $countPurge > 0;
 }
 
 ##@method void removeUser($userWanted)
@@ -219,6 +219,16 @@ sub addOrUpdateInDB {
     my @users         = ();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
+        debug(  '['
+              . $user->mynickname()
+              . '] isNew: '
+              . $user->isNew()
+              . '; hasChange: '
+              . $user->hasChange()
+              . '; DBUserId:'
+              . $user->DBUserId()
+              . '; DBCodeId: '
+              . $user->DBCodeId() );
         next if !$user->isView();
         if (   $user->isNew()
             or $user->hasChange()

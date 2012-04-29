@@ -106,6 +106,7 @@ sub importFromDatabase {
     print " - " . $config->getZipAndTownFromCitydio(30932) . "\n";
     print " - " . $config->getZipAndTownFromCitydio(36450) . "\n";
     print " - " . $config->getZipAndTownFromCitydio(30919) . "\n";
+    print " - " . $config->getZipAndTownFromCitydio(30932) . "\n";
 
 
 

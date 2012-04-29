@@ -4,11 +4,11 @@
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
-# Id: $Id: Plaintext.pm 143 2012-03-16 20:52:38Z ssimonrubinstein1@gmail.com $
-# Revision: $Revision: 143 $
-# Date: $Date: 2012-03-16 21:52:38 +0100 (ven, 16 mar 2012) $
-# Author: $Author: ssimonrubinstein1@gmail.com $
-# HeadURL: $HeadURL: https://cocobot.googlecode.com/svn/trunk/lib/Cocoweb/Config/Plaintext.pm $
+# Id: $Id$
+# Revision: $Revision$
+# Date: $Date$
+# Author: $Author$
+# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

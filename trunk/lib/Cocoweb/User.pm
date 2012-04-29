@@ -91,6 +91,7 @@ sub checkAndupdate {
         my $newVal = $args{$name};
         my $oldVal = $self->$name();
         if ( $oldVal ne $newVal ) {
+            $self->$name($oldVal);
             $self->updateDbRecord(1);
             info(   $self->mynickname()
                   . ': Replace "'
@@ -117,6 +118,9 @@ sub checkAndupdate {
             $self->hasChange(1);
         }
     }
+    debug($self->mynickname() . ' must be inserted in the database! Code: ' 
+        . $self->DBCodeId()) 
+        if $self->hasChange();
     return $self->hasChange();
 }
 
