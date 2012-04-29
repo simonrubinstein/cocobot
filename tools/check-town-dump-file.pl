@@ -103,6 +103,10 @@ sub importFromDatabase {
     my $config = Cocoweb::Config->instance()->getConfigFile('zip-codes.txt', 'ZipCodes');
     my $c = $config->getCityco(75005);
     print "$c\n";
+    print " - " . $config->getZipAndTownFromCitydio(30932) . "\n";
+    print " - " . $config->getZipAndTownFromCitydio(36450) . "\n";
+    print " - " . $config->getZipAndTownFromCitydio(30919) . "\n";
+
 
 
 }
