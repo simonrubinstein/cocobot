@@ -214,22 +214,22 @@ sub getCitydioAndTownzz {
     }
 
     #debug("cityco: $cityco");
-    my @tmp = split( /\*/, $cityco );
+    my @citycoList = split( /\*/, $cityco );
     my ( $citydio, $townzz );
-    my $count = scalar @tmp;
+    my $count = scalar @citycoList;
     die error("Error: The cityco is not valid (cityco: $cityco)")
       if $count % 2 != 0
           or $count == 0;
 
     if ( $count == 2 ) {
-        $citydio = $tmp[0];
-        $townzz  = $tmp[1];
+        $citydio = $citycoList[0];
+        $townzz  = $citycoList[1];
     }
     else {
         my $r = int( rand( $count / 2 ) );
         $r += $r;
-        $citydio = $tmp[$r];
-        $townzz  = $tmp[ $r + 1 ];
+        $citydio = $citycoList[$r];
+        $townzz  = $citycoList[ $r + 1 ];
     }
 
     #debug("citydio: $citydio; townzz: $townzz");

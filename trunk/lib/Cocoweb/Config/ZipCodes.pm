@@ -37,13 +37,16 @@ use File::stat;
 use Cocoweb;
 use base 'Cocoweb::Config::Plaintext';
 
+__PACKAGE__->attributes('citydio2zip');
+
 ## @method void init($args)
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults(
-        'all'      => {},
-        'pathname' => $args{'pathname'},
-        'mtime'    => 0
+        'all'         => {},
+        'pathname'    => $args{'pathname'},
+        'mtime'       => 0,
+        'citydio2zip' => {}
     );
     $self->readFile();
 }
@@ -74,11 +77,53 @@ sub readFile {
 #@return string cityco and town (i.e. '30915*PARIS*')
 sub getCityco {
     my ( $self, $zip ) = @_;
-    my $zip2Cityco = $self->all();
+    my $zip2Cityco_ref = $self->all();
     die error( 'Error: cityco have not been found! Zip code: ' . $zip )
-      if !exists $zip2Cityco->{$zip};
-    return $zip2Cityco->{$zip};
+      if !exists $zip2Cityco_ref->{$zip};
+    return $zip2Cityco_ref->{$zip};
+}
 
+##@method void extract()
+#@brief Builds a hash table citydio => zip code and townzz
+sub extract {
+    my ($self) = @_;
+    my $citydio2zip_ref = $self->citydio2zip();
+    return if scalar( keys %$citydio2zip_ref ) > 0;
+    my $zip2Cityco_ref = $self->all();
+    foreach my $zip ( keys %$zip2Cityco_ref ) {
+        my $cityco = $zip2Cityco_ref->{$zip};
+        my @citycoList = split( /\*/, $cityco );
+        my ( $citydio, $townzz );
+        my $count = scalar @citycoList;
+        die error("Error: The cityco is not valid (cityco: $cityco)")
+          if $count % 2 != 0
+              or $count == 0;
+        for ( my $i = 0 ; $i < scalar(@citycoList) ; $i += 2 ) {
+            my $citydio = $citycoList[$i];
+            my $townzz  = $citycoList[ $i + 1 ];
+            die error( 'Error: the ' . $citydio . ' citydio already exists!' )
+              if exists $citydio2zip_ref->{$citydio};
+            $townzz = lc($townzz);
+            $townzz =~ s{\b(\w+)\b}{ucfirst($1)}ge;
+            $citydio2zip_ref->{$citydio} = $zip . ' ' . $townzz;
+        }
+    }
+    debug( 'Extract ' . scalar( keys %$citydio2zip_ref ) . ' citydio' );
+}
+
+##@method string getZipAndTownFromCitydio($citydio)
+#@brief Returns the zip code and town name that matches the code citydio.
+#@param integer $citydio A citydio (i.e. 30919)
+#@return string zip code and town name (i.e. '75005 Paris')
+sub getZipAndTownFromCitydio {
+    my ( $self, $citydio ) = @_;
+    $self->extract();
+    my $citydio2zip_ref = $self->citydio2zip();
+    if ( !exists $citydio2zip_ref->{$citydio} ) {
+        error( 'The code ' . $citydio . ' has not been found.' );
+        return $citydio . '?';
+    }
+    return $citydio2zip_ref->{$citydio};
 }
 
 1;
