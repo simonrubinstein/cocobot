@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-04-28
+# @date 2012-04-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -201,7 +201,17 @@ sub jsEscape {
 #@param object $user An 'Cocoweb::User::Connected' object
 sub getCitydioAndTownzz {
     my ( $self, $user ) = @_;
-    my $cityco = $self->getCityco( $user->zip() );
+    my $cityco;
+
+    #Reads citydio and townzz values from an HTTP request.
+    eval { $cityco = $self->getCityco( $user->zip() ); };
+    if ($@) {
+
+        #If the HTTP request fails, read the values from configuration file.
+        my $allZipCodes = Cocoweb::Config->instance()
+          ->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+        $cityco = $allZipCodes->getCityco( $user->zip() );
+    }
 
     #debug("cityco: $cityco");
     my @tmp = split( /\*/, $cityco );
