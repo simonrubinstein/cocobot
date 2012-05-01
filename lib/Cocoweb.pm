@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-04-09
+# @date 2012-05-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -70,7 +70,11 @@ sub message {
 
 ##@method void error(@_)
 sub error {
-    $logger->error(@_);
+    if (defined $logger) {
+        $logger->error(@_);
+    } else {
+        print STDERR $_[0] . "\n";
+    }
 }
 
 ##@method void warning(@_)
