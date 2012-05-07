@@ -279,7 +279,7 @@ sub addNewUser {
     my $idTown = $self->getTown( $user->town() );
     my $idISP  = $self->getISP( $user->ISP() );
     my $idCode = $self->_insertCode( $user->code() );
-    debug('mynickname: ' . $user->mynickname() . "idTown: $idTown; idISP: $idISP; idCode: $idCode");
+    debug('mynickname: ' . $user->mynickname() . "; idTown: $idTown; idISP: $idISP; idCode: $idCode");
     $user->DBCodeId($idCode);
 
     my $idUser = $self->_insertUser( $user, $idCode, $idISP, $idTown );
