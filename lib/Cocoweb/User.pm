@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-04-02
+# @date 2012-05-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,8 +34,10 @@ use POSIX;
 use Cocoweb;
 use base 'Cocoweb::User::Base';
 
-__PACKAGE__->attributes( 'isNew', 'isView', 'dateLastSeen', 'hasChange', 'notViewCount',
-    'updateDbRecord', 'DBCodeId', 'DBUserId' );
+__PACKAGE__->attributes(
+    'isNew',        'isView',         'dateLastSeen', 'hasChange',
+    'notViewCount', 'updateDbRecord', 'DBCodeId',     'DBUserId'
+);
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -85,8 +87,9 @@ sub init {
 ##@method boolean checkAndupdate(%args)
 sub checkAndupdate {
     my ( $self, %args ) = @_;
-    $self->hasChange(0);
-    $self->updateDbRecord(0);
+
+    #$self->hasChange(0);
+    #$self->updateDbRecord(0);
     foreach my $name ( keys %args ) {
         my $newVal = $args{$name};
         my $oldVal = $self->$name();
@@ -118,9 +121,10 @@ sub checkAndupdate {
             $self->hasChange(1);
         }
     }
-    debug($self->mynickname() . ' must be inserted in the database! Code: ' 
-        . $self->DBCodeId()) 
-        if $self->hasChange();
+    debug(  $self->mynickname()
+          . ' must be inserted in the database! Code: '
+          . $self->DBCodeId() )
+      if $self->hasChange();
     return $self->hasChange();
 }
 
