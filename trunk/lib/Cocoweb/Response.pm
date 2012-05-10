@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2012-04-28
+# @date 2012-05-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -158,15 +158,19 @@ sub process1Int {
         if ( $bud == 556 ) {
 
             #First HTTP request to load the avatar image.
-            $request->agix( $user,
-                    $request->{'urlav'}
-                  . $user->myage()
-                  . $user->mysex()
-                  . $user->citydio()
-                  . $user->myavatar()
-                  . $user->mynickID()
-                  . $user->monpass()
-                  . $user->mycrypt() );
+            if ( $request->isAvatarRequest() ) {
+                eval {
+                    $request->agix( $user,
+                            $request->{'urlav'}
+                          . $user->myage()
+                          . $user->mysex()
+                          . $user->citydio()
+                          . $user->myavatar()
+                          . $user->mynickID()
+                          . $user->monpass()
+                          . $user->mycrypt() );
+                };
+            }
             $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
             $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
             $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );

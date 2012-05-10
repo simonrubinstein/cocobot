@@ -55,7 +55,8 @@ __PACKAGE__->attributes(
     'speco',
     'convert',
     'timz1',
-    'rechrech'
+    'rechrech',
+    'isAvatarRequest'
 );
 
 my $conf_ref;
@@ -127,10 +128,11 @@ sub init {
             'logUsersListInDB' => $logUsersListInDB,
             'removeListDelay'  => $removeListDelay
         ),
-        'speco'    => 0,
-        'convert'  => Cocoweb::Encode->instance(),
-        'timz1'    => 0,
-        'rechrech' => 0,
+        'speco'           => 0,
+        'convert'         => Cocoweb::Encode->instance(),
+        'timz1'           => 0,
+        'rechrech'        => 0,
+        'isAvatarRequest' => 0
     );
 }
 
