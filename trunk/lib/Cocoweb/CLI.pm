@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2011-04-15
+# @date 2011-05-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -47,7 +47,8 @@ __PACKAGE__->attributes(
     'mypass',         'searchId',
     'searchNickname', 'maxOfLoop',
     'enableLoop',     'avatarAndPasswdRequired',
-    'searchEnable',   'pidHandle', 'writeLogInFile'
+    'searchEnable',   'pidHandle',
+    'writeLogInFile', 'isAvatarRequest'
 );
 
 ##@method object init($class, $instance)
@@ -66,7 +67,8 @@ sub init {
         'avatarAndPasswdRequired' => 0,
         'searchEnable'            => 0,
         'pidHandle'               => undef,
-        'writeLogInFile'          => 1
+        'writeLogInFile'          => 1,
+        'isAvatarRequest'         => 0
     );
     return $instance;
 }
@@ -92,7 +94,7 @@ sub getOpts {
     }
     my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'wdvDu:s:y:a:p:';
+    $argumentative .= 'wdvDu:s:y:a:p:g';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:' if $self->enableLoop();
     my %opt;
@@ -103,9 +105,9 @@ sub getOpts {
       if exists $opt{'v'}
           or exists $opt{'d'}
           or exists $opt{'D'};
-    $Cocoweb::isDebug = 1 if exists $opt{'d'} or exists $opt{'D'};
+    $Cocoweb::isDebug     = 1 if exists $opt{'d'} or exists $opt{'D'};
     $Cocoweb::isMoreDebug = 1 if exists $opt{'D'};
-    $writeLogInFile = 1       if exists $opt{'w'};
+    $writeLogInFile       = 1 if exists $opt{'w'};
     Cocoweb::Logger->instance()->writeLogInFile($writeLogInFile);
     $self->mynickname( $opt{'u'} )     if exists $opt{'u'};
     $self->myage( $opt{'y'} )          if exists $opt{'y'};
@@ -115,6 +117,8 @@ sub getOpts {
     $self->searchId( $opt{'i'} )       if exists $opt{'i'};
     $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
     $self->maxOfLoop( $opt{'x'} )      if exists $opt{'x'};
+    $self->isAvatarRequest(1)          if exists $opt{'g'};
+    info("isAvatarRequest: " . $self->isAvatarRequest());
 
     if ( defined $self->mysex() ) {
         if ( $self->mysex() eq 'M' ) {
@@ -202,7 +206,11 @@ sub getMinimumOpts {
 #@return object A Cocoweb::Bot object
 sub getBot {
     my ( $self, @params ) = @_;
-    foreach my $name ( 'mynickname', 'myage', 'mysex', 'myavatar', 'mypass' ) {
+    foreach my $name (
+        'mynickname', 'myage', 'mysex', 'myavatar',
+        'mypass',     'isAvatarRequest'
+      )
+    {
         push @params, $name, $self->$name() if defined $self->$name();
     }
     my $bot = Cocoweb::Bot->new(@params);

@@ -74,6 +74,10 @@ sub init {
       ? 1
       : 0;
 
+    my $isAvatarRequest =
+      ( exists $args{'isAvatarRequest'} and $args{'isAvatarRequest'} )
+      ? 1
+      : 0;
     if ( !defined $conf_ref ) {
         my $conf =
           Cocoweb::Config->instance()->getConfigFile( 'request.conf', 'File' );
@@ -132,7 +136,7 @@ sub init {
         'convert'         => Cocoweb::Encode->instance(),
         'timz1'           => 0,
         'rechrech'        => 0,
-        'isAvatarRequest' => 0
+        'isAvatarRequest' => $isAvatarRequest
     );
 }
 

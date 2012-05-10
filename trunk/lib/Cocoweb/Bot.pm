@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-04-28
+# @date 2012-05-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -47,13 +47,23 @@ sub init {
     else {
         $logUsersListInDB = 0;
     }
-    if (exists $args{'mynickname'} and $args{'mynickname'} =~m{:}) {
-        my @nicknames = split(/:/, $args{'mynickname'});
-        $args{'mynickname'} = $nicknames[randum( scalar @nicknames ) - 1];
+    my $isAvatarRequest;
+    if ( exists $args{'isAvatarRequest'} and $args{'isAvatarRequest'} ) {
+        $isAvatarRequest = 1;
+        delete $args{'isAvatarRequest'};
     }
-    my $user = Cocoweb::User::Connected->new(%args);
-    my $request =
-      Cocoweb::Request->new( 'logUsersListInDB' => $logUsersListInDB );
+    else {
+        $isAvatarRequest = 0;
+    }
+    if ( exists $args{'mynickname'} and $args{'mynickname'} =~ m{:} ) {
+        my @nicknames = split( /:/, $args{'mynickname'} );
+        $args{'mynickname'} = $nicknames[ randum( scalar @nicknames ) - 1 ];
+    }
+    my $user    = Cocoweb::User::Connected->new(%args);
+    my $request = Cocoweb::Request->new(
+        'logUsersListInDB' => $logUsersListInDB,
+        'isAvatarRequest'  => $isAvatarRequest
+    );
     $self->attributes_defaults(
         'user'    => $user,
         'request' => $request,
