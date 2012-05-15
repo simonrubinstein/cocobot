@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-16
+# @date 2012-05-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -78,7 +78,7 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'users', 'codes', 'ISPs', 'towns' ) {
+    foreach my $table ( 'users', 'codes', 'ISPs', 'towns', 'citydios' ) {
         $self->dbh()->do( 'DROP TABLE `' . $table . '`' );
     }
 }
@@ -136,6 +136,14 @@ ENDTXT
     `name`          VARCHAR(255) UNIQUE NOT NULL)
 ENDTXT
     $self->dbh()->do($query);
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `citydios` (
+    `id`            INTEGER PRIMARY KEY,
+    `townzz`        VARCHAR(36) UNIQUE NOT NULL)
+ENDTXT
+    $self->dbh()->do($query);
+
 }
 
 ##@method integer _insertCode($code)
@@ -156,7 +164,8 @@ sub _insertCode {
         confess error( $self->dbh()->errstr() );
     }
     warning( $self->dbh()->errstr() );
-    my $sth = $self->execute('SELECT `id` FROM `codes` WHERE `code` = ?  ', $code);
+    my $sth =
+      $self->execute( 'SELECT `id` FROM `codes` WHERE `code` = ?  ', $code );
     my $result = $sth->fetchrow_hashref();
     my $idCode = $result->{'id'};
     $self->_updateCode($idCode);
@@ -164,7 +173,7 @@ sub _insertCode {
 }
 
 ##@method void _updateCode($idCode)
-#@brief Updates the date of a record in the table `codes` 
+#@brief Updates the date of a record in the table `codes`
 #@input integer $idCode The Id of the record
 sub _updateCode {
     my ( $self, $idCode ) = @_;

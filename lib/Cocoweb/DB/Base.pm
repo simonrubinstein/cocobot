@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-28
+# @date 2012-05-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,13 +37,14 @@ use Cocoweb;
 use Cocoweb::Config;
 use base 'Cocoweb::Object::Singleton';
 
-__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id');
+__PACKAGE__->attributes( 'dbh', 'ISO3166Regex', 'town2id', 'ISP2id' );
 
 ##@method object getInstance()
 #@brief Returns an instance of an database object
 #@return object An 'Cocoweb::DB::SQLite' or 'Cocoweb::DB::MySQL' object
 sub getInstance {
-    my $config = Cocoweb::Config->instance()->getConfigFile('database.conf', 'File');
+    my $config =
+      Cocoweb::Config->instance()->getConfigFile( 'database.conf', 'File' );
     my $databaseClass = $config->getString('database-class');
     require 'Cocoweb/DB/' . $databaseClass . '.pm';
     my $class = 'Cocoweb::DB::' . $databaseClass;
@@ -115,7 +116,7 @@ sub debugQuery {
                 $query .= $val . ', ';
             }
         }
-        $query = substr($query, 0, -2);
+        $query = substr( $query, 0, -2 );
     }
     $query .= ']';
     debug($query);
@@ -147,7 +148,6 @@ sub do {
     $self->debugQuery( $query, \@_ );
     $self->dbh()->do( $query, undef, @_ )
       or croak error( $self->dbh()->errstr() );
-    #info('number of rows affected: ' . $self->dbh()->rows());
 }
 
 ##@method array getInitTowns()
@@ -157,7 +157,8 @@ sub do {
 #              - an Cocoweb::Config::Plaintext object
 sub getInitTowns {
     my ($self) = @_;
-    my $towns = Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 'Plaintext' );
+    my $towns =
+      Cocoweb::Config->instance()->getConfigFile( 'towns.txt', 'Plaintext' );
     my $ISO3166Regex = $self->ISO3166Regex();
     $ISO3166Regex = qr/^$ISO3166Regex.*/;
     my $towns_ref = $towns->getAsHash();
@@ -176,7 +177,8 @@ sub getInitTowns {
 #              - an Cocoweb::Config::Plaintext object
 sub getInitISPs() {
     my ($self) = @_;
-    my $ISPs = Cocoweb::Config->instance()->getConfigFile( 'ISPs.txt', 'Plaintext' );
+    my $ISPs =
+      Cocoweb::Config->instance()->getConfigFile( 'ISPs.txt', 'Plaintext' );
     my $ISPs_ref = $ISPs->getAsHash();
     info( 'number of ISP codes: ' . scalar( keys %$ISPs_ref ) );
     return ( $ISPs_ref, $ISPs );
@@ -184,7 +186,7 @@ sub getInitISPs() {
 
 ##@method void insertTown($name)
 #@brief Inserts a new town code in the table "towns"
-#@param string An town code, i.e. "FR- Sevran"
+#@param string $name An town code, i.e. "FR- Sevran"
 sub insertTown {
     my ( $self, $name ) = @_;
     my $query = q/
@@ -199,7 +201,7 @@ sub insertTown {
 
 ##@method void insertISP($name)
 #@brief Inserts a new ISP code in the table "towns"
-#@param string An ISP code, i.e. "Free SAS"
+#@param string $name An ISP code, i.e. "Free SAS"
 sub insertISP {
     my ( $self, $name ) = @_;
     my $query = q/
@@ -210,6 +212,21 @@ sub insertISP {
       /;
     $self->do( $query, $name );
     return $self->dbh()->last_insert_id( undef, undef, 'ISPs', undef );
+}
+
+##@method void insertCitydio ($id, $townzz)
+#@brief Inserts a new citydio and townzz code in the table "citydios"
+#@param int $id
+#@param string $townzz
+sub insertCitydio {
+    my ( $self, $id, $townzz ) = @_;
+    my $query = q/
+      INSERT INTO `citydios`
+        (`id`, `townzz`) 
+        VALUES
+        (?, ?);
+      /;
+    $self->do( $query, $id, $townzz );
 }
 
 ##@method void insertCode($code)
@@ -279,7 +296,9 @@ sub addNewUser {
     my $idTown = $self->getTown( $user->town() );
     my $idISP  = $self->getISP( $user->ISP() );
     my $idCode = $self->_insertCode( $user->code() );
-    debug('mynickname: ' . $user->mynickname() . "; idTown: $idTown; idISP: $idISP; idCode: $idCode");
+    debug(  'mynickname: '
+          . $user->mynickname()
+          . "; idTown: $idTown; idISP: $idISP; idCode: $idCode" );
     $user->DBCodeId($idCode);
 
     my $idUser = $self->_insertUser( $user, $idCode, $idISP, $idTown );
@@ -292,12 +311,12 @@ sub addNewUser {
 #@param $user A 'Cocoweb::User' object
 sub updateCode {
     my ( $self, $user ) = @_;
-    debug($user->mynickname());
-    my $code        = $user->code();
+    debug( $user->mynickname() );
+    my $code = $user->code();
     confess error("No Id of table `codes` were found (code: $code)")
-      if $user->DBCodeId() == 0; 
-    $self->_updateCode($user->DBCodeId());
-    return $user->DBCodeId(); 
+      if $user->DBCodeId() == 0;
+    $self->_updateCode( $user->DBCodeId() );
+    return $user->DBCodeId();
 }
 
 ##@method void updateUser($user)
@@ -305,7 +324,7 @@ sub updateCode {
 #@param $user A 'Cocoweb::User' object
 sub updateUser {
     my ( $self, $user ) = @_;
-    debug($user->mynickname());
+    debug( $user->mynickname() );
     confess error("No Id of table `users` were found")
       if $user->DBUserId() == 0;
     my $idCode = $self->updateCode($user);
@@ -317,9 +336,10 @@ sub updateUser {
 ##@method void setUserOffline($user)
 sub setUserOffline {
     my ( $self, $user ) = @_;
-    if ($user->DBUserId() == 0) {
+    if ( $user->DBUserId() == 0 ) {
         print Dumper $user;
-        confess error("No Id of table `users` were found. Nickname: " . $user->mynickname())
+        confess error( "No Id of table `users` were found. Nickname: "
+              . $user->mynickname() );
     }
     $self->_setUserLogoutDate( $user->DBUserId() );
     $user->DBUserId(0);

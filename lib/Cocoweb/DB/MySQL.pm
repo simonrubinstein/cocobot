@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-04-07
+# @date 2012-05-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -104,7 +104,7 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'users', 'codes', 'ISPs', 'towns' ) {
+    foreach my $table ( 'users', 'codes', 'ISPs', 'towns', 'citydios' ) {
         $self->do( 'DROP TABLE IF EXISTS `' . $table . '`' );
     }
 }
@@ -120,8 +120,8 @@ sub createTables {
     CREATE TABLE IF NOT EXISTS `codes` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
     `code`          CHAR(3) BINARY NOT NULL,
-    `creation_date` DATETIME NOT NULL,
-    `update_date`   DATETIME NOT NULL,
+    `creation_date` datetime NOT NULL,
+    `update_date`   datetime NOT NULL,
     PRIMARY KEY  (`id`),
     UNIQUE KEY `id` (`id`),
     UNIQUE KEY `code` (`code`)
@@ -132,7 +132,7 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `ISPs` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `name`          VARCHAR(255) NOT NULL,
+    `name`          varchar(255) NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
     ) ENGINE=InnoDB
@@ -142,7 +142,7 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `towns` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `name`          VARCHAR(255) NOT NULL,
+    `name`          varchar(255) NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
     ) ENGINE=InnoDB
@@ -155,7 +155,7 @@ ENDTXT
     `id_code`       int(10) unsigned NOT NULL,
     `id_ISP`        int(10) unsigned NOT NULL,
     `id_town`       int(10) unsigned NOT NULL,
-    `mynickname`    VARCHAR(16) NOT NULL,
+    `mynickname`    varchar(16) NOT NULL,
     `mynickID`      int(10) unsigned NOT NULL,
     `mysex`         int(10) unsigned NOT NULL,
     `myage`         int(10) unsigned NOT NULL,
@@ -167,9 +167,9 @@ ENDTXT
     `level`         int(10) unsigned NOT NULL,
     `since`         int(10) unsigned NOT NULL,
     `premium`       int(10) unsigned NOT NULL,
-    `creation_date` DATETIME NOT NULL,
-    `update_date`   DATETIME NOT NULL,
-    `logout_date`   DATETIME DEFAULT NULL,
+    `creation_date` datetime NOT NULL,
+    `update_date`   datetime NOT NULL,
+    `logout_date`   datetime DEFAULT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `id` (`id`),
      KEY `nicknames_FKIndex1` (`id_code`),
@@ -185,6 +185,14 @@ ENDTXT
 ENDTXT
     $self->do($query);
 
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `citydios` (
+     `id`        int(10) unsigned NOT NULL,
+     `townzz`    varchar(36) NOT NULL,
+     PRIMARY KEY (`id`),
+     UNIQUE KEY `townzz` (`townzz`)
+    ) ENGINE=InnoDB
+ENDTXT
 }
 
 ##@method integer _insertCode($code)
@@ -325,7 +333,9 @@ sub updateUsersDate {
 sub setUsersOffline {
     my ( $self, $idUsers_ref ) = @_;
     return if scalar(@$idUsers_ref) == 0;
-    debug('Set ' . scalar(@$idUsers_ref) . ' user(s) offline into `users` table');
+    debug(  'Set '
+          . scalar(@$idUsers_ref)
+          . ' user(s) offline into `users` table' );
     my $query = q/
       UPDATE `users` SET `logout_date` = CURRENT_TIMESTAMP()
       WHERE `id` IN ( 
@@ -337,7 +347,5 @@ sub setUsersOffline {
     $query .= ' )';
     $self->do( $query, @$idUsers_ref );
 }
-
-
 
 1;
