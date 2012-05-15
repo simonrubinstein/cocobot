@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-11
-# @date 2012-03-27
+# @date 2012-05-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -45,18 +45,35 @@ sub run {
     $DB->connect();
     $DB->dropTables();
     $DB->createTables();
+    
+    # initializes 'towns' table
     my ( $town_ref, $towns ) = $DB->getInitTowns();
     undef $town_ref;
     $town_ref = $towns->all();
     foreach my $name (@$town_ref) {
         $DB->insertTown($name);
     }
+    undef $town_ref;
+
+    # initializes 'ISPs' table
     my ( $ISP_ref, $ISPConf ) = $DB->getInitISPs();
     undef $ISP_ref;
     $ISP_ref = $ISPConf->all();
     foreach my $name (@$ISP_ref) {
         $DB->insertISP($name);
     }
+    undef $ISP_ref;
+
+    # initializes 'citydios' table
+    my $allZipCodes =
+      Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+    $allZipCodes->extract();
+    my $citydio2zip_ref = $allZipCodes->citydio2zip();
+    foreach my $citydio ( keys %$citydio2zip_ref ) {
+        my $townzz = $citydio2zip_ref->{$citydio};
+        $DB->insertCitydio( $citydio, $townzz );
+    }
+
     info("The $Bin script was completed successfully.");
 }
 
@@ -85,7 +102,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-03-16) 
+    $Script $Cocoweb::VERSION (2012-05-15) 
      Copyright (C) 2010-2012 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT

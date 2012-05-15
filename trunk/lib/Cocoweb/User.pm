@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-05-10
+# @date 2012-05-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -87,9 +87,6 @@ sub init {
 ##@method boolean checkAndupdate(%args)
 sub checkAndupdate {
     my ( $self, %args ) = @_;
-
-    #$self->hasChange(0);
-    #$self->updateDbRecord(0);
     foreach my $name ( keys %args ) {
         my $newVal = $args{$name};
         my $oldVal = $self->$name();
@@ -108,23 +105,23 @@ sub checkAndupdate {
                 if (   ( $oldVal == 1 and $newVal == 6 )
                     or ( ( $oldVal == 6 and $newVal == 1 ) ) )
                 {
-                    info("Sex is always masculine");
+                    #info("Sex is always masculine");
                     next;
                 }
                 if (   ( $oldVal == 2 and $newVal == 7 )
                     or ( $oldVal == 7 and $newVal == 2 ) )
                 {
-                    info("Sex is always feminine.");
+                    #info("Sex is always feminine.");
                     next;
                 }
             }
             $self->hasChange(1);
         }
     }
-    debug(  $self->mynickname()
-          . ' must be inserted in the database! Code: '
-          . $self->DBCodeId() )
-      if $self->hasChange();
+    #debug(  $self->mynickname()
+    #      . ' must be inserted in the database! Code: '
+    #      . $self->DBCodeId() )
+    #  if $self->hasChange();
     return $self->hasChange();
 }
 

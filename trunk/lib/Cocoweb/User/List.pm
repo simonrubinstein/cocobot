@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-23
+# @date 2012-05-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -219,16 +219,16 @@ sub addOrUpdateInDB {
     my @users         = ();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
-        debug(  '['
-              . $user->mynickname()
-              . '] isNew: '
-              . $user->isNew()
-              . '; hasChange: '
-              . $user->hasChange()
-              . '; DBUserId:'
-              . $user->DBUserId()
-              . '; DBCodeId: '
-              . $user->DBCodeId() );
+        #debug(  '['
+        #      . $user->mynickname()
+        #      . '] isNew: '
+        #      . $user->isNew()
+        #      . '; hasChange: '
+        #      . $user->hasChange()
+        #      . '; DBUserId:'
+        #      . $user->DBUserId()
+        #      . '; DBCodeId: '
+        #      . $user->DBCodeId() );
         next if !$user->isView();
         if (   $user->isNew()
             or $user->hasChange()
@@ -242,8 +242,6 @@ sub addOrUpdateInDB {
 
         }
         else {
-
-            #$self->DB()->updateUserDate($user);
             push @codesToUpdate, $user->DBCodeId();
             push @usersToUpdate, $user->DBUserId();
         }
