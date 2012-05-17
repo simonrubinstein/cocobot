@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-15
+# @date 2012-05-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -299,6 +299,8 @@ sub _setUserLogoutDate {
 }
 
 ##@method void updateCodesDate($idCodes_ref)
+#@brief Initializes the date of updating of a code list
+#@param arrayref $idUsers_ref The list of IDs that need to be updated 
 sub updateCodesDate {
     my ( $self, $idCodes_ref ) = @_;
     return if scalar(@$idCodes_ref) == 0;
@@ -315,6 +317,8 @@ sub updateCodesDate {
 }
 
 ##@method void updateUsersDate($idUsers_ref)
+#@brief Initializes the date of updating of a user list
+#@param arrayref $idUsers_ref The list of IDs that need to be updated 
 sub updateUsersDate {
     my ( $self, $idUsers_ref ) = @_;
     return if scalar(@$idUsers_ref) == 0;
@@ -330,6 +334,9 @@ sub updateUsersDate {
     $self->do( $query, @$idUsers_ref );
 }
 
+##@method void setUsersOffline($idUsers_ref)
+#@brief Initializes the date of disconnection of a user list
+#@param arrayref $idUsers_ref The list of IDs to be disconnected
 sub setUsersOffline {
     my ( $self, $idUsers_ref ) = @_;
     return if scalar(@$idUsers_ref) == 0;

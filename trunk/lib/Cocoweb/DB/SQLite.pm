@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-15
+# @date 2012-05-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -103,13 +103,13 @@ ENDTXT
     CREATE TABLE IF NOT EXISTS `users` (
     `id`            INTEGER PRIMARY KEY AUTOINCREMENT,
     `id_code`       INTEGER NOT NULL,
-    `id_town`       INTEGER NOT NULL,
     `id_ISP`        INTEGER NOT NULL,
+    `id_town`       INTEGER NOT NULL,
     `mynickname`    VARCHAR(16) NOT NULL,
-    `sex`           INTEGER NOT NULL,
+    `mynickID`      INTEGER NOT NULL,
+    `mysex`         INTEGER NOT NULL,
     `myage`         INTEGER NOT NULL,
     `citydio`       INTEGER NOT NULL,
-    `mynickID`      INTEGER NOT NULL,
     `myXP`          INTEGER NOT NULL,
     `myver`         INTEGER NOT NULL,
     `myStat`        INTEGER NOT NULL,
@@ -183,6 +183,97 @@ sub _updateCode {
    /;
     $self->do( $query, time, $idCode );
 }
+
+##@method integer insertUser($user, $idCode, $idISP, $idTown)
+#@brief Inserts a new user in the "users" table
+sub _insertUser {
+    my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
+    my $query = q/
+      INSERT INTO `users`
+        (`id_code`, `id_ISP`, `id_town`, `mynickname`, `mynickID`, `mysex`,
+          `myage`, `citydio`, `myXP`, `myver`, `myStat`, `status`, `level`, `since`,
+          `premium`, `creation_date`, `update_date`) 
+        VALUES
+        (?, ?, ?, ?, ?, ?,
+        ?, ?, ?, ?, ?, ?, ?, ?,
+        ?, ?, ?)
+        /;
+
+    $self->do(
+        $query,              $idCode,
+        $idISP,              $idTown,
+        $user->mynickname(), $user->mynickID(),
+        $user->mysex(),      $user->myage(),
+        $user->citydio(),    $user->myXP(),
+        $user->myver(),      $user->mystat(),
+        $user->status(),     $user->level(),
+        $user->since(),      $user->premium(),
+        time,                time
+    );
+    return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+}
+
+##@method void updateCodesDate($idCodes_ref)
+#@brief Initializes the date of updating of a code list
+#@param arrayref $idUsers_ref The list of IDs that need to be updated 
+sub updateCodesDate {
+    my ( $self, $idCodes_ref ) = @_;
+    return if scalar(@$idCodes_ref) == 0;
+    my $query = q/
+      UPDATE `codes` SET `update_date` = ? 
+      WHERE `id` IN ( 
+   /;
+    foreach my $code (@$idCodes_ref) {
+        $query .= ' ?,';
+    }
+    chop($query);
+    $query .= ' )';
+    unshift @$idCodes_ref, time;
+    $self->do( $query, @$idCodes_ref );
+}
+
+##@method void updateUsersDate($idUsers_ref)
+#@brief Initializes the date of updating of a user list
+#@param arrayref $idUsers_ref The list of IDs that need to be updated 
+sub updateUsersDate {
+    my ( $self, $idUsers_ref ) = @_;
+    return if scalar(@$idUsers_ref) == 0;
+    my $query = q/
+      UPDATE `users` SET `update_date` = ? 
+      WHERE `id` IN ( 
+   /;
+    foreach my $idUser (@$idUsers_ref) {
+        $query .= ' ?,';
+    }
+    chop($query);
+    $query .= ' )';
+    unshift @$idUsers_ref, time;
+    $self->do( $query, @$idUsers_ref );
+}
+
+##@method void setUsersOffline($idUsers_ref)
+#@brief Initializes the date of disconnection of a user list
+#@param arrayref $idUsers_ref The list of IDs to be disconnected
+sub setUsersOffline {
+    my ( $self, $idUsers_ref ) = @_;
+    return if scalar(@$idUsers_ref) == 0;
+    debug(  'Set '
+          . scalar(@$idUsers_ref)
+          . ' user(s) offline into `users` table' );
+    my $query = q/
+      UPDATE `users` SET `logout_date` = ? 
+      WHERE `id` IN ( 
+   /;
+    foreach my $idUser (@$idUsers_ref) {
+        $query .= ' ?,';
+    }
+    chop($query);
+    $query .= ' )';
+    unshift @$idUsers_ref, time;
+    $self->do( $query, @$idUsers_ref );
+}
+
+
 
 1;
 
