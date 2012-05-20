@@ -1,8 +1,8 @@
 #!/usr/bin/perl
-#@ brief
-# @created 2012-03-09
-# @date 2012-04-09
-# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+#@brief This script saves all users connected to the database
+#@created 2012-03-09
+#@date 2012-05-20
+#@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
 # copyright (c) Simon Rubinstein 2010-2012
@@ -55,20 +55,36 @@ run();
 ##@method void run()
 sub run {
     $DB->initialize();
-    $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
-    $bot->requestAuthentication();
+    my $try = 3;
+  AUTH:
+    while (1) {
+        $bot = $CLI->getBot( 'generateRandom' => 1, 'logUsersListInDB' => 1 );
+        $bot->requestAuthentication();
+        if ( !$bot->isPremiumSubscription() ) {
+            if ( --$try > 0 ) {
+                error(  'The user has no Premium subscription. '
+                      . 'Number of trial(s) left: '
+                      . $try );
+            }
+            else {
+                croak error( 'The script is reserved for users with a'
+                      . ' Premium subscription.' );
+            }
+        }
+        else {
+            info('Successful authentication with a Premium subscription');
+            last AUTH;
+        }
+    }
     $usersList = $bot->getUsersList();
     $usersList->deserialize();
     $usersList->purgeUsersUnseen();
     checkUsers();
-    if ( !$bot->isPremiumSubscription() ) {
-        croak error( 'The script is reserved for users with a'
-              . ' Premium subscription.' );
-    }
     my $count = 0;
     for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
         my $mynickname = $bot->user()->mynickname();
-        message( 'Iteration number: ' . $count . '; mynickname: ' . $mynickname );
+        message(
+            'Iteration number: ' . $count . '; mynickname: ' . $mynickname );
         if ( $count % 28 == 9 ) {
             checkUsers();
         }
@@ -115,6 +131,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-09');
+    $CLI->VERSION_MESSAGE('2012-05-20');
 }
 
