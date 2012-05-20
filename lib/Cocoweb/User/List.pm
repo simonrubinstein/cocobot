@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-05-15
+# @date 2012-05-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -174,12 +174,12 @@ sub removeUser {
     my $DBUsersOffline_ref = $self->DBUsersOffline();
     if ( exists $user_ref->{$id} ) {
         my $user = $user_ref->{$id};
-        info(   'The user "'
-              . $user->mynickname()
-              . '" was disconnected after being seen not in the list '
-              . $user->notViewCount()
-              . ' times. Table `users` ID:'
-              . $user->DBUserId() );
+        #info(   'The user "'
+        #      . $user->mynickname()
+        #      . '" was disconnected after being seen not in the list '
+        #      . $user->notViewCount()
+        #      . ' times. Table `users` ID:'
+        #      . $user->DBUserId() );
         delete $user_ref->{$id};
 
         #$self->DB()->setUserOffline($user) if $self->logUsersListInDB();
