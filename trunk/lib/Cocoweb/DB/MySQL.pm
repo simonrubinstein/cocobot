@@ -373,6 +373,15 @@ sub searchUsers {
     my @values   = ();
     my $and      = '';
     my %name2col = ( 'town' => '`towns`.`name`', 'ISP' => '`ISPs`.`name`' );
+    
+    my $usersOnline;
+    if (exists $args{'__usersOnline'}) {
+        delete  $args{'__usersOnline'};
+        $usersOnline = 1;
+    } else {
+        $usersOnline = 0;
+    }
+
     foreach my $name ( keys %args ) {
         my $val = $args{$name};
         if ( exists $name2col{$name} ) {
@@ -404,6 +413,12 @@ sub searchUsers {
         }
         $and = ' AND';
     }
+    if ($usersOnline) {
+         $query .= ' AND `logout_date` IS NULL' 
+                .  ' AND  `users`.`update_date` >= '
+                .  ' DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)'
+    }
+
     $query .= ' ORDER BY `update_date`';
     my $sth = $self->execute( $query, @values );
     my $hash_ref;

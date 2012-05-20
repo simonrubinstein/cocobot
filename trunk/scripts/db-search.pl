@@ -59,7 +59,7 @@ sub run {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:O' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -91,8 +91,7 @@ sub init {
         HELP_MESSAGE();
         exit;
     }
-
-    #print Dumper \@args;
+    push @args, '__usersOnline', 1 if exists $opt_ref->{'O'};
     $DB = Cocoweb::DB::Base->getInstance();
 }
 
@@ -101,7 +100,7 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex]
+ $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -O]
   -l logins   A single nickname or more nicknames separated by commas.
               (i.e. -l RomeoKnight or -l RomeoKnight,Delta,UncleTom 
   -c codes    A single nickname code or more nickame codes separated by commas.
@@ -112,6 +111,7 @@ Usage:
               (i.e. -i "Free SAS" or -i "France Telecom","Free SAS")
   -s sex      Gender. 2: woman without an avatar; 7: woman with an avatar
                       1: man without an avatar; 6: man with an avatar
+  -O          Users who are connected.
   -v          Verbose mode
   -d          Debug mode
 
