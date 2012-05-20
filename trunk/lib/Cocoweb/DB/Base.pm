@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-15
+# @date 2012-05-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -147,7 +147,8 @@ sub do {
     my $query = shift;
     $self->debugQuery( $query, \@_ );
     $self->dbh()->do( $query, undef, @_ )
-      or croak error( $self->dbh()->errstr() );
+      or croak error(
+        $self->dbh()->errstr() . '; error code: ' . $self->dbh()->err() );
 }
 
 ##@method array getInitTowns()

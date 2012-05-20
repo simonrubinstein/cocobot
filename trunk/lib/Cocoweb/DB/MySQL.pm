@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-17
+# @date 2012-05-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -300,7 +300,7 @@ sub _setUserLogoutDate {
 
 ##@method void updateCodesDate($idCodes_ref)
 #@brief Initializes the date of updating of a code list
-#@param arrayref $idUsers_ref The list of IDs that need to be updated 
+#@param arrayref $idUsers_ref The list of IDs that need to be updated
 sub updateCodesDate {
     my ( $self, $idCodes_ref ) = @_;
     return if scalar(@$idCodes_ref) == 0;
@@ -318,7 +318,7 @@ sub updateCodesDate {
 
 ##@method void updateUsersDate($idUsers_ref)
 #@brief Initializes the date of updating of a user list
-#@param arrayref $idUsers_ref The list of IDs that need to be updated 
+#@param arrayref $idUsers_ref The list of IDs that need to be updated
 sub updateUsersDate {
     my ( $self, $idUsers_ref ) = @_;
     return if scalar(@$idUsers_ref) == 0;
@@ -353,6 +353,131 @@ sub setUsersOffline {
     chop($query);
     $query .= ' )';
     $self->do( $query, @$idUsers_ref );
+}
+
+##@method arrayref searchUsers(%args)
+#@brief Executes a user search
+sub searchUsers {
+    my ( $self, %args ) = @_;
+    my $query = q/
+    SELECT `codes`.`code`, `ISPs`.`name` as `ISP`,
+        `towns`.`name` as `town`, `mynickname` as `nickname`, `mynickID` as `nickID`, `mysex` AS `sex`,
+        `myage` as `age`, `citydios`.`townzz` as `city`, `users`.`creation_date`,
+        `users`.`update_date`, `users`.`logout_date` FROM `users` 
+        LEFT OUTER JOIN `ISPs` ON `id_ISP` = `ISPs`.`id`
+        LEFT OUTER JOIN `towns` ON `towns`.`id` = `id_town`
+        LEFT OUTER JOIN `codes` ON `codes`.`id` = id_code
+        LEFT OUTER JOIN `citydios`
+        ON `users`.`citydio` = `citydios`.`id` 
+        WHERE /;
+    my @values   = ();
+    my $and      = '';
+    my %name2col = ( 'town' => '`towns`.`name`', 'ISP' => '`ISPs`.`name`' );
+    foreach my $name ( keys %args ) {
+        my $val = $args{$name};
+        if ( exists $name2col{$name} ) {
+            $name = $name2col{$name};
+        }
+        else {
+            $name = '`' . $name . '`';
+        }
+        $query .= $and . ' ' . $name;
+
+        if ( ref($val) eq 'ARRAY' ) {
+            $query .= ' IN (';
+            foreach my $v (@$val) {
+                $query .= ' ?,';
+                push @values, $v;
+            }
+            chop($query);
+            $query .= ')';
+
+        }
+        else {
+            if ( $val =~ m{%} ) {
+                $query .= ' like ?';
+            }
+            else {
+                $query .= ' = ?';
+            }
+            push @values, $val;
+        }
+        $and = ' AND';
+    }
+    $query .= ' ORDER BY `update_date`';
+    my $sth = $self->execute( $query, @values );
+    my $hash_ref;
+    my @result = ();
+    while ( $hash_ref = $sth->fetchrow_hashref ) {
+        push @result, $hash_ref;
+    }
+    return \@result;
+}
+
+##@method void displaySearchUsers(%args)
+#@brief Displays the result of a query on the console
+sub displaySearchUsers {
+    my $self       = shift;
+    my $result_ref = $self->searchUsers(@_);
+    if ( scalar @$result_ref == 0 ) {
+        print STDOUT "No user was found.\n";
+        return;
+    }
+
+    #Calculating the maximum width of the columns
+    my @names = keys %{ $result_ref->[0] };
+    my %max   = ();
+    foreach my $name (@names) {
+        $max{$name} = length($name);
+    }
+    foreach my $row_ref (@$result_ref) {
+        if ( exists $row_ref->{'town'} and $row_ref->{'town'} =~ m{^FR- (.+)} )
+        {
+            $row_ref->{'town'} = $1;
+        }
+        foreach my $name ( keys %$row_ref ) {
+            my $val = $row_ref->{$name};
+            if ( !defined $val ) {
+                $val = '-';
+                $row_ref->{$name} = $val;
+            }
+            $max{$name} = length($val) if length($val) > $max{$name};
+        }
+    }
+
+    #Create the separation line
+    my $lineSize = 0;
+    foreach my $name (@names) {
+        $lineSize += $max{$name} + 3;
+    }
+    $lineSize--;
+    my $separator = '!' . ( '-' x $lineSize ) . '!';
+
+    #Displays the table header
+    my $line = '';
+    for ( my $i = 0 ; $i < scalar(@names) ; $i++ ) {
+        $line .=
+          '! ' . sprintf( '%-' . $max{ $names[$i] } . 's', $names[$i] ) . ' ';
+    }
+    $line .= '!';
+    print STDOUT $separator . "\n";
+    print STDOUT $line . "\n";
+    print STDOUT $separator . "\n";
+
+    #Displays the result of the query
+    my $count = 0,;
+    foreach my $row_ref (@$result_ref) {
+        $line = '';
+        foreach my $name ( keys %$row_ref ) {
+            my $val = $row_ref->{$name};
+            $line .= '! ' . sprintf( '%-' . $max{$name} . 's', $val ) . ' ';
+        }
+        $line .= '!';
+        print STDOUT $line . "\n";
+        $count++;
+    }
+    print STDOUT $separator . "\n";
+    print STDOUT "- $count user(s) displayed\n";
 }
 
 1;
