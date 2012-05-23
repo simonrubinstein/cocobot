@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2012-05-10
+# @date 2012-05-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -352,16 +352,45 @@ sub process1Int {
                 }
                 else {
                     my $toilo = indexOf( $urlo, '#', $hzq );
-                    my $mokage = parseInt( substr( $urlo, $hzq,     2 ) );
-                    my $moksex = parseInt( substr( $urlo, 2 + $hzq, 3 ) );
-                    my $mokville = parseInt( substr( $urlo, 3 + $hzq, 8 ), 10 );
-                    my $moknickID = parseInt( substr( $urlo, 8 + $hzq,  14 ) );
-                    my $statq     = parseInt( substr( $urlo, 15 + $hzq, 16 ) );
-                    my $okb       = parseInt( substr( $urlo, 16 + $hzq, 17 ) );
+                    my $mokage = parseInt( substring( $urlo, $hzq, 2 + $hzq ) );
+                    my $moksex =
+                      parseInt( substring( $urlo, 2 + $hzq, 3 + $hzq ) );
+                    my $mokville =
+                      parseInt( substring( $urlo, 3 + $hzq, 8 + $hzq ) );
+                    my $moknickID =
+                      parseInt( substring( $urlo, 8 + $hzq, 14 + $hzq ) );
+                    my $statq = parseInt( substring( $urlo, 15 + $hzq, 16 ) );
+                    my $okb   = parseInt( substring( $urlo, 16 + $hzq, 17 ) );
                     my $mokpseudo = substring( $urlo, 17 + $hzq, $toilo );
                     $diase = indexOf( $urlo, '#', $toilo + 1 ) + 1;
                     my $mokmess = substring( $urlo, $toilo + 1, $diase - 1 );
-                    message( "$mokpseudo: " . $mokmess );
+                    eval {
+                        $mokmess = $request->convert()->transformix($mokmess);
+                    };
+                    my $user = $request->usersList()->getUser($moknickID);
+
+                    if ( defined $user ) {
+                        message('code: '
+                              . $user->code()
+                              . '; town: '
+                              . $user->town()
+                              . '; ISP: '
+                              . $user->ISP()
+                              . '; mysex: '
+                              . $user->mysex()
+                              . '; myage: '
+                              . $user->myage() . ' / '
+                              . $mokpseudo . ' : '
+                              . $mokmess );
+                    }
+                    else {
+                        message('mysex: ' 
+                              . $moksex
+                              . '; myage: '
+                              . $mokage . ' / '
+                              . "$mokpseudo : "
+                              . $mokmess );
+                    }
                 }
                 $hzq = $diase;
                 $kopo = 1 if $hzq > $lengus - 3;

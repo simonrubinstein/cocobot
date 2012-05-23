@@ -103,6 +103,22 @@ sub checkUsers {
     $usersList->purgeUsersUnseen();
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
+
+    my $user_ref = $usersList->all();
+    foreach my $id ( keys %$user_ref ) {
+        my $user = $user_ref->{$id};
+        next if !$user->isNew() and !$user->hasChange();
+        next if $user->mynickname() =~ m{^mascara.*$};
+        next if $user->mysex() != 2;
+        my $message = ";02";
+        $bot->requestWriteMessage( $user, $message );
+        if ( $user->code() eq 'WcL' or $user->code() eq 'PXd' ) {
+            $bot->requestWriteMessage( $user,
+                "J'espère que tu vas bien Simona." );
+            $bot->requestWriteMessage( $user, "Prends soin de toi." );
+        }
+    }
+
 }
 
 ##@method void init()
