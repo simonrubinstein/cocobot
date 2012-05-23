@@ -82,8 +82,8 @@ sub populate {
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
         $user->dateLastSeen(time);
-        moreDebug(
-            "The user $mynickname already exists: isNew:" . $user->isNew() );
+        #moreDebug(
+        #    "The user $mynickname already exists: isNew:" . $user->isNew() );
         if ( $user->isNew() ) {
             $user->update(@args);
         }
