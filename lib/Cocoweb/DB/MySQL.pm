@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-20
+# @date 2012-05-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -360,13 +360,20 @@ sub setUsersOffline {
 sub searchUsers {
     my ( $self, %args ) = @_;
     my $query = q/
-    SELECT `codes`.`code`, `ISPs`.`name` as `ISP`,
-        `towns`.`name` as `town`, `mynickname` as `nickname`, `mynickID` as `nickID`, `mysex` AS `sex`,
-        `myage` as `age`, `citydios`.`townzz` as `city`, `users`.`creation_date`,
-        `users`.`update_date`, `users`.`logout_date` FROM `users` 
+    SELECT
+        `ISPs`.`name` as `ISP`,
+        `codes`.`code` as `code`,
+        `towns`.`name` as `town`,
+        `mynickID` as `nickID`, `mysex` AS `sex`,
+        `mynickname` as `nickname`,
+        `myage` as `age`,
+        `citydios`.`townzz` as `city`,
+        `users`.`creation_date`,
+        `users`.`update_date`,
+        `users`.`logout_date` AS `logout` FROM `users` 
+        LEFT OUTER JOIN `codes` ON `codes`.`id` = id_code
         LEFT OUTER JOIN `ISPs` ON `id_ISP` = `ISPs`.`id`
         LEFT OUTER JOIN `towns` ON `towns`.`id` = `id_town`
-        LEFT OUTER JOIN `codes` ON `codes`.`id` = id_code
         LEFT OUTER JOIN `citydios`
         ON `users`.`citydio` = `citydios`.`id` 
         WHERE /;
