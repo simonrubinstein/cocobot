@@ -1,0 +1,6 @@
+
+
+./list-users.pl -s W -y 29
+
+
+./save-logged-user-in-database.pl -g -s M -u AlwaysThere:AnyLove:BarbeDure:BeamMeUp:BetterDays:BoudoirSecret:BurningHot:Cactus:ChouFarceur:ComeOnGirl:DeliverMe:DejaVu:FlyAway:FollowYourHeart:FoundAReason:IAmAMan:IAmBlessed:IWannaKnow:JustifyMyLove:KnockMeAKiss:LadyKillers:LangueDeChat:LoveSensation:NoWorries:OuEstMaTete:OnlyForGirls:OhYeah:PenniesOfHeaven:MindFluid:MisterB:MisterMagoo:MisterSwing:NuyoricanSoul:PeaceAndNoise:RoiDePique:RunAway:RomeoKnight:SayThatYouLoveMe:ShootMeWithLove:SoSweetly:StandOnTheWord:StayWithMe:SugarBeets:TheBigBadWolf:TheLookOfLove:WhatAboutMyLove:ZeBigBoss -a 737373340 -p XYOIFDZPUMHXJMXUVFPR -v -d -D -x 38 -w -y 89 
