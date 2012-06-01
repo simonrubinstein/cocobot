@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief This script saves all users connected to the database
 #@created 2012-03-09
-#@date 2012-05-20
+#@date 2012-06-01
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -108,17 +108,13 @@ sub checkUsers {
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         next if !$user->isNew() and !$user->hasChange();
-        next if $user->mynickname() =~ m{^mascara.*$};
-        next if $user->mysex() != 2;
-        my $message = ";02";
-        $bot->requestWriteMessage( $user, $message );
-        if ( $user->code() eq 'WcL' or $user->code() eq 'PXd' ) {
-            $bot->requestWriteMessage( $user,
-                "J'espère que tu vas bien Simona." );
-            $bot->requestWriteMessage( $user, "Prends soin de toi." );
+        #next if $user->mysex() != 2;
+        my $code = $user->code();
+
+        if ( $code eq 'WcL' or $code eq 'PXd' or $code eq '23m' or $code eq 'uyI' ) {
+            $bot->requestWriteMessage( $user, ';02' );
         }
     }
-
 }
 
 ##@method void init()
@@ -147,6 +143,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-05-20');
+    $CLI->VERSION_MESSAGE('2012-06-01');
 }
 
