@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-19
+# @date 2012-06-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -289,20 +289,21 @@ sub getAllIPSs {
 }
 
 ##@method void addNewUser($user)
-#@brief
+#@brief Adds a new row in the 'users' table
 #@param $user A 'Cocoweb::User' object
 sub addNewUser {
     my ( $self, $user ) = @_;
-
-    my $idTown = $self->getTown( $user->town() );
-    my $idISP  = $self->getISP( $user->ISP() );
-    my $idCode = $self->_insertCode( $user->code() );
+    my $idTown     = $self->getTown( $user->town() );
+    my $idISP      = $self->getISP( $user->ISP() );
+    my $idCode     = $self->_insertCode( $user->code() );
+    my $idNickname = $self->_insertNickname( $user->mynickname() );
     debug(  'mynickname: '
           . $user->mynickname()
           . "; idTown: $idTown; idISP: $idISP; idCode: $idCode" );
     $user->DBCodeId($idCode);
 
-    my $idUser = $self->_insertUser( $user, $idCode, $idISP, $idTown );
+    my $idUser =
+      $self->_insertUser( $user, $idCode, $idISP, $idTown, $idNickname );
     $user->DBUserId($idUser);
     debug("idUser: $idUser");
 }
@@ -328,10 +329,11 @@ sub updateUser {
     debug( $user->mynickname() );
     confess error("No Id of table `users` were found")
       if $user->DBUserId() == 0;
-    my $idCode = $self->updateCode($user);
-    my $idTown = $self->getTown( $user->town() );
-    my $idISP  = $self->getISP( $user->ISP() );
-    $self->_updateUser( $user, $idCode, $idISP, $idTown );
+    my $idCode     = $self->updateCode($user);
+    my $idNickname = $self->_insertNickname( $user->mynickname() );
+    my $idTown     = $self->getTown( $user->town() );
+    my $idISP      = $self->getISP( $user->ISP() );
+    $self->_updateUser( $user, $idCode, $idISP, $idTown, $idNickname );
 }
 
 ##@method void setUserOffline($user)

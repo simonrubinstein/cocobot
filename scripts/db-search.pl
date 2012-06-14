@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2012-05-20
+# @date 2012-06-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -52,14 +52,12 @@ run();
 sub run {
     $DB->initialize();
     $DB->displaySearchUsers(@args);
-
-    #$DB->searchUsers(@args);
 }
 
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:O' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:O' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -71,7 +69,8 @@ sub init {
         'c' => 'code',
         's' => 'mysex',
         't' => 'town',
-        'i' => 'ISP'
+        'i' => 'ISP',
+        'y' => 'myage'
     );
 
     foreach my $opt ( keys %opt2name ) {
@@ -115,7 +114,7 @@ Usage:
   -v          Verbose mode
   -d          Debug mode
 
-db-search.pl -c WcL,PXd
+db-search.pl -c WcL,PXd,uyI
 db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
