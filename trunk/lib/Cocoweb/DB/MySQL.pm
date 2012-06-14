@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-05-31
+# @date 2012-06-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -104,7 +104,9 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach my $table ( 'users', 'codes', 'ISPs', 'towns', 'citydios' ) {
+    foreach
+      my $table ( 'users', 'nicknames', 'codes', 'ISPs', 'towns', 'citydios' )
+    {
         $self->do( 'DROP TABLE IF EXISTS `' . $table . '`' );
     }
 }
@@ -150,12 +152,32 @@ ENDTXT
     $self->do($query);
 
     $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `nicknames` (
+    `id`            int(10) unsigned NOT NULL auto_increment, 
+    `nickname`      varchar(19) NOT NULL,
+     PRIMARY KEY  (`id`),
+     UNIQUE KEY `name` (`nickname`)
+    ) ENGINE=InnoDB
+ENDTXT
+    $self->do($query);
+
+    $query = <<ENDTXT;
+    CREATE TABLE IF NOT EXISTS `citydios` (
+     `id`        int(10) unsigned NOT NULL,
+     `townzz`    varchar(36) NOT NULL,
+     PRIMARY KEY (`id`),
+     UNIQUE KEY `townzz` (`townzz`)
+    ) ENGINE=InnoDB
+ENDTXT
+    $self->do($query);
+
+    $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `users` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
     `id_code`       int(10) unsigned NOT NULL,
     `id_ISP`        int(10) unsigned NOT NULL,
     `id_town`       int(10) unsigned NOT NULL,
-    `mynickname`    varchar(16) NOT NULL,
+    `id_mynickname` int(10) unsigned NOT NULL,
     `mynickID`      int(10) unsigned NOT NULL,
     `mysex`         int(10) unsigned NOT NULL,
     `myage`         int(10) unsigned NOT NULL,
@@ -172,32 +194,28 @@ ENDTXT
     `logout_date`   datetime DEFAULT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `id` (`id`),
-     KEY `nicknames_FKIndex1` (`id_code`),
-     CONSTRAINT `nicknames_ibfk_1` FOREIGN KEY (`id_code`)
+     KEY `users_FKIndex1` (`id_code`),
+     CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_code`)
        REFERENCES `codes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-     KEY `nicknames_FKIndex2` (`id_ISP`),
-     CONSTRAINT `nicknames_ibfk_2` FOREIGN KEY (`id_ISP`)
+     KEY `users_FKIndex2` (`id_ISP`),
+     CONSTRAINT `users_ibfk_2` FOREIGN KEY (`id_ISP`)
        REFERENCES `ISPs` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-     KEY `nicknames_FKIndex3` (`id_town`),
-     CONSTRAINT `nicknames_ibfk_3` FOREIGN KEY (`id_town`)
-       REFERENCES `towns` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+     KEY `users_FKIndex3` (`id_town`),
+     CONSTRAINT `users_ibfk_3` FOREIGN KEY (`id_town`)
+       REFERENCES `towns` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+     CONSTRAINT `users_ibfk_4` FOREIGN KEY (`id_mynickname`)
+       REFERENCES `nicknames` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+     CONSTRAINT `users_ibfk_5` FOREIGN KEY (`citydio`)
+       REFERENCES `citydios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE=InnoDB
 ENDTXT
     $self->do($query);
 
-    $query = <<ENDTXT;
-    CREATE TABLE IF NOT EXISTS `citydios` (
-     `id`        int(10) unsigned NOT NULL,
-     `townzz`    varchar(36) NOT NULL,
-     PRIMARY KEY (`id`),
-     UNIQUE KEY `townzz` (`townzz`)
-    ) ENGINE=InnoDB
-ENDTXT
 }
 
 ##@method integer _insertCode($code)
 #@brief Insert or update a code in the code tables
-#@param string A three character code
+#@param $code string A three character code
 sub _insertCode {
     my ( $self, $code ) = @_;
     my $query = q/
@@ -209,6 +227,27 @@ sub _insertCode {
       /;
     $self->do( $query, $code );
     my $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+    return $id;
+}
+
+##@method intege _insertNickname($nickname)
+#@brief Insert or update a code in the code tables
+#@param string $nickname A nickname
+sub _insertNickname {
+    my ( $self, $nickname ) = @_;
+    my $sth =
+      $self->execute( 'SELECT `id` FROM `nicknames` WHERE nickname = ?',
+        $nickname );
+    my $hash_ref = $sth->fetchrow_hashref();
+    return $hash_ref->{'id'} if defined $sth and exists $hash_ref->{'id'};
+    my $query = q/
+      INSERT INTO `nicknames`
+        (`nickname`) 
+        VALUES
+        (?)
+      /;
+    $self->do( $query, $nickname );
+    my $id = $self->dbh()->last_insert_id( undef, undef, 'nicknames', undef );
     return $id;
 }
 
@@ -224,13 +263,13 @@ sub _updateCode {
     $self->do( $query, $idCode );
 }
 
-##@method integer insertUser($user, $idCode, $idISP, $idTown)
+##@method integer insertUser($user, $idCode, $idISP, $idTown, $idNickname)
 #@brief Inserts a new user in the "users" table
 sub _insertUser {
-    my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
+    my ( $self, $user, $idCode, $idISP, $idTown, $idNickname ) = @_;
     my $query = q/
       INSERT INTO `users`
-        (`id_code`, `id_ISP`, `id_town`, `mynickname`, `mynickID`, `mysex`,
+        (`id_code`, `id_ISP`, `id_town`, `id_mynickname`, `mynickID`, `mysex`,
           `myage`, `citydio`, `myXP`, `myver`, `myStat`, `status`, `level`, `since`,
           `premium`, `creation_date`, `update_date`) 
         VALUES
@@ -240,24 +279,24 @@ sub _insertUser {
         /;
 
     $self->do(
-        $query,              $idCode,
-        $idISP,              $idTown,
-        $user->mynickname(), $user->mynickID(),
-        $user->mysex(),      $user->myage(),
-        $user->citydio(),    $user->myXP(),
-        $user->myver(),      $user->mystat(),
-        $user->status(),     $user->level(),
-        $user->since(),      $user->premium()
+        $query,           $idCode,
+        $idISP,           $idTown,
+        $idNickname,      $user->mynickID(),
+        $user->mysex(),   $user->myage(),
+        $user->citydio(), $user->myXP(),
+        $user->myver(),   $user->mystat(),
+        $user->status(),  $user->level(),
+        $user->since(),   $user->premium()
     );
     return $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
 }
 
-##@method _updateUser($user, $idCode, $idISP, $idTown)
+##@method _updateUser($user, $idCode, $idISP, $idTown, $idNickname)
 sub _updateUser {
-    my ( $self, $user, $idCode, $idISP, $idTown ) = @_;
+    my ( $self, $user, $idCode, $idISP, $idTown, $idNickname ) = @_;
     my $query = q/
       UPDATE `users` SET `id_code` = ?, `id_ISP` = ? , `id_town` = ?,
-        `mynickname` = ?, `mynickID` = ?, `mysex` = ?, `myage` = ?,
+        `id_mynickname` = ?, `mynickID` = ?, `mysex` = ?, `myage` = ?,
         `citydio` = ?, `myXP` = ?, `myver` = ?, `myStat` = ?, `status` = ?,
         `level` = ?, `since` = ?, `premium` = ?,
         `update_date` = CURRENT_TIMESTAMP()
@@ -265,14 +304,14 @@ sub _updateUser {
         /;
 
     $self->do(
-        $query,              $idCode,
-        $idISP,              $idTown,
-        $user->mynickname(), $user->mynickID(),
-        $user->mysex(),      $user->myage(),
-        $user->citydio(),    $user->myXP(),
-        $user->myver(),      $user->mystat(),
-        $user->status(),     $user->level(),
-        $user->since(),      $user->premium(),
+        $query,           $idCode,
+        $idISP,           $idTown,
+        $idNickname,      $user->mynickID(),
+        $user->mysex(),   $user->myage(),
+        $user->citydio(), $user->myXP(),
+        $user->myver(),   $user->mystat(),
+        $user->status(),  $user->level(),
+        $user->since(),   $user->premium(),
         $user->DBUserId()
     );
 }
@@ -365,7 +404,7 @@ sub searchUsers {
         `codes`.`code` as `code`,
         `towns`.`name` as `town`,
         `mynickID` as `nickID`, `mysex` AS `sex`,
-        `mynickname` as `nickname`,
+        `nickname`,
         `myage` as `age`,
         `citydios`.`townzz` as `city`,
         `users`.`creation_date`,
@@ -376,16 +415,19 @@ sub searchUsers {
         LEFT OUTER JOIN `towns` ON `towns`.`id` = `id_town`
         LEFT OUTER JOIN `citydios`
         ON `users`.`citydio` = `citydios`.`id` 
+        LEFT OUTER JOIN `nicknames`
+        ON `id_mynickname` = `nicknames`.`id` 
         WHERE /;
     my @values   = ();
     my $and      = '';
     my %name2col = ( 'town' => '`towns`.`name`', 'ISP' => '`ISPs`.`name`' );
-    
+
     my $usersOnline;
-    if (exists $args{'__usersOnline'}) {
-        delete  $args{'__usersOnline'};
+    if ( exists $args{'__usersOnline'} ) {
+        delete $args{'__usersOnline'};
         $usersOnline = 1;
-    } else {
+    }
+    else {
         $usersOnline = 0;
     }
 
@@ -421,9 +463,10 @@ sub searchUsers {
         $and = ' AND';
     }
     if ($usersOnline) {
-         $query .= ' AND `logout_date` IS NULL' 
-                .  ' AND  `users`.`update_date` >= '
-                .  ' DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)'
+        $query .=
+            ' AND `logout_date` IS NULL'
+          . ' AND  `users`.`update_date` >= '
+          . ' DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)';
     }
 
     $query .= ' ORDER BY `update_date`';
