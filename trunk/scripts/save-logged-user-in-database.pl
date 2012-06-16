@@ -104,6 +104,7 @@ sub checkUsers {
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
 
+    return;
     my $user_ref = $usersList->all();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
