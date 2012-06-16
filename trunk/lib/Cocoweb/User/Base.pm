@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-04-15
+# @date 2012-06-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -43,6 +43,9 @@ __PACKAGE__->attributes(
     'mysex',
     ## nickname ID for current session
     'mynickID',
+
+    #Real zip code
+    'zip',
     ## Custom code that corresponds to zip code.
     'citydio',
     'mystat',
@@ -115,10 +118,10 @@ sub show {
 
 ##@method boolean isMan()
 #@brief Checks whether the user is or is not a man
-#@return boolean
+#@return boolean 1 if the user is a man or 0 otherwise
 sub isMan {
     my ($self) = @_;
-    if ( $self->mysex() == 1 or $self->mysex() == 6 ) {
+    if ( $self->mysex() % 5 == 1 ) {
         return 1;
     }
     else {
@@ -128,10 +131,10 @@ sub isMan {
 
 ##@method boolean isWoman()
 #@brief Checks whether the user is or is not a woman
-#@return boolean
+#@return boolean 1 if the user is a woman or 0 otherwise
 sub isWoman {
     my ($self) = @_;
-    if ( $self->mysex() == 2 or $self->mysex() == 7 ) {
+    if ( $self->mysex() % 5 == 2 ) {
         return 1;
     }
     else {
@@ -140,6 +143,8 @@ sub isWoman {
 }
 
 ##@method void setInfuz($infuz)
+#@brief Parse and extracts the information of the 'infuz' string.
+#@param string $infuz
 sub setInfuz {
     my ( $self, $infuz ) = @_;
     $self->infuz($infuz);
@@ -181,6 +186,17 @@ sub setInfuz {
     else {
         die error("string '$lines[2]' is bad. infuz: $infuz");
     }
+}
+
+##@method string citydio2zip()
+#@brief Converts custom zip code member to real zip code and city
+#@return string Real zip code and city (i.e. '92100 Boulogne Billancourt')
+sub citydio2zip {
+    my ($self) = @_;
+    my $allZipCodes =
+      Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+    $self->zip( $allZipCodes->getZipAndTownFromCitydio( $self->citydio() ) );
+    return $self->zip();
 }
 
 1;

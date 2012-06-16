@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-04-28
+# @date 2012-06-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -39,8 +39,6 @@ my $nicknameWoman;
 
 __PACKAGE__->attributes(
 
-    #A zip code
-    'zip',
     'speco',
     ## A unique account identifier, the first 9 digits of cookie "samedi"
     'myavatar',

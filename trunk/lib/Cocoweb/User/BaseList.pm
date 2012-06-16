@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-03-31
+# @date 2012-06-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -84,7 +84,7 @@ sub display {
       ( 'Id', 'Nickname', 'Sex', 'Old', 'City', 'Ver', 'Stat', 'XP' );
     my @names = (
         'mynickID', 'mynickname', 'mysex',  'myage',
-        'citydio',  'myver',      'mystat', 'myXP'
+        'zip',      'myver',      'mystat', 'myXP'
     );
     my %max = ();
 
@@ -95,6 +95,7 @@ sub display {
     my $user_ref = $self->all();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
+        $user->citydio2zip();
         foreach my $name (@names) {
             my $l = length( $user->$name );
             $max{$name} = $l if $l > $max{$name};
@@ -153,10 +154,10 @@ sub display {
     my ( $womanCount, $manCount ) = ( 0, 0 );
     foreach my $sex ( keys %sexCount ) {
         my $cnt = $sexCount{$sex};
-        if ( $sex == 2 or $sex == 7 ) {
+        if ( $sex % 5 == 2 ) {
             $womanCount += $cnt;
         }
-        elsif ( $sex == 1 or $sex == 6 ) {
+        elsif ( $sex % 5 == 1 ) {
             $manCount += $cnt;
         }
     }
