@@ -66,14 +66,14 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     if ( !defined $nicknameMan ) {
-        $nicknameMan =
-          Cocoweb::Config->instance()->getConfigFile( 'nickname-man.txt', 'Plaintext' );
-        $nicknameWoman =
-          Cocoweb::Config->instance()->getConfigFile( 'nickname-woman.txt', 'Plaintext' );
+        $nicknameMan = Cocoweb::Config->instance()
+          ->getConfigFile( 'nickname-man.txt', 'Plaintext' );
+        $nicknameWoman = Cocoweb::Config->instance()
+          ->getConfigFile( 'nickname-woman.txt', 'Plaintext' );
     }
     $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
 
-    $args{'zip'} = 75001 if !exists $args{'zip'};
+    $args{'zip'} = sprintf( '75%03d', randum(20) + 1 ) if !exists $args{'zip'};
     if ( $args{'generateRandom'} ) {
         $args{'myage'} = randum(35) + 15 if !exists $args{'myage'};
         $args{'mysex'} = randum(2) + 1   if !exists $args{'mysex'};
