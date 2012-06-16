@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-06-14
+# @date 2012-06-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -420,7 +420,11 @@ sub searchUsers {
         WHERE /;
     my @values   = ();
     my $and      = '';
-    my %name2col = ( 'town' => '`towns`.`name`', 'ISP' => '`ISPs`.`name`' );
+    my %name2col = (
+        'town'     => '`towns`.`name`',
+        'ISP'      => '`ISPs`.`name`',
+        'nickname' => '`nicknames`.`nickname`'
+    );
 
     my $usersOnline;
     if ( exists $args{'__usersOnline'} ) {

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2012-06-14
+# @date 2012-06-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -65,7 +65,7 @@ sub init {
     my $nicknames = $opt_ref->{'l'} if exists $opt_ref->{'l'};
 
     my %opt2name = (
-        'l' => 'mynickname',
+        'l' => 'nickname',
         'c' => 'code',
         's' => 'mysex',
         't' => 'town',
@@ -98,8 +98,9 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print <<ENDTXT;
+$Script, Search for users in database according to different criteria. 
 Usage: 
- $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -O]
+ $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O]
   -l logins   A single nickname or more nicknames separated by commas.
               (i.e. -l RomeoKnight or -l RomeoKnight,Delta,UncleTom 
   -c codes    A single nickname code or more nickame codes separated by commas.
@@ -110,10 +111,12 @@ Usage:
               (i.e. -i "Free SAS" or -i "France Telecom","Free SAS")
   -s sex      Gender. 2: woman without an avatar; 7: woman with an avatar
                       1: man without an avatar; 6: man with an avatar
+  -y age      An age in years
   -O          Users who are connected.
   -v          Verbose mode
   -d          Debug mode
 
+Examples:
 db-search.pl -c WcL,PXd,uyI
 db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
