@@ -230,13 +230,36 @@ sub _insertCode {
     return $id;
 }
 
+##@method integer _insertCode2($code)
+#@brief Insert or update a code in the code tables
+#@param $code string A three character code
+sub _insertCode2 {
+    my ( $self, $code ) = @_;
+    my $sth =
+      $self->execute( 'SELECT `id` FROM `codes` WHERE `code` = ?', $code );
+    my $hash_ref = $sth->fetchrow_hashref();
+    if ( defined $sth and exists $hash_ref->{'id'} ) {
+        $self->_updateCode( $hash_ref->{'id'} );
+        return $hash_ref->{'id'};
+    }
+    my $query = q/
+      INSERT INTO `codes`
+        (`code`, `creation_date`, `update_date`) 
+        VALUES
+        (?, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP())
+      /;
+    $self->do( $query, $code );
+    my $id = $self->dbh()->last_insert_id( undef, undef, 'codes', undef );
+    return $id;
+}
+
 ##@method intege _insertNickname($nickname)
 #@brief Insert or update a code in the code tables
 #@param string $nickname A nickname
 sub _insertNickname {
     my ( $self, $nickname ) = @_;
     my $sth =
-      $self->execute( 'SELECT `id` FROM `nicknames` WHERE nickname = ?',
+      $self->execute( 'SELECT `id` FROM `nicknames` WHERE `nickname` = ?',
         $nickname );
     my $hash_ref = $sth->fetchrow_hashref();
     return $hash_ref->{'id'} if defined $sth and exists $hash_ref->{'id'};

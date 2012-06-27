@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-04-29
+# @date 2012-06-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -453,7 +453,14 @@ sub infuz {
     if ( $user->isPremiumSubscription() ) {
         my $infuzString =
           $self->agir( $user, '83555' . $userWanted->mynickID() );
-        $userWanted->setInfuz($infuzString);
+        if ( $infuzString eq "\nINTERDIT\n" ) {
+            warning(
+                'It is forbidden to request this information from the user '
+                  . $user->mynickname() );
+            return $user;
+        }
+        eval { $userWanted->setInfuz($infuzString); };
+        return $user if $@;
         return $userWanted;
     }
     else {
