@@ -29,6 +29,7 @@ use strict;
 use warnings;
 use Cocoweb;
 use Cocoweb::Encode;
+use Cocoweb::User;
 use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
@@ -369,28 +370,33 @@ sub process1Int {
                     };
                     my $user = $request->usersList()->getUser($moknickID);
 
-                    if ( defined $user ) {
-                        message('code: '
-                              . $user->code()
-                              . '; town: '
-                              . $user->town()
-                              . '; ISP: '
-                              . $user->ISP()
-                              . '; mysex: '
-                              . $user->mysex()
-                              . '; myage: '
-                              . $user->myage() . ' / '
-                              . $mokpseudo . ' : '
-                              . $mokmess );
+                    if ( !defined $user ) {
+                        $user = Cocoweb::User->new(
+                            'mynickID'   => $moknickID,
+                            'myage'      => $mokage,
+                            'mysex'      => $moksex,
+                            'citydio'    => $mokville,
+                            'mynickname' => $mokpseudo,
+                            'myXP'       => 0,
+                            'mystat'     => $statq,
+                            'myver'      => $okb
+                        );
+
                     }
-                    else {
-                        message('mysex: ' 
-                              . $moksex
-                              . '; myage: '
-                              . $mokage . ' / '
-                              . "$mokpseudo : "
-                              . $mokmess );
-                    }
+                    $user->hasSentMessage($mokmess);
+
+                    #message('code: '
+                    #      . $user->code()
+                    #      . '; town: '
+                    #      . $user->town()
+                    #      . '; ISP: '
+                    #      . $user->ISP()
+                    #      . '; mysex: '
+                    #      . $user->mysex()
+                    #      . '; myage: '
+                    #      . $user->myage() . ' / '
+                    #      . $mokpseudo . ' : '
+                    #      . $mokmess );
                 }
                 $hzq = $diase;
                 $kopo = 1 if $hzq > $lengus - 3;

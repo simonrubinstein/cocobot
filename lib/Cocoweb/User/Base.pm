@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-06-16
+# @date 2012-06-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -30,8 +30,10 @@ use warnings;
 use Carp;
 use Data::Dumper;
 use POSIX;
+use FindBin qw($Script);
 
 use Cocoweb;
+use Cocoweb::File;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes(
@@ -60,7 +62,10 @@ __PACKAGE__->attributes(
     'premium',
     'level',
     'since',
-    'town'
+    'town',
+    'messageCounter',
+    'messageSentTime',
+    'messageLast',
 );
 
 ##@method void init(%args)
@@ -197,6 +202,37 @@ sub citydio2zip {
       Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
     $self->zip( $allZipCodes->getZipAndTownFromCitydio( $self->citydio() ) );
     return $self->zip();
+}
+
+sub hasSentMessage {
+    my ( $self, $message ) = @_;
+    $self->messageSentTime(time);
+    my $messageCounter = $self->messageCounter();
+    $messageCounter++;
+    $self->messageCounter($messageCounter);
+    $self->messageLast($message);
+
+    my $path = getVarDir() . '/messages';
+    croak 'mkdir(' . $path . ') was failed: ' if !-d $path and !mkdir($path);
+    my @dt       = localtime(time);
+    my $filename = sprintf(
+        '%02d-%02d-%02d_' . $Script . '.log',
+        ( $dt[5] + 1900 ),
+        ( $dt[4] + 1 ), $dt[3]
+    );
+    my $pathname = $path . '/' . $filename;
+    my $fh = IO::File->new( $pathname, 'a' );
+    confess error("open($pathname) was failed: $!")
+      if !defined $fh;
+    my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
+    print $fh sprintf(
+        $hourStr
+          . ' code: %3s town: %-25s ISP: %-26s sex: %1s age: %2s nickname: %-19s: '
+          . $message . "\n",
+        $self->code(),  $self->town(),  $self->ISP(),
+        $self->mysex(), $self->myage(), $self->mynickname()
+    );
+    confess error("close() return $!") if !$fh->close();
 }
 
 1;

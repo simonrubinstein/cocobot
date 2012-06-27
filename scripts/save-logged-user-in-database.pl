@@ -76,6 +76,7 @@ sub run {
             last AUTH;
         }
     }
+    $bot->getMyInfuz();
     $usersList = $bot->getUsersList();
     $usersList->deserialize();
     $usersList->purgeUsersUnseen();
@@ -104,16 +105,43 @@ sub checkUsers {
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
 
-    return;
+    #return;
     my $user_ref = $usersList->all();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
-        next if !$user->isNew() and !$user->hasChange();
+        next if !$user->isNew() and !$user->hasChange() and !$user->messageSentTime();
+        $user->messageSentTime(0);
         #next if $user->mysex() != 2;
         my $code = $user->code();
-
-        if ( $code eq 'WcL' or $code eq 'PXd' or $code eq '23m' or $code eq 'uyI' ) {
+        if ( $code eq 'Wsw' ) {
             $bot->requestWriteMessage( $user, ';02' );
+            $bot->requestWriteMessage( $user, "Pourquoi c'est craignos ?" );
+        }
+        if ( $code eq 'WcL' or $code eq 'PXd' or $code eq 'cZj' or $code eq 'uyI' or $code eq '0fN' ) {
+            $bot->requestWriteMessage( $user, ';02' ) if $user->isNew()  or $user->hasChange();
+            my @citate = (
+'Viata este prea scurta ca sa avem timp si pentru tristete.',
+'Tot ce exista, exista pentru ca iubesti.',
+'Toate lucrurile bune se intampla celor ce asteapta.',
+'Pentru ca am credinta... de aceea inca traisec.',
+'Daca iti place viata nu astepta...',
+'Nu te ingrijora, fii fericit',
+'Orice lucru are frumusetea lui,dar nu oricine o vede.',
+'Daca vrei sa fii iubit, iubeste.',
+'Iubirea este o prietenie care a luat foc.',
+'Omul are nevoie de dragoste. Viata fara duiosie si fara iubire nu e decat un mecanism uscat, scartaitor si sfasietor.',
+'O viata fara dragoste este asemenea unui an fara primavara.',
+';00',
+';03',
+';02',
+';10'
+);
+            my $i   = randum( scalar @citate ) - 1;
+            my $str = $citate[$i];
+            $bot->requestWriteMessage( $user, $str );
+            $bot->user()->hasSentMessage($str);
+
+
         }
     }
 }

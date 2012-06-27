@@ -212,6 +212,11 @@ sub requestInfuzForNewUsers {
     info( $count . ' new "infuz" was requested and returned' ) if $count > 0;
 }
 
+sub getMyInfuz {
+    my ($self) = @_;
+    $self->request()->infuz( $self->user(), $self->user() );
+}
+
 ##@method void requestMessagesFromUsers()
 #@brief Returns the messages sent by other users
 sub requestMessagesFromUsers {

@@ -50,7 +50,7 @@ run();
 ##@method void run()
 sub run {
     importFromDatabase();
-    return;
+    #return;
     my ( $town_ref, $townConf ) = $DB->getInitTowns();
     my $townCount_ref = fileToVars($dumpTownsFilename);
     my ( $count, $found, $notFound ) = ( 0, 0, 0 );
@@ -100,6 +100,9 @@ sub run {
 }
 
 sub importFromDatabase {
+
+}
+sub xximportFromDatabase {
     my $config = Cocoweb::Config->instance()->getConfigFile('zip-codes.txt', 'ZipCodes');
     my $c = $config->getCityco(75005);
     print "$c\n";
