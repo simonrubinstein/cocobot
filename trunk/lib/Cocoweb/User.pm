@@ -29,9 +29,11 @@ use strict;
 use warnings;
 use Carp;
 use Data::Dumper;
+use IO::File;
 use POSIX;
 
 use Cocoweb;
+use Cocoweb::File;
 use base 'Cocoweb::User::Base';
 
 __PACKAGE__->attributes(
@@ -80,7 +82,10 @@ sub init {
         'notViewCount'   => 0,
         'updateDbRecord' => 0,
         'DBUserId'       => 0,
-        'DBCodeId'       => 0
+        'DBCodeId'       => 0,
+        'messageCounter'  => 0,
+        'messageSentTime' => 0,
+        'messageLast'     => ''
     );
 }
 
