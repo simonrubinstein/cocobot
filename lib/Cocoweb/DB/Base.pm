@@ -295,7 +295,7 @@ sub addNewUser {
     my ( $self, $user ) = @_;
     my $idTown     = $self->getTown( $user->town() );
     my $idISP      = $self->getISP( $user->ISP() );
-    my $idCode     = $self->_insertCode( $user->code() );
+    my $idCode     = $self->_insertCode2( $user->code() );
     my $idNickname = $self->_insertNickname( $user->mynickname() );
     debug(  'mynickname: '
           . $user->mynickname()

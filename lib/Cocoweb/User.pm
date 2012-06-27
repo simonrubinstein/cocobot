@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2012-05-15
+# @date 2012-06-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -65,7 +65,7 @@ sub init {
         'mystat'         => $args{'mystat'},
         'myXP'           => $args{'myXP'},
         'myver'          => $args{'myver'},
-        'infuz'          => '',
+        'infuz'          => '???',
         'code'           => '',
         'ISP'            => '',
         'status'         => 0,
@@ -105,12 +105,14 @@ sub checkAndupdate {
                 if (   ( $oldVal == 1 and $newVal == 6 )
                     or ( ( $oldVal == 6 and $newVal == 1 ) ) )
                 {
+
                     #info("Sex is always masculine");
                     next;
                 }
                 if (   ( $oldVal == 2 and $newVal == 7 )
                     or ( $oldVal == 7 and $newVal == 2 ) )
                 {
+
                     #info("Sex is always feminine.");
                     next;
                 }
@@ -118,6 +120,7 @@ sub checkAndupdate {
             $self->hasChange(1);
         }
     }
+
     #debug(  $self->mynickname()
     #      . ' must be inserted in the database! Code: '
     #      . $self->DBCodeId() )
