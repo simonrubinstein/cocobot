@@ -5385,7 +5385,7 @@ Vita
 :Vahnina
 :BlueVelvet
 :Desdemone
-:EtoileFliante
+:EtoileFilante
 :LaBibiche
 :Persepolis
 :LePhasme
@@ -5431,3 +5431,7 @@ Vita
 :BabyCat
 :DesVitamines
 :Trinqueuse
+:LittleStarlette
+:NormaJeanBaker
+:LaSuperbe
+:RubyRose

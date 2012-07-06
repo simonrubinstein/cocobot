@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-06-27
+# @date 2012-07-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -154,6 +154,8 @@ sub setInfuz {
     my ( $self, $infuz ) = @_;
     $self->infuz($infuz);
     my @lines = split( /\n/, $infuz );
+    die error( 'The string "' . $infuz . '" does not have three lines!' )
+      if ( scalar(@lines) != 3 );
     if (
         $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
                         \s\-(.*)$}xms
@@ -227,7 +229,7 @@ sub hasSentMessage {
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
     print $fh sprintf(
         $hourStr
-          . ' code: %3s town: %-25s ISP: %-26s sex: %1s age: %2s nickname: %-19s: '
+          . ' %3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
           . $message . "\n",
         $self->code(),  $self->town(),  $self->ISP(),
         $self->mysex(), $self->myage(), $self->mynickname()
