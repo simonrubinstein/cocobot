@@ -105,7 +105,7 @@ sub checkUsers {
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
 
-    #return;
+    return;
     my $user_ref = $usersList->all();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
@@ -130,18 +130,18 @@ sub checkUsers {
 'Daca vrei sa fii iubit, iubeste.',
 'Iubirea este o prietenie care a luat foc.',
 'Omul are nevoie de dragoste. Viata fara duiosie si fara iubire nu e decat un mecanism uscat, scartaitor si sfasietor.',
-'O viata fara dragoste este asemenea unui an fara primavara.',
-';00',
-';03',
-';02',
-';10'
+'O viata fara dragoste este asemenea unui an fara primavara.'
 );
             my $i   = randum( scalar @citate ) - 1;
             my $str = $citate[$i];
             $bot->requestWriteMessage( $user, $str );
             $bot->user()->hasSentMessage($str);
-
-
+            my $myage      = $bot->user()->myage();
+            my $mynickname = $bot->user()->mynickname();
+            $mynickname =~s{\d+.*$}{};
+            $str = "Je m'appelle $mynickname et j'ai $myage ans." . ' Et toi qui es-tu ?';
+            $bot->requestWriteMessage( $user, $str );
+            $bot->user()->hasSentMessage($str);
         }
     }
 }

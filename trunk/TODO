@@ -1,9 +1,7 @@
 
 
-- creer une nouvelle table contenant les pseudos 
 - implementer Eliza http://eliza.levillage.org/index.html ou http://elizia.net/
 - creer un paquet debian
-- selection un code postal au hasard
 - implementer l'action "hello" et "alert"
 - implementer l'upload des avatars
 - creer une interface Web pour consulter la base de données
