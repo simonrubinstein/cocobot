@@ -117,7 +117,7 @@ Usage:
   -d          Debug mode
 
 Examples:
-db-search.pl -c WcL,PXd,uyI
+db-search.pl -c WcL,PXd,uyI,0fN,rs6 
 db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
