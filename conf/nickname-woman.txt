@@ -5435,3 +5435,6 @@ Vita
 :NormaJeanBaker
 :LaSuperbe
 :RubyRose
+:JensenLove
+:BlackCat
+:LaPetiteSourie
