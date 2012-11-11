@@ -39,7 +39,7 @@ La deuxième version se compose d'une suite de scripts réécrites pour être pl
 Cette première version du script est une commande prenant une multitude d'options en paramètres.
 
 
-{{{
+<code language="bash">
 ./cocoweb.pl 
 Usage: 
  cocobot.pl -a action [-u searchUser -i searchId -m message 
@@ -59,10 +59,6 @@ Usage:
   -d                Mode debug.
   -n                Mode test.
   -f customNickname Une liste de pseudo.
-
-}}}
-
-
-
+</code>
 
 
