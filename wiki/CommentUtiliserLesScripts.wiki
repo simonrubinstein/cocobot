@@ -47,7 +47,7 @@ Usage:
                        -f customNickname]  
   -m message        Un message
   -a action         Actions : alert, search, idiot, string, pb, login, hello, list ou write
-  -u searchUser     U n nom d'utilisateur.
+  -u searchUser     Un nom utilisateur.
   -i searchId       Un identifiant numérique du pseudo.
   -x writeLoop      Nombre de boucles.
   -w writeRepeat    Nombre de répétions.
@@ -60,5 +60,24 @@ Usage:
   -n                Mode test.
   -f customNickname Une liste de pseudo.
 </code>
+
+
+Le script doit toujours être lancé avec une option -a qui correspond à une action.
+
+==== Action « list » ====
+
+L'action « list » énumère les pseudos présents sur le chat. Les résultats peuvent-être filtrés, par exemple cette commande énumère les pseudos femmes :
+{{{
+./cocoweb.pl -s W -a list 
+0
+! missmoi          ! 7 ! 18 ! 30925 ! 187979 ! 0 ! 0 ! 0 !
+! titeprincesse    ! 7 ! 49 ! 30923 ! 169086 ! 2 ! 7 ! 0 !
+! typh             ! 2 ! 19 ! 30926 ! 188376 ! 0 ! 0 ! 0 !
+! adoredouchedoree ! 2 ! 26 ! 30916 ! 201736 ! 0 ! 0 ! 0 !
+! friandise        ! 2 ! 40 ! 30915 ! 168651 ! 0 ! 0 ! 0 !
+}}}
+
+
+
 
 
