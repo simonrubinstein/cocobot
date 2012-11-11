@@ -1,3 +1,4 @@
+#summary Comment installer et utiliser les scripts.
 
 = Introduction =
 
@@ -23,3 +24,28 @@ Les scripts sont en cours de développement, et ne seront peut-être, jamais fin
 {{{
   svn checkout http://cocobot.googlecode.com/svn/trunk/ cocobot-read-only
 }}}
+
+
+== Utilisation des scripts ==
+
+Il existe deux versions des scripts. 
+
+La première version ne se compose que d'un seul script monolithique, le script « cocoweb.pl », avec son fichier de configuration « cocoweb.conf ».
+
+La deuxième version se compose d'une suite de scripts réécrites pour être plus modulaires. Les scripts se trouvent dans les répertoires « scripts » et « tools ». Les modules Perl, les bibliothèques utilisées dans le répertoire « lib » et les fichiers de configuration dans le répertoire « conf ».
+
+=== Première version du script « cocoweb.pl » ===
+
+Cette première version du script est une commande prenant une multitude d'options en paramètres.
+
+
+
+
+
+
+
+
+
+
+
+
