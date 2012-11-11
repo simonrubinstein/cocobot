@@ -1,0 +1,25 @@
+
+= Introduction =
+
+Les scripts ne fonctionnent qu'en ligne de commande et ont été testés et développés sur un système d'exploitation Ubuntu Linux et Debian.
+
+Si vous n'êtes ni à l'aise avec  Ubuntu Linux et Debian et ni à l'aise avec la ligne de commande, n'allez pas plus loin.
+
+= Installation =
+
+== Installation des dépendances ==
+
+Ouvrir un GNOME Terminal et installer les paquets nécessaires, Subversion et quelques modules Perl en tapant la ligne suivante :
+
+{{{
+  sudo aptitude install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl
+
+}}}
+
+== Récupération des sources sur Subversion ==
+
+Les scripts sont en cours de développement, et ne seront peut-être, jamais finalisés. Pour télécharger les scripts récupérer les sources directement sur le dépôt Subversion avec la commande suivante :
+
+{{{
+  svn checkout http://cocobot.googlecode.com/svn/trunk/ cocobot-read-only
+}}}
