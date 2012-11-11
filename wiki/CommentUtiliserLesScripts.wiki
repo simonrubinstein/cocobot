@@ -39,11 +39,28 @@ La deuxième version se compose d'une suite de scripts réécrites pour être pl
 Cette première version du script est une commande prenant une multitude d'options en paramètres.
 
 
+{{{
+./cocoweb.pl 
+Usage: 
+ cocobot.pl -a action [-u searchUser -i searchId -m message 
+                       -x writeLoop -w writeRepeat -z zipCode -y old -l loginName -d -v -n
+                       -f customNickname]  
+  -m message        Un message
+  -a action         Actions : alert, search, idiot, string, pb, login, hello, list ou write
+  -u searchUser     U n nom d'utilisateur.
+  -i searchId       Un identifiant numérique du pseudo.
+  -x writeLoop      Nombre de boucles.
+  -w writeRepeat    Nombre de répétions.
+  -s sex            M pour homme et W pour femme.
+  -z zipCode        Un code postal, par exemple 75001.
+  -y old            Un âge, exemple 37 ans.
+  -l loginName      Le nom écrit dans les messages.
+  -v                Mode verbeux.
+  -d                Mode debug.
+  -n                Mode test.
+  -f customNickname Une liste de pseudo.
 
-
-
-
-
+}}}
 
 
 
