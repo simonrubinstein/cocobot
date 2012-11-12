@@ -10,6 +10,20 @@ Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop.
 
 = Installation =
 
+== Installer les dépendances,  
+
 {{{
-sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl
+sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl 
 }}}
+
+À l'installation de MySQL, le programme d'installation demande un mot de passe pour l'utilisateur « root ». Dans cet exemple le mot de passe « toto » a été donné. 
+
+== Créer la base de données MySQL ==
+
+
+
+== Récupérer le code source ==
+{{{
+svn checkout http://cocobot.googlecode.com/svn/trunk/ cocobot-read-only
+}}}
+
