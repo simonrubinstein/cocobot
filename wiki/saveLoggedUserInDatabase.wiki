@@ -1,0 +1,15 @@
+#summary Installation et utilisation pas à pas du script save-logged-user-in-database.pl
+
+= Introduction =
+
+Cette page explique l'installation et l'utilisation pas à pas du script « 
+save-logged-user-in-database.pl ».
+
+Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop. 
+
+
+= Installation =
+
+{{{
+sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl
+}}}
