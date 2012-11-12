@@ -12,14 +12,27 @@ Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop.
 
 == Installer les dépendances ==
 
+Lancer le logiciel Terminal pour pouvoir utiliser les commandes en ligne de commande.
+
+Taper la commande suivante pour installer certains logiciels : 
 {{{
-sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl 
+sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl mysql-server
 }}}
 
 À l'installation de MySQL, le programme d'installation demande un mot de passe pour l'utilisateur « root ». Dans cet exemple le mot de passe « toto » a été donné. 
 
+== Récupérer le code source ==
+
+Taper la commande suivante sur dans Terminal pour récupérer le code source :
+{{{
+svn checkout http://cocobot.googlecode.com/svn/trunk/ cocobot-read-only
+}}}
+
 == Créer la base de données MySQL ==
 
+La base de données MySQL utilisée dans l'exemple est la base de données « test ». Cette base de données est créé par défaut à l'installation de MySQL. L'utilisateur de la base de données aura le même nom, c'est à dire « test » et le mot de passe sera « Gim9p6gW ». Ces trois paramètres peuvent être changés dans le fichier de configuration.
+
+Taper les quatre commandes suivants dans Terminal pour créer l'utilisateur MySQL « test » :
 {{{
 simon@ubuntu1210:~$ mysql -u root -ptoto 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -39,10 +52,8 @@ Query OK, 0 rows affected (0.00 sec)
 
 mysql> FLUSH PRIVILEGES;
 Query OK, 0 rows affected (0.00 sec)
-}}}
 
-
-== Récupérer le code source ==
-{{{
-svn checkout http://cocobot.googlecode.com/svn/trunk/ cocobot-read-only
+mysql> exit
+Bye
+simon@ubuntu1210:~$
 }}}
