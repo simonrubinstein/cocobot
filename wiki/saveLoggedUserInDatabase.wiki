@@ -10,7 +10,7 @@ Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop.
 
 = Installation =
 
-== Installer les dépendances,  
+== Installer les dépendances ==
 
 {{{
 sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl 
@@ -20,10 +20,29 @@ sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite
 
 == Créer la base de données MySQL ==
 
+{{{
+simon@ubuntu1210:~$ mysql -u root -ptoto 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 54
+Server version: 5.5.28-0ubuntu0.12.10.1 (Ubuntu)
+
+Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> GRANT ALL PRIVILEGES ON `test`.* TO toto@"localhost" IDENTIFIED BY 'Gim9p6gW';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.00 sec)
+}}}
 
 
 == Récupérer le code source ==
 {{{
 svn checkout http://cocobot.googlecode.com/svn/trunk/ cocobot-read-only
 }}}
-
