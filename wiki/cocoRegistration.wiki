@@ -11,3 +11,34 @@ De plus Coco.fr propose un abonnement Premium qui donne des informations sur les
 Les scripts Cocobot peuvent utiliser un abonnement code Premium, mais pour cela l'utilisateur doit souscrire un abonnement sur le site Coco.fr.
 
 Cette documentation montre comment souscrire un abonnement Premium et ensuite utiliser cet abonnement dans les scripts Cocobot en ligne de commande.
+
+== Se connecter sur Coco.fr ==
+
+Se rendre sur le site http://www.coco.fr/ et entrer un pseudo, un sexe, un âge et un code postal :
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-login.png
+
+Cliquer sur le bouton « Entrée », la fenêtre de chat s'ouvre.
+
+== Authentification e-mail ==
+
+Cette étape n'est pas indispensable, mais utiliser l'authentification e-mail permet d'associer son profil à une adresse e-mail et pouvoir récupérer son profil par e-mail.
+
+Cliquer sur le bouton « Profil » et ensuite sur « Mail Non » :
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-profil.png
+
+Rentrer une adresse e-mail dans la boîte de dialogue venant de s'ouvrir :
+
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-e-mail- input.png
+
+Se rendre dans sa messagerie, ouvrir le courriel reçu de « contact@coco.fr » et cliquer sur le lien hypertexte de validation de l'adresse e-mail rentrée : 
+
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-gmail.png
+
+Après le clique sur le  sur le lien hypertexte de validation, une page web s'affiche informant du succès de la validation :
+
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-success-verification.png
+
+La validation est terminée, retourner sur la fenêtre de chat Coco.fr.
+
+
+
