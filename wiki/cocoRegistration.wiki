@@ -15,6 +15,7 @@ Cette documentation montre comment souscrire un abonnement Premium et ensuite ut
 == Se connecter sur Coco.fr ==
 
 Se rendre sur le site http://www.coco.fr/ et entrer un pseudo, un sexe, un âge et un code postal :
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-login.png
 
 Cliquer sur le bouton « Entrée », la fenêtre de chat s'ouvre.
