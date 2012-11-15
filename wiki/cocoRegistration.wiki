@@ -1,0 +1,13 @@
+#Comment s'enregistrer sur le chat Coco.fr
+
+= Introduction =
+
+Normalement, le site Coco.fr se prétend être un chat sans inscription. C'est à dire que l'entrée d'un pseudo, du sexe, de l'âge et du code postal suffisent à utiliser le service.
+
+Dans la réalité, même si l'utilisateur n'est pas inscrit, Coco.fr conserve un cookie dans le navigateur web du client pour identifier l'utilisateur à sa prochaine connexion.
+
+De plus Coco.fr propose un abonnement Premium qui donne des informations sur les autres pseudos, comme un « code de vote » , l'origine géographique d'où se est connecté le pseudo, le FAI... Le « code de vote » est un identifiant composé de trois caractères, plus ou mois unique, du pseudo. Des exemples de « codes de vote » sont : *cZj*, *23m*, *WcL* ou *PXd*. Parois certains pseudos géographiquement assez loin peuvent partager ce « code de vote ». L'origine géographique donne le FAI est une ville, exemple « *FR- Paris* », l'origine géographique n'est pas toujours fiable. 
+
+Les scripts Cocobot peuvent utiliser un abonnement code Premium, mais pour cela l'utilisateur doit souscrire un abonnement sur le site Coco.fr.
+
+Cette documentation montre comment souscrire un abonnement Premium et ensuite utiliser cet abonnement dans les scripts Cocobot en ligne de commande.
