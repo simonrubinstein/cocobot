@@ -1,4 +1,4 @@
-  #summary Comment s'enregistrer sur le chat Coco.fr
+#summary Comment s'enregistrer sur le chat Coco.fr
 
 = Introduction =
 
