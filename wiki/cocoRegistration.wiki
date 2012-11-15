@@ -1,4 +1,4 @@
-#summary Comment s'enregistrer sur le chat Coco.fr
+  #summary Comment s'enregistrer sur le chat Coco.fr
 
 = Introduction =
 
@@ -53,27 +53,37 @@ Cliquer sur «  1 mois : 5 € » :
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-pack-premium.png
 
 Rentrer une adresse e-mail dans le champ correspond :
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-input-confirmation-e-mail.png
 
 Rentrer un numéro de carte bancaire, un date de fin de validité et un cryptogramme visuel. Puis cliquer le bouton « Valider » pour valider le paiement : 
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-payment.png
 
 Une nouvelle page s'affiche en cas de réussite du paiement :
-http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-paiment-success.png
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-payment-success.png
 
 Fermer la fenêtre précédente et retourner sur la fenêtre de chat. Sélectionner un pseudo et cliquer sur le bouton info qui est en forme de point d'interrogation. Si trois lignes s'affichent dans la fenêtre de chat cela signifie que la souscription au pack Premimum est activé :
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-info.png
 
+== Récupération des valeurs de « myavatar »  et « mypass » ==
 
-== Récupération de myavatar et mypass ==
+L'utilisateur est authentifié par deux valeurs, appelées « myavatar »  et « mypass », concaténées et contenues dans le cookie portant le nom « samedi ». 
+
+Cliquer sur l'icône de la terre juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche. Cliquer sur le bouton « Plus d'informations... » de cette boîte de dialogue :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-more-info.png
 
+La boîte de dialogue d'informations sur la page s'ouvre. Cliquer sur le bouton « Voir les cookies » :
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-view-cookies.png
 
+Une autre boîte de dialogue « Cookie » s'ouvre. Chercher le cookie « samedi » et cliquer dessus. Dans le champ contenu s'affiche les valeurs concaténées de  « myavatar »  et « mypass ».
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco--samedi-cookie.png
 
+Dans cet exemple, la valeur du cookie est « 816356817XYZPAHPFLFRIEBWDNDZD ». Donc « myavatar » correspond aux neufs premiers chiffres c'est à dire « 816356817 » et « myavatar » correspond au vingt derniers caractères alphabétiques c'est à dire « XYZPAHPFLFRIEBWDNDZD ».
 
 
 
