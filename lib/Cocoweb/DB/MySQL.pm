@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-06-16
+# @date 2012-11-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -204,12 +204,14 @@ ENDTXT
      CONSTRAINT `users_ibfk_3` FOREIGN KEY (`id_town`)
        REFERENCES `towns` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
      CONSTRAINT `users_ibfk_4` FOREIGN KEY (`id_mynickname`)
-       REFERENCES `nicknames` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-     CONSTRAINT `users_ibfk_5` FOREIGN KEY (`citydio`)
-       REFERENCES `citydios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+       REFERENCES `nicknames` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE=InnoDB
 ENDTXT
     $self->do($query);
+
+
+     #CONSTRAINT `users_ibfk_5` FOREIGN KEY (`citydio`)
+     #  REFERENCES `citydios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 }
 
