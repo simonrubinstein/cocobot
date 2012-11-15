@@ -14,8 +14,9 @@ Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop. Toutes les ma
 
 Lancer le logiciel Terminal pour pouvoir utiliser les commandes en ligne de commande.
 
-Lancer le Terminal en cliquant tout en haut à droite de l'écran et en tapant le mot « terminal » dans la zone de recherche :
+Pour lancer le Terminal, cliquer tout en haut à droite de l'écran sur le logo Ubuntu. Ensuite taper le mot « terminal » dans la zone de recherche :
 http://cocobot.googlecode.com/svn/wiki/terminal.png
+
 
 Taper la commande suivante pour installer certains logiciels : 
 {{{
@@ -37,26 +38,9 @@ La base de données MySQL utilisée dans l'exemple est la base de données « te
 
 Taper les quatre commandes suivants dans Terminal pour créer l'utilisateur MySQL « test » :
 {{{
-simon@ubuntu1210:~$ mysql -u root -ptoto 
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 57
-Server version: 5.5.28-0ubuntu0.12.10.1 (Ubuntu)
+mysql -u root -ptoto 
+GRANT ALL PRIVILEGES ON `test`.* TO test@"localhost" IDENTIFIED BY 'Gim9p6gW';
+FLUSH PRIVILEGES;
+exit
 
-Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
-
-Oracle is a registered trademark of Oracle Corporation and/or its
-affiliates. Other names may be trademarks of their respective
-owners.
-
-Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-mysql> GRANT ALL PRIVILEGES ON `test`.* TO test@"localhost" IDENTIFIED BY 'Gim9p6gW';
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> FLUSH PRIVILEGES;
-Query OK, 0 rows affected (0.00 sec)
-
-mysql> exit
-Bye
-simon@ubuntu1210:~$
-}}}
+http://cocobot.googlecode.com/svn/wiki/mysql-add-user.png
