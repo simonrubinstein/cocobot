@@ -2,10 +2,13 @@
 
 = Introduction =
 
-Cette page explique l'installation et l'utilisation pas à pas du script « 
-save-logged-user-in-database.pl ».
+Cette page explique l'installation et l'utilisation pas à pas du script « save-logged-user-in-database.pl ».  
 
-Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop. Toutes les manipulations se font à l'aide de la ligne de commande, donc une connaissance minimum de l'utilisation de la ligne de commande dans un terminal est nécessaire.
+Le script « save-logged-user-in-database.pl » lit la liste des pseudos connectées sur le chat Coco.fr plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium sur Coco.fr.
+
+Cette documentation se base sur le système d'exploitation Ubuntu 12.10 Desktop, donc pour installer ce script un système d'exploitation Ubuntu 12.10 Desktop est requis. 
+
+Toutes les manipulations se font à l'aide de la ligne de commande, donc une connaissance minimum de l'utilisation de la ligne de commande dans un terminal est nécessaire.
 
 
 = Installation =
@@ -45,3 +48,20 @@ exit
 }}}
 
 http://cocobot.googlecode.com/svn/wiki/mysql-add-user.png
+
+Pour utiliser une autre base de données MySQL, un autre utilisateur ou un autre mot de passe, le fichier « database.conf » doit-être modifié en conséquence :
+{{{
+cat cocobot-read-only/conf/database.conf 
+<conf>
+  #database-class     = SQLite
+  database-class     = MySQL 
+  sqlite-filename    = logged-users.db
+  ISO-3166-1-alpha-2 = (FR|GF|GP|MQ|NC|PF|RE)\-
+  code-regex         = [A-Za-z0-9]{3}
+  dbi-datasource    = dbi:mysql:database=test:host=localhost
+  dbi-username      = test
+  dbi-password      = Gim9p6gW
+  dbi-timeout       = 30
+</conf>
+}}}
+
