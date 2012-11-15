@@ -1,4 +1,4 @@
-#Comment s'enregistrer sur le chat Coco.fr
+#summary Comment s'enregistrer sur le chat Coco.fr
 
 = Introduction =
 
@@ -39,4 +39,3 @@ Après le clique sur le  sur le lien hypertexte de validation, une page web s'af
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-success-verification.png
 
 La validation est terminée, retourner sur la fenêtre de chat Coco.fr.
-
