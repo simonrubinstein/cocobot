@@ -61,6 +61,7 @@ Rentrer un numéro de carte bancaire, un date de fin de validité et un cryptogr
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-payment.png
 
 Une nouvelle page s'affiche en cas de réussite du paiement :
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-payment-success.png
 
 Fermer la fenêtre précédente et retourner sur la fenêtre de chat. Sélectionner un pseudo et cliquer sur le bouton info qui est en forme de point d'interrogation. Si trois lignes s'affichent dans la fenêtre de chat cela signifie que la souscription au pack Premimum est activé :
@@ -83,7 +84,7 @@ Une autre boîte de dialogue « Cookie » s'ouvre. Chercher le cookie « samedi 
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco--samedi-cookie.png
 
-Dans cet exemple, la valeur du cookie est « 816356817XYZPAHPFLFRIEBWDNDZD ». Donc « myavatar » correspond aux neufs premiers chiffres c'est à dire « 816356817 » et « myavatar » correspond au vingt derniers caractères alphabétiques c'est à dire « XYZPAHPFLFRIEBWDNDZD ».
+Dans cet exemple, la valeur du cookie est « 816356817XYZPAHPFLFRIEBWDNDZD ». Donc « myavatar » correspond aux neufs premiers chiffres c'est à dire « 816356817 » et « mypass » correspond au vingt derniers caractères alphabétiques c'est à dire « XYZPAHPFLFRIEBWDNDZD ».
 
 
 
