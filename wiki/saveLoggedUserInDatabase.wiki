@@ -5,7 +5,7 @@
 Cette page explique l'installation et l'utilisation pas à pas du script « 
 save-logged-user-in-database.pl ».
 
-Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop. 
+Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop. Toutes les manipulations se font à l'aide de la ligne de commande, donc une connaissance minimum de l'utilisation de la ligne de commande dans un terminal est nécessaire.
 
 
 = Installation =
@@ -13,6 +13,9 @@ Cette se base sur le système d'exploitation Ubuntu 12.10 Desktop.
 == Installer les dépendances ==
 
 Lancer le logiciel Terminal pour pouvoir utiliser les commandes en ligne de commande.
+
+Lancer le Terminal en cliquant tout en haut à droite de l'écran et en tapant le mot « terminal » dans la zone de recherche :
+http://cocobot.googlecode.com/svn/wiki/terminal.png
 
 Taper la commande suivante pour installer certains logiciels : 
 {{{
