@@ -42,5 +42,6 @@ mysql -u root -ptoto
 GRANT ALL PRIVILEGES ON `test`.* TO test@"localhost" IDENTIFIED BY 'Gim9p6gW';
 FLUSH PRIVILEGES;
 exit
+}}}
 
 http://cocobot.googlecode.com/svn/wiki/mysql-add-user.png
