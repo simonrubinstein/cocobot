@@ -25,6 +25,7 @@ Cliquer sur le bouton « Entrée », la fenêtre de chat s'ouvre.
 Cette étape n'est pas indispensable, mais utiliser l'authentification e-mail permet d'associer son profil à une adresse e-mail et pouvoir récupérer son profil par e-mail.
 
 Cliquer sur le bouton « Profil » et ensuite sur « Mail Non » :
+
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-profil.png
 
 Rentrer une adresse e-mail dans la boîte de dialogue venant de s'ouvrir :
