@@ -28,7 +28,7 @@ http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-profil.png
 
 Rentrer une adresse e-mail dans la boîte de dialogue venant de s'ouvrir :
 
-http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-e-mail- input.png
+http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-e-mail-input.png
 
 Se rendre dans sa messagerie, ouvrir le courriel reçu de « contact@coco.fr » et cliquer sur le lien hypertexte de validation de l'adresse e-mail rentrée : 
 
@@ -39,6 +39,4 @@ Après le clique sur le  sur le lien hypertexte de validation, une page web s'af
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-success-verification.png
 
 La validation est terminée, retourner sur la fenêtre de chat Coco.fr.
-
-
 
