@@ -95,6 +95,7 @@ Les valeurs de « myavatar »  et « mypass »  peuvent être passés en argumen
 Exemples d'utilisation des ces deux valeurs avec le script « list-users.pl » :
 
 {{{
+cd ~/cocobot-read-only/scripts/
 ./list-users.pl -a 816356817 -p XYZPAHPFLFRIEBWDNDZ
 }}}
 
