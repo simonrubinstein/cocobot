@@ -2,11 +2,11 @@
 
 = Introduction =
 
-Normalement, le site Coco.fr se prétend être un chat sans inscription. C'est à dire que l'entrée d'un pseudo, du sexe, de l'âge et du code postal suffisent à utiliser le service.
+Normalement, le site Coco.fr se prétend être un chat sans inscription. C'est à dire que l'entrée d'un pseudo, du sexe, de l'âge et du code postal suffisent à utiliser le chat.
 
 Dans la réalité, même si l'utilisateur n'est pas inscrit, Coco.fr conserve un cookie dans le navigateur web du client pour identifier l'utilisateur à sa prochaine connexion.
 
-De plus Coco.fr propose un abonnement Premium qui donne des informations sur les autres pseudos, comme un « code de vote » , l'origine géographique d'où se est connecté le pseudo, le FAI... Le « code de vote » est un identifiant composé de trois caractères, plus ou mois unique, du pseudo. Des exemples de « codes de vote » sont : *cZj*, *23m*, *WcL* ou *PXd*. Parois certains pseudos géographiquement assez loin peuvent partager ce « code de vote ». L'origine géographique est une ville, exemple « *FR- Paris* », l'origine géographique n'est pas toujours fiable. 
+De plus Coco.fr propose un abonnement Premium qui donne des informations sur les autres pseudos, comme un « code de vote » , l'origine géographique d'où se est connecté le pseudo, le FAI, ... Le « code de vote » est un identifiant composé de trois caractères, plus ou mois unique, du pseudo. Des exemples de « codes de vote » sont : *cZj*, *23m*, *WcL* ou *PXd*. Parois certains pseudos géographiquement assez loin peuvent partager ce « code de vote ». L'origine géographique est une ville, exemple « *FR- Paris* », l'origine géographique n'est pas toujours fiable. 
 
 Les scripts Cocobot peuvent utiliser un abonnement code Premium, mais pour cela l'utilisateur doit souscrire un abonnement sur le site Coco.fr.
 
@@ -22,7 +22,7 @@ Cliquer sur le bouton « Entrée », la fenêtre de chat s'ouvre.
 
 == Authentification e-mail ==
 
-Cette étape n'est pas indispensable, mais utiliser l'authentification e-mail permet d'associer son profil à une adresse e-mail et pouvoir récupérer son profil par e-mail.
+Cette étape n'est pas indispensable, mais utiliser l'authentification e-mail permet d'associer son profil à une adresse e-mail et de pouvoir éventuellement récupérer son profil par e-mail.
 
 Cliquer sur le bouton « Profil » et ensuite sur « Mail Non » :
 
@@ -36,7 +36,7 @@ Se rendre dans sa messagerie, ouvrir le courriel reçu de « contact@coco.fr » 
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-gmail.png
 
-Après le clique sur le  sur le lien hypertexte de validation, une page web s'affiche informant du succès de la validation :
+Après le clic le sur le lien hypertexte de validation, une page web s'affiche informant du succès de la validation :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-success-verification.png
 
@@ -53,11 +53,11 @@ Cliquer sur «  1 mois : 5 € » :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-pack-premium.png
 
-Rentrer une adresse e-mail dans le champ correspond :
+Rentrer une adresse e-mail dans le champ correspondant afin de recevoir un reçu de paiement :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-input-confirmation-e-mail.png
 
-Rentrer un numéro de carte bancaire, un date de fin de validité et un cryptogramme visuel. Puis cliquer le bouton « Valider » pour valider le paiement : 
+Rentrer un numéro de carte bancaire, une date de fin de validité et un cryptogramme visuel. Puis cliquer le bouton « Valider » pour valider le paiement : 
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-payment.png
 
@@ -73,7 +73,7 @@ http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-info.png
 
 L'utilisateur est authentifié par deux valeurs, appelées « myavatar »  et « mypass », concaténées et contenues dans le cookie portant le nom « samedi ». 
 
-Cliquer sur l'icône de la terre juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche. Cliquer sur le bouton « Plus d'informations... » de cette boîte de dialogue :
+Cliquer sur l'icône de en forme de planète terre juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche. Cliquer sur le bouton « Plus d'informations... » de cette boîte de dialogue :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-more-info.png
 
@@ -85,12 +85,21 @@ Une autre boîte de dialogue « Cookie » s'ouvre. Chercher le cookie « samedi 
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco--samedi-cookie.png
 
-Dans cet exemple, la valeur du cookie est « 816356817XYZPAHPFLFRIEBWDNDZD ». Donc « myavatar » correspond aux neufs premiers chiffres c'est à dire « 816356817 » et « mypass » correspond au vingt derniers caractères alphabétiques c'est à dire « XYZPAHPFLFRIEBWDNDZD ».
+Dans cet exemple, la valeur du cookie est « 816356817XYZPAHPFLFRIEBWDNDZD » :
+  * « myavatar » correspond aux neufs premiers chiffres c'est à dire « 816356817 »
+ * « mypass » correspond au vingt derniers caractères alphabétiques c'est à dire « XYZPAHPFLFRIEBWDNDZD ».
 
 
+Les valeurs de « myavatar »  et « mypass »  peuvent être passés en argument aux scripts avec respectivement les options « -a » et « -p ».
+
+Exemples d'utilisation des ces deux valeurs avec le script « list-users.pl » :
+
+{{{
+./list-users.pl -a 816356817 -p XYZPAHPFLFRIEBWDNDZ
+}}}
 
 
-
+Le script retourne beaucoup plus d'utilisateurs lorsque le compte a souscris un abonnement Premium.
 
 
 
