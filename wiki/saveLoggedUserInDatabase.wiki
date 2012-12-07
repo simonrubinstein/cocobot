@@ -87,7 +87,6 @@ Dans notre exemple :
  * « myavatar » correspond à la valeur « 816356817 »
  * « mypass » correspond à la valeur « XYZPAHPFLFRIEBWDNDZD ».
 
-
 Nous allons lancer [http://fr.wikipedia.org/wiki/Crontab le programme crontab]  qui permet d'éditer des tables de configuration du programme cron. 
 
 Taper la commande suivante dans le terminal pour éditer la table de configuration du programme _cron_ :
@@ -95,11 +94,26 @@ Taper la commande suivante dans le terminal pour éditer la table de configurati
 crontab -e
 }}}
 
-À la première utilisation, le programme _crontab_ vous demande quel éditeur texte vous allez utiliser. Sélectionner le choix conseillé en tapant sur la touche 2 du clavier :
+À la première utilisation, le programme _crontab_ vous demande quel éditeur texte vous allez utiliser. Sélectionner le choix conseillé en tapant sur la touche _2_ du clavier pour sélectionner l'éditeur [http://fr.wikipedia.org/wiki/GNU_nano nano]] :
 
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/select-editor.png
 
+Une fois l'éditeur _nano_ lancé, presser sur la touche directionnelle bas pour se rendre tout à la fin du texte et insérer la ligne suivante :
+
+{{{
+*/1 * * * * cd ~/cocobot-read-only/scripts/ && ./save-logged-user-in-database.pl -s M -a 816356817 -p XYZPAHPFLFRIEBWDNDZD -v -d -D -x 38 -w
+}}}
+
+Ensuite taper les touches _Ctrl + X_ pour quitter l'éditeur _nano_. Le message «  Sauver l'espace modifié (RÉPONDRE « Non » EFFACERA LES CHANGEMENTS) ? » s'affichera alors. Presser la touche _O_ puis ensuite la touche _entrée_ pour sauvegarder :
+                                                                                                                   
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/nano-sauver-l-espace-modifie.png
+
+Pour vérifier si la table de configuration du programme _cron_ est bien paramétrée taper la commande :
+{{{
+crontab -l
+}}}
+
+Si able de configuration du programme _cron_ est bien paramétrée vous devriez voir ce résultat :
 
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/crontab-l.png
 
