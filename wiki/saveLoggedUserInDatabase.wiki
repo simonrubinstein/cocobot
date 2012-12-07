@@ -68,17 +68,15 @@ cat cocobot-read-only/conf/database.conf
 === Initialiser la base de données MySQL ===
 
 Les tables de la base de données MySQL doit-être créés et certaines tables peuplées avec des données :
-<pre>
+{{{
 cd ~/cocobot-read-only/tools/
 ./initializes-database.pl
-</pre>
+}}}
 
 Le script peut prendre quelques secondes ou minutes avant de rendre la main.
 
 
 == Configurer le script dans la table du programme cron ==
-
-
 
 
 
