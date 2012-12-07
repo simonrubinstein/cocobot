@@ -4,7 +4,7 @@
 
 Cette page explique l'installation et l'utilisation pas à pas du script « save-logged-user-in-database.pl ».  
 
-Le script « save-logged-user-in-database.pl » lit la liste des pseudos connectées sur le chat Coco.fr plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium sur Coco.fr.
+Le script « save-logged-user-in-database.pl » lit la liste des pseudos connectées sur le chat Coco.fr plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium sur Coco.fr. CocoRegistration 
 
 Cette documentation se base sur le système d'exploitation Ubuntu 12.10 Desktop, donc pour installer ce script un système d'exploitation Ubuntu 12.10 Desktop est requis. 
 
@@ -81,3 +81,11 @@ Le script peut prendre quelques secondes ou minutes avant de rendre la main.
 
 
 
+http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/select-editor.png
+
+http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/nano-sauver-l-espace-modifie.png
+
+http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/crontab-l.png
+
+
+http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/tail-f-log.png
