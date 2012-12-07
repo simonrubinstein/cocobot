@@ -81,20 +81,20 @@ Le script peut prendre quelques secondes ou minutes avant de rendre la main.
 
 L'objectif est de lancer le script « save-logged-user-in-database.pl » tous les minutes. Pour cela nous allons configurer le programme [http://fr.wikipedia.org/wiki/Cron cron] pour qu'il exécute le script « save-logged-user-in-database.pl » toutes les minutes.
 
-Tout d'abord vous devez récupérer les valeurs de « myavatar » et « mypass » d'un compte ayant un abonnement payant Premium. [cocoRegistration Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr et récupérer les valeurs de « myavatar » et « mypass »].
+Tout d'abord vous devez récupérer les valeurs de « myavatar » et « mypass » d'un compte ayant un abonnement payant Premium. Lire la documentation sur [cocoRegistration  comment souscrire à un abonnement Premium sur le site Coco.fr et récupérer les valeurs de « myavatar » et « mypass »].
 
 Dans notre exemple :
  * « myavatar » correspond à la valeur « 816356817 »
  * « mypass » correspond à la valeur « XYZPAHPFLFRIEBWDNDZD ».
 
-Nous allons lancer [http://fr.wikipedia.org/wiki/Crontab le programme crontab]  qui permet d'éditer des tables de configuration du programme cron. 
+Nous allons lancer [http://fr.wikipedia.org/wiki/Crontab le programme crontab] qui permet d'éditer des tables de configuration du programme _cron_. 
 
-Taper la commande suivante dans le terminal pour éditer la table de configuration du programme _cron_ :
+Taper la commande suivante dans un terminal pour éditer la table de configuration du programme _cron_ :
 {{{
 crontab -e
 }}}
 
-À la première utilisation, le programme _crontab_ vous demande quel éditeur texte vous allez utiliser. Sélectionner le choix conseillé en tapant sur la touche _2_ du clavier pour sélectionner l'éditeur [http://fr.wikipedia.org/wiki/GNU_nano nano]] :
+À la première utilisation, le programme _crontab_ vous demande quel éditeur texte vous allez utiliser. Sélectionner le choix conseillé en tapant sur la touche _2_ du clavier pour choisir l'éditeur [http://fr.wikipedia.org/wiki/GNU_nano nano]] :
 
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/select-editor.png
 
@@ -113,9 +113,29 @@ Pour vérifier si la table de configuration du programme _cron_ est bien paramé
 crontab -l
 }}}
 
-Si able de configuration du programme _cron_ est bien paramétrée vous devriez voir ce résultat :
+Si la table de configuration du programme _cron_ est bien paramétrée vous devriez voir ce résultat :
 
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/crontab-l.png
 
+Visionner le fichier de log du script pour vérifier que le script « save-logged-user-in-database.pl » est bien lancé toutes les minutes. Le fichier de log est composé avec la date du jour. Par exemple cette documentation a été écrite le 7 décembre 2012, donc le fichier de log se nomme « 2012-12-07_save-logged-user-in-database.pl.log ». Utiliser la commande suivante pour le visionner :
+
+{{{
+tail -f ~/cocobot-read-only/var/logs/2012-12-07_save-logged-user-in-database.pl.log
+}}}
+
+
+Si vous voyez un résultat semblable à cette capture d'écran, alors le script « save-logged-user-in-database.pl » fonctionne :
 
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/tail-f-log.png
+
+
+Taper CTRL + C pour stopper la [http://fr.wikipedia.org/wiki/Tail_%28Unix%29 commande tail]. Et maintenant vous pouvez utiliser la commande « db-search.pl » pour consulter la base de données :
+{{{
+cd ~/cocobot-read-only/scripts
+./db-search.pl -O -s 2,7
+}}}
+
+
+
+
+
