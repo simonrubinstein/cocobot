@@ -2,7 +2,7 @@
 # @brief This script checks that the town codes froms '_townCount.pl'
 #        file exist in the file 'towns.txt'.
 # @created 2012-03-11
-# @date 2012-04-01
+# @date 2012-12-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -52,7 +52,17 @@ sub run {
     importFromDatabase();
     #return;
     my ( $town_ref, $townConf ) = $DB->getInitTowns();
-    my $townCount_ref = fileToVars($dumpTownsFilename);
+    my $townCount_ref;
+    eval { 
+        $townCount_ref = fileToVars($dumpTownsFilename);
+    };
+    if ($@) {
+        $DB->connect() if !defined $DB->dbh();
+        $DB->getAllTowns();
+        $townCount_ref = $DB->town2id();
+        dumpToFile( $townCount_ref, $dumpTownsFilename );
+    }
+
     my ( $count, $found, $notFound ) = ( 0, 0, 0 );
     foreach my $town ( sort keys %$townCount_ref ) {
         $count++;
@@ -69,6 +79,11 @@ sub run {
 
     my ( $ISP_ref, $ISPConf ) = $DB->getInitISPs();
     my $ISPCount_ref = fileToVars($dumpISPsFilename) if -f $dumpISPsFilename;
+    if (!defined $ISPCount_ref) {
+        $DB->connect() if !defined $DB->dbh();
+        $DB->getAllIPSs();
+        $ISPCount_ref = $DB->ISP2id();
+    }
     ( $count, $found, $notFound ) = ( 0, 0, 0 );
     foreach my $isp ( sort keys %$ISPCount_ref ) {
         $count++;
@@ -142,6 +157,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-01');
+    $CLI->VERSION_MESSAGE('2012-12-08');
 }
 
