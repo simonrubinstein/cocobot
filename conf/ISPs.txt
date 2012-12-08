@@ -1,8 +1,13 @@
+
+A2Z Solutions
 AB CONNECT
+ACCENTURE
+Adenis SARL
 Aeroport de Paris Telecom
 AFNIC
 AFONE
 Agence France Presse
+AGENCE SUSI
 Air France
 Ajova Network
 Alionis
@@ -12,8 +17,11 @@ Alsace Connexia
 Altitude Infrastructure Exploitation SAS
 Altitude Telecom SAS
 America Online
+ARESCOP
+Ariege Telecom
 ARMOR CONNECTIC SAS
 Assistance Publique-Hopitaux de Paris
+Association ORT France
 ASTRIUM SAS
 Atos Origin Infogerance
 AT{T Global Network Services Europe
@@ -23,47 +31,82 @@ AXIONE S.A.S.
 Azuria
 B3G Telecom
 Bayanat Al-Oula For Network Services
+BLUEGIX
+Bordeaux Ecole de Management
+BOUYGUES
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
+Broadcasting Center Europe (an RTL Group Company)
 C@P CONNEXION
+Cable { Wireless UK P.U.C.
+CANL
 CANL DYNAMIC IP
 Capaix Connectic
+Carphone Warehouse Broadband Services
 CEGETEL LA REUNION
 Celeste
 Centre de Ressources Informatique (CRI)
 Centre Interuniversitaire de Calcul de Toulouse
+CERTIREF
 CIENUM SAS
+CINECA
+CNAMTS
 COLT Telecom Group Limited
+Comcast Cable
 ComIT, Institute of Molecular and Cell Biology
 Commissariat a lEnergie Atomique
 Communaute dAgglomeration de Montpellier
+Communications Networking Services
 COMPLETEL SAS France
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
+Conseils et Systemes Informatiques
 CONSEILS { SYSTEMES INFORMATIQUES
 Conservatoire National des Arts et Metiers - CNAM
 Dauphin Telecom
 DECKNET
 DediPower Managed Hosting Limited
+Diademys SAS
+Digicel AFG
 Digicube sas
 DIMEDIA LLC
 Dinamics Srl
+DoD Network Information Center
 E-TERA
+Easynet
+Ecole nationale superieure des telecommunications
+Ecole Normale Superieure
+Ecole Normale Superieure de Cachan
+ECOLE POLYTECHNIQUE
+Ecole Superieure dElectricite, SUPELEC
 Ecritel
+EFREI Ecole Francaise dElectronique et dInformat
+ELB Multimedia
+ENSTA - Ecole Nationale Superieure de Techniques A
+EPI-PROCOTECH
 EPITA Ecole Pour lInformatique et
 ESTVIDEOCOMMUNICATION cable { broadband operator
 euNetworks Services GmbH
 Euro Information
+Europe Online Networks S.A.
 European Space Agency (ESA)
+EuroTransit GmbH
 Finsecur SA
 FRANCE CITEVISION
 France Telecom
 Free SAS
 GALOP TELECOM
+GANDI
+GemPlus
+Gie Gitoyen
 Global Crossing
+Gravity Internet Ltd
+Groupe ECRITEL France
+Groupe Switch
 H.R.Net SARL
 Haut-Rhin Telecom
 Herault Telecom
+HEXANET
 iBrowse SARL
 IFREMER Institut Francais de Recherche pour Exploi
 Ikoula Net SAS
@@ -71,8 +114,13 @@ IMAG et UJF
 Initials Online
 INOLIA
 Institut National de la Recherche Agronomique
+Institut National de Recherche en Informatique et
+Institut National de Recherche sur les Transports
+Institut National de Recherches Agronomiques
 Institut Pasteur
+Integra France
 Intercable Reunion
+Interconnect Exchange Europe Paris GmBH
 Intermediasud
 InterNAP Network Services U.K. Limited
 Internet Services
@@ -81,8 +129,14 @@ INTRINSEC
 IP bloc for individual xDSL access (PPP clients)
 Jaguar Network SAS
 K-Opticom Corporation
+KEYYO SA
+Kheops Organisation
 Kuwait Industrial Bank KSC
+kwaoo.com EURL
+Level 3 Communications
 Liberia Telecommunications Corporation (LIBTELCO)
+Ltd Teleglobus
+MAIRIE
 MANA Internet Service Provider
 MANA Internet Service Provider in French Polynesia
 MANA S.A.
@@ -92,23 +146,36 @@ Martinique TV Cable
 MEDI@LYS
 Media diffuseur TV
 Mediaserv
+Meteo-France
 MOBIUS TECHNOLOGY
+MyStream
+Nautile SARL
 NC Numericable S.A.
 Neo Telecoms
 Nerim SAS
 Neuf Cegetel
+Newel Informatique
 Nomotech
 NordNet
+NTT Europe Limited
+null
+Numeo SA
 Observatoire de Paris
+Office des Postes et Telecommunications
 OFFRATEL
 OFFRATEL AP
+Omer Telecom
 ONLINE S.A.S.
 OpenIP
+OPTIMITEL SA
 Organization of the Petroleum Exporting Countries
 Outremer Telecom
 Ovh Systems
+Paris
 Pays Voironnais Network
 Pharmagest Interactive SA
+Prosodie
+PSINet
 PUBLICIS-TECHNOLOGY
 REG.I.E.S
 RENATER
@@ -116,28 +183,46 @@ Reseau Optique du Campus de la Doua
 Rigas Tikli, SIA
 RISC GROUP IT SOLUTIONS S.A.
 RMI SAS
+RRM - Reseau de la Recherche a Marseille
 Rue du commerce SA
+Santrex Internet Services
 SARL MWSP
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
+SAS INTERPC
 SCANSAFE
 SCGS
 Serveurcom SRL
 SFR
+SM Etude Devel Sces Reseaux Com
 Societe de developpement Informatique
 Societe Francaise du Radiotelephone -SFR S.A.
+Southeastern Louisiana University
+Spie SA
 STELLA NET
+TATA Communications (Canada)ULC
 TELECITYGROUP INTERNATIONAL LIMITED
+Telehouse International Corporation of Europe Ltd
+Telenet
+Telenet N.V.
 Teloise
 TRINAPS
 Trust Info SARL
 TUTOR S.A.
+Typhon
+United Nations Educational, Scientific, and Cultur
 Universite de Limoges
+Universite de Nice Sophia Antipolis
+Universite Montpellier II
 Universite Pierre et Marie Curie
 USR-NETWORK
+Veepee
 Verizon France SAS
 VIALIS - REGIE MUNICIPALE DE COLMAR
+VILLE DE PARIS
 VIVACTION - Groupe ITN France
+Washington State Dept. of State and Ind.
 Websense Hosted R{D Ltd.
 WIBOX SASU
 Wifirst S.A.S.
+Woods Hole Oceanographic Institution
