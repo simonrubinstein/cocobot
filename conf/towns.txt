@@ -6605,28 +6605,40 @@ GP- Trois-rivieres
 
 # 972: Martinique
 MQ-
+MQ- Anses D arlet
+MQ- Anses D arlets
 MQ- Basse-pointe
 MQ- Ducos
 MQ- Fort-de-france
 MQ- Gros-morne
 MQ- La Trinite
+MQ- Le Franois
 MQ- Le Lamentin
 MQ- Le Marin
 MQ- Le Robert
 MQ- Le Vauclin
+MQ- Marigot
 MQ- Morne Rouge
 MQ- Riviere-pilote
 MQ- Riviere-salee
+MQ- Saint Esprit
 MQ- Saint-joseph
+MQ- Saint-pierre
 MQ- Sainte-marie
 
 # 973: Guyane
 GF-
+GP- Capesterre
 GF- Cayenne
+GP- Goyave
+GP- Gustavia
 GF- Kourou
 GF- Matoury
 GF- Montjoly
+GP- Pointe-noire
+GP- Saint-claude
 GP- Terre-de-haut
+GP- Vernou
 
 # 974: La Reunion
 RE-
@@ -6634,14 +6646,18 @@ RE- Bois De Nefles
 RE- Bras-panon
 RE- Entre-deux
 RE- Etang-sale
+RE- La Montagne
 RE- La Possession
 RE- La Riviere
+RE- La Saline
 RE- Le Tampon
 RE- Les Avirons
 RE- Les Trois-bassins
 RE- Petite Ile
+RE- Piton
 RE- Plaine Des Palmistes
 RE- Ravine Des Cabris
+RE- Riviere
 RE- Saint Gilles
 RE- Saint-andre
 RE- Saint-benoit
@@ -6655,6 +6671,7 @@ RE- Sainte-clotilde
 RE- Sainte-marie
 
 # 987: Polynesie française
+PF-
 PF- Arue
 PF- Faaa
 PF- Mahina
@@ -6663,6 +6680,7 @@ PF- Papara
 PF- Papeete
 PF- Pirae
 PF- Punaauia
+PF- Temae
 
 # 988: Nouvelle-Calédonie
 NC-
