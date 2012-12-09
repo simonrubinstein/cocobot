@@ -1,5 +1,5 @@
 # @created 2012-02-18
-# @date 2012-02-18
+# @date 2012-12-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -78,6 +78,22 @@ sub isInt {
     return $hash->{$key};
 }
 
+sub getBool {
+    my ( $self, $key ) = @_;
+    my $hash = $self->all();
+    croak error("$key boolean not found or wrong")
+      if ( !exists $hash->{$key} );
+    if ($hash->{$key} =~m{^(1|true)$}i) {
+        return 1;
+    } elsif ($hash->{$key} =~m{^(0|false)$}i) {
+        return 0;
+    } else {
+        croak error("$key boolean value is wrong")
+    }
+}
+
+
+
 ## @method arrayref getArray($key)
 sub getArray {
     my ( $self, $key ) = @_;
@@ -93,7 +109,7 @@ sub getArray {
         $array_ref = [ $hash->{$key} ];
     }
     else {
-        croak error("$key is wrong: $r");
+        $array_ref = [ $hash->{$key} ];
     }
     return $array_ref;
 }
