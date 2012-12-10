@@ -34,6 +34,7 @@ use FindBin qw($Script $Bin);
 use base 'Cocoweb::Object::Singleton';
 use Cocoweb;
 use Cocoweb::Config;
+#use Cocoweb::Alert::XMPP;
 __PACKAGE__->attributes('config');
 
 ##@method object init($class, $instance)
@@ -71,8 +72,6 @@ sub process {
         foreach my $alert (@alerts) {
             my $allAlert_ref = $alert->all();
             my $sub_ref      = $alert->getArray('sub');
-            my $found        = 0;
-            my @users        = ();
             foreach my $check (@$sub_ref) {
                 next if !$check->($user);
                 $allAlert_ref->{'found'} = 1;
@@ -91,10 +90,24 @@ sub process {
               . $user->ISP() . " "
               . $user->town() . "\n";
         }
-        my $transport = $alert->getString('transport');
-        print "=== $transport\n";
+        $self->getTransport($alert->getString('transport'), $alert->getString('recipient'));
+
 
     }
+
+}
+
+sub getTransport {
+    my ($self, $transport, $recipient) = @_; 
+    my $config     = $self->config();
+    my $transports_ref = $config->getArray($transport);
+    foreach my $transport_ref (@$transports_ref) {
+        my $transportConf = Cocoweb::Config::Hash->new( 'hash' => $transport_ref );
+        next if $transportConf->getString('name') ne $recipient;
+        print Dumper $transport_ref;
+        require 'Cocoweb/Alert/' . $transport . '.pm';
+    }
+
 
 }
 
