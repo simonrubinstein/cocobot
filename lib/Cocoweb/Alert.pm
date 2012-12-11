@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-09
-# @date 2012-12-09
+# @date 2012-12-11
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,8 +34,7 @@ use FindBin qw($Script $Bin);
 use base 'Cocoweb::Object::Singleton';
 use Cocoweb;
 use Cocoweb::Config;
-#use Cocoweb::Alert::XMPP;
-__PACKAGE__->attributes('config');
+__PACKAGE__->attributes( 'config', 'alertsSender' );
 
 ##@method object init($class, $instance)
 sub init {
@@ -43,6 +42,7 @@ sub init {
     my $config =
       Cocoweb::Config->instance()->getConfigFile( 'alert.conf', 'File' );
     $instance->config($config);
+    $instance->alertsSender( {} );
     return $instance;
 }
 
@@ -52,7 +52,7 @@ sub process {
     #Read the alerts, conditions are transformed in Perl code
     my $config     = $self->config();
     my $alerts_ref = $config->getArray('alert');
-    my @alerts = ();
+    my @alerts     = ();
     foreach my $alert_ref (@$alerts_ref) {
         my $alert = Cocoweb::Config::Hash->new( 'hash' => $alert_ref );
         next if !$alert->getBool('enable');
@@ -66,6 +66,7 @@ sub process {
         push @alerts, $alert;
     }
 
+    # Checks if each user is connected match alarm conditions
     my $user_ref = $usersList->all();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
@@ -83,32 +84,46 @@ sub process {
     foreach my $alert (@alerts) {
         my $allAlert_ref = $alert->all();
         next if !$allAlert_ref->{'found'};
+        my $body = '';
         foreach my $user ( @{ $allAlert_ref->{'users'} } ) {
-            print "- "
-              . $user->mynickname() . " "
+            $body .=
+                $user->mynickname() . "; "
+              . $user->myage() . " "
               . $user->mysex() . " "
-              . $user->ISP() . " "
+              . $user->ISP() . "; "
+              . $user->citydio() . "; "
               . $user->town() . "\n";
         }
-        $self->getTransport($alert->getString('transport'), $alert->getString('recipient'));
+        debug($body);
+        my $alertSender = $self->getTransport( $alert->getString('transport'),
+            $alert->getString('recipient') );
 
+        $alertSender->messageSend($body);
 
     }
 
 }
 
 sub getTransport {
-    my ($self, $transport, $recipient) = @_; 
-    my $config     = $self->config();
+    my ( $self, $transport, $recipient ) = @_;
+    my $alertsSender_ref = $self->alertsSender();
+    my $alertKey         = $transport . '::' . $recipient;
+    return $alertsSender_ref->{$alertKey}
+      if exists $alertsSender_ref->{$alertKey};
+    my $config         = $self->config();
     my $transports_ref = $config->getArray($transport);
     foreach my $transport_ref (@$transports_ref) {
-        my $transportConf = Cocoweb::Config::Hash->new( 'hash' => $transport_ref );
+        my $transportConf =
+          Cocoweb::Config::Hash->new( 'hash' => $transport_ref );
         next if $transportConf->getString('name') ne $recipient;
         print Dumper $transport_ref;
         require 'Cocoweb/Alert/' . $transport . '.pm';
+        my $class = 'Cocoweb::Alert::' . $transport;
+        my $alert = $class->new( 'conf' => $transportConf );
+        $alertsSender_ref->{$alertKey} = $alert;
+        return $alert;
     }
-
-
+    return;
 }
 
 sub getSub {

@@ -1,6 +1,6 @@
 # @brief
-# @created 2012-12-10 
-# @date 2012-12-10
+# @created 2012-12-10
+# @date 2012-12-11
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -30,27 +30,84 @@ use strict;
 use warnings;
 use Carp;
 use Data::Dumper;
+use Net::XMPP;
 use Cocoweb;
-use base 'Cocoweb::Object::Singleton';
+use base 'Cocoweb::Object';
 
-__PACKAGE__->attributes( 'name', 'hostname', 'port', 'componentname', 'connectiontype', 'tls', 'username', 'password', 'to' );
+__PACKAGE__->attributes(
+    'name',           'hostname',   'port',     'componentname',
+    'connectiontype', 'tls',        'username', 'password',
+    'to',             'resource', 'subject'
+);
 
-
-##@method object init($class, $instance)
+##@method void init(%args)
+#@brief Perform some initializations
 sub init {
-    my ( $class, $instance ) = @_;
-    $instance->attributes_defaults(
-        'name'   => '',
-        'hostname'   => '',
-        'port'   => '',
-        'componentname'   => '',
-        'connectiontype'   => '',
-        'tls'   => '',
-        'username'   => '',
-        'password'   => '',
-        'to'   => '',
+    my ( $self, %args ) = @_;
+    my $conf = $args{'conf'};
+
+    $self->attributes_defaults(
+        'name'           => $conf->getString('name'),
+        'hostname'       => $conf->getString('hostname'),
+        'port'           => $conf->getInt('port'),
+        'componentname'  => $conf->getString('componentname'),
+        'connectiontype' => $conf->getString('connectiontype'),
+        'tls'            => $conf->getBool('tls'),
+        'username'       => $conf->getString('username'),
+        'password'       => $conf->getString('password'),
+        'to'             => $conf->getString('to'),
+        'resource'       => $conf->getString('resource'),
+        'subject'        => $conf->getString('subject')
     );
-    return $instance;
+}
+
+sub connectionProcess {
+    my ($self) = @_;
+    my $connection = new Net::XMPP::Client();
+
+    debug("Connect to " . $self->hostname());
+    my $status = $connection->Connect(
+        'hostname'       => $self->hostname(),
+        'port'           => $self->port(),
+        'componentname'  => $self->componentname(),
+        'connectiontype' => $self->connectiontype(),
+        'tls'            => $self->tls()
+    );
+
+    croak error( 'XMPP connection failed: ' . $! ) if !defined $status;
+
+    # change hostname
+    my $sid = $connection->{SESSION}->{id};
+    $connection->{STREAM}->{SIDS}->{$sid}->{hostname} = $self->componentname();
+
+    # authenticate
+    debug("Authenticate " . $self->username());
+    my @result = $connection->AuthSend(
+        'username' => $self->username(),
+        'password' => $self->password(),
+        'resource' => $self->resource()
+    );
+
+    croak error( 'Authorization failed:' . $result[0] . '-' . $result[1] )
+      if $result[0] ne 'ok';
+
+    debug('PresenceSend()');
+    $connection->PresenceSend( 'show' => 'available' );
+    return $connection;
+}
+
+sub messageSend {
+    my ( $self, $body ) = @_;
+    my $connection = $self->connectionProcess();
+    debug('MessageSend()');
+    $connection->MessageSend(
+        to       => $self->to(),
+        resource => $self->resource(),
+        subject  => $self->subject(),
+        type     => 'chat',
+        body     => $body
+    );
+    $connection->Disconnect();
 }
 
 1;
