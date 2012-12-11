@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief This script saves all users connected to the database
 #@created 2012-03-09
-#@date 2012-06-01
+#@date 2012-12-11
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -48,6 +48,7 @@ my $usersList;
 my %ispCount     = ();
 my %townCount    = ();
 my $premiumCount = 0;
+my $isAlarmEnabled = 0;
 
 init();
 run();
@@ -104,6 +105,7 @@ sub checkUsers {
     $usersList->purgeUsersUnseen();
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
+    alarmProcess($usersList);
 
     return;
     my $user_ref = $usersList->all();
@@ -211,17 +213,31 @@ sub checkUsers {
     }
 }
 
+sub alarmProcess {
+    my ($usersList) = @_;
+    return if !$isAlarmEnabled;
+    info('Alarms are enabled!');
+    eval {
+        require 'Cocoweb/Alert.pm';
+        my $alert = Cocoweb::Alert->instance();
+        $alert->process($usersList);
+    };
+    error($@) if $@;
+}
+
 ##@method void init()
 sub init {
     $DB  = Cocoweb::DB::Base->getInstance();
     $CLI = Cocoweb::CLI->instance();
-    $CLI->lockSingleInstance();
     my $opt_ref =
-      $CLI->getOpts( 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
+      $CLI->getOpts( 'argumentative' => 'A', 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
+    $isAlarmEnabled = 1 if exists $opt_ref->{'A'};
+    info("isAlarmEnabled: $isAlarmEnabled");
+    $CLI->lockSingleInstance();
 }
 
 ## @method void HELP_MESSAGE()
@@ -229,14 +245,17 @@ sub init {
 sub HELP_MESSAGE {
     print STDOUT $Script
       . ', This script will log the user in the database.' . "\n";
-    $CLI->printLineOfArgs();
+    $CLI->printLineOfArgs('[-A]');
     $CLI->HELP();
+    print <<ENDTXT;
+  -A                Enable alarm 
+ENDTXT
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-06-01');
+    $CLI->VERSION_MESSAGE('2012-12-11');
 }
 
