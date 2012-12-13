@@ -45,9 +45,9 @@ my $DB;
 my $CLI;
 my $usersList;
 
-my %ispCount     = ();
-my %townCount    = ();
-my $premiumCount = 0;
+my %ispCount       = ();
+my %townCount      = ();
+my $premiumCount   = 0;
 my $isAlarmEnabled = 0;
 
 init();
@@ -158,6 +158,7 @@ sub checkUsers {
             );
             my $i   = randum( scalar @citate ) - 1;
             my $str = $citate[$i];
+
             #$bot->requestWriteMessage( $user, $str );
             #$bot->user()->hasSentMessage($str);
 
@@ -180,7 +181,7 @@ sub checkUsers {
             and $ISP eq 'Free SAS'
           )
         {
-            $mynickname =~s{\d+.*$}{};
+            $mynickname =~ s{\d+.*$}{};
             $bot->requestWriteMessage( $user, ';02' )
               if $user->isNew()
                   or $user->hasChange();
@@ -229,8 +230,11 @@ sub alarmProcess {
 sub init {
     $DB  = Cocoweb::DB::Base->getInstance();
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref =
-      $CLI->getOpts( 'argumentative' => 'A', 'enableLoop' => 1, 'avatarAndPasswdRequired' => 1 );
+    my $opt_ref = $CLI->getOpts(
+        'argumentative'           => 'A',
+        'enableLoop'              => 1,
+        'avatarAndPasswdRequired' => 1
+    );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;

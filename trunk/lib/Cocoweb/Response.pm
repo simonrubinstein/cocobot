@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2012-05-23
+# @date 2012-12-03 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -199,9 +199,6 @@ sub process1Int {
         if ( length( $user->mypass() ) != 20 ) {
             warning("olko: $olko not implemented");
         }
-    }
-    if ( $olko == 39 ) {
-        warning("olko: $olko not implemented");
     }
     if ( $olko == 95 ) {
         warning("olko: $olko not implemented");
