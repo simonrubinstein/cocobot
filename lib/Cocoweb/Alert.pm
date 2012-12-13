@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-09
-# @date 2012-12-11
+# @date 2012-12-13
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,7 +34,8 @@ use FindBin qw($Script $Bin);
 use base 'Cocoweb::Object::Singleton';
 use Cocoweb;
 use Cocoweb::Config;
-__PACKAGE__->attributes( 'config', 'alertsSender' );
+__PACKAGE__->attributes( 'config', 'alertsSender', 'alarmCount',
+    'enableAlerts' );
 
 ##@method object init($class, $instance)
 sub init {
@@ -43,34 +44,52 @@ sub init {
       Cocoweb::Config->instance()->getConfigFile( 'alert.conf', 'File' );
     $instance->config($config);
     $instance->alertsSender( {} );
+    $instance->alarmCount(0);
     return $instance;
 }
 
+##@method void process($usersList)
+#param object $usersList A Cocoweb::User::List object
 sub process {
     my ( $self, $usersList ) = @_;
 
-    #Read the alerts, conditions are transformed in Perl code
-    my $config     = $self->config();
-    my $alerts_ref = $config->getArray('alert');
-    my @alerts     = ();
-    foreach my $alert_ref (@$alerts_ref) {
-        my $alert = Cocoweb::Config::Hash->new( 'hash' => $alert_ref );
-        next if !$alert->getBool('enable');
-        $alert_ref->{'found'} = 0;
-        $alert_ref->{'users'} = [];
-        my $conditions_ref = $alert->getArray('condition');
-        foreach my $condition (@$conditions_ref) {
-            my $check = $self->getSub($condition);
-            push @{ $alert_ref->{'sub'} }, $check;
-        }
-        push @alerts, $alert;
-    }
+    my $enableAlerts_ref = $self->enableAlerts();
+    if ( !defined $enableAlerts_ref ) {
 
-    # Checks if each user is connected match alarm conditions
+        #Read the alerts, conditions are transformed in Perl code
+        debug('Read the alerts, conditions are transformed in Perl code');
+        my $config     = $self->config();
+        my $alerts_ref = $config->getArray('alert');
+        my @alerts     = ();
+        foreach my $alert_ref (@$alerts_ref) {
+            $alert_ref->{'found'} = 0;
+            $alert_ref->{'users'} = [];
+            my $alert = Cocoweb::Config::Hash->new( 'hash' => $alert_ref );
+            next if !$alert->getBool('enable');
+            my $conditions_ref = $alert->getArray('condition');
+            foreach my $condition (@$conditions_ref) {
+                my $check = $self->getSub($condition);
+                push @{ $alert_ref->{'sub'} }, $check;
+            }
+            push @$enableAlerts_ref, $alert;
+        }
+        $self->enableAlerts($enableAlerts_ref);
+    }
+    else {
+        debug('Alerts are objects already instantiated.');
+        foreach my $alert (@$enableAlerts_ref) {
+            my $alert_ref = $alert->all();
+            $alert_ref->{'found'} = 0;
+            $alert_ref->{'users'} = [];
+        }
+    }
+    debug( 'number of alerts: ' . scalar(@$enableAlerts_ref) . '.' );
+
+    #Checks if each user is connected match alarm conditions
     my $user_ref = $usersList->all();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
-        foreach my $alert (@alerts) {
+        foreach my $alert (@$enableAlerts_ref) {
             my $allAlert_ref = $alert->all();
             my $sub_ref      = $alert->getArray('sub');
             foreach my $check (@$sub_ref) {
@@ -81,29 +100,45 @@ sub process {
         }
     }
 
-    foreach my $alert (@alerts) {
+    #Sending alert messages if needed.
+    my $alarmCount = $self->alarmCount();
+    foreach my $alert (@$enableAlerts_ref) {
         my $allAlert_ref = $alert->all();
         next if !$allAlert_ref->{'found'};
-        my $body = '';
+        $alarmCount++;
+        my $body  = "[PID: $$] New alert $alarmCount: ' . \n";
+        my $count = 0;
         foreach my $user ( @{ $allAlert_ref->{'users'} } ) {
+            $count++;
             $body .=
-                $user->mynickname() . "; "
-              . $user->myage() . " "
+                $user->mynickname() . '; ' . 'age: '
+              . $user->myage() . " " . 'sex: '
               . $user->mysex() . " "
               . $user->ISP() . "; "
               . $user->citydio() . "; "
               . $user->town() . "\n";
         }
+        $body .= $count . ' nickname(s)' . "\n\n";
         debug($body);
-        my $alertSender = $self->getTransport( $alert->getString('transport'),
-            $alert->getString('recipient') );
-
+        my $alertSender;
+        eval {
+            $alertSender = $self->getTransport(
+                $alert->getString('transport'),
+                $alert->getString('recipient')
+            );
+        };
+        next if $@ or !defined $alertSender;
         $alertSender->messageSend($body);
 
     }
-
+    $self->alarmCount($alarmCount);
 }
 
+##@method object getTransport($transport, $recipient)
+#@brief Instantiates an object that sends the alert message.
+#@param string $transport Transport used for the message, i.e.: "XMPP"
+#@param string $recipient name Destination name, is the name of transport.
+#@return An object.
 sub getTransport {
     my ( $self, $transport, $recipient ) = @_;
     my $alertsSender_ref = $self->alertsSender();
@@ -116,16 +151,20 @@ sub getTransport {
         my $transportConf =
           Cocoweb::Config::Hash->new( 'hash' => $transport_ref );
         next if $transportConf->getString('name') ne $recipient;
-        print Dumper $transport_ref;
         require 'Cocoweb/Alert/' . $transport . '.pm';
         my $class = 'Cocoweb::Alert::' . $transport;
         my $alert = $class->new( 'conf' => $transportConf );
         $alertsSender_ref->{$alertKey} = $alert;
         return $alert;
     }
+    error("$transport/$recipient transport have not been found");
     return;
 }
 
+##@method function sub getSub($condition)
+#@brief Convert a condition from the configuration file in a Perl function.
+#@param string $condition A condition i.e.: '$town eq "FR- Paris" and $mysex eq "2"'
+#@return A Perl function
 sub getSub {
     my ( $self, $condition ) = @_;
     $condition =~ s{\$([a-zA-z0-9]+)}{\$user\->{$1}}g;
@@ -135,7 +174,10 @@ sub getSub {
       . ' ) { return 1; } else { return 0; } }';
     my $function;
     eval $condition;
-    croak error("$condition: $@") if $@;
+    if ($@) {
+        error("$condition: $@");
+        $function = sub { return 0; };
+    }
     return $function;
 }
 
