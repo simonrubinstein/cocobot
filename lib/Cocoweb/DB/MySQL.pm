@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-11-15
+# @date 2012-12-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -154,7 +154,7 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `nicknames` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `nickname`      varchar(19) NOT NULL,
+    `nickname`      varchar(19) BINARY NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`nickname`)
     ) ENGINE=InnoDB

@@ -317,11 +317,11 @@ sub agix {
     my ( $self, $user, $url, $cookie_ref ) = @_;
     croak error("The URL of the HTTP request is missing") if !defined $url;
 
-    #info("url: $url");
+    info("url: $url");
     my $response = $self->execute( 'GET', $url, $cookie_ref );
     my $res = $response->content();
 
-    #debug($res);
+    debug($res);
     die error(
         'Error: the JavaScript function not found in the string: ' . $res )
       if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
