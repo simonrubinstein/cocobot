@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-05-20
+# @date 2012-12-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -68,6 +68,10 @@ sub populate {
         $self,       $myage, $mysex,  $citydio, $mynickID,
         $mynickname, $myXP,  $mystat, $myver
     ) = @_;
+    if ($mynickname =~m{^([^\(]+)\(\d+$}) {
+        debug("strip end of string: $mynickname to $1");
+        $mynickname = $1;
+    }
     my $users_ref = $self->all();
     my @args      = (
         'mynickID'   => $mynickID,
