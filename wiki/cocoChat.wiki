@@ -8,9 +8,9 @@ Cette page documente le processus d'initialisation et authentification de l'util
 
 
 Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée et chargée les trois fonctions suivants sont exécutées séquentiellement :
-  * *primo()* à la ligne 977 du fichier « initio.js ».
-  * *initial()* à la ligne 1 274 du fichier « initio.js ».
-  * *resinit()* à la ligne 578 du fichier « onglet.js ».
+  * *primo()* à la ligne 932 du fichier « initio.js ».
+  * *initial()* à la ligne 1 233 du fichier « initio.js ».
+  * *resinit()* à la ligne 551 du fichier « onglet.js ».
 
 === Cookie Flash ===
 
@@ -61,7 +61,7 @@ La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 
 
 La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port.
 
-  * *url1* = "http://178.33.122.73:3661/"
+  * *url1* = "http://46.105.36.13:3661/"
 
 Cette URL est l'URL utilisée pour communiquer avec le serveur. Toute communication avec le serveur se fera par une commande `HTTP GET` sur cette URL.
 
@@ -120,7 +120,7 @@ La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « ag
 
 Dans notre cas :
 {{{
- agix( "http://178.33.122.73:3495/40Simon*371309157636446650", 4);
+ agix( "http://46.105.36.13:3495/40Simon*371309157636446650", 4);
 }}}
 
 
