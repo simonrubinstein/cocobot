@@ -238,7 +238,7 @@ sub getCitydioAndTownzz {
         $townzz  = $citycoList[ $r + 1 ];
     }
 
-    #debug("citydio: $citydio; townzz: $townzz");
+    debug("citydio: $citydio; townzz: $townzz");
     $user->citydio($citydio);
     $user->townzz($townzz);
 }
@@ -259,6 +259,7 @@ sub getCityco {
     my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
     my $response = $self->execute( 'GET', $url );
     my $res      = $response->content();
+    debug($res);
 
     # Retrieves a string like "var cityco='30926*PARIS*';"
     if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
@@ -269,6 +270,7 @@ sub getCityco {
               . $res );
     }
     my $cityco = $1;
+    debug("===> cityco: $cityco");
     return $cityco;
 }
 
