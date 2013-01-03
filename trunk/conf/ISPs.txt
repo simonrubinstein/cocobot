@@ -1,115 +1,309 @@
+1{1 Internet
+2degrees Mobile Limited
+3BB Broadband
 A2Z Solutions
 AB CONNECT
 ACCENTURE
 Adenis SARL
+Advanced Info Service PCL
 Aeroport de Paris Telecom
 AFNIC
 AFONE
+Afribone Mali SA
+AGARIK SA
 Agence France Presse
 AGENCE SUSI
 Air France
 Ajova Network
+AKADO-Stolitsa JSC
+AL-HADATHEH LIL-ITISALAT WA AL-TECHNOLOGIA CO
+Alice DSL
 Alionis
 Alliance Connectic SAS
+AllTele Allmanna Svenska Telefonaktiebolaget
+Alpha Networks S.P.R.L.
 AlphaLink
 Alsace Connexia
 Altitude Infrastructure Exploitation SAS
 Altitude Telecom SAS
+AltusHost
+Amazon Data Services Ireland Ltd
 America Online
+AMX Argentina S.A.
+Angola Telecom
+Anvia Oyj
+AOL-France, On-line service
+Arcor AG
 ARESCOP
 Ariege Telecom
+Armenian Datacom Company
 ARMOR CONNECTIC SAS
+ARTMOTION n.p.sh.
+Assigned for dynamic DHCP pool for RINGO S.A.s cu
+Assigned for servers and network infrastructure fo
 Assistance Publique-Hopitaux de Paris
 Association ORT France
 ASTRIUM SAS
+Atlantic Broadband
+Atlas Cable { Wireless
 Atos Origin Infogerance
+Atos Worldline IPv4 Subnet
 AT{T Global Network Services Europe
+AT{T Global Network Services, LLC
+AT{T Mobility LLC
 Auvea Ingenierie
+AVAYA
 AXA-TECH
 AXIONE S.A.S.
 Azuria
+B2B2C
 B3G Telecom
+Bahnhof Internet AB
+Batelco
 Bayanat Al-Oula For Network Services
+Beam Telecom Pvt Ltd
+Beirel Telecom ISP
+Belgacom Mobile SA/NV
+Belgacom Skynet
+Bell Canada
+Bell Mobility
+BELNET
+Benin Telecom SA
+Bezeq International-Ltd
+Biotechnology And Biological Science Research Coun
 BLUEGIX
+Bluewin
 Bordeaux Ecole de Management
+Boston University
+Bourse de Luxembourg
 BOUYGUES
 Bouygues Telecom
 Brasil Telecom S/A - Filial Distrito Federal
 British Telecommunications
 Broadcasting Center Europe (an RTL Group Company)
+Brutele SC
+BSE Software GmbH
+Bull HN Information Systems
+Butovo Internet Club
 C@P CONNEXION
+Cable { Wireless Telecommunication Services GmbH
 Cable { Wireless UK P.U.C.
+Cablecom GmbH
+Cablevision du Nord de Quebec
+CABLEVISION S.A.
+Cablevision SA de CV
+Cabovisao, televisao por cabo, SA
+CAFE Informatique et telecommunications
+Cambridge Entrepreneurial Network
 CANL
 CANL DYNAMIC IP
+Canl SAS
 Capaix Connectic
 Carphone Warehouse Broadband Services
+Casema B.V.
+Caucasus Online LLC
 CEGETEL LA REUNION
 Celeste
+Cell-C (Pty) Ltd
 Centre de Ressources Informatique (CRI)
 Centre Interuniversitaire de Calcul de Toulouse
 CERTIREF
+Cesarius Media GmbH IPNETZ
+Cesser Informatica y Organizacion, S.L
+CEVA LOGISTICS
+Chaos Computer Club Event Network provided by Chao
+Charter Communications
+Chello Broadband GmbH
+China Education and Research Network
+China Unicom Neimeng Province Network
+China Unicom Shandong province network
+chinanet fujian province network
+CHINANET ningxia province network
+Chinguitel SA
+Chmurtz SaRL
+CHTD, Chunghwa Telecom Co., Ltd.
 CIENUM SAS
 CINECA
+CIRB-CIBG
+CIS NEPHAX
+City Telecom (H.K.) Ltd.
+Claas KGaA
+Clearwire Corporation
+CLEVERNETWORK SAS
 CNAMTS
+Coditel
+Cogeco Cable
+COLOMBIA TELECOMUNICACIONES S.A. ESP
 COLT Telecom Group Limited
+Com Hem AB
 Comcast Cable
 ComIT, Institute of Molecular and Cell Biology
 Commissariat a lEnergie Atomique
 Communaute dAgglomeration de Montpellier
+Communication Solutions Ltd.
 Communications Networking Services
+COMPANHIA DE TELECOMUNICACOES DO BRASIL CENTRAL
 COMPLETEL SAS France
+Connected
+Connet-ro networks
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
 Conseils et Systemes Informatiques
 CONSEILS { SYSTEMES INFORMATIQUES
 Conservatoire National des Arts et Metiers - CNAM
+COOLHOUSING s.r.o.
+Coop Tel
+Cosmonova LLC
+CPRO Informatique SAS
+Creolink Communications
+Critical Case s.r.l
+Cronyx Plus Ltd.
+Cybercity A/S
+Cybernet ISP SPRL
+Cyberverse
+Danish Broadband a/s
+DARS Telecom
+Data communication and international
+Data One Solutions, LLC.
+Data Telecom Service
+Datacenter Luxembourg S.A.
 Dauphin Telecom
+DC{BI
 DECKNET
 DediPower Managed Hosting Limited
+DEEPAK MEHTA FIE
+Default Route
+Deninet KFT
+Dery Telecom
+Destiny N.V
+Deutsche Telekom AG
+DFI Service SA
+DHCP pool for dsl clients
 Diademys SAS
 Digicel AFG
 Digicube sas
+Digitalas Ekonomikas Attistibas Centrs
+Digiweb ltd
 DIMEDIA LLC
 Dinamics Srl
+DISTRIBUTEL COMMUNICATIONS
+Djibouti Telecom
+DJIBOUTI TELECOM S.A.
 DoD Network Information Center
+Dodo Australia
+Dualis
+e-leven sa
 E-TERA
+Easyhost Network
 Easynet
+easynet DV GmbH
+Ecatel LTD
 Ecole nationale superieure des telecommunications
 Ecole Normale Superieure
 Ecole Normale Superieure de Cachan
 ECOLE POLYTECHNIQUE
 Ecole Superieure dElectricite, SUPELEC
 Ecritel
+EDPNET
 EFREI Ecole Francaise dElectronique et dInformat
+EGIHosting
+EI Catalyst Corp.
+Eircom
 ELB Multimedia
+Electrabel NV/SA
+Eli Lilly and Company
+Embratel
+Emerging Markets Communications Deutschland GmbH
+Emirates Integrated Telecommunications Company PJS
+Emirates Telecommunications Corporation
+EMPIRE.NET
+Empresa de Telecomunicaciones de Pereira S.A. E.S.
+EMTEL MAURITIUS
 ENSTA - Ecole Nationale Superieure de Techniques A
+Entreprise des Postes et Telecommunications
+Eonix Corporation
 EPI-PROCOTECH
 EPITA Ecole Pour lInformatique et
+EPM Telecomunicaciones S.A. E.S.P.
+Essent Kabelcom B.V. B.V.
 ESTVIDEOCOMMUNICATION cable { broadband operator
+ETB - Colombia
+Etihad Atheeb Telecom Company
+Etisalat Afghanistan
+Etisalat Benin SA
 euNetworks Services GmbH
+Euphony Benelux n.v.
 Euro Information
 Europe Online Networks S.A.
+European Parliament
 European Space Agency (ESA)
 EuroTransit GmbH
+Euskaltel S.A.
+Eutelia S.p.A.
+EVSL
+Exatel S.A.
+Fast Telecommunications Company W.L.L.
+Fastweb
+FDCservers.net
+Financial Art S.A.
 Finsecur SA
+FLORIDA CABLE
+Foremost Technologies Corporation
 FRANCE CITEVISION
 France Telecom
 Free SAS
+Gabon Telecom
+GABON TELECOM Libreville xDSL POP.
 GALOP TELECOM
 GANDI
+Gateway Communications
+Gateway Telecoms Integrated Services Limited
+GCN/DCN Networks
 GemPlus
+GGA Maur
+Ghana Telecom
 Gie Gitoyen
+Globacom Ltd
+Global Access Resources
 Global Crossing
+GLOBAL NET-INC COMMUNICATIONS
+GloboTech Communications
+Golden Lines Cable
 Gravity Internet Ltd
+Green Connection AG
 Groupe ECRITEL France
 Groupe Switch
+Gruyere Energie SA
+Gtd Internet S.A.
+GTS NOVERA s.r.o.
+Gulf Cyberian Trading LLC
+Guyana Telephone { Telegraph Co.
 H.R.Net SARL
+Hager Electro GmbH, Blieskastel
 Haut-Rhin Telecom
+Headquarters, USAISC
 Herault Telecom
+Hetzner Online AG
+Hewlett-Packard Company
 HEXANET
+Hilti AG
+Hoffmann LaRoche
+Host Europe GmbH
+Hosting Services
+Hot Telecommunication Systems Ltd.
+HUGHES TELECOMUNICACOES DO BRASIL LTDA.
+Hurricane Electric
+Iberbanda S.A.
 iBrowse SARL
 IFREMER Institut Francais de Recherche pour Exploi
+iiNet Limited
+IKATEL SA
 Ikoula Net SAS
 IMAG et UJF
+Inconet Data Management SAL
+incubatec GmbH - Srl
+INFOR IT SP. z o.o.
+Infotechna Ltd.
+Init Seven AG
 Initials Online
 INOLIA
 Institut National de la Recherche Agronomique
@@ -118,110 +312,431 @@ Institut National de Recherche sur les Transports
 Institut National de Recherches Agronomiques
 Institut Pasteur
 Integra France
+Intelsat GlobalConnex Solutions (GXS)
 Intercable Reunion
 Interconnect Exchange Europe Paris GmBH
+intergenia AG
 Intermediasud
+Internap Network Services Corporation
 InterNAP Network Services U.K. Limited
+Internet service provider in Mauritius.
 Internet Services
 Interoute Communications Limited
+Intersvyaz
 INTRINSEC
+Investelektrosviaz Ltd.
 IP bloc for individual xDSL access (PPP clients)
+IP worldcom SA
+IPTelligent LLC
+IPv4 network of AS250.net
+IQ Networks
+ISOCEL SARL
+ISP Fregat Ltd.
+ISP in Nigeria
+ISPpro Internet KG
+IT - Solid Solutions
+ITC Deltacom
+IUnet
+iWeb Technologies
 Jaguar Network SAS
+Jakobstadsnejdens Telefon Ab
+Japan Inet
+Jazz Telecom S.A.
+Jinan University
+Jordan Telecommunications Company
+JSC Ukrtelecom
+JSC VimpelCom
+Jump Management SRL
 K-Opticom Corporation
+Kabel Baden-Wuerttemberg GmbH { Co. KG
+Kabel Deutschland Breitband Services GmbH
+Kablovska Televizija HS d.o.o Sarajevo
+Kaercher GmbH
+Keyweb AG
 KEYYO SA
 Kheops Organisation
+KMN Corporation
+Koerber AG, Hamburg
+Koninklijke Philips Electronics N.V.
+KPN Belgium Business NV
+KPN Group Belgium NV/SA
+Kujtesa Net Sh.p.k.
 Kuwait Industrial Bank KSC
 kwaoo.com EURL
+Lanet Network Ltd.
+LeaseWeb B.V.
+LETS GOWEX, S.A.
 Level 3 Communications
+LIBANTELECOM
+Libello ADSL
 Liberia Telecommunications Corporation (LIBTELCO)
+Libyan Telecom and Technology
+Link Egypt
+Linode, LLC
+LIR
+LLC Renome-Service
+LLC Synterra-Ug
+LLC Tehnomarket
+Local Registry / ISP
+Los Angeles County, Department of Health Services
 Ltd Teleglobus
+LTT inc. Lightstream Transmission { Telecom Inc
+LuXcommunications S.A.
+MAC Telecom
 MAIRIE
 MANA Internet Service Provider
 MANA Internet Service Provider in French Polynesia
 MANA S.A.
 MANA, Internet service Provider in French Polynesi
 MANCHE TELECOM
+Maricopa County Community College District
 Martinique TV Cable
+Maskatel
+Massachusetts Institute of Technology
+Mauritanian Telecommunication Company
 MEDI@LYS
 Media diffuseur TV
 Mediaserv
+Melita Cable plc
+Mena Broadband Services WLL
+Merck and Co.
+Merlin-Telekom LLC
+METANET AG, Switzerland
 Meteo-France
+Metroset Ltd.
+MI INFRASTRUCTURE
+Mir Telematiki Ltd
+MNI Telecom S.A.
+MobileOne Ltd
+MOBISTAR
 MOBIUS TECHNOLOGY
+Monaco Telecom
+Mozilla Corporation
+MTN International Carrier Services S.A.M.
+MultiCable networks of Chita, Ltd.
+MULTILINK SA
+MWEB Connect (Pty) Ltd
 MyStream
+nacamar GmbH
 Nautile SARL
 NC Numericable S.A.
 Neo Telecoms
+NEOGLOBEX LIMITED
+Neostrada Plus
 Nerim SAS
+NetCologne GmbH
+NetDirect
+Netelligent Hosting Services
+Netia SA
+netplus.ch SA
+NETsite A/S
+NetVision
+Network IP
 Neuf Cegetel
+New Technologies Group N.V.
+NewCom International
 Newel Informatique
+NIB (National Internet Backbone)
+Nigerian Telecommunications Ltd
+Nine Internet Solutions AG
+NLAYER COMMUNICATIONS
+Nobis Technology Group, LLC
 Nomotech
 NordNet
+Nortel Networks
+NTT America
 NTT Europe Limited
 null
 Numeo SA
+Nuovo Pignone LAN
 Observatoire de Paris
+OC3 Networks { Web Solutions, LLC
+Office des Poste et Telecommunications (OPT)
 Office des Postes et Telecommunications
 OFFRATEL
 OFFRATEL AP
+Ofis-Computers
+OJSC VolgaTelecom
+Omani Qatari Telecommunications Company SAOC
+Omantel
 Omer Telecom
+Omnium des Telecom et de linternet
+Omnium des Telecom et de lInternet (OTI Telecom)
+ONATEL
+ONATEL (Office National des Telecommunications, PT
+Online Breedband B.V.
 ONLINE S.A.S.
+ONO
+OOO FREEnet Group
+Opal Telecom
+OpenBusiness
 OpenIP
+Opera Software ASA
 OPTIMITEL SA
+Optimum Online
+Optimus, Telecomunicagues S.A.
+Optisprint
+OPTUS INTERNET - RETAIL
+Orange Cameroun Local Registry
+Orange Communication SA
+Orange Home UK
+Orange Madagascar
+Orange Mali SA
 Organization of the Petroleum Exporting Countries
 Outremer Telecom
 Ovh Systems
+Ownit AB
+P.J.Safarik University in Kosice
 Paris
+Pars Online
+paulbame
 Pays Voironnais Network
+PCCW Limited
+Perfect Communication Sweden AB
 Pharmagest Interactive SA
+PLANET TECHNOLOGIES
+PLDTSPCHME60i01DHCP
+PlusNet Technologies Ltd
+Polar Group ICT
+Power och Random T-Lane AB
+POWERTEL LIMITED
+Primus Telecommunications Canada
+ProKK SE
 Prosodie
 PSINet
+PT Comunicacoes S.A
+PT Comunicacoes S.A.
+PT INDONESIA COMNETS PLUS
+PT Sarana Insan Muda Selaras
+PT. Telecomunikasi Indonesia
 PUBLICIS-TECHNOLOGY
+Qimonda AG
+QoS Tecnologia e Sistemas Ltda.
+QSC AG
+Qwest Communications
+RapidSwitch Ltd
+RAYA Telecom
+Reasonnet IP Networks B.V.
+Redstation Limited
 REG.I.E.S
+Reliance Globalcom Limited
+Relians Ltd
 RENATER
+RESEARCH IN MOTION
+Research In Motion UK Limited
+Reseau des Universites et de la Recherche de la re
 Reseau Optique du Campus de la Doua
+Revlon
 Rigas Tikli, SIA
+Ringo, S.A
 RISC GROUP IT SOLUTIONS S.A.
 RMI SAS
+Road Runner
+Rogers Cable
+Romania Data Systems
+ROMTelecom S.A.
+root SA
+ROSNIIROS Russian Institute for Public Networks
+ROTHMANS INTERNATIONAL TOBACCO COMPANY
 RRM - Reseau de la Recherche a Marseille
 Rue du commerce SA
+S.I Building
+Safe Host SA
 Santrex Internet Services
 SARL MWSP
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
+SAS INSTITUTE
 SAS INTERPC
+SaskTel
+SaudiNet, Saudi Telecom Company
+SAVVIS Communications Corporation
+SBC Internet Services
+SC Fastweb SRL
+Scancom Ltd
 SCANSAFE
+Scarlet
 SCGS
+Schlumberger Limited
+Sentris Network LLC
+SERRANA TELECOMUNICACOES LTDA
+Servei de Telecomunicacions dAndorra
+Server Boost B.V.
+Serverius Holding B.V.
 Serveurcom SRL
+Service Multimedia
+Service Provider Corporation
+ServiHosting Networks S.L.
+SES ASTRA S.A.
 SFR
+Shaw Communications
+Shaw Telecom G.P.
+SIA Lattelecom
+SIA Nano IT
+SIDUS S.A.R.L.
+Siemens AG
+Silicon Beach Communications
+Silicon Systems
+SingleHop
+SingNet Pte Ltd
+SITA-Societe Internationale de Telecommunications
+SKYLOGIC S.P.A.
+Skynet
+SkyVision Holdings Ltd.
 SM Etude Devel Sces Reseaux Com
 Societe de developpement Informatique
 Societe Francaise du Radiotelephone -SFR S.A.
+Societe Nationale Des Telecommunications Du Senega
+SODETEL S.A.L.
+Softbank BB Corp
+SoftLayer Technologies
+SOGETEL
+SONATEL
+SOTELMA
 Southeastern Louisiana University
+SpaceDump Networks
 Spie SA
+SPM Telecom
+Sprint
+StarHub Cable Vision Ltd
+STARNET S.R.L
 STELLA NET
+Strato AG
+Suburban Telecom
+Sudatel Senegal
+Sun Chemical Corporation
+Sunrise Communications AG
+SuperNews
+Superonline International Online Information And C
+Swisscom (Schweiz) AG
+Swisscom (Schweiz) AG is a full service provider i
+Swisscom (Schweiz) AG is an LIR and ISP in Switzer
+Swisscom (Switzerland) Ltd
+SWISSCOM-EUROSPOT-FRANCE
+Switchward { Trostmann AG
+Sympatico
+T-Systems International GmbH
+Tango Mobile S.A.
+Tata Communications
 TATA Communications (Canada)ULC
+TE Data
+Technion Network
+Telconet S.A
+Tele Danmark
+Telebec
+TELEBUCARAMANGA S.A. E.S.P.
 TELECITYGROUP INTERNATIONAL LIMITED
+Telecom Italia
+Telecom Italia Mobile
+Telecom Italia Wireline Services
+TELECOM MALAGASY
+Telecom Plus Limited
+Telecom Plus Ltd
+Telefonaktiebolaget LM Ericsson
+Telefonica Data S.A.
+Telefonica de Espana
+Telefonica del Peru
+Telefonica International Wholesale Services, SL
+TELEFUN - SKYROCK
 Telehouse International Corporation of Europe Ltd
+Telekom Austria
+Telekom Srpske
 Telenet
 Telenet N.V.
+Teleseti Plus
+TELESP CELULAR S/A
+Telia Stofa A/S
+TeliaSonera AB
+TeliaSonera Finland Oyj
+Telkom SA Limited
+Telmex Colombia S.A.
+Telmex Peru S.A.
+Telmex Servicios Empresariales S.A.
 Teloise
+Telstra Internet
+Telus Communications
+The Ogilvy Group
+The Pennsylvania State University
+The Procter and Gamble Company
+THEPLANET.COM INTERNET SERVICES
+Three
+Tiscali France
+Tiscali SpA
+TMN - Telecomunicacoes Moveis Nacionais SA
+Togo Telecom
+TOT public company limited
+TPG Internet Pty Ltd.
 TRINAPS
 Trust Info SARL
+Turk Telekom
+Turksat Uydu Haberlesme ve Kablo TV Isletme A.S.
 TUTOR S.A.
+Tv Cable Promision S.A
+TV Cable S.A.
 Typhon
+UEM de Metz
+UK2 - Ltd
+Uni2
+Unilever PLC
+Uninet S.A. de C.V.
+Uniserve On Line
 United Nations Educational, Scientific, and Cultur
+United Nations Office at Geneva
+UNITEL SA
+Universitaet Duisburg-Essen
+Universite de Liege (Ulg)
 Universite de Limoges
 Universite de Nice Sophia Antipolis
+Universite de Strasbourg
 Universite Montpellier II
 Universite Pierre et Marie Curie
+UPC Magyarorszag Kft.
 USR-NETWORK
+UTEL Internet Services
+UUNET
 Veepee
+Verizon Business
 Verizon France SAS
+Verizon Hellas Telecommunications Single Member Li
+Verizon Internet Services
+Versatel Nederland B.V.
+ViaEuropa i Lund AB
 VIALIS - REGIE MUNICIPALE DE COLMAR
+Vialtus Solutions Ltd
+Video 2000
+Video2000 SA
+Videomar Rede Nordeste S/A
+Videotron Ltee
+Videotron Telecom Ltee
+VietNam Post and Telecom Corporation
+VIF Internet
 VILLE DE PARIS
+Virgin Media
+Visafone Communications Limited
+Visual Online S.A.
 VIVACTION - Groupe ITN France
+Vizada Networks AS
+VO Energies Multimedia SA
+Vodacom Mocambique - tudobom
+Vodafone Czech Republic a.s.
+VODAFONE ESPANA, S.A.U.
+Vodafone New Zealand
+Vodafone Omnitel N.V.
+Vodafone Portugal
+Vodafone Telecel, Comunicacoes Pessoais, SA
+Vodafone Telekomunikasyon A.S.
+VTX Services SA
 Washington State Dept. of State and Ind.
+WebRunner Limited
 Websense Hosted R{D Ltd.
 WIBOX SASU
 Wifirst S.A.S.
+WIN S.A.
 Woods Hole Oceanographic Institution
+Xfera Moviles SA / Yoigo
+XFone
+Ya.com Internet Factory
+Yesup Ecommerce Solutions
+Zain Communications Ltd
+ZON TV Cabo
+ZON TV Cabo Madeirense
