@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2012-06-26
+# @date 2013-01-13
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2013
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -84,7 +84,7 @@ sub init {
         $conf_ref = $conf->all();
         foreach my $name (
             'urly0',  'urlprinc',    'current-url', 'avatar-url',
-            'avaref', 'urlcocoland', 'urlav'
+            'avaref', 'urlcocoland', 'urlav',       'url_initio.js'
           )
         {
             $conf->isString($name);
@@ -117,6 +117,8 @@ sub init {
               . "Format excepted: 60, 60s, 60m, 24h or 15d";
         }
 
+        eval { $self->getInitioJSVar( $conf_ref->{'url_initio.js'} ); };
+
     }
 
     my $myport = 3000 + randum(1000);
@@ -138,6 +140,29 @@ sub init {
         'rechrech'        => 0,
         'isAvatarRequest' => $isAvatarRequest
     );
+}
+
+##@method void getInitioJSVar($url)
+#@brief Find the value of certain variables in the JavaScript code.
+#@param string $url "initio.js" URL (http://www.coco.fr/chat/initio.js)
+sub getInitioJSVar {
+    my ( $self, $url ) = @_;
+    my $response = $self->execute( 'GET', $url );
+    my $res = $response->content();
+    foreach my $line ( split /\n/, $res ) {
+
+        # var urly0="http://91.121.52.98";
+        if ( $line =~ m{^\s*var\s+urly0="(http://\d+\.\d+\.\d+\.\d+)"} ) {
+            my $urly0 = $1;
+            debug( 'urly0 was found: ' . $urly0 );
+            if ( $conf_ref->{'urly0'} ne $urly0 ) {
+                warning('The URL has changed from '
+                      . $conf_ref->{'urly0'} . ' to '
+                      . $urly0 );
+                $conf_ref->{'urly0'} = $urly0;
+            }
+        }
+    }
 }
 
 ##@method string getValue($name)
