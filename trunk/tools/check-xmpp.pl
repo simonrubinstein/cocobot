@@ -1,10 +1,10 @@
 #!/usr/bin/perl
-# @created 2012-12-31 
-# @date 2012-12-31
+# @created 2012-12-31
+# @date 2013-01-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2013
 # Id: $Id $
 # Revision: $Revision$
 # Date: $Date$
@@ -41,24 +41,43 @@ init();
 run();
 
 sub run {
-    my $cocoAlert = Cocoweb::Alert->instance();
-    my $enableAlerts_ref = $cocoAlert->getAlerts(); 
+    my $cocoAlert        = Cocoweb::Alert->instance();
+    my $enableAlerts_ref = $cocoAlert->getAlerts();
     foreach my $alert (@$enableAlerts_ref) {
         my $transport = $alert->getString('transport');
         next if $transport ne 'XMPP';
         print "$transport\n";
 
-    my $alertSender;
-        $alertSender = $cocoAlert->getTransport(
-                $alert->getString('transport'),
-                $alert->getString('recipient')
-                );
-    next if $@ or !defined $alertSender;
-    $alertSender->messageSend("Test");
+        my $alertSender;
+        $alertSender = $cocoAlert->getTransport( $alert->getString('transport'),
+            $alert->getString('recipient') );
+        next if $@ or !defined $alertSender;
+
+        #$alertSender->messageSend("Test");
+
+        my $timeout = 10;
+        eval {
+            local $SIG{ALRM} = sub { die "alarm\n" };
+            alarm $timeout;
+            info("Set Alarm");
+            $alertSender->messageSend("test");
+            alarm 0;
+        };
+        if ($@) {
+            if ( $@ eq "alarm\n" ) {
+                error(  'timeout after ' 
+                      . $timeout
+                      . ' seconds. ('
+                      . ref($alertSender)
+                      . ')' );
+            }
+            else {
+                error($@);
+            }
+        }
+
     }
 
-
-    
     info("The $Bin script was completed successfully.");
 }
 
@@ -83,7 +102,6 @@ Usage:
 ENDTXT
     exit 0;
 }
-
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
