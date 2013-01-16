@@ -24,7 +24,7 @@ http://cocobot.googlecode.com/svn/wiki/terminal.png
 
 Taper la commande suivante pour installer certains logiciels : 
 {{{
-sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl mysql-server
+sudo apt-get install subversion libconfig-general-perl libwww-perl libdbd-sqlite3-perl libnet-xmpp-perl mysql-server
 }}}
 
 À l'installation de MySQL, le programme d'installation demande un mot de passe pour l'utilisateur « root ». Dans cet exemple le mot de passe « toto » a été donné. 
@@ -146,5 +146,3 @@ Taper CTRL + C pour stopper la [http://fr.wikipedia.org/wiki/Tail_%28Unix%29 com
 cd ~/cocobot-read-only/scripts
 ./db-search.pl -O -s 2,7
 }}}
-
-
