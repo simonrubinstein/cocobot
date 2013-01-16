@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-12-09
-# @date 2012-12-31
+# @date 2013-01-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2013
 # Id: $Id$
 # Revision$
 # Date: $Date$
@@ -48,6 +48,7 @@ sub init {
     return $instance;
 }
 
+##@method arrayref getAlerts() 
 sub getAlerts {
     my ($self) = @_;
     my $enableAlerts_ref = $self->enableAlerts();
@@ -81,7 +82,7 @@ sub getAlerts {
         }
     }
     debug( 'number of alerts: ' . scalar(@$enableAlerts_ref) . '.' );
-    return  $enableAlerts_ref;
+    return $enableAlerts_ref;
 }
 
 ##@method void process($usersList)
@@ -89,7 +90,8 @@ sub getAlerts {
 sub process {
     my ( $self, $usersList ) = @_;
 
-    my $enableAlerts_ref = $self->getAlerts(); 
+    my $enableAlerts_ref = $self->getAlerts();
+
     #Checks if each user is connected match alarm conditions
     my $user_ref = $usersList->all();
     foreach my $id ( keys %$user_ref ) {
@@ -132,14 +134,32 @@ sub process {
                 $alert->getString('recipient')
             );
         };
-        if ($@ or !defined $alertSender) {
+        if ( $@ or !defined $alertSender ) {
             my $errStr = 'getTransport() was failed';
             $errStr .= ': ' . $@ if $@;
             error($errStr);
             next;
         }
-            
-        $alertSender->messageSend($body);
+
+        my $timeout = 10;
+        eval {
+            local $SIG{ALRM} = sub { die "alarm\n" };
+            alarm $timeout;
+            $alertSender->messageSend($body);
+            alarm 0;
+        };
+        if ($@) {
+            if ( $@ eq "alarm\n" ) {
+                error(  'timeout after ' 
+                      . $timeout
+                      . ' seconds. ('
+                      . ref($alertSender)
+                      . ')' );
+            }
+            else {
+                error($@);
+            }
+        }
 
     }
     $self->alarmCount($alarmCount);
