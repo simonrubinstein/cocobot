@@ -184,7 +184,7 @@ sub process1Int {
 
         }
 
-        if ( $bud = 148 ) {
+        if ( $bud == 148 ) {
             die error( 'This account has been permanently banned: '
                   . substr( $urlo, 14 ) );
         }
