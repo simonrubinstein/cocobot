@@ -1,9 +1,9 @@
 # @created 2012-03-29
-# @date 2012-12-03 
+# @date 2013-01-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2013
 # Id: $Id$
 # Revision$
 # Date: $Date$
@@ -183,6 +183,12 @@ sub process1Int {
                   . $user->myver() );
 
         }
+
+        if ( $bud = 148 ) {
+            die error( 'This account has been permanently banned: '
+                  . substr( $urlo, 14 ) );
+        }
+
     }
 
     if ( $olko == 92 ) {
