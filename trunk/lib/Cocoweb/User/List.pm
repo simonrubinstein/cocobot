@@ -1,9 +1,9 @@
 # @created 2012-03-19
-# @date 2012-12-16
+# @date 2013-01-18 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2013
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -370,8 +370,15 @@ sub deserialize {
         warning("$filename file was not found");
         return;
     }
-    my $user_ref = deserializeHash($filename);
-    $self->all($user_ref);
+    my $user_ref;
+    eval {
+        $user_ref = deserializeHash($filename);
+    };
+    if ($@) {
+        error($@);
+    } else {
+        $self->all($user_ref);
+    }
 }
 
 1
