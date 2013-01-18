@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-12-10
-# @date 2012-12-11
+# @date 2013-18-01 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2013
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -71,7 +71,8 @@ sub connectionProcess {
         'port'           => $self->port(),
         'componentname'  => $self->componentname(),
         'connectiontype' => $self->connectiontype(),
-        'tls'            => $self->tls()
+        'tls'            => $self->tls(),
+        'ssl_verify'     => 0x00
     );
 
     croak error( 'XMPP connection failed: ' . $! ) if !defined $status;
