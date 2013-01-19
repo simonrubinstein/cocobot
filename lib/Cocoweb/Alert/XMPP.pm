@@ -62,7 +62,7 @@ sub init {
 }
 
 sub process { 
-    my ( $self, $alarmCount, $users_ref ) = @_;
+    my ( $self, $bot, $alarmCount, $users_ref ) = @_;
     my $body  = "[PID: $$] New alert $alarmCount: ' . \n";
     my $count = 0;
     foreach my $user ( @$users_ref ) {
