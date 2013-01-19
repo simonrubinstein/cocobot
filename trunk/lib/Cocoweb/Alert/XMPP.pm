@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-10
-# @date 2013-18-01 
+# @date 2013-01-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -59,6 +59,43 @@ sub init {
         'resource'       => $conf->getString('resource'),
         'subject'        => $conf->getString('subject')
     );
+}
+
+sub process { 
+    my ( $self, $alarmCount, $users_ref ) = @_;
+    my $body  = "[PID: $$] New alert $alarmCount: ' . \n";
+    my $count = 0;
+    foreach my $user ( @$users_ref ) {
+        $count++;
+        $body .=
+            $user->mynickname() . '; ' . 'age: '
+          . $user->myage() . " " . 'sex: '
+          . $user->mysex() . " "
+          . $user->ISP() . "; "
+          . $user->citydio() . "; "
+          . $user->town() . "\n";
+    }
+    $body .= $count . ' nickname(s)' . "\n\n";
+    debug($body);
+    my $timeout = 10;
+    eval {
+       local $SIG{ALRM} = sub { die "alarm\n" };
+       alarm $timeout;
+       $self->messageSend($body);
+       alarm 0;
+    };
+    if ($@) {
+       if ( $@ eq "alarm\n" ) {
+          error(  'timeout after ' 
+                 . $timeout
+                 . ' seconds. ('
+                 . ref($self)
+                 . ')' );
+        }
+        else {
+            error($@);
+        }
+   }
 }
 
 sub connectionProcess {
