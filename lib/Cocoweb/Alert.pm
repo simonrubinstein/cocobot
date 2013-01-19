@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-09
-# @date 2013-01-16
+# @date 2013-01-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -94,6 +94,7 @@ sub process {
 
     #Checks if each user is connected match alarm conditions
     my $user_ref = $usersList->all();
+    my $numOfAlarmsMatching = 0;
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
         foreach my $alert (@$enableAlerts_ref) {
@@ -103,9 +104,11 @@ sub process {
                 next if !$check->($user);
                 $allAlert_ref->{'found'} = 1;
                 push @{ $allAlert_ref->{'users'} }, $user;
+                $numOfAlarmsMatching++;
             }
         }
     }
+    info('Number of alarms matching: ' . $numOfAlarmsMatching);
 
     #Sending alert messages if needed.
     my $alarmCount = $self->alarmCount();
@@ -113,20 +116,6 @@ sub process {
         my $allAlert_ref = $alert->all();
         next if !$allAlert_ref->{'found'};
         $alarmCount++;
-        my $body  = "[PID: $$] New alert $alarmCount: ' . \n";
-        my $count = 0;
-        foreach my $user ( @{ $allAlert_ref->{'users'} } ) {
-            $count++;
-            $body .=
-                $user->mynickname() . '; ' . 'age: '
-              . $user->myage() . " " . 'sex: '
-              . $user->mysex() . " "
-              . $user->ISP() . "; "
-              . $user->citydio() . "; "
-              . $user->town() . "\n";
-        }
-        $body .= $count . ' nickname(s)' . "\n\n";
-        debug($body);
         my $alertSender;
         eval {
             $alertSender = $self->getTransport(
@@ -140,27 +129,15 @@ sub process {
             error($errStr);
             next;
         }
-
-        my $timeout = 10;
         eval {
-            local $SIG{ALRM} = sub { die "alarm\n" };
-            alarm $timeout;
-            $alertSender->messageSend($body);
-            alarm 0;
+            $alertSender->process($alarmCount, $allAlert_ref->{'users'});
         };
         if ($@) {
-            if ( $@ eq "alarm\n" ) {
-                error(  'timeout after ' 
-                      . $timeout
-                      . ' seconds. ('
-                      . ref($alertSender)
-                      . ')' );
-            }
-            else {
-                error($@);
-            }
-        }
-
+            my $errStr = 'process() was failed';
+            $errStr .= ': ' . $@ if $@;
+            error($errStr);
+            next;
+        };
     }
     $self->alarmCount($alarmCount);
 }
