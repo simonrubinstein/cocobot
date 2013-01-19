@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief This script saves all users connected to the database
 #@created 2012-03-09
-#@date 2012-12-11
+#@date 2013-01-19
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -105,7 +105,7 @@ sub checkUsers {
     $usersList->purgeUsersUnseen();
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
-    alarmProcess($usersList);
+    alarmProcess($bot, $usersList);
 
     return;
     my $user_ref = $usersList->all();
@@ -215,13 +215,13 @@ sub checkUsers {
 }
 
 sub alarmProcess {
-    my ($usersList) = @_;
+    my ( $bot, $usersList ) = @_;
     return if !$isAlarmEnabled;
     info('Alarms are enabled!');
     eval {
         require 'Cocoweb/Alert.pm';
         my $alert = Cocoweb::Alert->instance();
-        $alert->process($usersList);
+        $alert->process( $bot, $usersList );
     };
     error($@) if $@;
 }

@@ -88,7 +88,7 @@ sub getAlerts {
 ##@method void process($usersList)
 #param object $usersList A Cocoweb::User::List object
 sub process {
-    my ( $self, $usersList ) = @_;
+    my ( $self, $bot, $usersList ) = @_;
 
     my $enableAlerts_ref = $self->getAlerts();
 
@@ -130,7 +130,7 @@ sub process {
             next;
         }
         eval {
-            $alertSender->process($alarmCount, $allAlert_ref->{'users'});
+            $alertSender->process($bot, $alarmCount, $allAlert_ref->{'users'});
         };
         if ($@) {
             my $errStr = 'process() was failed';
