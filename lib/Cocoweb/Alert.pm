@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-09
-# @date 2013-01-19
+# @date 2013-01-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -48,7 +48,7 @@ sub init {
     return $instance;
 }
 
-##@method arrayref getAlerts() 
+##@method arrayref getAlerts()
 sub getAlerts {
     my ($self) = @_;
     my $enableAlerts_ref = $self->enableAlerts();
@@ -93,7 +93,7 @@ sub process {
     my $enableAlerts_ref = $self->getAlerts();
 
     #Checks if each user is connected match alarm conditions
-    my $user_ref = $usersList->all();
+    my $user_ref            = $usersList->all();
     my $numOfAlarmsMatching = 0;
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
@@ -108,7 +108,7 @@ sub process {
             }
         }
     }
-    info('Number of alarms matching: ' . $numOfAlarmsMatching);
+    info( 'Number of alarms matching: ' . $numOfAlarmsMatching );
 
     #Sending alert messages if needed.
     my $alarmCount = $self->alarmCount();
@@ -130,14 +130,15 @@ sub process {
             next;
         }
         eval {
-            $alertSender->process($bot, $alarmCount, $allAlert_ref->{'users'});
+            $alertSender->process( $bot, $alarmCount,
+                $allAlert_ref->{'users'} );
         };
         if ($@) {
             my $errStr = 'process() was failed';
             $errStr .= ': ' . $@ if $@;
             error($errStr);
             next;
-        };
+        }
     }
     $self->alarmCount($alarmCount);
 }

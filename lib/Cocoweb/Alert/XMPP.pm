@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-10
-# @date 2013-01-19
+# @date 2013-01-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -35,8 +35,8 @@ use Cocoweb;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes(
-    'name',           'hostname',   'port',     'componentname',
-    'connectiontype', 'tls',        'username', 'password',
+    'name',           'hostname', 'port',     'componentname',
+    'connectiontype', 'tls',      'username', 'password',
     'to',             'resource', 'subject'
 );
 
@@ -61,11 +61,16 @@ sub init {
     );
 }
 
-sub process { 
+##@method void process($bot, $alarmCount, $users_ref)
+#@brief Sends messages to users.
+#@param object $bot A Cocoweb::Bot object
+#@param integer $alarmCount The alarm number from 1 to n
+#@param arrayref $users_ref List of users to process
+sub process {
     my ( $self, $bot, $alarmCount, $users_ref ) = @_;
     my $body  = "[PID: $$] New alert $alarmCount: ' . \n";
     my $count = 0;
-    foreach my $user ( @$users_ref ) {
+    foreach my $user (@$users_ref) {
         $count++;
         $body .=
             $user->mynickname() . '; ' . 'age: '
@@ -79,30 +84,32 @@ sub process {
     debug($body);
     my $timeout = 10;
     eval {
-       local $SIG{ALRM} = sub { die "alarm\n" };
-       alarm $timeout;
-       $self->messageSend($body);
-       alarm 0;
+        local $SIG{ALRM} = sub { die "alarm\n" };
+        alarm $timeout;
+        $self->messageSend($body);
+        alarm 0;
     };
     if ($@) {
-       if ( $@ eq "alarm\n" ) {
-          error(  'timeout after ' 
-                 . $timeout
-                 . ' seconds. ('
-                 . ref($self)
-                 . ')' );
+        if ( $@ eq "alarm\n" ) {
+            error(  'timeout after ' 
+                  . $timeout
+                  . ' seconds. ('
+                  . ref($self)
+                  . ')' );
         }
         else {
             error($@);
         }
-   }
+    }
 }
 
+##@method void connectionProcess()
+#@brief Opens a connection to the server
 sub connectionProcess {
     my ($self) = @_;
     my $connection = new Net::XMPP::Client();
 
-    debug("Connect to " . $self->hostname());
+    debug( "Connect to " . $self->hostname() );
     my $status = $connection->Connect(
         'hostname'       => $self->hostname(),
         'port'           => $self->port(),
@@ -119,7 +126,7 @@ sub connectionProcess {
     $connection->{STREAM}->{SIDS}->{$sid}->{hostname} = $self->componentname();
 
     # authenticate
-    debug("Authenticate " . $self->username());
+    debug( "Authenticate " . $self->username() );
     my @result = $connection->AuthSend(
         'username' => $self->username(),
         'password' => $self->password(),
@@ -134,6 +141,7 @@ sub connectionProcess {
     return $connection;
 }
 
+##@method void messageSend($body)
 sub messageSend {
     my ( $self, $body ) = @_;
     my $connection = $self->connectionProcess();

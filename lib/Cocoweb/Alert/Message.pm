@@ -1,6 +1,6 @@
 # @brief
-# @created 2013-01-19 
-# @date 2013-01-19
+# @created 2013-01-19
+# @date 2013-01-20
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,7 +34,7 @@ use Net::XMPP;
 use Cocoweb;
 use base 'Cocoweb::Object';
 
-__PACKAGE__->attributes('name', 'write');
+__PACKAGE__->attributes( 'name', 'write' );
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -42,28 +42,26 @@ sub init {
     my ( $self, %args ) = @_;
     my $conf = $args{'conf'};
     $self->attributes_defaults(
-        'name'           => $conf->getString('name'),
-        'write'          => $conf->getArray('write')
+        'name'  => $conf->getString('name'),
+        'write' => $conf->getArray('write')
     );
 }
 
-sub process { 
+##@method void process($bot, $alarmCount, $users_ref)
+#@brief Sends messages to users.
+#@param object $bot A Cocoweb::Bot object
+#@param integer $alarmCount The alarm number from 1 to n
+#@param arrayref $users_ref List of users to process
+sub process {
     my ( $self, $bot, $alarmCount, $users_ref ) = @_;
-    foreach my $user ( @$users_ref ) {
+    foreach my $user (@$users_ref) {
         $user->messageSentTime(0);
         my $write_ref = $self->write();
         foreach my $write (@$write_ref) {
             $bot->requestWriteMessage( $user, $write );
         }
-
     }
-
 }
 
-
-
-
 1;
- 
-
 
