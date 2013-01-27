@@ -51,6 +51,7 @@ Atos Worldline IPv4 Subnet
 AT{T Global Network Services Europe
 AT{T Global Network Services, LLC
 AT{T Mobility LLC
+AT{T Services
 Auvea Ingenierie
 AVAYA
 AXA-TECH
@@ -86,6 +87,7 @@ BSE Software GmbH
 Bull HN Information Systems
 Butovo Internet Club
 C@P CONNEXION
+CABEX-INFORMATION-SYSTEM
 Cable { Wireless Telecommunication Services GmbH
 Cable { Wireless UK P.U.C.
 Cablecom GmbH
@@ -197,6 +199,7 @@ Easyhost Network
 Easynet
 easynet DV GmbH
 Ecatel LTD
+Ecole Centrale Paris
 Ecole nationale superieure des telecommunications
 Ecole Normale Superieure
 Ecole Normale Superieure de Cachan
@@ -224,6 +227,7 @@ Eonix Corporation
 EPI-PROCOTECH
 EPITA Ecole Pour lInformatique et
 EPM Telecomunicaciones S.A. E.S.P.
+Equant
 Essent Kabelcom B.V. B.V.
 ESTVIDEOCOMMUNICATION cable { broadband operator
 ETB - Colombia
@@ -295,6 +299,7 @@ Hurricane Electric
 Iberbanda S.A.
 iBrowse SARL
 IFREMER Institut Francais de Recherche pour Exploi
+Iguane Studio
 iiNet Limited
 IKATEL SA
 Ikoula Net SAS
@@ -383,6 +388,7 @@ Ltd Teleglobus
 LTT inc. Lightstream Transmission { Telecom Inc
 LuXcommunications S.A.
 MAC Telecom
+MACS-THD
 MAIRIE
 MANA Internet Service Provider
 MANA Internet Service Provider in French Polynesia
@@ -580,6 +586,7 @@ Silicon Systems
 SingleHop
 SingNet Pte Ltd
 SITA-Societe Internationale de Telecommunications
+site principal
 SKYLOGIC S.P.A.
 Skynet
 SkyVision Holdings Ltd.
@@ -663,9 +670,11 @@ Three
 Tiscali France
 Tiscali SpA
 TMN - Telecomunicacoes Moveis Nacionais SA
+TMSP (ex INT-Evry)
 Togo Telecom
 TOT public company limited
 TPG Internet Pty Ltd.
+Trade company.
 TRINAPS
 Trust Info SARL
 Turk Telekom
