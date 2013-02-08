@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2013-01-13
+# @date 2013-02-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -121,7 +121,7 @@ sub init {
 
     }
 
-    my $myport = 3000 + randum(1000);
+    my $myport = 3000 + randum(10);
 
     $self->attributes_defaults(
         'agent'     => $agent_ref,
