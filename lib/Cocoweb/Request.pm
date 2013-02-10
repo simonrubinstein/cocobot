@@ -121,7 +121,8 @@ sub init {
 
     }
 
-    my $myport = 3000 + randum(10);
+    #my $myport = 3000 + randum(10);
+    my $myport = 80;
 
     $self->attributes_defaults(
         'agent'     => $agent_ref,
