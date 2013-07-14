@@ -388,7 +388,8 @@ sub initUser {
     $user_ref->{'roulix'}   = 0;
     $user_ref->{'sauvy'}    = '';
     $user_ref->{'cookies'}  = {};
-    chang( $user_ref, 3000 + randum(1000) );
+    #chang( $user_ref, 3000 + randum(1000) );
+    chang( $user_ref, 80 );
 }
 
 ## @method void agir($user_ref, $txt1);
