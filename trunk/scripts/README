@@ -7,3 +7,7 @@
 
 
 */1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 816356817 -p XYZPAHPFLFRIEBWDNDZD -v -d -D -x 38 -w
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 849006760 -p XYYKYPPCTFDORRTYJAKV -v -d -D -x 38 -w
+
+#849006760 XYYKYPPCTFDORRTYJAKV
+
