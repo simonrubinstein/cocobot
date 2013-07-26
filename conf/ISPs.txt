@@ -1,3 +1,4 @@
+
 1{1 Internet
 2degrees Mobile Limited
 3BB Broadband
@@ -72,6 +73,7 @@ BELNET
 Benin Telecom SA
 Bezeq International-Ltd
 Biotechnology And Biological Science Research Coun
+Birmingham Heartlands Hospital NHS Trust
 BLUEGIX
 Bluewin
 Bordeaux Ecole de Management
@@ -97,6 +99,7 @@ Cablevision SA de CV
 Cabovisao, televisao por cabo, SA
 CAFE Informatique et telecommunications
 Cambridge Entrepreneurial Network
+Canal Plus
 CANL
 CANL DYNAMIC IP
 Canl SAS
@@ -109,6 +112,7 @@ Celeste
 Cell-C (Pty) Ltd
 Centre de Ressources Informatique (CRI)
 Centre Interuniversitaire de Calcul de Toulouse
+CERN dynamic addresses
 CERTIREF
 Cesarius Media GmbH IPNETZ
 Cesser Informatica y Organizacion, S.L
@@ -141,11 +145,15 @@ Com Hem AB
 Comcast Cable
 ComIT, Institute of Molecular and Cell Biology
 Commissariat a lEnergie Atomique
+Communaute D agglomeration de Reims
 Communaute dAgglomeration de Montpellier
 Communication Solutions Ltd.
 Communications Networking Services
+Compagnie Generale de Sante
 COMPANHIA DE TELECOMUNICACOES DO BRASIL CENTRAL
+COMPLETEL SAS
 COMPLETEL SAS France
+Computer Beheer B.V.
 Connected
 Connet-ro networks
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
@@ -155,6 +163,7 @@ Conservatoire National des Arts et Metiers - CNAM
 COOLHOUSING s.r.o.
 Coop Tel
 Cosmonova LLC
+Covage Services
 CPRO Informatique SAS
 Creolink Communications
 Critical Case s.r.l
@@ -162,6 +171,7 @@ Cronyx Plus Ltd.
 Cybercity A/S
 Cybernet ISP SPRL
 Cyberverse
+DailyMotion S.A.
 Danish Broadband a/s
 DARS Telecom
 Data communication and international
@@ -179,7 +189,9 @@ Dery Telecom
 Destiny N.V
 Deutsche Telekom AG
 DFI Service SA
+DhakaCom Limited
 DHCP pool for dsl clients
+Diabolocom SAS
 Diademys SAS
 Digicel AFG
 Digicube sas
@@ -187,6 +199,7 @@ Digitalas Ekonomikas Attistibas Centrs
 Digiweb ltd
 DIMEDIA LLC
 Dinamics Srl
+Direction Generale de Impots
 DISTRIBUTEL COMMUNICATIONS
 Djibouti Telecom
 DJIBOUTI TELECOM S.A.
@@ -228,6 +241,7 @@ EPI-PROCOTECH
 EPITA Ecole Pour lInformatique et
 EPM Telecomunicaciones S.A. E.S.P.
 Equant
+Equation SA
 Essent Kabelcom B.V. B.V.
 ESTVIDEOCOMMUNICATION cable { broadband operator
 ETB - Colombia
@@ -284,6 +298,7 @@ Guyana Telephone { Telegraph Co.
 H.R.Net SARL
 Hager Electro GmbH, Blieskastel
 Haut-Rhin Telecom
+Havas Informatique
 Headquarters, USAISC
 Herault Telecom
 Hetzner Online AG
@@ -312,6 +327,7 @@ Init Seven AG
 Initials Online
 INOLIA
 Institut National de la Recherche Agronomique
+Institut National de Physique Nucleaire et de Phys
 Institut National de Recherche en Informatique et
 Institut National de Recherche sur les Transports
 Institut National de Recherches Agronomiques
@@ -324,6 +340,7 @@ intergenia AG
 Intermediasud
 Internap Network Services Corporation
 InterNAP Network Services U.K. Limited
+Internet Service
 Internet service provider in Mauritius.
 Internet Services
 Interoute Communications Limited
@@ -369,9 +386,12 @@ Kujtesa Net Sh.p.k.
 Kuwait Industrial Bank KSC
 kwaoo.com EURL
 Lanet Network Ltd.
+LASER CONTACT
 LeaseWeb B.V.
+LEONIX TELECOM EURL
 LETS GOWEX, S.A.
 Level 3 Communications
+LIAZO SARL
 LIBANTELECOM
 Libello ADSL
 Liberia Telecommunications Corporation (LIBTELCO)
@@ -384,6 +404,7 @@ LLC Synterra-Ug
 LLC Tehnomarket
 Local Registry / ISP
 Los Angeles County, Department of Health Services
+Lost Oasis SARL
 Ltd Teleglobus
 LTT inc. Lightstream Transmission { Telecom Inc
 LuXcommunications S.A.
@@ -411,6 +432,7 @@ METANET AG, Switzerland
 Meteo-France
 Metroset Ltd.
 MI INFRASTRUCTURE
+Micro Logic Systems
 Mir Telematiki Ltd
 MNI Telecom S.A.
 MobileOne Ltd
@@ -442,6 +464,7 @@ Neuf Cegetel
 New Technologies Group N.V.
 NewCom International
 Newel Informatique
+NFrance Conseil
 NIB (National Internet Backbone)
 Nigerian Telecommunications Ltd
 Nine Internet Solutions AG
@@ -450,6 +473,7 @@ Nobis Technology Group, LLC
 Nomotech
 NordNet
 Nortel Networks
+North Carolina State University
 NTT America
 NTT Europe Limited
 null
@@ -457,6 +481,7 @@ Numeo SA
 Nuovo Pignone LAN
 Observatoire de Paris
 OC3 Networks { Web Solutions, LLC
+Octopuce
 Office des Poste et Telecommunications (OPT)
 Office des Postes et Telecommunications
 OFFRATEL
@@ -478,6 +503,7 @@ Opal Telecom
 OpenBusiness
 OpenIP
 Opera Software ASA
+OPTILIAN, FR
 OPTIMITEL SA
 Optimum Online
 Optimus, Telecomunicagues S.A.
@@ -489,9 +515,11 @@ Orange Home UK
 Orange Madagascar
 Orange Mali SA
 Organization of the Petroleum Exporting Countries
+OTEnet S.A.
 Outremer Telecom
 Ovh Systems
 Ownit AB
+Ozone
 P.J.Safarik University in Kosice
 Paris
 Pars Online
@@ -545,6 +573,7 @@ root SA
 ROSNIIROS Russian Institute for Public Networks
 ROTHMANS INTERNATIONAL TOBACCO COMPANY
 RRM - Reseau de la Recherche a Marseille
+RTVC-Stiring
 Rue du commerce SA
 S.I Building
 Safe Host SA
@@ -556,6 +585,7 @@ SAS INSTITUTE
 SAS INTERPC
 SaskTel
 SaudiNet, Saudi Telecom Company
+SAVEHO SARL
 SAVVIS Communications Corporation
 SBC Internet Services
 SC Fastweb SRL
@@ -564,7 +594,9 @@ SCANSAFE
 Scarlet
 SCGS
 Schlumberger Limited
+Schneider Automation
 Sentris Network LLC
+SERES SA
 SERRANA TELECOMUNICACOES LTDA
 Servei de Telecomunicacions dAndorra
 Server Boost B.V.
