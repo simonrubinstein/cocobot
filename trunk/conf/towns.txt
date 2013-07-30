@@ -8837,10 +8837,10 @@ RE- Bras-panon
 RE- Entre-deux
 RE- Etang-sale
 RE- La Montagne
-RE- Le Port
 RE- La Possession
 RE- La Riviere
 RE- La Saline
+RE- Le Port
 RE- Le Tampon
 RE- Les Avirons
 RE- Les Trois-bassins
