@@ -5,6 +5,7 @@
 A2Z Solutions
 AB CONNECT
 ACCENTURE
+ADD-ON MULTIMEDIA
 Adenis SARL
 Advanced Info Service PCL
 Aeroport de Paris Telecom
@@ -87,6 +88,7 @@ Broadcasting Center Europe (an RTL Group Company)
 Brutele SC
 BSE Software GmbH
 Bull HN Information Systems
+Bull SA
 Butovo Internet Club
 C@P CONNEXION
 CABEX-INFORMATION-SYSTEM
@@ -300,6 +302,7 @@ Hager Electro GmbH, Blieskastel
 Haut-Rhin Telecom
 Havas Informatique
 Headquarters, USAISC
+HELIANTIS SAS
 Herault Telecom
 Hetzner Online AG
 Hewlett-Packard Company
@@ -456,6 +459,7 @@ NetCologne GmbH
 NetDirect
 Netelligent Hosting Services
 Netia SA
+Netmakers
 netplus.ch SA
 NETsite A/S
 NetVision
@@ -482,6 +486,7 @@ Nuovo Pignone LAN
 Observatoire de Paris
 OC3 Networks { Web Solutions, LLC
 Octopuce
+OECD - Organisation for Economical Co-Operation an
 Office des Poste et Telecommunications (OPT)
 Office des Postes et Telecommunications
 OFFRATEL
@@ -619,6 +624,7 @@ SingleHop
 SingNet Pte Ltd
 SITA-Societe Internationale de Telecommunications
 site principal
+Sivit by Nerim servers subnet
 SKYLOGIC S.P.A.
 Skynet
 SkyVision Holdings Ltd.
@@ -694,6 +700,7 @@ Telmex Servicios Empresariales S.A.
 Teloise
 Telstra Internet
 Telus Communications
+THE BOEING COMPANY
 The Ogilvy Group
 The Pennsylvania State University
 The Procter and Gamble Company
@@ -744,6 +751,7 @@ Versatel Nederland B.V.
 ViaEuropa i Lund AB
 VIALIS - REGIE MUNICIPALE DE COLMAR
 Vialtus Solutions Ltd
+VIAPASS SAS
 Video 2000
 Video2000 SA
 Videomar Rede Nordeste S/A

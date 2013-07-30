@@ -1,13 +1,10 @@
 
-
 ./list-users.pl -s W -y 29
 
 
-./save-logged-user-in-database.pl -g -s M -u AlwaysThere:AnyLove:BarbeDure:BeamMeUp:BetterDays:BoudoirSecret:BurningHot:Cactus:ChouFarceur:ComeOnGirl:DeliverMe:DejaVu:FlyAway:FollowYourHeart:FoundAReason:IAmAMan:IAmBlessed:IWannaKnow:JustifyMyLove:KnockMeAKiss:LadyKillers:LangueDeChat:LoveSensation:NoWorries:OuEstMaTete:OnlyForGirls:OhYeah:PenniesOfHeaven:MindFluid:MisterB:MisterMagoo:MisterSwing:NuyoricanSoul:PeaceAndNoise:RoiDePique:RunAway:RomeoKnight:SayThatYouLoveMe:ShootMeWithLove:SoSweetly:StandOnTheWord:StayWithMe:SugarBeets:TheBigBadWolf:TheLookOfLove:WhatAboutMyLove:ZeBigBoss -a 737373340 -p XYOIFDZPUMHXJMXUVFPR -v -d -D -x 38 -w -y 89 
-
-
+# Exemples de ligne à insérer dans la table de configuration crontab
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -g -s M -u AlwaysThere:AnyLove:BarbeDure:BeamMeUp:BetterDays:BoudoirSecret:BurningHot:Cactus:ChouFarceur:ComeOnGirl:DeliverMe:DejaVu:FlyAway:FollowYourHeart:FoundAReason:IAmAMan:IAmBlessed:IWannaKnow:JustifyMyLove:KnockMeAKiss:LadyKillers:LangueDeChat:LoveSensation:NoWorries:OuEstMaTete:OnlyForGirls:OhYeah:PenniesOfHeaven:MindFluid:MisterB:MisterMagoo:MisterSwing:NuyoricanSoul:PeaceAndNoise:RoiDePique:RunAway:RomeoKnight:SayThatYouLoveMe:ShootMeWithLove:SoSweetly:StandOnTheWord:StayWithMe:SugarBeets:TheBigBadWolf:TheLookOfLove:WhatAboutMyLove:ZeBigBoss -a 737373340 -p XYOIFDZPUMHXJMXUVFPR -v -d -D -x 38 -w -y 89 
 */1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 816356817 -p XYZPAHPFLFRIEBWDNDZD -v -d -D -x 38 -w
 */1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 849006760 -p XYYKYPPCTFDORRTYJAKV -v -d -D -x 38 -w
-
-#849006760 XYYKYPPCTFDORRTYJAKV
-
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 849006760 -p XYYKYPPCTFDORRTYJAKV -v -d -D -x 38 -w -A
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 849006760 -p XYYKYPPCTFDORRTYJAKV -v -d -D -x 38 -w -A -u KwisatzHaderach -y 89
