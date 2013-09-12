@@ -35,6 +35,7 @@ AMX Argentina S.A.
 Angola Telecom
 Anvia Oyj
 AOL-France, On-line service
+APPLI NOT
 Arcor AG
 ARESCOP
 Ariege Telecom
@@ -44,6 +45,7 @@ ARTMOTION n.p.sh.
 Assigned for dynamic DHCP pool for RINGO S.A.s cu
 Assigned for servers and network infrastructure fo
 Assistance Publique-Hopitaux de Paris
+Association KAZAR
 Association ORT France
 ASTRIUM SAS
 Atlantic Broadband
@@ -54,6 +56,7 @@ AT{T Global Network Services Europe
 AT{T Global Network Services, LLC
 AT{T Mobility LLC
 AT{T Services
+AUFEMININ.COM
 Auvea Ingenierie
 AVAYA
 AXA-TECH
@@ -87,6 +90,7 @@ British Telecommunications
 Broadcasting Center Europe (an RTL Group Company)
 Brutele SC
 BSE Software GmbH
+BT France
 Bull HN Information Systems
 Bull SA
 Butovo Internet Club
@@ -105,6 +109,7 @@ Canal Plus
 CANL
 CANL DYNAMIC IP
 Canl SAS
+Cap Sesa Regions Ouest
 Capaix Connectic
 Carphone Warehouse Broadband Services
 Casema B.V.
@@ -112,13 +117,16 @@ Caucasus Online LLC
 CEGETEL LA REUNION
 Celeste
 Cell-C (Pty) Ltd
+Centre de Calcul du CNRS
 Centre de Ressources Informatique (CRI)
 Centre Interuniversitaire de Calcul de Toulouse
+Centre National de la Recherche Scientifique
 CERN dynamic addresses
 CERTIREF
 Cesarius Media GmbH IPNETZ
 Cesser Informatica y Organizacion, S.L
 CEVA LOGISTICS
+Chambre de Commerce et dIndustrie Nice Cote dAzu
 Chaos Computer Club Event Network provided by Chao
 Charter Communications
 Chello Broadband GmbH
@@ -159,6 +167,7 @@ Computer Beheer B.V.
 Connected
 Connet-ro networks
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
+Conseil General des Bouches du Rhone
 Conseils et Systemes Informatiques
 CONSEILS { SYSTEMES INFORMATIQUES
 Conservatoire National des Arts et Metiers - CNAM
@@ -213,7 +222,9 @@ E-TERA
 Easyhost Network
 Easynet
 easynet DV GmbH
+EASYNET-ITALIA-SPA
 Ecatel LTD
+Ecole Centrale de Lyon
 Ecole Centrale Paris
 Ecole nationale superieure des telecommunications
 Ecole Normale Superieure
@@ -245,6 +256,7 @@ EPM Telecomunicaciones S.A. E.S.P.
 Equant
 Equation SA
 Essent Kabelcom B.V. B.V.
+Essilor International
 ESTVIDEOCOMMUNICATION cable { broadband operator
 ETB - Colombia
 Etihad Atheeb Telecom Company
@@ -259,15 +271,19 @@ European Space Agency (ESA)
 EuroTransit GmbH
 Euskaltel S.A.
 Eutelia S.p.A.
+Evangelische Landeskirche Baden-Wuerttemberg
 EVSL
 Exatel S.A.
 Fast Telecommunications Company W.L.L.
 Fastweb
 FDCservers.net
 Financial Art S.A.
+Fingerprint Technologies
 Finsecur SA
 FLORIDA CABLE
 Foremost Technologies Corporation
+FR-EUROPSTAT
+FR-EUROSPORT
 FRANCE CITEVISION
 France Telecom
 Free SAS
@@ -278,7 +294,9 @@ GANDI
 Gateway Communications
 Gateway Telecoms Integrated Services Limited
 GCN/DCN Networks
+GCS Reseau Telesante Bretagne
 GemPlus
+GENERIX S.A.
 GGA Maur
 Ghana Telecom
 Gie Gitoyen
@@ -325,10 +343,12 @@ IMAG et UJF
 Inconet Data Management SAL
 incubatec GmbH - Srl
 INFOR IT SP. z o.o.
+INFOSAT ICPS
 Infotechna Ltd.
 Init Seven AG
 Initials Online
 INOLIA
+Institut de Recherche et Coordination Acoustique/M
 Institut National de la Recherche Agronomique
 Institut National de Physique Nucleaire et de Phys
 Institut National de Recherche en Informatique et
@@ -540,6 +560,7 @@ Polar Group ICT
 Power och Random T-Lane AB
 POWERTEL LIMITED
 Primus Telecommunications Canada
+Producmedia,S.L.U.
 ProKK SE
 Prosodie
 PSINet
@@ -556,6 +577,7 @@ Qwest Communications
 RapidSwitch Ltd
 RAYA Telecom
 Reasonnet IP Networks B.V.
+Recherche genealogique
 Redstation Limited
 REG.I.E.S
 Reliance Globalcom Limited
@@ -565,7 +587,9 @@ RESEARCH IN MOTION
 Research In Motion UK Limited
 Reseau des Universites et de la Recherche de la re
 Reseau Optique du Campus de la Doua
+reseaux IMAG de Viallet
 Revlon
+RGnet, LLC
 Rigas Tikli, SIA
 Ringo, S.A
 RISC GROUP IT SOLUTIONS S.A.
@@ -578,6 +602,7 @@ root SA
 ROSNIIROS Russian Institute for Public Networks
 ROTHMANS INTERNATIONAL TOBACCO COMPANY
 RRM - Reseau de la Recherche a Marseille
+RTLNET
 RTVC-Stiring
 Rue du commerce SA
 S.I Building
@@ -609,8 +634,10 @@ Serverius Holding B.V.
 Serveurcom SRL
 Service Multimedia
 Service Provider Corporation
+SERVICES ET MANAGEMENT HOTELIER NAZARA
 ServiHosting Networks S.L.
 SES ASTRA S.A.
+Sewan Communications S.A.S.
 SFR
 Shaw Communications
 Shaw Telecom G.P.
@@ -714,6 +741,7 @@ Togo Telecom
 TOT public company limited
 TPG Internet Pty Ltd.
 Trade company.
+TREND MICRO INCORPORATED
 TRINAPS
 Trust Info SARL
 Turk Telekom
@@ -732,12 +760,14 @@ United Nations Educational, Scientific, and Cultur
 United Nations Office at Geneva
 UNITEL SA
 Universitaet Duisburg-Essen
+Universite de Bordeaux, Departement TIC
 Universite de Liege (Ulg)
 Universite de Limoges
 Universite de Nice Sophia Antipolis
 Universite de Strasbourg
 Universite Montpellier II
 Universite Pierre et Marie Curie
+University of Maryland
 UPC Magyarorszag Kft.
 USR-NETWORK
 UTEL Internet Services
