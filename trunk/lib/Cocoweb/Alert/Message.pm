@@ -1,6 +1,6 @@
 # @brief
 # @created 2013-01-19
-# @date 2013-01-20
+# @date 2013-09-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -58,7 +58,15 @@ sub process {
         $user->messageSentTime(0);
         my $write_ref = $self->write();
         foreach my $write (@$write_ref) {
-            $bot->requestWriteMessage( $user, $write );
+            my @strings = split( /\|/, $write );
+            my $str;
+            if ( scalar(@strings) == 1 ) {
+                $str = $strings[0];
+            }
+            else {
+                $str = $strings[ randum( scalar(@strings) ) ];
+            }
+            $bot->requestWriteMessage( $user, $str );
         }
     }
 }
