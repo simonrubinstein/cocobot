@@ -14,6 +14,7 @@ FR- Ballancourt-sur-essonne
 FR- Baulne
 FR- Beuvillers
 FR- Bievres
+FR- Boigneville
 FR- Boissy-le-cutte
 FR- Boissy-le-sec
 FR- Boissy-sous-saint-yon
@@ -70,6 +71,7 @@ FR- La Ferte-alais
 FR- La Norville
 FR- La Ville-du-bois
 FR- Lardy
+FR- Le Coudray-montceaux
 FR- Le Perray
 FR- Le Plessis-pate
 FR- Les Molieres
@@ -161,6 +163,7 @@ FR- Gagny
 FR- Garches
 FR- Gennevillers
 FR- Gennevilliers
+FR- Issy
 FR- Issy-les-moulineaux
 FR- La Defense
 FR- La Garenne-colombes
@@ -290,6 +293,7 @@ FR- Vitry-sur-seine
 # 95: Val-d-Oise
 FR- Aincourt
 FR- Argenteuil
+FR- Arnouville
 FR- Arnouville-les-gonesse
 FR- Asnieres
 FR- Asnieres-sur-oise
@@ -300,6 +304,7 @@ FR- Baillet
 FR- Baillet-en-france
 FR- Beauchamp
 FR- Beaumont-sur-oise
+FR- Belloy-en-france
 FR- Bernes-sur-oise
 FR- Bessancourt
 FR- Bezons
@@ -316,6 +321,7 @@ FR- Champagne-sur-oise
 FR- Chars
 FR- Chaumontel
 FR- Commeny
+FR- Condecourt
 FR- Cormeilles-en-vexin
 FR- Courdimanche
 FR- Deuil-la-barre
@@ -345,7 +351,9 @@ FR- Jouy-le-moutier
 FR- L isle-adam
 FR- La Frette
 FR- Labbeville
+FR- Le Heaulme
 FR- Le Perchay
+FR- Le Plessis-bouchard
 FR- Le Thillay
 FR- Livilliers
 FR- Louvres
@@ -419,6 +427,7 @@ FR- Balloy
 FR- Barbizon
 FR- Bellot
 FR- Beton-bazoches
+FR- Bezalles
 FR- Bois-le-roi
 FR- Boissettes
 FR- Boissise-la-bertrand
@@ -427,8 +436,10 @@ FR- Boissy-le-chatel
 FR- Bombon
 FR- Boos
 FR- Bougligny
+FR- Boulancourt
 FR- Bouleurs
 FR- Bourron-marlotte
+FR- Bransles
 FR- Bray-sur-seine
 FR- Brie-comte-robert
 FR- Brou-sur-chantereine
@@ -588,6 +599,7 @@ FR- Orly-sur-morin
 FR- Othis
 FR- Ozoir-la-ferriere
 FR- Penchard
+FR- Pezarches
 FR- Pommeuse
 FR- Pontault
 FR- Pontcarre
@@ -597,6 +609,7 @@ FR- Presles-en-brie
 FR- Provins
 FR- Quincy-voisins
 FR- Rampillon
+FR- Reau
 FR- Rebais
 FR- Recloses
 FR- Roissy-en-brie
@@ -605,8 +618,10 @@ FR- Rubelles
 FR- Saacy-sur-marne
 FR- Sablonnieres
 FR- Saint-cyr-sur-morin
+FR- Saint-germain-laxis
 FR- Saint-germain-sous-doue
 FR- Saint-germain-sur-morin
+FR- Saint-hilliers
 FR- Saint-mammes
 FR- Saint-mars-en-brie
 FR- Saint-mery
@@ -644,6 +659,8 @@ FR- Treuzy-levelay
 FR- Trilbardou
 FR- Trilport
 FR- Trocy-en-multien
+FR- Ury
+FR- Vaires
 FR- Vaires-sur-marne
 FR- Vanville
 FR- Varennes-sur-seine
@@ -658,6 +675,7 @@ FR- Vert-saint-denis
 FR- Vignely
 FR- Ville-saint-jacques
 FR- Villecerf
+FR- Villeneuve-les-bordes
 FR- Villeneuve-saint-denis
 FR- Villeneuve-sur-bellot
 FR- Villenoy
@@ -679,6 +697,8 @@ FR- Andresy
 FR- Arnouville-les-mantes
 FR- Aubergenville
 FR- Auffargis
+FR- Auffreville-brasseuil
+FR- Auteuil-le-roi
 FR- Autouillet
 FR- Bailly
 FR- Bazainville
@@ -689,6 +709,7 @@ FR- Beynes
 FR- Boinville-en-mantois
 FR- Boinville-le-gaillard
 FR- Bois-d arcy
+FR- Boissy-mauvoisin
 FR- Bonnelles
 FR- Bonnieres-sur-seine
 FR- Bouafle
@@ -705,6 +726,7 @@ FR- Chambourcy
 FR- Chanteloup-les-vignes
 FR- Chapet
 FR- Chatou
+FR- Chavenay
 FR- Chevreuse
 FR- Coignieres
 FR- Conde-sur-vesgre
@@ -716,12 +738,14 @@ FR- Ecquevilly
 FR- Elancourt
 FR- Epone
 FR- Evecquemont
+FR- Feucherolles
 FR- Flexanville
 FR- Flins-sur-seine
 FR- Follainville-dennemont
 FR- Fontenay-le-fleury
 FR- Fontenay-saint-pere
 FR- Fourqueux
+FR- Galluis
 FR- Gambais
 FR- Garancieres
 FR- Gargenville
@@ -771,6 +795,7 @@ FR- Menerville
 FR- Mere
 FR- Meulan
 FR- Mezieres-sur-seine
+FR- Millemont
 FR- Milon-la-chapelle
 FR- Mittainville
 FR- Montfort-l amaury
@@ -802,6 +827,7 @@ FR- Saint-cyr-l ecole
 FR- Saint-forget
 FR- Saint-germain-de-la-grange
 FR- Saint-germain-en-laye
+FR- Saint-leger-en-yvelines
 FR- Saint-martin-la-garenne
 FR- Saint-nom-la-breteche
 FR- Saint-remy-l honore
@@ -832,10 +858,12 @@ FR- Voisins-le-bretonneux
 FR- Amberieu-en-bugey
 FR- Amberieux-en-dombes
 FR- Andert-et-condon
+FR- Ars-sur-formans
 FR- Bage-la-ville
 FR- Beligneux
 FR- Bellegarde-sur-valserine
 FR- Belley
+FR- Belleydoux
 FR- Bellignat
 FR- Beynost
 FR- Blyes
@@ -849,6 +877,7 @@ FR- Challex
 FR- Champdor
 FR- Champfromier
 FR- Chanay
+FR- Chanoz-chatenay
 FR- Charnoz
 FR- Chatillon-sur-chalaronne
 FR- Chazey-bons
@@ -862,10 +891,13 @@ FR- Culoz
 FR- Dagneux
 FR- Divonne-les-bains
 FR- Dompierre-sur-veyle
+FR- Druillat
 FR- Echenevex
 FR- Farges
 FR- Feillens
+FR- Ferney
 FR- Ferney-voltaire
+FR- Foissiat
 FR- Francheleins
 FR- Frans
 FR- Geovreisset
@@ -886,6 +918,7 @@ FR- Maillat
 FR- Malafretaz
 FR- Marboz
 FR- Massieux
+FR- Meillonnas
 FR- Meximieux
 FR- Mezeriat
 FR- Mionnay
@@ -912,6 +945,8 @@ FR- Port
 FR- Pougny
 FR- Priay
 FR- Replonges
+FR- Reyrieux
+FR- Rignieux-le-franc
 FR- Ruffieu
 FR- Saint-andre-de-corcy
 FR- Saint-bois
@@ -921,11 +956,13 @@ FR- Saint-didier-d aussiat
 FR- Saint-didier-de-formans
 FR- Saint-genis-pouilly
 FR- Saint-jean-de-gonville
+FR- Saint-jean-sur-veyle
 FR- Saint-martin-du-frene
 FR- Saint-maurice-de-beynost
 FR- Saint-maurice-de-gourdans
 FR- Saint-rambert-en-bugey
 FR- Saint-sorlin-en-bugey
+FR- Salavre
 FR- Sandrans
 FR- Serrieres-de-briord
 FR- Toussieux
@@ -959,12 +996,14 @@ FR- Berny-riviere
 FR- Berrieux
 FR- Besny-et-loizy
 FR- Beuvardes
+FR- Bezu-saint-germain
 FR- Bichancourt
 FR- Blerancourt
 FR- Blesmes
 FR- Bohain
 FR- Bohain-en-vermandois
 FR- Bourg-et-comin
+FR- Brancourt-en-laonnois
 FR- Brancourt-le-grand
 FR- Brasles
 FR- Braye
@@ -1034,9 +1073,11 @@ FR- Jaulgonne
 FR- Joncourt
 FR- Jussy
 FR- Juvincourt
+FR- La Bouteille
 FR- La Capelle
 FR- La Fere
 FR- Laon
+FR- Laval-en-laonnois
 FR- Lerzy
 FR- Lesdins
 FR- Leuilly-sous-coucy
@@ -1044,11 +1085,14 @@ FR- Levergies
 FR- Longpont
 FR- Marchais-en-brie
 FR- Marcy-sous-marle
+FR- Marest-dampcourt
 FR- Mareuil-en-dole
 FR- Marigny-en-orxois
 FR- Marle
 FR- Mayot
+FR- Mennessis
 FR- Mercin-et-vaux
+FR- Mesnil-saint-laurent
 FR- Mezy-moulins
 FR- Missy-sur-aisne
 FR- Monceau-les-leups
@@ -1058,6 +1102,7 @@ FR- Montbrehain
 FR- Montescourt-lizerolles
 FR- Monthiers
 FR- Montigny-en-arrouaise
+FR- Montigny-sous-marle
 FR- Montloue
 FR- Morsain
 FR- Moy-de-l aisne
@@ -1067,6 +1112,8 @@ FR- Neuilly-saint-front
 FR- Neuve-maison
 FR- Nogent-l artaud
 FR- Nouvion-et-catillon
+FR- Nouvion-le-comte
+FR- Omissy
 FR- Orainville
 FR- Origny-en-thierache
 FR- Oulchy-le-chateau
@@ -1089,18 +1136,22 @@ FR- Ressons-le-long
 FR- Ribeauville
 FR- Ribemont
 FR- Romeny-sur-marne
+FR- Rougeries
 FR- Roupy
 FR- Saint Quentin
 FR- Saint-gobain
 FR- Saint-quentin
 FR- Saulchery
+FR- Seboncourt
 FR- Septmonts
 FR- Serain
+FR- Seraucourt-le-grand
 FR- Sery-les-mezieres
 FR- Sinceny
 FR- Sissonne
 FR- Soissons
 FR- Soize
+FR- Tavaux-et-pontsericourt
 FR- Tergnier
 FR- Thenelles
 FR- Tupigny
@@ -1108,12 +1159,15 @@ FR- Urcel
 FR- Urvillers
 FR- Vailly-sur-aisne
 FR- Vaudesson
+FR- Vauxaillon
 FR- Vauxbuin
 FR- Vendhuile
 FR- Venizel
 FR- Vermand
 FR- Verneuil-sous-coucy
 FR- Vic-sur-aisne
+FR- Viel-arcy
+FR- Viels-maisons
 FR- Villeneuve-saint-germain
 FR- Villers-cotterets
 FR- Villers-helon
@@ -1128,26 +1182,31 @@ FR- Wiege-faty
 
 # 03: Allier
 FR- Abrest
+FR- Avermes
 FR- Bellenaves
 FR- Bellerive
 FR- Bellerive-sur-allier
 FR- Bessay-sur-allier
 FR- Bourbon-l archambault
+FR- Brugheas
 FR- Busset
 FR- Chamblet
 FR- Charmeil
 FR- Chassenard
+FR- Chatelperron
 FR- Commentry
 FR- Cosne-d allier
 FR- Creuzier-le-vieux
 FR- Cusset
 FR- Domerat
 FR- Dompierre-sur-besbre
+FR- Espinasse-vozelle
 FR- Gannat
 FR- Huriel
 FR- Isserpent
 FR- Jenzat
 FR- Lapalisse
+FR- Le Donjon
 FR- Lusigny
 FR- Mariol
 FR- Meaulne
@@ -1183,12 +1242,14 @@ FR- Allos
 FR- Dauphin
 FR- Digne
 FR- Forcalquier
+FR- Greoux-les-bains
 FR- Les Mees
 FR- Mallemoisson
 FR- Manosque
 FR- Peyruis
 FR- Pierrevert
 FR- Puimoisson
+FR- Quinson
 FR- Reillanne
 FR- Riez
 FR- Roumoules
@@ -1197,6 +1258,7 @@ FR- Saint-michel-l observatoire
 FR- Sigonce
 FR- Sisteron
 FR- Valensole
+FR- Valernes
 FR- Volonne
 FR- Volx
 
@@ -1204,8 +1266,12 @@ FR- Volx
 FR- Aspres-sur-buech
 FR- Brianon
 FR- Gap
+FR- Guillestre
+FR- La Batie-vieille
+FR- La Grave
 FR- Laragne
 FR- Le Poet
+FR- Manteyer
 FR- Puy-saint-andre
 FR- Saint-laurent-du-cros
 FR- Savines-le-lac
@@ -1229,6 +1295,7 @@ FR- Carros
 FR- Chateauneuf-grasse
 FR- Cipieres
 FR- Colomars
+FR- Eze
 FR- Falicon
 FR- Gattieres
 FR- Gilette
@@ -1243,6 +1310,7 @@ FR- La Turbie
 FR- Le Cannet
 FR- Le Mas
 FR- Le Rouret
+FR- Levens
 FR- Magagnosc
 FR- Mandelieu
 FR- Marie
@@ -1261,6 +1329,7 @@ FR- Roquebilliere
 FR- Roquebrune-cap-martin
 FR- Saint-auban
 FR- Saint-cezaire-sur-siagne
+FR- Saint-dalmas-de-tende
 FR- Saint-jeannet
 FR- Saint-laurent-du-var
 FR- Saint-martin-du-var
@@ -1288,14 +1357,18 @@ FR- Aubenas
 FR- Baix
 FR- Banne
 FR- Beauchastel
+FR- Berzeme
 FR- Boffres
 FR- Boulieu-les-annonay
 FR- Bourg-saint-andeol
 FR- Burzet
+FR- Casteljau
+FR- Cellier-du-luc
 FR- Champagne
 FR- Cheminas
 FR- Chomerac
 FR- Colombier-le-vieux
+FR- Cornas
 FR- Cros-de-georand
 FR- Cruas
 FR- Davezieux
@@ -1315,6 +1388,7 @@ FR- Les Vans
 FR- Lussas
 FR- Meyras
 FR- Peaugres
+FR- Peyraud
 FR- Privas
 FR- Rochemaure
 FR- Roiffieux
@@ -1322,6 +1396,7 @@ FR- Rompon
 FR- Ruoms
 FR- Saint Cyr
 FR- Saint-agreve
+FR- Saint-alban-d ay
 FR- Saint-andeol-de-fourchades
 FR- Saint-fortunat-sur-eyrieux
 FR- Saint-georges-les-bains
@@ -1330,8 +1405,10 @@ FR- Saint-peray
 FR- Sarras
 FR- Satillieu
 FR- Savas
+FR- Soyons
 FR- Talencieux
 FR- Thorrenc
+FR- Toulaud
 FR- Vals-les-bains
 FR- Vernosc
 FR- Vernosc-les-annonay
@@ -1353,11 +1430,15 @@ FR- Champigneul-sur-vence
 FR- Charleville-mezieres
 FR- Chateau-porcien
 FR- Chaumont-porcien
+FR- Cheveuges
 FR- Clavy-warby
+FR- Daigny
+FR- Dom-le-mesnil
 FR- Donchery
 FR- Douzy
 FR- Fleville
 FR- Floing
+FR- Francheval
 FR- Fumay
 FR- Gernelle
 FR- Gespunsart
@@ -1365,6 +1446,7 @@ FR- Givet
 FR- Guignicourt-sur-vence
 FR- Haraucourt
 FR- Haybes
+FR- Jandun
 FR- Juniville
 FR- La Francheville
 FR- Les Ayvelles
@@ -1372,6 +1454,7 @@ FR- Liart
 FR- Linay
 FR- Lucquy
 FR- Lumes
+FR- Montcy-notre-dame
 FR- Montherme
 FR- Neuflize
 FR- Neuville-les-this
@@ -1391,16 +1474,19 @@ FR- Saint-germainmont
 FR- Sault-les-rethel
 FR- Secheval
 FR- Sedan
+FR- Signy-l abbaye
 FR- Signy-le-petit
 FR- Sommerance
 FR- Sury
 FR- Vandy
 FR- Villers-semeuse
 FR- Vireux-molhain
+FR- Vireux-wallerand
 FR- Vivier-au-court
 FR- Vouziers
 FR- Vrigne-aux-bois
 FR- Warnecourt
+FR- Wasigny
 
 # 09: Ariege
 FR- Ales
@@ -1412,6 +1498,7 @@ FR- Daumazan
 FR- Eycheil
 FR- Foix
 FR- Lavelanet
+FR- Le Fossat
 FR- Leran
 FR- Les Pujols
 FR- Lezat-sur-leze
@@ -1420,6 +1507,7 @@ FR- Montjoie-en-couserans
 FR- Pamiers
 FR- Rieux-de-pelleport
 FR- Rimont
+FR- Rogalle
 FR- Saint-girons
 FR- Saint-lizier
 FR- Saurat
@@ -1442,15 +1530,18 @@ FR- Boulages
 FR- Breviandes
 FR- Chalette-sur-voire
 FR- Chaource
+FR- Chapelle-vallon
 FR- Chennegy
 FR- Chesley
 FR- Clerey
+FR- Crancey
 FR- Creney-pres-troyes
 FR- Cresantignes
 FR- Dienville
 FR- Dierrey-saint-pierre
 FR- Dolancourt
 FR- Dommartin-le-coq
+FR- Droupt-saint-basle
 FR- Essoyes
 FR- Estissac
 FR- Feuges
@@ -1468,11 +1559,15 @@ FR- Marigny-le-chatel
 FR- Mergey
 FR- Mery-sur-seine
 FR- Mesgrigny
+FR- Mesnil-saint-loup
 FR- Mesnil-sellieres
+FR- Messon
 FR- Montfey
 FR- Montier-en-l isle
 FR- Montsuzain
 FR- Nogent-sur-seine
+FR- Ossey-les-trois-maisons
+FR- Palis
 FR- Payns
 FR- Piney
 FR- Polisot
@@ -1497,7 +1592,9 @@ FR- Thennelieres
 FR- Trainel
 FR- Troyes
 FR- Vanlay
+FR- Vaudes
 FR- Vendeuvre-sur-barse
+FR- Ville-sur-arce
 FR- Villenauxe-la-grande
 FR- Virey-sous-bar
 FR- Vulaines
@@ -1506,6 +1603,7 @@ FR- Vulaines
 FR- Alairac
 FR- Aoste
 FR- Argeliers
+FR- Armissan
 FR- Azille
 FR- Bagnoles
 FR- Bizanet
@@ -1513,6 +1611,7 @@ FR- Bize-minervois
 FR- Bram
 FR- Cabrespine
 FR- Cailhau
+FR- Campagne-sur-aude
 FR- Capendu
 FR- Carcassonne
 FR- Castelnaudary
@@ -1522,10 +1621,12 @@ FR- Cavanac
 FR- Couffoulens
 FR- Couiza
 FR- Coursan
+FR- Cuxac
 FR- Cuxac-cabardes
 FR- Fanjeaux
 FR- Gruissan
 FR- Leuc
+FR- Leucate
 FR- Lezignan-corbieres
 FR- Limoux
 FR- Marcorignan
@@ -1544,6 +1645,7 @@ FR- Pomas
 FR- Port-la-nouvelle
 FR- Rieux-minervois
 FR- Sainte-valiere
+FR- Saissac
 FR- Salsigne
 FR- Sigean
 FR- Trebes
@@ -1551,6 +1653,7 @@ FR- Ventenac-cabardes
 FR- Verzeille
 FR- Villarzel-cabardes
 FR- Villemoustaussou
+FR- Villeneuve-la-comptal
 FR- Vinassan
 
 # 12: Aveyron
@@ -1559,6 +1662,7 @@ FR- Auzits
 FR- Baraqueville
 FR- Bozouls
 FR- Brandonnet
+FR- Broquies
 FR- Camares
 FR- Capdenac-gare
 FR- Cassagnes-begonhes
@@ -1572,13 +1676,16 @@ FR- Flagnac
 FR- La Loubiere
 FR- La Salvetat-peyrales
 FR- Laissac
+FR- Lanuejouls
 FR- Lapanouse
 FR- Lescure-jaoul
 FR- Marcillac-vallon
 FR- Millau
 FR- Montbazens
+FR- Naucelle
 FR- Onet-le-chateau
 FR- Requista
+FR- Rieupeyroux
 FR- Rodez
 FR- Roquefort-sur-soulzon
 FR- Saint-affrique
@@ -1594,6 +1701,7 @@ FR- Allauch
 FR- Alleins
 FR- Arles
 FR- Aubagne
+FR- Aureille
 FR- Auriol
 FR- Aurons
 FR- Barbentane
@@ -1660,6 +1768,7 @@ FR- Plan-d orgon
 FR- Plan-de-cuques
 FR- Port-de-bouc
 FR- Port-saint-louis-du-rhne
+FR- Port-saint-louis-du-rhone
 FR- Puyloubier
 FR- Puyricard
 FR- Rognac
@@ -1672,6 +1781,7 @@ FR- Saint-Etienne-du-gres
 FR- Saint-andiol
 FR- Saint-cannat
 FR- Saint-chamas
+FR- Saint-marc-jaumegarde
 FR- Saint-martin-de-crau
 FR- Saint-mitre-les-remparts
 FR- Saint-paul-lez-durance
@@ -1693,6 +1803,7 @@ FR- Vitrolles
 
 # 14: Calvados
 FR- Ablon
+FR- Amblie
 FR- Anctoville
 FR- Anguerny
 FR- Argences
@@ -1704,12 +1815,14 @@ FR- Auvillars
 FR- Avenay
 FR- Balleroy
 FR- Banville
+FR- Bavent
 FR- Bayeux
 FR- Beaumont-en-auge
 FR- Bernieres-sur-mer
 FR- Blainville-sur-orne
 FR- Blonville-sur-mer
 FR- Bonneville-la-louvet
+FR- Bonneville-sur-touques
 FR- Bourguebus
 FR- Bretteville
 FR- Bretteville-l orgueilleuse
@@ -1719,6 +1832,7 @@ FR- Brouay
 FR- Cabourg
 FR- Caen
 FR- Cahagnes
+FR- Cairon
 FR- Cambes-en-plaine
 FR- Cambremer
 FR- Carcagny
@@ -1726,6 +1840,7 @@ FR- Carpiquet
 FR- Cauvicourt
 FR- Cauville
 FR- Cesny-bois-halbout
+FR- Chenedolle
 FR- Cintheaux
 FR- Clecy
 FR- Clinchamps-sur-orne
@@ -1737,6 +1852,7 @@ FR- Courseulles-sur-mer
 FR- Cresserons
 FR- Creully
 FR- Crevecoeur-en-auge
+FR- Cricqueboeuf
 FR- Cricqueville-en-auge
 FR- Crocy
 FR- Croissanville
@@ -1744,6 +1860,7 @@ FR- Cully
 FR- Deauville
 FR- Demouville
 FR- Dives-sur-mer
+FR- Douville-en-auge
 FR- Douvres-la-delivrande
 FR- Emieville
 FR- Epron
@@ -1752,13 +1869,16 @@ FR- Eraines
 FR- Esquay-notre-dame
 FR- Esquay-sur-seulles
 FR- Estry
+FR- Eterville
 FR- Evrecy
 FR- Fleury-sur-orne
 FR- Fontaine-Etoupefour
 FR- Fontenay-le-marmion
+FR- Gavrus
 FR- Genneville
 FR- Giberville
 FR- Grainville-sur-odon
+FR- Graye-sur-mer
 FR- Grentheville
 FR- Hermanville-sur-mer
 FR- Hermival-les-vaux
@@ -1768,8 +1888,10 @@ FR- Honfleur
 FR- Houlgate
 FR- Ifs
 FR- Isigny-sur-mer
+FR- La Graverie
 FR- La Hoguette
 FR- La Houblonniere
+FR- La Vespiere
 FR- Langrune-sur-mer
 FR- Lantheuil
 FR- Le Desert
@@ -1791,11 +1913,14 @@ FR- Merville-franceville-plage
 FR- Mery-corbon
 FR- Mezidon
 FR- Mondrainville
+FR- Monts-en-bessin
 FR- Mouen
 FR- Moult
+FR- Moyaux
 FR- Noron-la-poterie
 FR- Noyers-bocage
 FR- Ouilly-le-tesson
+FR- Ouilly-le-vicomte
 FR- Ouistreham
 FR- Periers-en-auge
 FR- Pertheville-ners
@@ -1809,11 +1934,16 @@ FR- Roullours
 FR- Saint Lambert
 FR- Saint-andre-d hebertot
 FR- Saint-andre-sur-orne
+FR- Saint-contest
+FR- Saint-gatien-des-bois
 FR- Saint-germain-de-tallevend
 FR- Saint-germain-du-crioult
 FR- Saint-pierre-azif
+FR- Saint-pierre-du-jonquet
+FR- Saint-pierre-la-vieille
 FR- Saint-pierre-sur-dives
 FR- Saint-vigor-le-grand
+FR- Sallenelles
 FR- Sannerville
 FR- Sept-vents
 FR- Sermentot
@@ -1829,6 +1959,8 @@ FR- Trevieres
 FR- Troarn
 FR- Trouville-sur-mer
 FR- Truttemer-le-grand
+FR- Ussy
+FR- Vaubadon
 FR- Vaux-sur-aure
 FR- Vendeuvre
 FR- Ver-sur-mer
@@ -1847,14 +1979,18 @@ FR- Allanche
 FR- Antignac
 FR- Arpajon-sur-cere
 FR- Aurillac
+FR- Calvinet
+FR- Champs-sur-tarentaine
 FR- Coren
 FR- Cros-de-ronesque
 FR- Denice
+FR- Dienne
 FR- Laveissiere
 FR- Le Falgoux
 FR- Lorcieres
 FR- Massiac
 FR- Maurs
+FR- Molompize
 FR- Neussargues
 FR- Neussargues-moissac
 FR- Neuveglise
@@ -1871,10 +2007,14 @@ FR- Ytrac
 
 # 16: Charente
 FR- Agris
+FR- Alloue
 FR- Angouleme
+FR- Becheresse
+FR- Benest
 FR- Bouteville
 FR- Boutiers
 FR- Chabanais
+FR- Champagne-mouton
 FR- Chateaubernard
 FR- Chateauneuf-sur-charente
 FR- Chazelles
@@ -1892,9 +2032,12 @@ FR- Jarnac
 FR- Juillac-le-coq
 FR- La Faye
 FR- La Roque
+FR- Lamerac
 FR- Le Tatre
 FR- Luxe
 FR- Magnac-lavalette
+FR- Mainxe
+FR- Manot
 FR- Mansle
 FR- Marcillac-lanville
 FR- Merpins
@@ -1903,6 +2046,7 @@ FR- Moulidars
 FR- Mouthiers-sur-boeme
 FR- Nersac
 FR- Nieuil
+FR- Puymoyen
 FR- Roullet
 FR- Ruelle-sur-touvre
 FR- Saint-amant-de-boixe
@@ -1919,6 +2063,7 @@ FR- Torsac
 FR- Tourriers
 FR- Touvre
 FR- Trois-palis
+FR- Villefagnan
 FR- Vindelle
 FR- Vouthon
 
@@ -1944,16 +2089,19 @@ FR- Cabariot
 FR- Chaniers
 FR- Charron
 FR- Chatelaillon-plage
+FR- Chervettes
 FR- Chevanceaux
 FR- Cire-d aunis
 FR- Clam
 FR- Clavette
 FR- Corme-Ecluse
 FR- Corme-royal
+FR- Cozes
 FR- Cramchaban
 FR- Croix-chapeau
 FR- Dampierre-sur-boutonne
 FR- Doeuil-sur-le-mignon
+FR- Dompierre-sur-charente
 FR- Dompierre-sur-mer
 FR- Echillais
 FR- Ecoyeux
@@ -1965,8 +2113,10 @@ FR- Fontenet
 FR- Fouras
 FR- Gemozac
 FR- Germignac
+FR- Hiers-brouage
 FR- Jonzac
 FR- La Clisse
+FR- La Clotte
 FR- La Flotte
 FR- La Jarne
 FR- La Jarrie
@@ -1976,23 +2126,31 @@ FR- Lagord
 FR- Landes
 FR- Le Thou
 FR- Les Gonds
+FR- Les Nouillers
 FR- Loire-sur-nie
 FR- Loulay
 FR- Lussant
 FR- Marennes
 FR- Massac
+FR- Matha
 FR- Mazeray
 FR- Medis
 FR- Meschers
+FR- Meschers-sur-gironde
 FR- Meursac
 FR- Migron
 FR- Montendre
 FR- Montguyon
+FR- Mornac-sur-seudre
+FR- Mortagne-sur-gironde
 FR- Muron
+FR- Nancras
 FR- Nieul-sur-mer
 FR- Nieulle-sur-seudre
 FR- Nuaille-d aunis
+FR- Orignolles
 FR- Perigny
+FR- Pessines
 FR- Pisany
 FR- Plassay
 FR- Port-d envaux
@@ -2000,6 +2158,8 @@ FR- Port-des-barques
 FR- Puilboreau
 FR- Puy-du-lac
 FR- Rochefort
+FR- Rochefort-sur-mer
+FR- Romazieres
 FR- Romegoux
 FR- Rouffignac
 FR- Royan
@@ -2042,6 +2202,7 @@ FR- Tonnay-charente
 FR- Trizay
 FR- Varaize
 FR- Vaux-sur-mer
+FR- Verines
 FR- Villars-les-bois
 FR- Villedoux
 
@@ -2094,13 +2255,16 @@ FR- Saint-germain-du-puy
 FR- Saint-martin-d auxigny
 FR- Saint-satur
 FR- Sancerre
+FR- Savigny-en-sancerre
 FR- Soye-en-septaine
+FR- Thaumiers
 FR- Trouy
 FR- Valenay
 FR- Vallenay
 FR- Vasselay
 FR- Vierzon
 FR- Vignoux-sous-les-aix
+FR- Vouzeron
 
 # 19: Correze
 FR- Affieux
@@ -2108,12 +2272,17 @@ FR- Allassac
 FR- Argentat
 FR- Beaulieu-sur-dordogne
 FR- Beynat
+FR- Bort-les-orgues
 FR- Brignac-la-plaine
+FR- Brive
 FR- Brive-la-gaillarde
 FR- Chamberet
+FR- Chamboulive
 FR- Conceze
 FR- Cornil
+FR- Cosnac
 FR- Cublac
+FR- Dampniat
 FR- Donzenac
 FR- Egletons
 FR- Eyburie
@@ -2121,9 +2290,11 @@ FR- Favars
 FR- Lagrauliere
 FR- Laguenne
 FR- Larche
+FR- Lubersac
 FR- Malemort
 FR- Malemort-sur-correze
 FR- Mansac
+FR- Masseret
 FR- Meymac
 FR- Nespouls
 FR- Objat
@@ -2150,9 +2321,12 @@ FR- Aleria
 FR- Algajola
 FR- Appietto
 FR- Bastia
+FR- Belgodere
 FR- Biguglia
 FR- Borgo
+FR- Calenzana
 FR- Calvi
+FR- Cargese
 FR- Cauro
 FR- Cervione
 FR- Corte
@@ -2160,6 +2334,7 @@ FR- Cuttoli-corticchiato
 FR- Feliceto
 FR- Folelli
 FR- Furiani
+FR- Ghisonaccia
 FR- Linguizzetta
 FR- Lucciana
 FR- Moltifao
@@ -2167,6 +2342,7 @@ FR- Murato
 FR- Ogliastro
 FR- Oletta
 FR- Olmeto
+FR- Pietrosella
 FR- Poggio-mezzana
 FR- Porticcio
 FR- Porto-vecchio
@@ -2174,55 +2350,75 @@ FR- Propriano
 FR- Prunelli-di-casacconi
 FR- Prunelli-di-fiumorbo
 FR- San-nicolao
+FR- Santa-maria-siche
 FR- Sarrola-carcopino
 FR- Sartene
 FR- Sisco
 FR- Sorbo-ocagnano
 FR- Talasani
 FR- Vescovato
+FR- Vivario
 
 # 21: Cote-d’Or
+FR- Agey
 FR- Aiserey
 FR- Arc-sur-tille
 FR- Arcenant
 FR- Arnay-le-duc
+FR- Aubigny-les-sombernon
 FR- Auxonne
+FR- Bagnot
+FR- Baulme-la-roche
 FR- Beaune
 FR- Beneuvre
 FR- Besano
 FR- Bessey-les-citeaux
+FR- Blagny-sur-vingeanne
+FR- Blaisy-bas
 FR- Bligny-les-beaune
 FR- Bligny-sur-ouche
 FR- Boncourt-le-bois
+FR- Bourberain
 FR- Brazey-en-plaine
 FR- Bressey-sur-tille
+FR- Brochon
 FR- Broin
 FR- Buncey
 FR- Charrey-sur-sane
+FR- Chassagne-montrachet
 FR- Chatillon-sur-seine
 FR- Chenove
 FR- Chenve
 FR- Chevigny-saint-sauveur
 FR- Chorey-les-beaune
 FR- Collonges-les-bevy
+FR- Combertault
 FR- Comblanchien
+FR- Corcelles-les-monts
 FR- Corgoloin
+FR- Corpeau
 FR- Couchey
 FR- Couternon
 FR- Crimolois
 FR- Dienay
 FR- Dijon
+FR- Etevaux
+FR- Fixin
 FR- Flavignerot
 FR- Fleurey-sur-ouche
 FR- Fontaine-les-dijon
+FR- Gemeaux
 FR- Genlis
 FR- Gevrey-chambertin
 FR- Gissey-sous-flavigny
+FR- Hauteville-les-dijon
 FR- Is-sur-tille
 FR- Izeure
 FR- Izier
+FR- Labergement-les-seurre
 FR- Laignes
 FR- Lamarche-sur-sane
+FR- Lamarche-sur-saone
 FR- Les Maillys
 FR- Liernais
 FR- Longeault
@@ -2237,6 +2433,7 @@ FR- Marliens
 FR- Marsannay-la-cote
 FR- Marsannay-la-cte
 FR- Merceuil
+FR- Messigny
 FR- Meursault
 FR- Mirebeau-sur-beze
 FR- Montbard
@@ -2245,14 +2442,17 @@ FR- Neuilly-les-dijon
 FR- Noiron-sur-beze
 FR- Norges-la-ville
 FR- Nuits-saint-georges
+FR- Origny
 FR- Ouges
 FR- Perrigny-les-dijon
+FR- Perrigny-sur-l ognon
 FR- Plombieres-les-dijon
 FR- Pluvet
 FR- Poncey-les-athee
 FR- Pontailler-sur-sane
 FR- Pontailler-sur-saone
 FR- Pouillenay
+FR- Pouilly-en-auxois
 FR- Prenois
 FR- Prusly-sur-ource
 FR- Quetigny
@@ -2272,9 +2472,11 @@ FR- Savigny-sous-malain
 FR- Selongey
 FR- Semur
 FR- Seurre
+FR- Sombernon
 FR- Talant
 FR- Tart-le-haut
 FR- Til-chatel
+FR- Treclun
 FR- Trouhans
 FR- Urcy
 FR- Varois-et-chaignot
@@ -2291,6 +2493,7 @@ FR- Vitteaux
 # 22: Cotes-d'Armor
 FR- Begard
 FR- Binic
+FR- Bobital
 FR- Boqueho
 FR- Bourbriac
 FR- Bourseul
@@ -2300,7 +2503,9 @@ FR- Caulnes
 FR- Chatelaudren
 FR- Coatreven
 FR- Coetlogon
+FR- Collinee
 FR- Dinan
+FR- Duault
 FR- Erquy
 FR- Etables-sur-mer
 FR- Evran
@@ -2308,7 +2513,9 @@ FR- Gausson
 FR- Gouarec
 FR- Goudelin
 FR- Guingamp
+FR- Henanbihen
 FR- Henansal
+FR- Henon
 FR- Hillion
 FR- La Bouillie
 FR- La Cheze
@@ -2331,6 +2538,7 @@ FR- Lanrodec
 FR- Lanvallay
 FR- Lezardrieux
 FR- Louannec
+FR- Louargat
 FR- Loudeac
 FR- Mael-carhaix
 FR- Merdrignac
@@ -2345,6 +2553,8 @@ FR- Plancoet
 FR- Planguenoual
 FR- Pledran
 FR- Pleguien
+FR- Plehedel
+FR- Plemet
 FR- Plenee-jugon
 FR- Pleneuf-val-andre
 FR- Plerin
@@ -2354,11 +2564,15 @@ FR- Pleslin
 FR- Plestin
 FR- Plestin-les-greves
 FR- Pleumeur-bodou
+FR- Plouagat
+FR- Plouaret
 FR- Ploubalay
 FR- Ploubazlanec
 FR- Ploubezre
+FR- Plouer-sur-rance
 FR- Plouezec
 FR- Ploufragan
+FR- Plouguenast
 FR- Plouguernevel
 FR- Plouha
 FR- Ploumagoar
@@ -2372,12 +2586,14 @@ FR- Plumieux
 FR- Plurien
 FR- Pluzunet
 FR- Pommeret
+FR- Pommerit-le-vicomte
 FR- Pont-melvez
 FR- Pordic
 FR- Quessoy
 FR- Quevert
 FR- Quintenic
 FR- Quintin
+FR- Rospez
 FR- Rostrenen
 FR- Saint-agathon
 FR- Saint-brandan
@@ -2386,6 +2602,7 @@ FR- Saint-caradec
 FR- Saint-carreuc
 FR- Saint-cast-le-guildo
 FR- Saint-guen
+FR- Saint-herve
 FR- Saint-lormel
 FR- Saint-michel-en-greve
 FR- Saint-nicolas-du-pelem
@@ -2397,20 +2614,25 @@ FR- Senven-lehart
 FR- Taden
 FR- Trebeurden
 FR- Tredarzec
+FR- Tregonneau
 FR- Trelivan
 FR- Tremeloir
 FR- Tremeur
+FR- Tremuson
 FR- Treveneuc
 FR- Trigavou
 FR- Vilde-guingalan
 FR- Yffiniac
 
 # 23: Creuse
+FR- Ahun
 FR- Ajain
 FR- Azerables
 FR- Benevent-l abbaye
+FR- Bonnat
 FR- Bosmoreau-les-mines
 FR- Bourganeuf
+FR- Champsanglard
 FR- Domeyrot
 FR- Dun-le-palestel
 FR- Evaux-les-bains
@@ -2426,6 +2648,7 @@ FR- Sardent
 
 # 24: Dordogne
 FR- Augignac
+FR- Badefols-sur-dordogne
 FR- Bergerac
 FR- Boulazac
 FR- Breuilh
@@ -2442,6 +2665,7 @@ FR- Eymet
 FR- Festalemps
 FR- Gageac-et-rouillac
 FR- Gardonne
+FR- Genis
 FR- Grolejac
 FR- Jaure
 FR- Jumilhac-le-grand
@@ -2449,15 +2673,18 @@ FR- La Douze
 FR- Lalinde
 FR- Le Bourdeix
 FR- Le Fleix
+FR- Le Pizou
 FR- Manzac-sur-vern
 FR- Menesplet
 FR- Mensignac
 FR- Minzac
+FR- Monpazier
 FR- Montcaret
 FR- Montignac
 FR- Montpon
 FR- Montpon-menesterol
 FR- Mouleydier
+FR- Mussidan
 FR- Nontron
 FR- Perigueux
 FR- Pomport
@@ -2467,11 +2694,15 @@ FR- Queyssac
 FR- Riberac
 FR- Saint-capraise-de-lalinde
 FR- Saint-chamassy
+FR- Saint-felix-de-bourdeilles
 FR- Saint-felix-de-villadeix
 FR- Saint-front-de-pradoux
 FR- Saint-germain-du-salembre
 FR- Saint-laurent-sur-manoire
 FR- Saint-louis-en-l isle
+FR- Saint-martin-de-riberac
+FR- Saint-vincent-de-cosse
+FR- Sarlat
 FR- Sarlat-la-caneda
 FR- Sigoules
 FR- Siorac-en-perigord
@@ -2481,10 +2712,13 @@ FR- Trelissac
 FR- Velines
 FR- Vergt
 FR- Vieux-mareuil
+FR- Villamblard
 FR- Villefranche-du-perigord
 
 # 25: Doubs
+FR- Abbans-dessous
 FR- Abbans-dessus
+FR- Abbevillers
 FR- Allenjoie
 FR- Allondans
 FR- Amagney
@@ -2496,6 +2730,7 @@ FR- Autechaux
 FR- Avanne
 FR- Badevel
 FR- Baume-les-dames
+FR- Bavans
 FR- Belleherbe
 FR- Besanon
 FR- Bethoncourt
@@ -2503,30 +2738,40 @@ FR- Beure
 FR- Boujailles
 FR- Byans-sur-doubs
 FR- Chaffois
+FR- Chaleze
 FR- Champvans-les-moulins
 FR- Charquemont
 FR- Chatillon-le-duc
 FR- Chemaudin
+FR- Courcelles-les-montbeliard
+FR- Crosey-le-petit
 FR- Dambelin
 FR- Dambenois
 FR- Damprichard
 FR- Dasle
 FR- Epenoy
 FR- Etouvans
+FR- Etupes
 FR- Exincourt
+FR- Fleurey
 FR- Fontain
 FR- Franois
 FR- Frasne
 FR- Gonsans
 FR- Grand-charmont
 FR- Herimoncourt
+FR- Jougne
 FR- La Chenalotte
 FR- La Cluse Et Mijoux
 FR- Laissey
 FR- Lantenne-vertiere
+FR- Le Russey
+FR- Les Ecorces
 FR- Les Fins
 FR- Les Fourgs
 FR- Les Gras
+FR- Longevelle-les-russey
+FR- Longevelle-sur-doubs
 FR- Longeville
 FR- Lougres
 FR- Maiche
@@ -2547,6 +2792,7 @@ FR- Novillars
 FR- Orchamps-vennes
 FR- Orgeans
 FR- Ornans
+FR- Oye-et-pallet
 FR- Pelousey
 FR- Pierrefontaine-les-blamont
 FR- Pierrefontaine-les-varans
@@ -2558,6 +2804,7 @@ FR- Roches-les-blamont
 FR- Saint-vit
 FR- Sancey-le-grand
 FR- Seloncourt
+FR- Serre-les-sapins
 FR- Silley-amancey
 FR- Sochaux
 FR- Solemont
@@ -2581,6 +2828,7 @@ FR- Alixan
 FR- Allex
 FR- Anneyron
 FR- Aouste-sur-sye
+FR- Barbieres
 FR- Bathernay
 FR- Beaumont-les-valence
 FR- Beaumont-monteux
@@ -2592,15 +2840,20 @@ FR- Bourg-les-valence
 FR- Buis-les-baronnies
 FR- Chabeuil
 FR- Chanos-curson
+FR- Chateauneuf-de-galaure
 FR- Chateauneuf-du-rhne
+FR- Chateauneuf-du-rhone
 FR- Chatuzange-le-goubet
 FR- Claveyson
+FR- Clerieux
+FR- Crepol
 FR- Crest
 FR- Dieulefit
 FR- Divajeu
 FR- Donzere
 FR- Epinouze
 FR- Etoile-sur-rhne
+FR- Etoile-sur-rhone
 FR- Genissieux
 FR- Gervans
 FR- Geyssans
@@ -2613,22 +2866,27 @@ FR- Livron-sur-drome
 FR- Lus-la-croix-haute
 FR- Malataverne
 FR- Malissard
+FR- Manthes
 FR- Marges
 FR- Mirabel-et-blacons
 FR- Montboucher-sur-jabron
 FR- Montchenu
 FR- Monteleger
 FR- Montelimar
+FR- Montlaur-en-diois
 FR- Montmeyran
 FR- Montrigaud
 FR- Mours-saint-eusebe
+FR- Mureils
 FR- Nyons
 FR- Peyrus
 FR- Pierrelatte
 FR- Pont-de-l isere
 FR- Portes-les-valence
 FR- Romans-sur-isere
+FR- Saint-bardoux
 FR- Saint-jean-en-royans
+FR- Saint-marcel-les-sauzet
 FR- Saint-marcel-les-valence
 FR- Saint-michel-sur-savasse
 FR- Saint-paul-les-romans
@@ -2638,6 +2896,7 @@ FR- Saint-restitut
 FR- Saint-sorlin-en-valloire
 FR- Saulce
 FR- Savasse
+FR- Suze-la-rousse
 FR- Tain-l hermitage
 FR- Triors
 FR- Tulette
@@ -2647,6 +2906,7 @@ FR- Vesc
 FR- Vinsobres
 
 # 27: Eure
+FR- Aclou
 FR- Acquigny
 FR- Aigleville
 FR- Alizay
@@ -2658,6 +2918,7 @@ FR- Aulnay-sur-iton
 FR- Authou
 FR- Authouillet
 FR- Bacqueville
+FR- Barneville-sur-seine
 FR- Beaumont-le-roger
 FR- Bernay
 FR- Bernienville
@@ -2666,20 +2927,27 @@ FR- Berville-en-roumois
 FR- Beuzeville
 FR- Bezu-saint-Eloi
 FR- Bosgouet
+FR- Bosguerard-de-marcouville
 FR- Bosrobert
 FR- Bouafles
 FR- Bouquetot
 FR- Bourg-achard
 FR- Bourg-beaudouin
+FR- Bourgtheroulde
+FR- Bourth
 FR- Breteuil-sur-iton
 FR- Breuilpont
 FR- Brionne
+FR- Cahaignes
 FR- Calleville
 FR- Canappeville
+FR- Caorches
 FR- Capelle-les-grands
+FR- Cauge
 FR- Chambray
 FR- Cierrey
 FR- Claville
+FR- Combon
 FR- Conches
 FR- Conches-en-ouche
 FR- Conde-sur-risle
@@ -2689,6 +2957,7 @@ FR- Dampsmesnil
 FR- Damville
 FR- Dardez
 FR- Daubeuf-pres-vatteville
+FR- Ecardenville-sur-eure
 FR- Ecos
 FR- Epaignes
 FR- Epegard
@@ -2700,18 +2969,23 @@ FR- Ferrieres-haut-clocher
 FR- Feuguerolles
 FR- Fleury-la-foret
 FR- Fleury-sur-andelle
+FR- Fontaine-bellenger
 FR- Foulbec
 FR- Fourges
 FR- Franqueville
 FR- Fresne-cauverville
+FR- Gadencourt
 FR- Gaillon
 FR- Garencieres
 FR- Garennes-sur-eure
 FR- Gasny
 FR- Gisors
+FR- Giverny
 FR- Grainville
 FR- Gravigny
 FR- Guichainville
+FR- Guiseniers
+FR- Harcourt
 FR- Hennezis
 FR- Hondouville
 FR- Houlbec-cocherel
@@ -2728,19 +3002,25 @@ FR- La Saussaye
 FR- La Selle
 FR- Landepereuse
 FR- Le Boulay-morin
+FR- Le Fidelaire
 FR- Le Neubourg
 FR- Le Thil
 FR- Le Vaudreuil
 FR- Les Andelys
+FR- Les Authieux
+FR- Les Bottereaux
 FR- Lieurey
 FR- Lisors
 FR- Louversey
 FR- Louviers
 FR- Lyons-la-foret
+FR- Mandres
 FR- Manneville-la-raoult
+FR- Manneville-sur-risle
 FR- Marcilly-la-campagne
 FR- Marcilly-sur-eure
 FR- Martot
+FR- Menilles
 FR- Menneval
 FR- Mesnil-sous-vienne
 FR- Mesnil-sur-l estree
@@ -2750,6 +3030,7 @@ FR- Mouettes
 FR- Mousseaux-neuville
 FR- Muzy
 FR- Nassandres
+FR- Neaufles
 FR- Neaufles-saint-martin
 FR- Nonancourt
 FR- Notre-dame-de-l isle
@@ -2760,14 +3041,17 @@ FR- Pitres
 FR- Plasnes
 FR- Pont-audemer
 FR- Pont-de-l arche
+FR- Port-mort
 FR- Poses
 FR- Pullay
+FR- Radepont
 FR- Romilly-sur-andelle
 FR- Routot
 FR- Rugles
 FR- Sacquenville
 FR- Saint Marcel
 FR- Saint-andre-de-l eure
+FR- Saint-aquilin-de-pacy
 FR- Saint-aubin-d ecrosville
 FR- Saint-cyr-la-campagne
 FR- Saint-didier-des-bois
@@ -2777,8 +3061,11 @@ FR- Saint-germain-sur-avre
 FR- Saint-germain-village
 FR- Saint-martin-saint-firmin
 FR- Saint-ouen-de-thouberville
+FR- Saint-ouen-du-tilleul
 FR- Saint-paul-de-fourques
 FR- Saint-philbert-sur-risle
+FR- Saint-pierre-d autils
+FR- Saint-pierre-de-bailleul
 FR- Saint-pierre-de-cormeilles
 FR- Saint-pierre-de-salerne
 FR- Saint-pierre-du-bosguerard
@@ -2789,6 +3076,7 @@ FR- Thiberville
 FR- Tilleul
 FR- Tourny
 FR- Tourville-la-campagne
+FR- Toutainville
 FR- Valailles
 FR- Vandrimare
 FR- Venables
@@ -2804,9 +3092,13 @@ FR- Arrou
 FR- Auneau
 FR- Barjouville
 FR- Bazoches-les-hautes
+FR- Belhomert
 FR- Berou-la-mulotiere
+FR- Beville-le-comte
 FR- Bonce
 FR- Bonneval
+FR- Brezolles
+FR- Briconville
 FR- Brou
 FR- Broue
 FR- Brunelles
@@ -2824,14 +3116,18 @@ FR- Cloyes
 FR- Cloyes-sur-le-loir
 FR- Coltainville
 FR- Combres
+FR- Conie-molitard
 FR- Coulombs
 FR- Courville-sur-eure
+FR- Crecy-couve
 FR- Dammarie
 FR- Dangers
 FR- Dreux
+FR- Droue-sur-drouette
 FR- Ecrosnes
 FR- Epernon
 FR- Fontaine-les-ribouts
+FR- Fraze
 FR- Gallardon
 FR- Gas
 FR- Gasville
@@ -2840,11 +3136,15 @@ FR- Guainville
 FR- Hanches
 FR- Illiers
 FR- La Loupe
+FR- La Puisaye
+FR- Lamblore
+FR- Landelles
 FR- Langey
 FR- Laons
 FR- Le Coudray
 FR- Le Mee
 FR- Le Puiset
+FR- Le Thieulin
 FR- Les Corvees
 FR- Leves
 FR- Lormaye
@@ -2874,6 +3174,7 @@ FR- Rouvres
 FR- Saint-Eliph
 FR- Saint-arnoult-des-bois
 FR- Saint-aubin-des-bois
+FR- Saint-georges-sur-eure
 FR- Saint-lubin-de-la-haye
 FR- Saint-lubin-des-joncherets
 FR- Saint-luperce
@@ -2882,13 +3183,16 @@ FR- Saint-piat
 FR- Saint-prest
 FR- Saint-remy-sur-avre
 FR- Sainville
+FR- Sancheville
 FR- Senonches
 FR- Thiron-gardais
 FR- Thivars
 FR- Toury
 FR- Treon
 FR- Umpeau
+FR- Vaupillon
 FR- Vert-en-drouais
+FR- Viabon
 FR- Villemeux-sur-eure
 FR- Villiers-le-morhier
 FR- Vitray-en-beauce
@@ -2901,6 +3205,8 @@ FR- Bannalec
 FR- Benodet
 FR- Bodilis
 FR- Bourg-blanc
+FR- Brasparts
+FR- Brennilis
 FR- Brest
 FR- Briec
 FR- Carantec
@@ -2930,14 +3236,18 @@ FR- Guisseny
 FR- Hanvec
 FR- Henvic
 FR- Hopital-camfrout
+FR- Huelgoat
 FR- Ile-tudy
+FR- Kergloff
 FR- Kernilis
+FR- La Forest-landerneau
 FR- Lampaul-guimiliau
 FR- Landeda
 FR- Landerneau
 FR- Landivisiau
 FR- Landrevarzec
 FR- Landunvez
+FR- Langolen
 FR- Lanmeur
 FR- Lannedern
 FR- Lannilis
@@ -2947,6 +3257,7 @@ FR- Laz
 FR- Le Faou
 FR- Le Guilvinec
 FR- Le Relecq-kerhuon
+FR- Le Trevoux
 FR- Lesconil
 FR- Lesneven
 FR- Locquirec
@@ -2978,6 +3289,7 @@ FR- Ploudalmezeau
 FR- Ploudaniel
 FR- Plouedern
 FR- Plouescat
+FR- Plougastel
 FR- Plougastel-daoulas
 FR- Plougonvelin
 FR- Plougonven
@@ -3002,6 +3314,7 @@ FR- Rosnoen
 FR- Rosporden
 FR- Saint-Evarzec
 FR- Saint-divy
+FR- Saint-hernin
 FR- Saint-jean-trolimon
 FR- Saint-pabu
 FR- Saint-pol-de-leon
@@ -3013,11 +3326,14 @@ FR- Santec
 FR- Scaer
 FR- Scrignac
 FR- Sizun
+FR- Taule
 FR- Telgruc-sur-mer
 FR- Treffiagat
+FR- Tregourez
 FR- Tregunc
 
 # 30: Gard
+ES- Jumilla
 FR- Aigues-mortes
 FR- Aimargues
 FR- Aramon
@@ -3034,6 +3350,7 @@ FR- Brignon
 FR- Caissargues
 FR- Calvisson
 FR- Cardet
+FR- Carnas
 FR- Carsan
 FR- Caveirac
 FR- Chamborigaud
@@ -3041,6 +3358,7 @@ FR- Clarensac
 FR- Codognan
 FR- Codolet
 FR- Congenies
+FR- Estezargues
 FR- Euzet
 FR- Garons
 FR- Generac
@@ -3109,11 +3427,13 @@ FR- Villeneuve-lez-avignon
 # 31: Haute-Garonne
 FR- Aigrefeuille
 FR- Aureville
+FR- Auriac-sur-vendinelle
 FR- Aurignac
 FR- Aussonne
 FR- Auterive
 FR- Auzeville-tolosane
 FR- Auzielle
+FR- Balesta
 FR- Balma
 FR- Baziege
 FR- Beauzelle
@@ -3124,7 +3444,9 @@ FR- Blagnac
 FR- Bouloc
 FR- Bourg-saint-bernard
 FR- Bruguieres
+FR- Cadours
 FR- Capens
+FR- Caragoudes
 FR- Caraman
 FR- Carbonne
 FR- Castanet-tolosan
@@ -3153,6 +3475,7 @@ FR- Garidech
 FR- Goyrans
 FR- Gragnague
 FR- Gratentour
+FR- Grepiac
 FR- Labarthe-sur-leze
 FR- Labastide-clermont
 FR- Labastidette
@@ -3161,6 +3484,7 @@ FR- Lagrace-dieu
 FR- Lapeyrouse-fossat
 FR- Launaguet
 FR- Lavernose
+FR- Le Faget
 FR- Leguevin
 FR- Longages
 FR- Luchon
@@ -3171,6 +3495,7 @@ FR- Montastruc-la-conseillere
 FR- Montberon
 FR- Montesquieu-volvestre
 FR- Montgiscard
+FR- Montpitol
 FR- Montrabe
 FR- Muret
 FR- Nailloux
@@ -3193,6 +3518,7 @@ FR- Rieumes
 FR- Roquettes
 FR- Rouffiac-tolosan
 FR- Saint Jean
+FR- Saint-Elix-le-chateau
 FR- Saint-araille
 FR- Saint-beat
 FR- Saint-gaudens
@@ -3200,8 +3526,10 @@ FR- Saint-jory
 FR- Saint-lys
 FR- Saint-martory
 FR- Saint-orens-de-gameville
+FR- Saint-rustice
 FR- Saint-sulpice-sur-leze
 FR- Salies-du-salat
+FR- Salles-sur-garonne
 FR- Segreville
 FR- Seilh
 FR- Seysses
@@ -3219,6 +3547,8 @@ FR- Villeneuve-les-bouloc
 FR- Villeneuve-tolosane
 
 # 32: Gers
+FR- Aignan
+FR- Aubiet
 FR- Auch
 FR- Barcelonne-du-gers
 FR- Bedechan
@@ -3234,6 +3564,8 @@ FR- Gondrin
 FR- Haget
 FR- Lagraulet-du-gers
 FR- Lannepax
+FR- Lectoure
+FR- Marciac
 FR- Marestaing
 FR- Masseube
 FR- Mirande
@@ -3242,6 +3574,7 @@ FR- Monferran-saves
 FR- Noilhan
 FR- Ordan-larroque
 FR- Ornezan
+FR- Panassac
 FR- Preignan
 FR- Pujaudran
 FR- Reans
@@ -3261,10 +3594,12 @@ FR- Andernos-les-bains
 FR- Anglade
 FR- Arcachon
 FR- Ares
+FR- Arsac
 FR- Artigues-pres-bordeaux
 FR- Aubie-et-espessas
 FR- Audenge
 FR- Avensan
+FR- Bayas
 FR- Bazas
 FR- Begles
 FR- Beguey
@@ -3301,29 +3636,36 @@ FR- Daignac
 FR- Etauliers
 FR- Eynesse
 FR- Eysines
+FR- Faleyras
 FR- Fargues-saint-hilaire
+FR- Flaujagues
 FR- Floirac
 FR- Gaillan-en-medoc
 FR- Gajac
 FR- Galgon
+FR- Gauriaguet
 FR- Genissac
 FR- Gradignan
 FR- Grayan-et-l hopital
 FR- Grezillac
+FR- Guillos
 FR- Gujan-mestras
 FR- Hostens
 FR- Hure
 FR- Izon
 FR- Jau-dignac-et-loirac
 FR- La Reole
+FR- La Sauve
 FR- La Teste
 FR- La Teste-de-buch
 FR- Lacanau
+FR- Lalande-de-pomerol
 FR- Langoiran
 FR- Langon
 FR- Lanton
 FR- Laruscade
 FR- Latresne
+FR- Lavazan
 FR- Le Barp
 FR- Le Bouscat
 FR- Le Haillan
@@ -3336,6 +3678,7 @@ FR- Le Teich
 FR- Le Tourne
 FR- Leogeats
 FR- Leognan
+FR- Lerm-et-musset
 FR- Les Billaux
 FR- Les Peintures
 FR- Lesparre-medoc
@@ -3356,8 +3699,12 @@ FR- Mios
 FR- Mombrier
 FR- Montussan
 FR- Mourens
+FR- Naujac-sur-mer
+FR- Naujan-et-postiac
+FR- Neuffons
 FR- Noaillan
 FR- Ordonnac
+FR- Paillet
 FR- Parempuyre
 FR- Pauillac
 FR- Pellegrue
@@ -3366,11 +3713,13 @@ FR- Pessac
 FR- Pessac-sur-dordogne
 FR- Pineuilh
 FR- Podensac
+FR- Pondaurat
 FR- Portets
 FR- Pugnac
 FR- Puisseguin
 FR- Queyrac
 FR- Rauzan
+FR- Rions
 FR- Roaillan
 FR- Roquebrune
 FR- Ruch
@@ -3391,6 +3740,8 @@ FR- Saint-leger-de-balson
 FR- Saint-loubes
 FR- Saint-louis-de-montferrand
 FR- Saint-magne-de-castillon
+FR- Saint-martin-de-lerm
+FR- Saint-martin-de-sescas
 FR- Saint-medard-de-guizieres
 FR- Saint-medard-en-jalles
 FR- Saint-morillon
@@ -3399,24 +3750,31 @@ FR- Saint-pierre-de-bat
 FR- Saint-selve
 FR- Saint-seurin-de-cursac
 FR- Saint-seurin-sur-l isle
+FR- Saint-sulpice-et-cameyrac
 FR- Saint-yzan-de-soudiac
 FR- Sainte-foy-la-grande
 FR- Sainte-terre
 FR- Salleboeuf
+FR- Sauveterre-de-guyenne
 FR- Soulac-sur-mer
 FR- Soussac
 FR- Soussans
 FR- Tabanac
+FR- Taillecavat
 FR- Talence
 FR- Targon
 FR- Tizac-de-lapouyade
 FR- Toulenne
 FR- Tresses
 FR- Vayres
+FR- Vertheuil
 FR- Villandraut
+FR- Villegouge
 FR- Villenave-d ornon
+FR- Virsac
 
 # 34: Herault
+FR- Abeilhan
 FR- Adissan
 FR- Agde
 FR- Alignan-du-vent
@@ -3430,6 +3788,7 @@ FR- Bassan
 FR- Bedarieux
 FR- Bessan
 FR- Beziers
+FR- Boisseron
 FR- Boujan-sur-libron
 FR- Bouzigues
 FR- Candillargues
@@ -3440,6 +3799,7 @@ FR- Cazouls-les-beziers
 FR- Cessenon
 FR- Clapiers
 FR- Clermont-l herault
+FR- Combaillaux
 FR- Cournonterral
 FR- Espondeilhan
 FR- Fabregues
@@ -3449,6 +3809,7 @@ FR- Ganges
 FR- Gigean
 FR- Gignac
 FR- Grabels
+FR- Guzargues
 FR- Jacou
 FR- Juvignac
 FR- La Grande Motte
@@ -3468,6 +3829,7 @@ FR- Loupian
 FR- Lunel
 FR- Lunel-viel
 FR- Magalas
+FR- Maraussan
 FR- Marseillan
 FR- Marsillargues
 FR- Mauguio
@@ -3511,7 +3873,10 @@ FR- Saint-jean-de-vedas
 FR- Saint-martin-de-londres
 FR- Saint-mathieu-de-treviers
 FR- Saint-pargoire
+FR- Saint-thibery
+FR- Saturargues
 FR- Saussan
+FR- Saussines
 FR- Sauvian
 FR- Serignan
 FR- Servian
@@ -3525,6 +3890,7 @@ FR- Valras-plage
 FR- Valros
 FR- Vendargues
 FR- Vendemian
+FR- Vias
 FR- Vic-la-gardiole
 FR- Villeneuve-les-beziers
 FR- Viols-le-fort
@@ -3532,6 +3898,7 @@ FR- Viols-le-fort
 # 35: Ille-et-Vilaine
 FR- Acigne
 FR- Andouille-neuville
+FR- Antrain
 FR- Argentre-du-plessis
 FR- Bain-de-bretagne
 FR- Bains-sur-oust
@@ -3540,7 +3907,9 @@ FR- Baulon
 FR- Bedee
 FR- Betton
 FR- Boisgervilly
+FR- Bourg-des-comptes
 FR- Bourgbarre
+FR- Breal-sous-montfort
 FR- Brielles
 FR- Bruz
 FR- Cancale
@@ -3559,6 +3928,7 @@ FR- Dinard
 FR- Dol-de-bretagne
 FR- Domagne
 FR- Dompierre-du-chemin
+FR- Eance
 FR- Epiniac
 FR- Fougeres
 FR- Gahard
@@ -3571,6 +3941,7 @@ FR- Iffendic
 FR- Irodouer
 FR- Janze
 FR- L hermitage
+FR- La Baussaine
 FR- La Bazouge
 FR- La Bouexiere
 FR- La Boussac
@@ -3583,27 +3954,34 @@ FR- Laignelet
 FR- Laille
 FR- Le Loroux
 FR- Le Rheu
+FR- Le Verger
 FR- Lecousse
 FR- Liffre
 FR- Louvigne-du-desert
 FR- Marpire
+FR- Martigne-ferchaud
 FR- Maure-de-bretagne
+FR- Maxent
 FR- Medreac
 FR- Meillac
 FR- Melesse
 FR- Messac
+FR- Mezieres-sur-couesnon
 FR- Miniac-sous-becherel
 FR- Montauban-de-bretagne
 FR- Montfort-sur-meu
 FR- Montgermont
+FR- Montours
 FR- Montreuil-le-gast
 FR- Mordelles
 FR- Nouvoitou
 FR- Noyal-sur-vilaine
 FR- Pace
+FR- Paimpont
 FR- Pance
 FR- Parigne
 FR- Pipriac
+FR- Pire-sur-seiche
 FR- Pleine-fougeres
 FR- Plelan-le-grand
 FR- Plerguer
@@ -3639,6 +4017,8 @@ FR- Saint-pere
 FR- Saint-pern
 FR- Saint-pierre-de-plesguen
 FR- Saint-sauveur-des-landes
+FR- Saint-senoux
+FR- Saint-sulpice-la-foret
 FR- Saint-thurial
 FR- Sainte-anne-sur-vilaine
 FR- Servon-sur-vilaine
@@ -3649,6 +4029,7 @@ FR- Tinteniac
 FR- Val-d ize
 FR- Vern-sur-seiche
 FR- Vezin-le-coquet
+FR- Vieux-vy-sur-couesnon
 FR- Vitre
 
 # 36: Indre
@@ -3667,6 +4048,7 @@ FR- Deols
 FR- Diors
 FR- Douadic
 FR- Ecueille
+FR- Flere-la-riviere
 FR- Issoudun
 FR- La Vernelle
 FR- Le Pechereau
@@ -3678,8 +4060,11 @@ FR- Meobecq
 FR- Merigny
 FR- Mers-sur-indre
 FR- Montierchaume
+FR- Neons-sur-creuse
 FR- Niherne
 FR- Orsennes
+FR- Paudy
+FR- Pellevoisin
 FR- Perassay
 FR- Poulaines
 FR- Prissac
@@ -3721,6 +4106,7 @@ FR- Cheille
 FR- Chenonceaux
 FR- Chinon
 FR- Cinq-mars-la-pile
+FR- Ciran
 FR- Cormery
 FR- Courcelles-de-touraine
 FR- Crotelles
@@ -3731,6 +4117,7 @@ FR- Druye
 FR- Epeigne-les-bois
 FR- Esvres
 FR- Fondettes
+FR- Huismes
 FR- Joue-les-tours
 FR- La Guerche
 FR- La Membrolle
@@ -3744,6 +4131,7 @@ FR- Limeray
 FR- Loches
 FR- Luzille
 FR- Manthelan
+FR- Marcilly-sur-maulne
 FR- Mettray
 FR- Montbazon
 FR- Montlouis-sur-loire
@@ -3781,6 +4169,7 @@ FR- Sazilly
 FR- Sennevieres
 FR- Sorigny
 FR- Tauxigny
+FR- Tavant
 FR- Thilouze
 FR- Tours
 FR- Truyes
@@ -3794,6 +4183,7 @@ FR- Villeloin-coulange
 FR- Villeperdue
 FR- Villiers-au-bouin
 FR- Vou
+FR- Yzeures-sur-creuse
 
 # 38: Isere
 FR- Allevard
@@ -3806,12 +4196,15 @@ FR- Beaurepaire
 FR- Beauvoir-de-marc
 FR- Bernin
 FR- Bevenais
+FR- Biviers
 FR- Bonnefamille
 FR- Bouge-chambalud
 FR- Bourgoin
+FR- Brangues
 FR- Brezins
 FR- Cessieu
 FR- Champ-sur-drac
+FR- Chanas
 FR- Chantesse
 FR- Charavines
 FR- Charnecles
@@ -3822,6 +4215,7 @@ FR- Chelieu
 FR- Cheyssieu
 FR- Chimilin
 FR- Chirens
+FR- Chonas-l amballan
 FR- Cordeac
 FR- Corenc
 FR- Coublevie
@@ -3834,17 +4228,22 @@ FR- Domene
 FR- Echirolles
 FR- Eclose
 FR- Engins
+FR- Entre-deux-guiers
 FR- Estrablin
 FR- Eybens
+FR- Eyzin-pinet
 FR- Fitilieu
 FR- Fontanil
 FR- Fontanil-cornillon
 FR- Froges
+FR- Frontonas
 FR- Gieres
+FR- Goncelin
 FR- Grenoble
 FR- Heyrieux
 FR- Huez
 FR- Izeaux
+FR- Izeron
 FR- Jarrie
 FR- L albenc
 FR- L isle-d abeau
@@ -3854,11 +4253,13 @@ FR- La Mure
 FR- La Riviere
 FR- La Tronche
 FR- La Verpilliere
+FR- Lancey
 FR- Lans-en-vercors
 FR- Le Champ-pres-froges
 FR- Le Freney-d oisans
 FR- Le Touvet
 FR- Les Abrets
+FR- Les Adrets
 FR- Les Avenieres
 FR- Les Eparres
 FR- Lumbin
@@ -3869,6 +4270,7 @@ FR- Meyrie
 FR- Miribel-les-Echelles
 FR- Moidieu
 FR- Moirans
+FR- Monestier-de-clermont
 FR- Monsteroux-milieu
 FR- Montalieu-vercieu
 FR- Montbonnot
@@ -3876,6 +4278,7 @@ FR- Montbonnot-saint-martin
 FR- Montseveroux
 FR- Morestel
 FR- Mottier
+FR- Murinais
 FR- Nivolas-vermelle
 FR- Noyarey
 FR- Optevoz
@@ -3897,7 +4300,9 @@ FR- Ruy
 FR- Sablons
 FR- Saint-Etienne-de-crossey
 FR- Saint-alban-du-rhne
+FR- Saint-alban-du-rhone
 FR- Saint-andre-le-gaz
+FR- Saint-aupre
 FR- Saint-baudille-de-la-tour
 FR- Saint-bonnet-de-chavagne
 FR- Saint-chef
@@ -3912,10 +4317,12 @@ FR- Saint-jean-de-soudain
 FR- Saint-just-chaleyssin
 FR- Saint-just-de-claix
 FR- Saint-laurent-du-pont
+FR- Saint-marcel-bel-accueil
 FR- Saint-marcellin
 FR- Saint-martin-d heres
 FR- Saint-martin-d uriage
 FR- Saint-martin-le-vinoux
+FR- Saint-maurice-l exil
 FR- Saint-nazaire-les-eymes
 FR- Saint-quentin-fallavier
 FR- Saint-simeon-de-bressieux
@@ -3932,6 +4339,7 @@ FR- Seyssinet-pariset
 FR- Seyssins
 FR- Sinard
 FR- Succieu
+FR- Susville
 FR- Thodure
 FR- Thuellin
 FR- Tignieu-jameyzieu
@@ -3944,6 +4352,7 @@ FR- Varces
 FR- Vaulnaveys-le-haut
 FR- Vaulx-milieu
 FR- Venerieu
+FR- Venosc
 FR- Vertrieu
 FR- Veurey-voroize
 FR- Veyssilieu
@@ -3954,6 +4363,7 @@ FR- Villard-de-lans
 FR- Villefontaine
 FR- Villemoirieu
 FR- Villette-d anthon
+FR- Villette-de-vienne
 FR- Virieu
 FR- Viriville
 FR- Vizille
@@ -3963,26 +4373,36 @@ FR- Vourey
 
 # 39: Jura
 FR- Annoire
+FR- Arbois
 FR- Archelange
 FR- Arinthod
 FR- Audelange
 FR- Authume
 FR- Beaufort
 FR- Biarne
+FR- Bletterans
 FR- Brery
 FR- Champagnole
 FR- Chassal
+FR- Chatonnay
 FR- Chilly-le-vignoble
 FR- Choisey
+FR- Cosges
 FR- Courlans
+FR- Courlaoux
+FR- Cousance
 FR- Cuisia
+FR- Damparis
 FR- Dole
 FR- Domblans
 FR- Equevillon
 FR- Foncine-le-haut
+FR- Fraisans
+FR- Granges-sur-baume
 FR- Jeurre
 FR- La Ferte
 FR- La Rixouse
+FR- Lavans-les-saint-claude
 FR- Le Deschaux
 FR- Les Hays
 FR- Les Rousses
@@ -3991,6 +4411,7 @@ FR- Menotey
 FR- Moirans-en-montagne
 FR- Moiron
 FR- Moissey
+FR- Molinges
 FR- Montbarrey
 FR- Montmorot
 FR- Morez
@@ -4000,26 +4421,36 @@ FR- Orchamps
 FR- Orgelet
 FR- Passenans
 FR- Plainoiseau
+FR- Plasne
 FR- Poligny
 FR- Pont-de-poitte
 FR- Premanon
 FR- Rans
+FR- Rochefort-sur-nenon
 FR- Saint-claude
 FR- Saint-germain-les-arlay
 FR- Saint-lupicin
+FR- Salans
 FR- Salins-les-bains
+FR- Sampans
 FR- Sellieres
+FR- Serre-les-moulieres
+FR- Souvans
 FR- Tavaux
 FR- Thervay
+FR- Tourmont
 FR- Vaudrey
+FR- Vercia
 FR- Vernantois
 FR- Villette-les-arbois
+FR- Voiteur
 
 # 40: Landes
 FR- Aire-sur-l adour
 FR- Amou
 FR- Arsague
 FR- Bascons
+FR- Begaar
 FR- Benesse-les-dax
 FR- Benesse-maremne
 FR- Benquet
@@ -4033,15 +4464,19 @@ FR- Capbreton
 FR- Carcen-ponson
 FR- Commensacq
 FR- Dax
+FR- Donzacq
 FR- Duhort
 FR- Estibeaux
 FR- Eugenie-les-bains
+FR- Gaujacq
 FR- Geloux
 FR- Gouts
 FR- Habas
 FR- Hagetmau
 FR- Hastingues
+FR- Heugas
 FR- Hossegor
+FR- Labastide-d armagnac
 FR- Labenne
 FR- Labouheyre
 FR- Labrit
@@ -4057,15 +4492,19 @@ FR- Mimbaste
 FR- Mimizan
 FR- Misson
 FR- Moliets-et-maa
+FR- Momuy
 FR- Mont-de-marsan
 FR- Montfort-en-chalosse
 FR- Morcenx
 FR- Moustey
+FR- Nousse
 FR- Ondres
 FR- Orthevielle
 FR- Parentis-en-born
 FR- Peyrehorade
+FR- Pissos
 FR- Pomarez
+FR- Pontenx-les-forges
 FR- Pontonx
 FR- Pontonx-sur-l adour
 FR- Pouydesseaux
@@ -4075,6 +4514,7 @@ FR- Rion-des-landes
 FR- Roquefort
 FR- Sabres
 FR- Saint-cricq-chalosse
+FR- Saint-etienne-d orthe
 FR- Saint-geours-de-maremne
 FR- Saint-gor
 FR- Saint-jean-de-lier
@@ -4092,12 +4532,14 @@ FR- Saubion
 FR- Saubrigues
 FR- Saugnac-et-cambran
 FR- Seignosse
+FR- Seyresse
 FR- Soorts-hossegor
 FR- Sorde-l abbaye
 FR- Sore
 FR- Sort-en-chalosse
 FR- Souprosse
 FR- Soustons
+FR- Taller
 FR- Tarnos
 FR- Tartas
 FR- Tosse
@@ -4114,17 +4556,22 @@ FR- Autainville
 FR- Avaray
 FR- Blois
 FR- Bracieux
+FR- Busloup
 FR- Cande-sur-beuvron
 FR- Chaon
+FR- Chatillon-sur-cher
+FR- Chatres-sur-cher
 FR- Chaumont-sur-loire
 FR- Chaumont-sur-tharonne
 FR- Chemery
 FR- Cheverny
+FR- Chissay-en-touraine
 FR- Coulommiers-la-tour
 FR- Cour-cheverny
 FR- Crouy-sur-cosson
 FR- Danze
 FR- Dhuizon
+FR- Faverolles-sur-cher
 FR- Freteval
 FR- Gievres
 FR- Gombergean
@@ -4148,12 +4595,16 @@ FR- Mont-pres-chambord
 FR- Monthou-sur-bievre
 FR- Montoire-sur-le-loir
 FR- Montrichard
+FR- Montrieux-en-sologne
 FR- Muides-sur-loire
+FR- Mulsans
 FR- Mur-de-sologne
 FR- Naveil
+FR- Neung-sur-beuvron
 FR- Nouan-le-fuzelier
 FR- Noyers-sur-cher
 FR- Onzain
+FR- Orchaise
 FR- Ouchamps
 FR- Oucques
 FR- Ouzouer-le-marche
@@ -4162,9 +4613,11 @@ FR- Pierrefitte-sur-sauldre
 FR- Pontlevoy
 FR- Rilly-sur-loire
 FR- Saint-dye-sur-loire
+FR- Saint-firmin-des-pres
 FR- Saint-gervais-la-foret
 FR- Saint-gourgon
 FR- Saint-julien-de-chedon
+FR- Saint-rimay
 FR- Saint-viatre
 FR- Salbris
 FR- Sambin
@@ -4178,6 +4631,7 @@ FR- Tour-en-sologne
 FR- Vendme
 FR- Vendome
 FR- Villefrancoeur
+FR- Villeherviers
 FR- Vineuil
 FR- Vouzon
 
@@ -4189,13 +4643,17 @@ FR- Bellegarde-en-forez
 FR- Belmont-de-la-loire
 FR- Bourg-argental
 FR- Chalain-d uzore
+FR- Chalain-le-comtal
 FR- Chambeon
 FR- Chamboeuf
 FR- Charlieu
+FR- Chavanay
 FR- Chazelles-sur-lyon
 FR- Chuyer
 FR- Civens
+FR- Coutouvre
 FR- Craintilleux
+FR- Cuinzier
 FR- Dargoire
 FR- Feurs
 FR- Firminy
@@ -4205,8 +4663,11 @@ FR- La Pacaudiere
 FR- La Ricamarie
 FR- La Talaudiere
 FR- Le Coteau
+FR- Lentigny
 FR- Lezigneux
 FR- Lorette
+FR- Luriecq
+FR- Machezal
 FR- Maclas
 FR- Marcenod
 FR- Mizerieux
@@ -4215,8 +4676,12 @@ FR- Montrond-les-bains
 FR- Neulise
 FR- Noiretable
 FR- Panissieres
+FR- Pavezin
 FR- Pelussin
+FR- Planfoy
+FR- Poncins
 FR- Pouilly-les-nonains
+FR- Pralong
 FR- Precieux
 FR- Renaison
 FR- Riorges
@@ -4233,6 +4698,7 @@ FR- Saint-galmier
 FR- Saint-genest-lerpt
 FR- Saint-heand
 FR- Saint-jean-bonnefonds
+FR- Saint-just-en-chevalet
 FR- Saint-just-la-pendue
 FR- Saint-marcellin-en-forez
 FR- Saint-martin-la-plaine
@@ -4246,10 +4712,12 @@ FR- Saint-sauveur-en-rue
 FR- Saint-vincent-de-boisset
 FR- Savigneux
 FR- Sury-le-comtal
+FR- Trelins
 FR- Unieux
 FR- Valeille
 FR- Veauche
 FR- Veauchette
+FR- Villerest
 FR- Violay
 
 # 43: Haute-Loire
@@ -4263,7 +4731,9 @@ FR- Beauzac
 FR- Bellevue-la-montagne
 FR- Brioude
 FR- Brives-charensac
+FR- Chadrac
 FR- Chamalieres-sur-loire
+FR- Costaros
 FR- Coubon
 FR- Craponne-sur-arzon
 FR- Espaly-saint-marcel
@@ -4274,6 +4744,7 @@ FR- Lapte
 FR- Laussonne
 FR- Lavoute-chilhac
 FR- Le Puy
+FR- Malrevers
 FR- Maray
 FR- Mazeyrat
 FR- Monistrol-d allier
@@ -4283,6 +4754,7 @@ FR- Paulhaguet
 FR- Pont-salomon
 FR- Retournac
 FR- Riotord
+FR- Saint-hostien
 FR- Saint-jean-lachalm
 FR- Saint-jeures
 FR- Saint-julien-chapteuil
@@ -4292,6 +4764,8 @@ FR- Sainte-florine
 FR- Sainte-sigolene
 FR- Saugues
 FR- Tence
+FR- Tiranges
+FR- Valprivas
 FR- Vals-pres-le-puy
 FR- Vissac
 FR- Vorey
@@ -4351,6 +4825,7 @@ FR- Le Bignon
 FR- Le Cellier
 FR- Le Croisic
 FR- Le Landreau
+FR- Le Loroux-bottereau
 FR- Le Pallet
 FR- Le Pellerin
 FR- Le Pouliguen
@@ -4360,6 +4835,7 @@ FR- Les Touches
 FR- Machecoul
 FR- Maisdon-sur-sevre
 FR- Masserac
+FR- Mauves-sur-loire
 FR- Mesanger
 FR- Missillac
 FR- Moisdon-la-riviere
@@ -4373,6 +4849,7 @@ FR- Nort-sur-erdre
 FR- Notre-dame-des-landes
 FR- Orvault
 FR- Oudon
+FR- Paimboeuf
 FR- Paulx
 FR- Petit-auverne
 FR- Petit-mars
@@ -4384,6 +4861,7 @@ FR- Pornichet
 FR- Port-saint-pere
 FR- Prefailles
 FR- Prinquiau
+FR- Puceul
 FR- Remouille
 FR- Reze
 FR- Riaille
@@ -4399,11 +4877,13 @@ FR- Saint-herblon
 FR- Saint-jean-de-boiseau
 FR- Saint-julien-de-concelles
 FR- Saint-julien-de-vouvantes
+FR- Saint-lumine-de-clisson
 FR- Saint-lumine-de-coutais
 FR- Saint-lyphard
 FR- Saint-malo-de-guersac
 FR- Saint-mars-du-desert
 FR- Saint-mars-la-jaille
+FR- Saint-michel-chef-chef
 FR- Saint-molf
 FR- Saint-nazaire
 FR- Saint-nicolas-de-redon
@@ -4417,12 +4897,14 @@ FR- Savenay
 FR- Sion-les-mines
 FR- Soudan
 FR- Thouare-sur-loire
+FR- Touvois
 FR- Treillieres
 FR- Trignac
 FR- Varades
 FR- Vay
 FR- Vertou
 FR- Vieillevigne
+FR- Vigneux-de-bretagne
 
 # 45: Loiret
 FR- Amilly
@@ -4438,6 +4920,7 @@ FR- Beaugency
 FR- Beaune-la-rolande
 FR- Boisseaux
 FR- Bonny-sur-loire
+FR- Bouilly-en-gatinais
 FR- Bouzy-la-foret
 FR- Boynes
 FR- Bray-en-val
@@ -4466,10 +4949,13 @@ FR- Courtenay
 FR- Dadonville
 FR- Dampierre-en-burly
 FR- Darvoy
+FR- Desmonts
 FR- Donnery
 FR- Dordives
 FR- Engenville
 FR- Epieds-en-beauce
+FR- Ervauville
+FR- Estouy
 FR- Fay-aux-loges
 FR- Ferolles
 FR- Ferrieres-en-gatinais
@@ -4491,6 +4977,7 @@ FR- Le Bardon
 FR- Le Charme
 FR- Ligny-le-ribault
 FR- Lion-en-sullias
+FR- Lombreuil
 FR- Lorris
 FR- Loury
 FR- Malesherbes
@@ -4499,12 +4986,15 @@ FR- Marcilly-en-villette
 FR- Mardie
 FR- Marigny-les-usages
 FR- Marsainvilliers
+FR- Melleroy
+FR- Menestreau-en-villette
 FR- Messas
 FR- Meung-sur-loire
 FR- Montargis
 FR- Montereau
 FR- Nancray-sur-rimarde
 FR- Neuville-aux-bois
+FR- Neuvy-en-sullias
 FR- Nibelle
 FR- Nogent-sur-vernisson
 FR- Olivet
@@ -4522,6 +5012,7 @@ FR- Puiseaux
 FR- Quiers-sur-bezonde
 FR- Rebrechien
 FR- Saint-ay
+FR- Saint-brisson-sur-loire
 FR- Saint-cyr-en-val
 FR- Saint-denis-en-val
 FR- Saint-gondon
@@ -4530,6 +5021,7 @@ FR- Saint-jean-de-braye
 FR- Saint-jean-de-la-ruelle
 FR- Saint-jean-le-blanc
 FR- Saint-lye-la-foret
+FR- Saint-martin-d abbat
 FR- Saint-maurice-sur-aveyron
 FR- Saint-maurice-sur-fessard
 FR- Saint-peravy-la-colombe
@@ -4551,9 +5043,11 @@ FR- Vennecy
 FR- Vienne-en-val
 FR- Villemandeur
 FR- Villemurlin
+FR- Vimory
 FR- Vitry-aux-loges
 
 # 46: Lot
+FR- Alvignac
 FR- Beduer
 FR- Biars-sur-cere
 FR- Cahors
@@ -4563,11 +5057,15 @@ FR- Cardaillac
 FR- Castelnau-montratier
 FR- Catus
 FR- Concots
+FR- Cressensac
 FR- Felzins
 FR- Figeac
+FR- Flaujac-poujols
 FR- Gindou
 FR- Gramat
+FR- Lacapelle-marival
 FR- Lalbenque
+FR- Lanzac
 FR- Le Bourg
 FR- Livernon
 FR- Luzech
@@ -4580,6 +5078,8 @@ FR- Puybrun
 FR- Rocamadour
 FR- Rouffilhac
 FR- Salviac
+FR- Souillac
+FR- Sousceyrac
 FR- Teyssieu
 FR- Vayrac
 
@@ -4593,6 +5093,7 @@ FR- Beaupuy
 FR- Birac-sur-trec
 FR- Bon-encontre
 FR- Bourran
+FR- Cancon
 FR- Castelculier
 FR- Casteljaloux
 FR- Cocumont
@@ -4601,9 +5102,12 @@ FR- Condezaygues
 FR- Cuzorn
 FR- Estillac
 FR- Foulayronnes
+FR- Fourques-sur-garonne
 FR- Fregimont
 FR- Fumel
+FR- Galapian
 FR- Gontaud
+FR- Hautefage-la-tour
 FR- Lafitte-sur-lot
 FR- Laussou
 FR- Lavardac
@@ -4611,7 +5115,11 @@ FR- Layrac
 FR- Le Passage
 FR- Marmande
 FR- Masquieres
+FR- Moirax
+FR- Monbalen
+FR- Monflanquin
 FR- Monsempron-libos
+FR- Montayral
 FR- Monteton
 FR- Montpouillan
 FR- Nerac
@@ -4638,9 +5146,12 @@ FR- Virazeil
 FR- Aumont-aubrac
 FR- Banassac
 FR- Chanac
+FR- Chastel-nouvel
 FR- Florac
 FR- La Canourgue
+FR- Les Vignes
 FR- Marvejols
+FR- Saint-chely-d apcher
 
 # 49: Maine-et-Loire
 FR- Andard
@@ -4649,6 +5160,7 @@ FR- Andreze
 FR- Angers
 FR- Artannes-sur-thouet
 FR- Avrille
+FR- Baune
 FR- Beaucouze
 FR- Beaufort-en-vallee
 FR- Beaupreau
@@ -4659,12 +5171,15 @@ FR- Botz-en-mauges
 FR- Bouchemaine
 FR- Brain-sur-l authion
 FR- Briollay
+FR- Brissarthe
 FR- Brossay
 FR- Cande
+FR- Cantenay-Epinard
 FR- Chace
 FR- Chalonnes
 FR- Chalonnes-sur-loire
 FR- Chambellay
+FR- Champigne
 FR- Champteusse-sur-baconne
 FR- Champtoceaux
 FR- Chanteloup-les-bois
@@ -4674,6 +5189,7 @@ FR- Chaudron-en-mauges
 FR- Cheffes
 FR- Chemille
 FR- Cholet
+FR- Cornille-les-caves
 FR- Coron
 FR- Corze
 FR- Cosse-d anjou
@@ -4692,6 +5208,8 @@ FR- Ingrandes-sur-loire
 FR- Jallais
 FR- Jarze
 FR- La Cornuaille
+FR- La Dagueniere
+FR- La Jubaudiere
 FR- La Jumelliere
 FR- La Meignanne
 FR- La Menitre
@@ -4739,6 +5257,7 @@ FR- Saint-georges-sur-loire
 FR- Saint-germain-sur-moine
 FR- Saint-jean-des-mauvrets
 FR- Saint-lambert-du-lattay
+FR- Saint-lambert-la-potherie
 FR- Saint-laurent-de-la-plaine
 FR- Saint-laurent-des-autels
 FR- Saint-leger-sous-cholet
@@ -4750,9 +5269,12 @@ FR- Saint-pierre-montlimart
 FR- Saint-sylvain-d anjou
 FR- Sarrigne
 FR- Saumur
+FR- Savennieres
 FR- Sceaux-d anjou
+FR- Seiches-sur-le-loir
 FR- Somloire
 FR- Soucelles
+FR- Soulaines-sur-aubance
 FR- Tancoigne
 FR- Torfou
 FR- Trelaze
@@ -4781,6 +5303,7 @@ FR- Biville
 FR- Braffais
 FR- Brecey
 FR- Brehal
+FR- Breuville
 FR- Bricquebec
 FR- Bricqueville-sur-mer
 FR- Brix
@@ -4791,6 +5314,7 @@ FR- Colomby
 FR- Conde-sur-vire
 FR- Coudeville
 FR- Coutances
+FR- Creances
 FR- Donville-les-bains
 FR- Ducey
 FR- Equeurdreville
@@ -4802,7 +5326,9 @@ FR- Graignes
 FR- Granville
 FR- Guilberville
 FR- Herenguerville
+FR- Heugueville-sur-sienne
 FR- Hudimesnil
+FR- Joganville
 FR- Juilley
 FR- Jullouville-les-pins
 FR- Juvigny-le-tertre
@@ -4818,29 +5344,36 @@ FR- Le Teilleul
 FR- Les Pieux
 FR- Lessay
 FR- Lithaire
+FR- Margueray
 FR- Martinvast
 FR- Montebourg
 FR- Montfarville
 FR- Montgardon
 FR- Montpinchon
+FR- Moyon
 FR- Negreville
 FR- Nehou
 FR- Notre-dame-de-cenilly
 FR- Octeville
 FR- Percy
 FR- Periers
+FR- Picauville
 FR- Pont-hebert
 FR- Pontorson
 FR- Ponts
 FR- Portbail
+FR- Precorbin
 FR- Querqueville
 FR- Quettreville-sur-sienne
 FR- Quineville
+FR- Raids
 FR- Rauville-la-bigot
 FR- Regneville-sur-mer
+FR- Reville
 FR- Ronthon
 FR- Saint-Ebremond-de-bonfosse
 FR- Saint-andre-de-bohon
+FR- Saint-christophe-du-foc
 FR- Saint-denis-le-vetu
 FR- Saint-fromond
 FR- Saint-georges-montcocq
@@ -4859,13 +5392,16 @@ FR- Saint-samson-de-bonfosse
 FR- Saint-sauveur-lendelin
 FR- Saint-symphorien-le-valois
 FR- Saint-ursin
+FR- Saint-vigor-des-monts
 FR- Sartilly
 FR- Siouville
 FR- Soulles
 FR- Sourdeval
+FR- Tessy-sur-vire
 FR- Tirepied
 FR- Tollevast
 FR- Tonneville
+FR- Torigni-sur-vire
 FR- Tourlaville
 FR- Tourville-sur-sienne
 FR- Urville-bocage
@@ -4873,36 +5409,48 @@ FR- Valognes
 FR- Vasteville
 FR- Vaudrimesnil
 FR- Villebaudon
+FR- Villedieu-les-poeles
 FR- Yquelon
+FR- Yvetot-bocage
 
 # 51: Marne
 FR- Ambonnay
+FR- Aumenancourt
 FR- Avenay-val-d or
 FR- Avize
+FR- Barbonne-fayel
 FR- Baslieux-les-fismes
+FR- Beaunay
+FR- Bergeres-les-vertus
 FR- Berru
+FR- Betheniville
 FR- Betheny
 FR- Bethon
+FR- Bezannes
 FR- Blaise
 FR- Blaise-sous-arzillieres
 FR- Boult-sur-suippe
 FR- Bouvancourt
 FR- Cauroy-les-hermonville
+FR- Cernay-les-reims
 FR- Chalons-en-champagne
 FR- Chalons-sur-vesle
 FR- Chaltrait
 FR- Champguyon
+FR- Champillon
 FR- Charleville
 FR- Chatillon-sur-marne
 FR- Chatillon-sur-morin
 FR- Cheminon
 FR- Chigny-les-roses
+FR- Clesles
 FR- Compertrix
 FR- Conde-sur-marne
 FR- Coolus
 FR- Cormicy
 FR- Cormontreuil
 FR- Courdemanges
+FR- Courgivaux
 FR- Courthiezy
 FR- Courtisols
 FR- Cramant
@@ -4917,6 +5465,8 @@ FR- Faverolles-et-coemy
 FR- Fere-champenoise
 FR- Fismes
 FR- Flamanville
+FR- Fontaine-en-dormois
+FR- Frignicourt
 FR- Gaye
 FR- Gratreuil
 FR- Grauves
@@ -4924,12 +5474,14 @@ FR- Hermonville
 FR- Jalons
 FR- Janvilliers
 FR- Jonchery-sur-vesle
+FR- Lachy
 FR- Le Thoult
 FR- Les Mesneux
 FR- Loisy-sur-marne
 FR- Loivre
 FR- Ludes
 FR- Mailly-champagne
+FR- Mairy-sur-marne
 FR- Maisons-en-champagne
 FR- Mardeuil
 FR- Mareuil-en-brie
@@ -4944,7 +5496,9 @@ FR- Mutigny
 FR- Nuisement-sur-coole
 FR- Oiry
 FR- Olizy
+FR- Pargny-sur-saulx
 FR- Peas
+FR- Pierry
 FR- Pleurs
 FR- Pogny
 FR- Pomacle
@@ -4959,16 +5513,20 @@ FR- Saint-gibrien
 FR- Saint-hilaire-au-temple
 FR- Saint-hilaire-le-grand
 FR- Saint-just-sauvage
+FR- Saint-lumier-en-champagne
 FR- Saint-martin-d ablois
 FR- Saint-martin-sur-le-pre
 FR- Saint-memmie
 FR- Sainte-menehould
+FR- Saron-sur-aube
 FR- Savigny-sur-ardres
+FR- Sept-saulx
 FR- Sermaize-les-bains
 FR- Sermiers
 FR- Sezanne
 FR- Sogny-aux-moulins
 FR- Soilly
+FR- Sommepy-tahure
 FR- Sommesous
 FR- Soudron
 FR- Suippes
@@ -4998,6 +5556,7 @@ FR- Witry-les-reims
 FR- Arc-en-barrois
 FR- Attancourt
 FR- Auberive
+FR- Audeloncourt
 FR- Bettancourt-la-ferree
 FR- Biesles
 FR- Bourbonne-les-bains
@@ -5009,10 +5568,13 @@ FR- Champigny-les-langres
 FR- Chateauvillain
 FR- Chauffourt
 FR- Chaumont
+FR- Cirey-sur-blaise
+FR- Fayl-billot
 FR- Froncles
 FR- Jonchery
 FR- Langres
 FR- Louvemont
+FR- Merrey
 FR- Montier-en-der
 FR- Nogent
 FR- Occey
@@ -5020,7 +5582,9 @@ FR- Pressigny
 FR- Roches-sur-marne
 FR- Rolampont
 FR- Saint Dizier
+FR- Saint-eulien
 FR- Saints-geosmes
+FR- Thivet
 FR- Thonnance-les-joinville
 FR- Villiers-les-aprey
 FR- Voillecomte
@@ -5030,6 +5594,8 @@ FR- Wassy
 FR- Ahuille
 FR- Argenton-notre-dame
 FR- Astille
+FR- Ballee
+FR- Ballots
 FR- Bazouges
 FR- Bonchamp-les-laval
 FR- Brains-sur-les-marches
@@ -5049,25 +5615,32 @@ FR- Gorron
 FR- Hambers
 FR- La Roe
 FR- Laigne
+FR- Landivy
 FR- Laval
 FR- Le Ribay
 FR- Loigne-sur-mayenne
 FR- Loiron
 FR- Louverne
+FR- Madre
 FR- Marigne-peuton
 FR- Mayenne
 FR- Meslay-du-maine
+FR- Mezangers
 FR- Montaudin
 FR- Montenay
+FR- Montigne-le-brillant
 FR- Montsurs
+FR- Neau
 FR- Niafles
 FR- Oisseau
 FR- Parne-sur-roc
 FR- Place
+FR- Pommerieux
 FR- Port-brillet
 FR- Pre-en-pail
 FR- Quelaines
 FR- Renaze
+FR- Ruille-froid-fonds
 FR- Ruille-le-gravelais
 FR- Saint-baudelle
 FR- Saint-georges-le-flechard
@@ -5080,6 +5653,8 @@ FR- Thorigne-en-charnie
 FR- Villaines-la-juhel
 
 # 54: Meurthe-et-Moselle
+FR- Abbeville-les-conflans
+FR- Aingeray
 FR- Anthelupt
 FR- Arnaville
 FR- Arracourt
@@ -5087,12 +5662,16 @@ FR- Auboue
 FR- Audun-le-roman
 FR- Azelot
 FR- Baccarat
+FR- Badonviller
+FR- Barbonville
+FR- Barisey-au-plain
 FR- Baslieux
 FR- Benamenil
 FR- Bertrambois
 FR- Bettainvillers
 FR- Bey-sur-seille
 FR- Bicqueley
+FR- Bionville
 FR- Blainville-sur-l eau
 FR- Blenod-les-pont-a-mousson
 FR- Blenod-les-toul
@@ -5118,6 +5697,7 @@ FR- Diarville
 FR- Dieulouard
 FR- Dombasle-sur-meurthe
 FR- Domevre-en-haye
+FR- Domgermain
 FR- Dommartemont
 FR- Dommartin-les-toul
 FR- Doncourt-les-conflans
@@ -5134,19 +5714,23 @@ FR- Friauville
 FR- Frouard
 FR- Gerbeviller
 FR- Germiny
+FR- Gorcy
 FR- Hammeville
 FR- Hannonville-suzemont
+FR- Haucourt-moulaine
 FR- Heillecourt
 FR- Herimenil
 FR- Herserange
 FR- Homecourt
 FR- Jarny
+FR- Jarville
 FR- Jarville-la-malgrange
 FR- Jaulny
 FR- Jezainville
 FR- Joeuf
 FR- Jouaville
 FR- Joudreville
+FR- Labry
 FR- Laneuvelotte
 FR- Laneuveville
 FR- Laneuveville-devant-nancy
@@ -5169,6 +5753,7 @@ FR- Marbache
 FR- Mars-la-tour
 FR- Maxeville
 FR- Mazerulles
+FR- Messein
 FR- Mexy
 FR- Moineville
 FR- Moivrons
@@ -5198,6 +5783,7 @@ FR- Saulnes
 FR- Saulxures-les-nancy
 FR- Seichamps
 FR- Sommerviller
+FR- Tantonville
 FR- Thiaucourt
 FR- Thiebaumenil
 FR- Tomblaine
@@ -5209,16 +5795,20 @@ FR- Valleroy
 FR- Vandoeuvre-les-nancy
 FR- Varangeville
 FR- Velaine-en-haye
+FR- Velle-sur-moselle
 FR- Vezelise
 FR- Vigneulles
 FR- Ville-au-val
+FR- Ville-en-vermois
 FR- Villers-la-montagne
 FR- Villers-le-rond
 FR- Villers-les-nancy
 FR- Villers-sous-preny
 FR- Villerupt
+FR- Villey-saint-Etienne
 FR- Virecourt
 FR- Viterne
+FR- Xirocourt
 
 # 55: Meuse
 FR- Ancemont
@@ -5228,9 +5818,11 @@ FR- Bar-le-duc
 FR- Behonne
 FR- Belleray
 FR- Belleville-sur-meuse
+FR- Beney-en-woevre
 FR- Bouligny
 FR- Bouquemont
 FR- Boureuilles
+FR- Bras-sur-meuse
 FR- Brouennes
 FR- Burey-en-vaux
 FR- Commercy
@@ -5250,6 +5842,7 @@ FR- Hennemont
 FR- Labeuville
 FR- Lacroix-sur-meuse
 FR- Laimont
+FR- Lerouville
 FR- Ligny-en-barrois
 FR- Marre
 FR- Meuse
@@ -5282,13 +5875,16 @@ FR- Arzon
 FR- Augan
 FR- Auray
 FR- Baud
+FR- Beganne
 FR- Beignon
+FR- Berric
 FR- Bieuzy
 FR- Bignan
 FR- Billiers
 FR- Bohal
 FR- Branderion
 FR- Brandivy
+FR- Brech
 FR- Bubry
 FR- Caden
 FR- Calan
@@ -5302,25 +5898,30 @@ FR- Crach
 FR- Credin
 FR- Elven
 FR- Erdeven
+FR- Ferel
 FR- Gourhel
 FR- Gourin
 FR- Groix
 FR- Guegon
+FR- Guenin
 FR- Guer
 FR- Guern
 FR- Guidel
 FR- Guiscriff
 FR- Hennebont
+FR- Hoedic
 FR- Inguiniel
 FR- Josselin
 FR- Kerfourn
 FR- Kergrist
 FR- Kervignac
 FR- La Gacilly
+FR- Landaul
 FR- Landevant
 FR- Lanester
 FR- Langonnet
 FR- Languidic
+FR- Larmor-baden
 FR- Larmor-plage
 FR- Lauzach
 FR- Le Bono
@@ -5331,12 +5932,15 @@ FR- Limerzel
 FR- Lizio
 FR- Lochrist
 FR- Locmaria
+FR- Locmaria-grand-champ
+FR- Locmariaquer
 FR- Locmine
 FR- Locmiquelic
 FR- Locoal-mendon
 FR- Locqueltas
 FR- Lorient
 FR- Loyat
+FR- Malansac
 FR- Malestroit
 FR- Malguenac
 FR- Mauron
@@ -5346,6 +5950,7 @@ FR- Merlevenez
 FR- Meucon
 FR- Monterblanc
 FR- Montertelot
+FR- Moreac
 FR- Muzillac
 FR- Nivillac
 FR- Nostang
@@ -5380,6 +5985,7 @@ FR- Reminiac
 FR- Remungol
 FR- Riantec
 FR- Rochefort-en-terre
+FR- Saint-abraham
 FR- Saint-ave
 FR- Saint-dolay
 FR- Saint-gonnery
@@ -5417,6 +6023,7 @@ FR- Ay-sur-moselle
 FR- Bambiderstroff
 FR- Basse-ham
 FR- Basse-rentgen
+FR- Bechy
 FR- Behren-les-forbach
 FR- Benestroff
 FR- Berling
@@ -5432,6 +6039,7 @@ FR- Buhl-lorraine
 FR- Carling
 FR- Cattenom
 FR- Chailly-les-ennery
+FR- Chambrey
 FR- Charly-oradour
 FR- Chateau-salins
 FR- Chesny
@@ -5441,10 +6049,15 @@ FR- Corny-sur-moselle
 FR- Coume
 FR- Courcelles-chaussy
 FR- Courcelles-sur-nied
+FR- Crehange
 FR- Creutzwald
+FR- Cuvry
+FR- Dabo
 FR- Dalem
 FR- Dalstein
+FR- Danne-et-quatre-vents
 FR- Dannelbourg
+FR- Diesen
 FR- Dieuze
 FR- Distroff
 FR- Elzange
@@ -5461,6 +6074,7 @@ FR- Filstroff
 FR- Flevy
 FR- Florange
 FR- Folschviller
+FR- Fontoy
 FR- Forbach
 FR- Freistroff
 FR- Freybouse
@@ -5468,33 +6082,41 @@ FR- Gandrange
 FR- Gavisse
 FR- Goetzenbruck
 FR- Goin
+FR- Gondrexange
 FR- Gorze
 FR- Gravelotte
 FR- Gremecey
 FR- Gros-rederching
 FR- Grosbliederstroff
 FR- Guenange
+FR- Guerting
 FR- Hagondange
 FR- Ham-sous-varsberg
+FR- Hambach
 FR- Han-sur-nied
 FR- Hargarten-aux-mines
 FR- Haut-clocher
 FR- Hayange
 FR- Hellimer
 FR- Henridorff
+FR- Hestroff
 FR- Hettange-grande
 FR- Hombourg-haut
 FR- Hundling
 FR- Illange
 FR- Insviller
 FR- Kedange-sur-canner
+FR- Knutange
 FR- Koenigsmacker
 FR- La Maxe
+FR- Laning
+FR- Lening
 FR- Lessy
 FR- Lixing-les-rouhling
 FR- Lommerange
 FR- Longeville-les-metz
 FR- Longeville-les-saint-avold
+FR- Loudrefing
 FR- Loupershouse
 FR- Loutzviller
 FR- Macheren
@@ -5506,12 +6128,16 @@ FR- Metz
 FR- Metzervisse
 FR- Mittelbronn
 FR- Mondelange
+FR- Montbronn
 FR- Montigny-les-metz
+FR- Montois-la-montagne
 FR- Morhange
+FR- Morville-sur-nied
 FR- Moulins-les-metz
 FR- Moyeuvre-grande
 FR- Neufchef
 FR- Neufgrange
+FR- Niderviller
 FR- Nilvange
 FR- Noisseville
 FR- Norroy-le-veneur
@@ -5520,15 +6146,18 @@ FR- Oeting
 FR- Ormersviller
 FR- Ottonville
 FR- Pange
+FR- Peltre
 FR- Petit-rederching
 FR- Petite-rosselle
 FR- Phalsbourg
 FR- Piblange
 FR- Plaine-de-walsch
+FR- Plappeville
 FR- Porcelette
 FR- Pournoy-la-chetive
 FR- Pournoy-la-grasse
 FR- Puttelange
+FR- Rahling
 FR- Rechicourt-le-chateau
 FR- Reding
 FR- Remelfing
@@ -5545,18 +6174,22 @@ FR- Russange
 FR- Saint-avold
 FR- Saint-epvre
 FR- Sainte-marie-aux-chenes
+FR- Sanry-les-vigy
 FR- Sarralbe
 FR- Sarrebourg
 FR- Sarreguemines
 FR- Saulny
 FR- Schoeneck
+FR- Schorbach
 FR- Schwerdorff
 FR- Scy-chazelles
 FR- Seingbouse
 FR- Semecourt
 FR- Seremange-erzange
 FR- Servigny-les-sainte-barbe
+FR- Sillegny
 FR- Silly-sur-nied
+FR- Solgne
 FR- Stiring-wendel
 FR- Talange
 FR- Tenteling
@@ -5570,12 +6203,17 @@ FR- Tressange
 FR- Uckange
 FR- Vany
 FR- Varsberg
+FR- Vatimont
 FR- Vaudreching
 FR- Verny
+FR- Vibersviller
 FR- Vic-sur-seille
+FR- Vigy
+FR- Vitry-sur-orne
 FR- Volmerange-les-boulay
 FR- Volmerange-les-mines
 FR- Volstroff
+FR- Waldwisse
 FR- Wiesviller
 FR- Willerwald
 FR- Wintersbourg
@@ -5600,17 +6238,21 @@ FR- Chaulgnes
 FR- Chevenon
 FR- Corbigny
 FR- Cosne-sur-loire
+FR- Cossaye
 FR- Coulanges-les-nevers
 FR- Cuncy-les-varzy
 FR- Decize
+FR- Dornecy
 FR- Dornes
 FR- Fleury-sur-loire
 FR- Fourchambault
 FR- Gacogne
+FR- Garchizy
 FR- Imphy
 FR- La Machine
 FR- Lormes
 FR- Lucenay-les-aix
+FR- Magny-cours
 FR- Marzy
 FR- Menestreau
 FR- Myennes
@@ -5639,13 +6281,17 @@ FR- Anzin
 FR- Arleux
 FR- Armbouts-cappel
 FR- Armentieres
+FR- Assevent
 FR- Attiches
 FR- Auberchicourt
+FR- Aubers
 FR- Aubigny-au-bac
 FR- Auby
 FR- Auchy-les-orchies
 FR- Aulnoye-aymeries
 FR- Avelin
+FR- Avesnelles
+FR- Avesnes-le-sec
 FR- Avesnes-les-aubert
 FR- Awoingt
 FR- Bachant
@@ -5654,6 +6300,7 @@ FR- Bailleul
 FR- Bauvin
 FR- Bavay
 FR- Beaucamps-ligny
+FR- Beauvois-en-cambresis
 FR- Bellaing
 FR- Bellignies
 FR- Bergues
@@ -5662,6 +6309,7 @@ FR- Bersee
 FR- Bertry
 FR- Beugnies
 FR- Beuvrages
+FR- Blaringhem
 FR- Boeschepe
 FR- Bois-grenier
 FR- Bollezeele
@@ -5685,6 +6333,7 @@ FR- Capelle
 FR- Capinghem
 FR- Cappelle-en-pevele
 FR- Cappelle-la-grande
+FR- Cappellebrouck
 FR- Carnin
 FR- Cartignies
 FR- Caudry
@@ -5742,6 +6391,7 @@ FR- Flines-les-mortagne
 FR- Flines-les-raches
 FR- Fontaine-au-bois
 FR- Forest-sur-marque
+FR- Fort-mardyck
 FR- Fourmies
 FR- Fournes-en-weppes
 FR- Frelinghien
@@ -5765,8 +6415,10 @@ FR- Haubourdin
 FR- Haussy
 FR- Hautmont
 FR- Haveluy
+FR- Haverskerque
 FR- Hazebrouck
 FR- Hellemmes
+FR- Hellemmes-lille
 FR- Hem
 FR- Hergnies
 FR- Herin
@@ -5817,6 +6469,7 @@ FR- Lynde
 FR- Maing
 FR- Marchiennes
 FR- Marcq-en-baroeul
+FR- Mardyck
 FR- Maresches
 FR- Maretz
 FR- Marly
@@ -5826,11 +6479,16 @@ FR- Masnieres
 FR- Masny
 FR- Maubeuge
 FR- Maulde
+FR- Mecquignies
 FR- Merignies
+FR- Millam
 FR- Moncheaux
 FR- Monchecourt
 FR- Mons-en-baroeul
+FR- Mons-en-pevele
+FR- Montigny-en-cambresis
 FR- Morbecque
+FR- Mouchin
 FR- Mouvaux
 FR- Neuf-berquin
 FR- Neuville-en-ferrain
@@ -5856,6 +6514,7 @@ FR- Premesques
 FR- Preux-au-bois
 FR- Prouvy
 FR- Proville
+FR- Quaedypre
 FR- Querenaing
 FR- Quesnoy-sur-deule
 FR- Quievrechain
@@ -5866,6 +6525,7 @@ FR- Raimbeaucourt
 FR- Raismes
 FR- Recquignies
 FR- Renescure
+FR- Rexpoede
 FR- Rieulay
 FR- Rieux-en-cambresis
 FR- Roeulx
@@ -5877,24 +6537,30 @@ FR- Roubaix
 FR- Rubrouck
 FR- Rumegies
 FR- Rumilly-en-cambresis
+FR- Sailly-lez-cambrai
 FR- Sainghin-en-melantois
 FR- Sainghin-en-weppes
+FR- Sains-du-nord
 FR- Saint Andre
 FR- Saint-amand-les-eaux
 FR- Saint-andre-lez-lille
+FR- Saint-hilaire-lez-cambrai
 FR- Saint-hilaire-sur-helpe
 FR- Saint-jans-cappel
 FR- Saint-pol-sur-mer
 FR- Saint-python
 FR- Saint-saulve
 FR- Saint-souplet
+FR- Saint-sylvestre-cappel
 FR- Salesches
 FR- Sameon
 FR- Santes
 FR- Sassegnies
+FR- Saultain
 FR- Saulzoir
 FR- Sebourg
 FR- Seclin
+FR- Sepmeries
 FR- Sequedin
 FR- Sin-le-noble
 FR- Solesmes
@@ -5911,19 +6577,24 @@ FR- Thiant
 FR- Thivencelle
 FR- Thumeries
 FR- Thun
+FR- Tilloy-lez-cambrai
 FR- Toufflers
 FR- Tourcoing
 FR- Trelon
+FR- Tressin
 FR- Trith-saint-leger
 FR- Troisvilles
 FR- Uxem
 FR- Valenciennes
+FR- Vendeville
 FR- Vertain
 FR- Viesly
 FR- Vieux Conde
 FR- Vieux-berquin
 FR- Vieux-conde
+FR- Vieux-mesnil
 FR- Villefranche-sur-sane
+FR- Villers-au-tertre
 FR- Villers-guislain
 FR- Villers-outreaux
 FR- Vred
@@ -5935,6 +6606,7 @@ FR- Wambrechies
 FR- Wannehain
 FR- Wargnies-le-grand
 FR- Warhem
+FR- Warlaing
 FR- Wasnes-au-bac
 FR- Wasquehal
 FR- Watten
@@ -5943,6 +6615,7 @@ FR- Wattrelos
 FR- Wavrin
 FR- Waziers
 FR- Wervicq-sud
+FR- Willems
 FR- Wormhout
 FR- Wylder
 
@@ -5965,6 +6638,7 @@ FR- Baill
 FR- Bailleul-le-soc
 FR- Bailleul-sur-therain
 FR- Balagny-sur-therain
+FR- Bargny
 FR- Bazicourt
 FR- Beaurains-les-noyon
 FR- Beauvais
@@ -5977,6 +6651,7 @@ FR- Bienville
 FR- Blancfosse
 FR- Boissy-fresnoy
 FR- Bonlier
+FR- Bonneuil-en-valois
 FR- Boran-sur-oise
 FR- Bornel
 FR- Bouillancy
@@ -5990,6 +6665,7 @@ FR- Breteuil-sur-noye
 FR- Breuil-le-sec
 FR- Breuil-le-vert
 FR- Brombos
+FR- Cambronne-les-clermont
 FR- Cambronne-les-ribecourt
 FR- Canly
 FR- Cannectancourt
@@ -6020,6 +6696,7 @@ FR- Crevecoeur-le-grand
 FR- Crisolles
 FR- Crouy-en-thelle
 FR- Cuise-la-motte
+FR- Cuts
 FR- Cuvilly
 FR- Dieudonne
 FR- Dreslincourt
@@ -6034,10 +6711,13 @@ FR- Esquennoy
 FR- Essuiles
 FR- Estrees-saint-denis
 FR- Etouy
+FR- Fitz-james
 FR- Flavacourt
 FR- Fleurines
+FR- Fontaine-bonneleau
 FR- Formerie
 FR- Fosseuse
+FR- Fournival
 FR- Fresneaux-montchevreuil
 FR- Fresnoy-en-thelle
 FR- Fresnoy-le-luat
@@ -6054,6 +6734,7 @@ FR- Guiscard
 FR- Hardivillers
 FR- Haudivillers
 FR- Hautefontaine
+FR- Heilles
 FR- Hemevillers
 FR- Henonville
 FR- Hodenc-l eveque
@@ -6063,16 +6744,19 @@ FR- Jaulzy
 FR- Jaux
 FR- Jouy-sous-thelle
 FR- La Herelle
+FR- Laboissiere-en-thelle
 FR- Lachelle
 FR- Lacroix-saint-ouen
 FR- Lagny
 FR- Lagny-le-sec
 FR- Laigneville
+FR- Lalande-en-son
 FR- Lamorlaye
 FR- Laneuvilleroy
 FR- Lassigny
 FR- Laversines
 FR- Le Deluge
+FR- Le Gallet
 FR- Le Meux
 FR- Le Plessier
 FR- Les Ageux
@@ -6089,6 +6773,7 @@ FR- Maisoncelle-tuilerie
 FR- Mareuil-la-motte
 FR- Mareuil-sur-ourcq
 FR- Margny-les-compiegne
+FR- Marqueglise
 FR- Marseille-en-beauvaisis
 FR- Maulers
 FR- Melicocq
@@ -6099,6 +6784,7 @@ FR- Mogneville
 FR- Moliens
 FR- Monceaux-l abbaye
 FR- Monchy-humieres
+FR- Monchy-saint-Eloi
 FR- Mondescourt
 FR- Monneville
 FR- Montagny-en-vexin
@@ -6112,6 +6798,7 @@ FR- Mortefontaine-en-thelle
 FR- Mouy
 FR- Moyvillers
 FR- Nanteuil-le-haudouin
+FR- Nery
 FR- Neufchelles
 FR- Neuilly-en-thelle
 FR- Neuilly-sous-clermont
@@ -6138,11 +6825,13 @@ FR- Puiseux-en-bray
 FR- Puiseux-le-hauberger
 FR- Quesmy
 FR- Rantigny
+FR- Ravenel
 FR- Remerangles
 FR- Ressons-sur-matz
 FR- Ribecourt
 FR- Rivecourt
 FR- Rochy-conde
+FR- Roye-sur-matz
 FR- Sacy-le-grand
 FR- Saint-aubin-sous-erquery
 FR- Saint-crepin-aux-bois
@@ -6151,11 +6840,13 @@ FR- Saint-just-en-chaussee
 FR- Saint-leu-d esserent
 FR- Saint-martin-le-noeud
 FR- Saint-martin-longueau
+FR- Saint-omer-en-chaussee
 FR- Saint-vaast-les-mello
 FR- Saintines
 FR- Sempigny
 FR- Senlis
 FR- Serifontaine
+FR- Sery-magneval
 FR- Silly-le-long
 FR- Silly-tillard
 FR- Solente
@@ -6207,24 +6898,29 @@ FR- Ceton
 FR- Chailloue
 FR- Chandai
 FR- Chanu
+FR- Ciral
 FR- Conde-sur-sarthe
 FR- Coulmer
+FR- Coulonges-sur-sarthe
 FR- Courgeon
 FR- Courmenil
 FR- Crulai
 FR- Damigny
 FR- Dorceau
 FR- Ecouche
+FR- Essay
 FR- Exmes
 FR- Flers
 FR- Heloup
 FR- L aigle
 FR- La Ferte-mace
 FR- La Mesniere
+FR- La Sauvagere
 FR- Le Sap
 FR- Les Champeaux
 FR- Les Menus
 FR- Longny-au-perche
+FR- Lonrai
 FR- Mace
 FR- Magny-le-desert
 FR- Menil-erreux
@@ -6234,6 +6930,7 @@ FR- Montgaroult
 FR- Mortagne-au-perche
 FR- Mortree
 FR- Moulins-la-marche
+FR- Necy
 FR- Occagnes
 FR- Passais-la-conception
 FR- Perrou
@@ -6244,15 +6941,18 @@ FR- Resenlieu
 FR- Saint-aubin-de-bonneval
 FR- Saint-denis-sur-sarthon
 FR- Saint-germain-du-corbeis
+FR- Saint-hilaire-le-chatel
 FR- Saint-julien-sur-sarthe
 FR- Saint-loyer-des-champs
 FR- Saint-ouen-de-secherouvre
 FR- Saint-ouen-sur-iton
 FR- Saint-sulpice-sur-risle
 FR- Sainte-gauburge
+FR- Sarceaux
 FR- Sees
 FR- Segrie-fontaine
 FR- Sept-forges
+FR- Sevigny
 FR- Soligny-la-trappe
 FR- Tinchebray
 FR- Tourouvre
@@ -6281,17 +6981,20 @@ FR- Anzin-saint-aubin
 FR- Ardres
 FR- Arques
 FR- Arras
+FR- Aubigny-en-artois
 FR- Aubin-saint-vaast
 FR- Auchel
 FR- Auchy-les-hesdin
 FR- Auchy-les-mines
 FR- Audembert
+FR- Audincthun
 FR- Audruicq
 FR- Autingues
 FR- Auxi-le-chateau
 FR- Avesnes-le-comte
 FR- Avion
 FR- Azincourt
+FR- Bailleul-sir-berthoult
 FR- Baincthun
 FR- Bajus
 FR- Balinghem
@@ -6304,7 +7007,10 @@ FR- Beaumetz-les-loges
 FR- Beaurains
 FR- Beaurainville
 FR- Bellebrune
+FR- Bellonne
 FR- Berck
+FR- Berck-plage
+FR- Berck-sur-mer
 FR- Berles-monchel
 FR- Bethune
 FR- Beuvry
@@ -6320,7 +7026,9 @@ FR- Boubers-sur-canche
 FR- Boulogne-sur-mer
 FR- Bouquehault
 FR- Bourlon
+FR- Bourthes
 FR- Bouvigny-boyeffles
+FR- Brebieres
 FR- Brimeux
 FR- Bruay
 FR- Bucquoy
@@ -6338,6 +7046,8 @@ FR- Campagne-les-wardrecques
 FR- Carency
 FR- Carvin
 FR- Cauchy-a-la-tour
+FR- Chelers
+FR- Chocques
 FR- Clety
 FR- Condette
 FR- Coquelles
@@ -6350,6 +7060,7 @@ FR- Croisilles
 FR- Cuinchy
 FR- Dainville
 FR- Dannes
+FR- Delettes
 FR- Desvres
 FR- Dieval
 FR- Divion
@@ -6357,11 +7068,14 @@ FR- Dohem
 FR- Dourges
 FR- Douvrin
 FR- Duisans
+FR- Ecourt-saint-quentin
+FR- Ecquemicourt
 FR- Ecques
 FR- Eleu-dit-leauwette
 FR- Elnes
 FR- Enquin-sur-baillons
 FR- Esquerdes
+FR- Estree-blanche
 FR- Estree-cauchy
 FR- Etaples
 FR- Etrun
@@ -6371,11 +7085,14 @@ FR- Farbus
 FR- Fauquembergues
 FR- Ferfay
 FR- Feuchy
+FR- Flechin
 FR- Fleurbaix
 FR- Fortel-en-artois
+FR- Fresnicourt-le-dolmen
 FR- Frethun
 FR- Frevent
 FR- Fruges
+FR- Gauchin-verloingt
 FR- Givenchy-en-gohelle
 FR- Gouy-sous-bellonne
 FR- Groffliers
@@ -6403,7 +7120,10 @@ FR- Houdain
 FR- Houlle
 FR- Hulluch
 FR- Humieres
+FR- Inghem
 FR- Isbergues
+FR- Izel-les-Equerchin
+FR- Izel-les-hameaux
 FR- La Couture
 FR- La Loge
 FR- La Thieuloye
@@ -6442,6 +7162,7 @@ FR- Marles-les-mines
 FR- Maroeuil
 FR- Marquion
 FR- Marquise
+FR- Matringhem
 FR- Mazingarbe
 FR- Merlimont
 FR- Metz-en-couture
@@ -6451,10 +7172,12 @@ FR- Montigny-en-gohelle
 FR- Montreuil-sur-mer
 FR- Moringhem
 FR- Neufchatel-hardelot
+FR- Neuve-chapelle
 FR- Neuville-sous-montreuil
 FR- Noeux-les-mines
 FR- Nordausques
 FR- Norrent-fontes
+FR- Nortkerque
 FR- Noyelles-godault
 FR- Noyelles-les-vermelles
 FR- Noyelles-sous-lens
@@ -6464,7 +7187,10 @@ FR- Oppy
 FR- Ourton
 FR- Outreau
 FR- Oye-plage
+FR- Pelves
+FR- Pihem
 FR- Pihen-les-guines
+FR- Plumoison
 FR- Pommera
 FR- Pont-a-vendin
 FR- Pont-de-briques
@@ -6477,12 +7203,14 @@ FR- Radinghem
 FR- Ranchicourt
 FR- Rang-du-fliers
 FR- Rebreuviette
+FR- Rety
 FR- Richebourg
 FR- Rodelinghem
 FR- Roquetoire
 FR- Rouvroy
 FR- Ruitz
 FR- Ruminghem
+FR- Sailly-en-ostrevent
 FR- Sailly-labourse
 FR- Sailly-sur-la-lys
 FR- Sains-en-gohelle
@@ -6520,6 +7248,7 @@ FR- Vermelles
 FR- Verquigneul
 FR- Verquin
 FR- Verton
+FR- Vieille-Eglise
 FR- Villers-au-bois
 FR- Vimy
 FR- Violaines
@@ -6531,6 +7260,7 @@ FR- Wavrans-sur-l aa
 FR- Wimereux
 FR- Wimille
 FR- Wingles
+FR- Wirwignes
 FR- Wissant
 FR- Wittes
 FR- Wizernes
@@ -6557,11 +7287,13 @@ FR- Chadeleuf
 FR- Chamalieres
 FR- Champeix
 FR- Champs
+FR- Chapdes-beaufort
 FR- Chappes
 FR- Charbonnieres-les-vieilles
 FR- Chateaugay
 FR- Chatelguyon
 FR- Chauriat
+FR- Chavaroux
 FR- Chidrac
 FR- Clermont-ferrand
 FR- Combronde
@@ -6575,11 +7307,13 @@ FR- Cunlhat
 FR- Dallet
 FR- Effiat
 FR- Egliseneuve-des-liards
+FR- Egliseneuve-pres-billom
 FR- Ennezat
 FR- Entraigues
 FR- Enval
 FR- Espirat
 FR- Gerzat
+FR- Gimeaux
 FR- Issoire
 FR- La Bourboule
 FR- Laqueuille
@@ -6588,8 +7322,11 @@ FR- Lempdes
 FR- Lezoux
 FR- Malauzat
 FR- Malintrat
+FR- Maringues
+FR- Marsac-en-livradois
 FR- Marsat
 FR- Menetrol
+FR- Mirefleurs
 FR- Moissat
 FR- Montfermy
 FR- Moriat
@@ -6597,13 +7334,18 @@ FR- Mozac
 FR- Nebouzat
 FR- Nohanent
 FR- Olby
+FR- Olmet
+FR- Orcet
 FR- Orcines
 FR- Orleat
 FR- Ours
 FR- Paslieres
 FR- Perignat-les-sarlieve
 FR- Perrier
+FR- Peschadoires
 FR- Pessat-villeneuve
+FR- Pionsat
+FR- Plauzat
 FR- Pont-du-chateau
 FR- Pontgibaud
 FR- Randan
@@ -6614,6 +7356,7 @@ FR- Saint-Eloy-les-mines
 FR- Saint-agoulin
 FR- Saint-amant-tallende
 FR- Saint-beauzire
+FR- Saint-cirgues-sur-couze
 FR- Saint-diery
 FR- Saint-germain-lembron
 FR- Saint-jean-d heurs
@@ -6621,6 +7364,7 @@ FR- Saint-jean-en-val
 FR- Saint-julien-de-coppel
 FR- Saint-julien-puy-laveze
 FR- Saint-nectaire
+FR- Saint-remy-de-blot
 FR- Saint-remy-sur-durolle
 FR- Saint-sylvestre-pragoulin
 FR- Saint-victor-montvianeix
@@ -6628,6 +7372,7 @@ FR- Saint-yvoine
 FR- Sardon
 FR- Sauviat
 FR- Sauxillanges
+FR- Sayat
 FR- Solignat
 FR- Thiers
 FR- Vernet-la-varenne
@@ -6641,6 +7386,7 @@ FR- Volvic
 FR- Youx
 
 # 64: Pyrenees-Atlantiques
+FR- Ahetze
 FR- Andoins
 FR- Anglet
 FR- Argagnon
@@ -6655,6 +7401,7 @@ FR- Asson
 FR- Astis
 FR- Baliros
 FR- Barzun
+FR- Bassussarry
 FR- Baudreix
 FR- Bayonne
 FR- Bellocq
@@ -6663,8 +7410,11 @@ FR- Biarritz
 FR- Bidart
 FR- Billere
 FR- Bizanos
+FR- Borce
 FR- Boucau
+FR- Briscous
 FR- Buros
+FR- Cambo-les-bains
 FR- Castetbon
 FR- Ciboure
 FR- Coarraze
@@ -6674,6 +7424,7 @@ FR- Espelette
 FR- Garlin
 FR- Gelos
 FR- Geus-d oloron
+FR- Gotein-libarrenx
 FR- Guethary
 FR- Guiche
 FR- Hasparren
@@ -6681,20 +7432,25 @@ FR- Helette
 FR- Hendaye
 FR- Idron
 FR- Igon
+FR- Itxassou
 FR- Jatxou
 FR- Juranon
+FR- Lahonce
 FR- Lahontan
 FR- Lanneplaa
 FR- Laroin
+FR- Larrau
 FR- Larressore
 FR- Lasclaveries
 FR- Ledeuix
 FR- Lescar
 FR- Lons
 FR- Louvie-juzon
+FR- Mauleon-licharre
 FR- Mazeres-lezons
 FR- Monein
 FR- Morlaas
+FR- Morlanne
 FR- Mouguerre
 FR- Mourenx
 FR- Nousty
@@ -6702,11 +7458,14 @@ FR- Ogenne-camptort
 FR- Oloron-sainte-marie
 FR- Ordiarp
 FR- Orthez
+FR- Osse-en-aspe
 FR- Ouillon
 FR- Pau
 FR- Poey-de-lescar
 FR- Pontacq
+FR- Rebenacq
 FR- Saillant
+FR- Saint-abit
 FR- Saint-castin
 FR- Saint-faust
 FR- Saint-jammes
@@ -6714,12 +7473,15 @@ FR- Saint-jean-de-luz
 FR- Saint-laurent-bretagne
 FR- Saint-pee-sur-nivelle
 FR- Salies-de-bearn
+FR- Sallespisse
 FR- Sare
+FR- Saubole
 FR- Sauvagnon
 FR- Sauveterre-de-bearn
 FR- Serres-castet
 FR- Serres-sainte-marie
 FR- Soumoulou
+FR- Souraide
 FR- Urcuit
 FR- Urrugne
 FR- Ustaritz
@@ -6735,7 +7497,9 @@ FR- Arreau
 FR- Aste
 FR- Bagneres-de-bigorre
 FR- Barbazan-debat
+FR- Bernac-debat
 FR- Borderes-sur-l echez
+FR- Bun
 FR- Capvern
 FR- Escaunets
 FR- Germ
@@ -6746,6 +7510,7 @@ FR- Laloubere
 FR- Lannemezan
 FR- Lourdes
 FR- Luquet
+FR- Maubourguet
 FR- Merilheu
 FR- Odos
 FR- Orleix
@@ -6754,13 +7519,16 @@ FR- Puntous
 FR- Rabastens-de-bigorre
 FR- Sabalos
 FR- Saint-lezer
+FR- Salles-adour
 FR- Semeac
 FR- Soues
 FR- Tarbes
+FR- Uglas
 FR- Vic-en-bigorre
 FR- Villemur
 
 # 66: Pyrenees-Orientales
+FR- Alenya
 FR- Argeles-sur-mer
 FR- Baho
 FR- Baixas
@@ -6774,7 +7542,10 @@ FR- Claira
 FR- Corbere-les-cabanes
 FR- Corneilla-del-vercol
 FR- Corneilla-la-riviere
+FR- Elne
 FR- Ille-sur-tet
+FR- Latour-bas-elne
+FR- Le Barcares
 FR- Le Boulou
 FR- Le Soler
 FR- Le Vivier
@@ -6787,19 +7558,25 @@ FR- Perpignan
 FR- Pezilla-la-riviere
 FR- Pia
 FR- Pollestres
+FR- Ponteilla
 FR- Prunet-et-belpuig
 FR- Rivesaltes
 FR- Rodes
 FR- Saint-cyprien
 FR- Saint-esteve
+FR- Saint-feliu-d avall
 FR- Saint-laurent-de-la-salanq
 FR- Sainte-marie-la-mer
 FR- Saleilles
+FR- Serdinya
+FR- Sorede
+FR- Tautavel
 FR- Theza
 FR- Thuir
 FR- Torderes
 FR- Toulouges
 FR- Trouillas
+FR- Vernet-les-bains
 FR- Villefranche-de-conflent
 FR- Villelongue-de-la-salanque
 FR- Villeneuve-de-la-raho
@@ -6809,6 +7586,7 @@ FR- Villeneuve-la-riviere
 FR- Achenheim
 FR- Barembach
 FR- Barr
+FR- Bassemberg
 FR- Batzendorf
 FR- Beinheim
 FR- Benfeld
@@ -6816,6 +7594,7 @@ FR- Bernardswiller
 FR- Berstett
 FR- Betschdorf
 FR- Biblisheim
+FR- Bindernheim
 FR- Bischheim
 FR- Bischoffsheim
 FR- Bischwiller
@@ -6845,6 +7624,8 @@ FR- Duppigheim
 FR- Duttlenheim
 FR- Ebersheim
 FR- Eckbolsheim
+FR- Eichhoffen
+FR- Entzheim
 FR- Epfig
 FR- Ergersheim
 FR- Erstein
@@ -6853,7 +7634,9 @@ FR- Ettendorf
 FR- Fegersheim
 FR- Forstfeld
 FR- Fouchy
+FR- Fouday
 FR- Friesenheim
+FR- Furdenheim
 FR- Gambsheim
 FR- Geispolsheim
 FR- Gerstheim
@@ -6863,6 +7646,7 @@ FR- Gundershoffen
 FR- Haguenau
 FR- Hangenbieten
 FR- Hatten
+FR- Hattmatt
 FR- Hegeney
 FR- Heidolsheim
 FR- Heiligenstein
@@ -6870,8 +7654,10 @@ FR- Herrlisheim
 FR- Hilsenheim
 FR- Hindisheim
 FR- Hipsheim
+FR- Hochstett
 FR- Hoenheim
 FR- Hoerdt
+FR- Hohengoeft
 FR- Holtzheim
 FR- Hurtigheim
 FR- Huttenheim
@@ -6879,6 +7665,8 @@ FR- Illkirch
 FR- Illkirch-graffenstaden
 FR- Ingwiller
 FR- Innenheim
+FR- Ittenheim
+FR- Itterswiller
 FR- Kaltenhouse
 FR- Kertzfeld
 FR- Kilstett
@@ -6892,11 +7680,13 @@ FR- La Wantzenau
 FR- Lalaye
 FR- Langensoultzbach
 FR- Lingolsheim
+FR- Lixhausen
 FR- Lutzelhouse
 FR- Mackenheim
 FR- Mackwiller
 FR- Marckolsheim
 FR- Marienthal
+FR- Marlenheim
 FR- Matzenheim
 FR- Meistratzheim
 FR- Mertzwiller
@@ -6907,6 +7697,7 @@ FR- Mothern
 FR- Mundolsheim
 FR- Muttersholtz
 FR- Mutzig
+FR- Neuwiller-les-saverne
 FR- Niederbronn
 FR- Niederbronn-les-bains
 FR- Niederschaeffolsheim
@@ -6917,6 +7708,7 @@ FR- Obenheim
 FR- Oberbronn
 FR- Oberhausbergen
 FR- Oberhoffen-sur-moder
+FR- Obermodern
 FR- Obernai
 FR- Oberschaeffolsheim
 FR- Offendorf
@@ -6927,14 +7719,19 @@ FR- Otterswiller
 FR- Ottrott
 FR- Pfaffenhoffen
 FR- Pfettisheim
+FR- Pfulgriesheim
 FR- Plobsheim
 FR- Preuschdorf
+FR- Rangen
 FR- Rauwiller
+FR- Reichsfeld
+FR- Reichshoffen
 FR- Reichstett
 FR- Reitwiller
 FR- Rhinau
 FR- Roeschwoog
 FR- Rosheim
+FR- Rossfeld
 FR- Rothau
 FR- Rothbach
 FR- Russ
@@ -6947,8 +7744,10 @@ FR- Scharrachbergheim
 FR- Scherwiller
 FR- Schiltigheim
 FR- Schirmeck
+FR- Schoenenbourg
 FR- Schwindratzheim
 FR- Selestat
+FR- Sessenheim
 FR- Siewiller
 FR- Souffelweyersheim
 FR- Soufflenheim
@@ -6956,6 +7755,7 @@ FR- Soultz
 FR- Soultz-sous-forets
 FR- Steinbourg
 FR- Still
+FR- Stotzheim
 FR- Strasbourg
 FR- Stutzheim
 FR- Sundhouse
@@ -6974,6 +7774,7 @@ FR- Witternheim
 FR- Wittersheim
 FR- Wiwersheim
 FR- Wolfisheim
+FR- Wolxheim
 FR- Zinswiller
 
 # 68: Haut-Rhin
@@ -6984,6 +7785,7 @@ FR- Appenwihr
 FR- Artzenheim
 FR- Bantzenheim
 FR- Battenheim
+FR- Bergholtz
 FR- Berrwiller
 FR- Biesheim
 FR- Bischwihr
@@ -7020,6 +7822,7 @@ FR- Hagenthal-le-haut
 FR- Hattstatt
 FR- Hausgauen
 FR- Hecken
+FR- Heimersdorf
 FR- Heimsbrunn
 FR- Heiteren
 FR- Hesingue
@@ -7027,6 +7830,7 @@ FR- Hochstatt
 FR- Holtzwihr
 FR- Horbourg
 FR- Huningue
+FR- Husseren-wesserling
 FR- Illfurth
 FR- Illzach
 FR- Ingersheim
@@ -7036,6 +7840,7 @@ FR- Kaysersberg
 FR- Kembs
 FR- Kingersheim
 FR- Koetzingue
+FR- Kruth
 FR- Kunheim
 FR- Labaroche
 FR- Landser
@@ -7049,10 +7854,13 @@ FR- Merxheim
 FR- Metzeral
 FR- Michelbach
 FR- Michelbach-le-bas
+FR- Montreux-vieux
 FR- Moosch
 FR- Morschwiller-le-bas
+FR- Muhlbach-sur-munster
 FR- Mulhouse
 FR- Munchhouse
+FR- Muntzenheim
 FR- Munwiller
 FR- Niederbruck
 FR- Niedermorschwihr
@@ -7062,6 +7870,7 @@ FR- Oberentzen
 FR- Oberhergheim
 FR- Oderen
 FR- Orbey
+FR- Orschwihr
 FR- Ottmarsheim
 FR- Pfaffenheim
 FR- Pfastatt
@@ -7071,6 +7880,7 @@ FR- Raedersheim
 FR- Ranspach
 FR- Ranspach-le-bas
 FR- Reguisheim
+FR- Reiningue
 FR- Richwiller
 FR- Riedisheim
 FR- Riquewihr
@@ -7115,6 +7925,7 @@ FR- Zillisheim
 FR- Zimmerbach
 
 # 69: Rhone
+FR- Albigny-sur-saone
 FR- Amplepuis
 FR- Ampuis
 FR- Belleville
@@ -7129,6 +7940,7 @@ FR- Cabannes
 FR- Caluire
 FR- Caluire-et-cuire
 FR- Cercie
+FR- Champagne-au-mont-d or
 FR- Chaponnay
 FR- Chaponost
 FR- Charbonnieres-les-bains
@@ -7156,6 +7968,7 @@ FR- Francheville
 FR- Genas
 FR- Genay
 FR- Givors
+FR- Grandris
 FR- Grezieu-la-varenne
 FR- Grezieu-le-marche
 FR- Irigny
@@ -7168,9 +7981,11 @@ FR- Lacenas
 FR- Lachassagne
 FR- Larajasse
 FR- Lentilly
+FR- Les Halles
 FR- Limas
 FR- Limonest
 FR- Lissieu
+FR- Longessaigne
 FR- Lozanne
 FR- Lucenay
 FR- Lyon
@@ -7198,6 +8013,7 @@ FR- Pusignan
 FR- Quincie-en-beaujolais
 FR- Quincieux
 FR- Rillieux
+FR- Rivolet
 FR- Ronno
 FR- Sain-bel
 FR- Saint Priest
@@ -7252,7 +8068,9 @@ FR- Beveuge
 FR- Blondefontaine
 FR- Breuches
 FR- Brevilliers
+FR- Brotte-les-luxeuil
 FR- Bucey-les-gy
+FR- Chagey
 FR- Chalonvillars
 FR- Chassey-les-montbozon
 FR- Chaumercenne
@@ -7263,6 +8081,7 @@ FR- Conflans-sur-lanterne
 FR- Dampierre-sur-salon
 FR- Echenoz-la-meline
 FR- Etuz
+FR- Faverney
 FR- Fleurey-les-saint-loup
 FR- Fontaine-les-luxeuil
 FR- Fresse
@@ -7271,23 +8090,28 @@ FR- Frotey-les-lure
 FR- Genevreuille
 FR- Granges-le-bourg
 FR- Gray
+FR- Jussey
 FR- La Cte
 FR- Lure
 FR- Luxeuil-les-bains
 FR- Malbouhans
 FR- Membrey
+FR- Mersuay
 FR- Noidans-le-ferroux
 FR- Noidans-les-vesoul
 FR- Ovanches
 FR- Port-sur-sane
 FR- Port-sur-saone
 FR- Pusey
+FR- Pusy-et-Epenoux
+FR- Rigny
 FR- Rioz
 FR- Roche-sur-linotte
 FR- Ronchamp
 FR- Saint Barthelemy
 FR- Saint-gand
 FR- Saint-loup-sur-semouse
+FR- Saulnot
 FR- Savoyeux
 FR- Sorans-les-breurey
 FR- Tavey
@@ -7300,6 +8124,7 @@ FR- Vellefrey-et-vellefrange
 FR- Vernois-sur-mance
 FR- Vesoul
 FR- Villargent
+FR- Vy-les-lure
 
 # 71: Saone-et-Loire
 FR- Alleriot
@@ -7307,10 +8132,12 @@ FR- Antully
 FR- Autun
 FR- Bantanges
 FR- Baudemont
+FR- Baudrieres
 FR- Beaubery
 FR- Beaurepaire-en-bresse
 FR- Berze-la-ville
 FR- Blanzy
+FR- Bosjean
 FR- Bourbon-lancy
 FR- Branges
 FR- Burnand
@@ -7335,17 +8162,20 @@ FR- Cuiseaux
 FR- Cuisery
 FR- Curgy
 FR- Demigny
+FR- Devrouze
 FR- Digoin
 FR- Donzy-le-pertuis
 FR- Ecuisses
 FR- Epervans
 FR- Epinac
+FR- Essertenne
 FR- Etang-sur-arroux
 FR- Etrigny
 FR- Farges-les-chalon
 FR- Fontaine
 FR- Frontenaud
 FR- Gergy
+FR- Germagny
 FR- Guerfand
 FR- Gueugnon
 FR- Igornay
@@ -7360,6 +8190,7 @@ FR- Montceau-les-mines
 FR- Montcenis
 FR- Montchanin
 FR- Montcoy
+FR- Montmort
 FR- Moroges
 FR- Oudry
 FR- Palinges
@@ -7369,9 +8200,13 @@ FR- Perreuil
 FR- Pierreclos
 FR- Prety
 FR- Rancy
+FR- Ratte
+FR- Saint-Etienne-en-bresse
 FR- Saint-albain
+FR- Saint-ambreuil
 FR- Saint-berain-sur-dheune
 FR- Saint-boil
+FR- Saint-desert
 FR- Saint-forgeot
 FR- Saint-gengoux-de-scisse
 FR- Saint-germain-du-bois
@@ -7381,30 +8216,36 @@ FR- Saint-martin-belle-roche
 FR- Saint-martin-en-bresse
 FR- Saint-pierre-de-varennes
 FR- Saint-sernin-du-plain
+FR- Saint-symphorien-d ancelles
 FR- Saint-usuge
 FR- Saint-vallier
 FR- Sanvignes
 FR- Sanvignes-les-mines
+FR- Sassangy
 FR- Sassenay
 FR- Savigny-en-revermont
 FR- Sennecey-le-grand
 FR- Senozan
+FR- Sevrey
 FR- Toulon-sur-arroux
 FR- Tournus
 FR- Tramayes
 FR- Uchizy
 FR- Varennes-les-macon
 FR- Verdun-sur-le-doubs
+FR- Verjux
 FR- Verze
 
 # 72: Sarthe
 FR- Allonnes
 FR- Arnage
+FR- Asse-le-boisne
 FR- Auvers-le-hamon
 FR- Beaufay
 FR- Besse-sur-braye
 FR- Bonnetable
 FR- Bouloire
+FR- Brette-les-pins
 FR- Brulon
 FR- Cerans-foulletourte
 FR- Chassille
@@ -7419,6 +8260,7 @@ FR- Conlie
 FR- Connerre
 FR- Coulaines
 FR- Courcemont
+FR- Courgains
 FR- Crosmieres
 FR- Disse-sous-ballon
 FR- Dollon
@@ -7446,6 +8288,7 @@ FR- Mezeray
 FR- Mezieres-sous-lavardin
 FR- Monce-en-belin
 FR- Montbizot
+FR- Montreuil-le-chetif
 FR- Mulsanne
 FR- Neuville-sur-sarthe
 FR- Neuvy-en-champagne
@@ -7453,11 +8296,14 @@ FR- Nogent-le-bernard
 FR- Notre-dame-du-pe
 FR- Noyen-sur-sarthe
 FR- Parce-sur-sarthe
+FR- Parigne-l eveque
 FR- Pirmil
+FR- Pruille-le-chetif
 FR- Requeil
 FR- Roeze-sur-sarthe
 FR- Ruaudin
 FR- Sable-sur-sarthe
+FR- Saint-corneille
 FR- Saint-remy-de-sille
 FR- Sainte-jamme-sur-sarthe
 FR- Savigne-l eveque
@@ -7466,6 +8312,7 @@ FR- Semur-en-vallon
 FR- Sille-le-guillaume
 FR- Sille-le-philippe
 FR- Souligne-sous-ballon
+FR- Soulitre
 FR- Souvigne-sur-sarthe
 FR- Surfonds
 FR- Teloche
@@ -7477,6 +8324,7 @@ FR- Vaas
 FR- Vibraye
 FR- Voivres-les-le-mans
 FR- Vouvray-sur-loir
+FR- Yvre-le-polin
 
 # 73: Savoie
 FR- Aigueblanche
@@ -7486,12 +8334,15 @@ FR- Aiton
 FR- Aix-les-bains
 FR- Albens
 FR- Albertville
+FR- Allondaz
 FR- Arbin
 FR- Arvillard
 FR- Attignat-oncin
 FR- Barberaz
+FR- Bourg-saint-maurice
 FR- Bozel
 FR- Brison-saint-innocent
+FR- Challes-les-eaux
 FR- Chambery
 FR- Chamousset
 FR- Chamoux-sur-gelon
@@ -7501,8 +8352,10 @@ FR- Cognin
 FR- Conjux
 FR- Cruet
 FR- Curienne
+FR- Drumettaz-clarafond
 FR- Ecole
 FR- Frontenex
+FR- Gerbaix
 FR- Gresy-sur-aix
 FR- Jacob-bellecombette
 FR- La Balme
@@ -7521,6 +8374,7 @@ FR- Les Avanchers
 FR- Les Marches
 FR- Marthod
 FR- Modane
+FR- Montagnole
 FR- Montmelian
 FR- Mouxy
 FR- Myans
@@ -7533,9 +8387,11 @@ FR- Saint-alban-leysse
 FR- Saint-baldoph
 FR- Saint-genix-sur-guiers
 FR- Saint-jean-d arvey
+FR- Saint-jean-de-la-porte
 FR- Saint-jean-de-maurienne
 FR- Saint-martin-de-belleville
 FR- Saint-michel-de-maurienne
+FR- Saint-paul-sur-isere
 FR- Sainte-helene-sur-isere
 FR- Sonnaz
 FR- Tignes
@@ -7546,11 +8402,13 @@ FR- Verrens-arvey
 FR- Villard-d hery
 FR- Villard-leger
 FR- Viviers-du-lac
+FR- Yenne
 FR- Yvre-le-plin
 
 # 74: Haute-Savoie
 FR- Abondance
 FR- Alby-sur-cheran
+FR- Alleves
 FR- Allinges
 FR- Annecy
 FR- Annecy-le-vieux
@@ -7558,10 +8416,13 @@ FR- Annemasse
 FR- Arbusigny
 FR- Archamps
 FR- Arenthon
+FR- Argentiere
 FR- Armoy
+FR- Aviernoz
 FR- Ayse
 FR- Ballaison
 FR- Beaumont
+FR- Bluffy
 FR- Bogeve
 FR- Bonne
 FR- Bonneville
@@ -7572,6 +8433,7 @@ FR- Chamonix
 FR- Chamonix-mont-blanc
 FR- Chapeiry
 FR- Chavanod
+FR- Chene-en-semine
 FR- Chenex
 FR- Clarafond
 FR- Cluses
@@ -7594,9 +8456,11 @@ FR- Evian-les-bains
 FR- Faverges
 FR- Feternes
 FR- Fillinges
+FR- Franclens
 FR- Frangy
 FR- Groisy
 FR- Habere-lullin
+FR- Habere-poche
 FR- Julien
 FR- La Clusaz
 FR- La Muraz
@@ -7606,12 +8470,14 @@ FR- Le Sappey
 FR- Les Clefs
 FR- Les Houches
 FR- Les Ollieres
+FR- Loisin
 FR- Lornay
 FR- Lucinges
 FR- Lugrin
 FR- Machilly
 FR- Magland
 FR- Manigod
+FR- Marcellaz-albanais
 FR- Margencel
 FR- Marignier
 FR- Marlioz
@@ -7628,6 +8494,7 @@ FR- Morzine
 FR- Nangy
 FR- Naves-parmelan
 FR- Neuvecelle
+FR- Neydens
 FR- Nonglard
 FR- Peillonnex
 FR- Perrignier
@@ -7641,6 +8508,8 @@ FR- Saint-jorioz
 FR- Saint-julien-en-genevois
 FR- Sallanches
 FR- Samoens
+FR- Scientrier
+FR- Sciez
 FR- Scionzier
 FR- Sevrier
 FR- Seynod
@@ -7649,6 +8518,7 @@ FR- Talloires
 FR- Taninges
 FR- Thnes
 FR- Thones
+FR- Thonon
 FR- Thonon-les-bains
 FR- Thorens-glieres
 FR- Thyez
@@ -7656,6 +8526,7 @@ FR- Usinens
 FR- Valleiry
 FR- Veigy
 FR- Veigy-foncenex
+FR- Verchaix
 FR- Vers
 FR- Vetraz-monthoux
 FR- Veyrier-du-lac
@@ -7678,6 +8549,7 @@ FR- Arques-la-bataille
 FR- Aubermesnil-beaumais
 FR- Auberville-la-campagne
 FR- Auffay
+FR- Autretot
 FR- Auzebosc
 FR- Bacqueville-en-caux
 FR- Barentin
@@ -7712,6 +8584,7 @@ FR- Catenay
 FR- Caudebec-en-caux
 FR- Caudebec-les-elbeuf
 FR- Criel-sur-mer
+FR- Criquetot-l esneval
 FR- Criquetot-sur-ouville
 FR- Criquiers
 FR- Cropus
@@ -7727,9 +8600,11 @@ FR- Elbeuf
 FR- Envermeu
 FR- Epouville
 FR- Epretot
+FR- Estouteville-Ecalles
 FR- Etaimpuis
 FR- Etainhus
 FR- Etalleville
+FR- Etalondes
 FR- Etoutteville
 FR- Etretat
 FR- Fauville-en-caux
@@ -7746,6 +8621,7 @@ FR- Frichemesnil
 FR- Froberville
 FR- Gaillefontaine
 FR- Gainneville
+FR- Ganzeville
 FR- Goderville
 FR- Gonfreville-l orcher
 FR- Gournay-en-bray
@@ -7762,6 +8638,7 @@ FR- Isneauville
 FR- La Bouille
 FR- La Cerlangue
 FR- La Crique
+FR- La Frenaye
 FR- La Londe
 FR- La Remuee
 FR- Lanquetot
@@ -7775,6 +8652,7 @@ FR- Le Treport
 FR- Lillebonne
 FR- Limesy
 FR- Lintot
+FR- Londinieres
 FR- Longroy
 FR- Louvetot
 FR- Luneray
@@ -7812,7 +8690,10 @@ FR- Pierreval
 FR- Pissy-poville
 FR- Ponts-et-marais
 FR- Quevillon
+FR- Quevreville-la-poterie
 FR- Quiberville
+FR- Quincampoix
+FR- Rebets
 FR- Ricarville-du-val
 FR- Rogerville
 FR- Rolleville
@@ -7822,20 +8703,28 @@ FR- Rouxmesnil-bouteilles
 FR- Sainneville
 FR- Sainneville-sur-seine
 FR- Saint-Etienne-du-rouvray
+FR- Saint-andre-sur-cailly
 FR- Saint-aubin-de-cretot
 FR- Saint-aubin-les-elbeuf
+FR- Saint-aubin-routot
 FR- Saint-aubin-sur-scie
 FR- Saint-crespin
 FR- Saint-germain-des-essourts
 FR- Saint-germain-sur-eaulne
 FR- Saint-jacques-sur-darnetal
 FR- Saint-jean-du-cardonnay
+FR- Saint-jouin-bruneval
 FR- Saint-laurent-de-brevedent
+FR- Saint-maclou-de-folleville
+FR- Saint-martin-en-campagne
 FR- Saint-nicolas-d aliermont
 FR- Saint-nicolas-de-la-taille
 FR- Saint-paer
 FR- Saint-pierre-en-port
 FR- Saint-pierre-les-elbeuf
+FR- Saint-romain-de-colbosc
+FR- Saint-sauveur-d emalleville
+FR- Saint-vaast-du-val
 FR- Saint-valery-en-caux
 FR- Saint-victor-l abbaye
 FR- Saint-vigor-d ymonville
@@ -7848,7 +8737,11 @@ FR- Sigy-en-bray
 FR- Sotteville-les-rouen
 FR- Tancarville
 FR- Therouldeville
+FR- Theuville-aux-maillots
 FR- Touffreville-la-corbeline
+FR- Tourville-la-riviere
+FR- Tourville-les-ifs
+FR- Tremauville
 FR- Triquerville
 FR- Trouville
 FR- Turretot
@@ -7857,6 +8750,7 @@ FR- Valliquerville
 FR- Varengeville
 FR- Vattetot-sur-mer
 FR- Veauville-les-baons
+FR- Venestanville
 FR- Vergetot
 FR- Villers-Ecalles
 FR- Vinnemerville
@@ -7864,6 +8758,7 @@ FR- Yainville
 FR- Yebleron
 FR- Yerville
 FR- Ymare
+FR- Yport
 FR- Yvecrique
 FR- Yvetot
 FR- Yville-sur-seine
@@ -7871,9 +8766,12 @@ FR- Yville-sur-seine
 # 79: Deux-Sevres
 FR- Adilly
 FR- Aiffres
+FR- Aigonnay
+FR- Amailloux
 FR- Ardin
 FR- Assais
 FR- Azay-le-brule
+FR- Azay-sur-thouet
 FR- Beaulieu-sous-bressuire
 FR- Beauvoir-sur-niort
 FR- Bressuire
@@ -7885,6 +8783,8 @@ FR- Chatillon-sur-thouet
 FR- Chauray
 FR- Chef-boutonne
 FR- Cherveux
+FR- Chey
+FR- Courlay
 FR- Cours
 FR- Echire
 FR- Epannes
@@ -7893,11 +8793,13 @@ FR- Frontenay-rohan-rohan
 FR- Granzay
 FR- Hanc
 FR- Largeasse
+FR- Le Busseau
 FR- Le Tallud
 FR- Les Aubiers
 FR- Lezay
 FR- Loubille
 FR- Luzay
+FR- Mauze-thouarsais
 FR- Melle
 FR- Melleran
 FR- Menigoute
@@ -7919,11 +8821,14 @@ FR- Saint-maixent-l ecole
 FR- Saint-maxire
 FR- Saint-romans-les-melle
 FR- Saint-varent
+FR- Sainte-neomaye
+FR- Saivres
 FR- Saurais
 FR- Sepvret
 FR- Thenezay
 FR- Thouars
 FR- Tillou
+FR- Vallans
 FR- Vasles
 FR- Villiers-en-plaine
 
@@ -7933,6 +8838,7 @@ FR- Acheux-en-amienois
 FR- Ailly-sur-noye
 FR- Ailly-sur-somme
 FR- Albert
+FR- Allery
 FR- Amiens
 FR- Argoeuves
 FR- Arrest
@@ -7942,6 +8848,7 @@ FR- Autheux
 FR- Aveluy
 FR- Beaucamps-le-vieux
 FR- Beauchamps
+FR- Behencourt
 FR- Belleuse
 FR- Bernaville
 FR- Bertangles
@@ -7951,13 +8858,17 @@ FR- Bezancourt
 FR- Bouchoir
 FR- Bourseville
 FR- Bouttencourt
+FR- Bouvaincourt-sur-bresle
 FR- Boves
 FR- Bray-les-mareuil
 FR- Bray-sur-somme
+FR- Breilly
 FR- Buire-courcelles
+FR- Bussy-les-poix
 FR- Cachy
 FR- Candas
 FR- Cantigny
+FR- Carrepuis
 FR- Cayeux-sur-mer
 FR- Chaulnes
 FR- Clairy-saulchoix
@@ -7966,6 +8877,7 @@ FR- Cocquerel
 FR- Contay
 FR- Conty
 FR- Corbie
+FR- Cottenchy
 FR- Coullemelle
 FR- Courcelette
 FR- Crecy-en-ponthieu
@@ -7986,7 +8898,9 @@ FR- Escarbotin
 FR- Esclainvillers
 FR- Esmery-hallon
 FR- Essertaux
+FR- Estrees-sur-noye
 FR- Etricourt-manancourt
+FR- Feuquieres-en-vimeu
 FR- Fienvillers
 FR- Flers-sur-noye
 FR- Flesselles
@@ -7994,31 +8908,41 @@ FR- Flixecourt
 FR- Fonchette
 FR- Fontaine-sous-montdidier
 FR- Foucaucourt-en-santerre
+FR- Fouencamps
 FR- Framicourt
 FR- Fresnes-mazancourt
 FR- Fresnoy-les-roye
 FR- Fressenneville
+FR- Friville
 FR- Friville-escarbotin
 FR- Gamaches
+FR- Grand-laviers
 FR- Grattepanche
 FR- Grouches-luchuel
+FR- Guignemicourt
 FR- Hallencourt
 FR- Hallu
 FR- Ham
+FR- Hamelet
 FR- Harbonnieres
 FR- Hombleux
 FR- Jumel
 FR- La Chaussee-tirancourt
 FR- La Faloise
+FR- Lahoussoye
 FR- Lamotte-brebiere
+FR- Lancheres
 FR- Le Bosquel
 FR- Le Crotoy
 FR- Le Mazis
 FR- Le Meillard
+FR- Le Quesne
 FR- Le Quesnel
 FR- Lihons
 FR- Loeuilly
+FR- Longpre-les-corps-saints
 FR- Longueau
+FR- Longueval
 FR- Mailly-maillet
 FR- Maisnieres
 FR- Maison-ponthieu
@@ -8031,6 +8955,7 @@ FR- Mericourt-l abbe
 FR- Mers-les-bains
 FR- Mezieres-en-santerre
 FR- Monchy-lagache
+FR- Montauban-de-picardie
 FR- Montdidier
 FR- Moreuil
 FR- Morisel
@@ -8048,9 +8973,12 @@ FR- Peronne
 FR- Plachy-buyon
 FR- Pont-de-metz
 FR- Pont-noyelles
+FR- Popincourt
 FR- Poulainville
 FR- Puchevillers
 FR- Quend
+FR- Quesnoy-sur-airaines
+FR- Quevauvillers
 FR- Rambures
 FR- Revelles
 FR- Ribemont-sur-ancre
@@ -8065,6 +8993,7 @@ FR- Saint-aubin-montenoy
 FR- Saint-aubin-riviere
 FR- Saint-fuscien
 FR- Saint-leger-les-domart
+FR- Saint-maxent
 FR- Saint-riquier
 FR- Saint-sauflieu
 FR- Saint-valery-sur-somme
@@ -8072,7 +9001,9 @@ FR- Saisseval
 FR- Saleux
 FR- Salouel
 FR- Sorel-en-vimeu
+FR- Terramesnil
 FR- Vauchelles-les-quesnoy
+FR- Vaux-en-amienois
 FR- Vignacourt
 FR- Villers-bretonneux
 FR- Villers-les-roye
@@ -8085,11 +9016,13 @@ FR- Yzeux
 # 81: Tarn
 FR- Aiguefonde
 FR- Albi
+FR- Algans
 FR- Ambres
 FR- Arthes
 FR- Aussac
 FR- Blan
 FR- Cagnac-les-mines
+FR- Cambounes
 FR- Carbes
 FR- Carmaux
 FR- Castelnau-de-levis
@@ -8108,6 +9041,7 @@ FR- Graulhet
 FR- Labastide-rouairoux
 FR- Laboutarie
 FR- Labruguiere
+FR- Lacrouzette
 FR- Lagrave
 FR- Lavaur
 FR- Le Garric
@@ -8124,6 +9058,7 @@ FR- Montdragon
 FR- Montpinier
 FR- Montredon-labessonnie
 FR- Montvalen
+FR- Moulin-mage
 FR- Mouzieys-panens
 FR- Orban
 FR- Peyrole
@@ -8137,6 +9072,7 @@ FR- Realmont
 FR- Ronel
 FR- Roquecourbe
 FR- Saint Sulpice
+FR- Saint-amans-soult
 FR- Saint-amans-valtoret
 FR- Saussenac
 FR- Senouillac
@@ -8152,6 +9088,7 @@ FR- Albefeuille-lagarde
 FR- Albias
 FR- Auvillar
 FR- Beaumont-de-lomagne
+FR- Bessens
 FR- Bressols
 FR- Castelsarrasin
 FR- Caussade
@@ -8159,6 +9096,7 @@ FR- Cazes-mondenard
 FR- Corbarieu
 FR- Dieupentale
 FR- Espalais
+FR- Esparsac
 FR- Genebrieres
 FR- Grisolles
 FR- Labastide-du-temple
@@ -8178,6 +9116,7 @@ FR- Montricoux
 FR- Negrepelisse
 FR- Nohic
 FR- Puycornet
+FR- Puylaroque
 FR- Realville
 FR- Roquecor
 FR- Saint-Etienne-de-tulmont
@@ -8203,6 +9142,7 @@ FR- Cavalaire
 FR- Cavalaire-sur-mer
 FR- Cogolin
 FR- Correns
+FR- Cotignac
 FR- Cuers
 FR- Draguignan
 FR- Evenos
@@ -8239,6 +9179,7 @@ FR- Montfort-sur-argens
 FR- Neoules
 FR- Ollioules
 FR- Pignans
+FR- Pourcieux
 FR- Pourrieres
 FR- Puget-ville
 FR- Ramatuelle
@@ -8261,12 +9202,14 @@ FR- Six Fours
 FR- Sollies-pont
 FR- Sollies-toucas
 FR- Sollies-ville
+FR- Taradeau
 FR- Toulon
 FR- Tourves
 FR- Trans-en-provence
 FR- Vidauban
 FR- Villecroze
 FR- Vinon-sur-verdon
+FR- Vins-sur-caramy
 
 # 84: Vaucluse
 FR- Althen-des-paluds
@@ -8274,12 +9217,14 @@ FR- Ansouis
 FR- Apt
 FR- Aubignan
 FR- Avignon
+FR- Beaumes-de-venise
 FR- Beaumont-de-pertuis
 FR- Bedarrides
 FR- Bedoin
 FR- Bollene
 FR- Bonnieux
 FR- Cabrieres-d aigues
+FR- Cabrieres-d avignon
 FR- Cadenet
 FR- Caderousse
 FR- Cairanne
@@ -8354,6 +9299,7 @@ FR- Beauvoir-sur-mer
 FR- Belleville-sur-vie
 FR- Benet
 FR- Bois-de-cene
+FR- Bouffere
 FR- Boulogne
 FR- Bourneau
 FR- Bournezeau
@@ -8396,6 +9342,7 @@ FR- La Roche-sur-yon
 FR- La Tardiere
 FR- La Verrie
 FR- Landeronde
+FR- Le Bernard
 FR- Le Boupere
 FR- Le Fenouiller
 FR- Le Poire
@@ -8408,10 +9355,13 @@ FR- Les Lucs
 FR- Les Sables
 FR- Longeves
 FR- Mareuil-sur-lay
+FR- Marsais-sainte-radegonde
 FR- Menomblet
+FR- Mervent
 FR- Monsireigne
 FR- Montournais
 FR- Mortagne-sur-sevre
+FR- Mouchamps
 FR- Mouilleron-le-captif
 FR- Nesmy
 FR- Noirmoutier-en-l ile
@@ -8419,6 +9369,7 @@ FR- Notre-dame-de-monts
 FR- Olonne-sur-mer
 FR- Palluau
 FR- Petosse
+FR- Pissotte
 FR- Port-joinville
 FR- Pouzauges
 FR- Rocheserviere
@@ -8434,17 +9385,24 @@ FR- Saint-jean-de-beugne
 FR- Saint-jean-de-monts
 FR- Saint-malo-du-bois
 FR- Saint-martin-de-fraigneau
+FR- Saint-mathurin
 FR- Saint-michel-en-l herm
 FR- Saint-paul-en-pareds
+FR- Saint-paul-mont-penit
 FR- Saint-philbert-de-bouaine
 FR- Saint-prouant
 FR- Saint-reverend
 FR- Saint-sulpice-le-verdon
+FR- Sainte-flaive-des-loups
 FR- Sainte-hermine
 FR- Sallertaine
+FR- Sigournais
 FR- Soullans
+FR- Tallud-sainte-gemme
 FR- Talmont
 FR- Treize-septiers
+FR- Triaize
+FR- Velluire
 FR- Venansault
 FR- Vendrennes
 FR- Vix
@@ -8453,25 +9411,32 @@ FR- Vix
 FR- Amberre
 FR- Angles-sur-l anglin
 FR- Availles
+FR- Availles-limouzine
 FR- Avanton
 FR- Ayron
 FR- Beruges
 FR- Biard
+FR- Bignoux
 FR- Blanzay
 FR- Bonnes
 FR- Bonneuil-matours
 FR- Brigueil-le-chantre
 FR- Brux
 FR- Cenon-sur-vienne
+FR- Chabournay
+FR- Chasseneuil-du-poitou
 FR- Chatellerault
 FR- Chaunay
 FR- Chauvigny
 FR- Cisse
 FR- Civaux
 FR- Civray
+FR- Couhe
 FR- Coussay-les-bois
 FR- Dissay
+FR- Fontaine-le-comte
 FR- Iteuil
+FR- Jardres
 FR- Jaunay-clan
 FR- Latille
 FR- Le Vigeant
@@ -8481,6 +9446,7 @@ FR- Lhommaize
 FR- Liguge
 FR- Liniers
 FR- Loudun
+FR- Lussac-les-chateaux
 FR- Magne
 FR- Marigny-brizay
 FR- Mazeuil
@@ -8501,8 +9467,11 @@ FR- Saint-macoux
 FR- Saint-sauvant
 FR- Saint-saviol
 FR- Saix
+FR- Saulge
+FR- Savigny-levescault
 FR- Scorbe-clairvaux
 FR- Senille
+FR- Sillars
 FR- Vendeuvre-du-poitou
 FR- Vivonne
 FR- Vouneuil-sous-biard
@@ -8518,17 +9487,22 @@ FR- Boisseuil
 FR- Burgnac
 FR- Bussiere-galant
 FR- Chalus
+FR- Chamboret
 FR- Champsac
 FR- Chaptelat
 FR- Chateauneuf-la-foret
+FR- Cheissoux
 FR- Compreignac
 FR- Condat-sur-vienne
 FR- Couzeix
 FR- Dournazac
 FR- Feytiat
+FR- Javerdat
 FR- Jourgnac
 FR- La Meyze
+FR- La Porcherie
 FR- Lauriere
+FR- Le Vigen
 FR- Limoges
 FR- Meilhac
 FR- Meuzac
@@ -8540,6 +9514,7 @@ FR- Pierre-buffiere
 FR- Rilhac-rancon
 FR- Saillat-sur-vienne
 FR- Saint-barbant
+FR- Saint-bonnet-briance
 FR- Saint-brice-sur-vienne
 FR- Saint-gence
 FR- Saint-germain-les-belles
@@ -8557,10 +9532,14 @@ FR- Verneuil-sur-vienne
 FR- Veyrac
 
 # 88: Vosges
+FR- Anould
 FR- Aumontzey
+FR- Aydoilles
+FR- Bazoilles-et-menil
 FR- Bruyeres
 FR- Bussang
 FR- Celles-sur-plaine
+FR- Charmois-devant-bruyeres
 FR- Chenimenil
 FR- Clefcy
 FR- Contrexeville
@@ -8573,13 +9552,18 @@ FR- Denipaire
 FR- Dinoze
 FR- Docelles
 FR- Dogneville
+FR- Domevre-sur-durbion
+FR- Dommartin-les-remiremont
+FR- Dompaire
 FR- Dounoux
 FR- Eloyes
 FR- Entre-deux-eaux
 FR- Epinal
 FR- Essegney
+FR- Etival-clairefontaine
 FR- Faverolles
 FR- Floremont
+FR- Fraize
 FR- Fresse-sur-moselle
 FR- Gerardmer
 FR- Gerbepal
@@ -8587,8 +9571,10 @@ FR- Girecourt-sur-durbion
 FR- Girmont
 FR- Golbey
 FR- Granges-sur-vologne
+FR- Greux
 FR- Hadol
 FR- Hareville
+FR- Herpelmont
 FR- Hymont
 FR- Isches
 FR- Jainvillotte
@@ -8596,6 +9582,7 @@ FR- La Bourgonce
 FR- La Bresse
 FR- Le Beulay
 FR- Le Roulier
+FR- Le Syndicat
 FR- Le Thillot
 FR- Le Tholy
 FR- Liffol-le-grand
@@ -8609,6 +9596,7 @@ FR- Moyenmoutier
 FR- Nayemont-les-fosses
 FR- Neufchateau
 FR- Nomexy
+FR- Nompatelize
 FR- Oncourt
 FR- Plainfaing
 FR- Plombieres-les-bains
@@ -8618,9 +9606,11 @@ FR- Provencheres-sur-fave
 FR- Rambervillers
 FR- Raon-aux-bois
 FR- Raon-l etape
+FR- Relanges
 FR- Remiremont
 FR- Remoncourt
 FR- Rochesson
+FR- Rupt-sur-moselle
 FR- Saint-ame
 FR- Saint-die
 FR- Saint-maurice-sur-moselle
@@ -8643,6 +9633,8 @@ FR- Xertigny
 
 # 89: Yonne
 FR- Aillant-sur-tholon
+FR- Ancy-le-franc
+FR- Annay-la-cote
 FR- Appoigny
 FR- Armeau
 FR- Auxerre
@@ -8651,10 +9643,12 @@ FR- Avesnes-sur-helpe
 FR- Bleigny-le-carreau
 FR- Bleneau
 FR- Brannay
+FR- Cezy
 FR- Champlost
 FR- Chamvres
 FR- Charbuy
 FR- Charny
+FR- Chemilly-sur-yonne
 FR- Cheroy
 FR- Commissey
 FR- Coulanges-la-vineuse
@@ -8668,11 +9662,14 @@ FR- Egriselles-le-bocage
 FR- Fleury-la-vallee
 FR- Fontaine-la-gaillarde
 FR- Fontenouilles
+FR- Fouronnes
 FR- Gisy-les-nobles
 FR- Gron
 FR- Guerchy
+FR- Gurgy
 FR- Joigny
 FR- Laduz
+FR- Les Roches
 FR- Les Sieges
 FR- Ligny-le-chatel
 FR- Lindry
@@ -8708,6 +9705,7 @@ FR- Tannerre-en-puisaye
 FR- Toucy
 FR- Treigny
 FR- Vaumort
+FR- Venizy
 FR- Venoy
 FR- Veron
 FR- Villeblevin
@@ -8728,6 +9726,7 @@ FR- Anjoutey
 FR- Bavilliers
 FR- Beaucourt
 FR- Belfort
+FR- Botans
 FR- Bourogne
 FR- Chatenois-les-forges
 FR- Danjoutin
@@ -8742,6 +9741,7 @@ FR- Lachapelle-sous-chaux
 FR- Lebetain
 FR- Lepuix
 FR- Meroux
+FR- Mezire
 FR- Montreux-chateau
 FR- Offemont
 FR- Roppe
@@ -8753,6 +9753,7 @@ FR- Vetrigne
 FR- Vezelois
 
 # 971: Guadeloupe
+FR- Grand Bourg
 GP-
 GP- Anse-bertrand
 GP- Baie Mahault
@@ -8761,7 +9762,9 @@ GP- Baillif
 GP- Basse-terre
 GP- Bouillante
 GP- Capesterre-belle-eau
+GP- Deshaies
 GP- Gourbeyre
+GP- Grand-bourg
 GP- Jarry
 GP- Lamentin
 GP- Le Gosier
@@ -8893,3 +9896,4 @@ FR- Martin
 FR- Mercin
 FR- Notre Dame
 FR- Petit Cour
+
