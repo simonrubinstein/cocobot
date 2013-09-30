@@ -105,6 +105,7 @@ Cablevision SA de CV
 Cabovisao, televisao por cabo, SA
 CAFE Informatique et telecommunications
 Cambridge Entrepreneurial Network
+Campus de Beaulieu, Avenue du General Leclerc
 Canal Plus
 CANL
 CANL DYNAMIC IP
@@ -216,7 +217,9 @@ Djibouti Telecom
 DJIBOUTI TELECOM S.A.
 DoD Network Information Center
 Dodo Australia
+Donstroy Ltd.
 Dualis
+Dynamic pool
 e-leven sa
 E-TERA
 Easyhost Network
@@ -282,6 +285,7 @@ Fingerprint Technologies
 Finsecur SA
 FLORIDA CABLE
 Foremost Technologies Corporation
+FORUM DES IMAGES
 FR-EUROPSTAT
 FR-EUROSPORT
 FRANCE CITEVISION
@@ -327,6 +331,7 @@ Hewlett-Packard Company
 HEXANET
 Hilti AG
 Hoffmann LaRoche
+Honeywell Limited
 Host Europe GmbH
 Hosting Services
 Hot Telecommunication Systems Ltd.
@@ -334,6 +339,7 @@ HUGHES TELECOMUNICACOES DO BRASIL LTDA.
 Hurricane Electric
 Iberbanda S.A.
 iBrowse SARL
+IEUROP S.A.S
 IFREMER Institut Francais de Recherche pour Exploi
 Iguane Studio
 iiNet Limited
@@ -444,6 +450,7 @@ Martinique TV Cable
 Maskatel
 Massachusetts Institute of Technology
 Mauritanian Telecommunication Company
+Mazars
 MEDI@LYS
 Media diffuseur TV
 Mediaserv
@@ -453,9 +460,11 @@ Merck and Co.
 Merlin-Telekom LLC
 METANET AG, Switzerland
 Meteo-France
+Metropole Television SA
 Metroset Ltd.
 MI INFRASTRUCTURE
 Micro Logic Systems
+Microcaz SRL
 Mir Telematiki Ltd
 MNI Telecom S.A.
 MobileOne Ltd
@@ -469,6 +478,7 @@ MULTILINK SA
 MWEB Connect (Pty) Ltd
 MyStream
 nacamar GmbH
+Namincheon Brodcasting Co., Ltd.
 Nautile SARL
 NC Numericable S.A.
 Neo Telecoms
@@ -553,6 +563,7 @@ Pays Voironnais Network
 PCCW Limited
 Perfect Communication Sweden AB
 Pharmagest Interactive SA
+Pierre et Vacances network
 PLANET TECHNOLOGIES
 PLDTSPCHME60i01DHCP
 PlusNet Technologies Ltd
@@ -778,6 +789,7 @@ Verizon France SAS
 Verizon Hellas Telecommunications Single Member Li
 Verizon Internet Services
 Versatel Nederland B.V.
+VIA-NUMERICA
 ViaEuropa i Lund AB
 VIALIS - REGIE MUNICIPALE DE COLMAR
 Vialtus Solutions Ltd
