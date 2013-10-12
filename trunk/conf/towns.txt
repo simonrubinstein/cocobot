@@ -3333,7 +3333,6 @@ FR- Tregourez
 FR- Tregunc
 
 # 30: Gard
-ES- Jumilla
 FR- Aigues-mortes
 FR- Aimargues
 FR- Aramon

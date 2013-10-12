@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-12-09
-# @date 2013-01-20
+# @date 2013-10-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -81,7 +81,11 @@ sub getAlerts {
             $alert_ref->{'users'} = [];
         }
     }
-    debug( 'number of alerts: ' . scalar(@$enableAlerts_ref) . '.' );
+    if ( defined $enableAlerts_ref ) {
+        debug( 'number of alerts: ' . scalar(@$enableAlerts_ref) . '.' );
+    } else {
+        debug( 'number of alerts: 0.' );
+    }
     return $enableAlerts_ref;
 }
 
