@@ -35,6 +35,7 @@ Angola Telecom
 Anvia Oyj
 AOL-France, On-line service
 APPLI NOT
+Aqua Ray SARL
 Arcor AG
 ARESCOP
 Ariege Telecom
@@ -227,6 +228,7 @@ easynet DV GmbH
 EASYNET-ITALIA-SPA
 Ecatel LTD
 Ecole Centrale de Lyon
+ECOLE CENTRALE DELECTRONIQUE
 Ecole Centrale Paris
 Ecole nationale superieure des telecommunications
 Ecole Normale Superieure
@@ -354,6 +356,7 @@ Init Seven AG
 Initials Online
 INOLIA
 Institut de Recherche et Coordination Acoustique/M
+Institut Mediteraneen de Technologie
 Institut National de la Recherche Agronomique
 Institut National de Physique Nucleaire et de Phys
 Institut National de Recherche en Informatique et
@@ -492,6 +495,7 @@ Netmakers
 netplus.ch SA
 NETsite A/S
 NetVision
+NETWORK BACKBONE
 Network IP
 Neuf Cegetel
 New Technologies Group N.V.
@@ -590,6 +594,7 @@ Reasonnet IP Networks B.V.
 Recherche genealogique
 Redstation Limited
 REG.I.E.S
+Regie Autonome Electric Cable Chauffage EPIC
 Reliance Globalcom Limited
 Relians Ltd
 RENATER
@@ -612,6 +617,7 @@ root SA
 ROSNIIROS Russian Institute for Public Networks
 ROTHMANS INTERNATIONAL TOBACCO COMPANY
 RRM - Reseau de la Recherche a Marseille
+RSS Internet Network
 RTLNET
 RTVC-Stiring
 Rue du commerce SA
@@ -690,6 +696,7 @@ Sun Chemical Corporation
 Sunrise Communications AG
 SuperNews
 Superonline International Online Information And C
+SUPINFO Ecole Superieure dInformatique
 Swisscom (Schweiz) AG
 Swisscom (Schweiz) AG is a full service provider i
 Swisscom (Schweiz) AG is an LIR and ISP in Switzer
