@@ -623,10 +623,12 @@ RTVC-Stiring
 Rue du commerce SA
 S.I Building
 Safe Host SA
+SANEF (Societe des Autoroutes du Nord et de lEst
 Santrex Internet Services
 SARL MWSP
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
+SAS HERAULT NETWORKS
 SAS INSTITUTE
 SAS INTERPC
 SaskTel
