@@ -4,8 +4,10 @@
 A2Z Solutions
 AB CONNECT
 ACCENTURE
+Acropolis Telecom SA
 ADD-ON MULTIMEDIA
 Adenis SARL
+ADISTA SAS
 Advanced Info Service PCL
 Aeroport de Paris Telecom
 AFNIC
@@ -13,6 +15,7 @@ AFONE
 Afribone Mali SA
 AGARIK SA
 Agence France Presse
+Agence France-Presse
 AGENCE SUSI
 Air France
 Ajova Network
@@ -25,6 +28,7 @@ AllTele Allmanna Svenska Telefonaktiebolaget
 Alpha Networks S.P.R.L.
 AlphaLink
 Alsace Connexia
+Altitude Infrastructure Exploitation
 Altitude Infrastructure Exploitation SAS
 Altitude Telecom SAS
 AltusHost
@@ -41,6 +45,7 @@ ARESCOP
 Ariege Telecom
 Armenian Datacom Company
 ARMOR CONNECTIC SAS
+Armor Connectic SAS
 ARTMOTION n.p.sh.
 Assigned for dynamic DHCP pool for RINGO S.A.s cu
 Assigned for servers and network infrastructure fo
@@ -53,6 +58,7 @@ Atlas Cable { Wireless
 Atos Origin Infogerance
 Atos Worldline IPv4 Subnet
 AT{T Global Network Services Europe
+AT{T Global Network Services Nederland B.V.
 AT{T Global Network Services, LLC
 AT{T Mobility LLC
 AT{T Services
@@ -104,10 +110,12 @@ CABLEVISION S.A.
 Cablevision SA de CV
 Cabovisao, televisao por cabo, SA
 CAFE Informatique et telecommunications
+Caisse Federale de Credit Mutuel SA
 Cambridge Entrepreneurial Network
 Campus de Beaulieu, Avenue du General Leclerc
 Canal Plus
 CANL
+Canl Canl
 CANL DYNAMIC IP
 Canl SAS
 Cap Sesa Regions Ouest
@@ -116,6 +124,7 @@ Carphone Warehouse Broadband Services
 Casema B.V.
 Caucasus Online LLC
 CEGETEL LA REUNION
+CELESTE
 Celeste
 Cell-C (Pty) Ltd
 Centre de Calcul du CNRS
@@ -150,7 +159,9 @@ CLEVERNETWORK SAS
 CNAMTS
 Coditel
 Cogeco Cable
+Cogent Communications
 COLOMBIA TELECOMUNICACIONES S.A. ESP
+COLT Technology Services Group Limited
 COLT Telecom Group Limited
 Com Hem AB
 Comcast Cable
@@ -162,6 +173,7 @@ Communication Solutions Ltd.
 Communications Networking Services
 Compagnie Generale de Sante
 COMPANHIA DE TELECOMUNICACOES DO BRASIL CENTRAL
+Completel
 COMPLETEL SAS
 COMPLETEL SAS France
 Computer Beheer B.V.
@@ -205,6 +217,7 @@ DhakaCom Limited
 DHCP pool for dsl clients
 Diabolocom SAS
 Diademys SAS
+Diatem Diatem Sarl
 Digicel AFG
 Digicube sas
 Digitalas Ekonomikas Attistibas Centrs
@@ -225,6 +238,7 @@ E-TERA
 Easyhost Network
 Easynet
 easynet DV GmbH
+Easynet SAS
 EASYNET-ITALIA-SPA
 Ecatel LTD
 Ecole Centrale de Lyon
@@ -236,6 +250,7 @@ Ecole Normale Superieure de Cachan
 ECOLE POLYTECHNIQUE
 Ecole Superieure dElectricite, SUPELEC
 Ecritel
+EDIS GmbH
 EDPNET
 EFREI Ecole Francaise dElectronique et dInformat
 EGIHosting
@@ -290,10 +305,13 @@ FORUM DES IMAGES
 FR-EUROPSTAT
 FR-EUROSPORT
 FRANCE CITEVISION
+France Citevision SAS
 France Telecom
+Free Mobile SAS
 Free SAS
 Gabon Telecom
 GABON TELECOM Libreville xDSL POP.
+Galop Telecom
 GALOP TELECOM
 GANDI
 Gateway Communications
@@ -307,6 +325,7 @@ Ghana Telecom
 Gie Gitoyen
 Globacom Ltd
 Global Access Resources
+Global Caribbean Network
 Global Crossing
 GLOBAL NET-INC COMMUNICATIONS
 GloboTech Communications
@@ -330,16 +349,19 @@ Herault Telecom
 Hetzner Online AG
 Hewlett-Packard Company
 HEXANET
+Hexanet SAS
 Hilti AG
 Hoffmann LaRoche
 Honeywell Limited
 Host Europe GmbH
 Hosting Services
 Hot Telecommunication Systems Ltd.
+Hub Telecom SA
 HUGHES TELECOMUNICACOES DO BRASIL LTDA.
 Hurricane Electric
 Iberbanda S.A.
 iBrowse SARL
+IELO Main Network
 IEUROP S.A.S
 IFREMER Institut Francais de Recherche pour Exploi
 Iguane Studio
@@ -351,11 +373,13 @@ Inconet Data Management SAL
 incubatec GmbH - Srl
 INFOR IT SP. z o.o.
 INFOSAT ICPS
+Infosat Telecom S.A.
 Infotechna Ltd.
 Init Seven AG
 Initials Online
 INOLIA
 Institut de Recherche et Coordination Acoustique/M
+Institut Francais des Sciences et Technologies des
 Institut Mediteraneen de Technologie
 Institut National de la Recherche Agronomique
 Institut National de Physique Nucleaire et de Phys
@@ -444,9 +468,11 @@ MACS-THD
 MAIRIE
 MANA Internet Service Provider
 MANA Internet Service Provider in French Polynesia
+Mana S.A.
 MANA S.A.
 MANA, Internet service Provider in French Polynesi
 MANCHE TELECOM
+Manyones.com Sarl
 Maricopa County Community College District
 Martinique TV Cable
 Maskatel
@@ -472,6 +498,7 @@ MNI Telecom S.A.
 MobileOne Ltd
 MOBISTAR
 MOBIUS TECHNOLOGY
+Mobius Technology
 Monaco Telecom
 Mozilla Corporation
 MTN International Carrier Services S.A.M.
@@ -481,9 +508,11 @@ MWEB Connect (Pty) Ltd
 MyStream
 nacamar GmbH
 Namincheon Brodcasting Co., Ltd.
+Nautile
 Nautile SARL
 NC Numericable S.A.
 Neo Telecoms
+Neo Telecoms S.A.S.
 NEOGLOBEX LIMITED
 Neostrada Plus
 Nerim SAS
@@ -529,6 +558,7 @@ OJSC VolgaTelecom
 Omani Qatari Telecommunications Company SAOC
 Omantel
 Omer Telecom
+Omer Telecom Ltd.
 Omnium des Telecom et de linternet
 Omnium des Telecom et de lInternet (OTI Telecom)
 ONATEL
@@ -547,15 +577,20 @@ Optimum Online
 Optimus, Telecomunicagues S.A.
 Optisprint
 OPTUS INTERNET - RETAIL
+OpWan SARL
+Orange
 Orange Cameroun Local Registry
 Orange Communication SA
+Orange France Wireless
 Orange Home UK
 Orange Madagascar
 Orange Mali SA
 Organization of the Petroleum Exporting Countries
 OTEnet S.A.
 Outremer Telecom
+OVH Systems
 Ovh Systems
+OVH Telecom
 Ownit AB
 Ozone
 P.J.Safarik University in Kosice
@@ -584,6 +619,7 @@ PT INDONESIA COMNETS PLUS
 PT Sarana Insan Muda Selaras
 PT. Telecomunikasi Indonesia
 PUBLICIS-TECHNOLOGY
+Publicis-technology
 Qimonda AG
 QoS Tecnologia e Sistemas Ltda.
 QSC AG
@@ -598,15 +634,18 @@ Regie Autonome Electric Cable Chauffage EPIC
 Reliance Globalcom Limited
 Relians Ltd
 RENATER
+Renater
 RESEARCH IN MOTION
 Research In Motion UK Limited
 Reseau des Universites et de la Recherche de la re
 Reseau Optique du Campus de la Doua
 reseaux IMAG de Viallet
+Reunicable SAS
 Revlon
 RGnet, LLC
 Rigas Tikli, SIA
 Ringo, S.A
+Risc Group It Solutions S.A.
 RISC GROUP IT SOLUTIONS S.A.
 RMI SAS
 Road Runner
@@ -626,6 +665,7 @@ Safe Host SA
 SANEF (Societe des Autoroutes du Nord et de lEst
 Santrex Internet Services
 SARL MWSP
+SAS Alsatis
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
 SAS HERAULT NETWORKS
@@ -657,6 +697,7 @@ ServiHosting Networks S.L.
 SES ASTRA S.A.
 Sewan Communications S.A.S.
 SFR
+Sfr Collectivites SA
 Shaw Communications
 Shaw Telecom G.P.
 SIA Lattelecom
@@ -665,6 +706,7 @@ SIDUS S.A.R.L.
 Siemens AG
 Silicon Beach Communications
 Silicon Systems
+SIMSU - Service Informatique Mutualise du Site Uni
 SingleHop
 SingNet Pte Ltd
 SITA-Societe Internationale de Telecommunications
@@ -676,7 +718,9 @@ SkyVision Holdings Ltd.
 SM Etude Devel Sces Reseaux Com
 Societe de developpement Informatique
 Societe Francaise du Radiotelephone -SFR S.A.
+Societe Nationale de Radiodiffusion Radio France
 Societe Nationale Des Telecommunications Du Senega
+Societe Reunionnaise Du Radiotelephone Scs
 SODETEL S.A.L.
 Softbank BB Corp
 SoftLayer Technologies
@@ -792,6 +836,7 @@ USR-NETWORK
 UTEL Internet Services
 UUNET
 Veepee
+Veepee SAS
 Verizon Business
 Verizon France SAS
 Verizon Hellas Telecommunications Single Member Li
@@ -800,6 +845,7 @@ Versatel Nederland B.V.
 VIA-NUMERICA
 ViaEuropa i Lund AB
 VIALIS - REGIE MUNICIPALE DE COLMAR
+Vialis - Regie Municipale De Colmar
 Vialtus Solutions Ltd
 VIAPASS SAS
 Video 2000
@@ -809,10 +855,12 @@ Videotron Ltee
 Videotron Telecom Ltee
 VietNam Post and Telecom Corporation
 VIF Internet
+Ville De Paris
 VILLE DE PARIS
 Virgin Media
 Visafone Communications Limited
 Visual Online S.A.
+VITI
 VIVACTION - Groupe ITN France
 Vizada Networks AS
 VO Energies Multimedia SA
