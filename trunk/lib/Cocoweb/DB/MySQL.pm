@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2012-12-15
+# @date 2013-10-24 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -134,7 +134,7 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `ISPs` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `name`          varchar(255) NOT NULL,
+    `name`          varchar(255) BINARY NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
     ) ENGINE=InnoDB
@@ -144,7 +144,7 @@ ENDTXT
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `towns` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `name`          varchar(255) NOT NULL,
+    `name`          varchar(255) BINARY NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
     ) ENGINE=InnoDB
