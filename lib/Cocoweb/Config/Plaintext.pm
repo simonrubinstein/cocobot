@@ -1,5 +1,5 @@
 # @created 2012-02-24
-# @date 2012-04-28
+# @date 2103-10-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -106,8 +106,9 @@ sub getAsHash {
         $line =~ s{\s+$}{}g;
         die error("The key $line exists") if exists $hashtable{$line};
         $hashtable{$line} = $count;
-        my $check = lc($line);
-        die error("The key $check exists") if exists $ctrl{$check};
+        #my $check = lc($line);
+        my $check = $line;
+        die error("The key '$check' exists") if exists $ctrl{$check};
         $ctrl{$check} = 1;
         $count++;
     }
