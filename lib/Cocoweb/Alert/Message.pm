@@ -1,6 +1,6 @@
 # @brief
 # @created 2013-01-19
-# @date 2013-09-28
+# @date 2013-11-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -32,6 +32,7 @@ use Carp;
 use Data::Dumper;
 use Net::XMPP;
 use Cocoweb;
+use Cocoweb::File;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes( 'name', 'write' );
@@ -57,16 +58,25 @@ sub process {
     foreach my $user (@$users_ref) {
         $user->messageSentTime(0);
         my $write_ref = $self->write();
+        my $str;
         foreach my $write (@$write_ref) {
-            my @strings = split( /\|/, $write );
-            my $str;
-            if ( scalar(@strings) == 1 ) {
-                $str = $strings[0];
-            }
-            else {
-                $str = $strings[ randum( scalar(@strings) ) ];
+            if ( substr($write, -1, 1) eq '|' ) {
+                my @strings = split( /\|/, $write );
+                if ( scalar(@strings) == 1 ) {
+                    $str = $strings[0];
+                }
+                else {
+                    $str = $strings[ randum( scalar(@strings) ) ];
+                }
+            } else {
+                $str = $write;
             }
             $bot->requestWriteMessage( $user, $str );
+            writeLog('alert-messages',  
+                     sprintf("%-19s => %-19s %-4s $str", 
+                     $bot->user()->mynickname(), 
+                     $user->mynickname(), 
+                     $user->code()));
         }
     }
 }

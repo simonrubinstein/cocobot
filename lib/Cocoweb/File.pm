@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2012-04-09
+# @date 2013-11-10 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,6 +44,7 @@ our @EXPORT = qw(
   getVarDir
   serializeData
   writeProcessID
+  writeLog
 );
 use Cocoweb;
 
@@ -189,3 +190,25 @@ sub writeProcessID {
     return $ph;
 }
 
+
+##@method void writeLog($dirname, $message)
+sub writeLog {
+    my ($dirname, $message) = @_;
+    my $path = getVarDir() . '/' . $dirname;
+    croak 'mkdir(' . $path . ') was failed: ' if !-d $path and !mkdir($path);
+    my @dt       = localtime(time);
+    my $filename = sprintf(
+        '%02d-%02d-%02d_' . $Script . '.log',
+        ( $dt[5] + 1900 ),
+        ( $dt[4] + 1 ), $dt[3]
+    );
+    my $pathname = $path . '/' . $filename;
+    my $fh = IO::File->new( $pathname, 'a' );
+    confess error("open($pathname) was failed: $!")
+      if !defined $fh;
+    my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
+    print $fh $hourStr . ' ' . $message . "\n"; 
+    confess error("close() return $!") if !$fh->close();
+}
+
+1;
