@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2012-07-05
+# @date 2013-10-17 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -206,6 +206,7 @@ sub citydio2zip {
     return $self->zip();
 }
 
+##@method void hasSentMessage($message)
 sub hasSentMessage {
     my ( $self, $message ) = @_;
     $self->messageSentTime(time);
@@ -213,29 +214,12 @@ sub hasSentMessage {
     $messageCounter++;
     $self->messageCounter($messageCounter);
     $self->messageLast($message);
-
-    my $path = getVarDir() . '/messages';
-    croak 'mkdir(' . $path . ') was failed: ' if !-d $path and !mkdir($path);
-    my @dt       = localtime(time);
-    my $filename = sprintf(
-        '%02d-%02d-%02d_' . $Script . '.log',
-        ( $dt[5] + 1900 ),
-        ( $dt[4] + 1 ), $dt[3]
-    );
-    my $pathname = $path . '/' . $filename;
-    my $fh = IO::File->new( $pathname, 'a' );
-    confess error("open($pathname) was failed: $!")
-      if !defined $fh;
-    my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
-    print $fh sprintf(
-        $hourStr
-          . ' %3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
+    writeLog('messages',  sprintf(
+          '%3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
           . $message . "\n",
         $self->code(),  $self->town(),  $self->ISP(),
         $self->mysex(), $self->myage(), $self->mynickname()
-    );
-    confess error("close() return $!") if !$fh->close();
+    ));
 }
-
 1;
 
