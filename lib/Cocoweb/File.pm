@@ -44,6 +44,7 @@ our @EXPORT = qw(
   getVarDir
   serializeData
   writeProcessID
+  getLogPathname
   writeLog
 );
 use Cocoweb;
@@ -190,6 +191,19 @@ sub writeProcessID {
     return $ph;
 }
 
+sub getLogPathname {
+    my ($dirname, $myTime) = @_;
+    $myTime = time if !defined $myTime;
+    my $path = getVarDir() . '/' . $dirname;
+    my @dt       = localtime(time);
+    my $filename = sprintf(
+        '%02d-%02d-%02d_' . $Script . '.log',
+        ( $dt[5] + 1900 ),
+        ( $dt[4] + 1 ), $dt[3]
+    );
+    my $pathname = $path . '/' . $filename;
+    return ($path, $pathname);
+}
 
 ##@method void writeLog($dirname, $message)
 sub writeLog {
