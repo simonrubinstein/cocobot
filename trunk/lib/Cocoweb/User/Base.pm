@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2013-10-17 
+# @date 2013-11-11 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -216,7 +216,7 @@ sub hasSentMessage {
     $self->messageLast($message);
     writeLog('messages',  sprintf(
           '%3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
-          . $message . "\n",
+          . $message,
         $self->code(),  $self->town(),  $self->ISP(),
         $self->mysex(), $self->myage(), $self->mynickname()
     ));
