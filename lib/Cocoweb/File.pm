@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2013-11-10 
+# @date 2013-11-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -192,12 +192,11 @@ sub writeProcessID {
 }
 
 sub getLogPathname {
-    my ($dirname, $myTime) = @_;
-    $myTime = time if !defined $myTime;
+    my ($dirname, $myScript, $myTime) = @_;
     my $path = getVarDir() . '/' . $dirname;
     my @dt       = localtime(time);
     my $filename = sprintf(
-        '%02d-%02d-%02d_' . $Script . '.log',
+        '%02d-%02d-%02d_' . $myScript . '.log',
         ( $dt[5] + 1900 ),
         ( $dt[4] + 1 ), $dt[3]
     );
@@ -208,15 +207,9 @@ sub getLogPathname {
 ##@method void writeLog($dirname, $message)
 sub writeLog {
     my ($dirname, $message) = @_;
-    my $path = getVarDir() . '/' . $dirname;
-    croak 'mkdir(' . $path . ') was failed: ' if !-d $path and !mkdir($path);
-    my @dt       = localtime(time);
-    my $filename = sprintf(
-        '%02d-%02d-%02d_' . $Script . '.log',
-        ( $dt[5] + 1900 ),
-        ( $dt[4] + 1 ), $dt[3]
-    );
-    my $pathname = $path . '/' . $filename;
+    my $myTime = time;
+    my ($path, $pathname) = getLogPathname($dirname, $Script, $myTime);
+    my @dt       = localtime($myTime);
     my $fh = IO::File->new( $pathname, 'a' );
     confess error("open($pathname) was failed: $!")
       if !defined $fh;
