@@ -5415,7 +5415,7 @@ Vita
 :EllaFitzgerald
 :TousDinguesDella
 :Mitsouko
-:LheureBleu
+:LheureBleue
 :PowerOfLove
 :Atoi
 :LouiZA
@@ -5443,4 +5443,8 @@ Vita
 :Cezara
 :Shurouk
 :Shorouk
+:IddaVanMunster
 :PollyJ
+:MissTheSun
+:ClapClapBouummm
+:NanyMcPhee
