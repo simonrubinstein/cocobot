@@ -1,6 +1,6 @@
 # @brief
 # @created 2013-01-19
-# @date 2013-11-10
+# @date 2013-11-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,6 +33,7 @@ use Data::Dumper;
 use Net::XMPP;
 use Cocoweb;
 use Cocoweb::File;
+use Cocoweb::Config;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes( 'name', 'write' );
@@ -60,7 +61,12 @@ sub process {
         my $write_ref = $self->write();
         my $str;
         foreach my $write (@$write_ref) {
-            if ( substr($write, -1, 1) eq '|' ) {
+            if ( substr( $write, 0, 8 ) eq 'file:///' ) {
+                my $file = Cocoweb::Config->instance()
+                    ->getConfigFile( substr( $write, 8 ), 'Plaintext' );
+                $str = $file->getRandomLine();
+            }
+            elsif ( substr( $write, -1, 1 ) eq '|' ) {
                 my @strings = split( /\|/, $write );
                 if ( scalar(@strings) == 1 ) {
                     $str = $strings[0];
@@ -68,15 +74,19 @@ sub process {
                 else {
                     $str = $strings[ randum( scalar(@strings) ) ];
                 }
-            } else {
+            }
+            else {
                 $str = $write;
             }
             $bot->requestWriteMessage( $user, $str );
-            writeLog('alert-messages',  
-                     sprintf("%-19s => %-19s %-4s $str", 
-                     $bot->user()->mynickname(), 
-                     $user->mynickname(), 
-                     $user->code()));
+            writeLog(
+                'alert-messages',
+                sprintf(
+                    "%-19s => %-19s %-4s $str",
+                    $bot->user()->mynickname(), $user->mynickname(),
+                    $user->code()
+                )
+            );
         }
     }
 }
