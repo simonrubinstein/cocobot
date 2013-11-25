@@ -78,7 +78,7 @@ sub run {
     my $filenameOneline = '/tmp/quotations-one-line.txt';
     $fh = IO::File->new( $filenameOneline, 'w' );
     die error("open($filenameOneline) was failed: $!") if !defined $fh;
-    print $fh $str . "\n";
+    print $fh 'write          =' . $str . "\n";
     die error("close($filenameOneline) was failed: $!") if !$fh->close();
 
     message("Files $filename and $filenameOneline were generated.");
