@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2013-11-17
+# @date 2013-21-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -194,7 +194,7 @@ sub writeProcessID {
 sub getLogPathname {
     my ($dirname, $myScript, $myTime) = @_;
     my $path = getVarDir() . '/' . $dirname;
-    my @dt       = localtime(time);
+    my @dt       = localtime($myTime);
     my $filename = sprintf(
         '%02d-%02d-%02d_' . $myScript . '.log',
         ( $dt[5] + 1900 ),

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2013-12-01
+# @date 2013-12-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -117,6 +117,10 @@ sub searchAlertMessages {
 
     for ( my $i = 0; $i < scalar(@$alertMessages_ref); $i++ ) {
         my $alerts_ref = $alertMessages_ref->[$i];
+        if ( !defined $alerts_ref->{'code'} ) {
+            print Dumper $alerts_ref;
+            exit;
+        }
         next if $alerts_ref->{'code'} ne $code;
         next if $alerts_ref->{'hasBeenProcessed'};
         if ( $alerts_ref->{'time'} > $_time ) {
@@ -134,7 +138,7 @@ sub searchAlertMessages {
     #print Dumper \@results;
     my $first = 0;
     foreach my $alerts_ref (@results) {
-        next if $alerts_ref->{'time'} < $maxtime;
+        next if $alerts_ref->{'time'} < ( $maxtime - 2 );
 
         #print "$alerts_ref->{time} >= $maxtime\n";
         $alerts_ref->{'hasBeenProcessed'} = 1;
@@ -143,10 +147,12 @@ sub searchAlertMessages {
             next;
         }
         printf( $alerts_ref->{'date'}
-                . " %-19s => %-19s %-4s $alerts_ref->{message}\n",
+                . " %-19s => "
+                . '                              '
+                . '                              ' . '   '
+                . "%-4s %-19s: $alerts_ref->{message}\n",
             $alerts_ref->{'botNickname'},
-            $alerts_ref->{'mynickname'},
-            $alerts_ref->{'code'}
+            $alerts_ref->{'code'}, $alerts_ref->{'mynickname'}
         );
 
     }
@@ -157,13 +163,13 @@ sub searchAlertMessages {
 sub readMessageFile {
     my ($datetime) = @_;
 
-    my @dt = localtime($datetime);
-    my ( $year, $month, $day ) = ( $dt[5] + 1900, $dt[4] + 1, $dt[3] );
+    my ( $year, $month, $day ) = getYearMonthDay($datetime);
 
     my $messagePath;
     ( undef, $messagePath )
         = getLogPathname( 'messages', 'save-logged-user-in-database.pl',
         $datetime );
+    debug("$messagePath");
     my @messages = ();
     my $fh = IO::File->new( $messagePath, 'r' );
     die error("open($messagePath) was failed: $!")
@@ -223,12 +229,13 @@ sub readAlertMessageFile {
     my ($datetime) = @_;
 
     my @dt = localtime($datetime);
-    my ( $year, $month, $day ) = ( $dt[5] + 1900, $dt[4] + 1, $dt[3] );
+    my ( $year, $month, $day ) = getYearMonthDay($datetime);
 
     my $alertMessagePath;
     ( undef, $alertMessagePath )
         = getLogPathname( 'alert-messages', 'save-logged-user-in-database.pl',
         $datetime );
+    debug("$alertMessagePath");
 
     my @messages = ();
     my $fh = IO::File->new( $alertMessagePath, 'r' );
@@ -254,6 +261,7 @@ sub readAlertMessageFile {
         my $_date = "$year-$month-$day $h:$m:$s";
         my $_time = Date::Parse::str2time($_date);
         die "str2time($_date) was failed" if !defined $_time;
+        $code = '' if !defined $code;
 
         push @messages,
             {
@@ -276,15 +284,35 @@ sub readAlertMessageFile {
 
 }
 
+sub getYearMonthDay {
+    my ($datetime) = @_;
+    my @dt = localtime($datetime);
+    return (
+        ( $dt[5] + 1900 ),
+        sprintf( '%02d', ( $dt[4] + 1 ) ),
+        sprintf( '%02d', $dt[3] )
+    );
+}
+
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts();
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 't:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
-    $myTime = time if !defined $myTime;
+    $myTime = $opt_ref->{'t'} if exists $opt_ref->{'t'};
+    if ( defined $myTime ) {
+        if ( $myTime !~ m{^\d+$} ) {
+            HELP_MESSAGE();
+            exit;
+        }
+        $myTime = ( time - ( 86400 * $myTime ) );
+    }
+    else {
+        $myTime = time;
+    }
 }
 
 ## @method void HELP_MESSAGE()
@@ -295,6 +323,7 @@ Usage:
  $Script [-v -d ]
   -v          Verbose mode
   -d          Debug mode
+  -t          1 = one day before, 2 = two days before, etc.
 ENDTXT
     exit 0;
 }
