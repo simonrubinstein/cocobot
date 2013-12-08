@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-24
-# @date 2013-11-24
+# @date 2013-12-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -40,48 +40,48 @@ my $CLI;
 my $myTime;
 my $messagePath;
 my $alertMessagePath;
+my $textFilename;
+my $maxSize;
+
 
 init();
 run();
 
 sub run {
-
-    my $filename = '/tmp/quotations.txt';
+    my $filename = $textFilename;
+    $filename =~s{^.*/}{/tmp/};
     my $fh = IO::File->new( $filename, 'w' );
     die error("open($filename) was failed: $!") if !defined $fh;
 
-    my $quotations = Cocoweb::Config->instance()
-        ->getConfigFile( 'quotations.txt', 'Plaintext' );
+    my $plainText = Cocoweb::Config->instance()
+        ->getConfigFile( $textFilename, 'Plaintext' );
 
-    my $lines_ref = $quotations->all();
-    my @quotations = ();
-    foreach my $quote ( sort @$lines_ref ) {
-        push @quotations, trim($quote);
+    my $lines_ref = $plainText->all();
+    my @linesOfText = ();
+    foreach my $string ( sort @$lines_ref ) {
+        push @linesOfText, trim($string);
     }
 
     
-    my $str = '';
     my %unique = ();
-    foreach my $quote ( sort @quotations ) {
-        $quote = trim($quote);
-        if (exists $unique{$quote}) {
-            warning("$quote quote already exists");
+    foreach my $string ( sort @linesOfText ) {
+        $string = trim($string);
+        if (exists $unique{$string}) {
+            warning("$string quote already exists");
             next;
         }
-        $str .= $quote . '|';
-        $unique{$quote} = 1;
-        print $fh $quote . "\n";
+        if (defined $maxSize and length($string) > $maxSize) {
+            warning( '"' . $string . '": ' . 'string length exceeds maximum length of ' . $maxSize . ' characters');
+            next;
+
+        }
+        $unique{$string} = 1;
+        print $fh $string . "\n";
     }
 
     die error("close($filename) was failed: $!") if !$fh->close();
 
-    my $filenameOneline = '/tmp/quotations-one-line.txt';
-    $fh = IO::File->new( $filenameOneline, 'w' );
-    die error("open($filenameOneline) was failed: $!") if !defined $fh;
-    print $fh 'write          =' . $str . "\n";
-    die error("close($filenameOneline) was failed: $!") if !$fh->close();
-
-    message("Files $filename and $filenameOneline were generated.");
+    message("File '$filename' was generated.");
 
 
 
@@ -91,11 +91,20 @@ sub run {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts();
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'f:x:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
+    $maxSize      = $opt_ref->{'x'} if exists $opt_ref->{'x'};
+    if ( defined $maxSize) {
+        if ( $myTime !~ m{^\d+$} ) {
+            HELP_MESSAGE();
+            exit;
+        }
+    }
+    $textFilename = $opt_ref->{'f'} if exists $opt_ref->{'f'};
+    $textFilename = 'plain-text/quotations.txt' if !defined $textFilename;
 }
 
 ## @method void HELP_MESSAGE()
@@ -106,6 +115,7 @@ Usage:
  $Script [-v -d ]
   -v          Verbose mode
   -d          Debug mode
+  -f          Plain text filename
 ENDTXT
     exit 0;
 }

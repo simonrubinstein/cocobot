@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2012-05-10
+# @date 2013-12-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -31,6 +31,7 @@ use warnings;
 use Data::Dumper;
 use Carp;
 use Cocoweb;
+use Cocoweb::Config;
 use Cocoweb::Request;
 use Cocoweb::User::Connected;
 use base 'Cocoweb::Object';
@@ -55,9 +56,19 @@ sub init {
     else {
         $isAvatarRequest = 0;
     }
-    if ( exists $args{'mynickname'} and $args{'mynickname'} =~ m{:} ) {
-        my @nicknames = split( /:/, $args{'mynickname'} );
-        $args{'mynickname'} = $nicknames[ randum( scalar @nicknames ) - 1 ];
+    if ( exists $args{'mynickname'} ) {
+        if ( substr( $args{'mynickname'}, 0, 8 ) eq 'file:///' ) {
+            my $file
+                = Cocoweb::Config->instance()
+                ->getConfigFile( substr( $args{'mynickname'}, 8 ),
+                'Plaintext' );
+            $args{'mynickname'} = $file->getRandomLine();
+        }
+        elsif ( $args{'mynickname'} =~ m{:} ) {
+            my @nicknames = split( /:/, $args{'mynickname'} );
+            $args{'mynickname'}
+                = $nicknames[ randum( scalar @nicknames ) - 1 ];
+        }
     }
     my $user    = Cocoweb::User::Connected->new(%args);
     my $request = Cocoweb::Request->new(
@@ -206,8 +217,10 @@ sub requestInfuzForNewUsers {
         $count++;
         my $infuz = $user->infuz();
         $infuz =~ s{\n}{; }g;
-        moreDebug(
-            '(*) new nickname: ' . $user->mynickname() . ' infuz: ' . $infuz );
+        moreDebug('(*) new nickname: '
+                . $user->mynickname()
+                . ' infuz: '
+                . $infuz );
     }
     info( $count . ' new "infuz" was requested and returned' ) if $count > 0;
 }
