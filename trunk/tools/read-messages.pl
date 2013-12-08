@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2013-12-07
+# @date 2013-12-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -62,9 +62,9 @@ sub process {
     for ( my $i = 0; $i < scalar(@$messages_ref); $i++ ) {
         my $message_ref = $messages_ref->[$i];
         next if $message_ref->{'hasBeenProcessed'};
-        next
-            if $message_ref->{'mysex'} eq '1'
-            or $message_ref->{'mysex'} eq '6';
+        #next
+        #    if $message_ref->{'mysex'} eq '1'
+        #    or $message_ref->{'mysex'} eq '6';
 
         $message_ref->{'hasBeenProcessed'} = 1;
 
@@ -239,8 +239,10 @@ sub readAlertMessageFile {
 
     my @messages = ();
     my $fh = IO::File->new( $alertMessagePath, 'r' );
-    die error("open($alertMessagePath) was failed: $!")
-        if !defined $fh;
+    if ( !defined $fh ) { 
+        error("open($alertMessagePath) was failed: $!");
+            return \@messages;
+    }
     while ( defined( my $line = $fh->getline() ) ) {
         chomp($line);
         if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
