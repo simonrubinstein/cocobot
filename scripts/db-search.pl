@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2012-06-16
+# @date 2013-12-10 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -57,7 +57,7 @@ sub run {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:O' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OP' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -91,6 +91,7 @@ sub init {
         exit;
     }
     push @args, '__usersOnline', 1 if exists $opt_ref->{'O'};
+    push @args, '__IleDeFrance', 1 if exists $opt_ref->{'P'};
     $DB = Cocoweb::DB::Base->getInstance();
 }
 
@@ -108,11 +109,12 @@ Usage:
   -t towns    A single town or more towns separated by commas.
               (i.e. -t "FR- Paris" or -t "FR- Aulnay-sous-bois","FR- Sevran"
   -i ISPs     A single ISP or more ISPs separated by commas.
-              (i.e. -i "Free SAS" or -i "France Telecom","Free SAS")
+              (i.e. -i "Free SAS" or -i "Orange","Free SAS")
   -s sex      Gender. 2: woman without an avatar; 7: woman with an avatar
                       1: man without an avatar; 6: man with an avatar
   -y age      An age in years
   -O          Users who are connected.
+  -P          Research in the Iles-de-France only.
   -v          Verbose mode
   -d          Debug mode
 
@@ -121,7 +123,7 @@ db-search.pl -c WcL,PXd,uyI,0fN,rs6
 db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
-db-search.pl -c JiC -i "France Telecom"
+db-search.pl -c JiC -i "Orange"
 
 ENDTXT
     exit 0;
@@ -130,6 +132,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-05-20');
+    $CLI->VERSION_MESSAGE('2013-12-10');
 }
 
