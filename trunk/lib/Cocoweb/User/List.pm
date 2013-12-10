@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2013-01-18 
+# @date 2013-12-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -44,11 +44,11 @@ __PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline',
 sub init {
     my ( $self, %args ) = @_;
     croak error('removeListDelay is missing')
-      if !exists $args{'removeListDelay'};
-    my $logUsersListInDB =
-      ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
-      ? 1
-      : 0;
+        if !exists $args{'removeListDelay'};
+    my $logUsersListInDB
+        = ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
+        ? 1
+        : 0;
     my $DB;
     $DB = Cocoweb::DB::Base->getInstance() if $logUsersListInDB;
     $self->attributes_defaults(
@@ -64,11 +64,10 @@ sub init {
 #                       $mynickname, $myXP, $mystat, $myver)
 #@brief Adds or updates a user in the list
 sub populate {
-    my (
-        $self,       $myage, $mysex,  $citydio, $mynickID,
+    my ($self,       $myage, $mysex,  $citydio, $mynickID,
         $mynickname, $myXP,  $mystat, $myver
     ) = @_;
-    if ($mynickname =~m{^([^\(]+)\(\d+$}) {
+    if ( $mynickname =~ m{^([^\(]+)\(\d+$} ) {
         debug("strip end of string: $mynickname to $1");
         $mynickname = $1;
     }
@@ -86,6 +85,7 @@ sub populate {
     if ( exists $users_ref->{$mynickID} ) {
         my $user = $users_ref->{$mynickID};
         $user->dateLastSeen(time);
+
         #moreDebug(
         #    "The user $mynickname already exists: isNew:" . $user->isNew() );
         if ( $user->isNew() ) {
@@ -106,15 +106,15 @@ sub showUsersUnseen {
     my ($self) = @_;
     my $user_ref = $self->all();
     print STDOUT '! Last seen            '
-      . '! NickID ! Nikcname          '
-      . '! seconds! Min  !Hours!' . "\n";
+        . '! NickID ! Nikcname          '
+        . '! seconds! Min  !Hours!' . "\n";
     my $count = 0;
     foreach my $id (
         sort {
-            $user_ref->{$b}->{'dateLastSeen'} <=> $user_ref->{$a}
-              ->{'dateLastSeen'}
+            $user_ref->{$b}->{'dateLastSeen'}
+                <=> $user_ref->{$a}->{'dateLastSeen'}
         } keys %$user_ref
-      )
+        )
     {
         my $user = $user_ref->{$id};
         next if $user->isView();
@@ -124,8 +124,8 @@ sub showUsersUnseen {
         my $deltaMin  = $deltaSec / 60;
         my $deltaHour = $deltaMin / 60;
         my $dateStr   = timeToDate( $user->dateLastSeen() );
-        my $line =
-          sprintf( "! $dateStr " . '! %-6s !  %-16s ! %6d ! %4d ! %3d !',
+        my $line
+            = sprintf( "! $dateStr " . '! %-6s !  %-16s ! %6d ! %4d ! %3d !',
             $user->mynickID(), $user->mynickname(), $deltaSec, $deltaMin,
             $deltaHour );
 
@@ -145,10 +145,10 @@ sub purgeUsersUnseen {
     my ( $count, $countPurge ) = ( 0, 0 );
     foreach my $id (
         sort {
-            $user_ref->{$a}->{'dateLastSeen'} <=> $user_ref->{$b}
-              ->{'dateLastSeen'}
+            $user_ref->{$a}->{'dateLastSeen'}
+                <=> $user_ref->{$b}->{'dateLastSeen'}
         } keys %$user_ref
-      )
+        )
     {
         my $user = $user_ref->{$id};
         next if $user->isView();
@@ -156,16 +156,16 @@ sub purgeUsersUnseen {
         my $delta = time - $user->dateLastSeen();
         next if $delta < $removeListDelay;
         my $dateStr = timeToDate( $user->dateLastSeen() );
-        debug(  'Remove user '
-              . $user->mynickID() . ' '
-              . $user->mynickname()
-              . '; last seen: '
-              . $dateStr );
+        debug(    'Remove user '
+                . $user->mynickID() . ' '
+                . $user->mynickname()
+                . '; last seen: '
+                . $dateStr );
         $countPurge++;
         delete $user_ref->{$id};
     }
     info("$countPurge users were purged on a $count users unseen")
-      if $countPurge > 0;
+        if $countPurge > 0;
 }
 
 ##@method void removeUser($userWanted)
@@ -185,16 +185,13 @@ sub removeUser {
         #      . ' times. Table `users` ID:'
         #      . $user->DBUserId() );
         delete $user_ref->{$id};
-
-        #$self->DB()->setUserOffline($user) if $self->logUsersListInDB();
         push @$DBUsersOffline_ref, $user->DBUserId()
-          if $self->logUsersListInDB();
-
+            if $self->logUsersListInDB();
     }
     else {
-        warning('The user "'
-              . $userWanted->mynickname()
-              . '" could not be removed from the list' );
+        warning(  'The user "'
+                . $userWanted->mynickname()
+                . '" could not be removed from the list' );
     }
 }
 
@@ -217,12 +214,14 @@ sub addOrUpdateInDB {
         warning('The record in the database is not enabled');
         return;
     }
-    my $user_ref      = $self->all();
-    my @codesToUpdate = ();
-    my @usersToUpdate = ();
-    my @users         = ();
+    my $user_ref           = $self->all();
+    my @codesToUpdate      = ();
+    my @usersToUpdate      = ();
+    my @users              = ();
+    my $DBUsersOffline_ref = $self->DBUsersOffline();
     foreach my $id ( keys %$user_ref ) {
         my $user = $user_ref->{$id};
+
         #debug(  '['
         #      . $user->mynickname()
         #      . '] isNew: '
@@ -239,6 +238,10 @@ sub addOrUpdateInDB {
             or $user->DBUserId() == 0
             or $user->DBCodeId() == 0 )
         {
+
+            push @$DBUsersOffline_ref, $user->DBUserId()
+                if $self->logUsersListInDB()
+                and $user->hasChange();
             $self->DB()->addNewUser($user);
         }
         elsif ( $user->updateDbRecord() ) {
@@ -293,16 +296,20 @@ sub getUsersNotViewed {
     }
     my $usersStr = '';
     foreach my $user (@users) {
-        $usersStr .=
-          '[' . $user->mynickname() . ': ' . $user->notViewCount() . '] ';
+        $usersStr
+            .= '['
+            . $user->mynickname() . ': '
+            . $user->notViewCount() . '] ';
     }
 
     info(
-        scalar(@users) . ' user(s) were not found in the list: ' . $usersStr );
-    info(   'Total size of the local list: '
-          . scalar( keys %$user_ref )
-          . '. Number of users not viewed in the remote list: '
-          . $usersCount );
+              scalar(@users)
+            . ' user(s) were not found in the list: '
+            . $usersStr );
+    info(     'Total size of the local list: '
+            . scalar( keys %$user_ref )
+            . '. Number of users not viewed in the remote list: '
+            . $usersCount );
     return \@users;
 }
 
@@ -336,7 +343,8 @@ sub nickIdToNickname {
         return $user_ref->{$nickid}->{'mynickname'} . ' (' . $nickid . ')';
     }
     else {
-        warning( 'The nickmane id ' . $nickid . ' was not found in the list' );
+        warning(
+            'The nickmane id ' . $nickid . ' was not found in the list' );
         return $nickid;
     }
 }
@@ -371,12 +379,11 @@ sub deserialize {
         return;
     }
     my $user_ref;
-    eval {
-        $user_ref = deserializeHash($filename);
-    };
+    eval { $user_ref = deserializeHash($filename); };
     if ($@) {
         error($@);
-    } else {
+    }
+    else {
         $self->all($user_ref);
     }
 }
