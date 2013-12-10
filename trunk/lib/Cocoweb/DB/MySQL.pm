@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2013-10-24 
+# @date 2013-12-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -71,28 +71,27 @@ sub connect {
     eval {
         local $SIG{ALRM} = sub { die "alarm\n" };
         alarm $self->timeout();
-        $dbh =
-          DBI->connect( $self->datasource(), $self->username(),
+        $dbh = DBI->connect( $self->datasource(), $self->username(),
             $self->password(), { 'PrintError' => 0, 'RaiseError' => 0 } );
         alarm 0;
     };
     if ($@) {
         if ( $@ eq "alarm\n" ) {
             confess error( 'connection timout after' . ' '
-                  . $self->timeout()
-                  . "seconds (DSN: $self->datasource())" );
+                    . $self->timeout()
+                    . "seconds (DSN: $self->datasource())" );
         }
         else {
             confess error( 'database connection error'
-                  . " (DSN: $self->datasource()): "
-                  . $@ );
+                    . " (DSN: $self->datasource()): "
+                    . $@ );
         }
     }
     else {
         if ( !defined($dbh) ) {
             my $errorStr = $DBI::errstr;
             $errorStr = 'DBconnect() failed! '
-              if !defined $errorStr;
+                if !defined $errorStr;
             confess error($errorStr);
         }
     }
@@ -104,8 +103,8 @@ sub connect {
 #@brief Removes all tables
 sub dropTables {
     my $self = shift;
-    foreach
-      my $table ( 'users', 'nicknames', 'codes', 'ISPs', 'towns', 'citydios' )
+    foreach my $table ( 'users', 'nicknames', 'codes', 'ISPs', 'towns',
+        'citydios' )
     {
         $self->do( 'DROP TABLE IF EXISTS `' . $table . '`' );
     }
@@ -209,9 +208,8 @@ ENDTXT
 ENDTXT
     $self->do($query);
 
-
-     #CONSTRAINT `users_ibfk_5` FOREIGN KEY (`citydio`)
-     #  REFERENCES `citydios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    #CONSTRAINT `users_ibfk_5` FOREIGN KEY (`citydio`)
+    #  REFERENCES `citydios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 
 }
 
@@ -237,8 +235,8 @@ sub _insertCode {
 #@param $code string A three character code
 sub _insertCode2 {
     my ( $self, $code ) = @_;
-    my $sth =
-      $self->execute( 'SELECT `id` FROM `codes` WHERE `code` = ?', $code );
+    my $sth = $self->execute( 'SELECT `id` FROM `codes` WHERE `code` = ?',
+        $code );
     my $hash_ref = $sth->fetchrow_hashref();
     if ( defined $sth and exists $hash_ref->{'id'} ) {
         $self->_updateCode( $hash_ref->{'id'} );
@@ -260,8 +258,8 @@ sub _insertCode2 {
 #@param string $nickname A nickname
 sub _insertNickname {
     my ( $self, $nickname ) = @_;
-    my $sth =
-      $self->execute( 'SELECT `id` FROM `nicknames` WHERE `nickname` = ?',
+    my $sth
+        = $self->execute( 'SELECT `id` FROM `nicknames` WHERE `nickname` = ?',
         $nickname );
     my $hash_ref = $sth->fetchrow_hashref();
     return $hash_ref->{'id'} if defined $sth and exists $hash_ref->{'id'};
@@ -404,9 +402,9 @@ sub updateUsersDate {
 sub setUsersOffline {
     my ( $self, $idUsers_ref ) = @_;
     return if scalar(@$idUsers_ref) == 0;
-    debug(  'Set '
-          . scalar(@$idUsers_ref)
-          . ' user(s) offline into `users` table' );
+    debug(    'Set '
+            . scalar(@$idUsers_ref)
+            . ' user(s) offline into `users` table' );
     my $query = q/
       UPDATE `users` SET `logout_date` = CURRENT_TIMESTAMP()
       WHERE `id` IN ( 
@@ -460,6 +458,15 @@ sub searchUsers {
         $usersOnline = 0;
     }
 
+    my $ileDeFrance;
+    if ( exists $args{'__IleDeFrance'} ) {
+        delete $args{'__IleDeFrance'};
+        $ileDeFrance = 1;
+    }
+    else {
+        $ileDeFrance = 0;
+    }
+
     foreach my $name ( keys %args ) {
         my $val = $args{$name};
         if ( exists $name2col{$name} ) {
@@ -492,13 +499,18 @@ sub searchUsers {
         $and = ' AND';
     }
     if ($usersOnline) {
-        $query .=
-            ' AND `logout_date` IS NULL'
-          . ' AND  `users`.`update_date` >= '
-          . ' DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)';
+        $query
+            .= ' AND `logout_date` IS NULL'
+            . ' AND  `users`.`update_date` >= '
+            . ' DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 MINUTE)';
     }
 
-    $query .= ' ORDER BY `update_date`';
+    if ($ileDeFrance) {
+        $query .= ' AND `id_town` < 840';
+    }
+
+    #$query .= ' ORDER BY `update_date`';
+    $query .= ' ORDER BY `creation_date`';
     my $sth = $self->execute( $query, @values );
     my $hash_ref;
     my @result = ();
@@ -525,7 +537,8 @@ sub displaySearchUsers {
         $max{$name} = length($name);
     }
     foreach my $row_ref (@$result_ref) {
-        if ( exists $row_ref->{'town'} and $row_ref->{'town'} =~ m{^FR- (.+)} )
+        if ( exists $row_ref->{'town'}
+            and $row_ref->{'town'} =~ m{^FR- (.+)} )
         {
             $row_ref->{'town'} = $1;
         }
@@ -549,9 +562,9 @@ sub displaySearchUsers {
 
     #Displays the table header
     my $line = '';
-    for ( my $i = 0 ; $i < scalar(@names) ; $i++ ) {
-        $line .=
-          '! ' . sprintf( '%-' . $max{ $names[$i] } . 's', $names[$i] ) . ' ';
+    for ( my $i = 0; $i < scalar(@names); $i++ ) {
+        $line .= '! '
+            . sprintf( '%-' . $max{ $names[$i] } . 's', $names[$i] ) . ' ';
     }
     $line .= '!';
     print STDOUT $separator . "\n";
