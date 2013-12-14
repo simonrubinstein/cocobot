@@ -5460,3 +5460,5 @@ Vita
 :RougeALevres
 :SwallowWhitWings
 :VentDhiver
+:FruitsRouges
+:Paillette
