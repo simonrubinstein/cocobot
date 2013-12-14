@@ -180,7 +180,7 @@ sub readMessageFile {
         if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
             \s+([A-Za-z0-9]{3})?
             \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
-            \s+ISP:\s([A-Za-z-\s\.]+)
+            \s+ISP:\s([A-Za-z-\s\.\/]+)
             \s+sex:\s(\d)
             \s+age:\s(\d{2})
             \s+nick:\s([0-9A-Za-z]+)
