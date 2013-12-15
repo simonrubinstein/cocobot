@@ -13,7 +13,7 @@ Il existe deux types de requêtes :
 Le second type de requête est constitué ainsi :
 {{{ http:// adresseIP : myport / code  mynickID monpass params}}}
 
-  * *adresseIP* : toujours l'adresse IP « 91.121.52.98 ».
+  * *adresseIP* : toujours l'adresse IP « 87.98.168.29 ».
   * *myport*    : un numéro de port TCP compris entre 3 000 et 4 000 .
   * *code*      : un code numérique identifié la commande, comme par exemple 10, 89, 48, ...
   * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours.
@@ -21,9 +21,9 @@ Le second type de requête est constitué ainsi :
   * *params*    : les éventuelles paramètres. 
 
 Exemple d'une requête :
-{{{ http://91.121.52.98:3436/10327709RObSoa00 }}}
- * *adresseIP* : 91.121.52.98
- * *myport*    : 3436
+{{{ http://87.98.168.29:80/10327709RObSoa00 }}}
+ * *adresseIP* : 87.98.168.29
+ * *myport*    : 80
  * *code*      : 10 
  * *mynickID*  : 10327709 
  * *monpass*   : RObSoa
