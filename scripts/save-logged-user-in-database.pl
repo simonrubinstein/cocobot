@@ -78,7 +78,9 @@ AUTH:
         }
     }
     $bot->getMyInfuz();
+    # return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
+    # reads users from 'var/cocoweb-user-list.data' file
     $usersList->deserialize();
     $usersList->purgeUsersUnseen();
     checkUsers();

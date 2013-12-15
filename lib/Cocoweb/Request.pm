@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2013-02-08
+# @date 2013-12-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -466,6 +466,15 @@ sub writus {
         $roulix = 0;
     }
     $user->roulix($roulix);
+}
+
+##@method void amigo($user, $userWanted)
+#@brief Requests to be added to the friends list.
+#@param object $user An 'User::Connected' object
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+sub amigo {
+    my ( $self, $user, $userWanted ) = @_;
+    $self->agir( $user, '46' . $userWanted->mynickID() );
 }
 
 ##@method string infuz($user, $userWanted)

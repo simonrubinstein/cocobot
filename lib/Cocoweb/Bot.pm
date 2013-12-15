@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2013-12-08
+# @date 2013-12-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -109,6 +109,15 @@ sub requestAuthentication {
 sub requestWriteMessage {
     my ( $self, $userWanted, $message ) = @_;
     $self->request()->writus( $self->user(), $userWanted, $message );
+}
+
+##@method void requestToBeAFriend($userWanted)
+#@brief Send a friend request
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#              The user for whom the message is intended
+sub requestToBeAFriend {
+    my ( $self, $userWanted ) = @_;
+    $self->request()->amigo( $self->user(), $userWanted );
 }
 
 ##@method object searchNickname($userWanted)
