@@ -14,7 +14,7 @@ Le second type de requête est constitué ainsi :
 {{{ http:// adresseIP : myport / code  mynickID monpass params}}}
 
   * *adresseIP* : toujours l'adresse IP « 87.98.168.29 ».
-  * *myport*    : un numéro de port TCP compris entre 3 000 et 4 000 .
+  * *myport*    : un numéro de port TCP toujours 80. 
   * *code*      : un code numérique identifié la commande, comme par exemple 10, 89, 48, ...
   * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours.
   * *monpass*   : le mot de passe de la session en cours.
