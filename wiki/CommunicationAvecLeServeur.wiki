@@ -34,9 +34,28 @@ Cette requête recherche et retourne la liste des pseudonymes. Le code « 10 » 
 === Liste des requêtes connues ===
 
 ===== Requêtes 83 : Retourne informations sur un code vote =====
-Syntaxe de la requête : 83 + mynickID + monpass + 33000000 + code
+Syntaxe de la requête : *83* + *mynickID* + *monpass* + *33000000* + *code*
 
-Retour de la requête : 99 + 557 + mynickID + myage + mysex  mynickname
+Retour de la requête : *99* + *557* + *mynickID* + *myage* + *mysex* + *mynickname*
+
+Exemple de requête qui demande des informations sur le code vote « MYY »:
+{{{
+http://87.98.168.29:80/83201207hwZTEQ733000000MYY
+}}}
+Qui retourne :
+{{{
+process1('#9955718252999309297Laws'); 
+}}}
+
+ * *mynickname* : Laws
+ * *myage*      : 99 (99 ans signifie que l'utilisateur n'est plus connecté actuellement.)
+ * *mynickID*   : 182529 (ID de la session en cours ou de la dernière session.)
+ * *citydio*    : 30929 (code pour le code postal 75015)
+ * *mysex*      : 7 (pseudo femme avec avatar)
+
+
+
+
 
 
 == Les codes de retour ==
