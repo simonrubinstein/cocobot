@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2013-12-08
+# @date 2013-12-22
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,22 +37,25 @@ use Cocoweb;
 use Cocoweb::CLI;
 use Cocoweb::File;
 my $CLI;
-my $myTime;
+
+my $startTime;
+my $lastTime;
 
 init();
 run();
 
 sub run {
 
-    my $messages_ref = readMessageFile($myTime);
+    for ( my $t = $startTime; $t <= $lastTime; $t += 86400 ) {
+        print STDOUT ( "-" x 30 ) . ' ' . timeToDateOfDay($t) . "\n";
+        my $messages_ref = readMessageFile($t);
 
-    #print Dumper $messages_ref;
+        #print Dumper $messages_ref;
+        my $alertMessages_ref = readAlertMessageFile($t);
 
-    my $alertMessages_ref = readAlertMessageFile($myTime);
-
-    #print Dumper $alertMessages_ref;
-
-    process( $messages_ref, $alertMessages_ref );
+        #print Dumper $alertMessages_ref;
+        process( $messages_ref, $alertMessages_ref );
+    }
 
 }
 
@@ -62,6 +65,7 @@ sub process {
     for ( my $i = 0; $i < scalar(@$messages_ref); $i++ ) {
         my $message_ref = $messages_ref->[$i];
         next if $message_ref->{'hasBeenProcessed'};
+
         #next
         #    if $message_ref->{'mysex'} eq '1'
         #    or $message_ref->{'mysex'} eq '6';
@@ -97,7 +101,7 @@ sub showMessage {
     my $message = $message_ref->{'message'};
     $message =~ s{=}{?}g;
     printf( $message_ref->{'date'} . ' '
-            . '%3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
+            . '%3s town: %-26s ISP: %-22s sex: %1s age: %2s nick: %-19s: '
             . $message . "\n",
         $message_ref->{'code'},  $message_ref->{'town'},
         $message_ref->{'ISP'},   $message_ref->{'mysex'},
@@ -149,7 +153,7 @@ sub searchAlertMessages {
         printf( $alerts_ref->{'date'}
                 . " %-19s => "
                 . '                              '
-                . '                              ' . '   '
+                . '                            '
                 . "%-4s %-19s: $alerts_ref->{message}\n",
             $alerts_ref->{'botNickname'},
             $alerts_ref->{'code'}, $alerts_ref->{'mynickname'}
@@ -177,6 +181,7 @@ sub readMessageFile {
 
     while ( defined( my $line = $fh->getline() ) ) {
         chomp($line);
+        next if $line =~ m{^\s*$};
         if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
             \s+([A-Za-z0-9]{3})?
             \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
@@ -187,7 +192,7 @@ sub readMessageFile {
             \s+:\s(.*)$}xms
             )
         {
-            die "bad  $line";
+            die "bad  $line ($messagePath)";
         }
         my ( $h, $m, $s ) = ( $1, $2, $3 );
         my ( $code, $town, $ISP, $mysex, $myage, $mynickname, $message )
@@ -195,7 +200,9 @@ sub readMessageFile {
         $town = '' if !defined $town;
         $code = '' if !defined $code;
         $ISP  = '' if !defined $code;
-        my $_date = "$year-$month-$day $h:$m:$s";
+
+        #my $_date = "$year-$month-$day $h:$m:$s";
+        my $_date = "$h:$m:$s";
         my $_time = Date::Parse::str2time($_date);
         die "str2time($_date) was failed" if !defined $_time;
 
@@ -207,10 +214,10 @@ sub readMessageFile {
             'mynickname'       => $mynickname,
             'code'             => $code,
             'town'             => trim($town),
-            'ISP'              => trim($ISP),
+            'ISP'              => substr( trim($ISP), 0, 22 ),
             'mysex'            => $mysex,
             'myage'            => $myage,
-            'message'          => $message
+            'message'          => trim($message)
             };
 
         # my $str
@@ -239,9 +246,9 @@ sub readAlertMessageFile {
 
     my @messages = ();
     my $fh = IO::File->new( $alertMessagePath, 'r' );
-    if ( !defined $fh ) { 
+    if ( !defined $fh ) {
         error("open($alertMessagePath) was failed: $!");
-            return \@messages;
+        return \@messages;
     }
     while ( defined( my $line = $fh->getline() ) ) {
         chomp($line);
@@ -260,7 +267,8 @@ sub readAlertMessageFile {
         my ( $botNickname, $mynickname, $code, $message )
             = ( $4, $5, $6, $7 );
 
-        my $_date = "$year-$month-$day $h:$m:$s";
+        #my $_date = "$year-$month-$day $h:$m:$s";
+        my $_date = "$h:$m:$s";
         my $_time = Date::Parse::str2time($_date);
         die "str2time($_date) was failed" if !defined $_time;
         $code = '' if !defined $code;
@@ -273,7 +281,7 @@ sub readAlertMessageFile {
             'botNickname'      => $botNickname,
             'mynickname'       => $mynickname,
             'code'             => $code,
-            'message'          => $message
+            'message'          => trim($message)
             };
 
         #printf( "$h:$m:$s %-19s => %-19s %-4s $message\n",
@@ -299,21 +307,57 @@ sub getYearMonthDay {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 't:' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 't:s:l:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
-    $myTime = $opt_ref->{'t'} if exists $opt_ref->{'t'};
+    my $myTime = $opt_ref->{'t'} if exists $opt_ref->{'t'};
+    $startTime = $opt_ref->{'s'} if exists $opt_ref->{'s'};
+    $lastTime  = $opt_ref->{'l'} if exists $opt_ref->{'l'};
     if ( defined $myTime ) {
+        if ( defined $startTime or defined $lastTime ) {
+            error("The -t and the -s/-l options are mutually exclusive.");
+            HELP_MESSAGE();
+            exit;
+        }
         if ( $myTime !~ m{^\d+$} ) {
+            error("The -t and the -s/-l options are mutually exclusive.");
             HELP_MESSAGE();
             exit;
         }
         $myTime = ( time - ( 86400 * $myTime ) );
+        $startTime = $lastTime = $myTime;
     }
     else {
-        $myTime = time;
+        if ( !defined $startTime and !defined $lastTime ) {
+            $startTime = $lastTime = time;
+        }
+        else {
+            if ( !defined $startTime ) {
+                error("You must specify a start date.");
+                HELP_MESSAGE();
+                exit;
+            }
+            $myTime = Date::Parse::str2time($startTime);
+            die error("str2time($startTime) was failed") if !defined $myTime;
+            $startTime = $myTime;
+            if ( defined $lastTime ) {
+                $myTime = Date::Parse::str2time($lastTime);
+                die error("str2time($lastTime) was failed")
+                    if !defined $myTime;
+                $lastTime = $myTime;
+            }
+            else {
+                $lastTime = time - 86400;
+            }
+            if ( $startTime > $lastTime ) {
+                error("The start date is after the end date");
+                HELP_MESSAGE();
+                exit;
+            }
+
+        }
     }
 }
 
@@ -322,10 +366,13 @@ sub init {
 sub HELP_MESSAGE {
     print <<ENDTXT;
 Usage: 
- $Script [-v -d ]
-  -v          Verbose mode
-  -d          Debug mode
-  -t          1 = one day before, 2 = two days before, etc.
+ $Script [-v -d ] [-t daysBefore | -s startDate -l lastDate]
+  -v            Verbose mode
+  -d            Debug mode
+  -s startDate  The date of the first file to be processed.
+  -l lastDate   The date of the last file to be processed.
+  -t daysBefore The number of days before today. 
+                1 = one day before, 2 = two days before, etc.
 ENDTXT
     exit 0;
 }
@@ -333,6 +380,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2013-12-01');
+    $CLI->VERSION_MESSAGE('2013-12-22');
 }
 

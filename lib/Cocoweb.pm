@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2012-05-01
+# @date 2013-12-22 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -54,6 +54,7 @@ our @EXPORT = qw(
   trim
   warning
   timeToDate
+  timeToDateOfDay
 );
 use Cocoweb::Logger;
 
@@ -225,6 +226,17 @@ sub timeToDate {
         ( $dt[5] + 1900 ),
         ( $dt[4] + 1 ),
         $dt[3], $dt[2], $dt[1], $dt[0]
+    );
+}
+
+sub timeToDateOfDay {
+    my ($myTime) = @_;
+    my @dt = localtime($myTime);
+    return sprintf(
+        '%02d-%02d-%02d',
+        ( $dt[5] + 1900 ),
+        ( $dt[4] + 1 ),
+        $dt[3] 
     );
 }
 
