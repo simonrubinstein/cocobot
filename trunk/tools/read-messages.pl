@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2013-12-22
+# @date 2014-01-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -101,11 +101,12 @@ sub showMessage {
     my $message = $message_ref->{'message'};
     $message =~ s{=}{?}g;
     printf( $message_ref->{'date'} . ' '
-            . '%3s town: %-26s ISP: %-22s sex: %1s age: %2s nick: %-19s: '
-            . $message . "\n",
+            . '%3s town: %-26s ISP: %-22s sex: %1s age: %2s nick: %-19s: %s'
+            . "\n",
         $message_ref->{'code'},  $message_ref->{'town'},
         $message_ref->{'ISP'},   $message_ref->{'mysex'},
-        $message_ref->{'myage'}, $message_ref->{'mynickname'}
+        $message_ref->{'myage'}, $message_ref->{'mynickname'},
+        $message
     );
 }
 
@@ -380,6 +381,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2013-12-22');
+    $CLI->VERSION_MESSAGE('2014-01-01');
 }
 
