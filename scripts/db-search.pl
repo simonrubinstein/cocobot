@@ -57,7 +57,7 @@ sub run {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OP' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPf:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -93,6 +93,7 @@ sub init {
     push @args, '__usersOnline', 1 if exists $opt_ref->{'O'};
     push @args, '__IleDeFrance', 1 if exists $opt_ref->{'P'};
     $DB = Cocoweb::DB::Base->getInstance();
+    my $filters = $opt_ref->{'f'} if exists $opt_ref->{'f'};
 }
 
 ## @method void HELP_MESSAGE()
@@ -117,6 +118,7 @@ Usage:
   -P          Research in the Iles-de-France only.
   -v          Verbose mode
   -d          Debug mode
+  -f filters  Filters
 
 Examples:
 db-search.pl -c WcL,PXd,uyI,0fN,rs6 
