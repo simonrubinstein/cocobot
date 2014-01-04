@@ -1,0 +1,7 @@
+#Explication sur les codes de vote
+
+= Code de vote =
+
+Un abonnement Premium permet de visualiser le code de vote d'un pseudo ou de rechercher un pseudo d'après son code de vote.
+
+Un code de vote est composé de trois caractères alphanumériques et est sensible à la case.
