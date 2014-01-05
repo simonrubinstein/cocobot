@@ -1,7 +1,13 @@
-#Explication sur les codes de vote
+#summary Explication sur les codes de vote
 
 = Code de vote =
 
-Un abonnement Premium permet de visualiser le code de vote d'un pseudo ou de rechercher un pseudo d'après son code de vote.
+Un abonnement Premium permet de visualiser le _code de vote_ d'un pseudo ou de rechercher un pseudo d'après son _code de vote_.
 
-Un code de vote est composé de trois caractères alphanumériques et est sensible à la case.
+Un _code de vote_ est composé de trois caractères alphanumériques sensibles à la case. Donc un caractère peut prendre une valeur de « _A_ » à « _Z_ », de « _a_ » à « _z_ » ou de « _0_ » à « _9_ » soit soixante-deux valeurs différentes. Donc il existe 62 x 62 x 62 = 238 328 possibilités de _codes de vote_.
+
+Voici quelques exemples de _codes de vote_ : « _uhy_ », « _MYY_ », « _6eF_ », « _kVO_ », « _WcL_ »,« _PXd_ », « _uyI_ », « _0fN_ » , « _rs6_ », « _JiC_ ».
+
+Un _code de vote_ ne peut pas identifier de façon unique un pseudonyme :
+  * Certains pseudonymes partagent le même _code de vote_
+  * Si l'Internaute utilise la navigation privée ou efface ses cookies un nouveau _codes de vote_ sera généré.
