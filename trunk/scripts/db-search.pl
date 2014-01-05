@@ -41,6 +41,7 @@ use Cocoweb;
 use Cocoweb::CLI;
 use Cocoweb::DB::Base;
 use Cocoweb::File;
+use Cocoweb::Config;
 my $DB;
 my $CLI;
 my @args = ();
@@ -93,7 +94,18 @@ sub init {
     push @args, '__usersOnline', 1 if exists $opt_ref->{'O'};
     push @args, '__IleDeFrance', 1 if exists $opt_ref->{'P'};
     $DB = Cocoweb::DB::Base->getInstance();
-    my $filters = $opt_ref->{'f'} if exists $opt_ref->{'f'};
+    my $filtersStr = $opt_ref->{'f'} if exists $opt_ref->{'f'};
+
+    if (defined $filtersStr) {
+        print "**** $filtersStr\n";
+        my @filters = split( /,/, $filtersStr );
+        foreach my $f (@filters) {
+            print "$f\n";
+            my $file = Cocoweb::Config->instance()->getConfigFile( $f, 'Plaintext' );
+        }
+    }
+
+
 }
 
 ## @method void HELP_MESSAGE()
@@ -134,6 +146,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2013-12-10');
+    $CLI->VERSION_MESSAGE('2014-01-01');
 }
 
