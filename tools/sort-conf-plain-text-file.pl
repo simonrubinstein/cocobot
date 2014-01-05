@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-24
-# @date 2013-12-08
+# @date 2014-01-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -42,36 +42,39 @@ my $messagePath;
 my $alertMessagePath;
 my $textFilename;
 my $maxSize;
-
+my $defaultFilename = 'plain-text/quotations.txt';
 
 init();
 run();
 
 sub run {
     my $filename = $textFilename;
-    $filename =~s{^.*/}{/tmp/};
+    $filename =~ s{^.*/}{/tmp/};
     my $fh = IO::File->new( $filename, 'w' );
     die error("open($filename) was failed: $!") if !defined $fh;
 
     my $plainText = Cocoweb::Config->instance()
         ->getConfigFile( $textFilename, 'Plaintext' );
 
-    my $lines_ref = $plainText->all();
+    my $lines_ref   = $plainText->all();
     my @linesOfText = ();
     foreach my $string ( sort @$lines_ref ) {
         push @linesOfText, trim($string);
     }
 
-    
     my %unique = ();
     foreach my $string ( sort @linesOfText ) {
         $string = trim($string);
-        if (exists $unique{$string}) {
+        if ( exists $unique{$string} ) {
             warning("$string quote already exists");
             next;
         }
-        if (defined $maxSize and length($string) > $maxSize) {
-            warning( '"' . $string . '": ' . 'string length exceeds maximum length of ' . $maxSize . ' characters');
+        if ( defined $maxSize and length($string) > $maxSize ) {
+            warning(  '"'
+                    . $string . '": '
+                    . 'string length exceeds maximum length of '
+                    . $maxSize
+                    . ' characters' );
             next;
 
         }
@@ -81,9 +84,8 @@ sub run {
 
     die error("close($filename) was failed: $!") if !$fh->close();
 
-    message("File '$filename' was generated.");
-
-
+    message(
+        "File '$filename' was generated from " . $plainText->pathname() );
 
     return;
 }
@@ -96,14 +98,14 @@ sub init {
         HELP_MESSAGE();
         exit;
     }
-    $maxSize      = $opt_ref->{'x'} if exists $opt_ref->{'x'};
-    if ( defined $maxSize) {
-        if ( $myTime !~ m{^\d+$} ) {
+    $maxSize = $opt_ref->{'x'} if exists $opt_ref->{'x'};
+    if ( defined $maxSize ) {
+        if ( $maxSize !~ m{^\d+$} ) {
             HELP_MESSAGE();
             exit;
         }
     }
-    $textFilename = $opt_ref->{'f'} if exists $opt_ref->{'f'};
+    $textFilename = $opt_ref->{'f'}             if exists $opt_ref->{'f'};
     $textFilename = 'plain-text/quotations.txt' if !defined $textFilename;
 }
 
@@ -111,18 +113,25 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print <<ENDTXT;
+$Script, sorts a plain text configuration file.
 Usage: 
- $Script [-v -d ]
+ $Script [-v -d -f filename -x maxSize]
   -v          Verbose mode
   -d          Debug mode
-  -f          Plain text filename
+  -f filename Plain text filename ($defaultFilename by default)
+  -x maxSize       
+
+Examples:
+sort-conf-plain-text-file.pl
+sort-conf-plain-text-file.pl -f plain-text/nicknames-bot.txt -x 16
 ENDTXT
+
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2013-11-11');
+    $CLI->VERSION_MESSAGE('2014-01-05');
 }
 
