@@ -106,7 +106,7 @@ MoiMeme
 MoodsOfMadness
 MotsDire
 MusicIsTheAnswer
-MyHeadIsAJungle
+myHeadIsAJungle
 NeverStop
 NoComments
 NoWorries
@@ -169,3 +169,5 @@ Zorro
 iGiveInToSin
 sayThatYouLoveMe
 whatYouDoToMe
+ViolentlyHappy
+LeashCalledLove

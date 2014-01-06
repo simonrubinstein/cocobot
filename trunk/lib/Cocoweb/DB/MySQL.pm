@@ -467,6 +467,12 @@ sub searchUsers {
         $ileDeFrance = 0;
     }
 
+    my $nickname2filter_ref;
+    if ( exists $args{'__nicknames2filter'} ) {
+        $nickname2filter_ref = $args{'__nicknames2filter'};
+        delete $args{'__nicknames2filter'};
+    }
+
     foreach my $name ( keys %args ) {
         my $val = $args{$name};
         if ( exists $name2col{$name} ) {
@@ -507,6 +513,15 @@ sub searchUsers {
 
     if ($ileDeFrance) {
         $query .= ' AND `id_town` < 840';
+    }
+    if ( defined $nickname2filter_ref ) {
+        $query .= ' AND `nicknames`.`nickname` NOT IN (';
+        foreach my $nick (@$nickname2filter_ref) {
+            $query .= ' ?,';
+            push @values, $nick;
+        }
+        chop($query);
+        $query .= ')';
     }
 
     #$query .= ' ORDER BY `update_date`';

@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2013-12-10 
+# @date 2014-01-06 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -97,12 +97,16 @@ sub init {
     my $filtersStr = $opt_ref->{'f'} if exists $opt_ref->{'f'};
 
     if (defined $filtersStr) {
-        print "**** $filtersStr\n";
         my @filters = split( /,/, $filtersStr );
+        my %nicknames2filter = ();
         foreach my $f (@filters) {
-            print "$f\n";
             my $file = Cocoweb::Config->instance()->getConfigFile( $f, 'Plaintext' );
+            my $lines_ref = $file->getAll();
+            foreach my $nickname (@$lines_ref) {
+                $nicknames2filter{$nickname} = 1;
+            }
         }
+        push @args, '__nicknames2filter', [keys %nicknames2filter]; 
     }
 
 
@@ -138,6 +142,7 @@ db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
 db-search.pl -c JiC -i "Orange"
+db-search.pl -O -P -s 2 -f plain-text/nicknames-to-filter.txt
 
 ENDTXT
     exit 0;
@@ -146,6 +151,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-01');
+    $CLI->VERSION_MESSAGE('2014-01-06');
 }
 
