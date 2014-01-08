@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-19
-# @date 2013-12-15
+# @date 2014-01-08 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -215,9 +215,11 @@ sub isAuthenticated {
 ##@method requestInfuzForNewUsers()
 #@brief Search "informz" string for new users.
 sub requestInfuzForNewUsers {
-    my ($self)    = @_;
-    my $users_ref = $self->request()->usersList()->all();
-    my $count     = 0;
+    my ($self)     = @_;
+    my $users_ref  = $self->request()->usersList()->all();
+    my $count      = 0;
+    my $sleepInit  = 7;
+    my $sleepCount = $sleepInit;
     foreach my $niknameId ( keys %$users_ref ) {
         my $user = $users_ref->{$niknameId};
         next if !$user->isNew();
@@ -230,6 +232,11 @@ sub requestInfuzForNewUsers {
                 . $user->mynickname()
                 . ' infuz: '
                 . $infuz );
+        if (--$sleepCount < 1) {
+            $sleepCount = $sleepInit;
+            moreDebug("XXXXXXXXXXX $count) sleep");
+            sleep(1);
+        }
     }
     info( $count . ' new "infuz" was requested and returned' ) if $count > 0;
 }
