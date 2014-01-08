@@ -76,6 +76,7 @@ AVAYA
 Avenir Telematique S.a.s.
 Avir Telecom Sarl
 AXA-TECH
+Axinet Communication sarl
 AXIONE S.A.S.
 Axione S.a.s.
 Azuria
@@ -478,6 +479,7 @@ Kheops Organisation
 KMN Corporation
 Koerber AG, Hamburg
 Koninklijke Philips Electronics N.V.
+KPN B.V.
 KPN Belgium Business NV
 KPN Group Belgium NV/SA
 Kujtesa Net Sh.p.k.
@@ -486,7 +488,9 @@ kwaoo.com EURL
 Lagardere Active
 Lanestel Lanestel Sarl
 Lanet Network Ltd.
+LaSer Contact
 LASER CONTACT
+Le118000 118000 SAS
 LeaseWeb B.V.
 LEONIX TELECOM EURL
 LETS GOWEX, S.A.
@@ -577,6 +581,7 @@ NETsite A/S
 NetVision
 NETWORK BACKBONE
 Network IP
+Networth Telecom SA
 Neuf Cegetel
 New Technologies Group N.V.
 NewCom International
@@ -624,6 +629,7 @@ OOO FREEnet Group
 Opal Telecom
 OpenBusiness
 OpenIP
+Openteam SAS
 Opera Software ASA
 OPTILIAN, FR
 OPTIMITEL SA
@@ -658,6 +664,7 @@ Pays Voironnais Network
 PCCW Limited
 Perfect Communication Sweden AB
 Pharmagest Interactive SA
+Phibee Telecom SARL
 Pierre et Vacances network
 PLANET TECHNOLOGIES
 PLDTSPCHME60i01DHCP
@@ -689,6 +696,7 @@ Recherche genealogique
 Redstation Limited
 REG.I.E.S
 Regie Autonome Electric Cable Chauffage EPIC
+REGIE COMMUNALE ELECTRICITE (Regie dune collectiv
 Reliance Globalcom Limited
 Relians Ltd
 RENATER
@@ -759,6 +767,7 @@ Service Provider Corporation
 SERVICES ET MANAGEMENT HOTELIER NAZARA
 ServiHosting Networks S.L.
 SES ASTRA S.A.
+Ses Astra S.A.
 Sewan Communications S.A.S.
 SFR
 Sfr Collectivites SA
@@ -802,6 +811,7 @@ StarHub Cable Vision Ltd
 STARNET S.R.L
 STELLA NET
 Stella Net
+Stockho Hosting SARL
 Strato AG
 Suburban Telecom
 Sudatel Senegal
