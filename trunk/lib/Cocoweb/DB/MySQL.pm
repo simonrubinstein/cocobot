@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-03-30
-# @date 2013-12-10
+# @date 2014-01-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -467,6 +467,15 @@ sub searchUsers {
         $ileDeFrance = 0;
     }
 
+    my $paris;
+    if ( exists $args{'__paris'} ) {
+        delete $args{'__paris'};
+        $paris = 1;
+    }
+    else {
+        $paris = 0;
+    }
+
     my $nickname2filter_ref;
     if ( exists $args{'__nicknames2filter'} ) {
         $nickname2filter_ref = $args{'__nicknames2filter'};
@@ -514,6 +523,9 @@ sub searchUsers {
     if ($ileDeFrance) {
         $query .= ' AND `id_town` < 840';
     }
+    if ($paris) {
+        $query .= ' AND `citydio` >= 30915 AND `citydio` <= 30935';
+    }
     if ( defined $nickname2filter_ref ) {
         $query .= ' AND `nicknames`.`nickname` NOT IN (';
         foreach my $nick (@$nickname2filter_ref) {
@@ -538,8 +550,9 @@ sub searchUsers {
 ##@method void displaySearchUsers(%args)
 #@brief Displays the result of a query on the console
 sub displaySearchUsers {
-    my $self       = shift;
-    my $result_ref = $self->searchUsers(@_);
+    my $self        = shift;
+    my $filtersCode = shift;
+    my $result_ref  = $self->searchUsers(@_);
     if ( scalar @$result_ref == 0 ) {
         print STDOUT "No user was found.\n";
         return;
@@ -589,6 +602,10 @@ sub displaySearchUsers {
     #Displays the result of the query
     my $count = 0,;
     foreach my $row_ref (@$result_ref) {
+        if ($filtersCode) {
+            my $nick = $row_ref->{'nickname'};
+            next if $nick !~ m{^[A-Z].*$};
+        }
         $line = '';
         foreach my $name ( keys %$row_ref ) {
             my $val = $row_ref->{$name};
