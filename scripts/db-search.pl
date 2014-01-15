@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2014-01-06 
+# @date 2014-01-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -58,7 +58,8 @@ sub run {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPf:' );
+    my $opt_ref
+        = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPIf:F:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -92,24 +93,30 @@ sub init {
         exit;
     }
     push @args, '__usersOnline', 1 if exists $opt_ref->{'O'};
-    push @args, '__IleDeFrance', 1 if exists $opt_ref->{'P'};
+    push @args, '__IleDeFrance', 1 if exists $opt_ref->{'I'};
+    push @args, '__paris',       1 if exists $opt_ref->{'P'};
     $DB = Cocoweb::DB::Base->getInstance();
     my $filtersStr = $opt_ref->{'f'} if exists $opt_ref->{'f'};
 
-    if (defined $filtersStr) {
+    if ( defined $filtersStr ) {
         my @filters = split( /,/, $filtersStr );
         my %nicknames2filter = ();
         foreach my $f (@filters) {
-            my $file = Cocoweb::Config->instance()->getConfigFile( $f, 'Plaintext' );
+            my $file = Cocoweb::Config->instance()
+                ->getConfigFile( $f, 'Plaintext' );
             my $lines_ref = $file->getAll();
             foreach my $nickname (@$lines_ref) {
                 $nicknames2filter{$nickname} = 1;
             }
         }
-        push @args, '__nicknames2filter', [keys %nicknames2filter]; 
+        push @args, '__nicknames2filter', [ keys %nicknames2filter ];
     }
 
-
+    my $filtersCode = 0;
+    if ( exists $opt_ref->{'F'} ) {
+        $filtersCode = $opt_ref->{'F'};
+    }
+    unshift @args, $filtersCode;
 }
 
 ## @method void HELP_MESSAGE()
@@ -118,7 +125,7 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 $Script, Search for users in database according to different criteria. 
 Usage: 
- $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O]
+ $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O -I -P -F 1]
   -l logins   A single nickname or more nicknames separated by commas.
               (i.e. -l RomeoKnight or -l RomeoKnight,Delta,UncleTom 
   -c codes    A single nickname code or more nickame codes separated by commas.
@@ -131,10 +138,12 @@ Usage:
                       1: man without an avatar; 6: man with an avatar
   -y age      An age in years
   -O          Users who are connected.
-  -P          Research in the Iles-de-France only.
+  -I          Research in the Iles-de-France only.
+  -P
   -v          Verbose mode
   -d          Debug mode
   -f filters  Filters
+  -F 1        Enable custime filter
 
 Examples:
 db-search.pl -c WcL,PXd,uyI,0fN,rs6 
@@ -142,7 +151,8 @@ db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
 db-search.pl -c JiC -i "Orange"
-db-search.pl -O -P -s 2 -f plain-text/nicknames-to-filter.txt
+db-search.pl -O -I -s 2 -f plain-text/nicknames-to-filter.txt
+db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknames-to-filter-2.txt -y 30 -F 1
 
 ENDTXT
     exit 0;
@@ -151,6 +161,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-06');
+    $CLI->VERSION_MESSAGE('2014-01-15');
 }
 
