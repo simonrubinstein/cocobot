@@ -1,9 +1,9 @@
 # @created 2012-01-26
-# @date 2012-06-16
+# @date 2014-01-17 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -75,7 +75,7 @@ sub init {
 
     $args{'zip'} = sprintf( '75%03d', randum(20) + 1 ) if !exists $args{'zip'};
     if ( $args{'generateRandom'} ) {
-        $args{'myage'} = randum(35) + 15 if !exists $args{'myage'};
+        $args{'myage'} = randum(40) + 18 if !exists $args{'myage'};
         $args{'mysex'} = randum(2) + 1   if !exists $args{'mysex'};
         $args{'mynickname'} =
           $self->getRandomPseudonym( $args{'mysex'}, $args{'myage'},

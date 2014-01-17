@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2013-12-15
+# @date 2014-01-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -211,7 +211,7 @@ sub execute {
     #debug($req->as_string());
     my $response = $userAgent->request($req);
     if ( !$response->is_success() ) {
-        croak error( $response->status_line() );
+        croak error( "$method $url was failed: " . $response->status_line() );
     }
     return $response;
 }
