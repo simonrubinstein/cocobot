@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2012-02-23
+# @date 2014-01-17 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2011
+# copyright (c) Simon Rubinstein 2010-2014
 # $Id$
 #
 # cocobot is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.5';
+$VERSION                            = '0.1.6';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -966,7 +966,7 @@ sub getRandomLogin {
         $old = $oldDesired;
     }
     else {
-        $old = randum(35) + 15;
+        $old = randum(40) + 18;
     }
 
     my $zip;
@@ -1270,8 +1270,8 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2012-02-02) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
+    $Script $VERSION (2014-01-17) 
+     Copyright (C) 2010-2014 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
 }
