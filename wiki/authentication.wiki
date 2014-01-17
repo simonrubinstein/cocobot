@@ -11,10 +11,10 @@ L'authentification se fait sur la page « http://coco.fr/index.htm », qui conti
 Le formulaire demande :
   * Un pseudo : un pseudonyme de 4 à 16 caractères. Variable *nicko*.  
   * Le sexe : homme ou femme. Variable *typeo2*. 
-  * L'âge : un âge de 15 à 89 ans. Variable *ageu*.
+  * L'âge : un âge de 18 à 89 ans. Variable *ageu*.
   * Le code postal. Variable *zipo*.
 
-La page HTML inclut le !JavaScript « http://coco.fr/codipos.js ». Les premières lignes du script vont :
+La page HTML inclut le !JavaScript « http://coco.fr/codinew.js ». Les premières lignes du script vont :
   * Attribuer une valeur aléatoire à la variable *cookav* comprise entre 100 000 000 et 990 000 000.
   * Charger un cookie du de nom de *coda*. Les valeurs récupérées dans la chaîne de caractères du cookie vont permettre d'initialiser les variables du formulaire *niko*, *ageu* et *zipo* ainsi que les variables !JavaScript *typum*, *ageuq*, *townzz* et *citydio*.
 
