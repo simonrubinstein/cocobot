@@ -1,9 +1,9 @@
 # @created 2012-03-29
-# @date 2013-01-18
+# @date 2014-01-18 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision$
 # Date: $Date$
@@ -99,12 +99,12 @@ sub process1Int {
         $user->mynickID( '' . $lebonnick );
         $user->monpass( substr( $urlo, 8, 6 ) );
         $user->mycrypt( parseInt( substr( $urlo, 14, 21 - 14 ) ) );
-        info(   'mynickID: '
-              . $user->mynickID()
-              . '; monpass: '
-              . $user->monpass()
-              . '; mycrypt: '
-              . $user->mycrypt() );
+        info(     'mynickID: '
+                . $user->mynickID()
+                . '; monpass: '
+                . $user->monpass()
+                . '; mycrypt: '
+                . $user->mycrypt() );
         $olko = 51;
     }
 
@@ -113,7 +113,9 @@ sub process1Int {
         #setTimeout("agir('51'+agento)",500);
         usleep( 1000 * 500 );
         $request->agir( $user,
-            '51' . $request->convert()->writo( $request->agent()->{'agent'} ) );
+            '51'
+                . $request->convert()->writo( $request->agent()->{'agent'} )
+        );
     }
 
     if ( $olko == 99 ) {
@@ -121,8 +123,8 @@ sub process1Int {
         debug("bud: $bud");
 
         if ( $bud == 444 ) {
-            my $urlu =
-              $request->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
+            my $urlu = $request->convert()
+                ->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
@@ -132,8 +134,8 @@ sub process1Int {
 
         # Retrieves information about an user, for Premium subscribers only
         if ( $bud == 555 ) {
-            my $urlu =
-              $request->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
+            my $urlu = $request->convert()
+                ->transformix( substr( $urlo, 5 ), -1, 0 );
             return $urlu;
         }
 
@@ -162,31 +164,31 @@ sub process1Int {
             if ( $request->isAvatarRequest() ) {
                 eval {
                     $request->agix( $user,
-                            $request->{'urlav'}
-                          . $user->myage()
-                          . $user->mysex()
-                          . $user->citydio()
-                          . $user->myavatar()
-                          . $user->mynickID()
-                          . $user->monpass()
-                          . $user->mycrypt() );
+                              $request->{'urlav'}
+                            . $user->myage()
+                            . $user->mysex()
+                            . $user->citydio()
+                            . $user->myavatar()
+                            . $user->mynickID()
+                            . $user->monpass()
+                            . $user->mycrypt() );
                 };
             }
             $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
             $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
             $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );
-            info(   'mystat: '
-                  . $user->mystat()
-                  . '; myXP:'
-                  . $user->myXP()
-                  . '; myver: '
-                  . $user->myver() );
+            info(     'mystat: '
+                    . $user->mystat()
+                    . '; myXP:'
+                    . $user->myXP()
+                    . '; myver: '
+                    . $user->myver() );
 
         }
 
         if ( $bud == 148 ) {
             die error( 'This account has been permanently banned: '
-                  . substr( $urlo, 14 ) );
+                    . substr( $urlo, 14 ) );
         }
 
     }
@@ -203,7 +205,9 @@ sub process1Int {
     }
     if ( $olko == 29 ) {
         if ( length( $user->mypass() ) != 20 ) {
-            warning("olko: $olko not implemented");
+            $user->mypass() = substring( 0, 2 );
+            info(
+                'The password "' . $user->mypass() . '" has been recovered' );
         }
     }
     if ( $olko == 95 ) {
@@ -223,13 +227,14 @@ sub process1Int {
         my $countDiscUsers      = 0;
         my $yyg                 = ( length($urlo) - 2 ) / 7;
         if ( $yyg > 0 ) {
-            for ( my $i = 0 ; $i < $yyg ; $i++ ) {
+            for ( my $i = 0; $i < $yyg; $i++ ) {
                 my $qqb = parseInt( substr( $urlo, 2 + 7 * $i, 1 ) );
                 my $qqk = parseInt( substr( $urlo, 3 + 7 * $i, 6 ), 10 );
                 my $userWanted = $request->usersList()->getUser($qqk);
                 if ( defined $userWanted ) {
                     if ( $qqb == 0 ) {
-                        $disconnectedUsers .= $userWanted->mynickname() . '; ';
+                        $disconnectedUsers
+                            .= $userWanted->mynickname() . '; ';
                         $countDiscUsers++;
                         $request->usersList()->removeUser($userWanted);
                     }
@@ -245,15 +250,15 @@ sub process1Int {
                 $usersStr .= $user->mynickname() . '; ';
             }
             info(
-                    scalar(@usersStillConnected)
-                  . ' user(s) are still connected: '
-                  . $usersStr );
+                      scalar(@usersStillConnected)
+                    . ' user(s) are still connected: '
+                    . $usersStr );
             undef @usersStillConnected;
         }
         if ( $countDiscUsers > 0 ) {
-            info(   $countDiscUsers
-                  . ' user(s) have disconnected: '
-                  . $disconnectedUsers );
+            info(     $countDiscUsers
+                    . ' user(s) have disconnected: '
+                    . $disconnectedUsers );
         }
     }
 
@@ -265,9 +270,9 @@ sub process1Int {
         die error("You have been disconnected. Log back on Coco.fr");
     }
     elsif ( $olko == 10 ) {
-        die error( 'You are disconnected because someone with the'
-              . ' same IP is already connected to the chat server.'
-              . ' Otherwise try to connect in 30 seconds.' );
+        die error('You are disconnected because someone with the'
+                . ' same IP is already connected to the chat server.'
+                . ' Otherwise try to connect in 30 seconds.' );
     }
     elsif ( $olko == 36 ) {
         if ( $user->mystat() < 6 ) {
@@ -348,21 +353,22 @@ sub process1Int {
                         my $zami = parseInt( substr( $urlo, $hzq, 6 ) );
                         if ( ( $diase - $hzq ) == 7 ) {
                             message( 'The user "'
-                                  . $request->usersList()
-                                  ->nickIdToNickname($zami) 
-                                  . '" writing...' );
+                                    . $request->usersList()
+                                    ->nickIdToNickname($zami)
+                                    . '" writing...' );
                         }
                     }
                 }
                 else {
                     my $toilo = indexOf( $urlo, '#', $hzq );
-                    my $mokage = parseInt( substring( $urlo, $hzq, 2 + $hzq ) );
-                    my $moksex =
-                      parseInt( substring( $urlo, 2 + $hzq, 3 + $hzq ) );
-                    my $mokville =
-                      parseInt( substring( $urlo, 3 + $hzq, 8 + $hzq ) );
-                    my $moknickID =
-                      parseInt( substring( $urlo, 8 + $hzq, 14 + $hzq ) );
+                    my $mokage
+                        = parseInt( substring( $urlo, $hzq, 2 + $hzq ) );
+                    my $moksex
+                        = parseInt( substring( $urlo, 2 + $hzq, 3 + $hzq ) );
+                    my $mokville
+                        = parseInt( substring( $urlo, 3 + $hzq, 8 + $hzq ) );
+                    my $moknickID
+                        = parseInt( substring( $urlo, 8 + $hzq, 14 + $hzq ) );
                     my $statq = parseInt( substring( $urlo, 15 + $hzq, 16 ) );
                     my $okb   = parseInt( substring( $urlo, 16 + $hzq, 17 ) );
                     my $mokpseudo = substring( $urlo, 17 + $hzq, $toilo );
@@ -409,8 +415,8 @@ sub process1Int {
         else {
             if ( $lengus == 5 ) {
                 if ( index( $urlo, '111' ) > -1 ) {
-                    die error( 'The servers are being restarted.'
-                          . ' Log back in a moment' );
+                    die error('The servers are being restarted.'
+                            . ' Log back in a moment' );
                 }
             }
         }
