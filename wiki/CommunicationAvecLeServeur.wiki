@@ -5,12 +5,12 @@
 Le code !JavaScript communique avec le serveur en exécutant des requêtes HTTP avec la méthode GET sur une adresse IP et un port donné. 
 
 Il existe deux types de requêtes :
-  * La requête initiale lancée avant toutes les autres.
+  * La requête initiale d'authentification lancée avant toutes les autres.
   * Les autres requêtes.
 
 = La requête initiale =
 
-La requête initiale est la toute première requête lancée. 
+La requête initiale est la toute première requête lancée c'est la requête qui sert à authentifier l'utilisateur avec son *myavatar* et *mypass*.
 
 _Syntaxe de la requête_ : *40* + *mynickname* + *`*`* + *myage* + *mysex* + *mycityID*  + *myavatar* + *speco* + *mypass* + *?* + *Random*
 
