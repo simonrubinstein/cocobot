@@ -37,18 +37,21 @@ process1(#12183616UpzIoL11537742395958620*FR)
 }}}
   * *mynickID* : 183616
   * *monpass* : UpzIoL
+  * *mycrypt* : 1153774 (récupéré mais inutilisé)
+  * *mycrypt2* : 239595862 (récupéré mais inutilisé)
+  * *code-pays* : FR (non récupéré)
 
 == Les autres requêtes ==
 
 Le second type de requête est constitué ainsi :
-{{{ http:// adresseIP : myport / code  mynickID monpass params}}}
+{{{ http:// adresseIP + : + myport + / + code +  mynickID + monpass + params}}}
 
-  * *adresseIP* : toujours l'adresse IP « 46.105.32.143 ».
-  * *myport*    : un numéro de port TCP toujours 80. 
-  * *code*      : un code numérique identifié la commande, comme par exemple 10, 89, 48, ...
+  * *adresseIP* : Toujours l'adresse IP « 46.105.32.143 ».
+  * *myport*    : Le numéro de port TCP toujours 80. 
+  * *code*      : Un code numérique identifié la commande, comme par exemple 10, 89, 48, ...
   * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours.
   * *monpass*   : le mot de passe de la session en cours.
-  * *params*    : les éventuelles paramètres. 
+  * *params*    : les éventuels paramètres. 
 
 Exemple d'une requête :
 {{{ http://46.105.32.143:80/10327709RObSoa00 }}}
@@ -88,7 +91,7 @@ process1('#9955718252999309297Laws');
 
 
 
-== Les codes de retour ==
+== Quelques codes de retour ==
 
   * 12 : réponse à une commande  « 40 », première authentification avec l'identifiant de l'avatar et le mot de passe réussie.
   * 99555 : information sur un pseudonyme utilisé en pressant le bouton « ? ». Réservé à un abonnement Premium.
