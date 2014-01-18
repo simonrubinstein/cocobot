@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2014-01-16
+# @date 2014-01-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -313,7 +313,9 @@ sub firsty {
           . $user->citydio()
           . $user->myavatar()
           . $self->speco()
-          . $user->mypass() );
+          . $user->mypass()
+          . '?'
+          . rand(1) * 10000000);
 }
 
 ##@method void agir($user, $txt1)
