@@ -12,11 +12,19 @@ Il existe deux types de requêtes :
 
 La requête initiale est la toute première requête lancée. 
 
-Syntaxe de la requête : *40* + *mynickname* + *`*`* + *myage* + *mysex* + *mycityID*  + *myavatar* + *speco* + *mypass* 
+_Syntaxe de la requête_ : *40* + *mynickname* + *`*`* + *myage* + *mysex* + *mycityID*  + *myavatar* + *speco* + *mypass* + *?* + *Random*
 
   * La valeur *speco* est toujours initialisée à zéro.
-  * *myavatar* : Identifiant unique de l'utilisateur de neuf chiffres décimaux 
-  * *mypass* : Mot de passe de vingt caractères alphabets associé à l'identifiant unique de l'utilisateur. À la première connexion le mot de passe n'existe pas encore, la chaîne de caractères est vide.
+  * *myavatar* : Identifiant unique de l'utilisateur de neuf chiffres décimaux. Cet identifiant unique, sauvegardé dans le cookie *samedi*, est toujours le même à moins que l'utilisateur efface ses cookies ou utilise la navigation privée.
+  * *mypass* : Mot de passe de vingt caractères alphabétiques associé à l'identifiant unique de l'utilisateur précédent. À la première connexion le mot de passe n'existe pas encore, la chaîne de caractères est vide.
+  * *Random* est un nombre décimal compris en 0 et 10 000 000.
+
+_Retour de la requête_ : *12* + *mynickID* + *monpass* + *mycrypt* + *mycrypt2* + *0* +  *code-pays* 
+
+  * *mynickID* : Identifiant pour la session en cours, susceptible de changer à chaque connexion.
+  * *monpass*  : Mot de passe de l'identifiant pour la session en cours modifié à chaque connexion.
+  * *mycrypt* et *mycrypt2* semblent ne pas être utilisés.
+  * *code-pays* : Semble être le code ISO 3166-1 alpha-2 du pays, c'est à dire *FR* dans la majorité des cas.
 
 Exemple d'une requête :
 {{{
@@ -27,7 +35,8 @@ Qui retourne :
 {{{
 process1(#12183616UpzIoL11537742395958620*FR)
 }}}
-
+* *mynickID* : 183616
+* *monpass* : UpzIoL
 
 == Les autres requêtes ==
 
