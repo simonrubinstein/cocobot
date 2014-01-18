@@ -8,8 +8,8 @@ Cette page documente le processus d'initialisation et authentification de l'util
 
 
 Quand la page «  http://www.coco.fr/chat/index.html#nickidol#typum#ageuq#citygood#0#sauvy#0# » est appelée et chargée les trois fonctions suivants sont exécutées séquentiellement :
-  * *primo()* à la ligne 932 du fichier « initio.js ».
-  * *initial()* à la ligne 1 233 du fichier « initio.js ».
+  * *primo()* à la ligne 927 du fichier « initio.js ».
+  * *initial()* à la ligne 1 251 du fichier « initio.js ».
   * *resinit()* à la ligne 551 du fichier « onglet.js ».
 
 === Cookie Flash ===
@@ -26,7 +26,7 @@ La valeur du _cookie Flash_ est lue par la fonction « crocu() ».
 
 === Fonction « primo() » ===
 
-La fonction « primo() » déclarée à la ligne 977 du fichier « http://www.coco.fr/chat/initio.js » est la première fonction appelée déclarée dans l'attribut `onload()` de la balise `<body>`.
+La fonction « primo() » déclarée à la ligne 927 du fichier « http://www.coco.fr/chat/initio.js » est la première fonction appelée déclarée dans l'attribut `onload()` de la balise `<body>`.
 
 La fonction « primo()» va lire le contenu de la barre d'adresse. Dans notre exemple la barre d'adresse est égale à «  http://www.coco.fr/chat/#Simon#1#37#30915#0#186767980#0# ». 
 
@@ -56,18 +56,18 @@ La chaîne de l'agent utilisateur du navigateur Web est transformé par la fonct
 Dans notre exemple notre agent utilisateur est « Mozilla/5.0 (Ubuntu; X11; Linux x86_64; rv:8.0) Gecko/20100101 Firefox/8.0 » ce qui donnera la chaîne de caractères suivante :
   * *agento*     = "Mozilla/5.0~(Ubuntu;~X11;~Linux~x86*064;~rv:8.0)~Gecko/20100101~Firefox/8.0"
 
-La variable *myport* est initialisée avec une valeur entre « 3 000 » et « 4 000 ». Exemple :
-  * *myport* = 3661
+La variable *myport* est initialisée avec la valeur « 80 »
+  * *myport* = 80
 
-La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port.
+La variable *url1* est initialisée par l'appel de la méthode « chang(nmh) » où *mnh* correspond au numéro de port (toujours 80).
 
-  * *url1* = "http://87.98.168.29:80/"
+  * *url1* = "http://46.105.32.143:80/"
 
 Cette URL est l'URL utilisée pour communiquer avec le serveur. Toute communication avec le serveur se fera par une commande `HTTP GET` sur cette URL.
 
 === Fonction « initial() » ===
 
-La fonction « initial() » est déclarée à la ligne 1 274 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « initial() » est déclarée à la ligne 1 251 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « initial() » va lire le cookie « samedi » et l'assigner dans la variable *infor*.
 
@@ -84,11 +84,11 @@ Une minuterie est initialisée de 200 millisecondes avant d'appeler la fonction 
 
 === Fonction « quasi() » ===
 
-La fonction « quasi() » est déclarée à la ligne 1 332 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « quasi() » est déclarée à la ligne 1 309 du fichier « http://www.coco.fr/chat/initio.js ».
 
 === Fonction « presk() » ===
 
-La fonction « presk() » est déclarée à la ligne 1 343 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « presk() » est déclarée à la ligne 1 320 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « presk() » appelle la fonction « croco() » qui essaie de lire le _cookie Flash_.
 
@@ -108,11 +108,11 @@ Deux minuteries sont initialisée avec la fonction !JavaScript « setTimeout() �
    
 === Fonction « firsty() » ===
 
-La fonction « firsty() » est déclarée à la ligne 1 409 du fichier « http://www.coco.fr/chat/initio.js ».
+La fonction « firsty() » est déclarée à la ligne 1 388 du fichier « http://www.coco.fr/chat/initio.js ».
 
 La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « agix() » : 
 {{{
- agix( url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass ,4);
+ agix( url1 + "40" + mynickname + "*" + myage + mysex + parami[3] + myavatar + speco + mypass + "?" + (Math.random() * 10000000) ,4);
 }}}
 
   * La valeur *`parami[3]`*  correspond à la valeur de *mycityID* qui est le code identifiant la ville. Dans notre exemple la valeur 30 915.
@@ -120,15 +120,15 @@ La fonction « firsty() » ne contient qu'une ligne l'appel à la fonction « ag
 
 Dans notre cas :
 {{{
- agix( "http://87.98.168.29:80/40Simon*371309157636446650", 4);
+ agix( "http://46.105.32.143:80/40Simon*371309157636446650?7619933.453716727", 4);
 }}}
 
 
 ===  Fonction « agix() » ===
 
-La fonction « agix() » est la base de la communication de type _Ajax_ entre le client et le serveur et est déclarée à la ligne 406 du fichier « recherche.js ».
+La fonction « agix() » est la base de la communication de type _Ajax_ entre le client et le serveur et est déclarée à la ligne 346 du fichier « recherche.js ».
 
-Cette fonction crée un nouvelle balise « {{{<script>}}} » pour l'arborescence avec comme valeur de l'attribut « src » l'URL « http://87.98.168.29:80/40Simon*371309157636446650 ».
+Cette fonction crée un nouvelle balise « {{{<script>}}} » pour l'arborescence avec comme valeur de l'attribut « src » l'URL « http://46.105.32.143:80/40Simon*371309157636446650?7619933.453716727 ».
 
 L'URL précédente charge le fichier suivant qui sera exécuté en !JavaScript :
 
@@ -136,7 +136,7 @@ L'URL précédente charge le fichier suivant qui sera exécuté en !JavaScript :
 process1('/#12106177BVgfBQ75738949435055320*FR');
 }}}
 
-La fonction « process1(urlu) » déclarée à la ligne 581 du fichier « rasmus.js » sera exécutée.
+La fonction « process1(urlu) » déclarée à la ligne 586 du fichier « rasmus.js » sera exécutée.
 
 ===  Fonction « process1(urlu) » ===
 
@@ -144,9 +144,12 @@ La fonction « process1(urlu) » exécute toutes les réponses du serveur.
 
 La chaîne de caractères *urlu* contient la réponse du serveur. 
 
-Les deux premiers caractères contiennent le code de la réponse qui est un entier naturel à deux chiffres. Dans notre cas le code de la réponse est « 12 », qui correspond à l'authentification.
+Les deux premiers caractères contiennent le code de la réponse qui est un entier naturel à deux chiffres. Dans notre cas le code de la réponse est « 12 », qui correspond au succès de l'authentification. Le serveur retourne les valeurs *mynickID* et *monpass* qui sont respectivement l'identifiant et le mot de passe de la session courante :
 
   * *olko* = 12
   * *mynickID* = 106177
   * *monpass* = BVgfBQ
-  * *mycrypt* = 7573894
+  * *mycrypt* = 7573894 
+  * *mycrypt2* = 943505532
+
+Les valeurs *mycrypt* et *mycrypt2* semblent être inutilisées.
