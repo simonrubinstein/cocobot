@@ -11,6 +11,7 @@ Il existe deux types de requêtes :
 = La requête initiale =
 
 La requête initiale est la toute première requête lancée. 
+
 Syntaxe de la requête : *40* + *mynickname* + *`*`* + *myage* + *mysex* + *mycityID*  + *myavatar* + *speco* + *mypass* 
 
   * La valeur *speco* est toujours initialisée à zéro.
@@ -33,7 +34,7 @@ process1(#12183616UpzIoL11537742395958620*FR)
 Le second type de requête est constitué ainsi :
 {{{ http:// adresseIP : myport / code  mynickID monpass params}}}
 
-  * *adresseIP* : toujours l'adresse IP « 87.98.168.29 ».
+  * *adresseIP* : toujours l'adresse IP « 46.105.32.143 ».
   * *myport*    : un numéro de port TCP toujours 80. 
   * *code*      : un code numérique identifié la commande, comme par exemple 10, 89, 48, ...
   * *mynickID*  : l'identificateur numérique unique du pseudonyme pour la session en cours.
@@ -60,7 +61,7 @@ Retour de la requête : *99* + *557* + *mynickID* + *myage* + *mysex* + *mynickn
 
 Exemple de requête qui demande des informations sur le code vote « MYY »:
 {{{
-http://87.98.168.29:80/83201207hwZTEQ733000000MYY
+http://46.105.32.143:80/83201207hwZTEQ733000000MYY
 }}}
 Qui retourne :
 {{{
