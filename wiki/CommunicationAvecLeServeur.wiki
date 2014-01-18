@@ -8,6 +8,26 @@ Il existe deux types de requêtes :
   * La requête initiale lancée avant toutes les autres.
   * Les autres requêtes.
 
+= La requête initiale =
+
+La requête initiale est la toute première requête lancée. 
+Syntaxe de la requête : *40* + *mynickname* + *`*`* + *myage* + *mysex* + *mycityID*  + *myavatar* + *speco* + *mypass* 
+
+  * La valeur *speco* est toujours initialisée à zéro.
+  * *myavatar* : Identifiant unique de l'utilisateur de neuf chiffres décimaux 
+  * *mypass* : Mot de passe de vingt caractères alphabets associé à l'identifiant unique de l'utilisateur. À la première connexion le mot de passe n'existe pas encore, la chaîne de caractères est vide.
+
+Exemple d'une requête :
+{{{
+http://46.105.32.143:80/40Simon*371309328813008330?7619933.453716727
+}}}
+
+Qui retourne :
+{{{
+process1(#12183616UpzIoL11537742395958620*FR)
+}}}
+
+
 == Les autres requêtes ==
 
 Le second type de requête est constitué ainsi :
@@ -21,8 +41,8 @@ Le second type de requête est constitué ainsi :
   * *params*    : les éventuelles paramètres. 
 
 Exemple d'une requête :
-{{{ http://87.98.168.29:80/10327709RObSoa00 }}}
- * *adresseIP* : 87.98.168.29
+{{{ http://46.105.32.143:80/10327709RObSoa00 }}}
+ * *adresseIP* : 46.105.32.143
  * *myport*    : 80
  * *code*      : 10 
  * *mynickID*  : 10327709 
