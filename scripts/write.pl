@@ -59,7 +59,8 @@ sub run {
 #@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'searchEnable' => 1, 'argumentative' => 'm:' );
+    my $opt_ref
+        = $CLI->getOpts( 'searchEnable' => 1, 'argumentative' => 'm:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -85,5 +86,5 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-07');
+    $CLI->VERSION_MESSAGE('2014-01-19');
 }

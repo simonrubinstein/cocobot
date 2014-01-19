@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2012-02-25
-# @date 2012-04-07
+# @date 2014-01-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -44,8 +44,9 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->requestAuthentication();
     $bot->show();
-    for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
+    for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
+        $bot->setTimz1($count);
         my $usersList;
         if ( $count % 160 == 39 ) {
             $bot->requestCheckIfUsersNotSeenAreOffline();
@@ -82,6 +83,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-07');
+    $CLI->VERSION_MESSAGE('2014-01-19');
 }
 

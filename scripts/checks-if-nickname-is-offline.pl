@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2012-03-23
-# @date 2012-04-07
+# @date 2014-01-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -47,8 +47,9 @@ sub run {
     $bot->display();
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
-    for ( my $i = 1 ; $i <= $CLI->maxOfLoop() ; $i++ ) {
+    for ( my $i = 1; $i <= $CLI->maxOfLoop(); $i++ ) {
         message( "Loop $i / " . $CLI->maxOfLoop() );
+        $bot->setTimz1($count);
         $bot->requestMessagesFromUsers();
         $bot->requestsChecksIfUserOffline( [$userWanted] );
         sleep 4;
@@ -69,14 +70,15 @@ sub init {
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print STDOUT $Script . ', Checks whether a user has logged out of Coco.fr' . "\n";
-   $CLI->printLineOfArgs();
-   $CLI->HELP();
- exit 0;
+    print STDOUT $Script
+        . ', Checks whether a user has logged out of Coco.fr' . "\n";
+    $CLI->printLineOfArgs();
+    $CLI->HELP();
+    exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-07');
+    $CLI->VERSION_MESSAGE('2014-01-19');
 }

@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2014-01-08 
+# @date 2014-01-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -232,7 +232,8 @@ sub requestInfuzForNewUsers {
                 . $user->mynickname()
                 . ' infuz: '
                 . $infuz );
-        if (--$sleepCount < 1) {
+
+        if ( --$sleepCount < 1 ) {
             $sleepCount = $sleepInit;
             moreDebug("XXXXXXXXXXX $count) sleep");
             sleep(1);
@@ -264,6 +265,11 @@ sub requestCheckIfUsersNotSeenAreOffline {
 sub setUsersOfflineInDB {
     my ($self) = @_;
     $self->request()->usersList()->setUsersOfflineInDB();
+}
+
+sub setTimz1 {
+    my ( $self, $timz1 ) = @_;
+    $self->request()->timz1($timz1);
 }
 
 1;
