@@ -1,9 +1,9 @@
 # @created 2012-03-19
-# @date 2013-11-11 
+# @date 2014-01-19 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -39,7 +39,7 @@ use base 'Cocoweb::Object';
 __PACKAGE__->attributes(
     ## A nickname from 4 to 16 characters.
     'mynickname',
-    ## Age from 15 to 89 years.
+    ## Age from 18 to 89 years.
     'myage',
     ## Sex: 1 = male or 2 = female.
     'mysex',

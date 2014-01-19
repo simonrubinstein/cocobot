@@ -69,23 +69,23 @@ my $removeListDelay;
 sub init {
     my ( $self, %args ) = @_;
 
-    my $logUsersListInDB =
-      ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
-      ? 1
-      : 0;
+    my $logUsersListInDB
+        = ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
+        ? 1
+        : 0;
 
-    my $isAvatarRequest =
-      ( exists $args{'isAvatarRequest'} and $args{'isAvatarRequest'} )
-      ? 1
-      : 0;
+    my $isAvatarRequest
+        = ( exists $args{'isAvatarRequest'} and $args{'isAvatarRequest'} )
+        ? 1
+        : 0;
     if ( !defined $conf_ref ) {
-        my $conf =
-          Cocoweb::Config->instance()->getConfigFile( 'request.conf', 'File' );
+        my $conf = Cocoweb::Config->instance()
+            ->getConfigFile( 'request.conf', 'File' );
         $conf_ref = $conf->all();
         foreach my $name (
             'urly0',  'urlprinc',    'current-url', 'avatar-url',
             'avaref', 'urlcocoland', 'urlav',       'url_initio.js'
-          )
+            )
         {
             $conf->isString($name);
         }
@@ -114,7 +114,7 @@ sub init {
         }
         else {
             croak "bad delay format: $delay. "
-              . "Format excepted: 60, 60s, 60m, 24h or 15d";
+                . "Format excepted: 60, 60s, 60m, 24h or 15d";
         }
 
         eval { $self->getInitioJSVar( $conf_ref->{'url_initio.js'} ); };
@@ -157,9 +157,9 @@ sub getInitioJSVar {
             my $urly0 = $1;
             debug( 'urly0 was found: ' . $urly0 );
             if ( $conf_ref->{'urly0'} ne $urly0 ) {
-                warning('The URL has changed from '
-                      . $conf_ref->{'urly0'} . ' to '
-                      . $urly0 );
+                warning(  'The URL has changed from '
+                        . $conf_ref->{'urly0'} . ' to '
+                        . $urly0 );
                 $conf_ref->{'urly0'} = $urly0;
             }
         }
@@ -176,9 +176,9 @@ sub getValue {
         return $conf_ref->{$name};
     }
     else {
-        croak error( 'Error: The "' 
-              . $name
-              . '" value was not found in the configuration.' );
+        croak error( 'Error: The "'
+                . $name
+                . '" value was not found in the configuration.' );
     }
 }
 
@@ -241,7 +241,7 @@ sub getCitydioAndTownzz {
 
         #If the HTTP request fails, read the values from configuration file.
         my $allZipCodes = Cocoweb::Config->instance()
-          ->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+            ->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
         $cityco = $allZipCodes->getCityco( $user->zip() );
     }
 
@@ -250,8 +250,8 @@ sub getCitydioAndTownzz {
     my ( $citydio, $townzz );
     my $count = scalar @citycoList;
     die error("Error: The cityco is not valid (cityco: $cityco)")
-      if $count % 2 != 0
-          or $count == 0;
+        if $count % 2 != 0
+        or $count == 0;
 
     if ( $count == 2 ) {
         $citydio = $citycoList[0];
@@ -277,7 +277,7 @@ sub getCitydioAndTownzz {
 sub getCityco {
     my ( $self, $zip ) = @_;
     croak error("Error: The '$zip' zip code is invalid!")
-      if $zip !~ /^\d{5}$/;
+        if $zip !~ /^\d{5}$/;
     my $i = index( $zip, '0' );
     if ( $i == 0 ) {
         $zip = substr( $zip, 1, 5 );
@@ -289,11 +289,11 @@ sub getCityco {
 
     # Retrieves a string like "var cityco='30926*PARIS*';"
     if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
-        die error( 'Error: cityco have not been found!'
-              . 'The HTTP requests "'
-              . $url
-              . '" return: '
-              . $res );
+        die error('Error: cityco have not been found!'
+                . 'The HTTP requests "'
+                . $url
+                . '" return: '
+                . $res );
     }
     my $cityco = $1;
     debug("===> cityco: $cityco");
@@ -306,16 +306,15 @@ sub getCityco {
 sub firsty {
     my ( $self, $user ) = @_;
     $self->agix( $user,
-            $self->url1() . '40'
-          . $user->mynickname() . '*'
-          . $user->myage()
-          . $user->mysex()
-          . $user->citydio()
-          . $user->myavatar()
-          . $self->speco()
-          . $user->mypass()
-          . '?'
-          . rand(1) * 10000000);
+              $self->url1() . '40'
+            . $user->mynickname() . '*'
+            . $user->myage()
+            . $user->mysex()
+            . $user->citydio()
+            . $user->myavatar()
+            . $self->speco()
+            . $user->mypass() . '?'
+            . rand(1) * 10000000 );
 }
 
 ##@method void agir($user, $txt1)
@@ -331,11 +330,11 @@ sub agir {
     }
 
     $self->agix( $user,
-            $self->url1()
-          . substr( $txt3, 0, 2 )
-          . $user->mynickID()
-          . $user->monpass()
-          . substr( $txt3, 2 ) );
+              $self->url1()
+            . substr( $txt3, 0, 2 )
+            . $user->mynickID()
+            . $user->monpass()
+            . substr( $txt3, 2 ) );
 }
 
 ##@method void agix($user, $url, $cookie_ref)
@@ -354,11 +353,11 @@ sub agix {
     debug($res);
     die error(
         'Error: the JavaScript function not found in the string: ' . $res )
-      if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
+        if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
     die error( 'The method called "' . $function . '()" is unknown!' )
-      if $function ne 'process1';
+        if $function ne 'process1';
     $response = Cocoweb::Response->new();
     return $response->$function( $self, $user, $arg );
 }
@@ -391,7 +390,23 @@ sub actuam {
 #@brief Returns the messages sent by other users
 sub requestMessagesFromUsers {
     my ( $self, $user ) = @_;
-    $self->agir( $user, $user->camon() . $user->typcam() );
+    my $timz1 = $self->timz1();
+    if ( $timz1 % 4 != 0 ) {
+        $self->agir( $user,
+            $user->camon() . $user->typcam() . '?' . rand(1) );
+    }
+    else {
+        debug(    "<<<<< timz1 == $timz1  >>>>> length: "
+                . length( $user->mypass() )
+                . ' <<<<<<<<<<<' );
+    }
+    if ( $timz1 == 20 and length( $user->mypass() ) != 20 ) {
+
+        #This is a new user without password.
+        #Request a password for this user.
+        debug("******************************** NEW PASS REQUEST");
+        $self->agir( $user, '29' );
+    }
 }
 
 ##@method void lancetimer($user)
@@ -490,12 +505,12 @@ sub amigo {
 sub infuz {
     my ( $self, $user, $userWanted ) = @_;
     if ( $user->isPremiumSubscription() ) {
-        my $infuzString =
-          $self->agir( $user, '83555' . $userWanted->mynickID() );
+        my $infuzString
+            = $self->agir( $user, '83555' . $userWanted->mynickID() );
         if ( $infuzString eq "\nINTERDIT\n" ) {
             warning(
                 'It is forbidden to request this information from the user '
-                  . $user->mynickname() );
+                    . $user->mynickname() );
             return $user;
         }
         eval { $userWanted->setInfuz($infuzString); };
@@ -503,8 +518,8 @@ sub infuz {
         return $userWanted;
     }
     else {
-        warning('The command "infuz" is reserved for users with a'
-              . ' Premium subscription.' );
+        warning(  'The command "infuz" is reserved for users with a'
+                . ' Premium subscription.' );
         return;
     }
 }
@@ -550,13 +565,14 @@ sub searchNickname {
         foreach my $y ( 1, 2, 3, 4 ) {
             $self->yearu($y);
             $self->searchnow($user);
-            $userWanted = $self->usersList()->checkIfNicknameExists($nickname);
+            $userWanted
+                = $self->usersList()->checkIfNicknameExists($nickname);
             return $userWanted if defined $userWanted;
         }
     }
     return $self->usersList()
-      if !defined $nickname
-          or length($nickname) == 0;
+        if !defined $nickname
+        or length($nickname) == 0;
     return;
 }
 

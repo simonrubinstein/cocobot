@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2014-01-18 
+# @date 2014-01-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -205,7 +205,7 @@ sub process1Int {
     }
     if ( $olko == 29 ) {
         if ( length( $user->mypass() ) != 20 ) {
-            $user->mypass() = substring( 0, 2 );
+            $user->mypass( substring( $urlo, 2 ) );
             info(
                 'The password "' . $user->mypass() . '" has been recovered' );
         }

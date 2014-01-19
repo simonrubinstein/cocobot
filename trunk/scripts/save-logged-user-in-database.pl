@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 #@brief This script saves all users connected to the database
 #@created 2012-03-09
-#@date 2013-12-08
+# @date 2014-01-19
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id
 # Revision: $Revision$
 # Date: $Date$
@@ -78,14 +78,17 @@ AUTH:
         }
     }
     $bot->getMyInfuz();
+
     # return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
+
     # reads users from 'var/cocoweb-user-list.data' file
     $usersList->deserialize();
     $usersList->purgeUsersUnseen();
     checkUsers();
     my $count = 0;
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
+        $bot->setTimz1($count);
         my $mynickname = $bot->user()->mynickname();
         message(
             'Iteration number: ' . $count . '; mynickname: ' . $mynickname );
@@ -157,6 +160,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-12-11');
+    $CLI->VERSION_MESSAGE('2014-01-19');
 }
 
