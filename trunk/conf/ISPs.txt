@@ -138,6 +138,7 @@ Carphone Warehouse Broadband Services
 Carrefour Organisation et Systemes Groupe
 Casema B.V.
 Caucasus Online LLC
+Cegedim S.A.
 CEGETEL LA REUNION
 CELESTE
 Celeste
@@ -177,6 +178,7 @@ CNAMTS
 Coditel
 Cogeco Cable
 Cogent Communications
+Cogent Communications Group, Inc.
 COLOMBIA TELECOMUNICACIONES S.A. ESP
 COLT Technology Services Group Limited
 COLT Telecom Group Limited
@@ -275,6 +277,7 @@ Ecole Normale Superieure de Lyon
 Ecole Polytechnique
 ECOLE POLYTECHNIQUE
 Ecole Superieure dElectricite, SUPELEC
+Econocom France S.A.
 Ecritel
 EDIS GmbH
 EDPNET
@@ -304,6 +307,7 @@ Epitech
 EPM Telecomunicaciones S.A. E.S.P.
 Equant
 Equation SA
+Escp Europe
 Essent Kabelcom B.V. B.V.
 Essilor International
 ESSILOR International SA
@@ -386,11 +390,13 @@ Herault Telecom
 Hetzner Online AG
 Hewlett-Packard Company
 HEXANET
+Hexanet Hexanet SAS
 Hexanet SAS
 Hilti AG
 Hoffmann LaRoche
 Honeywell Limited
 Host Europe GmbH
+Host Virtual
 Hosting Services
 Hot Telecommunication Systems Ltd.
 Hub Telecom SA
@@ -604,6 +610,7 @@ Numeo SA
 Nuovo Pignone LAN
 Observatoire de Paris
 OC3 Networks { Web Solutions, LLC
+Oceanet Technology SAS
 Octopuce
 OECD - Organisation for Economical Co-Operation an
 Office des Poste et Telecommunications (OPT)
@@ -658,6 +665,7 @@ Ozone
 Ozone SAS
 P.J.Safarik University in Kosice
 Paris
+Paritel Operateur Sasu
 Pars Online
 paulbame
 Pays Voironnais Network
@@ -855,6 +863,7 @@ Telefonica de Espana
 Telefonica del Peru
 Telefonica International Wholesale Services, SL
 TELEFUN - SKYROCK
+Telefun SAS
 Telehouse International Corporation of Europe Ltd
 Telekom Austria
 Telekom Srpske
