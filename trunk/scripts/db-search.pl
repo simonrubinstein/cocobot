@@ -151,7 +151,7 @@ db-search.pl -l BetterDays%
 db-search.pl -l BlueVelvet,Babycat
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
 db-search.pl -c JiC -i "Orange"
-db-search.pl -O -I -s 2 -f plain-text/nicknames-to-filter.txt
+db-search.pl -O -I -s 2,7 -f plain-text/nicknames-to-filter.txt
 db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknames-to-filter-2.txt -y 30 -F 1
 
 ENDTXT
