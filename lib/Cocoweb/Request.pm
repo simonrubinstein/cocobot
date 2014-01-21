@@ -396,15 +396,12 @@ sub requestMessagesFromUsers {
             $user->camon() . $user->typcam() . '?' . rand(1) );
     }
     else {
-        debug(    "<<<<< timz1 == $timz1  >>>>> length: "
-                . length( $user->mypass() )
-                . ' <<<<<<<<<<<' );
+        debug( "<<<<< timz1 == $timz1  >>>>>" );
     }
     if ( $timz1 == 20 and length( $user->mypass() ) != 20 ) {
 
         #This is a new user without password.
         #Request a password for this user.
-        debug("******************************** NEW PASS REQUEST");
         $self->agir( $user, '29' );
     }
 }
