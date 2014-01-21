@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2014-01-01
+# @date 2014-01-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -186,11 +186,11 @@ sub readMessageFile {
         if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
             \s+([A-Za-z0-9]{3})?
             \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
-            \s+ISP:\s([A-Za-z-\s\.\/]+)
+            \s+ISP:\s([A-Za-z-\s\.\/]+)?
             \s+sex:\s(\d)
             \s+age:\s(\d{2})
-            \s+nick:\s([0-9A-Za-z]+)
-            \s+:\s(.*)$}xms
+            \s+nick:\s([0-9A-Za-z\(\)]+)
+            \s*:\s(.*)$}xms
             )
         {
             die "bad  $line ($messagePath)";
@@ -381,6 +381,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-01');
+    $CLI->VERSION_MESSAGE('2014-01-21');
 }
 

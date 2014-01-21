@@ -1,10 +1,10 @@
 #!/usr/bin/perl
-# @created 2013-12-15 
-# @date 2013-12-15
+# @created 2013-12-15
+# @date 2013-12-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -46,12 +46,12 @@ sub run {
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
 
-    for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
+    for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
         eval {
             $bot->requestAuthentication();
             $bot->show();
-            $bot->requestToBeAFriend( $userWanted );
+            $bot->requestToBeAFriend($userWanted);
             sleep 1;
         };
         $bot = $CLI->getBot( 'generateRandom' => 1 );
@@ -82,6 +82,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2013-12-15');
+    $CLI->VERSION_MESSAGE('2014-01-21');
 }
 
