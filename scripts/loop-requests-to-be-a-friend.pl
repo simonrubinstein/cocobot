@@ -48,10 +48,12 @@ sub run {
 
     for ( my $count = 1 ; $count <= $CLI->maxOfLoop() ; $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
-        $bot->requestAuthentication();
-        $bot->show();
-        $bot->requestToBeAFriend( $userWanted );
-        sleep 1;
+        eval {
+            $bot->requestAuthentication();
+            $bot->show();
+            $bot->requestToBeAFriend( $userWanted );
+            sleep 1;
+        };
         $bot = $CLI->getBot( 'generateRandom' => 1 );
     }
     info("The $Bin script was completed successfully.");
