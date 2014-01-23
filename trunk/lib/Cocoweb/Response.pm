@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2014-01-18
+# @date 2014-01-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -160,20 +160,6 @@ sub process1Int {
         # The server returns some information about the user account.
         if ( $bud == 556 ) {
 
-            #First HTTP request to load the avatar image.
-            if ( $request->isAvatarRequest() ) {
-                eval {
-                    $request->agix( $user,
-                              $request->{'urlav'}
-                            . $user->myage()
-                            . $user->mysex()
-                            . $user->citydio()
-                            . $user->myavatar()
-                            . $user->mynickID()
-                            . $user->monpass()
-                            . $user->mycrypt() );
-                };
-            }
             $user->mystat( parseInt( substr( $urlo, 6, 1 ) ) );
             $user->myXP( parseInt( substr( $urlo, 5, 1 ) ) );
             $user->myver( parseInt( substr( $urlo, 7, 1 ) ) );
@@ -184,6 +170,54 @@ sub process1Int {
                     . '; myver: '
                     . $user->myver() );
 
+            my ( $ind, $ind2, $ind3, $tro, $hzy ) = ( 0, 0, 0, 1, 9 );
+            my $mycrypt3;
+            while ($tro) {
+                $ind  = indexOf( $urlo, '#', $hzy );
+                $ind2 = indexOf( $urlo, '{', $hzy );
+                $ind3 = indexOf( $urlo, '}', $hzy );
+                if ( $ind2 > 0 and $ind2 < $ind ) {
+                    $ind = $ind2;
+                }
+                if ( $ind3 > 0 and $ind3 < $ind ) {
+                    $ind = $ind3;
+                }
+                if ( $ind > 0 ) {
+                    $hzy = $ind + 1;
+                }
+                else {
+                    $tro = 0;
+                    my $fdl = indexOf( $urlo, '*', $hzy );
+                    my $mymail = substring( $urlo, $hzy, $fdl );
+                    $mycrypt3 = substring( $urlo, $fdl + 1, $fdl + 13 );
+                    my $nbsms
+                        = parseInt( substring( $urlo, $fdl + 13, $fdl + 17 ) )
+                        - 1000;
+                    my $dpy = indexOf( $urlo, '$', $fdl );
+                    my $mysms = substring( $urlo, $fdl + 17, $dpy );
+                    my $dpx = indexOf( $urlo, '!', $fdl );
+                    my $mytime = substring( $urlo, $dpy + 2, $dpx );
+                    my $neutri = substring( $urlo, $dpy + 1, $dpy + 2 );
+                    my $myblog = substring( $urlo, $dpx + 1 );
+                    $mymail = '' if !defined $mymail;
+                    debug("mymail: $mymail; mycrypt3: $mycrypt3");
+                }
+            }
+
+            #HTTP request to load the avatar image.
+            if ( $request->isAvatarRequest() ) {
+                eval {
+                    $request->agix( $user,
+                              $request->{'urlav'}
+                            . $user->myage()
+                            . $user->mysex()
+                            . $user->citydio()
+                            . $user->myavatar()
+                            . $user->mynickID()
+                            . $user->monpass()
+                            . $mycrypt3 );
+                };
+            }
         }
 
         if ( $bud == 148 ) {

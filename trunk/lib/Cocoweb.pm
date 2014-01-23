@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2013-12-22 
+# @date 2014-01-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -32,7 +32,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.4000';
+our $VERSION     = '0.5000';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
@@ -42,19 +42,19 @@ my $startTime;
 
 use base 'Exporter';
 our @EXPORT = qw(
-  debug
-  error
-  indexOf
-  info
-  message
-  moreDebug
-  parseInt
-  substring
-  randum
-  trim
-  warning
-  timeToDate
-  timeToDateOfDay
+    debug
+    error
+    indexOf
+    info
+    message
+    moreDebug
+    parseInt
+    substring
+    randum
+    trim
+    warning
+    timeToDate
+    timeToDateOfDay
 );
 use Cocoweb::Logger;
 
@@ -71,9 +71,10 @@ sub message {
 
 ##@method void error(@_)
 sub error {
-    if (defined $logger) {
+    if ( defined $logger ) {
         $logger->error(@_);
-    } else {
+    }
+    else {
         print STDERR $_[0] . "\n";
     }
 }
@@ -126,18 +127,18 @@ sub parseInt {
     my ( $str, $radix ) = @_;
     $str   = 'undefined' if !defined $str;
     $radix = 10          if !defined $radix;
-    my $sign =
-      $str =~ s/^([+-])//
-      ? ( -1, 1 )[ $1 eq '+' ]
-      : 1;
+    my $sign
+        = $str =~ s/^([+-])//
+        ? ( -1, 1 )[ $1 eq '+' ]
+        : 1;
     $radix = ( int $radix ) % 2**32;
     $radix -= 2**32 if $radix >= 2**31;
     $radix ||=
-      $str =~ /^0x/i
-      ? 16
-      : 10;
+        $str =~ /^0x/i
+        ? 16
+        : 10;
     $radix == 16
-      and $str =~ s/^0x//i;
+        and $str =~ s/^0x//i;
 
     return if $radix < 2 || $radix > 36;
 
@@ -169,7 +170,8 @@ sub parseInt {
                   $_ =~ /[0-9]/
                 ? $_
                 : ord(uc) - 55
-            ) * $radix**$place++;
+                )
+                * $radix**$place++;
         }
         $ret = $num * $sign;
     }
@@ -191,8 +193,9 @@ sub indexOf {
     $start = 0 if !defined $start;
     return index( $string, $searchString ) if $start == 0;
     my $substing = substr( $string, $start );
-    return
-      index( $substing, $searchString ) + length($string) - length($substing);
+    my $pos = index( $substing, $searchString );
+    return $pos if $pos < 0;
+    return $pos + length($string) - length($substing);
 }
 
 ##@method string substring($string, $from, $to)
@@ -232,12 +235,9 @@ sub timeToDate {
 sub timeToDateOfDay {
     my ($myTime) = @_;
     my @dt = localtime($myTime);
-    return sprintf(
-        '%02d-%02d-%02d',
-        ( $dt[5] + 1900 ),
-        ( $dt[4] + 1 ),
-        $dt[3] 
-    );
+    return
+        sprintf( '%02d-%02d-%02d', ( $dt[5] + 1900 ), ( $dt[4] + 1 ),
+        $dt[3] );
 }
 
 ##@method void BEGIN()
