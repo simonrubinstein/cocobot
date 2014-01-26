@@ -192,14 +192,15 @@ sub writo {
 #@param integer $syx
 #@return string The string of characters converted
 sub transformix {
-    my ( $self, $sx, $tyb, $syx ) = @_;
+    my ( $self, $sx, $tyb, $syx, $stt ) = @_;
     $tyb = -1 if !defined $tyb;
     $syx = 0  if !defined $syx;
+    $stt = 0  if !defined $stt;
     my $s1 = $sx;
     my ( $numerox, $shifto, $s2, $toolong, $unefoi ) = ( 0, 0, '', 0, 0 );
     $s1 =~ s{http://}{}g;
     my $mmj = index( $s1, 'www' );
-    $toolong = -70 if $syx > 7 and $mmj > -1;
+    $toolong = -70 if $stt > 5 and $mmj > -1;
 
     for ( my $i = 0; $i < length($s1); $i++ ) {
         my $c = substr( $s1, $i, 1 );
@@ -243,6 +244,41 @@ sub transformix {
         }
 
     }
+
+    #$s2 = transmiley($s2) if $tyb != 117;
+    if ( $mmj > -1 ) {
+    }
+    else {
+        my $hwo = indexOf( $s1, '_' );
+        if ( $hwo > -1 ) {
+            my $tr8 = substring( $s2, $hwo + 1, $hwo + 2 );
+            my $tr9 = substring( $s1, $hwo + 2 );
+            for ( my $i = 0; $i < length($tr9); $i++ ) {
+                my $c = substr( $tr9, $i, 1 );
+                $numerox = ord($c);
+                $tr8     = 'FALSE'
+                    if $numerox < 45
+                    or ( $numerox > 57 and $numerox < 65 )
+                    or ( $numerox > 90 and $numerox < 95 )
+                    or $numerox > 122
+                    or $numerox == 96;
+            }
+            if ( indexOf( $tr9, '*' ) == -1 ) {
+                my $tt3 = $tr9;
+                my $sqm;
+                if ( $tr8 eq '1' ) {
+                    if ( $tyb > 199 and $tyb < 999 ) {
+                        $sqm = 1;
+                    }
+                    else {
+                        $sqm = 0;
+                    }
+                }
+                $s2 = 'http://www.coco.fr/pub/photo' . $sqm . '.htm?' . $tr9;
+            }
+        }
+    }
+
     return $s2;
 }
 
