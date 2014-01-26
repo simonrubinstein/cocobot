@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2014-01-23
+# @date 2014-01-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -408,9 +408,10 @@ sub process1Int {
                     my $mokpseudo = substring( $urlo, 17 + $hzq, $toilo );
                     $diase = indexOf( $urlo, '#', $toilo + 1 ) + 1;
                     my $mokmess = substring( $urlo, $toilo + 1, $diase - 1 );
-                    eval {
-                        $mokmess = $request->convert()->transformix($mokmess);
-                    };
+
+                   #eval {
+                   #    $mokmess = $request->convert()->transformix($mokmess);
+                   #};
                     my $user = $request->usersList()->getUser($moknickID);
 
                     if ( !defined $user ) {
@@ -426,7 +427,10 @@ sub process1Int {
                         );
 
                     }
-                    $user->hasSentMessage($mokmess);
+
+                    #$user->hasSentMessage($mokmess);
+
+                    $self->incomingMessage( $request, $user, $mokmess );
 
                     #message('code: '
                     #      . $user->code()
@@ -457,6 +461,79 @@ sub process1Int {
 
     }
 
+}
+
+sub incomingMessage {
+    my ( $self, $request, $user, $makmessage ) = @_;
+    my ( $chp, $hys, $message ) = ( 1, 0, '' );
+    if ( indexOf( $makmessage, '&' ) > -1 ) {
+        $hys = indexOf( $makmessage, '&9' );
+        if ( $hys > -1 ) {
+            $chp = 0;
+            my $infor = substring( $makmessage, $hys + 3 );
+            $message
+                = 'Your profile has been successfully recovered: (infor = '
+                . $infor . ')';
+            die warning($message);
+        }
+        $hys = indexOf( $makmessage, '&7' );
+        if ( $hys > -1 ) {
+            $chp = 0;
+            $message = substring( $makmessage, $hys + 3 );
+            $message = $self->transformix( $request, $message );
+            error($message);
+        }
+        $hys = indexOf( $makmessage, '&4' );
+        if ( $hys > -1 ) {
+        }
+        $hys = indexOf( $makmessage, '&B' );
+        if ( $hys > -1 ) {
+        }
+
+        #Time remaining before the end of the subscription.
+        $hys = indexOf( $makmessage, '&P' );
+        if ( $hys > -1 ) {
+            $chp = 0;
+            $message = substring( $makmessage, $hys + 3 );
+            warning($message);
+        }
+        $hys = indexOf( $makmessage, '&G' );
+        if ( $hys > -1 ) {
+            $chp = 0;
+            my $nbsms = substring( $makmessage, $hys + 3 );
+            $message = 'You have ' . $nbsms . ' SMS on your account.';
+            warning($message);
+        }
+
+    }
+    return if $chp == 0;
+    my $s1 = $makmessage;
+
+    my $s2 = '';
+    if ( $chp != 3 and $chp > 0 ) {
+        $s2 = $self->transformix( $request, $s1 );
+    }
+    else {
+        $s2 = $s1;
+    }
+    my $mimiz = indexOf( $s2, '{5' );
+    if ( $mimiz > -1 ) {
+        $s2 = 'Will you accept ' . $user->mynickname() . ' as a friend?';
+    }
+    $mimiz = indexOf( $s2, '{6' );
+    if ( $mimiz > -1 ) {
+        $s2 = $user->mynickname() . 'Bob accepted you as a friend.';
+    }
+    $user->hasSentMessage($s2);
+    info($s2);
+
+}
+
+sub transformix {
+    my ( $self, $request, $message ) = @_;
+    my $string = '';
+    eval { $string = $request->convert()->transformix($message); };
+    return $string;
 }
 
 ##@method void populate($user, $populateList, $urlo, $offsat)
