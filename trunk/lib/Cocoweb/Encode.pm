@@ -1,10 +1,10 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2012-03-11
+# @date 2014-01-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -46,7 +46,7 @@ my $hasBeenInitialized = 0;
 sub init {
     my ( $class, $instance ) = @_;
     $instance->initializeTables()
-      if !$hasBeenInitialized;
+        if !$hasBeenInitialized;
     return $instance;
 }
 
@@ -86,16 +86,19 @@ sub initializeTables {
     %dememeMatch = (
         32   => "~",
         33   => '!',
+        34   => "*8",
         36   => "*7",
-        37   => "%",
+        37   => "*g",
         39   => "*8",
         40   => "(",
         41   => ")",
         42   => "*s",
-        61   => "=",
-        63   => "?",
+        61   => "*h",
+        63   => "=",
+        64   => "*m",
         94   => "*l",
         95   => "*0",
+        164  => "_",
         8364 => "*d",
         224  => "*a",    # à
         226  => "*k",    # â
@@ -104,10 +107,10 @@ sub initializeTables {
         233  => "*r",    # é
         234  => "*b",    # ê
         238  => "*i",    # î
-        239  => "*k",    # ï
+        239  => "*j",    # ï
         244  => "*o",    # ô
         249  => "*f",    # ù
-        251  => "*u"     # û
+        251  => "*u",    # û
     );
     %shiftuMatch = (
         108 => '^',
@@ -120,9 +123,12 @@ sub initializeTables {
         114 => 'é',
         106 => 'ï',
         105 => 'î',
+        109 => '@',
         111 => 'ô',
         117 => 'û',
         102 => 'ù',
+        103 => '%',
+        104 => '=',
         115 => '*',
         48  => '_',
         56  => "'",
@@ -138,7 +144,7 @@ sub initializeTables {
         40  => '(',
         41  => ')',
         42  => '*',
-        61  => '=',
+        61  => '?',
         63  => '?',
         96  => '',
         95  => '_',
@@ -155,7 +161,7 @@ sub writo {
     utf8::decode($s1);
     my $s2     = '';
     my $toulon = 0;
-    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
+    for ( my $i = 0; $i < length($s1); $i++ ) {
         my $c = substr( $s1, $i, 1 );
         my $numerox = ord($c);
         if ( $numerox != 32 ) {
@@ -195,7 +201,7 @@ sub transformix {
     my $mmj = index( $s1, 'www' );
     $toolong = -70 if $syx > 7 and $mmj > -1;
 
-    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
+    for ( my $i = 0; $i < length($s1); $i++ ) {
         my $c = substr( $s1, $i, 1 );
         $numerox = ord($c);
         $toolong++ if $tyb != 23;

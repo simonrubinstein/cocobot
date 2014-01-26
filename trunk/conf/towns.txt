@@ -434,7 +434,6 @@ FR- Boissise-la-bertrand
 FR- Boissise-le-roi
 FR- Boissy-le-chatel
 FR- Bombon
-FR- Boos
 FR- Bougligny
 FR- Boulancourt
 FR- Bouleurs
@@ -8570,6 +8569,7 @@ FR- Bois-guillaume
 FR- Bolbec
 FR- Bondeville
 FR- Bonsecours
+FR- Boos
 FR- Bosc
 FR- Bosc-le-hard
 FR- Bosc-roger-sur-buchy
