@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2014-01-18
+# @date 2014-01-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -489,6 +489,15 @@ sub writus {
 sub amigo {
     my ( $self, $user, $userWanted ) = @_;
     $self->agir( $user, '46' . $userWanted->mynickID() );
+}
+
+##@method void reportAbuse($user, $userWanted)
+#@brief report a user for abusive behavior.
+#@param object $user An 'User::Connected' object
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+sub reportAbuse {
+    my ( $self, $user, $userWanted ) = @_;
+    $self->agir( $user, '69' . $userWanted->mynickID() );
 }
 
 ##@method string infuz($user, $userWanted)
