@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2014-01-08
+# @date 2014-01-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -118,6 +118,15 @@ sub requestWriteMessage {
 sub requestToBeAFriend {
     my ( $self, $userWanted ) = @_;
     $self->request()->amigo( $self->user(), $userWanted );
+}
+
+##@method void reportAbuse($userWanted)
+#@brief Report a user for abusive behavior
+#@param object $userWanted A 'CocoWeb::User::Wanted' object
+#              The user for whom the message is intended
+sub reportAbuse {
+    my ( $self, $userWanted ) = @_;
+    $self->request()->reportAbuse( $self->user(), $userWanted );
 }
 
 ##@method object searchNickname($userWanted)
