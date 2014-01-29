@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-12-15
-# @date 2014-01-28
+# @date 2014-01-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -52,7 +52,10 @@ sub run {
             $bot->requestAuthentication();
             $bot->show();
             $bot->reportAbuse($userWanted);
-            sleep 1;
+            debug(    'Delays the program execution for '
+                    . $CLI->delay()
+                    . ' second(s)' );
+            sleep $CLI->delay();
         };
         $bot = $CLI->getBot( 'generateRandom' => 1 );
     }
@@ -82,6 +85,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-28');
+    $CLI->VERSION_MESSAGE('2014-01-29');
 }
 

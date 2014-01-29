@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2014-01-23
+# @date 2014-01-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -48,7 +48,8 @@ __PACKAGE__->attributes(
     'searchNickname', 'maxOfLoop',
     'enableLoop',     'avatarAndPasswdRequired',
     'searchEnable',   'pidHandle',
-    'writeLogInFile', 'isAvatarRequest'
+    'writeLogInFile', 'isAvatarRequest',
+    'delay'
 );
 
 ##@method object init($class, $instance)
@@ -68,7 +69,8 @@ sub init {
         'searchEnable'            => 0,
         'pidHandle'               => undef,
         'writeLogInFile'          => 1,
-        'isAvatarRequest'         => 0
+        'isAvatarRequest'         => 0,
+        'delay'                   => 1
     );
     return $instance;
 }
@@ -97,7 +99,7 @@ sub getOpts {
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
     $argumentative .= 'wdvDu:s:y:a:p:g';
     $argumentative .= 'l:i:' if $self->searchEnable();
-    $argumentative .= 'x:' if $self->enableLoop();
+    $argumentative .= 'x:S:' if $self->enableLoop();
     my %opt;
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
@@ -118,6 +120,7 @@ sub getOpts {
     $self->searchId( $opt{'i'} )       if exists $opt{'i'};
     $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
     $self->maxOfLoop( $opt{'x'} )      if exists $opt{'x'};
+    $self->delay( $opt{'S'} )          if exists $opt{'S'};
     $self->isAvatarRequest(1)          if exists $opt{'g'};
     info( "isAvatarRequest: " . $self->isAvatarRequest() );
 
@@ -179,6 +182,10 @@ sub getOpts {
         }
         else {
             $self->maxOfLoop(1);
+        }
+        if ( $self->delay() !~ m{^\d+$} ) {
+            error( 'The delay should be an integer.' . ' (-S option)' );
+            return;
         }
     }
     return \%opt;
@@ -249,7 +256,7 @@ sub getLineOfArgs {
     my ( $self, $addArgs ) = @_;
     my $args = 'Usage: ' . $Script . ' ';
     $args .= $addArgs . ' '                   if defined $addArgs;
-    $args .= '-x maxOfLoop '                  if $self->enableLoop();
+    $args .= '-x maxOfLoop -S seconds '       if $self->enableLoop();
     $args .= '(-l nickname | -i nicknameId) ' if $self->searchEnable();
     $args .= '[' if !$self->avatarAndPasswdRequired();
     $args .= '-a myavatar -p mypass ';
@@ -274,6 +281,7 @@ sub HELP {
         if $self->searchEnable();
     print STDOUT
         "  -x maxOfLoop      A maximum number of iterations to perform.\n"
+        . "  -S seconds        Delays the loop execution for the given number of seconds.\n"
         if $self->enableLoop();
 
     print STDOUT <<ENDTXT;
