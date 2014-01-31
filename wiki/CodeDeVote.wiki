@@ -37,6 +37,10 @@ Toujours pour le code de vote « MMY » nous avons ces relevés de connexions :
 || Laws           || 255777 || SFR              || Saint-barnabe       || 18  || 7   || 75015 Paris   || 01-03 15:46:02 || 01-03 15:47:02 || 01-03 15:46:40 || MYY  ||
 || Laws           || 337794 || Orange           || Juvisy-sur-orge     || 18  || 7   || 75015 Paris   || 01-31 17:48:42 || 01-31 18:16:43 || 01-31 18:16:12 || MYY  ||
 
-L'utilisateur est le même, mais la ville de connexion présumée a changé et son fournisseur d'accès aussi. La la ville de connexion présumée peut changer pour deux raisons, la première est qu'un utilisateur n'utilise toujours la même plaque ADSL, c'est à dire que même si l'utilisateur n'a pas bougé physiquement son point de connexion lui peut changer. La deuxième raison est que l'utilisateur peut aussi bouger physiquement.
+Dans ce cas précis l'utilisateur est le même, mais la ville de connexion présumée a changé et son fournisseur d'accès aussi. 
+
+La la ville de connexion présumée peut changer pour deux raisons :
+  * La première raison est qu'un utilisateur n'utilise toujours la même plaque ADSL, c'est à dire que même si l'utilisateur n'a pas bougé physiquement son point de connexion lui peut changer.
+  * La deuxième raison est que l'utilisateur peut aussi bouger physiquement. Pour les connexions à _Issy-les-moulineaux_, _Châtillon_ et _Paris_ la personne est bien sur Paris. Par contre la connexion _Saint-barnabe_ correspond à une connexion à _Le Lavandou_.
 
 
