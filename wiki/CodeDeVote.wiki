@@ -22,7 +22,7 @@ Un _code de vote_ ne peut pas identifier de façon unique un pseudonyme :
 || sylvia         || 161508 || Bouygues Telecom || Le Plessis          || 25  || 2   || 92140 Clamart || 01-11 09:00:41 || 01-11 09:15:14 || 01-11 09:11:12 || MYY  ||
 || Oxymore2       || 388603 || Orange           || Paris               || 18  || 7   || 75015 Paris   || 01-26 17:05:12 || 01-26 17:05:44 || 01-26 17:05:12 || MYY  ||
 
-Le champ « town » est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. Ces quatre pseudos utilisent le code de vote « MMY » pourtant ce sont des utilisateurs différents. Les champs *ISP* et *town* différents peuvent mettre sur la piste, mais ce n'est pas un certitude.
+Le champ « town » est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. Ces quatre pseudos utilisent le code de vote « MMY » pourtant ce sont des utilisateurs différents. Les champs *ISP* et *town* différents peuvent mettre sur la piste, mais ce n'est pas un certitude. Le champ *city* correspond au code postal rentré par l'utilisateur dans le formulaire de connexion, sa pertinence n'est pas fiable, mais certains utilisateurs entre toujours le même code postal cela permet d'aider à les identifier.
 
 
 Toujours pour le code de vote « MMY » nous avons ces relevés de connexions :
@@ -40,5 +40,5 @@ Toujours pour le code de vote « MMY » nous avons ces relevés de connexions :
 Dans ce cas précis l'utilisateur est le même, mais la ville de connexion présumée a changé et son fournisseur d'accès aussi. 
 
 La ville de connexion présumée peut changer pour deux raisons :
-  * La première raison est qu'un utilisateur n'utilise toujours la même plaque ADSL, c'est à dire que même si l'utilisateur n'a pas bougé physiquement son point de connexion lui peut changer.
-  * La deuxième raison est que l'utilisateur peut aussi bouger physiquement. Pour les connexions à _Issy-les-moulineaux_, _Châtillon_ et _Paris_ la personne est bien sur Paris. Par contre la connexion _Saint-barnabe_ correspond à une connexion à _Le Lavandou_.
+  * La première raison est qu'un utilisateur n'utilise toujours la même plaque ADSL, c'est à dire que même si l'utilisateur n'a pas bougé physiquement son point de connexion lui peut changer. Par exemple pour les connexions à _Issy-les-moulineaux_, _Châtillon_ et _Paris_ la personne est toujours au même endroit géographiquement à Paris, mais la plaque ADSL par où il se connecte a changé.
+  * La deuxième raison est que l'utilisateur peut aussi bouger physiquement. Par contre la connexion _Saint-barnabe_ correspond à une connexion à _Le Lavandou_, l'utilisateur s'étant déplacé géographiquement.
