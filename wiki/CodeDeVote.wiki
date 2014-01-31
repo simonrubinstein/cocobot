@@ -22,6 +22,21 @@ Un _code de vote_ ne peut pas identifier de façon unique un pseudonyme :
 || sylvia         || 161508 || Bouygues Telecom || Le Plessis          || 25  || 2   || 92140 Clamart || 01-11 09:00:41 || 01-11 09:15:14 || 01-11 09:11:12 || MYY  ||
 || Oxymore2       || 388603 || Orange           || Paris               || 18  || 7   || 75015 Paris   || 01-26 17:05:12 || 01-26 17:05:44 || 01-26 17:05:12 || MYY  ||
 
-Le champ « town » est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. Ces quatre pseudos utilise le code de vote « MMY » pourtant ce sont des utilisateurs différents. Les champs *ISP* et *town* différents peuvent mettre sur la piste.
+Le champ « town » est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. Ces quatre pseudos utilisent le code de vote « MMY » pourtant ce sont des utilisateurs différents. Les champs *ISP* et *town* différents peuvent mettre sur la piste, mais ce n'est pas un certitude.
+
+
+Toujours pour le code de vote « MMY » nous avons ces relevés de connexions :
+
+|| *nickname*       || *nickID* || *ISP*              || *town*                || *age* || *sex* || *city*          || *creation_date*  || *logout*         || *update_date*    || *code* ||
+|| Laws           || 242662 || Orange           || Issy-les-moulineaux || 18  || 2   || 75015 Paris   || 10-24 22:39:03 || 10-24 22:41:03 || 10-24 22:40:11 || MYY  ||
+|| Laws           || 326588 || Orange           || Paris               || 18  || 2   || 75015 Paris   || 10-26 13:43:03 || 10-26 13:45:03 || 10-26 13:44:03 || MYY  ||
+|| Laws           || 293361 || Orange           || FR-                 || 18  || 2   || 75015 Paris   || 11-01 19:12:03 || 11-01 19:19:03 || 11-01 19:18:12 || MYY  ||
+|| Laws           || 155020 || Orange           || Coulommiers         || 18  || 2   || 75015 Paris   || 11-16 12:20:03 || 11-16 12:38:03 || 11-16 12:37:11 || MYY  ||
+|| Laws           || 191716 || Orange           || Chatillon           || 18  || 7   || 75015 Paris   || 12-18 09:11:11 || 12-18 09:57:03 || 12-18 09:56:41 || MYY  ||
+|| Laws           || 161964 || Free SAS         || Annezin             || 18  || 7   || 75015 Paris   || 12-28 14:19:41 || 12-28 14:20:41 || 12-28 14:20:11 || MYY  ||
+|| Laws           || 255777 || SFR              || Saint-barnabe       || 18  || 7   || 75015 Paris   || 01-03 15:46:02 || 01-03 15:47:02 || 01-03 15:46:40 || MYY  ||
+|| Laws           || 337794 || Orange           || Juvisy-sur-orge     || 18  || 7   || 75015 Paris   || 01-31 17:48:42 || 01-31 18:16:43 || 01-31 18:16:12 || MYY  ||
+
+L'utilisateur est le même, mais la ville de connexion présumée a changé et son fournisseur d'accès aussi. La la ville de connexion présumée peut changer pour deux raisons, la première est qu'un utilisateur n'utilise toujours la même plaque ADSL, c'est à dire que même si l'utilisateur n'a pas bougé physiquement son point de connexion lui peut changer. La deuxième raison est que l'utilisateur peut aussi bouger physiquement.
 
 
