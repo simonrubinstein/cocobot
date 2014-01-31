@@ -15,6 +15,8 @@ Un _code de vote_ ne peut pas identifier de façon unique un pseudonyme :
 == Exemple d'utilisateur partageant le même code de vote ==
 
 === Exemple 1 : partage du code de vote « MYY » ===
+
+Dans cet exemple, ces quatre pseudos utilisent le code de vote « MMY » pourtant ce sont des utilisateurs différents :
  
 || *nickname*       || *nickID* || *ISP*              || *town*                || *age* || *sex* || *city*          || *creation_date*  || *logout*         || *update_date*    || *code* || 
 || laura9         || 380361 || Bouygues Telecom || FR-                 || 18  || 2   || 75002 Paris   || 12-31 18:28:03 || 12-31 18:34:02 || 12-31 18:33:40 || MYY  ||
@@ -22,7 +24,6 @@ Un _code de vote_ ne peut pas identifier de façon unique un pseudonyme :
 || sylvia         || 161508 || Bouygues Telecom || Le Plessis          || 25  || 2   || 92140 Clamart || 01-11 09:00:41 || 01-11 09:15:14 || 01-11 09:11:12 || MYY  ||
 || Oxymore2       || 388603 || Orange           || Paris               || 18  || 7   || 75015 Paris   || 01-26 17:05:12 || 01-26 17:05:44 || 01-26 17:05:12 || MYY  ||
 
-Dans cet exemple, ces quatre pseudos utilisent le code de vote « MMY » pourtant ce sont des utilisateurs différents.
 
 Le champ *town* est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. 
 
