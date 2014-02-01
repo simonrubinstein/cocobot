@@ -30,7 +30,7 @@ Le champ *town* est en fait la ville de connexion présumée donnée par la géo
 Comment savoir si ces utilisateurs sont bien des utilisateurs différents ?
 
   * Les champs *ISP* et *town* sont différents,  cela donne une indication, mais ce n'est pas un certitude. 
-  * Le champ *city* correspond au code postal rentré par l'utilisateur dans le formulaire de connexion, sa pertinence n'est pas fiable, mais certains utilisateurs entre toujours le même code postal cela permet d'aider à les identifier.
+  * Le champ *city* correspond au code postal rentré par l'utilisateur dans le formulaire de connexion, sa pertinence n'est pas fiable, mais certains utilisateurs entrent toujours le même code postal cela permet d'aider à les identifier.
   * Un code sexe de « 2 » est un pseudo femme sans image d'avatar alors qu'un code sexe de « 7 » est un pseudo femme avec une image. Une fois qu'un utilisateur a défini une image il ne peut plus la  supprimer. 
 
   
@@ -87,4 +87,3 @@ Nous avons ces relevés de connexions pour le même utilisateur connecté sur le
   * On remarque que les points de connexions donnés par la géolocalisation de Coco.fr ont changé en passant par _Paris_, _Asnieres_, _Chatenay-malabry_, _Clichy_, _Puteaux_, _Cergy_, _Saint-ouen_, _Asnieres_,  _Colombes_, _Meudon_, _Neuilly-sur-seine_ et _Gennevilliers_. Pourtant l'utilisateur n'a pas bougé géographiquement et se trouvait dans le 8e arrondissement de Paris.
   * On remarque aussi le code postal entré par l'utilisateur dans le formulaire change aussi suivant son humeur.
   * Enfin on remarque que l'utilisateur a défini une image pour son avatar le 27 décembre. Une fois l'avatar défini il ne peut être supprimé, à moins d'effacer les données de navigation. Cependant le 17 janvier l'avatar n'a pas été chargé, sûrement à cause d'un dysfonctionnement de Coco.fr. On peut imaginer que la requête qui charge l'avatar sur « http://pix.coco.fr/ » a échoué suite à une surcharge dur serveur.
-
