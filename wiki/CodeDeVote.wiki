@@ -27,9 +27,14 @@ Dans cet exemple, ces quatre pseudos utilisent le code de vote « MMY » pourtan
 
 Le champ *town* est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. 
 
-Les champs *ISP* et *town* différents peuvent mettre sur la piste, mais ce n'est pas un certitude. 
+Comment savoir si ces utilisateurs sont bien des utilisateurs différents ?
 
-Le champ *city* correspond au code postal rentré par l'utilisateur dans le formulaire de connexion, sa pertinence n'est pas fiable, mais certains utilisateurs entre toujours le même code postal cela permet d'aider à les identifier.
+* Les champs *ISP* et *town* sont différents,  cela donne une indication, mais ce n'est pas un certitude. 
+* Le champ *city* correspond au code postal rentré par l'utilisateur dans le formulaire de connexion, sa pertinence n'est pas fiable, mais certains utilisateurs entre toujours le même code postal cela permet d'aider à les identifier.
+* Un code sexe de « 2 » est un pseudo femme sans image d'avatar alors qu'un code sexe de « 7 » est un pseudo femme avec une image. Une fois qu'un utilisateur a défini une image il ne peut plus la  supprimer. 
+
+  
+
 
 Toujours pour le code de vote « MMY » nous avons ces relevés de connexions :
 
