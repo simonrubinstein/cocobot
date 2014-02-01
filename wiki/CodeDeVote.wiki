@@ -1,6 +1,6 @@
 #summary Explication sur les codes de vote
 
-= Code de vote =
+= Code de vote, ville de connexion et fournisseur d'accès =
 
 Un abonnement Premium permet de visualiser le _code de vote_ d'un pseudo ou de rechercher un pseudo d'après son _code de vote_.
 
@@ -75,7 +75,7 @@ Nous avons ces relevés de connexions pour le même utilisateur connecté sur le
 || !RougeAlevres     || 141518 || Orange || Cergy             || 30  || 2   || 75002 Paris || 12-10 11:09:40 || 12-10 13:57:03 || 12-10 13:56:40 || uhy  ||  
 || Pandora          || 323985 || Orange || Saint-ouen        || 89  || 2   || 75002 Paris || 12-17 10:04:03 || 12-17 13:56:41 || 12-17 13:56:02 || uhy  ||  
 || !MaryChristmas    || 114097 || Orange || Asnieres          || 30  || 2   || 75002 Paris || 12-26 11:01:41 || 12-26 12:44:40 || 12-26 12:44:11 || uhy  ||  
-|| Matrioshka       || 286422 || Orange || Asnieres          || 30  || 7   ! 75002 Paris || 12-27 10:22:40 || 12-27 14:05:40 || 12-27 14:05:11 ! uhy  ||
+|| Matrioshka       || 286422 || Orange || Asnieres          || 30  || 7   || 75002 Paris || 12-27 10:22:40 || 12-27 14:05:40 || 12-27 14:05:11 || uhy  ||
 || !VernisViolet     || 312601 || Orange || Colombes          || 30  || 7   || 75002 Paris || 12-31 10:14:03 || 12-31 12:19:02 || 12-31 12:18:40 || uhy  ||  
 || Swallow          || 127751 || Orange || Meudon            || 30  || 7   || 75005 Paris || 01-07 09:50:41 || 01-07 10:26:41 || 01-07 10:26:11 || uhy  ||  
 || !NormaJeanBaker   || 146669 || Orange || Neuilly-sur-seine || 30  || 7   || 75002 Paris || 01-10 11:04:03 || 01-10 13:17:42 || 01-10 13:17:13 || uhy  ||  
@@ -87,6 +87,4 @@ Nous avons ces relevés de connexions pour le même utilisateur connecté sur le
   * On remarque que les points de connexions donnés par la géolocalisation de Coco.fr ont changé en passant par _Paris_, _Asnieres_, _Chatenay-malabry_, _Clichy_, _Puteaux_, _Cergy_, _Saint-ouen_, _Asnieres_,  _Colombes_, _Meudon_, _Neuilly-sur-seine_ et _Gennevilliers_. Pourtant l'utilisateur n'a pas bougé géographiquement et se trouvait dans le 8e arrondissement de Paris.
   * On remarque aussi le code postal entré par l'utilisateur dans le formulaire change aussi suivant son humeur.
   * Enfin on remarque que l'utilisateur a défini une image pour son avatar le 27 décembre. Une fois l'avatar défini il ne peut être supprimé, à moins d'effacer les données de navigation. Cependant le 17 janvier l'avatar n'a pas été chargé, sûrement à cause d'un dysfonctionnement de Coco.fr. On peut imaginer que la requête qui charge l'avatar sur « http://pix.coco.fr/ » a échoué suite à une surcharge dur serveur.
-
-
 
