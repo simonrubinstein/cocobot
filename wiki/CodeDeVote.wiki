@@ -40,7 +40,7 @@ Dans cet exemple, ces quatre pseudos utilisent le code de vote « MMY » pourtan
 || sylvia         || 161508 || Bouygues Telecom || Le Plessis          || 25  || 2   || 92140 Clamart || 01-11 09:00:41 || 01-11 09:15:14 || 01-11 09:11:12 || MYY  ||
 || Oxymore2       || 388603 || Orange           || Paris               || 18  || 7   || 75015 Paris   || 01-26 17:05:12 || 01-26 17:05:44 || 01-26 17:05:12 || MYY  ||
 
-Ces informations sont extraites de la base données par « _db-search.pl_ ». Le champ *town* est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. 
+Ces informations sont extraites de la base données par « _db-search.pl_ ». Le champ *town* est en fait la ville de connexion présumée donnée par la géolocalisation de « Coco.fr ». 
 
 Comment savoir si ces utilisateurs sont bien des utilisateurs différents ?
 
@@ -58,6 +58,7 @@ Toujours pour le code de vote « MMY » nous avons ces relevés de connexions :
 || Laws           || 326588 || Orange           || Paris               || 18  || 2   || 75015 Paris   || 10-26 13:43:03 || 10-26 13:45:03 || 10-26 13:44:03 || MYY  ||
 || Laws           || 293361 || Orange           || FR-                 || 18  || 2   || 75015 Paris   || 11-01 19:12:03 || 11-01 19:19:03 || 11-01 19:18:12 || MYY  ||
 || Laws           || 155020 || Orange           || Coulommiers         || 18  || 2   || 75015 Paris   || 11-16 12:20:03 || 11-16 12:38:03 || 11-16 12:37:11 || MYY  ||
+|| Laws           || 382157 || Orange           || Paris             || 18  || 7   || 75015 Paris   || 12-15 10:30:11 || 12-15 11:07:41 || 12-15 11:07:11 || MYY  ||
 || Laws           || 191716 || Orange           || Chatillon           || 18  || 7   || 75015 Paris   || 12-18 09:11:11 || 12-18 09:57:03 || 12-18 09:56:41 || MYY  ||
 || Laws           || 161964 || Free SAS         || Annezin             || 18  || 7   || 75015 Paris   || 12-28 14:19:41 || 12-28 14:20:41 || 12-28 14:20:11 || MYY  ||
 || Laws           || 255777 || SFR              || Saint-barnabe       || 18  || 7   || 75015 Paris   || 01-03 15:46:02 || 01-03 15:47:02 || 01-03 15:46:40 || MYY  ||
@@ -68,7 +69,7 @@ Dans ce cas précis l'utilisateur est le même, mais la ville de connexion prés
 La ville de connexion présumée peut changer pour deux raisons :
   * La première raison est qu'un utilisateur n'utilise pas toujours la même plaque ADSL. Cela signifie que même si l'utilisateur n'a pas bougé physiquement, son point de connexion lui peut changer. Par exemple pour les connexions à _Issy-les-moulineaux_, _Châtillon_ et _Paris_ la personne est toujours au même endroit géographiquement à Paris, mais la plaque ADSL par où il se connecte a changé.
   * La deuxième raison est que l'utilisateur peut aussi bouger physiquement. Par exemple la connexion _Saint-barnabe_ correspond à une connexion à _Le Lavandou_, l'utilisateur s'étant déplacé géographiquement de plusieurs centaines de kilomètres.
-
+  * Le 15 décembre le code sexe a changé de « 2 » (femme sans image en avatar) à « 7 » (femme avec une image en avatar). L'utilisateur a défini une image en avatar ce jour là. ne fois l'avatar défini il ne peut être supprimé
 
 ==== Exemple 2 : utilisateur ayant effacé son historique ====
 
