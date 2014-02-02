@@ -14,7 +14,7 @@ http://cocobot.googlecode.com/svn/wiki/infuz/bouton-info-MMY.jpg
   * *Temps de connexion* : 43 minutes
   * *Ville de connexion* : FR- Juvisy-sur-orge 
 
-La ville de connexion n'est pas fiable, dans ce cas précis l'utilisateur est géolocalisé à Paris à une vingtaine de kilomètres de la ville de connexion indiquée.
+La ville de connexion est la géolocalisation de l'adresse IP de l'internaute fournie pas « Coco.fr ». Cette  géolocalisation n'est  pas fiable. Dans notre exemple précis l'internaute est faussement géolocalisé à Juvisy-sur-Orge, soit à une vingtaine de kilomètres de sa localisation réelle qui est en fait Paris.
 
 Certaines de  informations comme le _code de vote_, le _FAI_ et la _ville de connexion_ sont récupérées par le script « _save-logged-user-in-database.pl_ » et enregistrées en base de données.
 
@@ -40,8 +40,7 @@ Dans cet exemple, ces quatre pseudos utilisent le code de vote « MMY » pourtan
 || sylvia         || 161508 || Bouygues Telecom || Le Plessis          || 25  || 2   || 92140 Clamart || 01-11 09:00:41 || 01-11 09:15:14 || 01-11 09:11:12 || MYY  ||
 || Oxymore2       || 388603 || Orange           || Paris               || 18  || 7   || 75015 Paris   || 01-26 17:05:12 || 01-26 17:05:44 || 01-26 17:05:12 || MYY  ||
 
-
-Le champ *town* est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. 
+Ces informations sont extraites de la base données par « _db-search.pl_ ». Le champ *town* est en fait la ville de connexion présumée donnée par la géolocalisation de Coco.fr. 
 
 Comment savoir si ces utilisateurs sont bien des utilisateurs différents ?
 
