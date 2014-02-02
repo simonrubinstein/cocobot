@@ -1,8 +1,22 @@
 #summary Explication sur les codes de vote
 
-= Code de vote, ville de connexion et fournisseur d'accès =
+= Bouton information : donne le code de vote, la ville de connexion, le fournisseur d'accès, ... =
 
-Un abonnement Premium permet de visualiser le _code de vote_ d'un pseudo ou de rechercher un pseudo d'après son _code de vote_.
+Un abonnement Premium permet de visualiser le _code de vote_, le _FAI_, le _statut_, le _niveau_, le _temps de connexion_ et la _ville de connexion_ présumée d'un pseudo.
+
+Par exemple voici les informations affichées en appuyant sur le bouton information en forme de point d'interrogation :
+http://cocobot.googlecode.com/svn/wiki/infuz/bouton-info-MMY.jpg
+  * Code de vote : MYY
+  * Fournisseur d'accès : Orange
+  * Statut : 0
+  * Niveau : 18
+  * Temps de connexion : 43 minutes
+  * Ville de connexion : Juvisy-sur-Orge 
+
+La ville de connexion n'est pas fiable, dans ce cas précis l'utilisateur est géolocalisé à Paris à une vingtaine de kilomètres de la ville de connexion indiquée.
+
+
+== Le code de vote ==
 
 Un _code de vote_ est composé de trois caractères alphanumériques sensibles à la case. Donc un caractère peut prendre une valeur de « _A_ » à « _Z_ », de « _a_ » à « _z_ » ou de « _0_ » à « _9_ » soit soixante-deux valeurs différentes. Donc il existe 62 x 62 x 62 = 238 328 possibilités de _codes de vote_.
 
@@ -12,9 +26,9 @@ Un _code de vote_ ne peut pas identifier de façon unique un pseudonyme :
   * Certains pseudonymes partagent le même _code de vote_
   * Si l'Internaute utilise la navigation privée ou efface ses cookies un nouveau _codes de vote_ sera généré.
 
-== Exemple d'utilisateur partageant le même code de vote ==
+=== Exemple d'utilisateur partageant le même code de vote ===
 
-=== Exemple 1 : partage du code de vote « MYY » ===
+==== Exemple 1 : partage du code de vote « MYY » ====
 
 Dans cet exemple, ces quatre pseudos utilisent le code de vote « MMY » pourtant ce sont des utilisateurs différents :
  
@@ -55,7 +69,7 @@ La ville de connexion présumée peut changer pour deux raisons :
   * La deuxième raison est que l'utilisateur peut aussi bouger physiquement. Par exemple la connexion _Saint-barnabe_ correspond à une connexion à _Le Lavandou_, l'utilisateur s'étant déplacé géographiquement de plusieurs centaines de kilomètres.
 
 
-=== Exemple 2 : utilisateur ayant effacé son historique ===
+==== Exemple 2 : utilisateur ayant effacé son historique ====
 
 Nous avons ces relevés de connexions pour le même utilisateur connecté sur le même ordinateur situé géographiquement au même endroit :
 
