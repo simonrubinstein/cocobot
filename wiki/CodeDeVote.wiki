@@ -7,15 +7,16 @@ Un abonnement Premium permet de visualiser le _code de vote_, le _FAI_, le _stat
 Par exemple voici les informations affichées en appuyant sur le bouton information en forme de point d'interrogation :
 
 http://cocobot.googlecode.com/svn/wiki/infuz/bouton-info-MMY.jpg
-  * Code de vote : MYY
-  * Fournisseur d'accès : Orange
-  * Statut : 0
-  * Niveau : 18
-  * Temps de connexion : 43 minutes
-  * Ville de connexion : Juvisy-sur-Orge 
+  * *Code de vote* : MYY
+  * *Fournisseur d'accès* : Orange
+  * *Statut* : 0
+  * *Niveau* : 18
+  * *Temps de connexion* : 43 minutes
+  * *Ville de connexion* : FR- Juvisy-sur-orge 
 
 La ville de connexion n'est pas fiable, dans ce cas précis l'utilisateur est géolocalisé à Paris à une vingtaine de kilomètres de la ville de connexion indiquée.
 
+Certaines de  informations comme le _code de vote_, le _FAI_ et la _ville de connexion_ sont récupérées par le script « _save-logged-user-in-database.pl_ » et enregistrées en base de données.
 
 == Le code de vote ==
 
