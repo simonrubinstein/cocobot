@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2014-01-15
+# @date 2014-02-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -32,6 +32,7 @@ use Carp;
 use Data::Dumper;
 use DBI;
 use POSIX;
+use Date::Parse;
 
 use Cocoweb;
 use base 'Cocoweb::DB::Base';
@@ -564,11 +565,31 @@ sub displaySearchUsers {
     foreach my $name (@names) {
         $max{$name} = length($name);
     }
+    my $totalTime = 0;
     foreach my $row_ref (@$result_ref) {
         if ( exists $row_ref->{'town'}
             and $row_ref->{'town'} =~ m{^FR- (.+)} )
         {
             $row_ref->{'town'} = $1;
+        }
+        my $startime = $row_ref->{'creation_date'};
+        my $endtime;
+        if ( exists $row_ref->{'logout'} and defined $row_ref->{'logout'} ) {
+            $endtime = $row_ref->{'logout'};
+        }
+        else {
+            $endtime = $row_ref->{'update_date'};
+        }
+        my $delta = ( str2time($endtime) ) - ( str2time($startime) );
+        $totalTime += $delta;
+        foreach my $name ( 'creation_date', 'logout', 'update_date' ) {
+            if (    exists $row_ref->{$name}
+                and defined $row_ref->{$name}
+                and $row_ref->{$name}
+                =~ m{^\d\d\d\d\-(\d\d\-\d\d\s\d\d:\d\d:\d\d)$} )
+            {
+                $row_ref->{$name} = $1;
+            }
         }
         foreach my $name ( keys %$row_ref ) {
             my $val = $row_ref->{$name};
@@ -617,6 +638,11 @@ sub displaySearchUsers {
     }
     print STDOUT $separator . "\n";
     print STDOUT "- $count user(s) displayed\n";
+    print STDOUT "- $totalTime second(s); "
+        . POSIX::ceil( $totalTime / 60 )
+        . " minute(s); "
+        . POSIX::ceil( $totalTime / 3600 )
+        . " hour(s) \n";
 }
 
 1;

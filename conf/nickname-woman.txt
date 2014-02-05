@@ -5490,3 +5490,8 @@ Vita
 :MorticiaAddams
 :AmandeDouce
 :Maiko
+:ChatonChat
+:EnRougeEtNoir
+:FilleDeJoie
+:FridaKhalo
+:GenteDame
