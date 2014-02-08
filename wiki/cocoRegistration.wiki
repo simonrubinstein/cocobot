@@ -6,11 +6,11 @@ Normalement, le site Coco.fr se prétend être un chat sans inscription. C'est �
 
 Dans la réalité, même si l'utilisateur n'est pas inscrit, Coco.fr conserve un cookie dans le navigateur web du client pour identifier l'utilisateur à sa prochaine connexion.
 
-De plus Coco.fr propose un abonnement Premium qui donne des informations sur les autres pseudos, comme un « code de vote » , l'origine géographique d'où est connecté le pseudo, le FAI, ... Le « code de vote » est un identifiant composé de trois caractères, plus ou moins unique, du pseudo. Des exemples de « codes de vote » sont : *cZj*, *23m*, *WcL* ou *PXd*. Parois certains pseudos peuvent partager ce « code de vote ». L'origine géographique est une ville, exemple « *FR- Paris* », l'origine géographique n'est pas toujours fiable et peut parfois indiqué un poin de connexion de plus de cent kilomètres du point réel de connexion.
+De plus Coco.fr propose un abonnement _Premium_ qui donne des informations sur les autres pseudos, comme un « code de vote » , l'origine géographique d'où est connecté le pseudo, le FAI, ... Le « code de vote » est un identifiant composé de trois caractères, plus ou moins unique, du pseudo. Des exemples de « codes de vote » sont : *cZj*, *23m*, *WcL* ou *PXd*. Parois certains pseudos peuvent partager ce « code de vote ». L'origine géographique est une ville, exemple « *FR- Paris* », l'origine géographique n'est pas toujours fiable et peut parfois indiqué un point de connexion de plus de cent kilomètres du point réel de connexion.
 
-Les scripts Cocobot peuvent utiliser un abonnement code Premium, mais pour cela l'utilisateur doit souscrire un abonnement sur le site Coco.fr.
+Les scripts Cocobot peuvent utiliser un abonnement _Premium_, mais pour cela l'utilisateur doit souscrire un abonnement sur le site Coco.fr.
 
-Cette documentation montre comment souscrire un abonnement Premium et ensuite utiliser cet abonnement dans les scripts Cocobot en ligne de commande.
+Cette documentation montre comment souscrire un abonnement _Premium_ et ensuite utiliser cet abonnement dans les scripts _Cocobot_ en ligne de commande.
 
 == Se connecter sur Coco.fr ==
 
@@ -24,7 +24,7 @@ Cliquer sur le bouton « Entrée », la fenêtre de chat s'ouvre.
 
 Cette étape n'est pas indispensable, mais utiliser l'authentification e-mail permet d'associer son profil à une adresse e-mail et de pouvoir éventuellement récupérer son profil par e-mail.
 
-Cliquer sur le bouton « Profil » et ensuite sur « Mail Non » :
+Cliquer sur le bouton « _Profil_ » et ensuite sur « _Mail Non_ » :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-profil.png
 
@@ -44,12 +44,12 @@ La validation est terminée, retourner sur la fenêtre de chat Coco.fr.
 
 == Souscrire à l'abonnement Premium ==
 
-De retour dans la fenêtre de chat, cliquer sur le bouton « Premium », une nouvelle fenêtre s'ouvre proposant trois types de packs Premium :
+De retour dans la fenêtre de chat, cliquer sur le bouton « _Premium_ », une nouvelle fenêtre s'ouvre proposant trois types de packs Premium :
   * 1 mois : 5 €
   * 3 mois : 11 €
   * 1 an : 44 €
 
-Cliquer sur «  1 mois : 5 € » :
+Cliquer sur «  _1 mois : 5 €_ » :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-pack-premium.png
 
@@ -65,23 +65,23 @@ Une nouvelle page s'affiche en cas de réussite du paiement :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-payment-success.png
 
-Fermer la fenêtre précédente et retourner sur la fenêtre de chat. Sélectionner un pseudo et cliquer sur le bouton info qui est en forme de point d'interrogation. Si trois lignes s'affichent dans la fenêtre de chat cela signifie que la souscription au pack Premimum est activé :
+Fermer la fenêtre précédente et retourner sur la fenêtre de chat. Sélectionner un pseudo et cliquer sur le bouton _info_ qui est en forme de point d'interrogation. Si trois lignes s'affichent dans la fenêtre de chat cela signifie que la souscription au _pack Premium_ est activé :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-info.png
 
 == Récupération des valeurs de « myavatar »  et « mypass » ==
 
-L'utilisateur est authentifié par deux valeurs, appelées « myavatar »  et « mypass », concaténées et contenues dans le cookie portant le nom « samedi ». 
+L'utilisateur est authentifié par deux valeurs, appelées « _myavatar_ »  et « _mypass_ », concaténées et contenues dans le cookie portant le nom « _samedi_ ». 
 
-Cliquer sur l'icône de en forme de planète terre juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche. Cliquer sur le bouton « Plus d'informations... » de cette boîte de dialogue :
+Cliquer sur l'icône de en forme de planète terre juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche. Cliquer sur le bouton « _Plus d'informations..._ » de cette boîte de dialogue :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-more-info.png
 
-La boîte de dialogue d'informations sur la page s'ouvre. Cliquer sur le bouton « Voir les cookies » :
+La boîte de dialogue d'informations sur la page s'ouvre. Cliquer sur le bouton « _Voir les cookies_ » :
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco-view-cookies.png
 
-Une autre boîte de dialogue « Cookie » s'ouvre. Chercher le cookie « samedi » et cliquer dessus. Dans le champ contenu s'affiche les valeurs concaténées de  « myavatar »  et « mypass ».
+Une autre boîte de dialogue « Cookie » s'ouvre. Chercher le cookie « samedi » et cliquer dessus. Dans le champ contenu s'affiche les valeurs concaténées de  « _myavatar_ »  et « _mypass_ ».
 
 http://cocobot.googlecode.com/svn/wiki/coco-subscribe/coco--samedi-cookie.png
 
@@ -100,7 +100,7 @@ cd ~/cocobot-read-only/scripts/
 }}}
 
 
-Le script retourne beaucoup plus d'utilisateurs lorsque le compte a souscris un abonnement Premium.
+Le script retourne beaucoup plus d'utilisateurs lorsque le compte a souscris un abonnement _Premium_.
 
 
 
