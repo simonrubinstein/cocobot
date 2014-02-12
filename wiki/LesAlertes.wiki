@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Le script « _save-logged-user-in-database.pl_ » permet de déclencher certaines alertes. 
+Le script « _save-logged-user-in-database.pl_ » permet de déclencher certaines alertes. Une alerte est soit un message _XMPP_ ou soit un message envoyé à l'utilisateur connecté.
 
 Des alertes peuvent-être déclenchées en analysant les propriétés des utilisateurs connectés, par exemple on peut déclencher une alerte si l'utilisateur avec le pseudo « _Laws_ » se connecte, ou si un pseudo femme de trente ans se connecte, ou encore si un pseudo se connecte avec un code de vote « _MYY_ ». 
 
@@ -29,8 +29,6 @@ Les différentes directives sont :
   * condition : condition requise pour que l'alerte soit prise en compte. Les conditions sont du code Perl. Plusieurs directives _condition_ peuvent exister, il suffit qu'une soit vraie pour que l'alerte soit déclenchée.
   * transport : type d'alerte _XMPP_ ou _Message_.
   * recipient : gestionnaire de l'alerte.
-
-
 
 
 
