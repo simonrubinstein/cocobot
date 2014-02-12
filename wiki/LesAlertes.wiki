@@ -8,6 +8,31 @@ Des alertes peuvent-être déclenchées en analysant les propriétés des utilis
 
 L'option « -A » du « _save-logged-user-in-database.pl » active la fonction des alertes et le fichier « conf/alert.conf » est utilisé.
 
-== La section <alert> ==
+== La section `<alert>` ==
 
-Le fichier « _alert.conf_ » comporte la section <alert> pour déclarer une nouvelle alerte.
+Le fichier « _alert.conf_ » comporte la section `<alert>` pour déclarer une nouvelle alerte.
+
+Exemple :
+{{{
+  <alert>
+      enable    = 1
+      condition = $mynickname eq 'Laws'
+      transport = XMPP
+      recipient = cocoxmpp
+  </alert>
+ }}}
+
+Dans cette exemple une alarme de type _XMPP_ est déclenché si un pseudonyme « _Laws_ » est connecté.
+
+Les différentes directives sont :
+  * enable :  « 1 » l'alerte est activée ou « 0 » elle est désactivée.
+  * condition : condition requise pour que l'alerte soit prise en compte. Les conditions sont du code Perl. Plusieurs directives _condition_ peuvent exister, il suffit qu'une soit vraie pour que l'alerte soit déclenchée.
+  * transport : type d'alerte _XMPP_ ou _Message_.
+  * recipient : gestionnaire de l'alerte.
+
+
+
+
+
+
+
