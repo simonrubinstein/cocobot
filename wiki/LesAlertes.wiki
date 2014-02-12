@@ -50,3 +50,6 @@ Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme «
  condition = $code eq 'uhy'
 }}}
 
+
+== La section `<alert>` ==
+
