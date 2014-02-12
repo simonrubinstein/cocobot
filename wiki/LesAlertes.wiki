@@ -7,3 +7,7 @@ Le script « _save-logged-user-in-database.pl_ » permet de déclencher certaine
 Des alertes peuvent-être déclenchées en analysant les propriétés des utilisateurs connectés, par exemple on peut déclencher une alerte si l'utilisateur avec le pseudo « _Laws_ » se connecte, ou si un pseudo femme de trente ans se connecte, ou encore si un pseudo se connecte avec un code de vote « _MYY_ ». 
 
 L'option « -A » du « _save-logged-user-in-database.pl » active la fonction des alertes et le fichier « conf/alert.conf » est utilisé.
+
+== La section <alert> ==
+
+Le fichier « _alert.conf_ » comporte la section <alert> pour déclarer une nouvelle alerte.
