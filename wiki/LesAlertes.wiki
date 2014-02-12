@@ -31,6 +31,22 @@ Les différentes directives sont :
   * recipient : gestionnaire de l'alerte.
 
 
+=== Les conditions ===
 
+Les directives conditions utilisent les propriétés de l'objet _Cocoweb::user_ :
+  * mynickname : Le pseudonyme 
+  * myage : l'âge
+  * mysex : Le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme
+  * citydio : le code spécifique correspondant au code postal
+  * myver : 4 si l'utilisateur dispose d'un abonnement Premium 
+  * isNew : 1 si c'est un nouvel utilisateur  
+  * hasChange : 1 si le pseudo s'est reconnecté en changeant certaines propriétés, comme le pseudo, l'âge, le sexe, ...
 
+Plusieurs directives _condition_ peuvent se suivre. L'alerte est déclenchée si au moins une des directives _condition_ est vraie.
+
+Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme « _Laws_ » ou un utilisateur avec le code de vote « _uhy_ » se connecte :
+{{{
+ condition = $mynickname eq 'Laws' and ($mysex eq "2" or $mysex eq "7")
+ condition = $code eq 'uhy'
+}}}
 
