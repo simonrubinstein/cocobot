@@ -51,5 +51,33 @@ Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme «
 }}}
 
 
-== La section `<alert>` ==
+== La section `<XMPP>` ==
+
+La section `<XMPP>` sert à déclarer le gestionnaire de l'alerte de type _XMPP_. Dans notre exemple se base une un compte _Google Talk_. Cependant avec l'apparition de _Google Hangouts_ il n'est pas certain qu'un compte nouveau compte Google créé fonctionne.
+
+
+Voici un exemple de gestionnaire d'alerte _XMPP_ :
+{{{
+  <XMPP>
+    name           = cocoxmpp
+    hostname       = talk.google.com
+    port           = 5222
+    componentname  = gmail.com 
+    connectiontype = tcpip 
+    tls            = 1
+    username       = mon.utilitsateur.gmail
+    password       = mon.mot.de.passe.gmail
+    to             = utilisateur.a.prevenir@gmail.com
+    resource       = Cocobot
+    subject        = Cocobot
+  </XMPP>
+}}}
+
+
+
+
+
+
+
+
 
