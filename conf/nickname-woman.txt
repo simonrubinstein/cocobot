@@ -5495,3 +5495,11 @@ Vita
 :FilleDeJoie
 :FridaKhalo
 :GenteDame
+:PourVousMonsieur
+:MiroslavaDuma
+:Matahari
+:FoireFrouFrou
+:Citronelle
+:MmeLea
+:PoPsicle
+:MadameLea
