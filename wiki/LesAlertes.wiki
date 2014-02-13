@@ -53,7 +53,7 @@ Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme «
 
 == La section `<XMPP>` ==
 
-La section `<XMPP>` sert à déclarer le gestionnaire de l'alerte de type _XMPP_. Dans notre exemple se base une un compte _Google Talk_. Cependant avec l'apparition de _Google Hangouts_ il n'est pas certain qu'un compte nouveau compte Google créé fonctionne.
+La section `<XMPP>` sert à déclarer le gestionnaire de l'alerte de type _XMPP_. Dans notre exemple se base une un compte _Google Talk_. Cependant avec l'apparition de _Google Hangouts_ il n'est pas certain qu'un compte _Google_  nouvellement créé fonctionne avec les protocoles _XMPP_.
 
 
 Voici un exemple de gestionnaire d'alerte _XMPP_ :
@@ -73,11 +73,21 @@ Voici un exemple de gestionnaire d'alerte _XMPP_ :
   </XMPP>
 }}}
 
+Voici par exemple une alerte utilisant le gestionnaire d'alerte _XMPP_ précédent :
 
+{{{
+  <alert>
+    enable    = 1 
+    condition = $code eq 'uhy'
+    transport = XMPP 
+    recipient = cocoxmpp
+  </alert>
+}}}
 
+Voici à quoi ressemble l'alerte envoyée quand l'utilisateur avec le code de vote « _uhy_ » est connecté sur le site « _Coco.fr_ » :
 
+http://cocobot.googlecode.com/svn/wiki/alerts/alert-cocobot-mmechat.jpg
 
-
-
+L'alerte a été envoyée à une personne qui a configuré le client de messagerie instantané Pidgin sous _Ubuntu Linux 13.10_ :
 
 
