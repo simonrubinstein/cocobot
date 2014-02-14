@@ -5,8 +5,10 @@ A2cnet Pro SAS
 A2Z Solutions
 AB CONNECT
 Absolight
+Accenture
 ACCENTURE
 Acropolis Telecom SA
+Add-on Multimedia
 ADD-ON MULTIMEDIA
 Adenis SARL
 ADISTA SAS
@@ -173,6 +175,7 @@ City Telecom (H.K.) Ltd.
 Claas KGaA
 Claranet France
 Clearwire Corporation
+Clevernetwork SAS
 CLEVERNETWORK SAS
 CNAMTS
 Coditel
@@ -188,6 +191,7 @@ ComIT, Institute of Molecular and Cell Biology
 Commissariat a lEnergie Atomique
 Communaute D agglomeration de Reims
 Communaute dAgglomeration de Montpellier
+Communaute Urbaine de Strasbourg
 Communication Solutions Ltd.
 Communications Networking Services
 Compagnie Generale de Sante
@@ -198,6 +202,7 @@ COMPLETEL SAS France
 Computer Beheer B.V.
 Connected
 Connet-ro networks
+Conseil De L Europe
 CONSEIL EN MANAGEMENT ET TECHNOLOGIES DE LINFORMA
 Conseil General des Bouches du Rhone
 Conseil General des Bouches-du-Rhone
@@ -235,6 +240,8 @@ Deninet KFT
 Dery Telecom
 Destiny N.V
 Deutsche Telekom AG
+Devclic Sarl
+Developpement Dapplications Sur Reseaux A Valeur
 DFI Service SA
 DhakaCom Limited
 DHCP pool for dsl clients
@@ -257,8 +264,11 @@ Donstroy Ltd.
 DSI - Direction du Systeme dInformation
 Dualis
 Dynamic pool
+Dynatera SARL
 e-leven sa
+e-Qual
 E-TERA
+EarthLink
 Easyhost Network
 Easynet
 easynet DV GmbH
@@ -373,6 +383,7 @@ Golden Lines Cable
 Gravity Internet Ltd
 Green Connection AG
 Groupe ECRITEL France
+Groupe ESIEE
 Groupe Switch
 Gruyere Energie SA
 Gtd Internet S.A.
@@ -405,6 +416,7 @@ Hurricane Electric
 Iberbanda S.A.
 iBrowse SARL
 IDLINE SAS
+Idom Technologies
 IELO Main Network
 IEUROP S.A.S
 IFREMER Institut Francais de Recherche pour Exploi
@@ -422,6 +434,7 @@ Infotechna Ltd.
 Init Seven AG
 Initials Online
 INOLIA
+INRS
 Institut de Recherche et Coordination Acoustique/M
 Institut Francais des Sciences et Technologies des
 Institut Mediteraneen de Technologie
@@ -464,6 +477,7 @@ IT - Solid Solutions
 ITC Deltacom
 IUnet
 iWeb Technologies
+Izzycom SAS
 Jaguar Network SAS
 Jakobstadsnejdens Telefon Ab
 Japan Inet
@@ -499,6 +513,7 @@ LASER CONTACT
 Le118000 118000 SAS
 LeaseWeb B.V.
 LEONIX TELECOM EURL
+Leonix Telecom Eurl
 LETS GOWEX, S.A.
 Level 3 Communications
 LIAZO SARL
@@ -653,6 +668,7 @@ Orange France Wireless
 Orange Home UK
 Orange Madagascar
 Orange Mali SA
+Orange-CA
 Organization of the Petroleum Exporting Countries
 OTEnet S.A.
 Outremer Telecom
@@ -673,6 +689,7 @@ PCCW Limited
 Perfect Communication Sweden AB
 Pharmagest Interactive SA
 Phibee Telecom SARL
+Phpnet France Sarl
 Pierre et Vacances network
 PLANET TECHNOLOGIES
 PLDTSPCHME60i01DHCP
@@ -705,10 +722,12 @@ Redstation Limited
 REG.I.E.S
 Regie Autonome Electric Cable Chauffage EPIC
 REGIE COMMUNALE ELECTRICITE (Regie dune collectiv
+Region Picardie
 Reliance Globalcom Limited
 Relians Ltd
 RENATER
 Renater
+Renault corporate network
 RESEARCH IN MOTION
 Research In Motion UK Limited
 Reseau des Universites et de la Recherche de la re
@@ -717,6 +736,7 @@ reseaux IMAG de Viallet
 Reunicable SAS
 Revlon
 RGnet, LLC
+Rhoval SAS
 Rigas Tikli, SIA
 Ringo, S.A
 Risc Group It Solutions S.A.
@@ -729,6 +749,7 @@ ROMTelecom S.A.
 root SA
 ROSNIIROS Russian Institute for Public Networks
 ROTHMANS INTERNATIONAL TOBACCO COMPANY
+rrbone UG (haftungsbeschraenkt)
 RRM - Reseau de la Recherche a Marseille
 RSS Internet Network
 RTLNET
@@ -763,6 +784,7 @@ SCGS
 Schlumberger Limited
 Schneider Automation
 Schneider Electric Industries SAS
+SdV-Plurimedia
 Sentris Network LLC
 SERES SA
 SERRANA TELECOMUNICACOES LTDA
@@ -785,11 +807,14 @@ SIA Lattelecom
 SIA Nano IT
 SIDUS S.A.R.L.
 Siemens AG
+Sigma Informatique SAS
 Silicon Beach Communications
 Silicon Systems
 SIMSU - Service Informatique Mutualise du Site Uni
 SingleHop
 SingNet Pte Ltd
+SIPARTECH Sarl
+SIPEO SAS
 SITA-Societe Internationale de Telecommunications
 site principal
 Sivit by Nerim servers subnet
@@ -835,6 +860,7 @@ Swisscom (Switzerland) Ltd
 SWISSCOM-EUROSPOT-FRANCE
 Switchward { Trostmann AG
 Sympatico
+Syndicat Mixte Somme Numerique
 T-Systems International GmbH
 Tango Mobile S.A.
 Tata Communications
