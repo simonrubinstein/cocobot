@@ -4,7 +4,7 @@
 
 Cette page explique l'installation et l'utilisation pas à pas du script « save-logged-user-in-database.pl ».  
 
-Le script « save-logged-user-in-database.pl » lit la liste des pseudos connectées sur le chat Coco.fr plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [cocoRegistration Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr].
+Le script « save-logged-user-in-database.pl » lit la liste des pseudos connectés sur le chat Coco.fr plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [cocoRegistration Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr].
 
 Cette documentation se base sur le système d'exploitation [http://www.ubuntu-fr.org/telechargement Ubuntu 12.10 Desktop], donc pour installer ce script un système d'exploitation Ubuntu 12.10 Desktop est requis. 
 
@@ -141,8 +141,32 @@ Si vous voyez un résultat semblable à cette capture d'écran, alors le script 
 http://cocobot.googlecode.com/svn/wiki/save-logged-user-in-database/tail-f-log.png
 
 
-Taper CTRL + C pour stopper la [http://fr.wikipedia.org/wiki/Tail_%28Unix%29 commande tail]. Et maintenant vous pouvez utiliser la commande « db-search.pl » pour consulter la base de données :
+Taper CTRL + C pour stopper la [http://fr.wikipedia.org/wiki/Tail_%28Unix%29 commande tail]. Et maintenant vous pouvez utiliser la commande « db-search.pl » pour consulter la base de données.
+
+Exemple cette commande affiche les pseudos femmes actuellement connectés sur le tchat :
 {{{
 cd ~/cocobot-read-only/scripts
 ./db-search.pl -O -s 2,7
 }}}
+
+=== Exemple pouvant être utilisé dans la table de configuration cron ===
+
+Cet exemple utilise le pseudo homme « !AmantMaudit » âgé de quarante-trois ans et active les alertes avec l'option -A.
+{{{
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 363767485 -p XYCVDJVTGINYMAGLSTLQ -v -d -D -x 37 -w -A -u AmantMaudit -y 43 > /dev/null 2>&1
+}}}
+
+Cet exemple utilise le liste de pseudos séparés par le caractère double point. Un des pseudos sera choisi au hasard :
+{{{
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 176523003 -p XYOOVXRWLINLYOLTMATS -v -d -D -x 35 -w -A -u AlwaysThere:AnyLove:BarbeDure:BeamMeUp:BetterDays:BoudoirSecret:BurningHot:ComeOnGirl:DeliverMe:DejaVu:FlyAway:FollowYourHeart:FoundAReason:IAmAMan:IAmBlessed:IWannaKnow:JustifyMyLove:KnockMeAKiss:LadyKillers:LangueDeChat:LoveSensation:NoWorries:OuEstMaTete:OnlyForGirls:PenniesOfHeaven:MindFluid:MisterB:MisterSwing:NuyoricanSoul:PeaceAndNoise:RoiDePique:RunAway:RomeoKnight:sayThatYouLoveMe:ShootMeWithLove:SoSweetly:StandOnTheWord:StayWithMe:SugarBeets:TheBigBadWolf:TheLookOfLove:WhatAboutMyLove:ZeBigBoss:KwisatzHaderach:HypnoFreaks:SweetTears:DoctorLove:ProfessorFeat:MinistryOfLove:SweetTalk:Misunderstanding:BodySwerve:SugarMan:LoveNeverFails:EternalLover -y 43 > /dev/null 2>&1
+}}}
+
+Cet exemple  prend le fichier « _plain-text/nicknames-bot.txt_ » est comme paramètre pour le pseudo. Ce fichier contient un pseudo par ligne, un pseudo sera sélectionné au hasard. L'option « -g » est également utilisée pour forcer à charger l'image de l'avatar. Si le compte utilisé (identifié par les option « -a » et -« -p ») possède une image pour son avatar et que l'option « -g » n'est pas précisé alors l'image de l'avatar ne sera pas chargé :
+{{{
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -g -s M -a 176523003 -p XYOOVXRWLINLYOLTMATS -v -d -D -x 37 -w -A -u file:///plain-text/nicknames-bot.txt -y 43 > /dev/null 2>&1
+}}}
+
+
+
+
+
