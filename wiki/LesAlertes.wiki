@@ -46,7 +46,7 @@ Les directives conditions utilisent les propriétés de l'objet _Cocoweb::user::
 
 Plusieurs directives _condition_ peuvent se suivre. L'alerte est déclenchée si au moins une des directives _condition_ est vraie.
 
-Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme « _Laws_ » ou un utilisateur avec le code de vote « _uhy_ » se connecte :
+Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme « _Laws_ » ou un utilisateur avec le code de vote « _uhy_ » est connecté :
 {{{
  condition = $mynickname eq 'Laws' and ($mysex eq "2" or $mysex eq "7")
  condition = $code eq 'uhy'
