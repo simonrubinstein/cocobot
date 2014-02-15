@@ -33,7 +33,7 @@ Les différentes directives sont :
 
 === Les conditions ===
 
-Les directives conditions utilisent les propriétés de l'objet _Cocoweb::user_ :
+Les directives conditions utilisent les propriétés de l'objet _Cocoweb::user::Connected_. En voici une liste non exhaustive :
   * mynickname : le pseudonyme 
   * myage : l'âge
   * mysex : le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme
@@ -106,7 +106,6 @@ L'alerte a été envoyée à une personne qui a configuré le client de messager
 La section `<Message>` sert à déclarer le gestionnaire de l'alerte qui envoie des messages textes aux Internautes connectés au site « Coco.fr ».
 
 Exemple :
-
 {{{
  <Message>
     name           = salutations
@@ -117,7 +116,6 @@ Exemple :
 Cette section envoie le message « _Mes hommages à vous._ » à un utilisateur. 
 
 Voici par exemple une alerte utilisant le gestionnaire d'alerte _Message_ précédent :
-
 {{{
   <alert>
     enable    = 1 
