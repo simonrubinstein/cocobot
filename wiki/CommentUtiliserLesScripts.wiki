@@ -97,10 +97,8 @@ L'action « list » énumère les pseudos présents sur le chat. Les résultats 
   * *initializes-database.pl* : crée et peuple les tables de la base de données utilisés par le *save-logged-user-in-database.pl* pour enregistrer toutes les connexions et déconnexions des utilisateurs sur Coco.fr
   * *get-town-code-from-coco.pl* :
   * *check-xmpp.pl* : vérifie l'envoi d'un message XMPP utilisé par les alertes.
-  * *get-zip-citydio.pl* :
+  * *get-zip-citydio.pl* : récupère tous les codes spécifiques utilisés par Coco.fr pour les codes postaux. Ce script est utilisé pour générer le fichier « conf/zip-codes.txt ».
   * *check-town-dump-file.pl* :
   * *get-zip-from-wikipedia.pl* :
   * *sort-conf-plain-text-file.pl* : trie supprime les doublons des fichiers de configuration contenant une information par ligne, comme une liste de pseudos ou de citations.
-  * *read-messages.pl* : affiche les réponses envoyés au bot créé par le script *save-logged-user-in-database.pl*
-
-
+  * *read-messages.pl* : affiche les réponses envoyés au bot créé par le script « save-logged-user-in-database.pl ».
