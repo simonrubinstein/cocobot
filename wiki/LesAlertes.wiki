@@ -34,13 +34,15 @@ Les différentes directives sont :
 === Les conditions ===
 
 Les directives conditions utilisent les propriétés de l'objet _Cocoweb::user_ :
-  * mynickname : Le pseudonyme 
+  * mynickname : le pseudonyme 
   * myage : l'âge
-  * mysex : Le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme
-  * citydio : le code spécifique correspondant au code postal
+  * mysex : le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme
+  * citydio : le code spécifique correspondant au code postal. Si cette valeur est comprise entre 30915 et 30935 l'utilisateur à entré un code postal de la ville de Paris.
   * myver : 4 si l'utilisateur dispose d'un abonnement Premium 
-  * isNew : 1 si c'est un nouvel utilisateur  
+  * isNew : 1 si l'utilisateur vient de se connecter sur le tchat  
   * hasChange : 1 si le pseudo s'est reconnecté en changeant certaines propriétés, comme le pseudo, l'âge, le sexe, ...
+  * ISP : le FAI utilisé comme « Free SAS », « Orange » ou « SFR ».
+  * town : le point de connexion. Exemples : « FR- Neuilly-sur-seine », « FR- Paris », « FR- Sevran" », ...
 
 Plusieurs directives _condition_ peuvent se suivre. L'alerte est déclenchée si au moins une des directives _condition_ est vraie.
 
