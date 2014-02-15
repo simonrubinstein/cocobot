@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2012-03-23
-# @date 2014-01-29
+# @date 2014-02-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -49,7 +49,7 @@ sub run {
     return if !defined $userWanted;
     for ( my $i = 1; $i <= $CLI->maxOfLoop(); $i++ ) {
         message( "Loop $i / " . $CLI->maxOfLoop() );
-        $bot->setTimz1($count);
+        $bot->setTimz1($i);
         $bot->requestMessagesFromUsers();
         $bot->requestsChecksIfUserOffline( [$userWanted] );
         sleep $CLI->delay();
@@ -80,5 +80,5 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-29');
+    $CLI->VERSION_MESSAGE('2014-02-15');
 }
