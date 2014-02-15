@@ -122,6 +122,5 @@ Voici par exemple une alerte utilisant le gestionnaire d'alerte _Message_ préc�
 L'alerte est envoyée à un utilisateur :
   * qui vient de se connecter ou qui a changé des informations sur son  profil,
   * de sexe masculin, 
-  * avec le pseudonyme 'SimonTemplar'
+  * avec le pseudonyme '!SimonTemplar'
   * âgé de trente-sept ans.
-
