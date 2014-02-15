@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-03-30
-# @date 2014-02-05
+# @date 2014-02-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,6 +33,8 @@ use Data::Dumper;
 use DBI;
 use POSIX;
 use Date::Parse;
+use Time::Piece;
+use Time::Seconds;
 
 use Cocoweb;
 use base 'Cocoweb::DB::Base';
@@ -553,6 +555,7 @@ sub searchUsers {
 sub displaySearchUsers {
     my $self        = shift;
     my $filtersCode = shift;
+    my $output      = shift;
     my $result_ref  = $self->searchUsers(@_);
     if ( scalar @$result_ref == 0 ) {
         print STDOUT "No user was found.\n";
@@ -609,16 +612,37 @@ sub displaySearchUsers {
     $lineSize--;
     my $separator = '!' . ( '-' x $lineSize ) . '!';
 
+    my ( $border, $border1, $border2, $border3 );
+    if ($output) {
+        $border1 = '<tr><td>';
+        $border2 = '</td><td>';
+        $border3 = '</td></tr>';
+    }
+    else {
+        $border1 = $border2 = $border3 = '! ';
+    }
+
     #Displays the table header
+    $border = $border1;
     my $line = '';
     for ( my $i = 0; $i < scalar(@names); $i++ ) {
-        $line .= '! '
+        $line .= $border
             . sprintf( '%-' . $max{ $names[$i] } . 's', $names[$i] ) . ' ';
+        $border = $border2;
     }
-    $line .= '!';
-    print STDOUT $separator . "\n";
+    $line .= $border3;
+    print STDOUT $separator . "\n" if !$output;
+    if ($output) {
+        print
+            '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
+        print
+            '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr_FR" lang="fr_FR">';
+        print
+            '<head><title>Cocobot</title><meta content="text/html; charset=UTF-8" http-equiv="content-type"/></head><body><table><thead>';
+    }
     print STDOUT $line . "\n";
-    print STDOUT $separator . "\n";
+    print STDOUT $separator . "\n" if !$output;
+    print '</thead><tbody>' if $output;
 
     #Displays the result of the query
     my $count = 0,;
@@ -627,22 +651,24 @@ sub displaySearchUsers {
             my $nick = $row_ref->{'nickname'};
             next if $nick !~ m{^[A-Z].*$};
         }
-        $line = '';
+        $line   = '';
+        $border = $border1;
         foreach my $name ( keys %$row_ref ) {
             my $val = $row_ref->{$name};
-            $line .= '! ' . sprintf( '%-' . $max{$name} . 's', $val ) . ' ';
+            $line
+                .= $border . sprintf( '%-' . $max{$name} . 's', $val ) . ' ';
+            $border = $border2;
         }
-        $line .= '!';
+        $line .= $border3;
         print STDOUT $line . "\n";
         $count++;
     }
-    print STDOUT $separator . "\n";
+    print STDOUT '</tbody></table></body></html>' if $output;
+    print STDOUT $separator . "\n" if !$output;
     print STDOUT "- $count user(s) displayed\n";
-    print STDOUT "- $totalTime second(s); "
-        . POSIX::ceil( $totalTime / 60 )
-        . " minute(s); "
-        . POSIX::ceil( $totalTime / 3600 )
-        . " hour(s) \n";
+    print STDOUT "- $totalTime second(s);\n";
+    my $val = Time::Seconds->new($totalTime);
+    print STDOUT "- " . $val->pretty() . "\n";
 }
 
 1;
