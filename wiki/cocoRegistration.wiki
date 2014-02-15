@@ -100,7 +100,7 @@ cd ~/cocobot-read-only/scripts/
 }}}
 
 
-Le script retourne beaucoup plus d'utilisateurs lorsque le compte a souscris un abonnement _Premium_.
+Le script retourne beaucoup plus d'utilisateurs lorsque le compte a souscrit un abonnement _Premium_.
 
 
 
