@@ -133,6 +133,43 @@ L'alerte est envoyée à un utilisateur :
   * avec le pseudonyme '!SimonTemplar'
   * âgé de trente-sept ans.
 
+
+
+=== Exemples de sections `<Message>` ===
+
+Une section `<Message>` peut comporter plusieurs directives _write_ :
+{{{
+  <Message>
+    name           = salutations2
+    write          = Mes hommages à vous.
+    write          = Comment allez-vous ?
+    write          = Bien, j'ose l'espérer.
+  </Message>
+}}}
+L'utilisateur recevra ces trois messages l'un après l'autre.
+
+Si les messages sont séparés par un caractère barre verticale, un des messages sera sélectionnés au hasard :
+{{{
+  <Message>
+    name           = salutations3
+    write          = Mes hommages à vous, Madame.|Mes hommages, Madame...|Madame, je vous présente mes hommages.|Madame, permettez-moi de vous présenter mes hommages.|Je vous salue bien bas, Madame.|Je tiens à vous présenter mes hommages, Madame|
+  </Message>
+}}}
+Attention le dernière caractère de la directive _write_ doit être un caractère barre verticale pour que les messages séparés. 
+
+
+Un fichier texte peut-être aussi spécifié :
+{{{
+  <Message>
+   name          = citations
+   write         = file:///plain-text/quotations.txt
+   </Message>
+}}}
+Le fichier texte doit se trouver dans le répertoire « ~/cocobot/conf » et comporter un message par ligne. Un message sera sélectionné au hasard.
+
+
+=== Log de messages envoyés et reçus ===
+
 Les messages envoyés aux utilisateurs son enregistrés dans des fichiers logs du répertoire « ~/var/alert-messages ».
 
 Les messages envoyés par les utilisateur au bot son enregistrés dans des fichiers logs du répertoire « ~/var/messages ».
