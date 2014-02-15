@@ -93,9 +93,14 @@ L'action « list » énumère les pseudos présents sur le chat. Les résultats 
   * *user-info.pl* : Crée un bot et donne des information sur le compte utilisé par le bot.
   * *write.pl* : Crée un bot et écrit un message à un utilisateur connecté.
 
-
-
-
-
+==== Les scripts du répertoire « tools » ====
+  * *initializes-database.pl* : crée et peuple les tables de la base de données utilisés par le *save-logged-user-in-database.pl* pour enregistrer toutes les connexions et déconnexions des utilisateurs sur Coco.fr
+  * *get-town-code-from-coco.pl* :
+  * *check-xmpp.pl* : vérifie l'envoi d'un message XMPP utilisé par les alertes.
+  * *get-zip-citydio.pl* :
+  * *check-town-dump-file.pl* :
+  * *get-zip-from-wikipedia.pl* :
+  * *sort-conf-plain-text-file.pl* : trie supprime les doublons des fichiers de configuration contenant une information par ligne, comme une liste de pseudos ou de citations.
+  * *read-messages.pl* : affiche les réponses envoyés au bot créé par le script *save-logged-user-in-database.pl*
 
 
