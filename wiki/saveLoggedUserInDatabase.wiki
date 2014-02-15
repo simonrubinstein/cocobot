@@ -4,7 +4,7 @@
 
 Cette page explique l'installation et l'utilisation pas à pas du script « save-logged-user-in-database.pl ».  
 
-Le script « save-logged-user-in-database.pl » lit la liste des pseudos connectés sur le chat Coco.fr plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [cocoRegistration Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr].
+Le script « save-logged-user-in-database.pl » créé un bot qui se connecte sur Coco.fr et va lire la liste des pseudos connectés sur le chat plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [cocoRegistration Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr].
 
 Cette documentation se base sur le système d'exploitation [http://www.ubuntu-fr.org/telechargement Ubuntu 12.10 Desktop], donc pour installer ce script un système d'exploitation Ubuntu 12.10 Desktop est requis. 
 
@@ -167,6 +167,23 @@ Cet exemple  prend le fichier « _plain-text/nicknames-bot.txt_ » est comme par
 }}}
 
 
+== Options du script « save-logged-user-in-database.pl » ==
 
+Utilisation :
+{{{
+save-logged-user-in-database.pl [-A] -x maxOfLoop -S seconds -a myavatar -p mypass [-u mynickname -y myage -s mysex -v -d -D -w]
+}}}
 
-
+  * *-x* maxOfLoop : nombre d'itérations avant de quitter.
+  * *-S* seconds   : nombre de secondes attendues avant la prochaine itération. Cette option est ignorée, la valeur est toujours d'une seconde
+  * *-a* myavatar  : l'identifiant unique de compte qui doit être Premium. Ce sont les neuf premiers chiffres du cookie HTTP portant le nom « samedi ».
+  * *-p* mypass     : le mot de passe du compte Premium. Les vingt derniers caractères alphabétiques du cookie HTTP « samedi ».
+  * *-u* mynickname : Un pseudo utilisé pour le bot, une liste de pseudos séparés par le caractère double point ou un fichier contenant un pseudo par ligne. Si aucun pseudo n'est précisé un pseudo est sélectionné aléatoirement.
+  * *-y* myage       : Un âge de 18 à 89 ans. Si aucun âge n'est précisé alors ce dernier est sélectionné aléatoirement.
+  * *-s* :Le sexe utilisé pour le bot : « M » pour homme ou « W » pour femme. Si le sexe n'est pas précisé il est sélectionné aléatoirement.
+  * *-g* : Lance la requête pour charger l'image de l'avatar. Si le bot possède une image en avatar cette option permettra de le charger.
+  * *-v*  : Mode bavard. Affiche des messages d'informations.
+  * *-d*  : Affiche des messages de debug.
+  * *-D*  : Affiche davantage de messages de debug.
+  * *-w*  : Affiche les logs dans un fichier.
+  * *-A*  : Active les alertes. Permet d'envoyer des messages XMPP ou écrire aux utilisateurs connectés sur le tchat en se basant sur le fichier « alert.conf ». [LesAlertes Lire la page sur les alertes].
