@@ -124,3 +124,10 @@ L'alerte est envoyée à un utilisateur :
   * de sexe masculin, 
   * avec le pseudonyme '!SimonTemplar'
   * âgé de trente-sept ans.
+
+Les messages envoyés aux utilisateurs son enregistrés dans des fichiers logs du répertoire « ~/var/alert-messages/ ».
+
+Les messages envoyés par les utilisateur au bot son enregistrés dans des fichiers logs du répertoire « ~/var/messages/ ».
+
+Le script « ~/cocobot/tools/read-messages.pl » permet d'afficher les réponses envoyés par les utilisateurs au bot.
+
