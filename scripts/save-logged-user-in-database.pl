@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief This script saves all users connected to the database
 #@created 2012-03-09
-# @date 2014-01-19
+# @date 2014-02-14
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -152,7 +152,7 @@ sub HELP_MESSAGE {
     $CLI->printLineOfArgs('[-A]');
     $CLI->HELP();
     print <<ENDTXT;
-  -A                Enable alarm 
+  -A                Enable alert 
 ENDTXT
     exit 0;
 }
@@ -160,6 +160,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-19');
+    $CLI->VERSION_MESSAGE('2014-02-14');
 }
 

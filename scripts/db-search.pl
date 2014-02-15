@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2014-01-15
+# @date 2014-02-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -59,7 +59,7 @@ sub run {
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref
-        = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPIf:F:' );
+        = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPIf:F:H' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -112,6 +112,12 @@ sub init {
         push @args, '__nicknames2filter', [ keys %nicknames2filter ];
     }
 
+    my $output = 0;
+    if ( exists $opt_ref->{'H'} ) {
+        $output = 1;
+    }
+    unshift @args, $output;
+
     my $filtersCode = 0;
     if ( exists $opt_ref->{'F'} ) {
         $filtersCode = $opt_ref->{'F'};
@@ -139,11 +145,12 @@ Usage:
   -y age      An age in years
   -O          Users who are connected.
   -I          Research in the Iles-de-France only.
-  -P
+  -P          Search pseudo who entered a zip code Paris
   -v          Verbose mode
   -d          Debug mode
   -f filters  Filters
   -F 1        Enable custime filter
+  -H          Displays the results in HTML
 
 Examples:
 db-search.pl -c WcL,PXd,uyI,0fN,rs6 
@@ -161,6 +168,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-15');
+    $CLI->VERSION_MESSAGE('2014-02-15');
 }
 
