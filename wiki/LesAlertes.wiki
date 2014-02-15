@@ -96,7 +96,7 @@ Voici à quoi ressemble l'alerte envoyée quand l'utilisateur avec le code de vo
 
 http://cocobot.googlecode.com/svn/wiki/alerts/alert-cocobot-mmechat.jpg
 
-L'alerte a été envoyée à une personne qui a configuré le client de messagerie instantané [http://fr.wikipedia.org/wiki/Pidgin Pidgin] sous [http://fr.wikipedia.org/wiki/Ubuntu Ubuntu Linux 13.10].
+L'alerte a été envoyée à une personne qui a configuré le client de messagerie instantané [http://fr.wikipedia.org/wiki/Pidgin_(logiciel) Pidgin] sous [http://fr.wikipedia.org/wiki/Ubuntu Ubuntu Linux 13.10].
 
 
 
