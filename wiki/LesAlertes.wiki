@@ -53,6 +53,12 @@ Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme «
 }}}
 
 
+Les conditions sont du code Perl et peuvent comporter des opérateurs comme _and_ ou _or_ ainsi que des parenthèses :
+
+{{{
+  condition = ($town eq "FR- Aulnay-sous-bois" or $town eq "FR- Sevran") and $ISP eq "Free SAS" and $mysex eq "2" and $citydio >= 30915 and $citydio <= 30935 and $mynickname ne "ghete" and $mynickname ne "stephanie" and  $code ne 'KEx' and $code ne 'Sf4' 
+}}}
+
 == La section `<XMPP>` ==
 
 La section `<XMPP>` sert à déclarer le gestionnaire de l'alerte de type _XMPP_. Dans notre exemple se base une un compte _Google Talk_. Cependant avec l'apparition de _Google Hangouts_ il n'est pas certain qu'un compte _Google_  nouvellement créé fonctionne avec les protocoles _XMPP_.
