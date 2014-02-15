@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Le [saveLoggedUserInDatabase script « _save-logged-user-in-database.pl_ »] permet de déclencher certaines alertes. Une alerte est soit un message _XMPP_ ou soit un message envoyé à l'utilisateur connecté.
+Le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »] permet de déclencher certaines alertes. Une alerte est soit un message _XMPP_ ou soit un message envoyé à l'utilisateur connecté.
 
 Des alertes peuvent-être déclenchées en analysant les propriétés des utilisateurs connectés, par exemple on peut déclencher une alerte si l'utilisateur avec le pseudo « _Laws_ » se connecte, ou si un pseudo femme de trente ans se connecte, ou encore si un pseudo se connecte avec un code de vote « _MYY_ ». 
 
@@ -125,9 +125,8 @@ L'alerte est envoyée à un utilisateur :
   * avec le pseudonyme '!SimonTemplar'
   * âgé de trente-sept ans.
 
-Les messages envoyés aux utilisateurs son enregistrés dans des fichiers logs du répertoire « ~/var/alert-messages/ ».
+Les messages envoyés aux utilisateurs son enregistrés dans des fichiers logs du répertoire « ~/var/alert-messages ».
 
-Les messages envoyés par les utilisateur au bot son enregistrés dans des fichiers logs du répertoire « ~/var/messages/ ».
+Les messages envoyés par les utilisateur au bot son enregistrés dans des fichiers logs du répertoire « ~/var/messages ».
 
-Le script « ~/cocobot/tools/read-messages.pl » permet d'afficher les réponses envoyés par les utilisateurs au bot.
-
+Le script « ~/cocobot/tools/read-messages.pl » permet d'afficher les réponses envoyés par les utilisateurs au bot en lisant les fichiers logs des deux répertoires précédents.
