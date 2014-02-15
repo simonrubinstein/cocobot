@@ -155,15 +155,15 @@ Si les messages sont séparés par un caractère barre verticale, un des message
     write          = Mes hommages à vous, Madame.|Mes hommages, Madame...|Madame, je vous présente mes hommages.|Madame, permettez-moi de vous présenter mes hommages.|Je vous salue bien bas, Madame.|Je tiens à vous présenter mes hommages, Madame|
   </Message>
 }}}
-Attention le dernière caractère de la directive _write_ doit être un caractère barre verticale pour que les messages séparés. 
+Attention le dernière caractère de la directive _write_ doit être un caractère barre verticale pour que les messages soient vus comme des messages séparés. 
 
 
-Un fichier texte peut-être aussi spécifié :
+La directive _write_ peut-être aussi spécifier un fichier texte si la chaîne commence par « file:/// » :
 {{{
   <Message>
    name          = citations
    write         = file:///plain-text/quotations.txt
-   </Message>
+  </Message>
 }}}
 Le fichier texte doit se trouver dans le répertoire « ~/cocobot/conf » et comporter un message par ligne. Un message sera sélectionné au hasard.
 
