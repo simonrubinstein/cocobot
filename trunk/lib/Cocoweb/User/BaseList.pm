@@ -1,9 +1,9 @@
 # @created 2012-03-19
-# @date 2012-06-16
+# @date 2014-03-01 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -76,10 +76,12 @@ sub getUser {
 #@brief Displays the whole list of nicknames in the terminal
 sub display {
     my ( $self, %args ) = @_;
-    my ( $sex, $nickmaneWanted, $old );
+    my ( $sex, $nickmaneWanted, $old, $nicknames2filter_ref );
     $sex            = $args{'mysex'}     if exists $args{'mysex'};
     $old            = $args{'myage'}     if exists $args{'myage'};
     $nickmaneWanted = $args{'mynickame'} if exists $args{'mynickame'};
+    $nicknames2filter_ref = $args{'nicknames2filter'} if exists $args{'nicknames2filter'};
+    
     my @titles =
       ( 'Id', 'Nickname', 'Sex', 'Old', 'City', 'Ver', 'Stat', 'XP' );
     my @names = (
@@ -140,6 +142,7 @@ sub display {
         next
           if defined $nickmaneWanted
               and $user->mynickname() !~ m{^.*$nickmaneWanted.*$}i;
+        next if defined $nicknames2filter_ref and exists $nicknames2filter_ref->{$user->mynickname()};
         next if defined $old and $user->myage() != $old;
         $line = '';
         foreach my $k (@names) {
