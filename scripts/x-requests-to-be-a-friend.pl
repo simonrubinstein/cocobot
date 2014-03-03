@@ -40,6 +40,7 @@ my %nickid2process    = ();
 my $sexTargeted;
 my $bot;
 my $usersList;
+my $counterDisconnectedUsers = 0;
 
 init();
 run();
@@ -55,36 +56,9 @@ sub run {
             $bot->requestAuthentication();
             $bot->display();
             searchNickID();
-
-            #my @users         = ();
-            my $nicknamesStr  = '';
-            my $requestsCount = 0;
-            foreach my $nickid ( keys %nickid2process ) {
-                my $userWanted = $nickid2process{$nickid};
-
-                #push @users, $userWanted;
-
-                #$userWanted->display();
-                if ( defined $sexTargeted ) {
-                    if ( $userWanted->mysex() !~ $sexTargeted ) {
-                        info(     'sex of '
-                                . $userWanted->{'mynickname'} . ': '
-                                . $userWanted->mysex() );
-                        next;
-                    }
-                }
-                $requestsCount++;
-                $bot->requestToBeAFriend($userWanted);
-                $nicknamesStr .= $userWanted->{'mynickname'} . ', ';
-            }
-            info(     'A request was sent to '
-                    . $requestsCount
-                    . ' users: '
-                    . $nicknamesStr );
+            requestToBeAFriend();
             if ( $count % 160 == 39 ) {
                 $bot->requestCheckIfUsersNotSeenAreOffline();
-
-                #$bot->requestsChecksIfUserOffline( \@users );
             }
             debug(    'Delays the program execution for '
                     . $CLI->delay()
@@ -100,6 +74,32 @@ sub run {
     info("The $Bin script was completed successfully.");
 }
 
+##@method void requestToBeAFriend()
+sub requestToBeAFriend {
+    my $nicknamesStr  = '';
+    my $requestsCount = 0;
+    foreach my $nickid ( keys %nickid2process ) {
+        my $userWanted = $nickid2process{$nickid};
+        if ( defined $sexTargeted ) {
+            if ( $userWanted->mysex() !~ $sexTargeted ) {
+                info(     'sex of '
+                        . $userWanted->{'mynickname'} . ': '
+                        . $userWanted->mysex() );
+                next;
+            }
+        }
+        $requestsCount++;
+        $bot->requestToBeAFriend($userWanted);
+        $nicknamesStr .= $userWanted->{'mynickname'} . ', ';
+    }
+    $nicknamesStr = substr($nicknamesStr, 0, -2); 
+    info(     'A request was sent to '
+            . $requestsCount
+            . ' users: '
+            . $nicknamesStr );
+}
+
+##@method searchNickID()
 sub searchNickID {
     $usersList = $bot->requestUsersList();
     return if !defined $usersList;
@@ -111,6 +111,7 @@ sub searchNickID {
                 . $nickid2process{$nickid}->{'mynickname'}
                 . ' user has been disconnected' );
         delete $nickid2process{$nickid};
+        $counterDisconnectedUsers++;
     }
 
     foreach my $nickid ( keys %$user_ref ) {
@@ -123,7 +124,10 @@ sub searchNickID {
         $nickid2process{$nickid} = $user_ref->{$nickid};
         info("$name / $nickid was found");
     }
-    info( 'Number of users in the list: ' . scalar( keys %$user_ref ) );
+    info(     '(*) Number of users in the list: '
+            . scalar( keys %$user_ref )
+            . '; Counter disconnected users: '
+            . $counterDisconnectedUsers );
 }
 
 ##@method void init()
