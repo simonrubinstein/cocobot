@@ -39,6 +39,7 @@ my %nicknames2process = ();
 my %nickid2process    = ();
 my $sexTargeted;
 my $bot;
+my $usersList;
 
 init();
 run();
@@ -46,6 +47,7 @@ run();
 ##@method void run()
 sub run {
     $bot = $CLI->getBot( 'generateRandom' => 1 );
+    $usersList = $bot->getUsersList();
 
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
@@ -53,12 +55,14 @@ sub run {
             $bot->requestAuthentication();
             $bot->display();
             searchNickID();
-            my @users         = ();
+
+            #my @users         = ();
             my $nicknamesStr  = '';
             my $requestsCount = 0;
             foreach my $nickid ( keys %nickid2process ) {
                 my $userWanted = $nickid2process{$nickid};
-                push @users, $userWanted;
+
+                #push @users, $userWanted;
 
                 #$userWanted->display();
                 if ( defined $sexTargeted ) {
@@ -78,7 +82,9 @@ sub run {
                     . ' users: '
                     . $nicknamesStr );
             if ( $count % 160 == 39 ) {
-                $bot->requestsChecksIfUserOffline( \@users );
+                $bot->requestCheckIfUsersNotSeenAreOffline();
+
+                #$bot->requestsChecksIfUserOffline( \@users );
             }
             debug(    'Delays the program execution for '
                     . $CLI->delay()
@@ -88,12 +94,14 @@ sub run {
         };
         error($@) if $@;
         $bot = $CLI->getBot( 'generateRandom' => 1 );
+        $bot->setUsersList($usersList);
+
     }
     info("The $Bin script was completed successfully.");
 }
 
 sub searchNickID {
-    my $usersList = $bot->requestUsersList();
+    $usersList = $bot->requestUsersList();
     return if !defined $usersList;
     my $user_ref = $usersList->all();
 
@@ -105,13 +113,17 @@ sub searchNickID {
         delete $nickid2process{$nickid};
     }
 
-    foreach my $id ( keys %$user_ref ) {
-        my $name = $user_ref->{$id}->{'mynickname'};
-        next if !exists $nicknames2process{$name};
-        next if exists $nickid2process{$id};
-        $nickid2process{$id} = $user_ref->{$id};
-        info("$name / $id was found");
+    foreach my $nickid ( keys %$user_ref ) {
+        my $name = $user_ref->{$nickid}->{'mynickname'};
+        next if exists $nickid2process{$nickid};
+        if ( !exists $nicknames2process{$name} ) {
+            delete $user_ref->{$nickid};
+            next;
+        }
+        $nickid2process{$nickid} = $user_ref->{$nickid};
+        info("$name / $nickid was found");
     }
+    info( 'Number of users in the list: ' . scalar( keys %$user_ref ) );
 }
 
 ##@method void init()
