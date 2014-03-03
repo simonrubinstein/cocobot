@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2014-03-01
-# @date 2014-03-01
+# @date 2014-03-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,6 +37,7 @@ use Cocoweb::CLI;
 my $CLI;
 my %nicknames2process = ();
 my %nickid2process    = ();
+my $sexTargeted;
 my $bot;
 
 init();
@@ -52,18 +53,30 @@ sub run {
             $bot->requestAuthentication();
             $bot->display();
             searchNickID();
-            my @users = ();
-            my $nicknamesStr = '';
+            my @users         = ();
+            my $nicknamesStr  = '';
+            my $requestsCount = 0;
             foreach my $nickid ( keys %nickid2process ) {
                 my $userWanted = $nickid2process{$nickid};
-                #$userWanted->display();
-                $bot->requestToBeAFriend($userWanted);
                 push @users, $userWanted;
+
+                #$userWanted->display();
+                if ( defined $sexTargeted ) {
+                    if ( $userWanted->mysex() !~ $sexTargeted ) {
+                        info(     'sex of '
+                                . $userWanted->{'mynickname'} . ': '
+                                . $userWanted->mysex() );
+                        next;
+                    }
+                }
+                $requestsCount++;
+                $bot->requestToBeAFriend($userWanted);
                 $nicknamesStr .= $userWanted->{'mynickname'} . ', ';
             }
             info(     'A request was sent to '
-                    . scalar( keys %nickid2process )
-                    . ' users: ' . $nicknamesStr );
+                    . $requestsCount
+                    . ' users: '
+                    . $nicknamesStr );
             if ( $count % 160 == 39 ) {
                 $bot->requestsChecksIfUserOffline( \@users );
             }
@@ -105,7 +118,8 @@ sub searchNickID {
 #@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'argumentative' => 'f:' );
+    my $opt_ref
+        = $CLI->getOpts( 'enableLoop' => 1, 'argumentative' => 'f:X:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -125,6 +139,19 @@ sub init {
             $nicknames2process{$nickname} = 1;
         }
     }
+    $sexTargeted = $opt_ref->{'X'} if exists $opt_ref->{'X'};
+    if ( defined $sexTargeted ) {
+        if ( $sexTargeted eq 'W' ) {
+            $sexTargeted = qr/^(2|7)$/;
+        }
+        elsif ( $sexTargeted eq 'M' ) {
+            $sexTargeted = qr/^(1|6)$/;
+        }
+        else {
+            error(    'The sex argument value must be either M or W.'
+                    . ' (-s option)' );
+        }
+    }
 }
 
 ## @method void HELP_MESSAGE()
@@ -139,6 +166,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-03-01');
+    $CLI->VERSION_MESSAGE('2014-03-03');
 }
 
