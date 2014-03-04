@@ -589,6 +589,7 @@ QuiVeuxMonMec
 Quiveutmabite
 RahiMecPassif
 RayanaTrav16Ans
+RebeuActifBG
 RebeuTrav
 SEXYgay
 SEXYpassif
@@ -1521,6 +1522,7 @@ hommesuceasodo
 hommesuceavale
 hommesucejhomme
 hommesucepayepas
+hommesucerecoi
 hommesucerecoit
 hommesuceurpass
 hommsuceEtrecoit
@@ -1591,6 +1593,7 @@ jeunegaypassif
 jeunehomme
 jeunepassifsuce
 jeunetravestie
+jeuntravChMaitre
 jhBiPassif
 jhaimesucer
 jhaniquer
@@ -1605,6 +1608,7 @@ jhpassifchact
 jhpassifreel
 jhpourhmarie
 jhpourhmur
+jhsussetrecoi
 jmecprjmecmidi
 joelhomo
 joffremonsoumis
@@ -1633,6 +1637,7 @@ jtravpourjhblack
 juliatravesti
 julietrav
 julietravcokine
+julietravestie
 juliogaypaye
 karimatravkahba
 katiatrav
@@ -1694,6 +1699,7 @@ lisatravprfem
 lisatravprfemme
 lisatv22ans
 lizatrans
+lolatravestie
 lolibatrans
 lopchunmaitre
 lopeAbourrerr
@@ -1930,6 +1936,7 @@ nastygaltrav
 nattrans
 nellatrans
 nellytravsoumise
+newboy1
 nicolas1
 ninatravdesuite
 ninatravenale
@@ -2084,6 +2091,7 @@ pedeatourner
 pedepourchantier
 pedepourfoyers
 pedesuceavale
+penelopelalope
 petasseTrav
 petibeurgay
 petitetrans
@@ -2101,6 +2109,7 @@ pourtoiactif
 prmafchblack
 ptipompeurdegb
 ptiqgay
+ptitbranleur
 ptitculpassifrec
 pulpeusetravesti
 pulpeusetravsuce
@@ -2132,6 +2141,7 @@ rebegayPASS
 rebeuchaudpassif
 rebeugay
 rebeugaypass
+rebeupassif
 rebeutrannsition
 rebeutrav
 rebeutravtrans
@@ -2980,4 +2990,3 @@ wardatrans
 wardatrans75
 wardatrans75020
 yoannatrans
-penelopelalope
