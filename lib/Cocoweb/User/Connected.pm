@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2014-01-17 
+# @date 2014-03-06
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -67,18 +67,27 @@ sub init {
     my ( $self, %args ) = @_;
     if ( !defined $nicknameMan ) {
         $nicknameMan = Cocoweb::Config->instance()
-          ->getConfigFile( 'nickname-man.txt', 'Plaintext' );
+            ->getConfigFile( 'nickname-man.txt', 'Plaintext' );
         $nicknameWoman = Cocoweb::Config->instance()
-          ->getConfigFile( 'nickname-woman.txt', 'Plaintext' );
+            ->getConfigFile( 'nickname-woman.txt', 'Plaintext' );
     }
     $args{'generateRandom'} = 0 if !exists $args{'generateRandom'};
 
-    $args{'zip'} = sprintf( '75%03d', randum(20) + 1 ) if !exists $args{'zip'};
+
+    if ( exists $args{'zip'} ) {
+        if ($args{'zip'} eq '00000') {
+            my $allZipCodes =
+                Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+            $args{'zip'} = $allZipCodes->getZipRandom();
+        }
+    } else {
+        $args{'zip'} = sprintf( '75%03d', randum(20) + 1 );
+    }
     if ( $args{'generateRandom'} ) {
         $args{'myage'} = randum(40) + 18 if !exists $args{'myage'};
         $args{'mysex'} = randum(2) + 1   if !exists $args{'mysex'};
-        $args{'mynickname'} =
-          $self->getRandomPseudonym( $args{'mysex'}, $args{'myage'},
+        $args{'mynickname'}
+            = $self->getRandomPseudonym( $args{'mysex'}, $args{'myage'},
             $args{'zip'} );
     }
 
@@ -88,13 +97,12 @@ sub init {
     $args{'myavatar'}   = 0        if !exists $args{'myavatar'};
     $args{'mypass'}     = 0        if !exists $args{'mypass'};
     $args{'cookav'} = floor( rand(890000000) + 100000000 )
-      if !exists $args{'cookav'};
+        if !exists $args{'cookav'};
 
     $self->attributes_defaults(
         'mynickname' => $args{'mynickname'},
         'myage'      => $args{'myage'},
         'mysex'      => $args{'mysex'},
-        'zip'        => $args{'zip'},
         'cookav'     => $args{'cookav'},
         'referenz'   => 0,
         'speco'      => 0,
@@ -126,12 +134,16 @@ sub init {
         'since'      => 0,
         'town'       => ''
     );
-    info(   'mynickname: '
-          . $self->mynickname()
-          . '; mysex: '
-          . $args{'mysex'}
-          . '; myage: '
-          . $args{'myage'} );
+    #initialize the zip code here! 
+    $self->zip($args{'zip'});
+    info(     'mynickname: '
+            . $self->mynickname()
+            . '; mysex: '
+            . $self->{'mysex'}
+            . '; myage: '
+            . $self->{'myage'} 
+            . '; zip: '
+            . $self->{'zip'} );
 }
 
 ##@method boolean isAuthenticated()
@@ -188,8 +200,8 @@ sub getRandomPseudonym {
         }
     }
     elsif ( $r == 1 ) {
-        my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) =
-          localtime(time);
+        my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst )
+            = localtime(time);
         my $birthYear = $year - $old;
         $r = randum(2);
         if ( $r == 1 ) {
@@ -220,15 +232,22 @@ sub validatio {
     my $ageuq    = $self->myage();
     my $typum    = $self->mysex();
     my $citydio  = $self->zip();
-    croak error("Error: bad nickidol value") if length($nickidol) < 3;
-    croak error("Error: bad ageuq! ageuq = $ageuq") if $ageuq < 15;
+    croak error( 'Error: bad nickidol value.'
+            . ' The length of the nickname is too short.' )
+        if length($nickidol) < 3;
+    croak error( 'Error: bad nickidol value.'
+            . ' The length of the nickname is too long.' )
+        if length($nickidol) > 18;
+    croak error( "Error: bad ageuq! ageuq = $ageuq."
+            . 'Age needs to be greater than 18.' )
+        if $ageuq < 18;
     my $citygood = $citydio;
     $citygood = "0" x ( 5 - length($citygood) ) . $citygood
-      if length($citygood) < 5;
+        if length($citygood) < 5;
 
     # Check if the login name does not contain too many capital letters
     my $sume = 0;
-    for ( my $i = 0 ; $i < length($nickidol) ; $i++ ) {
+    for ( my $i = 0; $i < length($nickidol); $i++ ) {
         my $c = substr( $nickidol, $i, 1 );
         my $ujm = ord($c);
         $sume++ if $ujm < 95 and $ujm > 59;
@@ -266,8 +285,8 @@ sub validatio {
 #@param string $url
 sub initial {
     my ( $self, $url ) = @_;
-    my ( $infor, $myavatar, $mypass ) =
-      ( '', $self->myavatar(), $self->mypass() );
+    my ( $infor, $myavatar, $mypass )
+        = ( '', $self->myavatar(), $self->mypass() );
 
     #    my $cookie_ref = $self->getCookie('samedi');
     #    if ( defined $cookie_ref ) {
@@ -301,9 +320,9 @@ sub initial {
 sub setCookie {
     my ( $self, $name, $value ) = @_;
     croak error('Error: Required parameter "name" is missing!')
-      if !defined $name;
+        if !defined $name;
     croak error('Error: Required parameter "value" is missing!')
-      if !defined $value;
+        if !defined $value;
     my $cookies_ref = $self->cookies();
     $cookies_ref->{$name} = $value;
 }
@@ -316,7 +335,7 @@ sub setCookie {
 sub getCookie {
     my ( $self, $name ) = @_;
     croak error('Error: Required parameter "name" is missing!')
-      if !defined $name;
+        if !defined $name;
     my $cookies_ref = $self->cookies();
     if ( exists $cookies_ref->{$name} ) {
         return $cookies_ref->{$name};
@@ -343,8 +362,9 @@ sub show {
     }
     $max++;
     foreach my $name (@names) {
-        print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
-          . "\n";
+        print STDOUT
+            sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
+            . "\n";
     }
 }
 

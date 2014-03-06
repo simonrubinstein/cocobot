@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2014-01-29
+# @date 2014-03-06
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -49,7 +49,7 @@ __PACKAGE__->attributes(
     'enableLoop',     'avatarAndPasswdRequired',
     'searchEnable',   'pidHandle',
     'writeLogInFile', 'isAvatarRequest',
-    'delay'
+    'delay',          'zip'
 );
 
 ##@method object init($class, $instance)
@@ -59,6 +59,7 @@ sub init {
         'mynickname'              => undef,
         'myage'                   => undef,
         'mysex'                   => undef,
+        'zip'                     => undef,
         'myavatar'                => undef,
         'mypass'                  => undef,
         'searchId'                => undef,
@@ -97,7 +98,7 @@ sub getOpts {
     }
     my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'wdvDu:s:y:a:p:g';
+    $argumentative .= 'wdvDu:s:y:z:a:p:g';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:S:' if $self->enableLoop();
     my %opt;
@@ -115,6 +116,7 @@ sub getOpts {
     $self->mynickname( $opt{'u'} )     if exists $opt{'u'};
     $self->myage( $opt{'y'} )          if exists $opt{'y'};
     $self->mysex( $opt{'s'} )          if exists $opt{'s'};
+    $self->zip( $opt{'z'} )            if exists $opt{'z'};
     $self->myavatar( $opt{'a'} )       if exists $opt{'a'};
     $self->mypass( $opt{'p'} )         if exists $opt{'p'};
     $self->searchId( $opt{'i'} )       if exists $opt{'i'};
@@ -215,8 +217,8 @@ sub getMinimumOpts {
 sub getBot {
     my ( $self, @params ) = @_;
     foreach my $name (
-        'mynickname', 'myage', 'mysex', 'myavatar',
-        'mypass',     'isAvatarRequest'
+        'mynickname', 'myage',  'mysex', 'zip',
+        'myavatar',   'mypass', 'isAvatarRequest'
         )
     {
         push @params, $name, $self->$name() if defined $self->$name();
@@ -294,6 +296,11 @@ sub HELP {
   -y myage          An age in years that will be used by the bot. 
                     Otherwise an age will be randomly generated.
   -s mysex          M for man or W for women
+  -z zipCode        A postal code (i.e. 75001). 
+                    If a code "00000" then entered a zip code
+                      is chosen randomly over the entire France.
+                    A postal code is randomly chosen on Paris
+                      if no code is entered.
   -g                Request to load the avatar.
                     By default avatar image is not loaded. 
   -v                Verbose mode

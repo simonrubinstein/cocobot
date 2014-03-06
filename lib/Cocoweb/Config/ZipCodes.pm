@@ -1,9 +1,9 @@
 # @created 2012-04-28
-# @date 2012-04-29
+# @date 2014-03-06 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -81,6 +81,18 @@ sub getCityco {
     die error( 'Error: cityco have not been found! Zip code: ' . $zip )
       if !exists $zip2Cityco_ref->{$zip};
     return $zip2Cityco_ref->{$zip};
+}
+
+##@method string getZipRandom()
+#@brief Returns a random zip code 
+#@return integer $zip A zip code (i.e. 75018)
+sub getZipRandom {
+    my ($self) = @_;
+    my $zip2Cityco_ref = $self->all();
+    my @zipCodes = keys %$zip2Cityco_ref;
+    my $i        = randum( scalar @zipCodes ) - 1;
+    my $zipCode = $zipCodes[$i];
+    return $zipCode; 
 }
 
 ##@method void extract()

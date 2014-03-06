@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2014-01-19 
+# @date 2014-03-06 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -93,7 +93,7 @@ sub display {
     my $self  = shift;
     my @names = (
         'mynickname', 'myage',  'mysex', 'mynickID',
-        'citydio',    'mystat', 'myXP',  'myver'
+        'zip', 'citydio',    'mystat', 'myXP',  'myver'
     );
     foreach my $name (@names) {
         print STDOUT $name . ':' . $self->$name() . '; ';
