@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2014-03-01
-# @date 2014-03-03
+# @date 2014-03-06
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -174,14 +174,22 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print STDOUT $Script . ', Request loop be a friend.' . "\n";
-    $CLI->printLineOfArgs();
+    $CLI->printLineOfArgs('-f nicklist -X targetetSex');
     $CLI->HELP();
+    print <<ENDTXT;
+  -f nicklist       Nicklist that are targeted. (i.e. plain-text/nicknames-to-filter.txt)  
+  -X targetetSex    Sex that is targeted  M for man or W for women
+  
+Example:
+./x-requests-to-be-a-friend.pl -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W
+
+ENDTXT
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-03-03');
+    $CLI->VERSION_MESSAGE('2014-03-06');
 }
 
