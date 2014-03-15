@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2014-03-06
+# @date 2014-03-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -34,6 +34,7 @@ use Cocoweb::User::Wanted;
 use base 'Cocoweb::Object::Singleton';
 use Carp;
 use FindBin qw($Script);
+use List::Util qw( first );
 use Data::Dumper;
 use Term::ANSIColor;
 $Term::ANSIColor::AUTORESET = 1;
@@ -216,12 +217,13 @@ sub getMinimumOpts {
 #@return object A Cocoweb::Bot object
 sub getBot {
     my ( $self, @params ) = @_;
-    print Dumper @params;
+    my %param = @params;
     foreach my $name (
         'mynickname', 'myage',  'mysex', 'zip',
         'myavatar',   'mypass', 'isAvatarRequest'
         )
     {
+        next if exists $param{$name};
         push @params, $name, $self->$name() if defined $self->$name();
     }
     my $bot = Cocoweb::Bot->new(@params);
