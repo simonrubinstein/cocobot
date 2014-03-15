@@ -216,6 +216,7 @@ sub getMinimumOpts {
 #@return object A Cocoweb::Bot object
 sub getBot {
     my ( $self, @params ) = @_;
+    print Dumper @params;
     foreach my $name (
         'mynickname', 'myage',  'mysex', 'zip',
         'myavatar',   'mypass', 'isAvatarRequest'
