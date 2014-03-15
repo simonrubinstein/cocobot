@@ -474,6 +474,7 @@ MecAvaleRebeux
 MecAvaleTout
 MecAvaleur
 MecAvleMaraicher
+MecBGencolant17e
 MecBoCul
 MecBonCul
 MecBonCulPassif
@@ -499,6 +500,7 @@ MecLechePieds
 MecLope
 MecLopepourRebeu
 MecPassifBonCul
+MecPassifDIscret
 MecPassifPor2Act
 MecPayeCaillera
 MecPayeJudoka
@@ -673,6 +675,7 @@ RayanaTrav16Ans
 RebeuActifBG
 RebeuGayCam
 RebeuTrav
+RogerCamionneur
 SEXYgay
 SEXYpassif
 SabineTravesti
@@ -1159,6 +1162,7 @@ asiatravestisuce
 asiatravsuceuse
 audreytravronde
 avaleGAY
+bLaktraVsuceUse
 beauculnoirtrav
 beaucultravnoir
 beaucultravnoire
@@ -1643,6 +1647,7 @@ groskulprheteros
 grossebite
 grossebitenoir
 grossetravsalope
+hBonQpourBlckReb
 hLingerieF
 hPassifChoserieu
 hTrouPourBlckReb
@@ -2371,6 +2376,7 @@ qdispoabzgay11e
 qgaylopeabzer
 qlopegayalouer
 quefaireAunmec
+quia1groschien
 quiactifbmpoilu
 quiaungroschien
 quibaizmonfrere
@@ -2706,6 +2712,7 @@ transputana
 transqdemonter
 transquepassiv
 transquiveujouir
+transrecoinaw
 transrecoitbm13e
 transrepublique
 transsalopa
