@@ -440,6 +440,7 @@ LopeADefoncer
 LopeADemonter
 LopeTravCamSkype
 LopeaRebeuDispo
+LopetteMonCuSkyp
 Luciatr
 LucyTravamatrice
 Lundatrav
@@ -1186,6 +1187,7 @@ beltravrecoiblaC
 beltravrecoiblac
 beltvsoumpourf
 beurTBMdomi
+beuractif
 beuractif22CM
 beuractif22cm
 beurbipassif
@@ -2976,6 +2978,7 @@ travepayesex
 travepour2MALE
 travepour2mecs
 travepourMALE
+travepourbalaise
 travepourgangban
 travepourgrosseb
 travepourgroupe
@@ -3186,6 +3189,7 @@ travpoursportifs
 travpoursuivi
 travpourtbmblac
 travpourtbmreel
+travpourtournant
 travpourtrio
 travpourttbm
 travpourttbmnow
