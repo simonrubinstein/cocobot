@@ -1811,6 +1811,7 @@ johannatravesti
 joliculmecpasif
 joliculpassif
 jolieTRAV
+jolieTRAVsalope
 jolieTRAVvdc
 jolietrans
 jolietransmetz
@@ -2538,6 +2539,7 @@ trans0
 trans1
 trans18eme
 trans1rdv2suite
+trans20cmjolie
 trans22cm
 trans23cn
 trans2suite1rdv
@@ -2872,6 +2874,7 @@ travchfoyersmecs
 travchfoyersnoir
 travchgrossebit
 travchgrossekeu
+travchgrouparabe
 travchgroupe
 travchgroupemecs
 travchgroupes
