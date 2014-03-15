@@ -1552,6 +1552,7 @@ gaypayejeune
 gaypayejeune30e
 gaypayejeune50e
 gaypayeminet
+gaypayerebeu
 gaypayetbm
 gaypaygrouprebeu
 gaypayhetero
@@ -1745,6 +1746,7 @@ inatravtievenal
 inestrav
 inestravdebut
 irinatrav
+isatravdebpfemcp
 isatravdebutante
 issyaSexyTrav
 itravpourdirect
