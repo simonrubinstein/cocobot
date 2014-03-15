@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2014-03-01
-# @date 2014-03-06
+# @date 2014-03-15
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -39,6 +39,8 @@ my %nicknames2process = ();
 my %nickid2process    = ();
 my $sexTargeted;
 my $bot;
+my $botList;
+my $zipList;
 my $usersList;
 my $counterDisconnectedUsers = 0;
 
@@ -48,8 +50,14 @@ run();
 ##@method void run()
 sub run {
     $bot = $CLI->getBot( 'generateRandom' => 1 );
-    $usersList = $bot->getUsersList();
-
+    if (defined $zipList) {
+        $botList = $CLI->getBot( 'generateRandom' => 1, 'zip' => $zipList );
+        $botList->requestAuthentication();
+        $bot->display();
+    } else {
+        $botList = $bot;
+    }
+    $usersList = $botList->getUsersList();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
         eval {
@@ -68,7 +76,7 @@ sub run {
         };
         error($@) if $@;
         $bot = $CLI->getBot( 'generateRandom' => 1 );
-        $bot->setUsersList($usersList);
+        $botList->setUsersList($usersList);
 
     }
     info("The $Bin script was completed successfully.");
@@ -101,7 +109,7 @@ sub requestToBeAFriend {
 
 ##@method searchNickID()
 sub searchNickID {
-    $usersList = $bot->requestUsersList();
+    $usersList = $botList->requestUsersList();
     return if !defined $usersList;
     my $user_ref = $usersList->all();
 
@@ -135,7 +143,7 @@ sub searchNickID {
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref
-        = $CLI->getOpts( 'enableLoop' => 1, 'argumentative' => 'f:X:' );
+        = $CLI->getOpts( 'enableLoop' => 1, 'argumentative' => 'f:X:Z:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -168,20 +176,23 @@ sub init {
                     . ' (-s option)' );
         }
     }
+    $zipList = $opt_ref->{'Z'} if exists $opt_ref->{'Z'};
 }
 
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
     print STDOUT $Script . ', Request loop be a friend.' . "\n";
-    $CLI->printLineOfArgs('-f nicklist -X targetetSex');
+    $CLI->printLineOfArgs('-f nicklist -X targetetSex -Z zipList');
     $CLI->HELP();
     print <<ENDTXT;
   -f nicklist       Nicklist that are targeted. (i.e. plain-text/nicknames-to-filter.txt)  
   -X targetetSex    Sex that is targeted  M for man or W for women
+  -Z zipList
   
 Example:
 ./x-requests-to-be-a-friend.pl -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W
+./x-requests-to-be-a-friend.pl -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W -z 00000 -Z 75001
 
 ENDTXT
     exit 0;
@@ -190,6 +201,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-03-06');
+    $CLI->VERSION_MESSAGE('2014-03-15');
 }
 
