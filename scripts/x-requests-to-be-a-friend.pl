@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2014-03-01
-# @date 2014-03-15
+# @date 2014-03-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -66,7 +66,7 @@ sub run {
             searchNickID();
             requestToBeAFriend();
             if ( $count % 160 == 39 ) {
-                $bot->requestCheckIfUsersNotSeenAreOffline();
+                $botList->requestCheckIfUsersNotSeenAreOffline();
             }
             debug(    'Delays the program execution for '
                     . $CLI->delay()
@@ -201,6 +201,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-03-15');
+    $CLI->VERSION_MESSAGE('2014-03-16');
 }
 
