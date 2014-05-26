@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2013-21-07
+# @date 2014-05-26 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -211,11 +211,11 @@ sub writeLog {
     my ($path, $pathname) = getLogPathname($dirname, $Script, $myTime);
     my @dt       = localtime($myTime);
     my $fh = IO::File->new( $pathname, 'a' );
-    confess error("open($pathname) was failed: $!")
+    confess Cocoweb::error("open($pathname) was failed: $!")
       if !defined $fh;
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
     print $fh $hourStr . ' ' . $message . "\n"; 
-    confess error("close() return $!") if !$fh->close();
+    confess Cocoweb::error("close() return $!") if !$fh->close();
 }
 
 1;
