@@ -22,6 +22,7 @@ AGARIK SA
 Agence France Presse
 Agence France-Presse
 AGENCE SUSI
+Aic Network
 Air France
 Ajova Network
 AKADO-Stolitsa JSC
@@ -60,8 +61,8 @@ Association de Gestion Ecole Centrale Delectroniqu
 association KAZAR
 Association KAZAR
 Association ORT France
-ASTRIUM SAS
 Astrium SAS
+ASTRIUM SAS
 Atlantic Broadband
 Atlas Cable { Wireless
 Atos Origin Infogerance
@@ -79,8 +80,8 @@ Avenir Telematique S.a.s.
 Avir Telecom Sarl
 AXA-TECH
 Axinet Communication sarl
-AXIONE S.A.S.
 Axione S.a.s.
+AXIONE S.A.S.
 Azuria
 B2B2C
 B3G Telecom
@@ -310,6 +311,7 @@ EMTEL MAURITIUS
 ENSTA - Ecole Nationale Superieure de Techniques A
 ENSTA Paristech - Ecole Nationale Superieure des T
 Entreprise des Postes et Telecommunications
+envia Tel GmbH
 Eonix Corporation
 EPI-PROCOTECH
 EPITA Ecole Pour lInformatique et
@@ -328,6 +330,7 @@ Etisalat Afghanistan
 Etisalat Benin SA
 euNetworks Services GmbH
 Euphony Benelux n.v.
+Eurafibre SARL
 Euro Information
 Europe Online Networks S.A.
 European Parliament
@@ -335,6 +338,7 @@ European Space Agency (ESA)
 EuroTransit GmbH
 Euskaltel S.A.
 Eutelia S.p.A.
+Eutelsat S.A.
 Evangelische Landeskirche Baden-Wuerttemberg
 EVSL
 Exatel S.A.
@@ -394,6 +398,7 @@ H.R.Net SARL
 Hager Electro GmbH, Blieskastel
 Haut-Rhin Telecom
 Havas Informatique
+HAVAS S.A.
 Headquarters, USAISC
 HELIANTIS SAS
 Heliantis SAS
@@ -505,6 +510,7 @@ KPN Group Belgium NV/SA
 Kujtesa Net Sh.p.k.
 Kuwait Industrial Bank KSC
 kwaoo.com EURL
+La Poste SA
 Lagardere Active
 Lanestel Lanestel Sarl
 Lanet Network Ltd.
@@ -512,8 +518,8 @@ LaSer Contact
 LASER CONTACT
 Le118000 118000 SAS
 LeaseWeb B.V.
-LEONIX TELECOM EURL
 Leonix Telecom Eurl
+LEONIX TELECOM EURL
 LETS GOWEX, S.A.
 Level 3 Communications
 LIAZO SARL
@@ -541,8 +547,8 @@ MACS-THD
 MAIRIE
 MANA Internet Service Provider
 MANA Internet Service Provider in French Polynesia
-Mana S.A.
 MANA S.A.
+Mana S.A.
 MANA, Internet service Provider in French Polynesi
 MANCHE TELECOM
 Manutan International S.A.
@@ -627,6 +633,7 @@ Observatoire de Paris
 OC3 Networks { Web Solutions, LLC
 Oceanet Technology SAS
 Octopuce
+Octopuce s.a.r.l.
 OECD - Organisation for Economical Co-Operation an
 Office des Poste et Telecommunications (OPT)
 Office des Postes et des Telecomm. de Nouvelle Cal
@@ -677,6 +684,7 @@ Ovh Systems
 OVH Telecom
 Ownit AB
 OXEVA SAS
+Oxymium
 Ozone
 Ozone SAS
 P.J.Safarik University in Kosice
@@ -818,6 +826,7 @@ SIPEO SAS
 SITA-Societe Internationale de Telecommunications
 site principal
 Sivit by Nerim servers subnet
+Skylogic France S.A.S.
 SKYLOGIC S.P.A.
 Skynet
 SkyVision Holdings Ltd.
@@ -874,8 +883,8 @@ Telconet S.A
 Tele Danmark
 Telebec
 TELEBUCARAMANGA S.A. E.S.P.
-Telecitygroup International Limited
 TELECITYGROUP INTERNATIONAL LIMITED
+Telecitygroup International Limited
 Telecom Italia
 Telecom Italia Mobile
 Telecom Italia Wireline Services
@@ -980,8 +989,8 @@ Videotron Ltee
 Videotron Telecom Ltee
 VietNam Post and Telecom Corporation
 VIF Internet
-Ville De Paris
 VILLE DE PARIS
+Ville De Paris
 Virgin Media
 Visafone Communications Limited
 Visual Online S.A.
