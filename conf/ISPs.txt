@@ -167,6 +167,7 @@ chinanet fujian province network
 CHINANET ningxia province network
 Chinguitel SA
 Chmurtz SaRL
+Choopa.com
 CHTD, Chunghwa Telecom Co., Ltd.
 CIENUM SAS
 CINECA
@@ -216,6 +217,7 @@ Cosmonova LLC
 Covage Networks Sasu
 Covage Services
 CPRO Informatique SAS
+Credit Cooperatif
 Creolink Communications
 Critical Case s.r.l
 Cronyx Plus Ltd.
@@ -319,6 +321,7 @@ Epitech
 EPM Telecomunicaciones S.A. E.S.P.
 Equant
 Equation SA
+Equinix France SAS
 Escp Europe
 Essent Kabelcom B.V. B.V.
 Essilor International
@@ -375,6 +378,7 @@ Generix S.A.
 GENERIX S.A.
 GGA Maur
 Ghana Telecom
+GHOSTnet GmbH
 Gie Gitoyen
 Globacom Ltd
 Global Access Resources
@@ -384,6 +388,7 @@ Global IDC and Backbone of Trend Micro
 GLOBAL NET-INC COMMUNICATIONS
 GloboTech Communications
 Golden Lines Cable
+Google
 Gravity Internet Ltd
 Green Connection AG
 Groupe ECRITEL France
@@ -497,6 +502,7 @@ Kabel Baden-Wuerttemberg GmbH { Co. KG
 Kabel Deutschland Breitband Services GmbH
 Kablovska Televizija HS d.o.o Sarajevo
 Kaercher GmbH
+Kaia Global Networks Ltd.
 KARAVEL SAS (ex. Groupe Switch)
 Keyweb AG
 KEYYO SA
@@ -676,6 +682,7 @@ Orange Home UK
 Orange Madagascar
 Orange Mali SA
 Orange-CA
+Organisation for Economic Co-operation and Develop
 Organization of the Petroleum Exporting Countries
 OTEnet S.A.
 Outremer Telecom
@@ -721,6 +728,7 @@ Qimonda AG
 QoS Tecnologia e Sistemas Ltda.
 QSC AG
 Quarea EURL
+Queen Mary and Westfield College, University of Lo
 Qwest Communications
 RapidSwitch Ltd
 RAYA Telecom
@@ -769,6 +777,7 @@ Safe Host SA
 SANEF (Societe des Autoroutes du Nord et de lEst
 Sanofi Aventis group SA
 Santrex Internet Services
+SAP America
 SARL MWSP
 SAS Alsatis
 SAS ALSATIS
@@ -777,6 +786,7 @@ SAS HERAULT NETWORKS
 SAS INSTITUTE
 SAS INTERPC
 SAS Neo Services
+SAS Solutions Informatiques Services
 SaskTel
 SaudiNet, Saudi Telecom Company
 SAVEHO SARL
@@ -831,6 +841,7 @@ SKYLOGIC S.P.A.
 Skynet
 SkyVision Holdings Ltd.
 SM Etude Devel Sces Reseaux Com
+Smartjog SAS
 Societe Air France S.A.
 Societe Atlantique de Telephonie et Communication
 Societe de developpement Informatique
@@ -877,6 +888,7 @@ TATA Communications (Canada)ULC
 TE Data
 Techcrea Solutions Sarl
 Technion Network
+Technipnet Technipnet SAS
 Technology Services Group Limited
 Teikhos
 Telconet S.A
@@ -924,6 +936,7 @@ The Pennsylvania State University
 The Procter and Gamble Company
 THEPLANET.COM INTERNET SERVICES
 Three
+TICSA
 Tiscali France
 Tiscali SpA
 TMN - Telecomunicacoes Moveis Nacionais SA
