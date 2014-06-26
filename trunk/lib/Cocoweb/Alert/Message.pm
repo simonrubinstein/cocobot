@@ -1,10 +1,10 @@
 # @brief
 # @created 2013-01-19
-# @date 2013-11-25
+# @date 2014-06-26 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -30,7 +30,6 @@ use strict;
 use warnings;
 use Carp;
 use Data::Dumper;
-use Net::XMPP;
 use Cocoweb;
 use Cocoweb::File;
 use Cocoweb::Config;
