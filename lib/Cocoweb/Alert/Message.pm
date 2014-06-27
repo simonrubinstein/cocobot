@@ -1,6 +1,6 @@
 # @brief
 # @created 2013-01-19
-# @date 2014-06-26 
+# @date 2014-06-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -54,7 +54,7 @@ sub init {
 #@param integer $alarmCount The alarm number from 1 to n
 #@param arrayref $users_ref List of users to process
 sub process {
-    my ( $self, $bot, $alarmCount, $users_ref ) = @_;
+    my ( $self, $bot, $alarmCount, $users_ref, $isDryRun ) = @_;
     foreach my $user (@$users_ref) {
         $user->messageSentTime(0);
         my $write_ref = $self->write();
@@ -77,15 +77,19 @@ sub process {
             else {
                 $str = $write;
             }
-            $bot->requestWriteMessage( $user, $str );
-            writeLog(
-                'alert-messages',
-                sprintf(
-                    "%-19s => %-19s %-4s $str",
-                    $bot->user()->mynickname(), $user->mynickname(),
-                    $user->code()
-                )
+            my $logStr = sprintf(
+                "%-19s => %-19s %-4s $str",
+                $bot->user()->mynickname(),
+                $user->mynickname(), $user->code()
             );
+
+            if ($isDryRun) {
+                info($logStr);
+            }
+            else {
+                $bot->requestWriteMessage( $user, $str );
+                writeLog( 'alert-messages', $logStr );
+            }
         }
     }
 }
