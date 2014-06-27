@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-12-09
-# @date 2013-10-01
+# @date 2014-06-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision$
 # Date: $Date$
@@ -40,8 +40,8 @@ __PACKAGE__->attributes( 'config', 'alertsSender', 'alarmCount',
 ##@method object init($class, $instance)
 sub init {
     my ( $class, $instance ) = @_;
-    my $config =
-      Cocoweb::Config->instance()->getConfigFile( 'alert.conf', 'File' );
+    my $config
+        = Cocoweb::Config->instance()->getConfigFile( 'alert.conf', 'File' );
     $instance->config($config);
     $instance->alertsSender( {} );
     $instance->alarmCount(0);
@@ -83,8 +83,9 @@ sub getAlerts {
     }
     if ( defined $enableAlerts_ref ) {
         debug( 'number of alerts: ' . scalar(@$enableAlerts_ref) . '.' );
-    } else {
-        debug( 'number of alerts: 0.' );
+    }
+    else {
+        debug('number of alerts: 0.');
     }
     return $enableAlerts_ref;
 }
@@ -92,7 +93,9 @@ sub getAlerts {
 ##@method void process($usersList)
 #param object $usersList A Cocoweb::User::List object
 sub process {
-    my ( $self, $bot, $usersList ) = @_;
+    my ( $self, $bot, $usersList, $isDryRun ) = @_;
+    $isDryRun = 0 if !defined $isDryRun;
+    info("Alert: dryrun enabled") if $isDryRun;
 
     my $enableAlerts_ref = $self->getAlerts();
 
@@ -135,7 +138,7 @@ sub process {
         }
         eval {
             $alertSender->process( $bot, $alarmCount,
-                $allAlert_ref->{'users'} );
+                $allAlert_ref->{'users'}, $isDryRun );
         };
         if ($@) {
             my $errStr = 'process() was failed';
@@ -157,12 +160,12 @@ sub getTransport {
     my $alertsSender_ref = $self->alertsSender();
     my $alertKey         = $transport . '::' . $recipient;
     return $alertsSender_ref->{$alertKey}
-      if exists $alertsSender_ref->{$alertKey};
+        if exists $alertsSender_ref->{$alertKey};
     my $config         = $self->config();
     my $transports_ref = $config->getArray($transport);
     foreach my $transport_ref (@$transports_ref) {
-        my $transportConf =
-          Cocoweb::Config::Hash->new( 'hash' => $transport_ref );
+        my $transportConf
+            = Cocoweb::Config::Hash->new( 'hash' => $transport_ref );
         next if $transportConf->getString('name') ne $recipient;
         require 'Cocoweb/Alert/' . $transport . '.pm';
         my $class = 'Cocoweb::Alert::' . $transport;
@@ -181,10 +184,10 @@ sub getTransport {
 sub getSub {
     my ( $self, $condition ) = @_;
     $condition =~ s{\$([a-zA-z0-9]+)}{\$user\->{$1}}g;
-    $condition =
-        '$function = sub { my ($user) = @_; if ( '
-      . $condition
-      . ' ) { return 1; } else { return 0; } }';
+    $condition
+        = '$function = sub { my ($user) = @_; if ( '
+        . $condition
+        . ' ) { return 1; } else { return 0; } }';
     my $function;
     eval $condition;
     if ($@) {

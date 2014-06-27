@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-12-10
-# @date 2013-01-20
+# @date 2014-06-27 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -67,38 +67,43 @@ sub init {
 #@param integer $alarmCount The alarm number from 1 to n
 #@param arrayref $users_ref List of users to process
 sub process {
-    my ( $self, $bot, $alarmCount, $users_ref ) = @_;
+    my ( $self, $bot, $alarmCount, $users_ref, $isDryRun ) = @_;
     my $body  = "[PID: $$] New alert $alarmCount: ' . \n";
     my $count = 0;
     foreach my $user (@$users_ref) {
         $count++;
-        $body .=
-            $user->mynickname() . '; ' . 'age: '
-          . $user->myage() . " " . 'sex: '
-          . $user->mysex() . " "
-          . $user->ISP() . "; "
-          . $user->citydio() . "; "
-          . $user->town() . "\n";
+        $body
+            .= $user->mynickname() . '; ' . 'age: '
+            . $user->myage() . " " . 'sex: '
+            . $user->mysex() . " "
+            . $user->ISP() . "; "
+            . $user->citydio() . "; "
+            . $user->town() . "\n";
     }
     $body .= $count . ' nickname(s)' . "\n\n";
     debug($body);
     my $timeout = 10;
-    eval {
-        local $SIG{ALRM} = sub { die "alarm\n" };
-        alarm $timeout;
-        $self->messageSend($body);
-        alarm 0;
-    };
-    if ($@) {
-        if ( $@ eq "alarm\n" ) {
-            error(  'timeout after ' 
-                  . $timeout
-                  . ' seconds. ('
-                  . ref($self)
-                  . ')' );
-        }
-        else {
-            error($@);
+    if ($isDryRun) {
+        info($body);
+    }
+    else {
+        eval {
+            local $SIG{ALRM} = sub { die "alarm\n" };
+            alarm $timeout;
+            $self->messageSend($body);
+            alarm 0;
+        };
+        if ($@) {
+            if ( $@ eq "alarm\n" ) {
+                error(    'timeout after '
+                        . $timeout
+                        . ' seconds. ('
+                        . ref($self)
+                        . ')' );
+            }
+            else {
+                error($@);
+            }
         }
     }
 }
@@ -123,7 +128,8 @@ sub connectionProcess {
 
     # change hostname
     my $sid = $connection->{SESSION}->{id};
-    $connection->{STREAM}->{SIDS}->{$sid}->{hostname} = $self->componentname();
+    $connection->{STREAM}->{SIDS}->{$sid}->{hostname}
+        = $self->componentname();
 
     # authenticate
     debug( "Authenticate " . $self->username() );
@@ -134,7 +140,7 @@ sub connectionProcess {
     );
 
     croak error( 'Authorization failed:' . $result[0] . '-' . $result[1] )
-      if $result[0] ne 'ok';
+        if $result[0] ne 'ok';
 
     debug('PresenceSend()');
     $connection->PresenceSend( 'show' => 'available' );
