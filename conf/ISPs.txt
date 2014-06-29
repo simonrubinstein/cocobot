@@ -27,6 +27,7 @@ Air France
 Ajova Network
 AKADO-Stolitsa JSC
 AL-HADATHEH LIL-ITISALAT WA AL-TECHNOLOGIA CO
+Alcatel-Lucent
 Alice DSL
 Alionis
 Alliance Connectic SAS
@@ -727,6 +728,7 @@ Publicis-technology
 Qimonda AG
 QoS Tecnologia e Sistemas Ltda.
 QSC AG
+Qual.it S.a.s.
 Quarea EURL
 Queen Mary and Westfield College, University of Lo
 Qwest Communications
@@ -838,6 +840,7 @@ site principal
 Sivit by Nerim servers subnet
 Skylogic France S.A.S.
 SKYLOGIC S.P.A.
+Skylogic S.p.A.
 Skynet
 SkyVision Holdings Ltd.
 SM Etude Devel Sces Reseaux Com

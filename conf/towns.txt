@@ -185,6 +185,7 @@ FR- Nanterre
 FR- Neuilly-sur-seine
 FR- Plessis-robinson
 FR- Puteaux
+FR- Rueil
 FR- Rueil-malmaison
 FR- Saint-cloud
 FR- Sceaux
@@ -227,6 +228,7 @@ FR- Noisy-le-grand
 FR- Pantin
 FR- Pavillons-sous-bois
 FR- Pierrefitte-sur-seine
+FR- Pre Saint Gervais 
 FR- Romainville
 FR- Rosny-sous-bois
 FR- Saint Denis
@@ -8408,6 +8410,7 @@ FR- Louvignies-quesnoy
 FR- Louvroil
 FR- Lynde
 FR- Maing
+FR- Madeleine
 FR- Marchiennes
 FR- Marcq-en-baroeul
 FR- Mardyck

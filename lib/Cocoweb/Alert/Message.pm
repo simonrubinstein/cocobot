@@ -33,6 +33,7 @@ use Data::Dumper;
 use Cocoweb;
 use Cocoweb::File;
 use Cocoweb::Config;
+use Cocoweb::Alert::MessageVar;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes( 'name', 'write' );
@@ -77,6 +78,8 @@ sub process {
             else {
                 $str = $write;
             }
+            my $var = Cocoweb::Alert::MessageVar->instance();
+            $str = $var->substitution( $str, $user );
             my $logStr = sprintf(
                 "%-19s => %-19s %-4s $str",
                 $bot->user()->mynickname(),
