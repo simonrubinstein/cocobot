@@ -226,3 +226,4 @@ StateOfTheArt
 SainteVerge
 NemesisZeWarlock
 MaleHonnete
+Fantomas
