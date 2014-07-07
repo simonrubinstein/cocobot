@@ -782,6 +782,7 @@ FR- Cernay-la-ville
 FR- Chambourcy
 FR- Chanteloup-les-vignes
 FR- Chapet
+FR- Chateaufort
 FR- Chatou
 FR- Chavenay
 FR- Chevreuse
