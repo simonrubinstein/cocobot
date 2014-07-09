@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @brief Get the number of days left of Premium subscription
 # @created 2012-03-03
-# @date 2012-04-07
+# @date 2014-08-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -46,7 +46,7 @@ sub run {
     $bot->requestAuthentication();
     $bot->requestUserInfuz();
     $bot->show();
-    message( $bot->requestConnectedUserInfo() );
+    $bot->requestConnectedUserInfo();
     info("The $Bin script was completed successfully.");
 }
 
@@ -73,6 +73,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-04-07');
+    $CLI->VERSION_MESSAGE('2014-08-09');
 }
 

@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2014-01-26
+# @date 2014-07-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -122,14 +122,18 @@ sub process1Int {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         debug("bud: $bud");
 
+        #"You must have an older profile to add friends"
+        #"You have n days before expiration of your premium membership"
         if ( $bud == 444 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
-            return $urlu;
+            message($urlu);
         }
 
         if ( $bud == 447 or $bud == 445 ) {
-            die error( substr( $urlo, 5 ) );
+            my $urlu = $request->convert()
+                ->transformix( substr( $urlo, 5 ), -1, 0 );
+            die error( $urlu );
         }
 
         # Retrieves information about an user, for Premium subscribers only
@@ -294,6 +298,12 @@ sub process1Int {
                     . ' user(s) have disconnected: '
                     . $disconnectedUsers );
         }
+    }
+
+
+    if ( $olko == 94 ) {
+        info('This user requires that you be authenticated.');
+        $olko = 967;
     }
 
     # Retrieves the list of pseudonyms

@@ -345,6 +345,7 @@ Eutelia S.p.A.
 Eutelsat S.A.
 Evangelische Landeskirche Baden-Wuerttemberg
 EVSL
+Eweka Internet Services B.V.
 Exatel S.A.
 Fast Telecommunications Company W.L.L.
 Fastweb
@@ -477,6 +478,7 @@ IP bloc for individual xDSL access (PPP clients)
 IP Telecom
 IP worldcom SA
 IPGarde SAS
+IPLine SARL
 IPTelligent LLC
 IPv4 network of AS250.net
 IQ Networks
@@ -706,6 +708,7 @@ Perfect Communication Sweden AB
 Pharmagest Interactive SA
 Phibee Telecom SARL
 Phpnet France Sarl
+Pictime SAS
 Pierre et Vacances network
 PLANET TECHNOLOGIES
 PLDTSPCHME60i01DHCP
@@ -784,6 +787,7 @@ SARL MWSP
 SAS Alsatis
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
+SAS Evea-Group
 SAS HERAULT NETWORKS
 SAS INSTITUTE
 SAS INTERPC
@@ -940,6 +944,7 @@ The Procter and Gamble Company
 THEPLANET.COM INTERNET SERVICES
 Three
 TICSA
+Tinet SpA
 Tiscali France
 Tiscali SpA
 TMN - Telecomunicacoes Moveis Nacionais SA
@@ -950,6 +955,7 @@ Toile Informatique GREnobloise
 TOT public company limited
 TPG Internet Pty Ltd.
 Trade company.
+Transatel SA
 TREND MICRO INCORPORATED
 TRINAPS
 Trust Info SARL
