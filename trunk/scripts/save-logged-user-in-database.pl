@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 #@brief This script saves all users connected to the database
 #@created 2012-03-09
-# @date 2014-02-14
+# @date 2014-07-19
 #@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -78,6 +78,7 @@ AUTH:
         }
     }
     $bot->getMyInfuz();
+    $bot->requestConnectedUserInfo();
 
     # return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
@@ -160,6 +161,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-02-14');
+    $CLI->VERSION_MESSAGE('2014-07-09');
 }
 
