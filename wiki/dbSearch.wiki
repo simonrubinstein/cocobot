@@ -2,7 +2,7 @@
 
 = Introduction = 
 
-Cette page donne quelques information sur le script « db-search.pl ».
+Cette page donne quelques informations sur le script « db-search.pl ». Ce script est un des scripts les plus utiles couplé au [saveLoggedUserInDatabase « save-logged-user-in-database.pl »].
 
 Le script « db-search.pl » permet de lancer des recherches sur les utilisateurs enregistrés dans la bases de données.
 
