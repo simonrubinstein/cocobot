@@ -6,7 +6,7 @@ Cette page donne quelques informations sur le script « db-search.pl ». Ce scri
 
 Le script « db-search.pl » permet de lancer des recherches sur les connexions d'utilisateurs enregistrés dans la bases de données.
 
-La base de données est constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »], ce script est lancé toutes les minutes met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
+Pour que le script « db-search.pl » fonctionne, la base de données doit être constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »], ce script est normalement lancé toutes les minutes et met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
 
 == Options du script ==
 
@@ -45,12 +45,12 @@ db-search.pl -c WcL,PXd,uyI,0fN,rs6
 
 Affiche les connexions ayant un pseudonyme commençant par le nom « BetterDays ». Attention les noms sont sensibles à la case.
 {{{
-db-search.pl -l BetterDays%
+db-search.pl -l !BetterDays%
 }}}
 
 Affiche les connexions avec les pseudonymes « BlueVelvet » et « Babycat » :
 {{{
-db-search.pl -l BlueVelvet,Babycat
+db-search.pl -l !BlueVelvet,Babycat
 }}}
 
 Affiche les connexions ayant été faites puis les points « FR- Aulnay-sous-bois » et « FR- Sevran » avec un pseudonyme femme sans avatar et avec le FAI « Free SAS » :
