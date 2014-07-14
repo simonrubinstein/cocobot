@@ -1,0 +1,34 @@
+#summary Utilisation du script db-search.pl
+
+= Introduction = 
+
+Cette page donne quelques information sur le script « db-search.pl ».
+
+Le script « db-search.pl » permet de lancer des recherches sur les utilisateurs enregistrés dans la bases de données.
+
+La base de données est constamment mis à jour par le script « save-logged-user-in-database.pl » qui est lancé toutes les minutes. Dès qu'un nouvel utilisateur se connecte où se déconnecte la base de données est mise à jour en conséquence.
+
+== Options du script ==
+
+{{{
+ db-search.pl [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O -I -P -F 1]
+  -l logins   Un pseudonyme ou une suite de pseudonymes séparés par une virgule
+              (exemples : -l RomeoKnight or -l RomeoKnight,Delta,UncleTom) 
+  -c codes    Un code de vote ou une suite de codes de votes séparés par une virgule
+              (exemples : -c cZj ou -c cZj,23m,Wcl,PXd) 
+  -t towns    Un ou des points de connexions séparés par une virgule 
+              (exemples : -t "FR- Paris" ou -t "FR- Aulnay-sous-bois","FR- Sevran"
+  -i ISPs     Un ou des noms de FAI séparés par une virgule
+              (exemples : -i "Free SAS" or -i "Orange","Free SAS")
+  -s sex      Genre : 2 : femme sans avatar ; 7 : femme avec un avatar
+                      1 : homme sans avatar ; 6 : homme avec un avatar
+  -y age      Âge
+  -O          Utilisateurs connectés actuellement.
+  -I          Uniquement en Îles-de-France. (basé sur le champ towns)
+  -P          Pseudo qui ont rentré un code postal de la ville de Paris uniquement.
+  -v          Mode verbeux
+  -d          Mode debug
+  -f filters  Active un fichier filtre
+  -F 1        Active un filtre spécial
+  -H          Affiche le résultat en HTML
+}}}
