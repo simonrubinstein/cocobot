@@ -119,13 +119,13 @@ Ces trois points ne donnent pas une preuve formelle, mais de fortes présomption
 
 Cependant si on regarde la valeur du nickID « 237380 » du 24 juin elle est identique pour les pseudos hommes « !Kimenik » et « !SuceBeat » et le pseudo femme « !DayOff ». Nous avons la même chose pour le nickID « 320648 » du 1er juillet qui est partagé le pseudo homme « !Alive » et le pseudo femme « !SuperNan ».
 
-Nous avons de fortes chances que c'est un homme se faisant passer pour une femme. Ce qui a été confirmé par l'utilisateur après lui avoir fourni son historique de connexion.
+Nous avons de fortes chances que c'est un homme se faisant passer pour une femme. Ce qui a été confirmé, difficilement, par l'utilisateur après lui avoir fourni son historique de connexion.
 
 === Exemple 2 : Pseudonyme femme « chaude12 » ===
 
 
 Le pseudonyme femme « chaude12 » avec le code de votre « HgZ  » était connecté sur « Coco.fr » :
-<code>
+<code language="text">
 ./db-search.pl -c QVa
 !-----------------------------------------------------------------------------------------------------------------------------!
 ! nickname      ! nickID ! ISP ! town     ! age ! sex ! city        ! creation_date  ! logout         ! update_date    ! code ! 
@@ -147,11 +147,43 @@ Le pseudonyme femme « chaude12 » avec le code de votre « HgZ  » était conne
 </code>
 
 
+La première connexion du pseudo « lala0 » semble être un autre utilisateur. 
+
+Par contre pour les connexions suivantes c'est le même utilisateur, le FAI, le point de connexion, le code postal et même l'âge correspondent. Le pseudonyme est toujours suffixé de « 12 » ce qui donne un indice de plus.
+
+Enfin le nickID « 107958 » sert pour le pseudo « Meccool12 » et « chaude12 » ce qui ne laisse aucun doute sur le sexe de l'utilisateur.
 
 
+=== Exemple 3 : Pseudonyme femme « LittleBoat » ===
 
+Le pseudonyme femme « LittleBoat » avec le code de votre « 7FH  » était connecté sur « Coco.fr ». Une seule référence à la connexion en cours. Mais la commande « ./db-search.pl -c LittleBoat » retourne six connexions avec les codes de votes : « 7FH », « EoF », « ZvF », « Xti » et « fho ».
 
-
-
+<code language="text">
+./db-search.pl -c fho,Xti,ZvF,EoF,7FH
+!--------------------------------------------------------------------------------------------------------------------------------------!
+! nickname   ! nickID ! ISP             ! town     ! age ! sex ! city        ! creation_date  ! logout         ! update_date    ! code !
+!--------------------------------------------------------------------------------------------------------------------------------------!
+! ThomasMore ! 122704 ! SFR             ! FR-      ! 40  ! 1   ! 75015 Paris ! 06-20 08:08:11 ! 06-20 09:29:40 ! 06-20 09:09:11 ! fho  !
+! LittleBoat ! 122704 ! SFR             ! FR-      ! 18  ! 2   ! 75015 Paris ! 06-20 10:22:42 ! -              ! 06-20 11:27:41 ! fho  !
+! LittleBoat ! 199368 ! SFR             ! FR-      ! 18  ! 7   ! 75005 Paris ! 06-23 07:39:12 ! 06-23 08:22:40 ! 06-23 08:22:11 ! Xti  !
+! LittleBoat ! 199368 ! SFR             ! FR-      ! 18  ! 7   ! 75005 Paris ! 06-23 08:28:41 ! 06-23 08:31:40 ! 06-23 08:31:11 ! Xti  !
+! david8     ! 199368 ! SFR             ! FR-      ! 25  ! 6   ! 75009 Paris ! 06-23 11:57:12 ! 06-23 11:57:41 ! 06-23 11:57:12 ! Xti  !
+! david3     ! 199368 ! SFR             ! FR-      ! 25  ! 6   ! 75009 Paris ! 06-23 11:57:41 ! 06-23 12:11:11 ! 06-23 12:08:43 ! Xti  !
+! david2     ! 199368 ! SFR             ! FR-      ! 25  ! 6   ! 75009 Paris ! 06-23 12:11:11 ! 06-23 12:12:04 ! 06-23 12:11:11 ! Xti  !
+! david9     ! 199368 ! SFR             ! FR-      ! 25  ! 6   ! 75009 Paris ! 06-23 12:12:04 ! 06-23 12:13:11 ! 06-23 12:12:43 ! Xti  !
+! david5     ! 199368 ! SFR             ! FR-      ! 25  ! 6   ! 75009 Paris ! 06-23 12:13:11 ! -              ! 06-23 12:13:11 ! Xti  !
+! LittleBoat ! 107462 ! SFR             ! FR-      ! 18  ! 2   ! 75015 Paris ! 06-23 15:57:44 ! 06-23 16:00:03 ! 06-23 15:59:41 ! ZvF  !
+! LittleBoat ! 230918 ! SFR             ! FR-      ! 18  ! 2   ! 75015 Paris ! 06-25 17:56:02 ! 06-25 17:57:41 ! 06-25 17:57:11 ! EoF  !
+! LittleBoat ! 126262 ! SFR             ! Paris    ! 18  ! 2   ! 75001 Paris ! 07-07 08:46:03 ! -              ! 07-07 10:11:04 ! 7FH  !
+!--------------------------------------------------------------------------------------------------------------------------------------!
+</pre>
  
+Nous avons à faire à une personne qui utilise la navigation privée, donc plus difficilement traçable car son code de vote change, le cookie « samedi » étant supprimé quand il quitte son navigateur web.
+
+Cependant le 20 juin le nickID « 122704 » est utilisé pour le pseudo homme « !ThomasMore » et le pseudo femme « !LittleBoat ». Le 23 juin le nickID « 199368 » est utilisé pour le pseudo homme « !LittleBoat » et le pseudo femme « !LittleBoat »
+
+
+
+
+
 
