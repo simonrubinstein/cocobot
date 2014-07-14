@@ -68,7 +68,7 @@ Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.f
 db-search.pl -O -I -s 2,7 -f plain-text/nicknames-to-filter.txt
 }}}
 
-Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France et ayant entrés un code postal de Paris en ignorant tous les pseudonymes contenu dans le fichier « plain-text/nicknames-to-filter.txt » et « plain-text/nicknames-to-filter-2.txt », ignorant aussi les pseudonymes commançant p :
+Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France et ayant entrés un code postal de Paris en ignorant tous les pseudonymes contenu dans le fichier « plain-text/nicknames-to-filter.txt » et « plain-text/nicknames-to-filter-2.txt », ignorant aussi les pseudonymes commançant par un caractère en minuscule :
 {{{
 db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknames-to-filter-2.txt -y 30 -F 1
 }}}
