@@ -6,7 +6,7 @@ Cette page donne quelques informations sur le script « db-search.pl ». Ce scri
 
 Le script « db-search.pl » permet de lancer des recherches sur les connexions d'utilisateurs enregistrés dans la bases de données.
 
-Pour que le script « db-search.pl » fonctionne, la base de données doit être constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »], ce script est normalement lancé toutes les minutes et met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
+Pour que le script « db-search.pl » fonctionne, la base de données doit être constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »], ce dernier est normalement lancé toutes les minutes et met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
 
 == Options du script ==
 
