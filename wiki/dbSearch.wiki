@@ -176,11 +176,13 @@ Le pseudonyme femme « LittleBoat » avec le code de votre « 7FH  » était con
 ! LittleBoat ! 230918 ! SFR             ! FR-      ! 18  ! 2   ! 75015 Paris ! 06-25 17:56:02 ! 06-25 17:57:41 ! 06-25 17:57:11 ! EoF  !
 ! LittleBoat ! 126262 ! SFR             ! Paris    ! 18  ! 2   ! 75001 Paris ! 07-07 08:46:03 ! -              ! 07-07 10:11:04 ! 7FH  !
 !--------------------------------------------------------------------------------------------------------------------------------------!
-</pre>
+</code>
  
-Nous avons à faire à une personne qui utilise la navigation privée, donc plus difficilement traçable car son code de vote change, le cookie « samedi » étant supprimé quand il quitte son navigateur web.
+Nous avons à faire à une personne qui utilise la navigation privée, donc plus difficilement traçable puisque son code de vote change, le cookie « samedi » étant supprimé quand il quitte son navigateur web.
 
-Cependant le 20 juin le nickID « 122704 » est utilisé pour le pseudo homme « !ThomasMore » et le pseudo femme « !LittleBoat ». Le 23 juin le nickID « 199368 » est utilisé pour le pseudo homme « !LittleBoat » et le pseudo femme « !LittleBoat »
+Cependant le 20 juin le nickID « 122704 » est utilisé pour le pseudo homme « !ThomasMore » et le pseudo femme « !LittleBoat ». Le 23 juin le nickID « 199368 » est utilisé pour le pseudo homme « !LittleBoat » et le pseudo femme « !david8 ».
+
+Après avoir contacté l'utilisateur en question ce dernier avoue être un homme bisexuel se faisant passer pour une jeune femme.
 
 
 
