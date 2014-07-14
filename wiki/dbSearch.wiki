@@ -6,7 +6,7 @@ Cette page donne quelques informations sur le script « db-search.pl ». Ce scri
 
 Le script « db-search.pl » permet de lancer des recherches sur les utilisateurs enregistrés dans la bases de données.
 
-La base de données est constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »] qui est lancé toutes les minutes met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
+La base de données est constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »], ce script est lancé toutes les minutes met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
 
 == Options du script ==
 
@@ -28,8 +28,10 @@ La base de données est constamment mis à jour par le [saveLoggedUserInDatabase
   -P          Pseudo qui ont rentré un code postal de la ville de Paris uniquement.
   -v          Mode verbeux
   -d          Mode debug
-  -f filters  Active un fichier filtre
-  -F 1        Active un filtre spécial
+  -f filters  Active un fichier filtre. 
+              Le fichier contient des noms de pseudonymes à ignorer.
+  -F 1        Active un filtre spécial. 
+              Affiche uniquement les pseudonymes commençant par un caractère majuscule.
   -H          Affiche le résultat en HTML
 }}}
 
@@ -66,9 +68,27 @@ Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.f
 db-search.pl -O -I -s 2,7 -f plain-text/nicknames-to-filter.txt
 }}}
 
+Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France et ayant entrés un code postal de Paris en ignorant tous les pseudonymes contenu dans le fichier « plain-text/nicknames-to-filter.txt » et « plain-text/nicknames-to-filter-2.txt », ignorant aussi les pseudonymes commançant p :
 {{{
 db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknames-to-filter-2.txt -y 30 -F 1
 }}}
+
+
+== Repérer les hommes se faisant passer pour des femmes ==
+
+Sur les Coco.fr un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemples les pseudonymes femmes « Jeunegay », « LolaTravestie » ou « MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
+
+Cependant il existe un nombre de pseudonyme femmes qui sont créés par des hommes dans le but de tromper les autres utilisateurs en se faisant passer pour une femme.
+
+Le script « db-search.pl » peut aider à débusquer ces homme malhonnêtes.
+
+
+
+
+
+
+ 
+
 
 
 
