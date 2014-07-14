@@ -2,11 +2,11 @@
 
 = Introduction = 
 
-Cette page donne quelques informations sur le script « db-search.pl ». Ce script est un des scripts les plus utiles couplé au [saveLoggedUserInDatabase « save-logged-user-in-database.pl »].
+Cette page donne quelques informations sur le script « db-search.pl ». Ce script est un des scripts les plus utiles couplé au [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »].
 
 Le script « db-search.pl » permet de lancer des recherches sur les utilisateurs enregistrés dans la bases de données.
 
-La base de données est constamment mis à jour par le script « save-logged-user-in-database.pl » qui est lancé toutes les minutes. Dès qu'un nouvel utilisateur se connecte où se déconnecte la base de données est mise à jour en conséquence.
+La base de données est constamment mis à jour par le [saveLoggedUserInDatabase script « save-logged-user-in-database.pl »] qui est lancé toutes les minutes. Dès qu'un nouvel utilisateur se connecte où se déconnecte la base de données est mise à jour en conséquence.
 
 == Options du script ==
 
