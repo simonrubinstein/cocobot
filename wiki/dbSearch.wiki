@@ -156,7 +156,7 @@ Enfin le nickID « 107958 » sert pour le pseudo « Meccool12 » et « chaude12 
 
 === Exemple 3 : Pseudonyme femme « LittleBoat » ===
 
-Le pseudonyme femme « LittleBoat » avec le code de votre « 7FH  » était connecté sur « Coco.fr ». Une seule référence à la connexion en cours. Mais la commande « ./db-search.pl -c LittleBoat » retourne six connexions avec les codes de votes : « 7FH », « EoF », « ZvF », « Xti » et « fho ».
+Le pseudonyme femme « !LittleBoat » avec le code de votre « 7FH  » était connecté sur « Coco.fr ». Une seule référence à la connexion en cours. Mais la commande « ./db-search.pl -l !LittleBoat » retourne six connexions avec les codes de votes : « 7FH », « EoF », « ZvF », « Xti » et « fho ».
 
 <code language="text">
 ./db-search.pl -c fho,Xti,ZvF,EoF,7FH
@@ -183,8 +183,6 @@ Nous avons à faire à une personne qui utilise la navigation privée, donc plus
 Cependant le 20 juin le nickID « 122704 » est utilisé pour le pseudo homme « !ThomasMore » et le pseudo femme « !LittleBoat ». Le 23 juin le nickID « 199368 » est utilisé pour le pseudo homme « !LittleBoat » et le pseudo femme « !david8 ».
 
 Après avoir contacté l'utilisateur en question ce dernier avoue être un homme bisexuel se faisant passer pour une jeune femme.
-
-
 
 
 
