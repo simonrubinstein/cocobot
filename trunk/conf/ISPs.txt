@@ -788,6 +788,7 @@ SAS Alsatis
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
 SAS Evea-Group
+SAS Herault Networks
 SAS HERAULT NETWORKS
 SAS INSTITUTE
 SAS INTERPC

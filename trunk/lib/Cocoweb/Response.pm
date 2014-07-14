@@ -127,6 +127,7 @@ sub process1Int {
         if ( $bud == 444 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
+            debug($urlu);
             message($urlu);
         }
 
@@ -302,7 +303,9 @@ sub process1Int {
 
 
     if ( $olko == 94 ) {
-        info('This user requires that you be authenticated.');
+        my $str = 'This user requires that you be authenticated.';
+        debug($str);
+        message($str);
         $olko = 967;
     }
 
