@@ -43,14 +43,14 @@ Affiche les connexions ayant les codes de votes WcL, PXd, uyI, 0fN, rs6 :
 db-search.pl -c WcL,PXd,uyI,0fN,rs6 
 }}}
 
-Affiche les connexions ayant un pseudonyme commençant par le nom « BetterDays ». Attention les noms sont sensibles à la case.
+Affiche les connexions ayant un pseudonyme commençant par le nom « !BetterDays ». Attention les noms sont sensibles à la case.
 {{{
-db-search.pl -l !BetterDays%
+db-search.pl -l BetterDays%
 }}}
 
-Affiche les connexions avec les pseudonymes « BlueVelvet » et « Babycat » :
+Affiche les connexions avec les pseudonymes « !BlueVelvet » et « Babycat » :
 {{{
-db-search.pl -l !BlueVelvet,Babycat
+db-search.pl -l BlueVelvet,Babycat
 }}}
 
 Affiche les connexions ayant été faites puis les points « FR- Aulnay-sous-bois » et « FR- Sevran » avec un pseudonyme femme sans avatar et avec le FAI « Free SAS » :
