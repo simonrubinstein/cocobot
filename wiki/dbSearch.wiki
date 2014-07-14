@@ -76,15 +76,15 @@ db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknam
 
 == Repérer les hommes se faisant passer pour des femmes ==
 
-Sur les Coco.fr un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemples les pseudonymes femmes « Jeunegay », « !LolaTravestie » ou « !MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
+Sur les Coco.fr un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemple les pseudonymes femmes « Jeunegay », « !LolaTravestie » ou « !MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
 
-Cependant il existe un nombre de pseudonyme femmes qui sont créés par des hommes dans le but de tromper les autres utilisateurs en se faisant passer pour une femme.
+Cependant il existe un nombre de pseudonyme femmes qui sont créés par des hommes dans le but de tromper les autres utilisateurs en se faisant passer pour des femmes.
 
-Le script « db-search.pl » peut aider à débusquer ces homme malhonnêtes.
+Le script « db-search.pl » peut aider à débusquer ces hommes malhonnêtes.
 
 === Exemple 1 : Pseudonyme femme « Qwerty » ===
 
-Le pseudonyme femme « Qwerty » avec le code de votre « QVa  » était connecté sur « Coco.fr ». Voilà ce que donne une recherche du code vote « QVa  » dans la base de données : 
+Le pseudonyme femme « Qwerty » avec le code de votre « QVa  » était connecté sur « Coco.fr ». Voilà ce que donne une recherche du code vote « QVa  » dans la base de données. La liste a été épurée de plusieurs connexions pour plus de clarté : 
 
 <code language="text">
 ./db-search.pl -c QVa
@@ -101,18 +101,37 @@ Le pseudonyme femme « Qwerty » avec le code de votre « QVa  » était connect
 ! SuceBeat   ! 237380 ! Orange ! Ris-orangis ! 19  ! 1   ! 75009 Paris ! 06-24 09:32:41 ! 06-24 10:26:03 ! 06-24 10:25:11 ! QVa  !   
 ! Alive      ! 320648 ! Orange ! Clamart     ! 37  ! 1   ! 75009 Paris ! 07-01 16:45:02 ! 07-01 16:45:41 ! 07-01 16:45:11 ! QVa  !   
 ! SuperNan   ! 320648 ! Orange ! Clamart     ! 19  ! 2   ! 75009 Paris ! 07-01 16:45:41 ! 07-01 17:24:43 ! 07-01 17:24:13 ! QVa  !   
+! SuperNan   ! 193003 ! Orange ! Clamart     ! 19  ! 2   ! 75010 Paris ! 07-05 17:55:41 ! 07-05 18:33:03 ! 07-05 18:32:41 ! QVa  !
 ! Republique ! 308339 ! Orange ! Clamart     ! 19  ! 2   ! 75010 Paris ! 07-06 11:08:43 ! 07-06 12:56:41 ! 07-06 12:56:02 ! QVa  !   
 ! OpenMind   ! 308339 ! Orange ! Clamart     ! 19  ! 2   ! 75010 Paris ! 07-06 14:31:41 ! 07-06 14:39:43 ! 07-06 14:39:13 ! QVa  !   
 ! Qwerty     ! 308339 ! Orange ! Clamart     ! 19  ! 2   ! 75009 Paris ! 07-06 14:40:04 ! 07-06 15:32:43 ! 07-06 15:32:12 ! QVa  !   
 !--------------------------------------------------------------------------------------------------------------------------------!
 </code>
 
-Attention un code votre n'est pas forcément uniquement pour un pseudonyme, même si c'est souvent le cas.
+Attention un [CodeDeVote code vote] n'est pas forcément unique pour un pseudonyme, même si c'est souvent le cas. Certains pseudonymes peuvent partager le même code de vote.
+
+Dans notre cas plus indices laissent supposer que c'est un homme :
+  * Le FAI est Orange à toutes les connexions. 
+  * Les points de connexions varient entre Paris, Clamart et Ris-Orangis des villes très proches.
+  * Le code postal, entré par l'utilisateur, ne varie pour ainsi pas, c'est toujours 75009 ou 75010.
+
+Ces trois points ne donnent pas une preuve formelle, mais de fortes présomptions.
+
+Cependant si on regarde la valeur du nickID « 237380 » du 24 juin elle est identique pour les pseudos hommes « Kimenik » et « SuceBeat » et le pseudo femme « DayOff ». Nous avons la même chose pour le nickID « 320648 » du 1er juillet qui est partagé le pseudo homme « Alive » et le pseudo femme « SuperNan ».
+
+Nous avons de fortes chances que c'est un homme se faisant passer pour une femme. Ce qui a été confirmé par l'utilisateur après lui avoir fourni son historique de connexion.
+
+
+
+
+
+
+
+
+
 
 
  
-
-
 
 
 
