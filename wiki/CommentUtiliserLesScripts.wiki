@@ -102,3 +102,45 @@ L'action « list » énumère les pseudos présents sur le chat. Les résultats 
   * *get-zip-from-wikipedia.pl* :
   * *sort-conf-plain-text-file.pl* : trie supprime les doublons des fichiers de configuration contenant une information par ligne, comme une liste de pseudos ou de citations.
   * *read-messages.pl* : affiche les réponses envoyés au bot créé par le script « save-logged-user-in-database.pl ».
+
+==== Exemple d'utilisation ====
+
+===== Le script user-info.pl ====
+
+Ce script créé un bot et affiche certaines informations du bot créé. En passant les les valeurs « myavatar » et « mypass » d'un compte Premium, le script retourne le nombre de jours avant l'expiration de l'abonnement :
+
+{{{
+./user-info.pl -a 175874896 -p XYJSMECJOFDITYYDAXST  -s M -y 37 -u Simon
+mynickname: Simon
+myage:      37  
+mysex:      1   
+zip:        75017
+mynickID:   100098
+monpass:    XpcKLD
+myavatar:   175874896
+mypass:     XYJSMECJOFDITYYDAXST
+townzz:     PARIS
+citydio:    30931
+mystat:     0   
+myXP:       0
+myver:      4   
+code:       ZJ8
+ISP:        Free SAS 
+status:     0   
+premium:    1   
+level:      6   
+since:      0   
+town:       FR- Paris
+Il vous reste 7 jours avant expiration de votre abonnement premium
+execution time: 1 seconds
+}}}
+
+
+
+
+
+
+
+
+
+
