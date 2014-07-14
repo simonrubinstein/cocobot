@@ -1,4 +1,4 @@
-#summary Utilisation du script db-search.pl
+#summary Utilisation du script db-search.pl pour la recherche des connexions
 
 = Introduction = 
 
@@ -76,20 +76,41 @@ db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknam
 
 == Repérer les hommes se faisant passer pour des femmes ==
 
-Sur les Coco.fr un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemples les pseudonymes femmes « Jeunegay », « LolaTravestie » ou « MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
+Sur les Coco.fr un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemples les pseudonymes femmes « Jeunegay », « !LolaTravestie » ou « !MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
 
 Cependant il existe un nombre de pseudonyme femmes qui sont créés par des hommes dans le but de tromper les autres utilisateurs en se faisant passer pour une femme.
 
 Le script « db-search.pl » peut aider à débusquer ces homme malhonnêtes.
 
+=== Exemple 1 : Pseudonyme femme « Qwerty » ===
 
+Le pseudonyme femme « Qwerty » avec le code de votre « QVa  » était connecté sur « Coco.fr ». Voilà ce que donne une recherche du code vote « QVa  » dans la base de données : 
 
+<code language="text">
+./db-search.pl -c QVa
+!--------------------------------------------------------------------------------------------------------------------------------!
+! nickname   ! nickID ! ISP    ! town        ! age ! sex ! city        ! creation_date  ! logout         ! update_date    ! code ! 
+!--------------------------------------------------------------------------------------------------------------------------------!
+! Mec377     ! 201126 ! Orange ! Paris       ! 37  ! 1   ! 75009 Paris ! 06-14 10:28:41 ! 06-14 10:36:03 ! 06-14 10:35:41 ! QVa  !   
+! LukeSk     ! 317779 ! Orange ! Paris       ! 19  ! 1   ! 75009 Paris ! 06-17 13:26:04 ! 06-17 14:00:41 ! 06-17 13:43:43 ! QVa  !   
+! SuceBeat   ! 289338 ! Orange ! Paris       ! 19  ! 1   ! 75009 Paris ! 06-22 23:26:43 ! -              ! 06-23 00:08:12 ! QVa  !   
+! Kimenik    ! 289338 ! Orange ! Paris       ! 19  ! 1   ! 75009 Paris ! 06-23 00:54:41 ! 06-23 01:28:42 ! 06-23 01:28:12 ! QVa  !   
+! Kimenik    ! 195652 ! Orange ! Paris       ! 19  ! 1   ! 75009 Paris ! 06-24 00:06:41 ! 06-24 00:24:03 ! 06-24 00:21:14 ! QVa  !   
+! Kimenik    ! 237380 ! Orange ! Ris-orangis ! 19  ! 1   ! 75009 Paris ! 06-24 09:06:40 ! 06-24 09:29:40 ! 06-24 09:29:11 ! QVa  !   
+! DayOff     ! 237380 ! Orange ! Ris-orangis ! 19  ! 2   ! 75009 Paris ! 06-24 09:31:41 ! 06-24 09:32:41 ! 06-24 09:32:12 ! QVa  !   
+! SuceBeat   ! 237380 ! Orange ! Ris-orangis ! 19  ! 1   ! 75009 Paris ! 06-24 09:32:41 ! 06-24 10:26:03 ! 06-24 10:25:11 ! QVa  !   
+! Alive      ! 320648 ! Orange ! Clamart     ! 37  ! 1   ! 75009 Paris ! 07-01 16:45:02 ! 07-01 16:45:41 ! 07-01 16:45:11 ! QVa  !   
+! SuperNan   ! 320648 ! Orange ! Clamart     ! 19  ! 2   ! 75009 Paris ! 07-01 16:45:41 ! 07-01 17:24:43 ! 07-01 17:24:13 ! QVa  !   
+! Republique ! 308339 ! Orange ! Clamart     ! 19  ! 2   ! 75010 Paris ! 07-06 11:08:43 ! 07-06 12:56:41 ! 07-06 12:56:02 ! QVa  !   
+! OpenMind   ! 308339 ! Orange ! Clamart     ! 19  ! 2   ! 75010 Paris ! 07-06 14:31:41 ! 07-06 14:39:43 ! 07-06 14:39:13 ! QVa  !   
+! Qwerty     ! 308339 ! Orange ! Clamart     ! 19  ! 2   ! 75009 Paris ! 07-06 14:40:04 ! 07-06 15:32:43 ! 07-06 15:32:12 ! QVa  !   
+!--------------------------------------------------------------------------------------------------------------------------------!
+</code>
 
+Attention un code votre n'est pas forcément uniquement pour un pseudonyme, même si c'est souvent le cas.
 
 
  
-
-
 
 
 
