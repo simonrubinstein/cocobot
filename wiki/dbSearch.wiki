@@ -117,7 +117,7 @@ Dans notre cas plus indices laissent supposer que c'est un homme :
 
 Ces trois points ne donnent pas une preuve formelle, mais de fortes présomptions.
 
-Cependant si on regarde la valeur du nickID « 237380 » du 24 juin elle est identique pour les pseudos hommes « !Kimenik » et « !SuceBeat » et le pseudo femme « !DayOff ». Nous avons la même chose pour le nickID « 320648 » du 1er juillet qui est partagé le pseudo homme « !Alive » et le pseudo femme « !SuperNan ».
+Cependant si on regarde la valeur du nickID « 237380 » du 24 juin elle est identique pour les pseudos hommes « Kimenik » et « !SuceBeat » et le pseudo femme « !DayOff ». Nous avons la même chose pour le nickID « 320648 » du 1er juillet qui est partagé le pseudo homme « !Alive » et le pseudo femme « !SuperNan ».
 
 Nous avons de fortes chances que c'est un homme se faisant passer pour une femme. Ce qui a été confirmé, difficilement, par l'utilisateur après lui avoir fourni son historique de connexion.
 
