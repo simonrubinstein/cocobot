@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2014-01-28
+# @date 2014-12-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -56,7 +56,8 @@ __PACKAGE__->attributes(
     'convert',
     'timz1',
     'rechrech',
-    'isAvatarRequest'
+    'isAvatarRequest',
+    'isInfuzNotToFast'
 );
 
 my $conf_ref;
@@ -135,11 +136,12 @@ sub init {
             'logUsersListInDB' => $logUsersListInDB,
             'removeListDelay'  => $removeListDelay
         ),
-        'speco'           => 0,
-        'convert'         => Cocoweb::Encode->instance(),
-        'timz1'           => 0,
-        'rechrech'        => 0,
-        'isAvatarRequest' => $isAvatarRequest
+        'speco'            => 0,
+        'convert'          => Cocoweb::Encode->instance(),
+        'timz1'            => 0,
+        'rechrech'         => 0,
+        'isAvatarRequest'  => $isAvatarRequest,
+        'isInfuzNotToFast' => 0
     );
 }
 
@@ -396,7 +398,7 @@ sub requestMessagesFromUsers {
             $user->camon() . $user->typcam() . '?' . rand(1) );
     }
     else {
-        debug( "<<<<< timz1 == $timz1  >>>>>" );
+        debug("<<<<< timz1 == $timz1  >>>>>");
     }
     if ( $timz1 == 20 and length( $user->mypass() ) != 20 ) {
 
@@ -511,6 +513,7 @@ sub reportAbuse {
 sub infuz {
     my ( $self, $user, $userWanted ) = @_;
     if ( $user->isPremiumSubscription() ) {
+        $self->isInfuzNotToFast(0);
         my $infuzString
             = $self->agir( $user, '83555' . $userWanted->mynickID() );
         if ( $infuzString eq "\nINTERDIT\n" ) {
@@ -518,6 +521,10 @@ sub infuz {
                 'It is forbidden to request this information from the user '
                     . $user->mynickname() );
             return $user;
+        }
+        if ( $infuzString =~ m{^\s*pas\ trop\ VITE\ !\s*} ) {
+            $self->isInfuzNotToFast(1);
+            warning("infuz: not too fast!");
         }
         eval { $userWanted->setInfuz($infuzString); };
         return $user if $@;
