@@ -30,6 +30,7 @@ use strict;
 use warnings;
 use Data::Dumper;
 use Carp;
+use Time::HiRes qw(usleep);
 use Cocoweb;
 use Cocoweb::Config;
 use Cocoweb::Request;
@@ -93,7 +94,7 @@ sub getUsersList {
 #@brief Set a list of users
 #@param object $users_ref A 'Cocoweb::User::List' object
 sub setUsersList {
-    my ($self, $users_ref) = @_;
+    my ( $self, $users_ref ) = @_;
     $self->request()->usersList($users_ref);
 }
 
@@ -235,12 +236,42 @@ sub requestInfuzForNewUsers {
     my ($self)     = @_;
     my $users_ref  = $self->request()->usersList()->all();
     my $count      = 0;
-    my $sleepInit  = 7;
-    my $sleepCount = $sleepInit;
+    my $userCount  = 0;
+    my $infuzCount = 0;
+
+    # 1 second = 1,000,000 microseconds
+    my $microsecondsPause1 = 950000;
+    my $microsecondsPause2 = 450000;
+    my $numberOfUsers      = scalar( keys %$users_ref );
     foreach my $niknameId ( keys %$users_ref ) {
+        $userCount++;
         my $user = $users_ref->{$niknameId};
         next if !$user->isNew();
-        $user = $self->request()->infuz( $self->user(), $user );
+        my $infuzRequest = 1;
+        while ($infuzRequest) {
+            if ( $infuzCount > 0 ) {
+                debug( 'Pause between each infuz request:  '
+                        . $microsecondsPause1 );
+                Time::HiRes::usleep($microsecondsPause1);
+            }
+            $infuzCount++;
+            $user = $self->request()->infuz( $self->user(), $user );
+            debug(
+                "---> $userCount/$numberOfUsers; infuzCount: $infuzCount <---"
+            );
+            if ( $self->request()->isInfuzNotToFast() ) {
+                debug( 'isInfuzNotToFast: '
+                        . $self->request()->isInfuzNotToFast() );
+                $infuzRequest = 0 if ++$infuzRequest > 10;
+                debug( 'Another pause between each infuz request:  '
+                        . $microsecondsPause2 );
+                Time::HiRes::usleep($microsecondsPause2);
+            }
+            else {
+                #The infuz request was successful.
+                $infuzRequest = 0;
+            }
+        }
         next if !defined $user;
         $count++;
         my $infuz = $user->infuz();
@@ -249,12 +280,6 @@ sub requestInfuzForNewUsers {
                 . $user->mynickname()
                 . ' infuz: '
                 . $infuz );
-
-        if ( --$sleepCount < 1 ) {
-            $sleepCount = $sleepInit;
-            moreDebug("XXXXXXXXXXX $count) sleep");
-            sleep(1);
-        }
     }
     info( $count . ' new "infuz" was requested and returned' ) if $count > 0;
 }
