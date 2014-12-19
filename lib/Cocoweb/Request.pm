@@ -57,7 +57,8 @@ __PACKAGE__->attributes(
     'timz1',
     'rechrech',
     'isAvatarRequest',
-    'isInfuzNotToFast'
+    'isInfuzNotToFast',
+    'infuzNotToFastRegex'
 );
 
 my $conf_ref;
@@ -125,6 +126,9 @@ sub init {
     #my $myport = 3000 + randum(10);
     my $myport = 80;
 
+    my $infuzNotToFast = $conf_ref->{'infuz-not-to-fast'};
+    $infuzNotToFast    = qr/$infuzNotToFast/;
+
     $self->attributes_defaults(
         'agent'     => $agent_ref,
         'urlav'     => $conf_ref->{'urlav'},
@@ -141,8 +145,10 @@ sub init {
         'timz1'            => 0,
         'rechrech'         => 0,
         'isAvatarRequest'  => $isAvatarRequest,
-        'isInfuzNotToFast' => 0
+        'isInfuzNotToFast' => 0,
+        'infuzNotToFastRegex' => $infuzNotToFast
     );
+
 }
 
 ##@method void getInitioJSVar($url)
@@ -522,9 +528,12 @@ sub infuz {
                     . $user->mynickname() );
             return $user;
         }
-        if ( $infuzString =~ m{^\s*pas\ trop\ VITE\ !\s*} ) {
+
+        my $regex =  $self->infuzNotToFastRegex();
+        if ( $infuzString =~ $regex ) { 
             $self->isInfuzNotToFast(1);
             warning("infuz: not too fast!");
+            return $user;
         }
         eval { $userWanted->setInfuz($infuzString); };
         return $user if $@;

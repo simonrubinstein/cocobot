@@ -243,10 +243,14 @@ sub requestInfuzForNewUsers {
     my $microsecondsPause1 = 950000;
     my $microsecondsPause2 = 450000;
     my $numberOfUsers      = scalar( keys %$users_ref );
+    debug( 'Starts the loop: ' . $numberOfUsers . ' users.' );
     foreach my $niknameId ( keys %$users_ref ) {
         $userCount++;
         my $user = $users_ref->{$niknameId};
-        next if !$user->isNew();
+        next if !$user->isNew() and $user->infuz() !~m{^\s*pas\ trop\ VITE\ !\s*$};
+        if ( $user->infuz() =~m{^\s*pas\ trop\ VITE\ !\s*$} ) {
+            debug( 'Retry infuz request for ' . $user->mynickname() );  
+        }
         my $infuzRequest = 1;
         while ($infuzRequest) {
             if ( $infuzCount > 0 ) {
