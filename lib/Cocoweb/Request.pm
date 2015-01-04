@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2014-12-10
+# @date 2015-01-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -58,7 +58,8 @@ __PACKAGE__->attributes(
     'rechrech',
     'isAvatarRequest',
     'isInfuzNotToFast',
-    'infuzNotToFastRegex'
+    'infuzNotToFastRegex',
+    'profilTooNewRegex'
 );
 
 my $conf_ref;
@@ -127,8 +128,9 @@ sub init {
     my $myport = 80;
 
     my $infuzNotToFast = $conf_ref->{'infuz-not-to-fast'};
-    $infuzNotToFast    = qr/$infuzNotToFast/;
-
+    $infuzNotToFast = qr/$infuzNotToFast/;
+    my $profilTooNew = $conf_ref->{'profile-too-new'};
+    $profilTooNew = qr/$profilTooNew/;
     $self->attributes_defaults(
         'agent'     => $agent_ref,
         'urlav'     => $conf_ref->{'urlav'},
@@ -140,13 +142,14 @@ sub init {
             'logUsersListInDB' => $logUsersListInDB,
             'removeListDelay'  => $removeListDelay
         ),
-        'speco'            => 0,
-        'convert'          => Cocoweb::Encode->instance(),
-        'timz1'            => 0,
-        'rechrech'         => 0,
-        'isAvatarRequest'  => $isAvatarRequest,
-        'isInfuzNotToFast' => 0,
-        'infuzNotToFastRegex' => $infuzNotToFast
+        'speco'               => 0,
+        'convert'             => Cocoweb::Encode->instance(),
+        'timz1'               => 0,
+        'rechrech'            => 0,
+        'isAvatarRequest'     => $isAvatarRequest,
+        'isInfuzNotToFast'    => 0,
+        'infuzNotToFastRegex' => $infuzNotToFast,
+        'profilTooNewRegex'   => $profilTooNew
     );
 
 }
@@ -325,7 +328,7 @@ sub firsty {
             . rand(1) * 10000000 );
 }
 
-##@method void agir($user, $txt1)
+##@method object agir($user, $txt1)
 #@brief Initiates a standard request to the server
 #@param object $user An 'Cocoweb::User::Connected' object
 #@param string $txt1 The parameter of the HTTP request
@@ -337,7 +340,7 @@ sub agir {
         #info($txt3);
     }
 
-    $self->agix( $user,
+    return $self->agix( $user,
               $self->url1()
             . substr( $txt3, 0, 2 )
             . $user->mynickID()
@@ -345,7 +348,7 @@ sub agir {
             . substr( $txt3, 2 ) );
 }
 
-##@method void agix($user, $url, $cookie_ref)
+##@method object agix($user, $url, $cookie_ref)
 #@brief Performs an HTTP Requests to invoke a remote method
 #@param object $user An 'Cocoweb::User::Connected' object
 #@param string An URL for the HTTP request
@@ -367,7 +370,10 @@ sub agix {
     die error( 'The method called "' . $function . '()" is unknown!' )
         if $function ne 'process1';
     $response = Cocoweb::Response->new();
-    return $response->$function( $self, $user, $arg );
+
+    #return $response->$function( $self, $user, $arg );
+    $response->$function( $self, $user, $arg );
+    return $response;
 }
 
 ##@method void searchnow($user)
@@ -375,14 +381,14 @@ sub agix {
 #@param object $user An 'User::Connected' object
 sub searchnow {
     my ( $self, $user ) = @_;
-    $self->agir( $user, '10' . $self->genru() . $self->yearu() );
+    return $self->agir( $user, '10' . $self->genru() . $self->yearu() );
 }
 
 ##@method void cherchasalon($user)
 #@param object $user An 'User::Connected' object
 sub cherchasalon {
     my ( $self, $user ) = @_;
-    $self->agir( $user, '89' );
+    return $self->agir( $user, '89' );
 }
 
 ##@method void actuam($user)
@@ -391,7 +397,7 @@ sub cherchasalon {
 #@return string
 sub actuam {
     my ( $self, $user ) = @_;
-    $self->agir( $user, '48' );
+    return $self->agir( $user, '48' );
 }
 
 ##@method void requestMessagesFromUsers($user)
@@ -496,7 +502,7 @@ sub writus {
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
 sub amigo {
     my ( $self, $user, $userWanted ) = @_;
-    $self->agir( $user, '46' . $userWanted->mynickID() );
+    return $self->agir( $user, '46' . $userWanted->mynickID() );
 }
 
 ##@method void reportAbuse($user, $userWanted)
@@ -520,23 +526,25 @@ sub infuz {
     my ( $self, $user, $userWanted ) = @_;
     if ( $user->isPremiumSubscription() ) {
         $self->isInfuzNotToFast(0);
-        my $infuzString
+        debug( "infuz request for " . $userWanted->mynickname() );
+        my $response
             = $self->agir( $user, '83555' . $userWanted->mynickID() );
+        my $infuzString = $response->infuzString();
         if ( $infuzString eq "\nINTERDIT\n" ) {
             warning(
                 'It is forbidden to request this information from the user '
-                    . $user->mynickname() );
+                    . $userWanted->mynickname() );
             return $user;
         }
 
-        my $regex =  $self->infuzNotToFastRegex();
-        if ( $infuzString =~ $regex ) { 
+        my $regex = $self->infuzNotToFastRegex();
+        if ( $infuzString =~ $regex ) {
             $self->isInfuzNotToFast(1);
             warning("infuz: not too fast!");
-            return $user;
+            return $userWanted;
         }
         eval { $userWanted->setInfuz($infuzString); };
-        return $user if $@;
+        return $userWanted if $@;
         return $userWanted;
     }
     else {
