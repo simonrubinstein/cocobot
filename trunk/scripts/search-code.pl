@@ -46,7 +46,9 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->requestAuthentication();
     $bot->display();
-    my $user = $bot->requestCodeSearch($code);
+    my $response = $bot->requestCodeSearch($code);
+    #my $user = $bot->requestCodeSearch($code);
+    my $user = $response->userFound(); 
     $bot->requestUserInfuz($user);
     $user->show();
     info("The $Bin script was completed successfully.");

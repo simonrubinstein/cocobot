@@ -1,5 +1,5 @@
 # @created 2012-03-30
-# @date 2014-05-26 
+# @date 2015-01-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,14 +38,16 @@ use base 'Exporter';
 my $varDir;
 
 our @EXPORT = qw(
-  deserializeHash
-  dumpToFile
-  fileToVars
-  getVarDir
-  serializeData
-  writeProcessID
-  getLogPathname
-  writeLog
+    deserializeHash
+    dumpToFile
+    fileToVars
+    getVarDir
+    serializeData
+    writeProcessID
+    getLogPathname
+    writeLog
+    mkdirp
+    readDirectory
 );
 use Cocoweb;
 
@@ -84,11 +86,11 @@ sub getFileTemp {
     my $fh          = File::Temp->new(@args);
     my $tmpFilename = $fh->filename();
     Cocoweb::debug( 'filename: '
-          . $filename
-          . '; template: '
-          . $template
-          . '; tmpFilename: '
-          . $tmpFilename );
+            . $filename
+            . '; template: '
+            . $template
+            . '; tmpFilename: '
+            . $tmpFilename );
     if ($open) {
         return ( $tmpFilename, $fh );
     }
@@ -107,10 +109,10 @@ sub serializeData {
     my $res;
     eval { $res = Storable::store( $data, $tmpFilename ); };
     croak Cocoweb::error("Storable::store($filename) was failed! $! / $@")
-      if !defined $res
-          or $@;
+        if !defined $res
+        or $@;
     croak Cocoweb::error("rename($tmpFilename, $filename) was failed: $!")
-      if !rename( $tmpFilename, $filename );
+        if !rename( $tmpFilename, $filename );
     Cocoweb::debug( $filename . ' file successfully serialized' );
 }
 
@@ -137,7 +139,7 @@ sub dumpToFile {
     print $fh Dumper $vars;
     croak Cocoweb::error("close($filename) was failed: $!") if !close($fh);
     croak Cocoweb::error("rename($tmpFilename, $filename) was failed: $!")
-      if !rename( $tmpFilename, $filename );
+        if !rename( $tmpFilename, $filename );
 }
 
 ##@method void fileToVars($filename)
@@ -148,7 +150,7 @@ sub fileToVars {
     croak Cocoweb::error("stat($filename) was failed: $!") if !defined $stat;
     my $fh;
     croak Cocoweb::error("open($filename) was failed: $!")
-      if !open( $fh, '<', $filename );
+        if !open( $fh, '<', $filename );
     my ( $contentSize, $content ) = ( 0, '' );
     sysread( $fh, $content, $stat->size(), $contentSize );
     close $fh;
@@ -173,27 +175,27 @@ sub getVarDir {
 sub writeProcessID {
     my $PIDFile = '/var/lock/' . $Script . '.pid';
     my $ph;
-    croak Cocoweb::error( 'Cannot open or lock pidfile "' 
-          . $PIDFile
-          . '" another '
-          . $Script
-          . ' running?  Error: '
-          . $! )
-      if !( $ph = new IO::File( '+>' . $PIDFile ) )
-          or !flock( $ph, LOCK_EX | LOCK_NB );
+    croak Cocoweb::error( 'Cannot open or lock pidfile "'
+            . $PIDFile
+            . '" another '
+            . $Script
+            . ' running?  Error: '
+            . $! )
+        if !( $ph = new IO::File( '+>' . $PIDFile ) )
+        or !flock( $ph, LOCK_EX | LOCK_NB );
 
     croak Cocoweb::error( 'Cannot write to "' . $PIDFile . '". Error: ' . $! )
-      if !$ph->seek( 0, 0 )
-          or !$ph->truncate(0)
-          or !$ph->print("$$\n")
-          or !$ph->flush();
+        if !$ph->seek( 0, 0 )
+        or !$ph->truncate(0)
+        or !$ph->print("$$\n")
+        or !$ph->flush();
     Cocoweb::info( 'The PID file ' . $PIDFile . ' has been written' );
     return $ph;
 }
 
 sub getLogPathname {
-    my ($dirname, $myScript, $myTime) = @_;
-    my $path = getVarDir() . '/' . $dirname;
+    my ( $dirname, $myScript, $myTime ) = @_;
+    my $path     = getVarDir() . '/' . $dirname;
     my @dt       = localtime($myTime);
     my $filename = sprintf(
         '%02d-%02d-%02d_' . $myScript . '.log',
@@ -201,21 +203,44 @@ sub getLogPathname {
         ( $dt[4] + 1 ), $dt[3]
     );
     my $pathname = $path . '/' . $filename;
-    return ($path, $pathname);
+    return ( $path, $pathname );
 }
 
 ##@method void writeLog($dirname, $message)
 sub writeLog {
-    my ($dirname, $message) = @_;
+    my ( $dirname, $message ) = @_;
     my $myTime = time;
-    my ($path, $pathname) = getLogPathname($dirname, $Script, $myTime);
-    my @dt       = localtime($myTime);
+    my ( $path, $pathname ) = getLogPathname( $dirname, $Script, $myTime );
+    my @dt = localtime($myTime);
     my $fh = IO::File->new( $pathname, 'a' );
     confess Cocoweb::error("open($pathname) was failed: $!")
-      if !defined $fh;
+        if !defined $fh;
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
-    print $fh $hourStr . ' ' . $message . "\n"; 
+    print $fh $hourStr . ' ' . $message . "\n";
     confess Cocoweb::error("close() return $!") if !$fh->close();
+}
+
+##@method void mkdirp($pathname)
+sub mkdirp {
+    my ($pathname) = @_;
+    my @dirs = split( /\//, $pathname );
+    $pathname = '';
+    foreach my $name (@dirs) {
+        next if $name eq '';
+        $pathname .= '/' . $name;
+        next if -d $pathname;
+        croak Cocoweb::error('mkdir(' . $pathname . ') was failed: ' . $!) if !mkdir($pathname);
+    }
+}
+
+##@method array_ref readDirectory($pathname)
+sub readDirectory {
+    my ($pathname) = @_;
+    my $dh;
+    croak Cocoweb::error('readdir(' . $pathname . ') was failed: ' . $!) if !opendir($dh, $pathname);
+    my @files = readdir($dh);
+    closedir($dh);
+    return \@files;
 }
 
 1;

@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-19
-# @date 2014-03-03
+# @date 2015-01-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -126,7 +126,7 @@ sub requestWriteMessage {
 #              The user for whom the message is intended
 sub requestToBeAFriend {
     my ( $self, $userWanted ) = @_;
-    $self->request()->amigo( $self->user(), $userWanted );
+    return $self->request()->amigo( $self->user(), $userWanted );
 }
 
 ##@method void reportAbuse($userWanted)
@@ -135,7 +135,7 @@ sub requestToBeAFriend {
 #              The user for whom the message is intended
 sub reportAbuse {
     my ( $self, $userWanted ) = @_;
-    $self->request()->reportAbuse( $self->user(), $userWanted );
+    return $self->request()->reportAbuse( $self->user(), $userWanted );
 }
 
 ##@method object searchNickname($userWanted)
@@ -162,13 +162,13 @@ sub requestUsersList {
 #
 sub requestConnectedUserInfo {
     my ($self) = @_;
-    $self->request()->getUserInfo( $self->user() );
+    return $self->request()->getUserInfo( $self->user() );
 }
 
 ##@method void requestCodeSearch()
 #@brief Search a nickname from his code of 3 characters
 #@param string $code A nickname code (i.e. WcL)
-#@return object A 'CocoWeb::User' object
+#@return object A 'CocoWeb::Response' object
 sub requestCodeSearch {
     my ( $self, $code ) = @_;
     return $self->request()->searchCode( $self->user(), $code );
@@ -178,7 +178,7 @@ sub requestCodeSearch {
 #@brief Retrieves information about an user
 #       for Premium subscribers only
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
-#@return object A 'CocoWeb::User::Wanted' object
+#@return object A 'CocoWeb::Response' object
 sub requestUserInfuz {
     my ( $self, $user ) = @_;
     $user = $self->user() if !defined $user;
@@ -187,10 +187,17 @@ sub requestUserInfuz {
 
 ##@method void actuam($user)
 #@brief Get the list of contacts, nicknamed 'amiz'
-#@return string
+#@return object A 'CocoWeb::Response' object
 sub actuam {
     my ($self) = @_;
-    $self->request()->actuam( $self->user() );
+    return $self->request()->actuam( $self->user() );
+}
+
+##@method object searchChatRooms()
+#@return object A 'CocoWeb::Response' object
+sub searchChatRooms {
+    my ($self) = @_;
+    return $self->request()->cherchasalon( $self->user() );
 }
 
 ##@method boolean isPremiumSubscription()
@@ -240,16 +247,18 @@ sub requestInfuzForNewUsers {
     my $infuzCount = 0;
 
     # 1 second = 1,000,000 microseconds
-    my $microsecondsPause1 = 950000;
-    my $microsecondsPause2 = 450000;
-    my $numberOfUsers      = scalar( keys %$users_ref );
+    my $microsecondsPause1  = 950000;
+    my $microsecondsPause2  = 450000;
+    my $infuzNotToFastRegex = $self->request->infuzNotToFastRegex();
+    debug("infuzNotToFastRegex: $infuzNotToFastRegex");
+    my $numberOfUsers = scalar( keys %$users_ref );
     debug( 'Starts the loop: ' . $numberOfUsers . ' users.' );
     foreach my $niknameId ( keys %$users_ref ) {
         $userCount++;
         my $user = $users_ref->{$niknameId};
-        next if !$user->isNew() and $user->infuz() !~m{^\s*pas\ trop\ VITE\ !\s*$};
-        if ( $user->infuz() =~m{^\s*pas\ trop\ VITE\ !\s*$} ) {
-            debug( 'Retry infuz request for ' . $user->mynickname() );  
+        next if !$user->isNew() and $user->infuz() !~ $infuzNotToFastRegex;
+        if ( $user->infuz() =~ $infuzNotToFastRegex ) {
+            debug( 'Retry infuz request for ' . $user->mynickname() );
         }
         my $infuzRequest = 1;
         while ($infuzRequest) {

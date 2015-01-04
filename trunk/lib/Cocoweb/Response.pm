@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2014-07-09
+# @date 2015-01-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,10 +37,22 @@ use Time::HiRes qw(usleep nanosleep);
 use utf8;
 no utf8;
 
+__PACKAGE__->attributes(
+    'profileTooNew', 'infuzString', 'userFound', 'messageString',
+    'userFriends'
+);
+
 ##@method void init($args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
+    $self->attributes_defaults(
+        'profileTooNew' => 0,
+        'infuzString'   => '',
+        'userFound'     => undef,
+        'messageString' => '',
+        'userFriends'   => undef
+    );
 }
 
 ##@method void process1($user, $urlu)
@@ -112,36 +124,45 @@ sub process1Int {
 
         #setTimeout("agir('51'+agento)",500);
         usleep( 1000 * 500 );
-        $request->agir( $user,
-            '51'
-                . $request->convert()->writo( $request->agent()->{'agent'} )
-        );
+        $request->agir( $user, '51' );
+
+        #$request->agir( $user,
+        #    '51'
+        #        . $request->convert()->writo( $request->agent()->{'agent'} )
+        #);
     }
 
     if ( $olko == 99 ) {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         debug("bud: $bud");
 
-        #"You must have an older profile to add friends"
-        #"You have n days before expiration of your premium membership"
+        #At least the following two messages:
+        # - "You must have an older profile to add friends"
+        # - "You have n days before expiration of your premium membership"
         if ( $bud == 444 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
+            my $profileTooNewRegex = $request->profilTooNewRegex();
+            $self->profileTooNew(1) if $urlu =~ $profileTooNewRegex;
             debug($urlu);
             message($urlu);
+            $self->messageString($urlu);
         }
 
         if ( $bud == 447 or $bud == 445 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
-            die error( $urlu );
+            die error($urlu);
         }
 
-        # Retrieves information about an user, for Premium subscribers only
+# Retrieves information about an user, for Premium subscribers only
+# i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
-            return $urlu;
+            $self->infuzString($urlu);
+
+            #return $urlu;
         }
 
         #/#9955720289399221011fifilou
@@ -158,7 +179,9 @@ sub process1Int {
                 'mystat' => 5,
                 'myXP'   => 0
             );
-            return $userFound;
+            $self->userFound($userFound);
+
+            #return $userFound;
         }
 
         # The second part of the authentication is completed successfully
@@ -301,7 +324,6 @@ sub process1Int {
         }
     }
 
-
     if ( $olko == 94 ) {
         my $str = 'This user requires that you be authenticated.';
         debug($str);
@@ -374,7 +396,9 @@ sub process1Int {
     if ( $olko == 48 ) {
         $user->amiz( Cocoweb::User::Friend->new() );
         $self->populate( $user, $user->amiz(), $urlo );
-        return $user->amiz();
+        $self->userFriends( $user->amiz() );
+
+        #return $user->amiz();
     }
 
     # Another user is writing a message
@@ -491,7 +515,7 @@ sub incomingMessage {
         }
         $hys = indexOf( $makmessage, '&7' );
         if ( $hys > -1 ) {
-            $chp = 0;
+            $chp     = 0;
             $message = substring( $makmessage, $hys + 3 );
             $message = $self->transformix( $request, $message );
             error($message);

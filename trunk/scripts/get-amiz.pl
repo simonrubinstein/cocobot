@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief Returns the list of friends
 # @created 2012-03-10
-# @date 2012-03-29
+# @date 2015-01-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -45,7 +45,8 @@ sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
     $bot->requestAuthentication();
     $bot->show();
-    my $userList = $bot->actuam();
+    my $response = $bot->actuam();
+    my $userList = $response->userFriends();
     $userList->display();
     info("The $Bin script was completed successfully.");
 }
@@ -72,5 +73,5 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-03-29');
+    $CLI->VERSION_MESSAGE('2015-01-05');
 }

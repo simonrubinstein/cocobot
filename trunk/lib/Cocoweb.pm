@@ -225,7 +225,7 @@ sub timeToDate {
     my ($myTime) = @_;
     my @dt = localtime($myTime);
     return sprintf(
-        '%02d-%02d-%02d  %02d:%02d:%02d',
+        '%02d-%02d-%02d %02d:%02d:%02d',
         ( $dt[5] + 1900 ),
         ( $dt[4] + 1 ),
         $dt[3], $dt[2], $dt[1], $dt[0]
