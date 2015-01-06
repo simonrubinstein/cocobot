@@ -8,6 +8,7 @@ Absolight
 Accenture
 ACCENTURE
 Acropolis Telecom SA
+Ad Valem Technologies
 Add-on Multimedia
 ADD-ON MULTIMEDIA
 Adenis SARL
@@ -74,7 +75,9 @@ AT{T Global Network Services Nederland B.V.
 AT{T Global Network Services, LLC
 AT{T Mobility LLC
 AT{T Services
+AT{T U-verse
 AUFEMININ.COM
+Auranext SA
 Auvea Ingenierie
 AVAYA
 Avenir Telematique S.a.s.
@@ -98,6 +101,7 @@ Bell Mobility
 BELNET
 Benin Telecom SA
 Bezeq International-Ltd
+Bio-Rad Laboratories, Inc.
 Biotechnology And Biological Science Research Coun
 Birmingham Heartlands Hospital NHS Trust
 BLUEGIX
@@ -125,9 +129,11 @@ Cablevision du Nord de Quebec
 CABLEVISION S.A.
 Cablevision SA de CV
 Cabovisao, televisao por cabo, SA
+CACIIS Sarl
 CAFE Informatique et telecommunications
 Caisse Federale de Credit Mutuel SA
 Cambridge Entrepreneurial Network
+Campus CNRS dOrleans
 Campus de Beaulieu, Avenue du General Leclerc
 Canal Plus
 Canal Plus France S.A
@@ -198,6 +204,7 @@ Communaute Urbaine de Strasbourg
 Communication Solutions Ltd.
 Communications Networking Services
 Compagnie Generale de Sante
+Compagnie Nantaise de la Securite Informatique SAR
 COMPANHIA DE TELECOMUNICACOES DO BRASIL CENTRAL
 Completel
 COMPLETEL SAS
@@ -262,6 +269,7 @@ Direction Generale de Impots
 DISTRIBUTEL COMMUNICATIONS
 Djibouti Telecom
 DJIBOUTI TELECOM S.A.
+Docapost Bpo SAS
 DoD Network Information Center
 Dodo Australia
 Donstroy Ltd.
@@ -391,10 +399,13 @@ GLOBAL NET-INC COMMUNICATIONS
 GloboTech Communications
 Golden Lines Cable
 Google
+Grand Net Srl
 Gravity Internet Ltd
 Green Connection AG
+Groupe Barizco Inc.
 Groupe ECRITEL France
 Groupe ESIEE
+Groupe IS
 Groupe Switch
 Gruyere Energie SA
 Gtd Internet S.A.
@@ -415,9 +426,12 @@ Hewlett-Packard Company
 HEXANET
 Hexanet Hexanet SAS
 Hexanet SAS
+Hi-Media SA
 Hilti AG
+HITS S.A.S
 Hoffmann LaRoche
 Honeywell Limited
+Hospices civiles de Lyon
 Host Europe GmbH
 Host Virtual
 Hosting Services
@@ -461,6 +475,7 @@ Intelsat GlobalConnex Solutions (GXS)
 Intercable Reunion
 Interconnect Exchange Europe Paris GmBH
 intergenia AG
+Intergenia AG
 Intermediasud
 Internap Network Services Corporation
 InterNAP Network Services U.K. Limited
@@ -526,6 +541,7 @@ Lanet Network Ltd.
 LaSer Contact
 LASER CONTACT
 Le118000 118000 SAS
+LeaderTelecom Ltd.
 LeaseWeb B.V.
 Leonix Telecom Eurl
 LEONIX TELECOM EURL
@@ -627,6 +643,7 @@ NIB (National Internet Backbone)
 Nigerian Telecommunications Ltd
 Nine Internet Solutions AG
 NLAYER COMMUNICATIONS
+No Blue Screen System SAS
 Nobis Technology Group, LLC
 Nomotech
 Nomotech SAS
@@ -638,6 +655,7 @@ NTT Europe Limited
 null
 Numeo SA
 Nuovo Pignone LAN
+NUXIT s.a.r.l.
 Observatoire de Paris
 OC3 Networks { Web Solutions, LLC
 Oceanet Technology SAS
@@ -668,6 +686,7 @@ Opal Telecom
 OpenBusiness
 OpenIP
 Openteam SAS
+Opera Mini Proxy
 Opera Software ASA
 OPTILIAN, FR
 OPTIMITEL SA
@@ -698,6 +717,7 @@ Oxymium
 Ozone
 Ozone SAS
 P.J.Safarik University in Kosice
+PacWan
 Paris
 Paritel Operateur Sasu
 Pars Online
@@ -777,6 +797,7 @@ RTLNET
 RTVC-Stiring
 Rue du commerce SA
 S.I Building
+SA ALTIUS
 SAEM Intermediasud
 Safe Host SA
 SANEF (Societe des Autoroutes du Nord et de lEst
@@ -865,6 +886,7 @@ SONATEL
 SOTELMA
 Southeastern Louisiana University
 SpaceDump Networks
+Spacenet
 Spie SA
 SPM Telecom
 Sprint
@@ -947,12 +969,14 @@ Three
 TICSA
 Tinet SpA
 Tiscali France
+Tiscali France Backbone
 Tiscali SpA
 TMN - Telecomunicacoes Moveis Nacionais SA
 TMSP (ex INT Evry)
 TMSP (ex INT-Evry)
 Togo Telecom
 Toile Informatique GREnobloise
+Tokyo Metropolitan College of Industrial Technolog
 TOT public company limited
 TPG Internet Pty Ltd.
 Trade company.
@@ -1044,5 +1068,6 @@ Ya.com Internet Factory
 Yesup Ecommerce Solutions
 YHC International BV
 Zain Communications Ltd
+ZeXoTeK IT-Services GmbH
 ZON TV Cabo
 ZON TV Cabo Madeirense

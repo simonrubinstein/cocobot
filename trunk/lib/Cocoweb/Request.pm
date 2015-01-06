@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2015-01-04
+# @date 2015-01-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -481,12 +481,13 @@ sub isDead {
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
 #              The user for whom the message is intended
 #@param string $s1 The message to write to the user
+#@return object A 'CocoWeb::Response' object
 sub writus {
     my ( $self, $user, $userWanted, $s1 ) = @_;
     return if !defined $s1 or length($s1) == 0;
     my $s2 = '';
     $s2 = $self->convert()->writo($s1);
-    $self->agir( $user,
+    my $response = $self->agir( $user,
         '99' . $userWanted->mynickID() . $user->roulix() . $s2 );
     my $roulix = $user->roulix();
 
@@ -494,6 +495,7 @@ sub writus {
         $roulix = 0;
     }
     $user->roulix($roulix);
+    return $response;
 }
 
 ##@method void amigo($user, $userWanted)

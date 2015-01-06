@@ -38,7 +38,6 @@ use Cocoweb::CLI;
 use Cocoweb::MyAvatar::File;
 my $CLI;
 my $myavatarFiles;
-
 init();
 run();
 
@@ -47,7 +46,10 @@ sub run {
     my $myAvatarValided = 0;
     my $myavatars_ref = $myavatarFiles->getNew();
     my $userWanted;
+    my $myavatarCount = 0;
+    my $myavatarNumOf = scalar(@$myavatars_ref);
     foreach my $val (@$myavatars_ref) {
+        $myavatarCount++;
         croak Cocoweb::error("$val if bad") if $val !~m{^(\d{9})([A-Z]{20})$};
         my ($myavatar, $mypass) = ($1, $2); 
         my $bot = $CLI->getBot( 'generateRandom' => 1, 'myavatar' => $myavatar, 'mypass' => $mypass );
@@ -76,23 +78,30 @@ sub run {
             }
             $bot->requestMessagesFromUsers();
             my $user = $bot->user();
-            info( '<' . ( time - $starttime )
+            info( '**' . $myavatarCount . '/' . $myavatarNumOf . '**' 
+                .  '<' . ( time - $starttime )
                     . ' seconds>; counter: ['
                     . $counter
                     . ']; myavatar:'
                     . $user->myavatar()
                     . '; mypass:'
                     . $user->mypass()
-                    . '; number of avatars founds: ' . $myAvatarValided
+                    . '; number of validated myavatars: ' . $myAvatarValided
                     . "\n" );
             if ( $counter % 28 == 9 ) { 
-                $bot->requestWriteMessage( $userWanted, $Script );
                 my $response = $bot->requestToBeAFriend($userWanted);
                 if ($response->profileTooNew()) {
                     debug("The profile is still too recent.");
                 } else {
                     $myAvatarValided++;
                     info("The profile is validated.");
+                    $myavatarFiles->moveNewToRun( $myavatar, $mypass );
+                    $myavatarFiles->updateRun( $myavatar, $mypass );
+                    last PROFILEVALIDATED;
+                }
+                $response = $bot->requestWriteMessage( $userWanted, $Script );
+                if ( $response->isRestrictedAccount() ) {
+                    debug("The account is restricted. Gives up.");
                     last PROFILEVALIDATED;
                 }
             }
@@ -112,9 +121,6 @@ sub init {
         exit;
     }
     $myavatarFiles = Cocoweb::MyAvatar::File->instance();
-    #$myavatarFiles->createNewFile(102229331, 'XYUMDZSARDTFGCHDBVCJ');
-    #$myavatarFiles->updateNew(102229331, 'XYUMDZSARDTFGCHDBVCJ');
-
 }
 
 ## @method void HELP_MESSAGE()
@@ -129,6 +135,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2015-01-03');
+    $CLI->VERSION_MESSAGE('2015-01-05');
 }
 

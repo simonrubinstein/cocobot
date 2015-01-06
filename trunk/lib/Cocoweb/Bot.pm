@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2015-01-04
+# @date 2015-01-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -115,9 +115,10 @@ sub requestAuthentication {
 #@param object $userWanted A 'CocoWeb::User::Wanted' object
 #              The user for whom the message is intended
 #@param string $message The message to write to the user
+#@return object A 'CocoWeb::Response' object
 sub requestWriteMessage {
     my ( $self, $userWanted, $message ) = @_;
-    $self->request()->writus( $self->user(), $userWanted, $message );
+    return $self->request()->writus( $self->user(), $userWanted, $message );
 }
 
 ##@method void requestToBeAFriend($userWanted)
