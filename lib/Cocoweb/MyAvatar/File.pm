@@ -1,5 +1,5 @@
 # @created 2015-01-02
-# @date 2015-01-02
+# @date 2015-01-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -28,6 +28,7 @@ package Cocoweb::MyAvatar::File;
 use strict;
 use warnings;
 use Carp;
+use File::Basename;
 use Data::Dumper;
 use POSIX;
 use FindBin qw($Script);
@@ -64,16 +65,43 @@ sub myAvatar2Dirs {
     return "$1/$2/$3";
 }
 
+##@method sting getAvatarPathname($baseDir, $myavatar, $mypass)
+sub getAvatarPathname {
+    my ( $self, $baseDir, $myavatar, $mypass ) = @_;
+    return
+          $baseDir . '/'
+        . $self->myAvatar2Dirs($myavatar) . '/'
+        . $myavatar
+        . $mypass;
+}
+
 ##@method void createNewFile($myavatar, $mypass)
 sub createNewFile {
     my ( $self, $myavatar, $mypass ) = @_;
-    croak Cocoweb::error("The value $mypass is a bad value for mypass") if $mypass !~m{[A-Z]{20}};
-    my $path = $self->newDir() . '/' . $self->myAvatar2Dirs($myavatar);
-    mkdirp($path);
-    $path .= '/' . $myavatar . $mypass;
+    croak Cocoweb::error("The value $mypass is a bad value for mypass")
+        if $mypass !~ m{[A-Z]{20}};
+    my $path
+        = $self->getAvatarPathname( $self->newDir(), $myavatar, $mypass );
+    my $dir = File::Basename::dirname($path);
+    mkdirp($dir);
     croak Cocoweb::error("The file $path already exists") if -f $path;
     my $dateStr = timeToDate(time);
     $self->writeFile( $path, $dateStr, $dateStr, 1 );
+}
+
+##@method void moveNewToRun($myavatar, $mypass)
+sub moveNewToRun {
+    my ( $self, $myavatar, $mypass ) = @_;
+    my $pathNew
+        = $self->getAvatarPathname( $self->newDir(), $myavatar, $mypass );
+    croak Cocoweb::error("The file $pathNew path was not found.")
+        if !-f $pathNew;
+    my $pathRun
+        = $self->getAvatarPathname( $self->runDir(), $myavatar, $mypass );
+    croak Cocoweb::error("The file $pathRun already exists") if -f $pathRun;
+    mkdirp( File::Basename::dirname($pathRun) );
+    croak Cocoweb::error("rename ($pathNew, $pathRun) return $!")
+        if !rename( $pathNew, $pathRun );
 }
 
 ##@method vois writeFile($filename, $creationDate, $updateDate, $counter)
@@ -95,10 +123,15 @@ ENDTXT
 sub updateNew {
     my ( $self, $myavatar, $mypass ) = @_;
     my $path
-        = $self->newDir() . '/'
-        . $self->myAvatar2Dirs($myavatar) . '/'
-        . $myavatar
-        . $mypass;
+        = $self->getAvatarPathname( $self->newDir(), $myavatar, $mypass );
+    $self->updateFile($path);
+}
+
+##@method void updateRun($myavatar, $mypass)
+sub updateRun {
+    my ( $self, $myavatar, $mypass ) = @_;
+    my $path
+        = $self->getAvatarPathname( $self->runDir(), $myavatar, $mypass );
     $self->updateFile($path);
 }
 
@@ -119,45 +152,45 @@ sub updateFile {
     $self->writeFile( $filename, $values[0], timeToDate(time), ++$values[2] );
 }
 
+##@method array_ref getNew()
 sub getNew {
     my ($self) = @_;
-    return $self->getMyAvatars($self->newDir());
+    return $self->getMyAvatars( $self->newDir() );
 }
 
+##@method array_ref getMyAvatars()
 sub getMyAvatars {
     my ( $self, $path ) = @_;
-    my @myavatars = ();
+    my @myavatars  = ();
     my $level1_ref = readDirectory($path);
     info("Read $path directory");
     foreach my $file1 (@$level1_ref) {
         next if $file1 eq '..' or $file1 eq '.';
         my $path2 = $path . '/' . $file1;
-        next if ! -d $path2;
+        next if !-d $path2;
         my $level2_ref = readDirectory($path2);
         foreach my $file2 (@$level2_ref) {
             next if $file2 eq '..' or $file2 eq '.';
             my $path3 = $path2 . '/' . $file2;
-            next if ! -d $path3;
+            next if !-d $path3;
             my $level3_ref = readDirectory($path3);
             foreach my $file3 (@$level3_ref) {
-                 next if $file3 eq '..' or $file3 eq '.';
-                 my $path4 = $path3 . '/' . $file3;
-                 next if ! -d $path4;
-                 my $level4_ref = readDirectory($path4);
-                 foreach my $file4 (@$level4_ref) {
-                     next if $file4 eq '..' or $file4 eq '.';
-                     my $zepath = $path4 . '/' . $file4;
-                     croak Cocoweb::error("$zepath if bad") if $zepath!~m{/(\d{9}[A-Z]{20})$};
-                     push @myavatars, $1;
-                 }
+                next if $file3 eq '..' or $file3 eq '.';
+                my $path4 = $path3 . '/' . $file3;
+                next if !-d $path4;
+                my $level4_ref = readDirectory($path4);
+                foreach my $file4 (@$level4_ref) {
+                    next if $file4 eq '..' or $file4 eq '.';
+                    my $zepath = $path4 . '/' . $file4;
+                    croak Cocoweb::error("$zepath if bad")
+                        if $zepath !~ m{/(\d{9}[A-Z]{20})$};
+                    push @myavatars, $1;
+                }
             }
         }
     }
-    info("Number of myavatars in $path: " . scalar(@myavatars) );
+    info( "Number of myavatars in $path: " . scalar(@myavatars) );
     return \@myavatars;
 }
-
-
-
 
 1;

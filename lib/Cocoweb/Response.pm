@@ -1,9 +1,9 @@
 # @created 2012-03-29
-# @date 2015-01-04
+# @date 2015-01-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision$
 # Date: $Date$
@@ -39,7 +39,7 @@ no utf8;
 
 __PACKAGE__->attributes(
     'profileTooNew', 'infuzString', 'userFound', 'messageString',
-    'userFriends'
+    'userFriends', 'isRestrictedAccount'
 );
 
 ##@method void init($args)
@@ -47,11 +47,12 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults(
-        'profileTooNew' => 0,
-        'infuzString'   => '',
-        'userFound'     => undef,
-        'messageString' => '',
-        'userFriends'   => undef
+        'profileTooNew'       => 0,
+        'infuzString'         => '',
+        'userFound'           => undef,
+        'messageString'       => '',
+        'userFriends'         => undef,
+        'isRestrictedAccount' => 0
     );
 }
 
@@ -121,20 +122,20 @@ sub process1Int {
     }
 
     if ( $olko == 51 ) {
-
-        #setTimeout("agir('51'+agento)",500);
         usleep( 1000 * 500 );
+        #Second request used for authentication.
         $request->agir( $user, '51' );
-
-        #$request->agir( $user,
-        #    '51'
-        #        . $request->convert()->writo( $request->agent()->{'agent'} )
-        #);
     }
 
     if ( $olko == 99 ) {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         debug("bud: $bud");
+
+        if ( $bud == 443 ) {
+            my $str = 'Restricted account.';
+            $self->isRestrictedAccount(1);
+            message($str);
+        }
 
         #At least the following two messages:
         # - "You must have an older profile to add friends"
@@ -155,17 +156,13 @@ sub process1Int {
             die error($urlu);
         }
 
-# Retrieves information about an user, for Premium subscribers only
-# i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
+        # Retrieves information about an user, for Premium subscribers only
+        # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
             $self->infuzString($urlu);
-
-            #return $urlu;
         }
-
-        #/#9955720289399221011fifilou
 
         #Result of a search query of a nickname code
         if ( $bud == 557 ) {
@@ -180,8 +177,6 @@ sub process1Int {
                 'myXP'   => 0
             );
             $self->userFound($userFound);
-
-            #return $userFound;
         }
 
         # The second part of the authentication is completed successfully
@@ -397,8 +392,6 @@ sub process1Int {
         $user->amiz( Cocoweb::User::Friend->new() );
         $self->populate( $user, $user->amiz(), $urlo );
         $self->userFriends( $user->amiz() );
-
-        #return $user->amiz();
     }
 
     # Another user is writing a message
