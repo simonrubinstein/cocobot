@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2015-01-03
-# @date 2015-01-04
+# @date 2015-01-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,11 +38,13 @@ use Cocoweb::CLI;
 use Cocoweb::MyAvatar::File;
 my $CLI;
 my $myavatarFiles;
-my @botsList = ();
-my @countersList = ();
-my @startTimeList = ();
-my $myAvatarValided = 0;
-my $myavatarCount = 0;
+my @botsList                   = ();
+my @countersList               = ();
+my @startTimeList              = ();
+my $myAvatarValided            = 0;
+my $myavatarCount              = 0;
+my $isRestrictedAccountAllowed = 0;
+my $isRunFilesUsed             = 0;
 my $myavatars_ref;
 my $userWanted;
 my $myavatarNumOf;
@@ -52,33 +54,48 @@ run();
 
 ##@method void run()
 sub run {
-    $myavatars_ref = $myavatarFiles->getNew();
+
+    if ( defined $CLI->myavatar() and defined $CLI->mypass() ) {
+        $myavatars_ref = [ $CLI->myavatar() . $CLI->mypass() ];
+    }
+    else {
+        if ($isRunFilesUsed) {
+            $myavatars_ref = $myavatarFiles->getRun();
+        }
+        else {
+            $myavatars_ref = $myavatarFiles->getNew();
+        }
+    }
     $myavatarNumOf = scalar(@$myavatars_ref);
 
-    my $numConcurrentUsers =  $CLI->maxOfLoop();
-    for (my $i = 0; $i< $numConcurrentUsers; $i++) {
+    my $numConcurrentUsers = $CLI->maxOfLoop();
+    for ( my $i = 0; $i < $numConcurrentUsers; $i++ ) {
         my $bot = getNewBot();
         next if !defined $bot;
-        push @botsList, $bot;
-        push @countersList, 0;
+        push @botsList,      $bot;
+        push @countersList,  0;
         push @startTimeList, time;
     }
 
-    $numConcurrentUsers = scalar (@botsList);
+    $numConcurrentUsers = scalar(@botsList);
     while (1) {
         my $processCount = 0;
-        for (my $i = 0; $i< $numConcurrentUsers; $i++) {
+        for ( my $i = 0; $i < $numConcurrentUsers; $i++ ) {
             next if !defined $botsList[$i];
             $processCount++;
             $countersList[$i]++;
-            if ( !process($botsList[$i], $countersList[$i], $startTimeList[$i]) ) {
-                print "DELAY " . $CLI->delay() . "\n";
+            if (!process(
+                    $botsList[$i], $countersList[$i], $startTimeList[$i]
+                )
+                )
+            {
+                debug( "delay: " . $CLI->delay() . ' second(s)' );
                 sleep $CLI->delay() if $numConcurrentUsers < 2;
                 next;
             }
             undef $botsList[$i];
-            $botsList[$i] = getNewBot();
-            $countersList[$i] = 0;
+            $botsList[$i]      = getNewBot();
+            $countersList[$i]  = 0;
             $startTimeList[$i] = time;
         }
         last if $processCount < 1;
@@ -87,17 +104,22 @@ sub run {
 }
 
 sub getNewBot {
-    return if scalar (@$myavatars_ref) < 1;
+    return if scalar(@$myavatars_ref) < 1;
     $myavatarCount++;
     my $val = shift @$myavatars_ref;
-    croak Cocoweb::error("$val if bad") if $val !~m{^(\d{9})([A-Z]{20})$};
-    my ($myavatar, $mypass) = ($1, $2); 
-    my $bot = $CLI->getBot( 'generateRandom' => 1, 'myavatar' => $myavatar, 'mypass' => $mypass );
+    croak Cocoweb::error("$val if bad") if $val !~ m{^(\d{9})([A-Z]{20})$};
+    my ( $myavatar, $mypass ) = ( $1, $2 );
+    my $bot = $CLI->getBot(
+        'generateRandom' => 1,
+        'myavatar'       => $myavatar,
+        'mypass'         => $mypass
+    );
     $bot->display();
     $bot->searchChatRooms();
     $bot->actuam();
     $bot->requestAuthentication();
-    if (!defined ($userWanted)) {
+
+    if ( !defined($userWanted) ) {
         $userWanted = $CLI->getUserWanted($bot);
         die "User wanted was not found" if !defined $userWanted;
     }
@@ -106,7 +128,7 @@ sub getNewBot {
 }
 
 sub process {
-    my ( $bot, $counter, $starttime  ) = @_;
+    my ( $bot, $counter, $starttime ) = @_;
     $counter++;
     $bot->setTimz1($counter);
     my $usersList;
@@ -114,36 +136,49 @@ sub process {
         $bot->requestCheckIfUsersNotSeenAreOffline();
     }
     if ( $counter % 28 == 9 ) {
-    #This request is necessary to activate the server side time counter.
+
+        #This request is necessary to activate the server side time counter.
         $bot->searchChatRooms();
         $usersList = $bot->requestUsersList();
     }
     $bot->requestMessagesFromUsers();
     my $user = $bot->user();
-    info( '**' . $myavatarCount . '/' . $myavatarNumOf . '**' 
-            .  '<' . ( time - $starttime )
+    info(     '**'
+            . $myavatarCount . '/'
+            . $myavatarNumOf . '**' . '<'
+            . ( time - $starttime )
             . ' seconds>; counter: ['
             . $counter
             . ']; myavatar:'
             . $user->myavatar()
             . '; mypass:'
             . $user->mypass()
-            . '; number of validated myavatars: ' . $myAvatarValided
+            . '; number of validated myavatars: '
+            . $myAvatarValided
             . "\n" );
-    if ( $counter % 28 == 9 ) { 
+    if ( $counter % 28 == 9 ) {
         my $response = $bot->requestToBeAFriend($userWanted);
-        if ($response->profileTooNew()) {
+        if ( $response->profileTooNew() ) {
             debug("The profile is still too recent.");
-        } else {
+        }
+        else {
             $myAvatarValided++;
             info("The profile is validated.");
-            my ( $myavatar, $mypass ) = ( $user->myavatar(), $user->mypass());
-            $myavatarFiles->moveNewToRun( $myavatar, $mypass );
-            $myavatarFiles->updateRun( $myavatar, $mypass );
+            if (    !defined $CLI->myavatar()
+                and !defined $CLI->mypass()
+                and !$isRestrictedAccountAllowed )
+            {
+                my ( $myavatar, $mypass )
+                    = ( $user->myavatar(), $user->mypass() );
+                $myavatarFiles->moveNewToRun( $myavatar, $mypass );
+                $myavatarFiles->updateRun( $myavatar, $mypass );
+            }
             return 1;
         }
         $response = $bot->requestWriteMessage( $userWanted, $Script );
-        if ( $response->isRestrictedAccount() ) {
+        if ( $response->isRestrictedAccount()
+            and !$isRestrictedAccountAllowed )
+        {
             debug("The account is restricted. Gives up.");
             return 1;
         }
@@ -155,19 +190,30 @@ sub process {
 #@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'searchEnable' => 1 );
+    my $opt_ref = $CLI->getOpts(
+        'enableLoop'    => 1,
+        'searchEnable'  => 1,
+        'argumentative' => 'RN'
+    );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
+    $isRestrictedAccountAllowed = $opt_ref->{'R'} if exists $opt_ref->{'R'};
+    $isRunFilesUsed             = $opt_ref->{'N'} if exists $opt_ref->{'N'};
     $myavatarFiles = Cocoweb::MyAvatar::File->instance();
+
 }
 
 ## @method void HELP_MESSAGE()
 # Display help message
 sub HELP_MESSAGE {
-    print STDOUT $Script . ', Create myavatars.' . "\n";
-    $CLI->printLineOfArgs();
+    print STDOUT $Script . ', valide MyAvatar accounts.' . "\n";
+    $CLI->printLineOfArgs('-R -N');
+    print <<ENDTXT;
+  -R                Enable the process of restricted accounts. 
+  -N                Use the files in the 'run' directory. 
+ENDTXT
     $CLI->HELP();
     exit 0;
 }
@@ -175,6 +221,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2015-01-05');
+    $CLI->VERSION_MESSAGE('2015-01-07');
 }
 

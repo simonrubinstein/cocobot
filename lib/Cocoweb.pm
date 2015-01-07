@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2014-01-23
+# @date 2015-01-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -32,7 +32,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.5001';
+our $VERSION     = '0.5002';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
