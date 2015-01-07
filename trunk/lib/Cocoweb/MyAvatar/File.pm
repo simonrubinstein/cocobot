@@ -1,5 +1,5 @@
 # @created 2015-01-02
-# @date 2015-01-05
+# @date 2015-01-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,7 +38,7 @@ use Cocoweb;
 use Cocoweb::File;
 use base 'Cocoweb::Object::Singleton';
 
-__PACKAGE__->attributes( 'newDir', 'runDir' );
+__PACKAGE__->attributes( 'newDir', 'runDir', 'fileList', 'myavatarsList', 'myavatarsListIndex' );
 
 ##@method void init(%args)
 sub init {
@@ -48,9 +48,13 @@ sub init {
     my $path   = getVarDir();
     my $newDir = $path . '/' . $conf->getString('new');
     my $runDir = $path . '/' . $conf->getString('run');
+    my $listFilename = $path . '/' . $conf->getString('fileList');
     $instance->attributes_defaults(
         'newDir' => $newDir,
-        'runDir' => $runDir
+        'runDir' => $runDir,
+        'fileList' => $listFilename,
+        'myavatarsList' => undef,
+        'myavatarsListIndex' => 0
     );
     mkdirp( $instance->newDir() );
     mkdirp( $instance->runDir() );
@@ -158,6 +162,12 @@ sub getNew {
     return $self->getMyAvatars( $self->newDir() );
 }
 
+##@method array_ref getRun()
+sub getRun {
+    my ($self) = @_;
+    return $self->getMyAvatars( $self->runDir() );
+}
+
 ##@method array_ref getMyAvatars()
 sub getMyAvatars {
     my ( $self, $path ) = @_;
@@ -191,6 +201,42 @@ sub getMyAvatars {
     }
     info( "Number of myavatars in $path: " . scalar(@myavatars) );
     return \@myavatars;
+}
+
+#@method vois initList()
+sub initList {
+    my ($self) = @_;
+    my $filename = $self->fileList();
+    my $fh = IO::File->new( $filename, 'r' );
+    confess Cocoweb::error("open($filename) was failed: $!")
+        if !defined $fh;
+    my @myavatarsList = ();
+    while ( defined( my $line = $fh->getline() ) ) {
+        chomp($line);
+        push @myavatarsList, $line;
+    }
+    $fh->close();
+    $self->myavatarsList(\@myavatarsList);
+    $self->myavatarsListIndex(0);
+    croak Cocoweb::error("The list is empty.") if scalar (@myavatarsList) < 1;
+}
+
+##@method array getNextMyavatar()
+sub getNextMyavatar {
+    my ($self) = @_;
+    my $myavatarsList_ref = $self->myavatarsList();
+    croak Cocoweb::error("The list has not been initialized.")
+        if !defined $myavatarsList_ref;
+    my $count = scalar (@$myavatarsList_ref);
+    my $index = $self->myavatarsListIndex();
+    $index = 0 if $index >= $count;
+    my $value = $myavatarsList_ref->[$index];
+    $index++;
+    $self->myavatarsListIndex($index);
+    croak Cocoweb::error("$value if bad") if $value !~m{^(\d{9})([A-Z]{20})$};
+    my ($myavatar, $mypass) = ($1, $2);
+    debug("myavatar: $myavatar; mypass: $mypass");
+    return ($myavatar, $mypass); 
 }
 
 1;

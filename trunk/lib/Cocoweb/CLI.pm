@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-26
-# @date 2014-03-15
+# @date 2015-01-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -27,6 +27,7 @@
 # MA  02110-1301, USA.
 package Cocoweb::CLI;
 use Cocoweb;
+use Cocoweb::MyAvatar::File;
 use Cocoweb::Bot;
 use Cocoweb::File;
 use Cocoweb::Logger;
@@ -50,7 +51,8 @@ __PACKAGE__->attributes(
     'enableLoop',     'avatarAndPasswdRequired',
     'searchEnable',   'pidHandle',
     'writeLogInFile', 'isAvatarRequest',
-    'delay',          'zip'
+    'delay',          'zip',
+    'myavatarsListEnable', 'myavatarsListRequired', 'myavatarsList'
 );
 
 ##@method object init($class, $instance)
@@ -72,7 +74,10 @@ sub init {
         'pidHandle'               => undef,
         'writeLogInFile'          => 1,
         'isAvatarRequest'         => 0,
-        'delay'                   => 1
+        'delay'                   => 1,
+        'myavatarsListEnable'     => 0,
+        'myavatarsListRequired'   => 0,
+        'myavatarsList'           => 0
     );
     return $instance;
 }
@@ -92,7 +97,7 @@ sub getOpts {
     my ( $self, %argv ) = @_;
     my $writeLogInFile = 0;
     foreach
-        my $name ( 'searchEnable', 'enableLoop', 'avatarAndPasswdRequired' )
+        my $name ( 'searchEnable', 'enableLoop', 'avatarAndPasswdRequired', 'myavatarsListEnable' )
     {
         next if !exists $argv{$name};
         $self->$name( $argv{$name} );
@@ -102,6 +107,7 @@ sub getOpts {
     $argumentative .= 'wdvDu:s:y:z:a:p:g';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:S:' if $self->enableLoop();
+    $argumentative .= 'M' if $self->myavatarsListEnable();
     my %opt;
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
@@ -125,6 +131,8 @@ sub getOpts {
     $self->maxOfLoop( $opt{'x'} )      if exists $opt{'x'};
     $self->delay( $opt{'S'} )          if exists $opt{'S'};
     $self->isAvatarRequest(1)          if exists $opt{'g'};
+    $self->myavatarsListRequired(1)    if exists $opt{'M'};
+
     info( "isAvatarRequest: " . $self->isAvatarRequest() );
 
     if ( defined $self->mysex() ) {
@@ -191,6 +199,12 @@ sub getOpts {
             return;
         }
     }
+
+    if ( $self->myavatarsListRequired() ) {
+        my $myavatarFiles = Cocoweb::MyAvatar::File->instance();
+        $myavatarFiles->initList();
+        $self->myavatarsList($myavatarFiles);
+    }
     return \%opt;
 }
 
@@ -218,15 +232,34 @@ sub getMinimumOpts {
 sub getBot {
     my ( $self, @params ) = @_;
     my %param = @params;
+    my ($myavatar, $mypass);
+    if (! exists $param{'myavatar'} and $self->myavatarsListRequired() ) {
+        my $myavatarFiles = $self->myavatarsList();
+        if (defined $myavatarFiles) {
+            ($myavatar, $mypass)  = $myavatarFiles->getNextMyavatar();
+        }
+    }
     foreach my $name (
         'mynickname', 'myage',  'mysex', 'zip',
         'myavatar',   'mypass', 'isAvatarRequest'
         )
     {
         next if exists $param{$name};
-        push @params, $name, $self->$name() if defined $self->$name();
+        if ( defined $self->$name() ) {
+            push @params, $name, $self->$name();
+            next;
+        }
+        if ( $name eq 'myavatar' and defined $myavatar ) {
+            push @params, $name, $myavatar;
+            next;
+        }
+        if ( $name eq 'mypass' and defined $mypass ) {
+            push @params, $name, $mypass;
+            next;
+        }
     }
     my $bot = Cocoweb::Bot->new(@params);
+    #print Dumper \%param;
     return $bot;
 }
 
@@ -288,6 +321,9 @@ sub HELP {
         "  -x maxOfLoop      A maximum number of iterations to perform.\n"
         . "  -S seconds        Delays the loop execution for the given number of seconds.\n"
         if $self->enableLoop();
+    print STDOUT
+        "  -M                Uses the pre-created myavatars list.\n"
+        if $self->myavatarsListEnable();
 
     print STDOUT <<ENDTXT;
   -a myavatar       A unique identifier for your account 
