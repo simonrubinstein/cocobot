@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2013-12-15
-# @date 2013-12-29
+# @date 2015-01-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -46,12 +46,22 @@ sub run {
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
 
+    my ( $failCount, $totalCount ) = ( 0, 0);
+    my %fails = ();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
         eval {
             $bot->requestAuthentication();
-            $bot->show();
-            $bot->requestToBeAFriend($userWanted);
+            $bot->searchChatRooms();
+            $bot->actuam();
+            $bot->display();
+            my $user = $bot->user();
+            my $response = $bot->requestToBeAFriend($userWanted);
+            $totalCount++;
+            if ( $response->profileTooNew() ) {
+                $failCount++;
+                $fails{$user->myavatar()} = $user->mypass();
+            } 
             debug(    'Delays the program execution for '
                     . $CLI->delay()
                     . ' second(s)' );
@@ -59,14 +69,18 @@ sub run {
         };
         $bot = $CLI->getBot( 'generateRandom' => 1 );
     }
+    info("$failCount fails / $totalCount");
     info("The $Bin script was completed successfully.");
+    foreach my $myavatar (keys %fails) {
+        print $myavatar . $fails{$myavatar} . "\n";
+    }
 }
 
 ##@method void init()
 #@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'searchEnable' => 1 );
+    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'searchEnable' => 1, 'myavatarsListEnable' => 1 );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;

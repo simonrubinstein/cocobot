@@ -300,6 +300,7 @@ sub initial {
         or $myavatar > 1000000000 )
     {
         warning('The value of myavatar is not valid');
+        #print "************>$myavatar<\n",
         $myavatar = randum(890000000) + 100000000;
     }
 
