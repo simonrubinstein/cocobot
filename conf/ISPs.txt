@@ -638,6 +638,7 @@ Neuf Cegetel
 New Technologies Group N.V.
 NewCom International
 Newel Informatique
+Nexto SAS
 NFrance Conseil
 NIB (National Internet Backbone)
 Nigerian Telecommunications Ltd
@@ -662,6 +663,7 @@ Oceanet Technology SAS
 Octopuce
 Octopuce s.a.r.l.
 OECD - Organisation for Economical Co-Operation an
+OELIS SARL
 Office des Poste et Telecommunications (OPT)
 Office des Postes et des Telecomm. de Nouvelle Cal
 Office des Postes et Telecommunications
@@ -713,6 +715,7 @@ Ovh Systems
 OVH Telecom
 Ownit AB
 OXEVA SAS
+OXYD
 Oxymium
 Ozone
 Ozone SAS
@@ -903,6 +906,7 @@ Sunrise Communications AG
 SuperNews
 Superonline International Online Information And C
 SUPINFO Ecole Superieure dInformatique
+SUPINFO Ecole Superieure dInformatique de Paris
 Swisscom (Schweiz) AG
 Swisscom (Schweiz) AG is a full service provider i
 Swisscom (Schweiz) AG is an LIR and ISP in Switzer
@@ -1023,6 +1027,7 @@ Verizon Nederland B.V.
 Versatel Nederland B.V.
 Vesperia SARL
 VIA-NUMERICA
+Via-numerica
 ViaEuropa i Lund AB
 VIALIS - REGIE MUNICIPALE DE COLMAR
 Vialis - Regie Municipale De Colmar
