@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2015-01-05
+# @date 2015-01-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -59,7 +59,12 @@ __PACKAGE__->attributes(
     'isAvatarRequest',
     'isInfuzNotToFast',
     'infuzNotToFastRegex',
-    'profilTooNewRegex'
+    'profilTooNewRegex',
+    'infuzMaxOfTries',
+    'infuzPause1',
+    'infuzPause2',
+    'infuzMaxOfTriesAfterPause'
+
 );
 
 my $conf_ref;
@@ -86,8 +91,11 @@ sub init {
             ->getConfigFile( 'request.conf', 'File' );
         $conf_ref = $conf->all();
         foreach my $name (
-            'urly0',  'urlprinc',    'current-url', 'avatar-url',
-            'avaref', 'urlcocoland', 'urlav',       'url_initio.js'
+            'urly0',             'urlprinc',
+            'current-url',       'avatar-url',
+            'avaref',            'urlcocoland',
+            'urlav',             'url_initio.js',
+            'infuz-not-to-fast', 'profile-too-new'
             )
         {
             $conf->isString($name);
@@ -122,6 +130,11 @@ sub init {
 
         eval { $self->getInitioJSVar( $conf_ref->{'url_initio.js'} ); };
 
+        $conf->isInt('infuz-max-of-tries');
+        $conf->isInt('infuz-pause1');
+        $conf->isInt('infuz-pause2');
+        $conf->isInt('infuz-max-of-tries-after-pause');
+
     }
 
     #my $myport = 3000 + randum(10);
@@ -149,9 +162,13 @@ sub init {
         'isAvatarRequest'     => $isAvatarRequest,
         'isInfuzNotToFast'    => 0,
         'infuzNotToFastRegex' => $infuzNotToFast,
-        'profilTooNewRegex'   => $profilTooNew
+        'profilTooNewRegex'   => $profilTooNew,
+        'infuzMaxOfTries'     => $conf_ref->{'infuz-max-of-tries'},
+        'infuzPause1'         => $conf_ref->{'infuz-pause1'},
+        'infuzPause2'         => $conf_ref->{'infuz-pause2'},
+        'infuzMaxOfTriesAfterPause' =>
+            $conf_ref->{'infuz-max-of-tries-after-pause'}
     );
-
 }
 
 ##@method void getInitioJSVar($url)
@@ -526,9 +543,18 @@ sub reportAbuse {
 #@return object A 'CocoWeb::User::Wanted' object
 sub infuz {
     my ( $self, $user, $userWanted ) = @_;
-    if ( $user->isPremiumSubscription() ) {
+    if ( !$user->isPremiumSubscription() ) {
+        warning(  'The command "infuz" is reserved for users with a'
+                . ' Premium subscription.' );
+        return;
+    }
+    my $count           = 0;
+    my $infuzMaxOfTries = $self->infuzMaxOfTries();
+    while ( $infuzMaxOfTries > 0 ) {
+        $infuzMaxOfTries--;
+        $count++;
         $self->isInfuzNotToFast(0);
-        debug( "infuz request for " . $userWanted->mynickname() );
+        debug( "try $count: infuz request for " . $userWanted->mynickname() );
         my $response
             = $self->agir( $user, '83555' . $userWanted->mynickID() );
         my $infuzString = $response->infuzString();
@@ -536,24 +562,22 @@ sub infuz {
             warning(
                 'It is forbidden to request this information from the user '
                     . $userWanted->mynickname() );
-            return $user;
+            $infuzMaxOfTries = 0;
+            next;
         }
-
         my $regex = $self->infuzNotToFastRegex();
         if ( $infuzString =~ $regex ) {
             $self->isInfuzNotToFast(1);
             warning("infuz: not too fast!");
-            return $userWanted;
+            next;
         }
         eval { $userWanted->setInfuz($infuzString); };
-        return $userWanted if $@;
-        return $userWanted;
+        $infuzMaxOfTries = 0;
     }
-    else {
-        warning(  'The command "infuz" is reserved for users with a'
-                . ' Premium subscription.' );
-        return;
-    }
+    debug(    "NUMBER ATTEMPTED INFUZ REQUESTS: $count. "
+            . $userWanted->mynickname() . ' '
+            . $userWanted->mynickID() );
+    return $userWanted;
 }
 
 ##@methode object getUsersList($user)
