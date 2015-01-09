@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2015-01-05
+# @date 2015-01-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -248,22 +248,26 @@ sub requestInfuzForNewUsers {
     my $infuzCount = 0;
 
     # 1 second = 1,000,000 microseconds
-    my $microsecondsPause1  = 950000;
-    my $microsecondsPause2  = 450000;
+    my $microsecondsPause1  = $self->request->infuzPause1();
+    my $microsecondsPause2  = $self->request->infuzPause2();
     my $infuzNotToFastRegex = $self->request->infuzNotToFastRegex();
+    my $infuzMaxOfTriesAfterPause
+        = $self->request->infuzMaxOfTriesAfterPause();
     debug("infuzNotToFastRegex: $infuzNotToFastRegex");
     my $numberOfUsers = scalar( keys %$users_ref );
     debug( 'Starts the loop: ' . $numberOfUsers . ' users.' );
+
     foreach my $niknameId ( keys %$users_ref ) {
         $userCount++;
         my $user = $users_ref->{$niknameId};
+        debug("$userCount) mynickname: " . $user->mynickname() . '; isNew: ' . $user->isNew() . '; infuz: ' . $user->infuz() );
         next if !$user->isNew() and $user->infuz() !~ $infuzNotToFastRegex;
         if ( $user->infuz() =~ $infuzNotToFastRegex ) {
             debug( 'Retry infuz request for ' . $user->mynickname() );
         }
         my $infuzRequest = 1;
         while ($infuzRequest) {
-            if ( $infuzCount > 0 ) {
+            if ( $infuzCount > 0 and $microsecondsPause1 > 0 ) {
                 debug( 'Pause between each infuz request:  '
                         . $microsecondsPause1 );
                 Time::HiRes::usleep($microsecondsPause1);
@@ -276,10 +280,15 @@ sub requestInfuzForNewUsers {
             if ( $self->request()->isInfuzNotToFast() ) {
                 debug( 'isInfuzNotToFast: '
                         . $self->request()->isInfuzNotToFast() );
-                $infuzRequest = 0 if ++$infuzRequest > 10;
-                debug( 'Another pause between each infuz request:  '
-                        . $microsecondsPause2 );
-                Time::HiRes::usleep($microsecondsPause2);
+                if ( ++$infuzRequest > $infuzMaxOfTriesAfterPause ) {
+                    warning("The infuz request has definitely failed");
+                    $infuzRequest = 0;
+                }
+                else {
+                    debug( 'Another pause between each infuz request:  '
+                            . $microsecondsPause2 );
+                    Time::HiRes::usleep($microsecondsPause2);
+                }
             }
             else {
                 #The infuz request was successful.
