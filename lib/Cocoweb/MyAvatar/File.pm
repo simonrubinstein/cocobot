@@ -1,5 +1,5 @@
 # @created 2015-01-02
-# @date 2015-01-07
+# @date 2015-01-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -33,6 +33,7 @@ use Data::Dumper;
 use POSIX;
 use FindBin qw($Script);
 use IO::File;
+use List::Util qw(shuffle);
 
 use Cocoweb;
 use Cocoweb::File;
@@ -216,6 +217,7 @@ sub initList {
         push @myavatarsList, $line;
     }
     $fh->close();
+    @myavatarsList = List::Util::shuffle @myavatarsList;
     $self->myavatarsList(\@myavatarsList);
     $self->myavatarsListIndex(0);
     croak Cocoweb::error("The list is empty.") if scalar (@myavatarsList) < 1;

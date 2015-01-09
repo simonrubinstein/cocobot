@@ -188,6 +188,7 @@ sub init {
 #@brief Reads the file 'towns.txt' and insert rows in a hash table.
 sub readTowns {
     my $fh;
+    info("open $townFileR file");
     die "$!" if !open( $fh, '<', $townFileR );
     my ( $zip, $name );
     foreach my $line (<$fh>) {
