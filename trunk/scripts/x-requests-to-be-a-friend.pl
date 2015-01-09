@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2014-03-01
-# @date 2014-03-16
+# @date 2015-01-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2015
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -143,7 +143,7 @@ sub searchNickID {
 sub init {
     $CLI = Cocoweb::CLI->instance();
     my $opt_ref
-        = $CLI->getOpts( 'enableLoop' => 1, 'argumentative' => 'f:X:Z:' );
+        = $CLI->getOpts( 'enableLoop' => 1, 'myavatarsListEnable' => 1, 'argumentative' => 'f:X:Z:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -191,8 +191,8 @@ sub HELP_MESSAGE {
   -Z zipList
   
 Example:
-./x-requests-to-be-a-friend.pl -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W
-./x-requests-to-be-a-friend.pl -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W -z 00000 -Z 75001
+./x-requests-to-be-a-friend.pl -M -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W
+./x-requests-to-be-a-friend.pl -M -v -s W -f plain-text/nicknames-to-filter.txt -x 1000 -X W -z 00000 -Z 75001
 
 ENDTXT
     exit 0;
@@ -201,6 +201,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-03-16');
+    $CLI->VERSION_MESSAGE('2015-01-09');
 }
 

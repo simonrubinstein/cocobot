@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2015-01-05
+# @date 2015-01-09
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -39,7 +39,8 @@ no utf8;
 
 __PACKAGE__->attributes(
     'profileTooNew', 'infuzString', 'userFound', 'messageString',
-    'userFriends', 'isRestrictedAccount'
+    'userFriends', 'isRestrictedAccount', 'isUserMustBeAuthenticated', 
+    'isMenAreBlocked', 'isPrivateAreBlocked'
 );
 
 ##@method void init($args)
@@ -52,7 +53,9 @@ sub init {
         'userFound'           => undef,
         'messageString'       => '',
         'userFriends'         => undef,
-        'isRestrictedAccount' => 0
+        'isRestrictedAccount' => 0,
+        'isUserMustBeAuthenticated' => 0,
+        'isMenAreBlocked' => 0
     );
 }
 
@@ -124,7 +127,7 @@ sub process1Int {
     if ( $olko == 51 ) {
         usleep( 1000 * 500 );
         #Second request used for authentication.
-        $request->agir( $user, '51' );
+        $request->agir( $user, '51', $self );
     }
 
     if ( $olko == 99 ) {
@@ -238,7 +241,7 @@ sub process1Int {
                             . $user->myavatar()
                             . $user->mynickID()
                             . $user->monpass()
-                            . $mycrypt3 );
+                            . $mycrypt3, undef, $self );
                 };
             }
         }
@@ -323,6 +326,7 @@ sub process1Int {
         my $str = 'This user requires that you be authenticated.';
         debug($str);
         message($str);
+        $self->isUserMustBeAuthenticated(1);
         $olko = 967;
     }
 
@@ -356,7 +360,7 @@ sub process1Int {
             $user->mysex($mysex);
 
             #Second HTTP request to load the avatar image.
-            $request->agir( $user, '60' );
+            $request->agir( $user, '60', $self );
         }
     }
 
@@ -372,12 +376,14 @@ sub process1Int {
     # No more private conversation is accepted
     if ( $olko == 98 ) {
         info("No more private conversation is accepted.");
+        $self->isPrivateAreBlocked(1);
         $olko = 967;
     }
 
     # No more male user message is accepted
     if ( $olko == 96 ) {
         info("No more male user message is accepted.");
+        $self->isMenAreBlocked(1);
         $olko = 967;
     }
 
