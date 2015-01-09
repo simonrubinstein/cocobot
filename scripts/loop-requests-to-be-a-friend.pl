@@ -93,6 +93,11 @@ sub HELP_MESSAGE {
     print STDOUT $Script . ', Request loop be a friend.' . "\n";
     $CLI->printLineOfArgs();
     $CLI->HELP();
+    print <<ENDTXT;
+
+Example:
+    ./loop-requests-to-be-a-friend.pl -v -d -M -z 00000 -i 124527 -x 200
+ENDTXT
     exit 0;
 }
 

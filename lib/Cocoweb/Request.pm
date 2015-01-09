@@ -349,8 +349,10 @@ sub firsty {
 #@brief Initiates a standard request to the server
 #@param object $user An 'Cocoweb::User::Connected' object
 #@param string $txt1 The parameter of the HTTP request
+#@param object A possible Cocoweb::Response object
+#@return object Cocoweb::Response
 sub agir {
-    my ( $self, $user, $txt3 ) = @_;
+    my ( $self, $user, $txt3, $response ) = @_;
     my $code = substr( $txt3, 0, 2 );
     if ( $code != 10 and $code != 89 and $code != 48 and $code != 83 ) {
 
@@ -362,7 +364,7 @@ sub agir {
             . substr( $txt3, 0, 2 )
             . $user->mynickID()
             . $user->monpass()
-            . substr( $txt3, 2 ) );
+            . substr( $txt3, 2 ), undef, $response );
 }
 
 ##@method object agix($user, $url, $cookie_ref)
@@ -370,13 +372,15 @@ sub agir {
 #@param object $user An 'Cocoweb::User::Connected' object
 #@param string An URL for the HTTP request
 #@param hashref $cookie_ref A hash that contains possible cookies.
+#@param object A possible Cocoweb::Response object
+#@return object Cocoweb::Response
 sub agix {
-    my ( $self, $user, $url, $cookie_ref ) = @_;
+    my ( $self, $user, $url, $cookie_ref, $response ) = @_;
     croak error("The URL of the HTTP request is missing") if !defined $url;
 
     info("url: $url");
-    my $response = $self->execute( 'GET', $url, $cookie_ref );
-    my $res = $response->content();
+    my $HTTPResponse = $self->execute( 'GET', $url, $cookie_ref );
+    my $res = $HTTPResponse->content();
 
     debug($res);
     die error(
@@ -386,9 +390,7 @@ sub agix {
     my $arg      = $2;
     die error( 'The method called "' . $function . '()" is unknown!' )
         if $function ne 'process1';
-    $response = Cocoweb::Response->new();
-
-    #return $response->$function( $self, $user, $arg );
+    $response = Cocoweb::Response->new() if !defined $response;
     $response->$function( $self, $user, $arg );
     return $response;
 }
