@@ -1,6 +1,6 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2014-01-26
+# @date 2015-07-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -41,6 +41,7 @@ my %dememeMatch        = ();
 my %shiftuMatch        = ();
 my %demeleMatch        = ();
 my $hasBeenInitialized = 0;
+my @doc                = ();
 
 ##@method object init($class, $instance)
 sub init {
@@ -150,7 +151,67 @@ sub initializeTables {
         95  => '_',
         126 => ' '
     );
+
+    my $rku = 0;
+    for ( my $i = 0; $i < 62; $i++ ) {
+        if ( $i > 51 ) {
+            $rku = -69;
+        }
+        elsif ( $i > 25 ) {
+            $rku = 6;
+        }
+        $doc[$i] = 65 + $i + $rku;
+    }
+    my @coul3 = ( 43, 47, 61 );
+    push @doc, @coul3;
+    $self->applye( \@doc );
     $hasBeenInitialized = 1;
+}
+
+sub applye {
+    my ( $self, $rgr_ref ) = @_;
+    for ( my $i = 0; $i < 10; $i++ ) {
+        my $fjz = $rgr_ref->[ $i + 20 ];
+        $rgr_ref->[ $i + 20 ] = $rgr_ref->[ $i + 30 ];
+        $rgr_ref->[ $i + 30 ] = $fjz;
+    }
+}
+
+sub enxo {
+    my ( $self, $n, $y, $z ) = @_;
+    my $o = '';
+    my ( $chr1, $chr2, $chr3 ) = ( '', '', '' );
+    my @enc  = [];
+    my @revo = [];
+    for ( my $i = 0; $i < 65; $i++ ) {
+        $revo[ $doc[$i] ] = $i;
+    }
+    my $i = 0;
+    if ( $z == 1 ) {
+        do {
+            for ( my $j = 0; $j < 4; $j++ ) {
+                $enc[$j] = $revo[ ord( substr( $n, $i++, 1 ) ) ];
+            }
+            $chr1 = ( $enc[0] << 2 ) | ( $enc[1] >> 4 );
+            $chr2 = ( ( $enc[1] & 15 ) << 4 ) | ( $enc[2] >> 2 );
+            $chr3 = ( ( $enc[2] & 3 ) << 6 ) | $enc[3];
+            $o = $o . chr($chr1);
+            $o = $o . chr($chr2) if $enc[2] ne 64;
+            $o = $o . chr($chr3) if $enc[3] ne 64;
+        } while ( $i < length($n) );
+        $n = $o;
+    }
+    my $result = '';
+    for ( my $i = 0; $i < length($n); ++$i ) {
+        $result
+            .= chr(
+            ord( substr( $y, $i % length($y), 1 ) ) ^
+                ord( substr( $n, $i, 1 ) ) );
+    }
+    if ( $z == 1 ) {
+        $o = $result;
+    }
+    return $o;
 }
 
 ##@method string writo($s1)
@@ -258,10 +319,10 @@ sub transformix {
                 $numerox = ord($c);
                 $tr8     = 'FALSE'
                     if $numerox < 45
-                    or ( $numerox > 57 and $numerox < 65 )
-                    or ( $numerox > 90 and $numerox < 95 )
-                    or $numerox > 122
-                    or $numerox == 96;
+                        or ( $numerox > 57 and $numerox < 65 )
+                        or ( $numerox > 90 and $numerox < 95 )
+                        or $numerox > 122
+                        or $numerox == 96;
             }
             if ( indexOf( $tr9, '*' ) == -1 ) {
                 my $tt3 = $tr9;

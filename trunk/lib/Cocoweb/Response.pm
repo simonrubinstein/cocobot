@@ -124,6 +124,17 @@ sub process1Int {
         $olko = 51;
     }
 
+    if ( $olko == 15 ) {
+        my $tkt = substring( $urlo, 2, 8 );
+        print "============> $tkt <================\n";
+        if ( $tkt < 900000 ) {
+            $user->mynickID( $tkt );
+            $user->monpass( substring( $urlo, 8, 14 ) );
+            print "---> " . $user->mynickID() . " / " . $user->monpass() . "\n";
+
+        }
+    }
+
     if ( $olko == 51 ) {
         usleep( 1000 * 500 );
         #Second request used for authentication.
