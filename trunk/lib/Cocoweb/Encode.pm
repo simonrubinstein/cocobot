@@ -1,6 +1,6 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2015-07-27
+# @date 2015-07-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -190,7 +190,7 @@ sub enxo {
     if ( $z == 1 ) {
         do {
             for ( my $j = 0; $j < 4; $j++ ) {
-                $enc[$j] = $revo[ ord( substr( $n, $i++, 1 ) ) ];
+                $enc[$j] = $revo[ charCodeAt( $n, $i++ ) ];
             }
             $chr1 = ( $enc[0] << 2 ) | ( $enc[1] >> 4 );
             $chr2 = ( ( $enc[1] & 15 ) << 4 ) | ( $enc[2] >> 2 );
@@ -210,6 +210,32 @@ sub enxo {
     }
     if ( $z == 1 ) {
         $o = $result;
+    }
+
+    $i = 0;
+    if ( $z == 0 ) {
+        $n = $result;
+        do {
+            my $chr1 = charCodeAt( $n, $i++ );
+            my $chr2 = charCodeAt( $n, $i++ );
+            my $chr3 = charCodeAt( $n, $i++ );
+            $enc[0] = $chr1 >> 2;
+            $enc[1] = ( ( $chr1 & 3 ) << 4 ) | ( $chr2 >> 4 );
+            $enc[2] = ( ( $chr2 & 15 ) << 2 );
+            if ( defined $chr3 ) {
+                $enc[2] = $enc[2] | ( $chr3 >> 6 );
+                $enc[3] = $chr3 & 63;
+            }
+            if ( !isNumeric($chr2) ) {
+                $enc[2] = $enc[3] = 64;
+            }
+            elsif ( !isNumeric($chr3) ) {
+                $enc[3] = 64;
+            }
+            for ( my $j = 0; $j < 4; $j++ ) {
+                $o .= chr( $doc[ $enc[$j] ] );
+            }
+        } while ( $i < length($n) );
     }
     return $o;
 }

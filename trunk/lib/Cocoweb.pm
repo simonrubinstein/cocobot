@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2015-01-07
+# @date 2015-07-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -55,6 +55,9 @@ our @EXPORT = qw(
     warning
     timeToDate
     timeToDateOfDay
+    getNum
+    isNumeric
+    charCodeAt
 );
 use Cocoweb::Logger;
 
@@ -170,8 +173,7 @@ sub parseInt {
                   $_ =~ /[0-9]/
                 ? $_
                 : ord(uc) - 55
-                )
-                * $radix**$place++;
+            ) * $radix**$place++;
         }
         $ret = $num * $sign;
     }
@@ -238,6 +240,36 @@ sub timeToDateOfDay {
     return
         sprintf( '%02d-%02d-%02d', ( $dt[5] + 1900 ), ( $dt[4] + 1 ),
         $dt[3] );
+}
+
+sub getNum {
+    my ($str) = @_;
+    return if !defined $str;
+    $str =~ s/^\s+//;
+    $str =~ s/\s+$//;
+    $! = 0;
+    my ( $num, $unparsed ) = POSIX::strtod($str);
+    if ( ( $str eq '' ) || ( $unparsed != 0 ) || $! ) {
+        return undef;
+    }
+    else {
+        return $num;
+    }
+}
+sub isNumeric { defined getNum( $_[0] ) }
+
+##@method charCodeAt($str, $index)
+#Return the  numeric value character in a string
+#@param string $str
+#@param integer $index An greater than or equal to 0 and less than the
+#                      length of the string; if it is not a number,
+#                      it defaults to 0.
+#@return integer
+sub charCodeAt {
+    my ( $str, $index ) = @_;
+    $index = 0 if !defined $index;
+    return if $index >= length($str);
+    return ord( substr( $str, $index, 1 ) );
 }
 
 ##@method void BEGIN()
