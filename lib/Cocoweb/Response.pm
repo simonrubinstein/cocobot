@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2015-01-09
+# @date 2015-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -38,9 +38,11 @@ use utf8;
 no utf8;
 
 __PACKAGE__->attributes(
-    'profileTooNew', 'infuzString', 'userFound', 'messageString',
-    'userFriends', 'isRestrictedAccount', 'isUserMustBeAuthenticated', 
-    'isMenAreBlocked', 'isPrivateAreBlocked'
+    'profileTooNew',             'infuzString',
+    'userFound',                 'messageString',
+    'userFriends',               'isRestrictedAccount',
+    'isUserMustBeAuthenticated', 'isMenAreBlocked',
+    'isPrivateAreBlocked',       'convert'
 );
 
 ##@method void init($args)
@@ -48,14 +50,15 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults(
-        'profileTooNew'       => 0,
-        'infuzString'         => '',
-        'userFound'           => undef,
-        'messageString'       => '',
-        'userFriends'         => undef,
-        'isRestrictedAccount' => 0,
+        'profileTooNew'             => 0,
+        'infuzString'               => '',
+        'userFound'                 => undef,
+        'messageString'             => '',
+        'userFriends'               => undef,
+        'isRestrictedAccount'       => 0,
         'isUserMustBeAuthenticated' => 0,
-        'isMenAreBlocked' => 0
+        'isMenAreBlocked'           => 0,
+        'convert'                   => Cocoweb::Encode->instance(),
     );
 }
 
@@ -126,17 +129,25 @@ sub process1Int {
 
     if ( $olko == 15 ) {
         my $tkt = substring( $urlo, 2, 8 );
-        print "============> $tkt <================\n";
         if ( $tkt < 900000 ) {
-            $user->mynickID( $tkt );
+            $user->mynickID($tkt);
             $user->monpass( substring( $urlo, 8, 14 ) );
-            print "---> " . $user->mynickID() . " / " . $user->monpass() . "\n";
-
+            my $res
+                = $self->convert()
+                ->enxo( substring( $urlo, 14 ), substring( $urlo, 8, 14 ),
+                1 );
+            if ( $res =~ m{guw\(enxo\([^,]+,"([^"]+)",0\)\)}xms ) {
+                my $y   = $1;
+                my $adz = $self->convert()
+                    ->enxo( $request->magicAuthString(), $y, 0 );
+                $request->guw( $user, $adz, $self );
+            }
         }
     }
 
     if ( $olko == 51 ) {
         usleep( 1000 * 500 );
+
         #Second request used for authentication.
         $request->agir( $user, '51', $self );
     }
@@ -170,8 +181,8 @@ sub process1Int {
             die error($urlu);
         }
 
-        # Retrieves information about an user, for Premium subscribers only
-        # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
+# Retrieves information about an user, for Premium subscribers only
+# i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
@@ -244,15 +255,19 @@ sub process1Int {
             #HTTP request to load the avatar image.
             if ( $request->isAvatarRequest() ) {
                 eval {
-                    $request->agix( $user,
-                              $request->{'urlav'}
+                    $request->agix(
+                        $user,
+                        $request->{'urlav'}
                             . $user->myage()
                             . $user->mysex()
                             . $user->citydio()
                             . $user->myavatar()
                             . $user->mynickID()
                             . $user->monpass()
-                            . $mycrypt3, undef, $self );
+                            . $mycrypt3,
+                        undef,
+                        $self
+                    );
                 };
             }
         }
