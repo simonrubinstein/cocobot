@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2015-01-09
+# @date 2015-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -63,8 +63,8 @@ __PACKAGE__->attributes(
     'infuzMaxOfTries',
     'infuzPause1',
     'infuzPause2',
-    'infuzMaxOfTriesAfterPause'
-
+    'infuzMaxOfTriesAfterPause',
+    'magicAuthString'
 );
 
 my $conf_ref;
@@ -95,7 +95,8 @@ sub init {
             'current-url',       'avatar-url',
             'avaref',            'urlcocoland',
             'urlav',             'url_initio.js',
-            'infuz-not-to-fast', 'profile-too-new'
+            'infuz-not-to-fast', 'profile-too-new',
+            'magic-auth-string'
             )
         {
             $conf->isString($name);
@@ -162,6 +163,7 @@ sub init {
         'isAvatarRequest'     => $isAvatarRequest,
         'isInfuzNotToFast'    => 0,
         'infuzNotToFastRegex' => $infuzNotToFast,
+        'magicAuthString'     => $conf_ref->{'magic-auth-string'},
         'profilTooNewRegex'   => $profilTooNew,
         'infuzMaxOfTries'     => $conf_ref->{'infuz-max-of-tries'},
         'infuzPause1'         => $conf_ref->{'infuz-pause1'},
@@ -204,7 +206,7 @@ sub getValue {
         return $conf_ref->{$name};
     }
     else {
-        croak error( 'Error: The "'
+        croak error( 'Error: The "' 
                 . $name
                 . '" value was not found in the configuration.' );
     }
@@ -279,7 +281,7 @@ sub getCitydioAndTownzz {
     my $count = scalar @citycoList;
     die error("Error: The cityco is not valid (cityco: $cityco)")
         if $count % 2 != 0
-        or $count == 0;
+            or $count == 0;
 
     if ( $count == 2 ) {
         $citydio = $citycoList[0];
@@ -359,12 +361,16 @@ sub agir {
         #info($txt3);
     }
 
-    return $self->agix( $user,
-              $self->url1()
+    return $self->agix(
+        $user,
+        $self->url1()
             . substr( $txt3, 0, 2 )
             . $user->mynickID()
             . $user->monpass()
-            . substr( $txt3, 2 ), undef, $response );
+            . substr( $txt3, 2 ),
+        undef,
+        $response
+    );
 }
 
 ##@method object agix($user, $url, $cookie_ref)
@@ -395,12 +401,25 @@ sub agix {
     return $response;
 }
 
-##@method void searchnow($user)
+##@method obkect searchnow($user)
 #@brief Call the remote method to retrieve the list of pseudonyms.
 #@param object $user An 'User::Connected' object
+#@param object A possible Cocoweb::Response object
 sub searchnow {
     my ( $self, $user ) = @_;
     return $self->agir( $user, '10' . $self->genru() . $self->yearu() );
+}
+
+##@method object guw($user, $adz, $response)
+#@param object $user An 'User::Connected' object
+#@param string Authentication string (i.g. "iGRQh3J1jcBfhHJui3teGhIrID0=")
+#@param object A possible Cocoweb::Response object
+#@return object Cocoweb::Response
+sub guw {
+    my ( $self, $user, $adz, $response ) = @_;
+    $response = $self->agir( $user, '52' . $adz, $response );
+    $user->mystat($adz);
+    return $response;
 }
 
 ##@method void cherchasalon($user)
@@ -630,7 +649,7 @@ sub searchNickname {
     }
     return $self->usersList()
         if !defined $nickname
-        or length($nickname) == 0;
+            or length($nickname) == 0;
     return;
 }
 
