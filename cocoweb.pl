@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2014-01-17 
+# @date 2015-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # http://code.google.com/p/cocobot/
 #
@@ -37,7 +37,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.6';
+$VERSION                            = '0.1.7';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -81,6 +81,7 @@ my $maxOfWrite = 1;
 my $message;
 my $inputZipCode;
 my $currentYear;
+my @doc = ();
 
 init();
 
@@ -98,7 +99,7 @@ sub run {
 
 ## @method void actionPb()
 sub actionPb {
-    for ( my $i = 0 ; $i < 3 ; $i++ ) {
+    for ( my $i = 0; $i < 3; $i++ ) {
         postSentences( $sentences{'pb'} );
         sleep 60;
     }
@@ -113,7 +114,7 @@ sub actionIdiot {
 sub postSentences {
     my ($sentences_ref) = @_;
 
-    for ( my $i = 0 ; $i < $maxOfUsers ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfUsers; $i++ ) {
         my $sentence = $sentences_ref->[ randum( scalar @$sentences_ref ) ];
         print "$sentence \n";
     }
@@ -122,10 +123,10 @@ sub postSentences {
         sayError("You must specify either a username or ID");
     }
     my @users;
-    for ( my $i = 0 ; $i < $maxOfUsers ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfUsers; $i++ ) {
         $users[$i] = getRandomLogin($sex);
     }
-    for ( my $i = 0 ; $i < $maxOfUsers ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfUsers; $i++ ) {
         process( $users[$i] );
     }
     my $login_ref;
@@ -138,7 +139,7 @@ sub postSentences {
         $searchId = $login_ref->{'id'};
     }
 
-    for ( my $i = 0 ; $i < $maxOfUsers ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfUsers; $i++ ) {
         my $sentence = $sentences_ref->[ randum( scalar @$sentences_ref ) ];
         writus( $users[$i], $sentence, $searchId );
 
@@ -151,7 +152,7 @@ sub actionWrite {
     if ( !defined $searchUser and !defined $searchId ) {
         die sayError("You must specify a username (-u option)");
     }
-    for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfLoop; $i++ ) {
         my $user_ref = getRandomLogin($sex);
         process($user_ref);
         if ( !defined $searchId ) {
@@ -161,7 +162,7 @@ sub actionWrite {
             }
             $searchId = $login_ref->{'id'};
         }
-        for ( my $i = 0 ; $i < $maxOfWrite ; $i++ ) {
+        for ( my $i = 0; $i < $maxOfWrite; $i++ ) {
             writus( $user_ref, $message, $searchId );
         }
         sleep 15;
@@ -169,7 +170,7 @@ sub actionWrite {
 }
 
 sub actionLogin {
-    for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfLoop; $i++ ) {
         my $user_ref = getRandomLogin($sex);
     }
 }
@@ -182,7 +183,7 @@ sub actionHello {
         die sayError("You must specify a username (-u option)");
     }
     my $username = '';
-    for ( my $i = 0 ; $i < $maxOfLoop ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfLoop; $i++ ) {
         my $user_ref = getRandomLogin($sex);
         process($user_ref);
         if ( !defined $searchId ) {
@@ -201,7 +202,7 @@ sub actionHello {
         }
         my $sentence = $sentences_ref->[ randum( scalar @$sentences_ref ) ];
         my @phrases = split( /\*n\*r/, $sentence );
-        for ( my $i = 0 ; $i < $maxOfWrite ; $i++ ) {
+        for ( my $i = 0; $i < $maxOfWrite; $i++ ) {
             my $r = randum(10);
             my $user;
             if ( $r < 4 ) {
@@ -248,7 +249,7 @@ sub actionAlert {
                 next;
             }
         }
-	sleep 1;
+        sleep 1;
         writus( $user_ref, $message, $id );
     }
 }
@@ -274,11 +275,11 @@ sub actionString {
     my $str = '';
     my $i;
     my $max = 477 - length($message);
-    for ( $i = 0 ; $i < 100 ; $i++ ) {
+    for ( $i = 0; $i < 100; $i++ ) {
         last if length($str) > $max;
         $str = $str . ' ' . $message;
     }
-    for ( my $i = 0 ; $i < $maxOfWrite ; $i++ ) {
+    for ( my $i = 0; $i < $maxOfWrite; $i++ ) {
         writus( $user_ref, $str, $searchId );
         sleep 1;
     }
@@ -344,8 +345,8 @@ sub actionList {
         }
         my $line = '';
         foreach my $k (@codes) {
-            $line .=
-              '! ' . sprintf( '%-' . $max{$k} . 's', $login_ref->{$k} ) . ' ';
+            $line .= '! '
+                . sprintf( '%-' . $max{$k} . 's', $login_ref->{$k} ) . ' ';
         }
         $line .= '!';
         print $line . "\n";
@@ -364,13 +365,13 @@ sub process {
     validatio($user_ref);
     initial($user_ref);
     agir( $user_ref,
-            '40'
-          . $user_ref->{'login'} . '*'
-          . $user_ref->{'old'}
-          . $user_ref->{'sex'}
-          . $user_ref->{'citydio'}
-          . $user_ref->{'myavatar'}
-          . $user_ref->{'mypass'} );
+              '40'
+            . $user_ref->{'login'} . '*'
+            . $user_ref->{'old'}
+            . $user_ref->{'sex'}
+            . $user_ref->{'citydio'}
+            . $user_ref->{'myavatar'}
+            . $user_ref->{'mypass'} );
 }
 
 ## @method void initUser($user_ref)
@@ -388,6 +389,7 @@ sub initUser {
     $user_ref->{'roulix'}   = 0;
     $user_ref->{'sauvy'}    = '';
     $user_ref->{'cookies'}  = {};
+
     #chang( $user_ref, 3000 + randum(1000) );
     chang( $user_ref, 80 );
 }
@@ -405,7 +407,7 @@ sub agir {
     my $res = $response->content();
     sayDebug($res);
     die sayError("$res: function not found")
-      if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
+        if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
     my $function = $1;
     my $arg      = $2;
 
@@ -460,8 +462,8 @@ sub searchLogin {
         'ok'    => 2,
         'city'  => 30926,
         'id'    => 174135
-      }
-      if $isTest;
+        }
+        if $isTest;
     sayDebug("searchLogin() login = $login");
     my $login_ref;
     $login_ref = checkIfLoginExists($login);
@@ -504,22 +506,41 @@ sub process1Int {
         $user_ref->{'monpass'}  = substr( $urlo, 8, 14 - 8 );
         $user_ref->{'mycrypt'}  = parseInt( substr( $urlo, 14, 21 - 14 ) );
         sayDebug( 'mynickID: '
-              . $user_ref->{'mynickID'}
-              . '; monpass: '
-              . $user_ref->{'monpass'}
-              . '; mycrypt: '
-              . $user_ref->{'mycrypt'} );
+                . $user_ref->{'mynickID'}
+                . '; monpass: '
+                . $user_ref->{'monpass'}
+                . '; mycrypt: '
+                . $user_ref->{'mycrypt'} );
 
         $olko = 51;
 
     }
 
+    if ( $olko == 15 ) {
+        my $tkt = substring( $urlo, 2, 8 );
+        if ( $tkt < 900000 ) {
+            $user_ref->{'mynickID'} = $tkt;
+            $user_ref->{'monpass'} = substring( $urlo, 8, 14 );
+            my $res = enxo( substring( $urlo, 14 ), substring( $urlo, 8, 14 ),
+                1 );
+            if ( $res =~ m{guw\(enxo\([^,]+,"([^"]+)",0\)\)}xms ) {
+                my $y = $1;
+                my $adz = enxo( '35516151026*0*1w6osl', $y, 0 );
+                agir( $user_ref,
+                          52
+                        . $user_ref->{'mynickID'}
+                        . $user_ref->{'monpass'}
+                        . $adz );
+            }
+        }
+    }
+
     if ( $olko == 51 ) {
         agir( $user_ref,
-                '51'
-              . $user_ref->{'mynickID'}
-              . $user_ref->{'monpass'}
-              . writo( $agent_ref->{'agent'} ) );
+                  '51'
+                . $user_ref->{'mynickID'}
+                . $user_ref->{'monpass'}
+                . writo( $agent_ref->{'agent'} ) );
     }
 
     if ( $olko == 99 ) {
@@ -598,8 +619,12 @@ sub populate {
 sub searchnow {
     my ($user_ref) = @_;
     sayDebug("genru: $genru; yearu: $yearu");
-    my $searchito =
-      '10' . $user_ref->{'mynickID'} . $user_ref->{'monpass'} . $genru . $yearu;
+    my $searchito
+        = '10'
+        . $user_ref->{'mynickID'}
+        . $user_ref->{'monpass'}
+        . $genru
+        . $yearu;
     agir( $user_ref, $searchito );
 }
 
@@ -607,8 +632,8 @@ sub searchnow {
 sub chang {
     my ( $user_ref, $myport ) = @_;
     $user_ref->{'myport'} = $myport;
-    $user_ref->{'url1'} =
-      $coco_ref->{'urly0'} . ':' . $user_ref->{'myport'} . '/';
+    $user_ref->{'url1'}
+        = $coco_ref->{'urly0'} . ':' . $user_ref->{'myport'} . '/';
 }
 
 ## @method void getCityco($user_ref)
@@ -668,43 +693,44 @@ sub validatio {
     die sayError("bad ageuq! ageuq = $ageuq") if $ageuq < 15;
     my $citygood = $citydio;
     $citygood = "0" x ( 5 - length($citygood) ) . $citygood
-      if length($citygood) < 5;
+        if length($citygood) < 5;
 
     # Check if the login name does not contain too many capital letters
     my $sume = 0;
-    for ( my $i = 0 ; $i < length($nickidol) ; $i++ ) {
+    for ( my $i = 0; $i < length($nickidol); $i++ ) {
         my $c = substr( $nickidol, $i, 1 );
         my $ujm = ord($c);
         $sume++ if $ujm < 95 && $ujm > 59;
     }
     if ( $sume > 4 ) {
+
         #$user_ref->{'login'} = $nickidol = lc($nickidol);
     }
 
     my $cookav;
-    my $inform =
-        $nickidol . '#' 
-      . $typum . '#' 
-      . $ageuq . '#'
-      . $user_ref->{'townzz'} . '#'
-      . $citygood . '#0#'
-      . $user_ref->{'cookav'} . '#';
+    my $inform
+        = $nickidol . '#' 
+        . $typum . '#' 
+        . $ageuq . '#'
+        . $user_ref->{'townzz'} . '#'
+        . $citygood . '#0#'
+        . $user_ref->{'cookav'} . '#';
     sayDebug("$inform");
     $user_ref->{'inform'} = $inform;
 
     $user_ref->{'cookies'}->{'coda'} = $inform;
 
     $user_ref->{'sauvy'} = $user_ref->{'cookav'}
-      if length( $user_ref->{'sauvy'} ) < 2;
+        if length( $user_ref->{'sauvy'} ) < 2;
 
-    my $location =
-        $coco_ref->{'urlprinc'} . "#"
-      . $nickidol . '#'
-      . $typum . '#'
-      . $ageuq . '#'
-      . $citygood . '#0#'
-      . $user_ref->{'sauvy'} . '#'
-      . $user_ref->{'referenz'} . '#';
+    my $location
+        = $coco_ref->{'urlprinc'} . "#"
+        . $nickidol . '#'
+        . $typum . '#'
+        . $ageuq . '#'
+        . $citygood . '#0#'
+        . $user_ref->{'sauvy'} . '#'
+        . $user_ref->{'referenz'} . '#';
     sayDebug("location: $location");
 }
 
@@ -718,7 +744,7 @@ sub initial {
         $mypass   = substr( $infor, 9, 29 );
     }
     $myavatar = randum(890000000) + 100000000
-      if ( !defined $myavatar
+        if ( !defined $myavatar
         or $myavatar !~ m{^\d+$}
         or $myavatar < 100000000
         or $myavatar > 1000000000 );
@@ -739,12 +765,13 @@ sub writus {
 
     my $s2 = '';
     $s2 = writo($s1);
-    my $sendito = '99'
-      . $user_ref->{'mynickID'}
-      . $user_ref->{'monpass'}
-      . $destId
-      . $user_ref->{'roulix'}
-      . $s2;
+    my $sendito
+        = '99'
+        . $user_ref->{'mynickID'}
+        . $user_ref->{'monpass'}
+        . $destId
+        . $user_ref->{'roulix'}
+        . $s2;
     agir( $user_ref, $sendito );
 
     #print "$sendito\n";
@@ -764,7 +791,7 @@ sub writo {
     utf8::decode($s1);
     my $s2     = '';
     my $toulon = 0;
-    for ( my $i = 0 ; $i < length($s1) ; $i++ ) {
+    for ( my $i = 0; $i < length($s1); $i++ ) {
         my $c = substr( $s1, $i, 1 );
         my $numerox = ord($c);
         if ( $numerox != 32 ) {
@@ -840,7 +867,7 @@ sub sayError {
     $message =~ s{(\n|\r)}{}g;
     setlog( 'info', $message );
     print STDERR $message . "\n"
-      if $isVerbose;
+        if $isVerbose;
     return $message;
 }
 
@@ -851,7 +878,7 @@ sub sayInfo {
     $message =~ s{(\n|\r)}{}g;
     setlog( 'info', $message );
     print STDOUT $message . "\n"
-      if $isVerbose;
+        if $isVerbose;
 }
 
 ## @method void sayDebug($message)
@@ -862,7 +889,7 @@ sub sayDebug {
     $message =~ s{(\n|\r)}{}g;
     setlog( 'info', $message );
     print STDOUT $message . "\n"
-      if $isVerbose;
+        if $isVerbose;
 }
 
 ## @method void setlog($priorite, $message)
@@ -890,20 +917,21 @@ sub jsEscape {
 sub parseInt {
     my ( $str, $radix ) = @_;
     $radix = 10 if !defined $radix;
+
     #print "str:$str, radix:$radix\n";
     $str = 'undefined' if !defined $str;
-    my $sign =
-      $str =~ s/^([+-])//
-      ? ( -1, 1 )[ $1 eq '+' ]
-      : 1;
+    my $sign
+        = $str =~ s/^([+-])//
+        ? ( -1, 1 )[ $1 eq '+' ]
+        : 1;
     $radix = ( int $radix ) % 2**32;
     $radix -= 2**32 if $radix >= 2**31;
     $radix ||=
-      $str =~ /^0x/i
-      ? 16
-      : 10;
+        $str =~ /^0x/i
+        ? 16
+        : 10;
     $radix == 16
-      and $str =~ s/^0x//i;
+        and $str =~ s/^0x//i;
 
     return if $radix < 2 || $radix > 36;
 
@@ -944,7 +972,7 @@ sub parseInt {
 
 ## @method generateLogins()
 sub generateLogins {
-    for ( my $i = 0 ; $i < 5 ; $i++ ) {
+    for ( my $i = 0; $i < 5; $i++ ) {
         my ( $login, $sex, $old ) = getRandomLogin();
         sayDebug("login:$login; sex: $sex; old: $old");
         my %u = (
@@ -1034,7 +1062,8 @@ sub getRandomLogin {
 
     }
 
-    sayInfo("getRandomLogin() login: $login; sex: $sex, old: $old, zip: $zip");
+    sayInfo(
+        "getRandomLogin() login: $login; sex: $sex, old: $old, zip: $zip");
     return { 'login' => $login, 'sex' => $sex, 'old' => $old, 'zip' => $zip };
 }
 
@@ -1047,8 +1076,8 @@ sub init {
         'timeout' => $agent_ref->{'timeout'}
     );
     initializeTables();
-    my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst ) =
-      localtime(time);
+    my ( $sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst )
+        = localtime(time);
     $currentYear = $year + 1900;
 }
 
@@ -1080,13 +1109,136 @@ sub initializeTables {
         249  => "*f",    # ù
         251  => "*u"     # û
     );
+
+    my $rku = 0;
+    for ( my $i = 0; $i < 62; $i++ ) {
+        if ( $i > 51 ) {
+            $rku = -69;
+        }
+        elsif ( $i > 25 ) {
+            $rku = 6;
+        }
+        $doc[$i] = 65 + $i + $rku;
+    }
+    my @coul3 = ( 43, 47, 61 );
+    push @doc, @coul3;
+    applye( \@doc );
+}
+
+sub applye {
+    my ($rgr_ref) = @_;
+    for ( my $i = 0; $i < 10; $i++ ) {
+        my $fjz = $rgr_ref->[ $i + 20 ];
+        $rgr_ref->[ $i + 20 ] = $rgr_ref->[ $i + 30 ];
+        $rgr_ref->[ $i + 30 ] = $fjz;
+    }
+}
+
+sub enxo {
+    my ( $n, $y, $z ) = @_;
+    my $o = '';
+    my ( $chr1, $chr2, $chr3 ) = ( '', '', '' );
+    my @enc  = [];
+    my @revo = [];
+    for ( my $i = 0; $i < 65; $i++ ) {
+        $revo[ $doc[$i] ] = $i;
+    }
+    my $i = 0;
+    if ( $z == 1 ) {
+        do {
+            for ( my $j = 0; $j < 4; $j++ ) {
+                $enc[$j] = $revo[ charCodeAt( $n, $i++ ) ];
+            }
+            $chr1 = ( $enc[0] << 2 ) | ( $enc[1] >> 4 );
+            $chr2 = ( ( $enc[1] & 15 ) << 4 ) | ( $enc[2] >> 2 );
+            $chr3 = ( ( $enc[2] & 3 ) << 6 ) | $enc[3];
+            $o = $o . chr($chr1);
+            $o = $o . chr($chr2) if $enc[2] ne 64;
+            $o = $o . chr($chr3) if $enc[3] ne 64;
+        } while ( $i < length($n) );
+        $n = $o;
+    }
+    my $result = '';
+    for ( my $i = 0; $i < length($n); ++$i ) {
+        $result
+            .= chr(
+            ord( substr( $y, $i % length($y), 1 ) ) ^
+                ord( substr( $n, $i, 1 ) ) );
+    }
+    if ( $z == 1 ) {
+        $o = $result;
+    }
+
+    $i = 0;
+    if ( $z == 0 ) {
+        $n = $result;
+        do {
+            my $chr1 = charCodeAt( $n, $i++ );
+            my $chr2 = charCodeAt( $n, $i++ );
+            my $chr3 = charCodeAt( $n, $i++ );
+            $enc[0] = $chr1 >> 2;
+            $enc[1] = ( ( $chr1 & 3 ) << 4 ) | ( $chr2 >> 4 );
+            $enc[2] = ( ( $chr2 & 15 ) << 2 );
+            if ( defined $chr3 ) {
+                $enc[2] = $enc[2] | ( $chr3 >> 6 );
+                $enc[3] = $chr3 & 63;
+            }
+            if ( !isNumeric($chr2) ) {
+                $enc[2] = $enc[3] = 64;
+            }
+            elsif ( !isNumeric($chr3) ) {
+                $enc[3] = 64;
+            }
+            for ( my $j = 0; $j < 4; $j++ ) {
+                $o .= chr( $doc[ $enc[$j] ] );
+            }
+        } while ( $i < length($n) );
+    }
+    return $o;
+}
+
+sub charCodeAt {
+    my ( $str, $index ) = @_;
+    $index = 0 if !defined $index;
+    return if $index >= length($str);
+    return ord( substr( $str, $index, 1 ) );
+}
+
+sub getNum {
+    my ($str) = @_;
+    return if !defined $str;
+    $str =~ s/^\s+//;
+    $str =~ s/\s+$//;
+    $! = 0;
+    my ( $num, $unparsed ) = POSIX::strtod($str);
+    if ( ( $str eq '' ) || ( $unparsed != 0 ) || $! ) {
+        return undef;
+    }
+    else {
+        return $num;
+    }
+}
+sub isNumeric { defined getNum( $_[0] ) }
+
+sub substring {
+    my ( $string, $from, $to ) = @_;
+    $to = 0 if !defined $to;
+    return substr( $string, $from ) if $to == 0;
+    if ( $to < $from ) {
+
+        # swap variables
+        $from += $to;
+        $to   = $from - $to;
+        $from = $from - $to;
+    }
+    return substr( $string, $from, $to - $from );
 }
 
 ## @method hashref confGetHash($hashref, $key)
 sub confGetHash {
     my ( $hash, $key ) = @_;
     die sayError("$key hash not found or wrong")
-      if ( !exists $hash->{$key} or ref $hash->{$key} ne 'HASH' );
+        if ( !exists $hash->{$key} or ref $hash->{$key} ne 'HASH' );
     return $hash->{$key};
 }
 
@@ -1094,7 +1246,7 @@ sub confGetHash {
 sub confIsString {
     my ( $hash, $key ) = @_;
     die sayError("$key string not found or wrong")
-      if ( !exists $hash->{$key} or $hash->{$key} !~ m{^.+$}m );
+        if ( !exists $hash->{$key} or $hash->{$key} !~ m{^.+$}m );
     return $hash->{$key};
 }
 
@@ -1102,7 +1254,7 @@ sub confIsString {
 sub confIsInt {
     my ( $hash, $key ) = @_;
     die sayError("$key integer not found or wrong")
-      if ( !exists $hash->{$key} or $hash->{$key} !~ m{^\d+$} );
+        if ( !exists $hash->{$key} or $hash->{$key} !~ m{^\d+$} );
     return $hash->{$key};
 }
 
@@ -1110,7 +1262,7 @@ sub confIsInt {
 sub confGetArray {
     my ( $hash, $key ) = @_;
     die sayError("$key not found")
-      if !exists $hash->{$key};
+        if !exists $hash->{$key};
     my $r = ref $hash->{$key};
     my $array_ref;
     if ( $r eq 'ARRAY' ) {
@@ -1132,9 +1284,8 @@ sub readConfig {
     my $configFileName = $Script;
     $configFileName =~ s{\.pl$}{\.conf}xms;
     my $filename = $Bin . '/' . $configFileName;
-    my %config =
-      Config::General->new( -ConfigFile => $filename, -CComments => 'off' )
-      ->getall();
+    my %config = Config::General->new( -ConfigFile => $filename,
+        -CComments => 'off' )->getall();
 
     # Reads 'user-agent' section
     $agent_ref = confGetHash( \%config, 'user-agent' );
@@ -1172,7 +1323,7 @@ sub file2array {
     $filename = $Bin . '/' . $filename;
     my $fh;
     die sayError("open($filename) was failed: $!")
-      if !open( $fh, '<', $filename );
+        if !open( $fh, '<', $filename );
     while ( my $line = <$fh> ) {
         chomp($line);
         push @$array_ref, $line;
@@ -1270,8 +1421,8 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2014-01-17) 
-     Copyright (C) 2010-2014 Simon Rubinstein 
+    $Script $VERSION (2015-07-29) 
+     Copyright (C) 2010-2015 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
 }
