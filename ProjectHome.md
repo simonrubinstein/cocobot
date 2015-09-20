@@ -1,0 +1,1 @@
+It is a small Perl script that creates bots on the French website chat Cocoland.
