@@ -3,7 +3,7 @@
 # @created 2010-07-31
 # @date 2015-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# http://code.google.com/p/cocobot/
+# https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2014
 # $Id$
