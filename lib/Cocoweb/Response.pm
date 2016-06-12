@@ -1,9 +1,9 @@
 # @created 2012-03-29
-# @date 2015-07-29
+# @date 2016-06-12
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# http://code.google.com/p/cocobot/
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2015
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision$
 # Date: $Date$
@@ -136,10 +136,15 @@ sub process1Int {
                 = $self->convert()
                 ->enxo( substring( $urlo, 14 ), substring( $urlo, 8, 14 ),
                 1 );
+
             if ( $res =~ m{guw\(enxo\([^,]+,"([^"]+)",0\)\)}xms ) {
                 my $y   = $1;
-                my $adz = $self->convert()
-                    ->enxo( $request->magicAuthString(), $y, 0 );
+                my $adz = $self->convert()->enxo(
+                    $request->magicAuthString() . '*0*'
+                        . $request->localIP() . '*'
+                        . $request->publicIP(),
+                    $y, 0
+                );
                 $request->guw( $user, $adz, $self );
             }
         }

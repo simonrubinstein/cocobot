@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2015-07-29
+# @date 2016-04-12
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# http://code.google.com/p/cocobot/
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2015
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -37,6 +37,7 @@ use base 'Cocoweb::Object';
 use Carp;
 use Data::Dumper;
 use Encode qw(encode FB_PERLQQ);
+use IO::Socket::INET;
 use LWP::UserAgent;
 use Time::HiRes qw(usleep nanosleep);
 use utf8;
@@ -64,13 +65,17 @@ __PACKAGE__->attributes(
     'infuzPause1',
     'infuzPause2',
     'infuzMaxOfTriesAfterPause',
-    'magicAuthString'
+    'magicAuthString',
+    'localIP',
+    'publicIP'
 );
 
 my $conf_ref;
 my $agent_ref;
 my $userAgent;
 my $removeListDelay;
+my $localIP;
+my $publicIP;
 
 ##@method void init($args)
 #@brief Perform some initializations
@@ -96,7 +101,8 @@ sub init {
             'avaref',            'urlcocoland',
             'urlav',             'url_initio.js',
             'infuz-not-to-fast', 'profile-too-new',
-            'magic-auth-string'
+            'magic-auth-string', 'get-ip-address-url',
+            'remote-address-ipv4-default'
             )
         {
             $conf->isString($name);
@@ -135,6 +141,7 @@ sub init {
         $conf->isInt('infuz-pause1');
         $conf->isInt('infuz-pause2');
         $conf->isInt('infuz-max-of-tries-after-pause');
+        $conf->isInt('remote-port-default');
 
     }
 
@@ -145,6 +152,38 @@ sub init {
     $infuzNotToFast = qr/$infuzNotToFast/;
     my $profilTooNew = $conf_ref->{'profile-too-new'};
     $profilTooNew = qr/$profilTooNew/;
+
+    if ( !defined $publicIP ) {
+        my $req = HTTP::Request->new(
+            'GET' => $conf_ref->{'get-ip-address-url'} );
+        my $response = $userAgent->request($req);
+        if ( !$response->is_success() ) {
+            $publicIP = '216.58.209.35';
+        }
+        else {
+            $publicIP = trim( $response->content() );
+            $publicIP = '216.58.209.35'
+                if $publicIP !~ m{^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$};
+
+        }
+    }
+
+    # Discovering the local system's IP address
+    if ( !defined $localIP ) {
+        my $sock = IO::Socket::INET->new(
+            'Proto'    => 'udp',
+            'PeerAddr' => $conf_ref->{'remote-address-ipv4-default'},
+            'PeerPort' => $conf_ref->{'remote-port-default'}
+        );
+        if ( !defined $sock ) {
+            #Set a bogus IP address
+            $localIP = '192.168.0.1';
+        }
+        else {
+            $localIP = $sock->sockhost();
+        }
+    }
+
     $self->attributes_defaults(
         'agent'     => $agent_ref,
         'urlav'     => $conf_ref->{'urlav'},
@@ -164,6 +203,8 @@ sub init {
         'isInfuzNotToFast'    => 0,
         'infuzNotToFastRegex' => $infuzNotToFast,
         'magicAuthString'     => $conf_ref->{'magic-auth-string'},
+        'publicIP'            => $publicIP,
+        'localIP'             => $localIP,
         'profilTooNewRegex'   => $profilTooNew,
         'infuzMaxOfTries'     => $conf_ref->{'infuz-max-of-tries'},
         'infuzPause1'         => $conf_ref->{'infuz-pause1'},

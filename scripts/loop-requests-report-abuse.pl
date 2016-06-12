@@ -2,14 +2,14 @@
 # @created 2013-12-15
 # @date 2014-01-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# http://code.google.com/p/cocobot/
+# https://github.com/simonrubinstein/cocobot 
 #
 # copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
 # Author: $Author$
-# HeadURL: $HeadURL: https://cocobot.googlecode.com/svn/trunk/scripts/loop-requests-to-be-a-friend.pl $
+# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

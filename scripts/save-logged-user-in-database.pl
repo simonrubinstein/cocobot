@@ -1,9 +1,9 @@
 #!/usr/bin/perl
-#@brief This script saves all users connected to the database
-#@created 2012-03-09
+# @brief This script saves all users connected to the database
+# @created 2012-03-09
 # @date 2014-07-19
-#@author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# http://code.google.com/p/cocobot/
+# @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+# https://github.com/simonrubinstein/cocobot 
 #
 # copyright (c) Simon Rubinstein 2010-2014
 # Id: $Id

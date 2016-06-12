@@ -525,7 +525,7 @@ sub process1Int {
                 1 );
             if ( $res =~ m{guw\(enxo\([^,]+,"([^"]+)",0\)\)}xms ) {
                 my $y = $1;
-                my $adz = enxo( '35516151026*0*1w6osl', $y, 0 );
+                my $adz = enxo( '35516151026*0*1w6osl*0*192.168.0.1*216.58.209.35', $y, 0 );
                 agir( $user_ref,
                           52
                         . $user_ref->{'mynickID'}

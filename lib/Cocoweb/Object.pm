@@ -3,7 +3,7 @@
 # @date 2012-01-29
 # @author Alexis Sukrieh
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# http://code.google.com/p/cocobot/
+# https://github.com/simonrubinstein/cocobot
 #
 # copyright 2009-2010 Alexis Sukrieh.
 # copyright (c) Simon Rubinstein 2010-2012.
