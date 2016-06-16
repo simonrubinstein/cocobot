@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-04-12
+# @date 2016-05-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -325,7 +325,7 @@ sub getCitydioAndTownzz {
             or $count == 0;
 
     if ( $count == 2 ) {
-        $citydio = $citycoList[0];
+        $citydio = sprintf( "%05d", $citycoList[0] );
         $townzz  = $citycoList[1];
     }
     else {

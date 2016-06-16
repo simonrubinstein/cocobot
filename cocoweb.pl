@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2015-07-29
+# @date 2016-06-16
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # $Id$
 #
 # cocobot is free software; you can redistribute it and/or modify
@@ -37,7 +37,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.7';
+$VERSION                            = '0.1.8';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -525,7 +525,10 @@ sub process1Int {
                 1 );
             if ( $res =~ m{guw\(enxo\([^,]+,"([^"]+)",0\)\)}xms ) {
                 my $y = $1;
-                my $adz = enxo( '35516151026*0*1w6osl*0*192.168.0.1*216.58.209.35', $y, 0 );
+                my $adz
+                    = enxo(
+                    '35516151026*0*1w6osl*0*192.168.0.1*216.58.209.35',
+                    $y, 0 );
                 agir( $user_ref,
                           52
                         . $user_ref->{'mynickID'}
@@ -664,11 +667,11 @@ sub getCityco {
     my @tmp = split( /\*/, $cityco );
     my ( $citydio, $townzz );
     my $count = scalar @tmp;
-    print $count % 2 . "\n";
+    #print $count % 2 . "\n";
     die sayError("cityco has bad length") if $count % 2 != 0 or $count == 0;
 
     if ( $count == 2 ) {
-        $citydio = $tmp[0];
+        $citydio = sprintf( "%05d", $tmp[0] );
         $townzz  = $tmp[1];
     }
     else {
@@ -709,8 +712,8 @@ sub validatio {
 
     my $cookav;
     my $inform
-        = $nickidol . '#' 
-        . $typum . '#' 
+        = $nickidol . '#'
+        . $typum . '#'
         . $ageuq . '#'
         . $user_ref->{'townzz'} . '#'
         . $citygood . '#0#'
@@ -963,7 +966,8 @@ sub parseInt {
                   $_ =~ /[0-9]/
                 ? $_
                 : ord(uc) - 55
-            ) * $radix**$place++;
+                )
+                * $radix**$place++;
         }
         $ret = $num * $sign;
     }
@@ -1284,8 +1288,10 @@ sub readConfig {
     my $configFileName = $Script;
     $configFileName =~ s{\.pl$}{\.conf}xms;
     my $filename = $Bin . '/' . $configFileName;
-    my %config = Config::General->new( -ConfigFile => $filename,
-        -CComments => 'off' )->getall();
+    my %config   = Config::General->new(
+        -ConfigFile => $filename,
+        -CComments  => 'off'
+    )->getall();
 
     # Reads 'user-agent' section
     $agent_ref = confGetHash( \%config, 'user-agent' );
@@ -1421,8 +1427,8 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2015-07-29) 
-     Copyright (C) 2010-2015 Simon Rubinstein 
+    $Script $VERSION (2016-06-16) 
+     Copyright (C) 2010-2016 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
 }
