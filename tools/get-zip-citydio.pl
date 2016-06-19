@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-11-14
-# @date 2012-11-14
+# @date 2016-06-18 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot 
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2016
 # Id$
 # Revision: $Revisio$
 # Date: $Date$
@@ -77,6 +77,9 @@ sub init {
 #@brief Display help message
 sub HELP_MESSAGE {
     print <<ENDTXT;
+Fetch all 'citydio' codes from the Coco.fr website.
+Used to generate "conf/zip-codes.txt" file
+i.e.: http://www.coco.fr/cocoland/75015.js URL return "var cityco='30929*PARIS*';" 
 Usage: 
  $Script [-v -d]
   -v          Verbose mode
@@ -87,6 +90,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2012-11-14');
+    $CLI->VERSION_MESSAGE('2016-06-18');
 }
 

@@ -1,3 +1,4 @@
+
 1{1 Internet
 2degrees Mobile Limited
 3BB Broadband
@@ -11,6 +12,7 @@ Acropolis Telecom SA
 Ad Valem Technologies
 Add-on Multimedia
 ADD-ON MULTIMEDIA
+Adecco It Services SAS
 Adenis SARL
 ADISTA SAS
 Advanced Info Service PCL
@@ -29,6 +31,7 @@ Ajova Network
 AKADO-Stolitsa JSC
 AL-HADATHEH LIL-ITISALAT WA AL-TECHNOLOGIA CO
 Alcatel-Lucent
+Alcatraz Information Security Sarl
 Alice DSL
 Alionis
 Alliance Connectic SAS
@@ -43,6 +46,7 @@ AltusHost
 Amazon Data Services Ireland Ltd
 America Online
 AMX Argentina S.A.
+ANEXIA Internetdienstleistungs GmbH
 Angola Telecom
 Anvia Oyj
 AOL-France, On-line service
@@ -56,6 +60,7 @@ Armenian Datacom Company
 ARMOR CONNECTIC SAS
 Armor Connectic SAS
 ARTMOTION n.p.sh.
+Aspaway Sasu
 Assigned for dynamic DHCP pool for RINGO S.A.s cu
 Assigned for servers and network infrastructure fo
 Assistance Publique-Hopitaux de Paris
@@ -63,6 +68,7 @@ Association de Gestion Ecole Centrale Delectroniqu
 association KAZAR
 Association KAZAR
 Association ORT France
+Association TETANEUTRAL.NET
 Astrium SAS
 ASTRIUM SAS
 Atlantic Broadband
@@ -92,6 +98,7 @@ B3G Telecom
 Bahnhof Internet AB
 Batelco
 Bayanat Al-Oula For Network Services
+Bayard Informatique SARL unipersonnelle
 Beam Telecom Pvt Ltd
 Beirel Telecom ISP
 Belgacom Mobile SA/NV
@@ -116,6 +123,7 @@ British Telecommunications
 Broadcasting Center Europe (an RTL Group Company)
 Brutele SC
 BSE Software GmbH
+BSO Network Solutions SAS
 BT France
 Bull HN Information Systems
 Bull SA
@@ -179,6 +187,7 @@ CHTD, Chunghwa Telecom Co., Ltd.
 CIENUM SAS
 CINECA
 CIRB-CIBG
+Cirque France SAS
 CIS NEPHAX
 City Telecom (H.K.) Ltd.
 Claas KGaA
@@ -226,6 +235,7 @@ Covage Networks Sasu
 Covage Services
 CPRO Informatique SAS
 Credit Cooperatif
+Credit Suisse Group / CANA
 Creolink Communications
 Critical Case s.r.l
 Cronyx Plus Ltd.
@@ -237,6 +247,7 @@ Dailymotion S.A.
 DailyMotion S.A.
 Danish Broadband a/s
 DARS Telecom
+Dassault Systemes
 Data communication and international
 Data One Solutions, LLC.
 Data Telecom Service
@@ -266,6 +277,7 @@ Digiweb ltd
 DIMEDIA LLC
 Dinamics Srl
 Direction Generale de Impots
+direction interministerielle des systemes dinfor
 DISTRIBUTEL COMMUNICATIONS
 Djibouti Telecom
 DJIBOUTI TELECOM S.A.
@@ -313,6 +325,7 @@ ELB multimedia
 Electrabel NV/SA
 Eli Lilly and Company
 Embratel
+EMCO Maier GmbH
 Emerging Markets Communications Deutschland GmbH
 Emirates Integrated Telecommunications Company PJS
 Emirates Telecommunications Corporation
@@ -355,6 +368,7 @@ Evangelische Landeskirche Baden-Wuerttemberg
 EVSL
 Eweka Internet Services B.V.
 Exatel S.A.
+Falco Networks B.V.
 Fast Telecommunications Company W.L.L.
 Fastweb
 FDCservers.net
@@ -390,6 +404,7 @@ GGA Maur
 Ghana Telecom
 GHOSTnet GmbH
 Gie Gitoyen
+GIE Groupement Informatique De La Protection Socia
 Globacom Ltd
 Global Access Resources
 Global Caribbean Network
@@ -427,6 +442,7 @@ HEXANET
 Hexanet Hexanet SAS
 Hexanet SAS
 Hi-Media SA
+Hillsborough County Public Schools
 Hilti AG
 HITS S.A.S
 Hoffmann LaRoche
@@ -540,6 +556,7 @@ Lanestel Lanestel Sarl
 Lanet Network Ltd.
 LaSer Contact
 LASER CONTACT
+Layo Net SRL
 Le118000 118000 SAS
 LeaderTelecom Ltd.
 LeaseWeb B.V.
@@ -561,6 +578,7 @@ LLC Renome-Service
 LLC Synterra-Ug
 LLC Tehnomarket
 Local Registry / ISP
+LOdyssee Interactive Jeuxvideo.com, SAS
 Loria-inria
 Los Angeles County, Department of Health Services
 Lost Oasis SARL
@@ -579,6 +597,7 @@ MANCHE TELECOM
 Manutan International S.A.
 Manyones.com Sarl
 Maricopa County Community College District
+Maroc Telecom
 Martinique TV Cable
 Maskatel
 Massachusetts Institute of Technology
@@ -597,6 +616,7 @@ Metropole Television
 Metropole Television SA
 Metroset Ltd.
 MI INFRASTRUCTURE
+Micfo, LLC.
 Micro Logic Systems
 Microcaz SRL
 Ministere De La Sante Et Des Affaires Sociales
@@ -634,11 +654,14 @@ NetVision
 NETWORK BACKBONE
 Network IP
 Networth Telecom SA
+NetXP s.a.s.
 Neuf Cegetel
 New Technologies Group N.V.
 NewCom International
 Newel Informatique
+NextiraOne Europe B.V.
 Nexto SAS
+Nextradiotv Nextradiotv SA
 NFrance Conseil
 NIB (National Internet Backbone)
 Nigerian Telecommunications Ltd
@@ -713,6 +736,7 @@ Outremer Telecom
 OVH Systems
 Ovh Systems
 OVH Telecom
+Owentis SAS
 Ownit AB
 OXEVA SAS
 OXYD
@@ -799,6 +823,7 @@ RSS Internet Network
 RTLNET
 RTVC-Stiring
 Rue du commerce SA
+S.c. Gvm Sistem 2003 S.r.l.
 S.I Building
 SA ALTIUS
 SAEM Intermediasud
@@ -812,6 +837,7 @@ SAS Alsatis
 SAS ALSATIS
 SAS CTS Computers and Telecommunications Systems
 SAS Evea-Group
+SAS Flow Line
 SAS Herault Networks
 SAS HERAULT NETWORKS
 SAS INSTITUTE
@@ -825,6 +851,7 @@ Saveho Sarl
 SAVVIS Communications Corporation
 SBC Internet Services
 SC Fastweb SRL
+SC F{C Versus International SRL
 Scancom Ltd
 SCANSAFE
 ScanSafe
@@ -855,6 +882,7 @@ Shaw Telecom G.P.
 SIA Lattelecom
 SIA Nano IT
 SIDUS S.A.R.L.
+SIEMENS AG
 Siemens AG
 Sigma Informatique SAS
 Silicon Beach Communications
@@ -890,6 +918,7 @@ SOTELMA
 Southeastern Louisiana University
 SpaceDump Networks
 Spacenet
+Spacetel Benin SA
 Spie SA
 SPM Telecom
 Sprint
@@ -994,7 +1023,9 @@ TUTOR S.A.
 Tv Cable Promision S.A
 TV Cable S.A.
 Typhon
+UCOM
 UEM de Metz
+UK Government Department for Work and Pensions
 UK2 - Ltd
 Uni2
 Unilever PLC
@@ -1015,6 +1046,7 @@ Universite Pierre et Marie Curie
 University of Maryland
 UPC Magyarorszag Kft.
 USR-NETWORK
+Utah State University
 UTEL Internet Services
 UUNET
 Veepee
@@ -1066,12 +1098,14 @@ Websense Hosted R{D Ltd.
 WIBOX SASU
 Wifirst S.A.S.
 WIN S.A.
+WIND Telecomunicazioni S.p.A
 Woods Hole Oceanographic Institution
 Xfera Moviles SA / Yoigo
 XFone
 Ya.com Internet Factory
 Yesup Ecommerce Solutions
 YHC International BV
+Young And Rubicam Sl
 Zain Communications Ltd
 ZeXoTeK IT-Services GmbH
 ZON TV Cabo

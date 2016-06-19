@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2015-01-07
+# @date 2016-06-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -356,7 +356,7 @@ sub VERSION_MESSAGE {
     $version = $Cocoweb::VERSION if !defined $version;
     print STDOUT <<ENDTXT;
     $Script $version ($date) 
-    Copyright (C) 2010-2014 Simon Rubinstein 
+    Copyright (C) 2010-2016 Simon Rubinstein 
     Written by Simon Rubinstein 
 ENDTXT
 }

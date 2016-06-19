@@ -10038,6 +10038,7 @@ FR- Savy-berlette
 FR- Serques
 FR- Sorrus
 FR- Souchez
+FR- Stella-plage
 FR- Surques
 FR- Tardinghen
 FR- Tatinghem

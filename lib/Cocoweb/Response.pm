@@ -113,6 +113,7 @@ sub process1Int {
 
     # The first part of authentication was performed successfully
     # The server returns an ID and a password for the current session
+    # THE CODE IS NO LONGER USED! (replaced by olko == 15)
     if ( $olko == 12 ) {
         my $lebonnick = parseInt( substr( $urlo, 2, 6 ) );
         $user->mynickID( '' . $lebonnick );
@@ -127,16 +128,21 @@ sub process1Int {
         $olko = 51;
     }
 
+    # The first part of authentication was performed successfully
+    # The server returns an ID, password for the current session and 
+    #     and snippet encrypted javascript code
     if ( $olko == 15 ) {
         my $tkt = substring( $urlo, 2, 8 );
         if ( $tkt < 900000 ) {
             $user->mynickID($tkt);
             $user->monpass( substring( $urlo, 8, 14 ) );
+            # Decrypts a piece of JavaScript code returned by the server.
             my $res
                 = $self->convert()
                 ->enxo( substring( $urlo, 14 ), substring( $urlo, 8, 14 ),
                 1 );
 
+            # Collect the penultimate value of the 'enxo' function.
             if ( $res =~ m{guw\(enxo\([^,]+,"([^"]+)",0\)\)}xms ) {
                 my $y   = $1;
                 my $adz = $self->convert()->enxo(
@@ -145,6 +151,7 @@ sub process1Int {
                         . $request->publicIP(),
                     $y, 0
                 );
+                #second part of authentication:
                 $request->guw( $user, $adz, $self );
             }
         }

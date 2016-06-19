@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2015-01-06
-# @date 2014-01-07
+# @date 2016-06-19
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2015
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -47,9 +47,11 @@ run();
 
 ##@method void run()
 sub run {
-    my $filename      = $myavatarFiles->fileList();
+    my $filename = $myavatarFiles->fileList();
+
+    # Reads all avatars availables from "var/myavatar/run" directory
     my $myavatars_ref = $myavatarFiles->getRun();
-    my $fh            = IO::File->new( $filename, 'w' );
+    my $fh = IO::File->new( $filename, 'w' );
     confess Cocoweb::error("open($filename) was failed: $!")
         if !defined $fh;
 
@@ -75,5 +77,25 @@ sub init {
         exit;
     }
     $myavatarFiles = Cocoweb::MyAvatar::File->instance();
+}
+
+## @method void HELP_MESSAGE()
+# Display help message
+sub HELP_MESSAGE {
+    print <<ENDTXT;
+Generates "var/myavatar/list.txt " file.
+This file contains the list of available avatares.
+Usage: 
+ $Script [-v -d ]
+  -v            Verbose mode
+  -d            Debug mode
+ENDTXT
+    exit 0;
+}
+
+##@method void VERSION_MESSAGE()
+#@brief Displays the version of the script
+sub VERSION_MESSAGE {
+    $CLI->VERSION_MESSAGE('2016-06-19');
 }
 
