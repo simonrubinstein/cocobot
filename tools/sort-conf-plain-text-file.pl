@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2013-11-24
-# @date 2014-01-05
+# @date 2016-06-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -119,19 +119,19 @@ Usage:
   -v          Verbose mode
   -d          Debug mode
   -f filename Plain text filename ($defaultFilename by default)
-  -x maxSize       
+  -x maxSize  Maximum number of characters.     
 
 Examples:
 sort-conf-plain-text-file.pl
+sort-conf-plain-text-file.pl -f plain-text/nicknames-to-filter.txt
 sort-conf-plain-text-file.pl -f plain-text/nicknames-bot.txt -x 16
 ENDTXT
-
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-05');
+    $CLI->VERSION_MESSAGE('2016-06-21');
 }
 

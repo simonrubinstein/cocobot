@@ -1,10 +1,10 @@
 # @brief
 # @created 2014-06-28
-# @date 2014-06-29
+# @date 2016-06-21
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # $Revision$
 # Date: $Date$
@@ -83,16 +83,37 @@ sub _TITLE_ {
 
 }
 
+sub _DISTRICT_ {
+    my ( $self, $user ) = @_;
+    my $zip = $user->getZipcode();
+    if ( $zip =~ m{7500?(\d\d?)} ) {
+        my $z = $1;
+        if ( $z eq '1' ) {
+            $z = '1er';
+        }
+        else {
+            $z = $z . 'e';
+        }
+        return "$z arrondissement";
+    }
+    else {
+        return $zip;
+    }
+}
+
 sub _NICKNAME_ {
     my ( $self, $user ) = @_;
     return $user->mynickname();
-
 }
 
 sub _AGE_ {
     my ( $self, $user ) = @_;
     return $user->myage();
+}
 
+sub _ZIPCODE_ {
+    my ( $self, $user ) = @_;
+    return $user->getZipcode();
 }
 
 sub AUTOLOAD {

@@ -1,9 +1,9 @@
 # @created 2012-03-19
-# @date 2014-03-06 
+# @date 2016-06-21 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -204,6 +204,16 @@ sub citydio2zip {
       Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
     $self->zip( $allZipCodes->getZipAndTownFromCitydio( $self->citydio() ) );
     return $self->zip();
+}
+
+##@method int getZipcode()
+sub getZipcode {
+    my ($self) = @_;
+    my $zip = $self->zip();
+    return $zip if defined $zip;
+    $zip = $self->citydio2zip() if !defined $zip;
+    $self->zip($zip);
+    return $zip;
 }
 
 ##@method void hasSentMessage($message)
