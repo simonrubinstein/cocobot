@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-17
-# @date 2011-04-09
+# @date 2016-06-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2012
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -40,8 +40,12 @@ __PACKAGE__->attributes( 'dirname', 'filename', 'fh', 'writeLogInFile' );
 
 sub init {
     my ( $class, $instance ) = @_;
-    my $path = getVarDir() . '/logs';
-    croak 'mkdir(' . $path . ') was failed: ' if !-d $path and !mkdir($path);
+    my $path;
+    foreach $path ( 'messages', 'alert-messages', 'logs' ) {
+        my $p = getVarDir() . '/' . $path;
+        croak 'mkdir(' . $p . ') was failed: ' if !-d $p and !mkdir($p);
+    }
+    $path = getVarDir() . '/logs';
     $instance->dirname($path);
     $instance->filename('');
     $instance->fh(undef);
@@ -91,10 +95,10 @@ sub _log {
     $message =~ s{\%}{}g;
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
     $self->_display( $priority, "$message $hourStr [$identity]\n" )
-      if exists $ENV{'TERM'};
-    $self->_writeLog( "[$$][method: $function; line: $line] " 
-          . $hourStr
-          . " ($priority) $message\n" );
+        if exists $ENV{'TERM'};
+    $self->_writeLog( "[$$][method: $function; line: $line] "
+            . $hourStr
+            . " ($priority) $message\n" );
 }
 
 ##@method _display($priority, $string)
@@ -140,7 +144,7 @@ sub _openFileLog {
     my $pathname = $self->dirname() . '/' . $self->filename();
     my $fh = IO::File->new( $pathname, 'a' );
     confess error("open($pathname) was failed: $!")
-      if !defined $fh;
+        if !defined $fh;
     $self->fh($fh);
 }
 
