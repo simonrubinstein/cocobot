@@ -1,9 +1,9 @@
 # @created 2012-01-26
-# @date 2012-06-26
+# @date 2016-06-25 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -59,33 +59,34 @@ sub init {
           . $args{'mynickID'}
           . ')' );
     $self->attributes_defaults(
-        'mynickname'     => $args{'mynickname'},
-        'myage'          => $args{'myage'},
-        'mysex'          => $args{'mysex'},
-        'mynickID'       => $args{'mynickID'},
-        'citydio'        => $args{'citydio'},
-        'mystat'         => $args{'mystat'},
-        'myXP'           => $args{'myXP'},
-        'myver'          => $args{'myver'},
-        'infuz'          => '???',
-        'code'           => '',
-        'ISP'            => '',
-        'status'         => 0,
-        'premium'        => 0,
-        'level'          => 0,
-        'since'          => 0,
-        'town'           => '',
-        'isNew'          => 1,
-        'isView'         => 1,
-        'dateLastSeen'   => time,
-        'hasChange'      => 0,
-        'notViewCount'   => 0,
-        'updateDbRecord' => 0,
-        'DBUserId'       => 0,
-        'DBCodeId'       => 0,
-        'messageCounter'  => 0,
-        'messageSentTime' => 0,
-        'messageLast'     => ''
+        'mynickname'       => $args{'mynickname'},
+        'myage'            => $args{'myage'},
+        'mysex'            => $args{'mysex'},
+        'mynickID'         => $args{'mynickID'},
+        'citydio'          => $args{'citydio'},
+        'mystat'           => $args{'mystat'},
+        'myXP'             => $args{'myXP'},
+        'myver'            => $args{'myver'},
+        'infuz'            => '???',
+        'code'             => '',
+        'ISP'              => '',
+        'status'           => 0,
+        'premium'          => 0,
+        'level'            => 0,
+        'since'            => 0,
+        'town'             => '',
+        'isNew'            => 1,
+        'isView'           => 1,
+        'dateLastSeen'     => time,
+        'hasChange'        => 0,
+        'notViewCount'     => 0,
+        'updateDbRecord'   => 0,
+        'DBUserId'         => 0,
+        'DBCodeId'         => 0,
+        'messageCounter'   => 0,
+        'messageSentTime'  => 0,
+        'messageLast'      => '',
+        'isMessageWasSent' => 0
     );
 }
 

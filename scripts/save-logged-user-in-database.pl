@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @brief This script saves all users connected to the database
 # @created 2012-03-09
-# @date 2014-07-19
+# @date 2016-06-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id
 # Revision: $Revision$
 # Date: $Date$
@@ -99,6 +99,7 @@ AUTH:
         $bot->requestMessagesFromUsers();
         sleep 1 if $count < $CLI->maxOfLoop();
     }
+    $usersList->serialize();
     info("The $Bin script was completed successfully.");
 }
 
@@ -161,6 +162,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-07-09');
+    $CLI->VERSION_MESSAGE('2016-06-25');
 }
 

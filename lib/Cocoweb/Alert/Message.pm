@@ -1,10 +1,10 @@
 # @brief
 # @created 2013-01-19
-# @date 2014-06-27
+# @date 2016-06-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -57,7 +57,8 @@ sub init {
 sub process {
     my ( $self, $bot, $alarmCount, $users_ref, $isDryRun ) = @_;
     foreach my $user (@$users_ref) {
-        $user->messageSentTime(0);
+        #$user->messageSentTime(0);
+        $user->isMessageWasSent(0);
         my $write_ref = $self->write();
         my $str;
         foreach my $write (@$write_ref) {

@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2016-06-21 
+# @date 2016-06-25
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -63,9 +63,13 @@ __PACKAGE__->attributes(
     'level',
     'since',
     'town',
+    ## Total messages sent by the user
     'messageCounter',
+    ## Date of last message sent by the user
     'messageSentTime',
+    ## Content of the message sent by the user
     'messageLast',
+    'isMessageWasSent'
 );
 
 ##@method void init(%args)
@@ -116,6 +120,20 @@ sub show {
     }
     $max++;
     foreach my $name (@names) {
+        print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
+          . "\n";
+    }
+}
+
+##@method void dump()
+sub dump {
+    my $self  = shift;
+    my $max = 1;
+    foreach my $name ( keys %$self ) {
+        $max = length($name) if length($name) > $max;
+    }
+    $max++;
+    foreach my $name ( keys %$self ) {
         print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
           . "\n";
     }
@@ -219,6 +237,7 @@ sub getZipcode {
 ##@method void hasSentMessage($message)
 sub hasSentMessage {
     my ( $self, $message ) = @_;
+    $self->isMessageWasSent(1);
     $self->messageSentTime(time);
     my $messageCounter = $self->messageCounter();
     $messageCounter++;
