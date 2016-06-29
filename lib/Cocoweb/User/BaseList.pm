@@ -1,9 +1,9 @@
 # @created 2012-03-19
-# @date 2014-03-01 
+# @date 2016-06-28 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -45,6 +45,8 @@ sub init {
 }
 
 ##@method void clearFlags()
+#@brief Reset at zero 'isNew', 'isView', 'hasChange'
+#       and 'updateDbRecord' data members of each user
 sub clearFlags {
     my ($self) = @_;
     my $user_ref = $self->all();
@@ -54,6 +56,17 @@ sub clearFlags {
         $user->isView(0);
         $user->hasChange(0);
         $user->updateDbRecord(0);
+    }
+}
+
+##@method void clearRecentFlags()
+#@brief Reset at zero 'recent' data member of each user
+sub clearRecentFlags {
+    my ($self) = @_;
+    my $user_ref = $self->all();
+    foreach my $id ( keys %$user_ref ) {
+        my $user = $user_ref->{$id};
+        $user->isRecent(0);
     }
 }
 

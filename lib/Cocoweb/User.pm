@@ -1,5 +1,5 @@
 # @created 2012-01-26
-# @date 2016-06-25 
+# @date 2016-06-28
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -38,7 +38,8 @@ use base 'Cocoweb::User::Base';
 
 __PACKAGE__->attributes(
     'isNew',        'isView',         'dateLastSeen', 'hasChange',
-    'notViewCount', 'updateDbRecord', 'DBCodeId',     'DBUserId'
+    'notViewCount', 'updateDbRecord', 'DBCodeId',     'DBUserId',
+    'isRecent'
 );
 
 ##@method void init(%args)
@@ -76,6 +77,7 @@ sub init {
         'since'            => 0,
         'town'             => '',
         'isNew'            => 1,
+        'isRecent'         => 1,
         'isView'           => 1,
         'dateLastSeen'     => time,
         'hasChange'        => 0,

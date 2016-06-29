@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 # @brief
 # @created 2012-05-18
-# @date 2014-02-15
+# @date 2016-06-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -85,6 +85,10 @@ sub init {
         }
         else {
             push @args, $name, \@vals;
+        }
+        if ( $opt eq 'c' ) {
+            die 'Bad infuz code: ' . $opt_ref->{$opt}
+                if !checkInfuzCode( $opt_ref->{$opt} );
         }
     }
     if ( scalar @args == 0 ) {
@@ -168,6 +172,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-02-15');
+    $CLI->VERSION_MESSAGE('2016-06-29');
 }
 

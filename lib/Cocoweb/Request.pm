@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-05-16
+# @date 2016-05-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -50,7 +50,7 @@ __PACKAGE__->attributes(
     'url1',
     ## 0 = all; 1 = mens;  womens: 2
     'genru',
-    ## 0 = all; 1 = -30 / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
+    ## 0 = all; 1 = -30 years old / 2 = 20 to 40 / 3 = 30 to 50 / 4 = 40 and more
     'yearu',
     'usersList',
     'speco',
@@ -648,9 +648,14 @@ sub infuz {
 #@return object A 'Cocoweb::User::List' object
 sub getUsersList {
     my ( $self, $user ) = @_;
+    # Reset at zero 'isNew', 'isView', 'hasChange' and
+    # 'updateDbRecord' data members of each user
     $self->usersList()->clearFlags();
+    #1 = search mans; 2 = search womans
     foreach my $g ( 1, 2 ) {
         $self->genru($g);
+        # 1 = -30 years old; 2 = 20 to 40  years old; 3 = 30 to 50 years old;
+        # 4 = 40  years old  and more
         foreach my $y ( 1, 2, 3, 4 ) {
             $self->yearu($y);
             $self->searchnow($user);

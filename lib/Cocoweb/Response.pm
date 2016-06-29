@@ -202,6 +202,7 @@ sub process1Int {
         }
 
         #Result of a search query of a nickname code
+        #Return Cocoweb::Request::searchCode() function.
         if ( $bud == 557 ) {
             my $userFound = new Cocoweb::User(
                 'mynickname' => substr( $urlo, 19 ),

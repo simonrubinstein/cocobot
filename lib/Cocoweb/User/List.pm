@@ -1,9 +1,9 @@
 # @created 2012-03-19
-# @date 2013-12-09
+# @date 2016-06-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2013
+# copyright (c) Simon Rubinstein 2010-2016
 # Id: $Id$
 # Revision: $Revision$
 # Date: $Date$
@@ -36,8 +36,11 @@ use Cocoweb::File;
 use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
-__PACKAGE__->attributes( 'logUsersListInDB', 'DB', 'DBUsersOffline',
-    'removeListDelay' );
+__PACKAGE__->attributes(
+    'logUsersListInDB', 'DB',
+    'DBUsersOffline',   'removeListDelay',
+    'checkUserIsReallyOfflineCount'
+);
 
 ##@method void init(%args)
 #@brief Perform some initializations
@@ -52,11 +55,12 @@ sub init {
     my $DB;
     $DB = Cocoweb::DB::Base->getInstance() if $logUsersListInDB;
     $self->attributes_defaults(
-        'all'              => {},
-        'logUsersListInDB' => $logUsersListInDB,
-        'DB'               => $DB,
-        'DBUsersOffline'   => [],
-        'removeListDelay'  => $args{'logUsersListInDB'}
+        'all'                           => {},
+        'logUsersListInDB'              => $logUsersListInDB,
+        'DB'                            => $DB,
+        'DBUsersOffline'                => [],
+        'removeListDelay'               => $args{'logUsersListInDB'},
+        'checkUserIsReallyOfflineCount' => 0
     );
 }
 
@@ -139,10 +143,12 @@ sub showUsersUnseen {
 ##@method void purgeUsersUnseen()
 #@brief Purge users who have not been seen in the remote list for some time
 sub purgeUsersUnseen {
-    my ($self)          = @_;
+    my ( $self, $bot ) = @_;
     my $user_ref        = $self->all();
     my $removeListDelay = $self->removeListDelay();
     my ( $count, $countPurge ) = ( 0, 0 );
+    $self->checkUserIsReallyOfflineCount(0);
+    my $userCount = 0;
     foreach my $id (
         sort {
             $user_ref->{$a}->{'dateLastSeen'}
@@ -150,6 +156,7 @@ sub purgeUsersUnseen {
         } keys %$user_ref
         )
     {
+        $userCount++;
         my $user = $user_ref->{$id};
         next if $user->isView();
         $count++;
@@ -161,11 +168,72 @@ sub purgeUsersUnseen {
                 . $user->mynickname()
                 . '; last seen: '
                 . $dateStr );
-        $countPurge++;
-        delete $user_ref->{$id};
+
+        if ( $self->checkUserIsReallyOffline( $user, $bot ) ) {
+            debug(    'Remove user '
+                    . $user->mynickID() . ' '
+                    . $user->mynickname() );
+            delete $user_ref->{$id};
+            $countPurge++;
+        }
+        else {
+            debug(    'Do not Remove user '
+                    . $user->mynickID() . ' '
+                    . $user->mynickname() );
+        }
     }
     info("$countPurge users were purged on a $count users unseen")
         if $countPurge > 0;
+    info(     'Remove user: '
+            . $self->checkUserIsReallyOfflineCount()
+            . ' requests to searchCode(); Total users:'
+            . $userCount
+            . '; users unseen: '
+            . $count
+            . '; deleted users: '
+            . $countPurge );
+}
+
+#@method boolean checkUserIsReallyOffline()
+sub checkUserIsReallyOffline {
+    my ( $self, $user, $bot ) = @_;
+    return 1 if !defined $bot;
+    my $code = $user->code();
+    if ( !checkInfuzCode($code) ) {
+        error("$code infuz code is invalid");
+        return 1;
+    }
+    my $response = $bot->requestCodeSearch($code);
+    my $count    = $self->checkUserIsReallyOfflineCount();
+    $self->checkUserIsReallyOfflineCount( ++$count );
+    my $userFound = $response->userFound();
+    return 1 if !defined $userFound;
+    debug(    "Remove user: requestCodeSearch() returns: "
+            . $userFound->mynickname() . '; '
+            . $userFound->mynickID() . '; '
+            . $userFound->mysex() . '; '
+            . $userFound->myage() . '; '
+            . $userFound->citydio() );
+    if ( $userFound->myage() eq '99' ) {
+        debug("Remove user:  age 99 = offline ");
+        return 1;
+    }
+    if ( $userFound->mynickID() ne $user->mynickID() ) {
+        debug("Remove user:  mynickID differ = offline ");
+        return 1;
+    }
+
+    my @args = (
+        'mynickname' => $userFound->mynickname(),
+        'myage'      => $userFound->myage(),
+        'citydio'    => $userFound->citydio(),
+        'mysex'      => $userFound->mysex(),
+        'mynickID'   => $userFound->mynickID(),
+    );
+    $user->dateLastSeen(time);
+    $user->checkAndupdate(@args);
+    $user->isView(1);
+    return 0;
 }
 
 ##@method void removeUser($userWanted)
@@ -178,6 +246,7 @@ sub removeUser {
     my $DBUsersOffline_ref = $self->DBUsersOffline();
     if ( exists $user_ref->{$id} ) {
         my $user = $user_ref->{$id};
+
         #info(   'The user "'
         #      . $user->mynickname()
         #      . '" was disconnected after being seen not in the list '
@@ -209,11 +278,12 @@ sub setUsersOfflineInDB {
 
 ##@method void addOrUpdateInDB()
 sub addOrUpdateInDB {
-    my ($self) = @_;
+    my ( $self, $updateDates ) = @_;
     if ( !$self->logUsersListInDB() ) {
         warning('The record in the database is not enabled');
         return;
     }
+    $updateDates = 1 if !defined $updateDates;
     my $user_ref           = $self->all();
     my @codesToUpdate      = ();
     my @usersToUpdate      = ();
@@ -238,23 +308,29 @@ sub addOrUpdateInDB {
             or $user->DBUserId() == 0
             or $user->DBCodeId() == 0 )
         {
-
             push @$DBUsersOffline_ref, $user->DBUserId()
                 if $self->logUsersListInDB()
                 and $user->hasChange();
             $self->DB()->addNewUser($user);
+            $user->isNew(0);
+            $user->hasChange(0);
+            $user->updateDbRecord(0);
         }
         elsif ( $user->updateDbRecord() ) {
             $self->DB()->updateUser($user);
-
+            $user->updateDbRecord(0);
         }
         else {
-            push @codesToUpdate, $user->DBCodeId();
-            push @usersToUpdate, $user->DBUserId();
+            if ($updateDates) {
+                push @codesToUpdate, $user->DBCodeId();
+                push @usersToUpdate, $user->DBUserId();
+            }
         }
     }
-    $self->DB()->updateCodesDate( \@codesToUpdate );
-    $self->DB()->updateUsersDate( \@usersToUpdate );
+    if ($updateDates) {
+        $self->DB()->updateCodesDate( \@codesToUpdate );
+        $self->DB()->updateUsersDate( \@usersToUpdate );
+    }
 }
 
 ##@method arrayref getUsersNotViewed()

@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-06-16 
+# @date 2016-06-26 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -32,7 +32,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.6002';
+our $VERSION     = '0.6003';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
@@ -58,6 +58,7 @@ our @EXPORT = qw(
     getNum
     isNumeric
     charCodeAt
+    checkInfuzCode
 );
 use Cocoweb::Logger;
 
@@ -272,6 +273,19 @@ sub charCodeAt {
     return ord( substr( $str, $index, 1 ) );
 }
 
+
+##@method boolean checkInfuzCode($code)
+#@param string $code A three-character code (i.g.: WcL, PXd, uyI, 0fN)
+#@return boolean 1 if code is valid premium or 0 otherwise
+sub checkInfuzCode {
+    my ($code) = @_;
+    if ( $code =~m{^[A-Za-z0-9]{3}$} ) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 ##@method void BEGIN()
 sub BEGIN {
     $startTime = time;
@@ -282,7 +296,8 @@ sub BEGIN {
 }
 
 sub END {
-    message( "execution time: " . ( time - $startTime ) . ' seconds' );
+    my $t = timeToDate(time);
+    message( $t . ': execution time: ' . ( time - $startTime ) . ' seconds.' );
 }
 
 1;

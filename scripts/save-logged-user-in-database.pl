@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # @brief This script saves all users connected to the database
 # @created 2012-03-09
-# @date 2016-06-25
+# @date 2016-06-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -80,12 +80,17 @@ AUTH:
     $bot->getMyInfuz();
     $bot->requestConnectedUserInfo();
 
-    # return an empty  'Cocoweb::User::List' object
+    # Return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
 
-    # reads users from 'var/cocoweb-user-list.data' file
+    # Reads previous list of users from 'var/cocoweb-user-list.data' file
     $usersList->deserialize();
-    $usersList->purgeUsersUnseen();
+
+    # Cleans the list of users who have not been seen in the list
+    # returned by the seveur for several minutes.
+    $usersList->purgeUsersUnseen($bot);
+    $usersList->addOrUpdateInDB(0);
+
     checkUsers();
     my $count = 0;
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
@@ -105,17 +110,35 @@ AUTH:
 
 ##@method void checkUsers()
 sub checkUsers {
+    # Reset at zero 'isNew', 'isView', 'hasChange' and 'updateDbRecord' 
+    # data members of each current user.  
+    # Request and returns the list of connected users
     $usersList = $bot->requestUsersList();
+
+    # Makes an request to retrieve the 'infuz' value for all new users.
     $bot->requestInfuzForNewUsers();
-    $usersList->addOrUpdateInDB();
+
+    # 
+    $usersList->addOrUpdateInDB(1);
     $usersList->serialize();
+
+    # Requests on Coco.fr to determine if users are disconnected.
     $bot->requestCheckIfUsersNotSeenAreOffline();
-    $usersList->purgeUsersUnseen();
+    $usersList->purgeUsersUnseen($bot);
+    $usersList->addOrUpdateInDB(0);
     $bot->setUsersOfflineInDB();
     $usersList->serialize();
+
+
     alarmProcess( $bot, $usersList );
+    # Reset at zero 'recent' data member of each user
+    $usersList->clearRecentFlags();
 }
 
+##@method void alarmProcess()
+#@brief The parameters entered in the "conf/alert.conf" configuration file to:
+#       - To send messages XMMP if a specified user is connected.
+#       - To write messages to connected users.
 sub alarmProcess {
     my ( $bot, $usersList ) = @_;
     return if !$isAlarmEnabled;
