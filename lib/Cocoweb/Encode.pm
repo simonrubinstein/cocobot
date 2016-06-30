@@ -1,15 +1,10 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2015-07-28
+# @date 2016-06-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -220,6 +215,7 @@ sub enxo {
             my $chr1 = charCodeAt( $n, $i++ );
             my $chr2 = charCodeAt( $n, $i++ );
             my $chr3 = charCodeAt( $n, $i++ );
+            $chr2 = 0 if !defined $chr2;
             $enc[0] = $chr1 >> 2;
             $enc[1] = ( ( $chr1 & 3 ) << 4 ) | ( $chr2 >> 4 );
             $enc[2] = ( ( $chr2 & 15 ) << 2 );
@@ -346,10 +342,10 @@ sub transformix {
                 $numerox = ord($c);
                 $tr8     = 'FALSE'
                     if $numerox < 45
-                        or ( $numerox > 57 and $numerox < 65 )
-                        or ( $numerox > 90 and $numerox < 95 )
-                        or $numerox > 122
-                        or $numerox == 96;
+                    or ( $numerox > 57 and $numerox < 65 )
+                    or ( $numerox > 90 and $numerox < 95 )
+                    or $numerox > 122
+                    or $numerox == 96;
             }
             if ( indexOf( $tr9, '*' ) == -1 ) {
                 my $tt3 = $tr9;

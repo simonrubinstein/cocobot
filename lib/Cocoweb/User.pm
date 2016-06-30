@@ -37,8 +37,25 @@ use Cocoweb::File;
 use base 'Cocoweb::User::Base';
 
 __PACKAGE__->attributes(
-    'isNew',        'isView',         'dateLastSeen', 'hasChange',
-    'notViewCount', 'updateDbRecord', 'DBCodeId',     'DBUserId',
+    ##True if the user has been created and is to be inserted in the database
+    'isNew',
+    ##True if the user has been seen in the list of connected users
+    'isView',
+    ##Date in which, the user was seen in the list of the connected users
+    'dateLastSeen',
+    ##The user changed their profile and must be re-inserted into the database
+    'hasChange',
+    ##Counter user
+    'notViewCount',
+    #True if some user values have changed which must be updated in the database
+    'updateDbRecord',
+    ##The id colum of "codes" table.
+    #The value is 0 if the user has not been inserted into database.
+    'DBCodeId',
+    ##The id column of "nicknames" table.
+    #The value is 0 if the user has not been inserted into database.
+    'DBUserId',
+    ##User has been created. Used for alams
     'isRecent'
 );
 

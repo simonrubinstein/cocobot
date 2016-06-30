@@ -1,15 +1,8 @@
 # @created 2012-02-17
-# @date 2016-05-26
+# @date 2016-05-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+#
 # https://github.com/simonrubinstein/cocobot
-#
-# copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
-#
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
@@ -425,11 +418,11 @@ sub agix {
     my ( $self, $user, $url, $cookie_ref, $response ) = @_;
     croak error("The URL of the HTTP request is missing") if !defined $url;
 
-    info("url: $url");
+    #info("url: $url");
     my $HTTPResponse = $self->execute( 'GET', $url, $cookie_ref );
     my $res = $HTTPResponse->content();
 
-    debug($res);
+    #debug($res);
     die error(
         'Error: the JavaScript function not found in the string: ' . $res )
         if $res !~ m{^([^\(]+)\('([^']*)'\)}xms;
@@ -488,9 +481,9 @@ sub requestMessagesFromUsers {
         $self->agir( $user,
             $user->camon() . $user->typcam() . '?' . rand(1) );
     }
-    else {
-        debug("<<<<< timz1 == $timz1  >>>>>");
-    }
+    #else {
+    #    debug("<<<<< timz1 == $timz1  >>>>>");
+    #}
     if ( $timz1 == 20 and length( $user->mypass() ) != 20 ) {
 
         #This is a new user without password.

@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2016-06-25
+# @date 2016-06-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -45,7 +45,6 @@ __PACKAGE__->attributes(
     'mysex',
     ## nickname ID for current session
     'mynickID',
-
     #Real zip code
     'zip',
     ## Custom code that corresponds to zip code.
@@ -56,19 +55,26 @@ __PACKAGE__->attributes(
     'myver',
     ## String retrieved by the function infuz()
     'infuz',
+    ## "code de vote", three chars extracted from "infuz" string.
+    ## i.g.: cZj, 23m, Wcl, PXd
     'code',
+    ## ISP, Internet Service Provider, extracted from "infuz" string.
+    ## i.g.: Orange, SFR, Free SAS
     'ISP',
     'status',
     'premium',
     'level',
     'since',
+    ## Geolocation extracted from "infuz" string.
+    ## i.g.: FR- La Rochelle, FR- Paris, FR- Montpellier 
     'town',
     ## Total messages sent by the user
     'messageCounter',
-    ## Date of last message sent by the user
+    ## Date of last message sent by the user (unix timestamp)
     'messageSentTime',
     ## Content of the message sent by the user
     'messageLast',
+    ## true = The user had sent a message
     'isMessageWasSent'
 );
 
@@ -172,7 +178,7 @@ sub setInfuz {
     my ( $self, $infuz ) = @_;
     $self->infuz($infuz);
     my @lines = split( /\n/, $infuz );
-    die error( 'The string "' . $infuz . '" does not have three lines!' )
+    die error( 'The string "' . $infuz . '" does not have three lines! mynickname:' . $self->mynickname() )
       if ( scalar(@lines) != 3 );
     if (
         $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
@@ -183,7 +189,7 @@ sub setInfuz {
         $self->ISP( trim($2) );
     }
     else {
-        die error("string '$lines[0]' is bad. infuz: $infuz");
+        die error("string '$lines[0]' is bad. infuz: $infuz! mynickname:" . $self->mynickname() );
     }
     if (
         $lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)

@@ -1,14 +1,9 @@
 # @created 2012-03-29
-# @date 2016-06-12
+# @date 2016-06-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -129,13 +124,14 @@ sub process1Int {
     }
 
     # The first part of authentication was performed successfully
-    # The server returns an ID, password for the current session and 
+    # The server returns an ID, password for the current session and
     #     and snippet encrypted javascript code
     if ( $olko == 15 ) {
         my $tkt = substring( $urlo, 2, 8 );
         if ( $tkt < 900000 ) {
             $user->mynickID($tkt);
             $user->monpass( substring( $urlo, 8, 14 ) );
+
             # Decrypts a piece of JavaScript code returned by the server.
             my $res
                 = $self->convert()
@@ -151,6 +147,7 @@ sub process1Int {
                         . $request->publicIP(),
                     $y, 0
                 );
+
                 #second part of authentication:
                 $request->guw( $user, $adz, $self );
             }
@@ -193,8 +190,8 @@ sub process1Int {
             die error($urlu);
         }
 
-# Retrieves information about an user, for Premium subscribers only
-# i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
+        # Retrieves information about an user, for Premium subscribers only
+        # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
@@ -204,17 +201,25 @@ sub process1Int {
         #Result of a search query of a nickname code
         #Return Cocoweb::Request::searchCode() function.
         if ( $bud == 557 ) {
-            my $userFound = new Cocoweb::User(
-                'mynickname' => substr( $urlo, 19 ),
-                'myage'      => substr( $urlo, 11, 2 ),
-                'citydio'    => substr( $urlo, 13, 5 ),
-                'mysex'      => substr( $urlo, 18, 1 ),
-                'mynickID'   => substr( $urlo, 5, 6 ),
-                'myver'  => 0,
-                'mystat' => 5,
-                'myXP'   => 0
-            );
-            $self->userFound($userFound);
+            #urlo i.e.: 9955713461399032501marco0
+            #urlo i.e.: 99557099null0null
+            if ( $urlo =~ m{\d{8}null\dnull$} ) {
+                error("Cocoweb::Request::searchCode() return $urlo");
+                $self->userFound(undef);
+            }
+            else {
+                my $userFound = new Cocoweb::User(
+                    'mynickname' => substr( $urlo, 19 ),
+                    'myage'      => substr( $urlo, 11, 2 ),
+                    'citydio'    => substr( $urlo, 13, 5 ),
+                    'mysex'      => substr( $urlo, 18, 1 ),
+                    'mynickID'   => substr( $urlo, 5, 6 ),
+                    'myver'  => 0,
+                    'mystat' => 5,
+                    'myXP'   => 0
+                );
+                $self->userFound($userFound);
+            }
         }
 
         # The second part of the authentication is completed successfully
