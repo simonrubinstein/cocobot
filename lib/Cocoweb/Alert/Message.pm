@@ -35,6 +35,7 @@ use Cocoweb::File;
 use Cocoweb::Config;
 use Cocoweb::Alert::MessageVar;
 use base 'Cocoweb::Object';
+my $rs;
 
 __PACKAGE__->attributes( 'name', 'write' );
 

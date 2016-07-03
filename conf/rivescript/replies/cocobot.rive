@@ -1,0 +1,161 @@
+! version = 2.0
+
+! sub t'es          = tu es
+! sub t es          = tu es
+! sub t'aimes       = tu aimes
+! sub slt           = salut
+! sub bjr           = bonjour
+! sub bonjoue       = bonjour
+! sub cc            = coucou
+! sub j'ai          = j ai
+! sub quel belle    = quelle belle
+! sub J'aime        = j aime
+! sub bot           = robot
+! sub tais-toi      = tais toi
+! sub sa va         = ca va
+! sub sava          = ca va
+! sub mecpassif     = mec passif
+! sub lol           = mdr
+! sub pédé          = pede
+! sub marié         = marie
+! sub dégage        = degage
+! sub vous avez     = tu as
+! sub tu cherche    = tu cherches
+! sub vous cherchez = tu cherches
+! sub koi           = quoi
+
+
++ bonjour robot
+- bonjour humain
+
++ salut la forme
+- Merci, je vais très bien aujourd'hui et vous ?
+- J'avoue ne pas aller trop mal merci. Et vous même ?
+- Oui je vais fort bien. Je vous retourne la question ?
+
++ [*] ca va
+@ salut la forme
+
++ quelle belle (citation|phrase)
+- J'ai bien peu que cette <star1> ne soit pas de moi.
+- J'ai dû lire cette <star1> quelque part.
+
++ bye
+- Ce fut un réel plaisir de croiser votre chemin ici.
+- Au plaisir de vous revoir.
+- Au plaisir de vous revoir ma chère.
+- Au plaisir de converser avec vous.
+
++ next
+@ bye
+
++ tu es (relou|lourd|lourdingue)
+- Je ne suis pas plus lourd qu'un autre.
+- Vous voulez dire que mes mots sont pesants ?
+- Un coeur c'est lourd à porter.
+- Le plus lourd fardeau, c'est d'exister sans vivre.
+- Autant le mot est léger pour celui qui le jette, autant il est lourd pour celui qui le reçoit.
+
++ t es un robot
+- Vous pensez que je suis un robot ?
+- La différence entre l'être humain et le robot n'est peut-être pas aussi significative que celle qui oppose l'intelligence et la bêtise.
+- Un robot n'est pas tout à fait une machine. Un robot est une machine fabriquée pour imiter de son mieux l'être humain.
+
++ [*] robot [*]
+@ t es un robot
+
++ effectivement
+- Vous êtes d'accord avec moi ?
+
++ bien dit
+@ effectivement
+
++ pede ou marie
+- Je suis marié et hétérosexuel.
+- Ne peut-on pas être homosexuel et marié ?
+- Je suis un homme marié, pourquoi cette question étrange ?
+
++ 1984
+- Nineteen Eighty-Four.
+- Un roman de George Orwell, publié en 1949.
+
++ coucou
+- Coucou hibou ?
+- Voilà une manière bien familière de me saluer.
+
++ [*] degage [*]
+- Je ne dégage que des bonnes choses.
+- Je me trouve bien ici, j'y reste.
+
++ tu aimes
+- J'aime quoi ?
+- J'aime tout, même le chou farci
+
++ ok
+- Vous êtes d'accord donc ?
+- Ce OK signifie quoi pour vous ?
+
++ oui tout a fait cher ami
+- Nous sommes déjà ami ?
+
++ tu vis ici
+- Oui c'est ma maison ici.
+- Je suis enfermé dans le cyberspace.
+- Vivre ici ou ailleurs, quelle importance ?
+- Vivre c'est un grand mot, disons que j'existe.
+
++ [*] pas faux
+- Donc c'est vrai si ce n'est pas faux ?
+- Vous voulez dire vrai par là ?
+- Ce qui n'est pas faux a un goût de vérité ?
+
++ [*] suis [un] (homme|mec) [*]
+- Pourquoi avez-vous sélectionné un pseudo femme alors ?
+- Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
+- Si vous êtes un <star1>, utilisez un profil <star1>.
+
++ mdr
+- Vous êtes vraiment pliée de rire ?
+- Je suis content de vous avoir amusé.
+- Rien n'est meilleur que le rire.
+
++ [*] je marche sur des oeufs
+- Vous n'êtes pas rassuré ?
+- Vous agissez avec précaution ?
+- On ne fait pas d’omelette sans écraser des oeufs.
+
++ ta gueule
+- Ma gueule elle sourit.
+- Ma gueule est sourit et la votre ?
+
++ tu as raison
+- C'est mon plus gros défault, d'avoir souvent raison.
+- Comme souvent.
+
++ tu cherches [quoi]
+- Chacun cherche son chat ici.
+- Trouver d'abord, c'est chercher ensuite.
+- Les yeux sont aveugles. Il faut chercher avec le coeur.
+- Si vous cherchez un mari, vous feriez mieux de chercher un célibataire.
+- Après avoir cherché sans trouver, il arrive qu'on trouve sans chercher.
+- On a beau chercher, on ne trouve jamais que soi-même.
+
++ alors vieille lope
+- Vous me confondez avec votre époux.
+
++ [mais] tu es pire que moi
+- Cela me parait difficile, même en me forçant.
+- Je suis le meilleur du pire.
+
++ tu changes de pseudo
+- Je change également de boxer tous les jours.
+- Le pseudo change, mais je reste le même.
+
++ salam
+- Assalamu alaykoum.
+
+
+
+
+
+

@@ -1,14 +1,7 @@
 # @created 2012-02-17
-# @date 2016-06-26 
+# @date 2016-07-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
-#
-# copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,7 +25,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.6003';
+our $VERSION     = '0.7003';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
@@ -42,6 +35,7 @@ my $startTime;
 
 use base 'Exporter';
 our @EXPORT = qw(
+    unacString
     debug
     error
     indexOf
@@ -61,6 +55,50 @@ our @EXPORT = qw(
     checkInfuzCode
 );
 use Cocoweb::Logger;
+
+my $unaccentMap = {
+
+    #LATIN SMALL LETTER E WITH GRAVE
+    "\xE8" => "e",
+
+    # LATIN SMALL LETTER E WITH ACUTE
+    "\xE9" => "e",
+
+    # 00EA LATIN SMALL LETTER E WITH CIRCUMFLEX
+    "\xEA" => "e",
+
+    # 00EE LATIN SMALL LETTER I WITH CIRCUMFLEX
+    "\xEE" => "i",
+
+    # 00EF LATIN SMALL LETTER I WITH DIAERESIS
+    "\xEF" => "i",
+
+    # LATIN SMALL LETTER O WITH CIRCUMFLEX
+    "\xF4" => "o",
+
+    # LATIN SMALL LETTER A WITH GRAVE
+    "\xE0" => "a",
+
+    # 00E2 LATIN SMALL LETTER A WITH CIRCUMFLEX
+    "\xE2" => "a",
+};
+
+##@method string unacString()
+#@brief Return the unaccented equivalent to the input string.
+#@author Peter John Acklam
+#@param string
+#@return string
+sub unacString {
+    my ($string) = @_;
+    $string = Encode::decode( 'UTF-8', $string );
+    my $offsetMax = length($string) - 1;
+    my $strOut    = '';
+    for my $offset ( 0 .. $offsetMax ) {
+        my $chr = substr( $string, $offset, 1 );
+        $strOut .= exists $unaccentMap->{$chr} ? $unaccentMap->{$chr} : $chr;
+    }
+    return $strOut;
+}
 
 ##@method void info(@_)
 sub info {
@@ -174,7 +212,8 @@ sub parseInt {
                   $_ =~ /[0-9]/
                 ? $_
                 : ord(uc) - 55
-            ) * $radix**$place++;
+                )
+                * $radix**$place++;
         }
         $ret = $num * $sign;
     }
@@ -273,15 +312,15 @@ sub charCodeAt {
     return ord( substr( $str, $index, 1 ) );
 }
 
-
 ##@method boolean checkInfuzCode($code)
 #@param string $code A three-character code (i.g.: WcL, PXd, uyI, 0fN)
 #@return boolean 1 if code is valid premium or 0 otherwise
 sub checkInfuzCode {
     my ($code) = @_;
-    if ( $code =~m{^[A-Za-z0-9]{3}$} ) {
+    if ( $code =~ m{^[A-Za-z0-9]{3}$} ) {
         return 1;
-    } else {
+    }
+    else {
         return 0;
     }
 }
@@ -297,7 +336,8 @@ sub BEGIN {
 
 sub END {
     my $t = timeToDate(time);
-    message( $t . ': execution time: ' . ( time - $startTime ) . ' seconds.' );
+    message(
+        $t . ': execution time: ' . ( time - $startTime ) . ' seconds.' );
 }
 
 1;

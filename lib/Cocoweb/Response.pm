@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2016-06-30
+# @date 2016-07-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -198,7 +198,7 @@ sub process1Int {
             $self->infuzString($urlu);
         }
 
-        #Result of a search query of a nickname code
+        #Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
         #Return Cocoweb::Request::searchCode() function.
         if ( $bud == 557 ) {
             #urlo i.e.: 9955713461399032501marco0

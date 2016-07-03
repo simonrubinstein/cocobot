@@ -1,15 +1,8 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2016-06-15
+# @date 2016-07-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot 
-#
-# copyright (c) Simon Rubinstein 2010-2015
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -256,13 +249,13 @@ sub readAlertMessageFile {
         if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
             \s+([0-9A-Za-z]+)
             \s+=>
-            \s+([0-9A-Za-z]+)
+            \s+([0-9A-Za-z:]+)
             \s+([A-Za-z0-9]{3})?
             \s+(.*)$}xms
             )
         {
 
-            die "bad  $line";
+            die "bad '$line'";
         }
         my ( $h, $m, $s ) = ( $1, $2, $3 );
         my ( $botNickname, $mynickname, $code, $message )
@@ -366,6 +359,7 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print <<ENDTXT;
+$Script, read 'var/alert-messages/*' and 'var/messages/*' files 
 Usage: 
  $Script [-v -d ] [-t daysBefore | -s startDate -l lastDate]
   -v            Verbose mode
@@ -381,6 +375,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-06-15');
+    $CLI->VERSION_MESSAGE('2016-07-02');
 }
 

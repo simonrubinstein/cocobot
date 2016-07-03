@@ -1,15 +1,8 @@
 # @brief
 # @created 2012-02-19
-# @date 2015-01-09
+# @date 2016-07-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
-#
-# copyright (c) Simon Rubinstein 2010-2015
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -260,7 +253,8 @@ sub requestInfuzForNewUsers {
     foreach my $niknameId ( keys %$users_ref ) {
         $userCount++;
         my $user = $users_ref->{$niknameId};
-        debug("$userCount) mynickname: " . $user->mynickname() . '; isNew: ' . $user->isNew() . '; infuz: ' . $user->infuz() );
+
+#debug("$userCount) mynickname: " . $user->mynickname() . '; isNew: ' . $user->isNew() . '; infuz: ' . $user->infuz() );
         next if !$user->isNew() and $user->infuz() !~ $infuzNotToFastRegex;
         if ( $user->infuz() =~ $infuzNotToFastRegex ) {
             debug( 'Retry infuz request for ' . $user->mynickname() );

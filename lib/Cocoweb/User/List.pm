@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2016-06-29
+# @date 2016-07-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -148,6 +148,7 @@ sub purgeUsersUnseen {
     my $removeListDelay = $self->removeListDelay();
     my ( $count, $countPurge ) = ( 0, 0 );
     $self->checkUserIsReallyOfflineCount(0);
+    my $DBUsersOffline_ref = $self->DBUsersOffline();
     my $userCount = 0;
     foreach my $id (
         sort {
@@ -174,6 +175,8 @@ sub purgeUsersUnseen {
                     . $user->mynickID() . ' '
                     . $user->mynickname() );
             delete $user_ref->{$id};
+            push @$DBUsersOffline_ref, $user->DBUserId()
+                if $self->logUsersListInDB();
             $countPurge++;
         }
         else {

@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-05-30
+# @date 2016-07-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
 # https://github.com/simonrubinstein/cocobot
@@ -60,7 +60,8 @@ __PACKAGE__->attributes(
     'infuzMaxOfTriesAfterPause',
     'magicAuthString',
     'localIP',
-    'publicIP'
+    'publicIP',
+    'isConfHTTPrequests'
 );
 
 my $conf_ref;
@@ -69,6 +70,7 @@ my $userAgent;
 my $removeListDelay;
 my $localIP;
 my $publicIP;
+my $isConfHTTPrequests;
 
 ##@method void init($args)
 #@brief Perform some initializations
@@ -135,7 +137,7 @@ sub init {
         $conf->isInt('infuz-pause2');
         $conf->isInt('infuz-max-of-tries-after-pause');
         $conf->isInt('remote-port-default');
-
+        $isConfHTTPrequests = $conf->getBool('isConfHTTPrequests');
     }
 
     #my $myport = 3000 + randum(10);
@@ -169,6 +171,7 @@ sub init {
             'PeerPort' => $conf_ref->{'remote-port-default'}
         );
         if ( !defined $sock ) {
+
             #Set a bogus IP address
             $localIP = '192.168.0.1';
         }
@@ -203,7 +206,8 @@ sub init {
         'infuzPause1'         => $conf_ref->{'infuz-pause1'},
         'infuzPause2'         => $conf_ref->{'infuz-pause2'},
         'infuzMaxOfTriesAfterPause' =>
-            $conf_ref->{'infuz-max-of-tries-after-pause'}
+            $conf_ref->{'infuz-max-of-tries-after-pause'},
+        'isConfHTTPrequests' => $isConfHTTPrequests
     );
 }
 
@@ -212,6 +216,7 @@ sub init {
 #@param string $url "initio.js" URL (http://www.coco.fr/chat/initio.js)
 sub getInitioJSVar {
     my ( $self, $url ) = @_;
+    return if !$self->isConfHTTPrequests();
     my $response = $self->execute( 'GET', $url );
     my $res = $response->content();
     foreach my $line ( split /\n/, $res ) {
@@ -240,7 +245,7 @@ sub getValue {
         return $conf_ref->{$name};
     }
     else {
-        croak error( 'Error: The "' 
+        croak error( 'Error: The "'
                 . $name
                 . '" value was not found in the configuration.' );
     }
@@ -300,8 +305,15 @@ sub getCitydioAndTownzz {
     my $cityco;
 
     #Reads citydio and townzz values from an HTTP request.
-    eval { $cityco = $self->getCityco( $user->zip() ); };
-    if ($@) {
+    my $isUseConf;
+    if ( $self->isConfHTTPrequests() ) {
+        eval { $cityco = $self->getCityco( $user->zip() ); };
+        $isUseConf = 1 if $@;
+    }
+    else {
+        $isUseConf = 1;
+    }
+    if ($isUseConf) {
 
         #If the HTTP request fails, read the values from configuration file.
         my $allZipCodes = Cocoweb::Config->instance()
@@ -315,11 +327,11 @@ sub getCitydioAndTownzz {
     my $count = scalar @citycoList;
     die error("Error: The cityco is not valid (cityco: $cityco)")
         if $count % 2 != 0
-            or $count == 0;
+        or $count == 0;
 
     if ( $count == 2 ) {
         $citydio = sprintf( "%05d", $citycoList[0] );
-        $townzz  = $citycoList[1];
+        $townzz = $citycoList[1];
     }
     else {
         my $r = int( rand( $count / 2 ) );
@@ -328,7 +340,7 @@ sub getCitydioAndTownzz {
         $townzz  = $citycoList[ $r + 1 ];
     }
 
-    debug("citydio: $citydio; townzz: $townzz");
+    #debug("citydio: $citydio; townzz: $townzz");
     $user->citydio($citydio);
     $user->townzz($townzz);
 }
@@ -349,7 +361,7 @@ sub getCityco {
     my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
     my $response = $self->execute( 'GET', $url );
     my $res      = $response->content();
-    debug($res);
+    #debug($res);
 
     # Retrieves a string like "var cityco='30926*PARIS*';"
     if ( $res !~ m{var\ cityco='([^']+)';}xms ) {
@@ -360,7 +372,7 @@ sub getCityco {
                 . $res );
     }
     my $cityco = $1;
-    debug("===> cityco: $cityco");
+    #debug("===> cityco: $cityco");
     return $cityco;
 }
 
@@ -481,6 +493,7 @@ sub requestMessagesFromUsers {
         $self->agir( $user,
             $user->camon() . $user->typcam() . '?' . rand(1) );
     }
+
     #else {
     #    debug("<<<<< timz1 == $timz1  >>>>>");
     #}
@@ -641,12 +654,15 @@ sub infuz {
 #@return object A 'Cocoweb::User::List' object
 sub getUsersList {
     my ( $self, $user ) = @_;
+
     # Reset at zero 'isNew', 'isView', 'hasChange' and
     # 'updateDbRecord' data members of each user
     $self->usersList()->clearFlags();
+
     #1 = search mans; 2 = search womans
     foreach my $g ( 1, 2 ) {
         $self->genru($g);
+
         # 1 = -30 years old; 2 = 20 to 40  years old; 3 = 30 to 50 years old;
         # 4 = 40  years old  and more
         foreach my $y ( 1, 2, 3, 4 ) {
@@ -688,7 +704,7 @@ sub searchNickname {
     }
     return $self->usersList()
         if !defined $nickname
-            or length($nickname) == 0;
+        or length($nickname) == 0;
     return;
 }
 
