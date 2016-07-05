@@ -30,17 +30,17 @@ use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 use Cocoweb::File;
+use Cocoweb::RiveScript;
 my $CLI;
 my $rs;
 my $isCheckAllAnswers;
+my $maxFailsCheck;
 
 init();
 run();
 
 sub run {
-    my $dirpath
-        = Cocoweb::Config->instance()->getDirPath('rivescript/replies');
-    $rs->loadDirectory($dirpath);
+    $rs->loadDirectory('rivescript/replies');
     $rs->sortReplies();
     if ( !defined $isCheckAllAnswers ) {
         bot();
@@ -53,14 +53,18 @@ sub run {
 sub checkAllAnswers {
     my $path      = getVarDir() . '/messages';
     my $files_ref = readDirectory($path);
+    my $fileCounter = 0;
+    my $errCount    = 0;
     for my $file (@$files_ref) {
         next if $file !~ m{\.log$};
         my $filename = $path . '/' . $file;
         my $fh = IO::File->new( $filename, 'r' );
         die error("open($filename) was failed: $!")
             if !defined $fh;
+        my $lineCounter = 0;
         while ( defined( my $line = $fh->getline() ) ) {
             chomp($line);
+            $lineCounter++;
             next if length($line) == 0;
             if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
                         \s+([A-Za-z0-9]{3})?
@@ -77,20 +81,21 @@ sub checkAllAnswers {
             my ( $code, $town, $ISP, $mysex, $myage, $mynickname, $message )
                 = ( $4, $5, $6, $7, $8, $9, $10 );
             next if $mysex eq 1 or $mysex eq 6;
-            $message = unacString($message);
-            print "\nYou> $message\n";
             my $reply = $rs->reply( "user", $message );
-            utf8::encode($reply);
-            print "Bot> $reply\n";
 
             if ( $reply eq 'ERR: No Reply Matched' ) {
+                print "\n$mynickname> $message\n";
+                print "Bot> $reply\n";
+                return if ++$errCount >= $maxFailsCheck;
 
+                #info("$filename ($lineCounter)");
                 #$fh->close();
                 #return;
             }
 
         }
         $fh->close();
+        $fileCounter++;
         last;
     }
 
@@ -117,15 +122,28 @@ sub bot {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'c' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'cm:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
     $isCheckAllAnswers = $opt_ref->{'c'} if exists $opt_ref->{'c'};
+    $maxFailsCheck     = $opt_ref->{'m'} if exists $opt_ref->{'m'};
+    if ( defined $maxFailsCheck ) {
+        if ( !defined $isCheckAllAnswers ) {
+            error("The option m works only with the option c");
+            return;
+        }
+        if ( $maxFailsCheck !~m{\d+} ) {
+            error("The m option must be an integer");
+            exit;
+        }
+    } else {
+        $maxFailsCheck = 10 if defined $isCheckAllAnswers; 
+    }
 
     # Create a new RiveScript interpreter object.
-    $rs = RiveScript->new( 'utf8' => 1, 'debug' => 0 );
+    $rs = new Cocoweb::RiveScript();
 }
 
 ## @method void HELP_MESSAGE()
@@ -138,6 +156,7 @@ Usage:
   -v  Verbose mode
   -d  Debug mode
   -c  Check all the answers from the files.
+  -m  Maximum number of checks in failure.
 
 ENDTXT
     exit 0;

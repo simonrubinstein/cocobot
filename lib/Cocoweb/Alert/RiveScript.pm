@@ -1,6 +1,6 @@
 # @brief
 # @created 2016-07-01
-# @date 2016-07-03
+# @date 2016-07-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -32,6 +32,7 @@ use Encode;
 use Cocoweb;
 use Cocoweb::File;
 use Cocoweb::Config;
+use Cocoweb::RiveScript;
 use base 'Cocoweb::Object';
 
 __PACKAGE__->attributes( 'name', 'repliesdir', 'rs' );
@@ -41,18 +42,20 @@ __PACKAGE__->attributes( 'name', 'repliesdir', 'rs' );
 sub init {
     my ( $self, %args ) = @_;
     my $conf    = $args{'conf'};
-    my $dirpath = Cocoweb::Config->instance()
-        ->getDirPath( $conf->getString('repliesdir') );
+    my $dirpath = $conf->getString('repliesdir');
     $self->attributes_defaults(
         'name'       => $conf->getString('name'),
         'repliesdir' => $dirpath
     );
 }
 
+##@method object getRiveScript()
+#@brief Instantiates the "Cocoweb::RiveScript" object.
+#@return A "Cocoweb::RiveScript"  object
 sub getRiveScript {
     my $self = shift;
     return $self->rs() if defined $self->rs();
-    my $rs = RiveScript->new();
+    my $rs = new Cocoweb::RiveScript();
     $self->rs($rs);
 
     #$rs->loadFile( $self->repliesdir() );
@@ -73,15 +76,13 @@ sub process {
         $user->isMessageWasSent(0);
         my $messageLast = trim( $user->messageLast() );
         next if !defined $messageLast or length($messageLast) == 0;
-        my $message = unacString($messageLast);
-        my $reply = $rs->reply( 'localuser', $message );
+        my $reply = $rs->reply( 'localuser', $messageLast );
         if ( $reply eq 'ERR: No Reply Matched' ) {
             error("No reply matched for $messageLast");
             next;
         }
-        utf8::encode($reply);
         my $logStr = ref($self);
-        my $logStr = sprintf(
+        $logStr = sprintf(
             "%-19s => %-19s %-4s $logStr $reply",
             $bot->user()->mynickname(),
             $user->mynickname(), $user->code()

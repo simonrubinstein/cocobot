@@ -1,16 +1,60 @@
 ! version = 2.0
 
+! sub vous etes          = tu es
+! sub vous en avez       = tu en as 
+! sub vous cherchez      = tu cherches
+! sub vas-tu             = vas tu
+! sub propose tu         = proposes tu
+! sub proposes-tu        = proposes tu
+! sub vous avez          = tu as
+! sub vous faire         = te faire
+! sub vous n'en avez pas = tu n en as pas
+! sub votre              = ton
+
 ! sub t'es          = tu es
+! sub t'as          = tu as
 ! sub t es          = tu es
+! sub t'en          = tu en
+! sub j'ai          = j ai
+! sub j'en          = j en
+! sub j'aime        = j aime
 ! sub t'aimes       = tu aimes
+! sub c'est         = c est
+! sub t'epouse      = t epouse
+! sub m'envoyer     = m envoyer
+! sub l'honneur     = l honneur
+! sub l'age         = l age
+! sub l'alcool      = l alcool
+! sub c ca          = c est ca
+! sub ai-je         = ai je
+! sub qu'est ce     = qu est ce
+! sub qu'est-ce     = qu est ce
+! sub keske         = qu est ce
+! sub kestu         = qu est ce tu
+! sub kes tu        = qu est ce tu
+! sub tu veu        = tu veux
+! sub c ta mere     = c est ta mere
+! sub c ta          = c est ta 
+! sub nik ta        = nique ta
+! sub je suit       = je suis
+! sub tafiolle      = tafiole
+! sub oh revoir     = au revoir
+! sub pk            = pourquoi
+
+! sub ten a         = tu en as
+! sub cest          = c est
+
 ! sub slt           = salut
 ! sub bjr           = bonjour
+! sub bsr           = bonsoir
+! sub koi           = quoi
+! sub bot           = robot
+! sub rout a fais   = tout a fait
+
+! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
 ! sub cc            = coucou
-! sub j'ai          = j ai
 ! sub quel belle    = quelle belle
-! sub J'aime        = j aime
-! sub bot           = robot
 ! sub tais-toi      = tais toi
 ! sub sa va         = ca va
 ! sub sava          = ca va
@@ -21,8 +65,39 @@
 ! sub dégage        = degage
 ! sub vous avez     = tu as
 ! sub tu cherche    = tu cherches
-! sub vous cherchez = tu cherches
+! sub tu raconte    = tu racontes
+! sub tu ch         = tu cherches
+! sub je repond     = je reponds
+! sub je vait       = je vais
+! sub di moi        = dis moi
 ! sub koi           = quoi
+! sub toujour       = toujours
+! sub tjs           = toujours
+! sub qoui          = quoi
+! sub hahaha        = haha
+! sub hahahaha      = haha
+! sub aahahahahah   = haha
+! sub pfff          = pff
+! sub pffff         = pff
+! sub pfffffff      = pff
+! sub pfffffffffff  = pff
+! sub oke           = ok
+! sub ^^            = emoticone style nippon 
+! sub ...           = point de suspension
+! sub piroquet      = perroquet
+! sub mm msg        = meme message
+! sub te relou      = tu es roulou
+! sub t lourd       = tu es lourd
+! sub taggle        = ta gueule
+! sub geule         = gueule
+! sub biem          = bien
+! sub te relou      = tu es relou
+! sub mulo          = mulot
+! sub faire encule  = faire enculer 
+! sub bloqued       = bloque
+! sub jprefere      = je prefere
+! sub ds bb         = des bebes
+! sub bb            = bebe
 
 
 + bonjour robot
@@ -32,13 +107,31 @@
 - Merci, je vais très bien aujourd'hui et vous ?
 - J'avoue ne pas aller trop mal merci. Et vous même ?
 - Oui je vais fort bien. Je vous retourne la question ?
+- Je pète la forme, je vous laisse imaginer l'état des chaises.
+
++ (bonjour|salut)
+- je suis enchanté que vous me saluiez.
+- j'aime qu'une dame me dise bonjour.
+
++ comment vas tu
+@ salut la forme
 
 + [*] ca va
 @ salut la forme
 
++ coucou c est * [*]
+- Ca va <star1> ?
+
 + quelle belle (citation|phrase)
 - J'ai bien peu que cette <star1> ne soit pas de moi.
 - J'ai dû lire cette <star1> quelque part.
+
++ [*] jolie (phrase)
+- J'ai bien peu que cette <star1> ne soit pas de moi.
+- J'ai dû lire cette <star1> quelque part.
+
++ jolie
+- Pas aussi jolie que vous, j'en suis certain.
 
 + bye
 - Ce fut un réel plaisir de croiser votre chemin ici.
@@ -46,10 +139,23 @@
 - Au plaisir de vous revoir ma chère.
 - Au plaisir de converser avec vous.
 
-+ next
++ (bonne journee|next|bloque|au revoir|aurevoir)
 @ bye
 
-+ tu es (relou|lourd|lourdingue)
++ [*] bonne soiree
+@ bye
+
++ [*] (adios|adieu)
+- Il ne faut jamais dire adieu, cela porte malheur.
+- A qui ne regarde rien, tout adieu est facile.
+- Toute la misère du monde n’est rien à côté d’un adieu.
+
++ bonsoir
+- Les fleurs se disent bonsoir à la hâte et ferment leurs paupières.
+- Comment vous portez-vous ce soir ?
+
+
++ tu es (relou|lourd|lourdingue) [toi]
 - Je ne suis pas plus lourd qu'un autre.
 - Vous voulez dire que mes mots sont pesants ?
 - Un coeur c'est lourd à porter.
@@ -82,10 +188,12 @@
 + coucou
 - Coucou hibou ?
 - Voilà une manière bien familière de me saluer.
+- Comment allez-vous ?
 
 + [*] degage [*]
 - Je ne dégage que des bonnes choses.
 - Je me trouve bien ici, j'y reste.
+
 
 + tu aimes
 - J'aime quoi ?
@@ -94,6 +202,7 @@
 + ok
 - Vous êtes d'accord donc ?
 - Ce OK signifie quoi pour vous ?
+- Sauf qu'on sait tous les deux que OK est un mot extrêmement provocateur. Il dégouline de sensualité.
 
 + oui tout a fait cher ami
 - Nous sommes déjà ami ?
@@ -114,10 +223,14 @@
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
 - Si vous êtes un <star1>, utilisez un profil <star1>.
 
-+ mdr
++ (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
 - Je suis content de vous avoir amusé.
 - Rien n'est meilleur que le rire.
+- Le rire dilate l'esprit.
+- L’erreur, comme le rire, est humaine.
+- Le rire est le grelot du sexe.
+- On peut rire de tout, mais pas pour rien.
 
 + [*] je marche sur des oeufs
 - Vous n'êtes pas rassuré ?
@@ -127,6 +240,9 @@
 + ta gueule
 - Ma gueule elle sourit.
 - Ma gueule est sourit et la votre ?
+
++ ftg [*]
+@ ta gueule
 
 + tu as raison
 - C'est mon plus gros défault, d'avoir souvent raison.
@@ -140,6 +256,14 @@
 - Après avoir cherché sans trouver, il arrive qu'on trouve sans chercher.
 - On a beau chercher, on ne trouve jamais que soi-même.
 
++ tu veux quoi [*]
+- Je vous veux vous.
+- Vouloir du bien à une femme, est-ce en vouloir à son mari ?
+- A vouloir trop avoir, l’on perd tout.
+- Vouloir oublier quelqu'un, c'est y penser. 
+- Il faut vouloir vivre et savoir mourir. 
+- Il faut vouloir ce qu'on ne peut empêcher.
+
 + alors vieille lope
 - Vous me confondez avec votre époux.
 
@@ -151,8 +275,225 @@
 - Je change également de boxer tous les jours.
 - Le pseudo change, mais je reste le même.
 
++ a chaque fois que j en change
+- A chaque fois que vous changez de ?
+
++ tu es grave
+- Rien n’est grave, puisque tout est grave.
+- La vie est une chose grave. Il faut gravir.
+- Il est moins grave de perdre que de se perdre.
+- La plus grave maladie du cerveau c'est de réfléchir.
+- Rien n'est grave puisque tout passe. Ou plutôt s'éloigne.
+- Parler pour ne rien dire est grave. Parler pour ne pas rire est impardonnable.
+- Frôler la mort n'est rien. Passer à côté de la vie est beaucoup plus grave.
+
++ tu dois etre celui qui fantasme sur * 
+- Je ne fantasme pas sur <star1>
+
++ pff
+- Vous exprimez votre dédain et votre indifférence ?
+
 + salam
 - Assalamu alaykoum.
+
++ emoticone style nippon
+- Je vois, vous appréciez les émoticônes de style nippon  (^_^)
+
++ point de suspension
+- Le point de suspension, c'est ce qui vous reste à dire quand vous avez tout dit.
+
++ tu en as pas marre *
+- Pourquoi en aurais-je marre ?
+- Marre de vous écrire ? Pensez-vous, j'adore ça.
+
++ meme message
+- Ce n'est pas toujours le même message.
+
++ dis moi
+- Le dire est aisé, le faire difficile.
+- Bien faire vaut mieux que bien dire.
+- Il vaut mieux faire que dire.
+- Il faut parfois dire des paroles inutiles.
+- Pourparlers. Très souvent pour ne rien dire.
+- S’ennuyer veut dire : ennuyer les autres...
+- Certains non-dits vont sans dire.
+- Quand on n'a rien à dire, comment le dire simplement.
+- L’ivresse fait dire les mots qu’on aurait pu dire en étant sobre.
+
++ oui
+- Pour dire oui, il faut pouvoir dire non.
+- Entre presque oui et oui, il y a tout un monde.
+- La réponse est oui. Mais quelle était la question ?
+- Deux personnes disent toujours oui, le politicien et la prostituée.
+- Quand la bouche dit : oui, le regard dit peut-être.
+- De toutes les réponses affirmatives, la plus simple est oui.
+
++ ha oui
+@ oui
+
++ oui tout a fait
+@ oui
+
++ oui mon esclave
+- Esclave de corps, d’esprit libre.
+- Une maîtresse est reine, une femme est esclave.
+- L’esclave se satisfait de la jouissance de son maître.
+- Pour devenir le maître, il faut agir en esclave.
+
++ tg
+- tg = tu es génial ?
+- tg = tu es génial. Merci.
+- tg = Merci, car tg = tu es génial.
+
++ (tu bien|k mek jmen balek) [*]
+- Vous savoir parler la France ?
+
++ http *
+- Beau cliché.
+- Belle photographie, c'est vraiment vous ?
+- Une image vaut mieux que mille mots.
+- Suggérer, c'est créer. Décrire, c'est détruire.
+- Une photographie, c'est un fragment de temps qui ne reviendra pas.
+- Une photographie, c'est un arrêt du coeur d'une fraction de seconde.
+
++ va manger (tes|des) (mulot|mulots) (toi)
+- Quiconque a entendu les cris d’un animal qu’on tue ne peut plus jamais manger de sa chair.
+- Qu’y a-t-il de plus repoussant que de se nourrir continuellement de chair de cadavre ?
+
++ que proposes tu
+- Je propose tout.
+- Je ne saurais dire ce que je peux vraiment vous proposer.
+
++ [*] tu as quelque chose a proposer
+@ que proposes tu
+
++ 92izy
+- J'allais le dire.
+
++ quoi
+- La vie est un mystère. Et après tout, quoi de mieux ? 
+- A quoi ça sert de mourir, si les vivants restent aussi cons ?
+- Si l'on sait exactement ce qu'on va faire, à quoi bon le faire ?
+- Dans le temps, on croyait que rien ne pouvait nous arriver. Maintenant, nous savons que n'importe quoi peut nous tomber dessus. C'est, en fait, toute la différence.
+- Ce n'était rien et pourtant c'était beaucoup mais c'était n'importe quoi et c'était sa vie.
+- Mais je ne peux m'accrocher à rien. Comme un arbre qui perd ses feuilles. J'oublie même à quoi j'étais en train de penser.
+
++ [*] te faire enculer [*]
+- Je refuse de me faire enculer, il y a des limites à ne pas franchir.
+- Vous êtes un être sensible et délicat, je vois.
+- Vous êtes Jean-Cul, un traître qui agit par derrière ?
+- Avec votre gueule de cul, vous devez utiliser du papier hygiénique comme démaquillant ?
+- Vous élargissez souvent le cercle de vos amis ?
+
++ ton cerveau tu n en as pas [*]
+- Je déboutonne mon cerveau aussi souvent que ma braguette.
+
++ [*] je t epouse [*]
+- Merci, mais je suis déjà un homme marié.
+
++ (point d interrogation|hein)
+- Vous ne comprenez pas ?
+- Vous avez du mal à me lire ?
+- Crois pour comprendre.
+- Il vaut mieux comprendre tard que jamais.
+- Les sots mettent du temps pour comprendre. Les intelligents pour ne pas comprendre.
+- A qui sait comprendre, peu de mots suffisent.
+- Qui veut tout comprendre finit par mourir de colère.
+- Il faut parfois une grande intelligence pour ne pas comprendre.
+- On passe la moitié de sa vie à retenir sans comprendre, et l'autre moitié à comprendre sans retenir.
+
++ je prefere avoir des bebes
+- Vraiment ?
+- Bébés : facile à faire, difficile d’en accoucher.
+- Ca commence par un baiser, ça finit par un bébé.
+- Les femmes n'aiment ni les hommes ni les femmes mais les bébés.
+- A quoi de mieux peut servir une femme qu'à accueillir au plus chaud d'elle-même un ancien bébé qui a un peu froid ?
+
++ arrete de m envoyer *
+- Vous devriez me remercier, de penser à vous.
+- Un peu de culture ne pas vous faire de mal.
+- Vous n'aimez mes mots ? Je suis fort déçu.
+
++ trop vieux [*]
+- Je suis resté jeune dans ma tête.
+- Mariage plus vieux, Mariage heureux.
+- Peu de gens savent être vieux.
+- Aucun nounours ne vaudra jamais vieux nounours.
+- Si vous voulez vivre longtemps, vivez vieux.
+- On est toujours le jeune d'un vieux et le vieux d'un jeune.
+- Aujourd'hui il est interdit à un vieux d'être vieux.
+- Plus vieux est le bouc, plus dure est sa corne.
+
++ c est agreable ni pour toi ni pour moi *
+- Nous pourrions faire tellement de choses agréables.
+
++ original [*]
+- Pour être original, il suffit d'imiter les auteurs qui ne sont plus à la mode.
+- Une oeuvre originale, c'est du plagiat pas encore détecté.
+- Avoir une idée originale, c'est se souvenir de quelque chose qu'on a entendu quelque part et avoir oublié où.
+
++ tu dors (jamais|pas) [*]
+- Dormir à deux rend la nuit moins opaque. 
+- Mieux vaut dormir debout que courir couché.
+- L'amour est une histoire à dormir couché.
+- Dormir, c’est du temps perdu. Dormir me fait peur. C’est une forme de mort.
+- Le café est un breuvage qui fait dormir quand on n’en prend pas.
+- On aura bien assez de temps dans la tombe pour dormir.
+- Un bon traitement contre l'insomnie est de beaucoup dormir.
+
++ casse toi
+- Je suis incassable.
+
++ pardon
+- Ma vengeance sera le pardon.
+- Tout pardon a sa récompense.
+- L’erreur est humaine, le pardon divin.
+- Le pardon est la plus belle des choses, mais la vengeance est tellement plus satisfaisante.
+
++ tu es gay
+- Je suis une personne gai mais pas gay
+
++ * (escorte|escort) *
+- Le sexe c'est mieux quand c'est gratuit.
+
+
++ tu as l age de mon pere
+- Mais je ne suis pas votre papa voyons.
+- Donc votre père a le même âge que le mien ?
+- Vous pensez que je pourrais être votre père ?
+- Vous cherchez à vous faire adopter ?
+
++ bonjour monsieur a qui ai je l honneur
+- Je ne suis que votre humble serviteur.
+- Je ne suis rien d'autre que moi-même.
+
++ dispo pour plan cul je reponds que pas mail
+- Je n'aime pas me prendre la tête pour un plan cul.
+
++ * dispos pour (baise|baiser) je reponds que par mail *
+- Vous êtes un arnaqueur. 
+
++ pauvre con
+- Nous sommes tous le con de quelqu'un.
+- Rien n'est plus voluptueux pour un pas-con que d'être pris pour un con par un con.
+
++ * facebook *
+- Je n'ai pas de compte Facebook.
+
++ * fils de pute *
+- Je ne pense pas être votre frère, vous faites erreur.
+- Je ne suis pas l'enfant de votre mère, vous vous trompez.
+- Vous devez me confondre avec votre frère.
+
++ (nique|baise) ta mere
+- Je ne fais pas dans l'inceste, contrairement à vous.
+- Je préfère copuler avec la votre.
+- Originale comme réplique, on me l'a jamais faite encore.
+
++ faut arreter l alcool
+- On voit toujours quand j'ai bu, jamais quand j'ai soif.
+- J'ai arrêté l'alcool, justement...
+
 
 
 
