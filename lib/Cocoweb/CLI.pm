@@ -1,15 +1,10 @@
 # @brief
 # @created 2012-02-26
-# @date 2016-06-19
+# @date 2016-07-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2015
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,15 +39,16 @@ $Getopt::Std::STANDARD_HELP_VERSION = 1;
 use strict;
 use warnings;
 __PACKAGE__->attributes(
-    'mynickname',     'myage',
-    'mysex',          'myavatar',
-    'mypass',         'searchId',
-    'searchNickname', 'maxOfLoop',
-    'enableLoop',     'avatarAndPasswdRequired',
-    'searchEnable',   'pidHandle',
-    'writeLogInFile', 'isAvatarRequest',
-    'delay',          'zip',
-    'myavatarsListEnable', 'myavatarsListRequired', 'myavatarsList'
+    'mynickname',          'myage',
+    'mysex',               'myavatar',
+    'mypass',              'searchId',
+    'searchNickname',      'maxOfLoop',
+    'enableLoop',          'avatarAndPasswdRequired',
+    'searchEnable',        'pidHandle',
+    'writeLogInFile',      'isAvatarRequest',
+    'delay',               'zip',
+    'myavatarsListEnable', 'myavatarsListRequired',
+    'myavatarsListi',      'riveScriptDir'
 );
 
 ##@method object init($class, $instance)
@@ -77,7 +73,8 @@ sub init {
         'delay'                   => 1,
         'myavatarsListEnable'     => 0,
         'myavatarsListRequired'   => 0,
-        'myavatarsList'           => 0
+        'myavatarsList'           => 0,
+        'riveScriptDir'           => undef
     );
     return $instance;
 }
@@ -96,19 +93,22 @@ sub lockSingleInstance {
 sub getOpts {
     my ( $self, %argv ) = @_;
     my $writeLogInFile = 0;
-    foreach
-        my $name ( 'searchEnable', 'enableLoop', 'avatarAndPasswdRequired', 'myavatarsListEnable' )
+    foreach my $name (
+        'searchEnable',            'enableLoop',
+        'avatarAndPasswdRequired', 'myavatarsListEnable'
+        )
     {
         next if !exists $argv{$name};
         $self->$name( $argv{$name} );
     }
     my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'wdvDu:s:y:z:a:p:g';
+    $argumentative .= 'wdvDu:s:y:z:a:p:gV:';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:S:' if $self->enableLoop();
     $argumentative .= 'M' if $self->myavatarsListEnable();
     my %opt;
+
     if ( !getopts( $argumentative, \%opt ) ) {
         return;
     }
@@ -132,6 +132,7 @@ sub getOpts {
     $self->delay( $opt{'S'} )          if exists $opt{'S'};
     $self->isAvatarRequest(1)          if exists $opt{'g'};
     $self->myavatarsListRequired(1)    if exists $opt{'M'};
+    $self->riveScriptDir( $opt{'V'} )  if exists $opt{'V'};
 
     info( "isAvatarRequest: " . $self->isAvatarRequest() );
 
@@ -232,16 +233,18 @@ sub getMinimumOpts {
 sub getBot {
     my ( $self, @params ) = @_;
     my %param = @params;
-    my ($myavatar, $mypass);
-    if (! exists $param{'myavatar'} and $self->myavatarsListRequired() ) {
+    my ( $myavatar, $mypass );
+    if ( !exists $param{'myavatar'} and $self->myavatarsListRequired() ) {
         my $myavatarFiles = $self->myavatarsList();
-        if (defined $myavatarFiles) {
-            ($myavatar, $mypass)  = $myavatarFiles->getNextMyavatar();
+        if ( defined $myavatarFiles ) {
+            ( $myavatar, $mypass ) = $myavatarFiles->getNextMyavatar();
         }
     }
     foreach my $name (
-        'mynickname', 'myage',  'mysex', 'zip',
-        'myavatar',   'mypass', 'isAvatarRequest'
+        'mynickname',      'myage',
+        'mysex',           'zip',
+        'myavatar',        'mypass',
+        'isAvatarRequest', 'riveScriptDir'
         )
     {
         next if exists $param{$name};
@@ -259,6 +262,7 @@ sub getBot {
         }
     }
     my $bot = Cocoweb::Bot->new(@params);
+
     #print Dumper \%param;
     return $bot;
 }
@@ -321,8 +325,7 @@ sub HELP {
         "  -x maxOfLoop      A maximum number of iterations to perform.\n"
         . "  -S seconds        Delays the loop execution for the given number of seconds.\n"
         if $self->enableLoop();
-    print STDOUT
-        "  -M                Uses the pre-created myavatars list.\n"
+    print STDOUT "  -M                Uses the pre-created myavatars list.\n"
         if $self->myavatarsListEnable();
 
     print STDOUT <<ENDTXT;
@@ -346,6 +349,7 @@ sub HELP {
   -d                Debug mode
   -D                More debug messages
   -w                Written logs to a file 
+  -V dirname        RiveScript directory
 ENDTXT
 }
 

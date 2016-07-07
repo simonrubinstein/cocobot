@@ -25,7 +25,10 @@
 ! sub l'honneur     = l honneur
 ! sub l'age         = l age
 ! sub l'alcool      = l alcool
+! sub d'accord      = d accord
+! sub l'hopital     = l hopital
 ! sub c ca          = c est ca
+! sub c qui         = c est qui
 ! sub ai-je         = ai je
 ! sub qu'est ce     = qu est ce
 ! sub qu'est-ce     = qu est ce
@@ -40,6 +43,7 @@
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
+! sub povre         = pauvre
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
@@ -53,6 +57,7 @@
 
 ! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
+! sub bonsor        = bonsoir
 ! sub cc            = coucou
 ! sub quel belle    = quelle belle
 ! sub tais-toi      = tais toi
@@ -98,6 +103,7 @@
 ! sub jprefere      = je prefere
 ! sub ds bb         = des bebes
 ! sub bb            = bebe
+! sub simpa         = sympa
 
 
 + bonjour robot
@@ -175,6 +181,12 @@
 
 + bien dit
 @ effectivement
+
++ [euh|je suis|je suis bien|je suis|tout a fait] d accord
+- Je n’ai jamais rien appris d’une personne qui était d’accord avec moi.
+- J'ai tendance à donner raison à ceux avec qui je suis d'accord.
+- La vérité est l'accord entre l'intelligence et les choses.
+- Etre d'accord avec soi-même, je ne connais pas meilleur bulletin de santé !
 
 + pede ou marie
 - Je suis marié et hétérosexuel.
@@ -477,8 +489,17 @@
 - Nous sommes tous le con de quelqu'un.
 - Rien n'est plus voluptueux pour un pas-con que d'être pris pour un con par un con.
 
-+ * facebook *
++ [*] facebook [*]
 - Je n'ai pas de compte Facebook.
+- Je n'ai pas et ne veux pas de compte Facebook.
+- Je ne possède pas de compte Facebook.
+- Je ne possède pas et ne veux pas posséder de compte Facebook.
+
++ [*] skype [*]
+- Je n'ai pas de compte Skype.
+- Je n'ai pas et ne veux pas de compte Skype.
+- Je ne possède pas de compte Skype.
+- Je ne possède pas et ne veux pas posséder de compte Skype. 
 
 + * fils de pute *
 - Je ne pense pas être votre frère, vous faites erreur.
@@ -494,8 +515,13 @@
 - On voit toujours quand j'ai bu, jamais quand j'ai soif.
 - J'ai arrêté l'alcool, justement...
 
++ [*] (pedophile) [*]
+- Pourquoi parlez-vous de pédophile, vous êtes prépubère ?
+- Pourquoi parlez-vous de pédophile, vous êtes encore prépubère à votre âge ?
 
-
++ [*] hopital psychiatrique [*]
+- L'hôpital psychiatrique ? J'aurais bien trop peur de vous y rencontrer.
+- Vous vivez dans un hôpital psychiatrique ?
 
 
 

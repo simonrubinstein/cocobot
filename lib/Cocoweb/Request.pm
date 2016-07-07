@@ -2,6 +2,8 @@
 # @date 2016-07-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
+# copyright (c) Simon Rubinstein 2010-2016
+#
 # https://github.com/simonrubinstein/cocobot
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +63,8 @@ __PACKAGE__->attributes(
     'magicAuthString',
     'localIP',
     'publicIP',
-    'isConfHTTPrequests'
+    'isConfHTTPrequests',
+    'isAddNewWriterUserIntoList'
 );
 
 my $conf_ref;
@@ -207,7 +210,8 @@ sub init {
         'infuzPause2'         => $conf_ref->{'infuz-pause2'},
         'infuzMaxOfTriesAfterPause' =>
             $conf_ref->{'infuz-max-of-tries-after-pause'},
-        'isConfHTTPrequests' => $isConfHTTPrequests
+        'isConfHTTPrequests' => $isConfHTTPrequests,
+        'isAddNewWriterUserIntoList' => 0
     );
 }
 

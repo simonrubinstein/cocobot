@@ -1,15 +1,10 @@
 #!/usr/bin/perl
 # @created 2012-02-25
-# @date 2014-01-29
+# @date 2016-07-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot 
 #
-# copyright (c) Simon Rubinstein 2010-2014
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,6 +37,9 @@ run();
 ##@method void run()
 sub run {
     my $bot = $CLI->getBot( 'generateRandom' => 1 );
+    if ( $bot->isRiveScriptEnable() ) {
+        $bot->setAddNewWriterUserIntoList();
+    }
     $bot->requestAuthentication();
     $bot->show();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
@@ -55,6 +53,7 @@ sub run {
             $usersList = $bot->requestUsersList();
         }
         $bot->requestMessagesFromUsers();
+        $bot->riveScriptLoop();
         sleep $CLI->delay();
     }
     info("The $Bin script was completed successfully.");
@@ -75,6 +74,7 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print STDOUT $Script . ', just create a bot.' . "\n";
+#bot-test.pl -v -x 1000 -s W -V rivescript/woman-replies
     $CLI->printLineOfArgs();
     $CLI->HELP();
     exit 0;
@@ -83,6 +83,6 @@ sub HELP_MESSAGE {
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-29');
+    $CLI->VERSION_MESSAGE('2016-07-07');
 }
 

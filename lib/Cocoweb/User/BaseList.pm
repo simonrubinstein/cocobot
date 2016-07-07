@@ -1,14 +1,7 @@
 # @created 2012-03-19
-# @date 2016-06-28 
+# @date 2016-07-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
-#
-# copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -82,6 +75,21 @@ sub getUser {
     }
     else {
         return $user_ref->{$id};
+    }
+}
+
+##@method void addUser($id)
+#@brief Add a user to the list 
+#@param object A 'Cocoweb::User' object
+sub addUser {
+    my ( $self, $user ) = @_;
+    my $user_ref = $self->all();
+    my $id = $user->mynickID(); 
+    if ( exists $user_ref->{$id} ) {
+        die error("The user ID $id already exists");
+    }
+    else {
+        $user_ref->{$id} = $user; 
     }
 }
 

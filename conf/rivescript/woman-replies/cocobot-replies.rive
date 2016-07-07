@@ -1,0 +1,155 @@
+! version = 2.0
+
+! sub vous etes          = tu es
+! sub vous en avez       = tu en as 
+! sub vous cherchez      = tu cherches
+! sub vas-tu             = vas tu
+! sub propose tu         = proposes tu
+! sub proposes-tu        = proposes tu
+! sub vous avez          = tu as
+! sub vous faire         = te faire
+! sub vous n'en avez pas = tu n en as pas
+! sub votre              = ton
+
+! sub t'es          = tu es
+! sub t'as          = tu as
+! sub t es          = tu es
+! sub t'en          = tu en
+! sub j'ai          = j ai
+! sub j'en          = j en
+! sub j'aime        = j aime
+! sub t'aimes       = tu aimes
+! sub t'aime        = tu aimes
+! sub c'est         = c est
+! sub t'epouse      = t epouse
+! sub m'envoyer     = m envoyer
+! sub l'honneur     = l honneur
+! sub l'age         = l age
+! sub l'alcool      = l alcool
+! sub d'accord      = d accord
+! sub l'hopital     = l hopital
+! sub c ca          = c est ca
+! sub c qui         = c est qui
+! sub ai-je         = ai je
+! sub qu'est ce     = qu est ce
+! sub qu'est-ce     = qu est ce
+! sub keske         = qu est ce
+! sub kestu         = qu est ce tu
+! sub kes tu        = qu est ce tu
+! sub tu veu        = tu veux
+! sub c ta mere     = c est ta mere
+! sub c ta          = c est ta 
+! sub nik ta        = nique ta
+! sub je suit       = je suis
+! sub tafiolle      = tafiole
+! sub oh revoir     = au revoir
+! sub pk            = pourquoi
+! sub povre         = pauvre
+! sub stp           = s il te plait
+
+! sub ten a         = tu en as
+! sub cest          = c est
+
+! sub slt           = salut
+! sub bjr           = bonjour
+! sub bsr           = bonsoir
+! sub koi           = quoi
+! sub bot           = robot
+! sub rout a fais   = tout a fait
+
+! sub c bien        = c est bien
+! sub bonjoue       = bonjour
+! sub bonsor        = bonsoir
+! sub cc            = coucou
+! sub quel belle    = quelle belle
+! sub tais-toi      = tais toi
+! sub sa va         = ca va
+! sub sava          = ca va
+! sub mecpassif     = mec passif
+! sub lol           = mdr
+! sub pédé          = pede
+! sub marié         = marie
+! sub dégage        = degage
+! sub vous avez     = tu as
+! sub tu cherche    = tu cherches
+! sub tu raconte    = tu racontes
+! sub tu ch         = tu cherches
+! sub je repond     = je reponds
+! sub je vait       = je vais
+! sub di moi        = dis moi
+! sub koi           = quoi
+! sub toujour       = toujours
+! sub tjs           = toujours
+! sub qoui          = quoi
+! sub hahaha        = haha
+! sub hahahaha      = haha
+! sub aahahahahah   = haha
+! sub pfff          = pff
+! sub pffff         = pff
+! sub pfffffff      = pff
+! sub pfffffffffff  = pff
+! sub oke           = ok
+! sub ^^            = emoticone style nippon 
+! sub ...           = point de suspension
+! sub piroquet      = perroquet
+! sub mm msg        = meme message
+! sub te relou      = tu es roulou
+! sub t lourd       = tu es lourd
+! sub taggle        = ta gueule
+! sub geule         = gueule
+! sub biem          = bien
+! sub te relou      = tu es relou
+! sub mulo          = mulot
+! sub faire encule  = faire enculer 
+! sub bloqued       = bloque
+! sub jprefere      = je prefere
+! sub ds bb         = des bebes
+! sub bb            = bebe
+! sub simpa         = sympa
+
++ bonsoir
+- Bonsoir mon brave.
+- Bonsoir mon cochon.
+- Bonsoir toi.
+- Bonsoir bel homme.
+- Que me veux-tu ?
+
++ salut
+- Salut toi.
+- Salut vilain garçon.
+- Salut.
+
++ coucou
+- Pourquoi ce coucou ?
+- Voilà une manière un peu familière de me saluer.
+- Coucou mon hibou.
+
++ bonsoir pouvons nous discuter
+- Pourquoi veux-tu discuter avec moi ?
+- De quoi aimerais-tu discter ?
+- Je ne discute pas avec les inconnus.
+
++ bonsoir moi c est (*)
+- Bonsoir <star1>
+
++ je peux te poser une question
+- Je ne réponds pas aux questions.
+- Tu as une idée derrière la tête toi.
+- Je n'ai malheureusement pas de réponse.
+
++ ca va
+- oui ca va et toi mon brave ?
+- oui ca bien merci et toi ?
+- oui ca va bien et toi mon cochon ?
+
++ t es comment [s il te plait]
+- Je suis une femme ni belle ni laide.
+- Je suis comme je suis, pourquoi ?
+- Je pense, donc je suis.
+- Je suis plus belle que ta femme.
+
+
+
+
+
+

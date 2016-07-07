@@ -55,10 +55,25 @@ sub checkAllAnswers {
     my $files_ref = readDirectory($path);
     my $fileCounter = 0;
     my $errCount    = 0;
+    my $okCount     = 0;
+    my $totalCount  = 0;
+    my $fh;
+
+    my $regex = qr{^(\d{2}):(\d{2}):(\d{2})
+                        \s+([A-Za-z0-9]{3})?
+                        \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
+                        \s+ISP:\s([A-Za-z-\s\.\/\)\(,\{\}]+)?
+                        \s+sex:\s(\d)
+                        \s+age:\s(\d{2})
+                        \s+nick:\s([0-9A-Za-z\(\)]+)
+                        \s*:\s(.*)$}xms;
+ 
+
+    FILELOOP:
     for my $file (@$files_ref) {
         next if $file !~ m{\.log$};
         my $filename = $path . '/' . $file;
-        my $fh = IO::File->new( $filename, 'r' );
+        $fh = IO::File->new( $filename, 'r' );
         die error("open($filename) was failed: $!")
             if !defined $fh;
         my $lineCounter = 0;
@@ -66,39 +81,33 @@ sub checkAllAnswers {
             chomp($line);
             $lineCounter++;
             next if length($line) == 0;
-            if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
-                        \s+([A-Za-z0-9]{3})?
-                        \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
-                        \s+ISP:\s([A-Za-z-\s\.\/\)\(,\{\}]+)?
-                        \s+sex:\s(\d)
-                        \s+age:\s(\d{2})
-                        \s+nick:\s([0-9A-Za-z\(\)]+)
-                        \s*:\s(.*)$}xms
-                )
-            {
+            if ( $line !~ $regex ) {
+
                 die "bad  $line ($filename)";
             }
             my ( $code, $town, $ISP, $mysex, $myage, $mynickname, $message )
                 = ( $4, $5, $6, $7, $8, $9, $10 );
             next if $mysex eq 1 or $mysex eq 6;
+            $totalCount++;
             my $reply = $rs->reply( "user", $message );
 
             if ( $reply eq 'ERR: No Reply Matched' ) {
                 print "\n$mynickname> $message\n";
                 print "Bot> $reply\n";
-                return if ++$errCount >= $maxFailsCheck;
-
-                #info("$filename ($lineCounter)");
-                #$fh->close();
-                #return;
+                $errCount++;
+                last FILELOOP if $maxFailsCheck > 0 and $errCount >= $maxFailsCheck;
+            } else {
+                $okCount++;
             }
-
         }
         $fh->close();
         $fileCounter++;
         last;
     }
 
+    $fh->close();
+    print STDOUT "failures: $errCount; success: $okCount; total: $totalCount\n"; 
+    return;
 }
 
 sub bot {

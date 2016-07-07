@@ -1,8 +1,10 @@
 # @brief
 # @created 2012-02-19
-# @date 2016-07-02
+# @date 2016-07-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
+#
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +31,7 @@ use Cocoweb::Config;
 use Cocoweb::Request;
 use Cocoweb::User::Connected;
 use base 'Cocoweb::Object';
-__PACKAGE__->attributes( 'user', 'request', );
+__PACKAGE__->attributes( 'user', 'request', 'rivescript' );
 
 ##@method void init($args)
 sub init {
@@ -50,6 +52,18 @@ sub init {
     else {
         $isAvatarRequest = 0;
     }
+
+    my $rivescript;
+    if ( exists $args{'riveScriptDir'}
+        and length( $args{'riveScriptDir'} ) > 0 )
+    {
+        require "Cocoweb/RiveScript.pm";
+        $rivescript = Cocoweb::RiveScript->new();
+        $rivescript->loadDirectory( $args{'riveScriptDir'} );
+        $rivescript->sortReplies();
+        delete $args{'riveScriptDir'};
+    }
+
     if ( exists $args{'mynickname'} ) {
         if ( substr( $args{'mynickname'}, 0, 8 ) eq 'file:///' ) {
             my $file
@@ -69,9 +83,11 @@ sub init {
         'logUsersListInDB' => $logUsersListInDB,
         'isAvatarRequest'  => $isAvatarRequest
     );
+
     $self->attributes_defaults(
-        'user'    => $user,
-        'request' => $request,
+        'user'       => $user,
+        'request'    => $request,
+        'rivescript' => $rivescript
     );
 }
 
@@ -326,9 +342,52 @@ sub setUsersOfflineInDB {
     $self->request()->usersList()->setUsersOfflineInDB();
 }
 
+##@method void setTimz1($timz1)
+#@param integer $timz1
 sub setTimz1 {
     my ( $self, $timz1 ) = @_;
     $self->request()->timz1($timz1);
+}
+
+##@method boolean isRiveScriptEnable()
+#@brief Check if RiveScript is enbale
+#@return boolean 1 if RiveScript is enable or 0 otherwise
+sub isRiveScriptEnable {
+    my ($self) = @_;
+    if ( defined $self->{'rivescript'} ) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+##@method void setAddNewWriterUserIntoList()
+#@brief If a user writes to the bot and the user does not exist
+#       in the list, so we add the new user in the list.
+sub setAddNewWriterUserIntoList {
+    my ($self) = @_;
+    $self->request()->isAddNewWriterUserIntoList(1);
+}
+
+##@method void riveScriptLoop()
+sub riveScriptLoop {
+    my ($self) = @_;
+    return if !defined $self->{'rivescript'};
+    my $rs =  $self->{'rivescript'};
+    my $users_ref  = $self->request()->usersList()->all();
+    foreach my $niknameId ( keys %$users_ref ) {
+        my $user = $users_ref->{$niknameId};
+        next if !$user->isMessageWasSent();
+        $user->isMessageWasSent(0);
+        my $messageLast = trim( $user->messageLast() );
+        next if !defined $messageLast or length($messageLast) == 0;
+        my $reply = $rs->reply( 'localuser', $messageLast );
+        if ( $reply eq 'ERR: No Reply Matched' ) {
+            error("No reply matched for $messageLast");
+            next;
+        }
+        info("> $reply");
+    }
 }
 
 1;

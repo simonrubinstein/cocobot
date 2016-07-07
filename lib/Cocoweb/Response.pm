@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2016-07-02
+# @date 2016-07-07
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -45,21 +45,23 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults(
-        'profileTooNew'             => 0,
-        'infuzString'               => '',
-        'userFound'                 => undef,
-        'messageString'             => '',
-        'userFriends'               => undef,
-        'isRestrictedAccount'       => 0,
-        'isUserMustBeAuthenticated' => 0,
-        'isMenAreBlocked'           => 0,
-        'convert'                   => Cocoweb::Encode->instance(),
+        'profileTooNew'              => 0,
+        'infuzString'                => '',
+        'userFound'                  => undef,
+        'messageString'              => '',
+        'userFriends'                => undef,
+        'isRestrictedAccount'        => 0,
+        'isUserMustBeAuthenticated'  => 0,
+        'isMenAreBlocked'            => 0,
+        'isPrivateAreBlocked'        => 0,
+        'convert'                    => Cocoweb::Encode->instance(),
     );
 }
 
 ##@method void process1($user, $urlu)
 #@brief Method called back after an HTTP request to the server
-#@param object $user An 'Cocoweb::User::Connected' object
+#@param object $request An Cocoweb::Request object
+#@param object $user An Cocoweb::User::Connected object
 #@param string $urlu String returned by the server
 sub process1 {
     my ( $self, $request, $user, $urlu ) = @_;
@@ -495,6 +497,7 @@ sub process1Int {
                     my $user = $request->usersList()->getUser($moknickID);
 
                     if ( !defined $user ) {
+                        debug("Create user $moknickID/$mokpseudo");
                         $user = Cocoweb::User->new(
                             'mynickID'   => $moknickID,
                             'myage'      => $mokage,
@@ -505,7 +508,10 @@ sub process1Int {
                             'mystat'     => $statq,
                             'myver'      => $okb
                         );
-
+                        if ( $request->isAddNewWriterUserIntoList() ) {
+                            debug("Add new user $moknickID/$mokpseudo in the list");
+                            $request->usersList()->addUser($user);
+                        }
                     }
 
                     #$user->hasSentMessage($mokmess);
