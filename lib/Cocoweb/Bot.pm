@@ -387,6 +387,7 @@ sub riveScriptLoop {
             next;
         }
         info("> $reply");
+        $self->requestWriteMessage( $user, $reply );
     }
 }
 

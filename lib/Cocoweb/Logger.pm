@@ -1,15 +1,10 @@
 # @brief
 # @created 2012-02-17
-# @date 2016-06-23
+# @date 2016-07-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -172,5 +167,18 @@ sub _writeLog {
 
 }
 
+##@method string getMessagesLogRegex()
+#@brief Return a regex ton parse log from "var/messages" directory
+#@return string A regex
+sub getMessagesLogRegex {
+    return qr{^(\d{2}):(\d{2}):(\d{2})
+        \s+([A-Za-z0-9]{3})?
+            \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
+            \s+ISP:\s([A-Za-z-\s\.\/\)\(,\{\}]+)?
+            \s+sex:\s(\d)
+            \s+age:\s(\d{2})
+            \s+nick:\s([0-9A-Za-z\(\)]+)
+            \s*:\s(.*)$}xms;
+}
 1;
 

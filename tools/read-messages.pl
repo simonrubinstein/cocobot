@@ -1,8 +1,10 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2016-07-02
+# @date 2016-07-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
+#
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,29 +31,27 @@ use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 use Cocoweb::File;
+use Cocoweb::Logger;
 my $CLI;
 
 my $startTime;
 my $lastTime;
+my $messagesRegex;
 
 init();
 run();
 
+##@method void run()
 sub run {
-
     for ( my $t = $startTime; $t <= $lastTime; $t += 86400 ) {
         print STDOUT ( "-" x 30 ) . ' ' . timeToDateOfDay($t) . "\n";
-        my $messages_ref = readMessageFile($t);
-
-        #print Dumper $messages_ref;
+        my $messages_ref      = readMessageFile($t);
         my $alertMessages_ref = readAlertMessageFile($t);
-
-        #print Dumper $alertMessages_ref;
         process( $messages_ref, $alertMessages_ref );
     }
-
 }
 
+#@method void process()
 sub process {
     my ( $messages_ref, $alertMessages_ref ) = @_;
 
@@ -84,9 +84,7 @@ sub process {
         }
 
         #last if $i > 70;
-
     }
-
 }
 
 sub showMessage {
@@ -176,16 +174,7 @@ sub readMessageFile {
     while ( defined( my $line = $fh->getline() ) ) {
         chomp($line);
         next if $line =~ m{^\s*$};
-        if ($line !~ m{^(\d{2}):(\d{2}):(\d{2})
-            \s+([A-Za-z0-9]{3})?
-            \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
-            \s+ISP:\s([A-Za-z-\s\.\/\)\(,\{\}]+)?
-            \s+sex:\s(\d)
-            \s+age:\s(\d{2})
-            \s+nick:\s([0-9A-Za-z\(\)]+)
-            \s*:\s(.*)$}xms
-            )
-        {
+        if ( $line !~ $messagesRegex ) {
             die "bad  $line ($messagePath)";
         }
         my ( $h, $m, $s ) = ( $1, $2, $3 );
@@ -353,6 +342,8 @@ sub init {
 
         }
     }
+    my $logger = Cocoweb::Logger->instance();
+    $messagesRegex = $logger->getMessagesLogRegex();
 }
 
 ## @method void HELP_MESSAGE()

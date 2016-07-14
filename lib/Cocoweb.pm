@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-07-03
+# @date 2016-07-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -25,7 +25,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.7003';
+our $VERSION     = '0.7004';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
@@ -35,7 +35,6 @@ my $startTime;
 
 use base 'Exporter';
 our @EXPORT = qw(
-    unacString
     debug
     error
     indexOf
@@ -55,50 +54,6 @@ our @EXPORT = qw(
     checkInfuzCode
 );
 use Cocoweb::Logger;
-
-my $unaccentMap = {
-
-    #LATIN SMALL LETTER E WITH GRAVE
-    "\xE8" => "e",
-
-    # LATIN SMALL LETTER E WITH ACUTE
-    "\xE9" => "e",
-
-    # 00EA LATIN SMALL LETTER E WITH CIRCUMFLEX
-    "\xEA" => "e",
-
-    # 00EE LATIN SMALL LETTER I WITH CIRCUMFLEX
-    "\xEE" => "i",
-
-    # 00EF LATIN SMALL LETTER I WITH DIAERESIS
-    "\xEF" => "i",
-
-    # LATIN SMALL LETTER O WITH CIRCUMFLEX
-    "\xF4" => "o",
-
-    # LATIN SMALL LETTER A WITH GRAVE
-    "\xE0" => "a",
-
-    # 00E2 LATIN SMALL LETTER A WITH CIRCUMFLEX
-    "\xE2" => "a",
-};
-
-##@method string unacString()
-#@brief Return the unaccented equivalent to the input string.
-#@author Peter John Acklam
-#@param string
-#@return string
-sub unacString {
-    my ($string) = @_;
-    $string = Encode::decode( 'UTF-8', $string );
-    my $offsetMax = length($string) - 1;
-    my $strOut    = '';
-    for my $offset ( 0 .. $offsetMax ) {
-        my $chr = substr( $string, $offset, 1 );
-        $strOut .= exists $unaccentMap->{$chr} ? $unaccentMap->{$chr} : $chr;
-    }
-    return $strOut;
-}
 
 ##@method void info(@_)
 sub info {

@@ -1,5 +1,5 @@
 # @created 2016-07-04
-# @date 2016-07-05
+# @date 2016-07-14
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -31,6 +31,36 @@ use RiveScript;
 use utf8;
 no utf8;
 
+my $unaccentMap = {
+
+    #LATIN SMALL LETTER E WITH GRAVE
+    "\xE8" => "e",
+
+    # LATIN SMALL LETTER E WITH ACUTE
+    "\xE9" => "e",
+
+    # 00EA LATIN SMALL LETTER E WITH CIRCUMFLEX
+    "\xEA" => "e",
+
+    # 00EE LATIN SMALL LETTER I WITH CIRCUMFLEX
+    "\xEE" => "i",
+
+    # 00EF LATIN SMALL LETTER I WITH DIAERESIS
+    "\xEF" => "i",
+
+    # LATIN SMALL LETTER O WITH CIRCUMFLEX
+    "\xF4" => "o",
+
+    # LATIN SMALL LETTER A WITH GRAVE
+    "\xE0" => "a",
+
+    # 00E2 LATIN SMALL LETTER A WITH CIRCUMFLEX
+    "\xE2" => "a",
+
+    # 00E7 LATIN SMALL LETTER C WITH CEDILLA
+    "\xE7" => "c",
+};
+
 __PACKAGE__->attributes('rs');
 
 ##@method void init($args)
@@ -58,19 +88,40 @@ sub sortReplies {
 
 sub reply {
     my ( $self, $user, $message ) = @_;
-    if ( $message =~ m{^http://www\.coco.fr/pub/photo0\.htm.*} ) {
+    if ( $message =~ m{^http://www\.coco.fr/pub/photo0?\.htm.*} ) {
         $message = "http www coco fr pub photo0";
     }
     elsif ( $message =~ m{^[\?]+$} ) {
         $message = "point d interrogation";
     }
     else {
-        $message = unacString($message);
+        $message =~ s{'}{ }g;
+        $message = $self->unacString($message);
     }
 
     my $reply = $self->{'rs'}->reply( $user, $message );
     utf8::encode($reply);
     return $reply;
+}
+
+##@method string unacString()
+#@brief Return the unaccented equivalent to the input string.
+#@author Peter John Acklam
+#@param string
+#@return string
+sub unacString {
+    my ( $self, $string ) = @_;
+    $string = Encode::decode( 'UTF-8', $string );
+
+    #replace euro sign
+    $string =~ s{\x{20AC}}{E}g;
+    my $offsetMax = length($string) - 1;
+    my $strOut    = '';
+    for my $offset ( 0 .. $offsetMax ) {
+        my $chr = substr( $string, $offset, 1 );
+        $strOut .= exists $unaccentMap->{$chr} ? $unaccentMap->{$chr} : $chr;
+    }
+    return $strOut;
 }
 
 1;
