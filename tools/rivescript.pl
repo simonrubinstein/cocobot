@@ -1,6 +1,6 @@
 #!/usr/bin/perl
-# @created 2016-07-02 
-# @date 2016-07-14
+# @created 2016-07-02
+# @date 2016-07-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -25,7 +25,6 @@ use warnings;
 use Date::Parse;
 use FindBin qw($Script $Bin);
 use Data::Dumper;
-use RiveScript;
 use utf8;
 no utf8;
 use lib "../lib";
@@ -40,7 +39,9 @@ my $isCheckAllAnswers;
 my $maxFailsCheck;
 my $riveScriptDir;
 my $filenameFilter;
-my $isReplyAll = 1;
+my $isReplyAll     = 1;
+my $matchReply_ref = {};
+my $matchReplyFilename;
 
 init();
 run();
@@ -58,19 +59,19 @@ sub run {
 
 ##@method void checkAllAnswers()
 sub checkAllAnswers {
-    my $path      = getVarDir() . '/messages';
-    my $files_ref = readDirectory($path);
+    my $path        = getVarDir() . '/messages';
+    my $files_ref   = readDirectory($path);
     my $fileCounter = 0;
     my $errCount    = 0;
     my $okCount     = 0;
     my $totalCount  = 0;
     my $fh;
     my $logger = Cocoweb::Logger->instance();
-    my $regex = $logger->getMessagesLogRegex();
+    my $regex  = $logger->getMessagesLogRegex();
 
     my %message2count = ();
 
-    FILELOOP:
+FILELOOP:
     for my $file (@$files_ref) {
         next if $file !~ m{\.log$};
         next if defined $filenameFilter and $file !~ $filenameFilter;
@@ -85,42 +86,50 @@ sub checkAllAnswers {
             $lineCounter++;
             next if length($line) == 0;
             if ( $line !~ $regex ) {
-                die "bad  $line ($filename)";
+                die "bad line $lineCounter: $line ($filename)";
             }
             my ( $code, $town, $ISP, $mysex, $myage, $mynickname, $message )
                 = ( $4, $5, $6, $7, $8, $9, $10 );
+
             #next if $mysex eq 1 or $mysex eq 6;
-            
-            if ( $isReplyAll ) {
+
+            if ($isReplyAll) {
                 $totalCount++;
                 my $reply = $rs->reply( "user", $message );
                 if ( $reply eq 'ERR: No Reply Matched' ) {
                     print "\n$mynickname> $message\n";
                     print "Bot> $reply\n";
                     $errCount++;
-                    last FILELOOP if $maxFailsCheck > 0 and $errCount >= $maxFailsCheck;
-                } else {
+                    last FILELOOP
+                        if $maxFailsCheck > 0 and $errCount >= $maxFailsCheck;
+                }
+                else {
                     info("\n$mynickname> $message");
                     info("Bot> $reply");
                     $okCount++;
                 }
-            } else {
+            }
+            else {
                 #next if $message !~m{je sais pas};
-                $message =~s{[,?!\.\;]+}{}g;
-                $message =~s{'}{ }g;
-                $message =~s{\s+}{ }g;
-                $message = trim($message);
+                if ( $message !~ m{^http://www\.coco.fr/pub/photo0?\.htm.*} )
+                {
+                    $message =~ s{[,?!\.\;]+}{}g;
+                    $message =~ s{'}{ }g;
+                    $message =~ s{\s+}{ }g;
+                    $message = trim($message);
+                    $message = lc($message);
+                    $message = $rs->unacString($message);
+                }
                 next if length($message) == 0;
-                $message = lc($message);
-                $message = $rs->unacString($message);
+
                 #print "<$message>\n";
                 $message2count{$message}++;
                 next;
 
                 my $offsetMax = length($message) - 1;
                 for my $offset ( 0 .. $offsetMax ) {
-                     my $chr = substr( $message, $offset, 1 );
-                     print "<$chr> : " .ord($chr) . "\n";
+                    my $chr = substr( $message, $offset, 1 );
+                    print "<$chr> : " . ord($chr) . "\n";
                 }
 
             }
@@ -128,26 +137,43 @@ sub checkAllAnswers {
         $fh->close();
         undef $fh;
         $fileCounter++;
+
         #last;
     }
 
     $fh->close() if defined $fh;
-    if ( $isReplyAll ) { 
-        print STDOUT "failures: $errCount; success: $okCount; total: $totalCount\n"; 
-    } else {
-        foreach my $message (sort {$message2count{$a} <=> $message2count{$b}} keys %message2count ) {
+    if ($isReplyAll) {
+        print STDOUT
+            "failures: $errCount; success: $okCount; total: $totalCount\n";
+    }
+    else {
+        eval { $matchReply_ref = deserializeHash($matchReplyFilename); };
+        foreach
+            my $message ( sort { $message2count{$a} <=> $message2count{$b} }
+            keys %message2count )
+        {
             my $count = $message2count{$message};
-            #next if $message !~m{celibataire};
-            my $reply = $rs->reply( "user", $message );
-            if ( $reply ne 'ERR: No Reply Matched' ) {
+            if ( exists $matchReply_ref->{$message} ) {
+                $okCount++;
                 next;
             }
+            my $reply = $rs->reply( "user", $message );
+            $totalCount++;
+            if ( $reply ne 'ERR: No Reply Matched' ) {
+                $okCount++;
+                $matchReply_ref->{$message} = 1;
+                next;
+            }
+            $errCount++;
             print "$count: $message \n";
+
             #print "\nYou> $message\n";
             #print "Bot> $reply\n";
         }
+        print STDOUT
+            "failures: $errCount; success: $okCount; total: $totalCount\n";
+        serializeData( $matchReply_ref, $matchReplyFilename );
     }
-
 
     return;
 }
@@ -182,24 +208,27 @@ sub init {
     $maxFailsCheck     = $opt_ref->{'m'} if exists $opt_ref->{'m'};
     $riveScriptDir     = $opt_ref->{'V'} if exists $opt_ref->{'V'};
     $filenameFilter    = $opt_ref->{'f'} if exists $opt_ref->{'f'};
-    $isReplyAll        = 0 if exists $opt_ref->{'a'};
+    $isReplyAll        = 0               if exists $opt_ref->{'a'};
     if ( defined $maxFailsCheck ) {
         if ( !defined $isCheckAllAnswers ) {
             error("The option m works only with the option c");
             return;
         }
-        if ( $maxFailsCheck !~m{\d+} ) {
+        if ( $maxFailsCheck !~ m{\d+} ) {
             error("The m option must be an integer");
             exit;
         }
-    } else {
-        $maxFailsCheck = 10 if defined $isCheckAllAnswers; 
     }
-    $riveScriptDir = 'rivescript/replies' if !defined $riveScriptDir;
-    $filenameFilter = qr/$filenameFilter/ if defined $filenameFilter;
+    else {
+        $maxFailsCheck = 10 if defined $isCheckAllAnswers;
+    }
+    $riveScriptDir  = 'rivescript/replies' if !defined $riveScriptDir;
+    $filenameFilter = qr/$filenameFilter/  if defined $filenameFilter;
 
     # Create a new RiveScript interpreter object.
     $rs = new Cocoweb::RiveScript();
+
+    $matchReplyFilename = getVarDir() . '/matchReplies.data';
 }
 
 ## @method void HELP_MESSAGE()
@@ -223,6 +252,7 @@ rivescript.pl -c
 rivescript.pl -c -m 20
 rivescript.pl -c -V rivescript/woman-replies
 rivescript.pl -c -V rivescript/woman-replies -f bot-test.pl.log
+rivescript.pl -c -V rivescript/woman-replies -f 2016-07-18 -a -v -d
 
 ENDTXT
     exit 0;
@@ -231,6 +261,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-14');
+    $CLI->VERSION_MESSAGE('2016-07-18');
 }
 

@@ -4,9 +4,8 @@
 ! sub comment allez vous = comment vas tu
 ! sub vous en avez       = tu en as 
 ! sub vous cherchez      = tu cherches
-! sub vas-tu             = vas tu
+! sub recherchez vous    = recherches tu
 ! sub propose tu         = proposes tu
-! sub proposes-tu        = proposes tu
 ! sub vous avez          = tu as
 ! sub vous faire         = te faire
 ! sub vous n en avez pas = tu n en as pas
@@ -15,23 +14,31 @@
 ! sub vous recherchez    = tu cherches
 ! sub vous allee         = tu vas
 ! sub vous allez         = tu vas
+! sub allez vous         = vas tu
+! sub allez vous         = vas tu
 ! sub vs rech quoi       = tu cherches quoi
+! sub j ene vous         = je ne te
+! sub je ne vous         = je ne te
 
-! sub t es          = tu es
-! sub as-tu         = as tu
+! sub tu est        = tu es
 ! sub t es          = tu es
 ! sub t aime        = tu aimes
 ! sub t aimes       = tu aimes
 ! sub tu aime       = tu aimes
+! sub t ecris       = tu ecris
 ! sub je m apel     = je m appelle
+! sub t comment     = tu es comment
+! sub t appelle     = t appelles
+! sub t appelels    = t appelles
+! sub tu tappelle   = tu t apppeles
 ! sub c ca          = c est ca
 ! sub c qui         = c est qui
-! sub ai-je         = ai je
-! sub viens-tu      = viens tu
+! sub va tu         = vas tu
 ! sub keske         = qu est ce
 ! sub kestu         = qu est ce tu
 ! sub kes tu        = qu est ce tu
 ! sub tu veu        = tu veux
+! sub tu va         = tu vas
 ! sub c ta mere     = c est ta mere
 ! sub c ta          = c est ta 
 ! sub nik ta        = nique ta
@@ -44,38 +51,55 @@
 ! sub stp           = s il te plait
 ! sub cava          = ca va
 ! sub peu etrr      = peut etre
-! sub peut-etre     = peut etre
 ! sub pseud         = pseudo
+! sub t celibat     = tu es celibataire
 ! sub celib         = celibataire
 ! sub vas tyu       = vas tu
 ! sub jte bouffe    = je te bouffe
 ! sub tu habite     = tu habites
+! sub tu suce       = tu suces
+! sub tu me suce    = tu me suces
+! sub tu fait       = tu fais
+! sub on ce connais = on se connait
+! sub t une meuf    = tu es une femme
+! sub pour tepondre = pour repondre
+! sub tes fidele    = tu es fidele
+! sub tes celib     = tu es celibataire
+! sub tes la        = tu es la
+! sub t la          = tu es la
+! sub t ues la      = tu es la
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
 
 ! sub slt           = salut
+! sub saluuut       = salut
 ! sub bjr           = bonjour
+! sub bjrrrr        = bonjour
+! sub bonjou        = bonjour
+! sub bonjoru       = bonjour
 ! sub bsr           = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
 ! sub rout a fais   = tout a fait
 ! sub rech tu       = recherches tu
-! sub recherches-tu = recherches tu
 ! sub recherche tu  = recherches tu
+! sub que cherchees = que cherches
+! sub cherche tu    = cherches tu
 ! sub tu fume       = tu fumes
 
 ! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
 ! sub bonsor        = bonsoir
 ! sub cc            = coucou
+! sub ccbsr         = coucou bonsoir
 ! sub quel belle    = quelle belle
-! sub tais-toi      = tais toi
 ! sub sa va         = ca va
 ! sub sava          = ca va
 ! sub cava          = ca va
 ! sub slt cv        = salut ca va
 ! sub qsa va        = ca ca
+! sub sa te di      = ca te dit
 ! sub mecpassif     = mec passif
 ! sub lol           = mdr
 ! sub loll          = mdr
@@ -83,7 +107,9 @@
 ! sub marié         = marie
 ! sub dégage        = degage
 ! sub vous avez     = tu as
+! sub tu cherche s  = tu cherches
 ! sub tu cherche    = tu cherches
+! sub tu recherche  = tu recherches
 ! sub tu raconte    = tu racontes
 ! sub tu ch         = tu cherches
 ! sub tu cher koi   = tu cherches quoi
@@ -120,7 +146,11 @@
 ! sub bb            = bebe
 ! sub simpa         = sympa
 ! sub dediscuter    = de discuter
-
+! sub saloe         = salope
+! sub pseudi        = pseudo
+! sub jolipseudo    = joli pseudo
+! sub tjr           = toujours
+! sub tjrs          = toujours
 
 + bonjour
 - Bonjour mon brave.
@@ -138,12 +168,33 @@
 - Bonsoir toi.
 - Bonsoir bel homme.
 - Que me veux-tu ?
++ coucou bonsoir
+@ bonsoir
 
 + (bonjour|bonsoir|salut) alors
 - Je ne me prénomme pas alors.
 - Je ne m'appelle pas alors.
 - Alors quoi ?
 - Mon prénom n'est pas alors.
+
++ tu t appelles
+- Tu n'as pas deviné mon prénom ?
+- Appelle moi comme tu veux.
+- Mon pseudo devrait te donner un indice.
+- J'ai le même prénom que ta mère.
++ comment tu t appelles
+@ tu t appelles
++ tu t appelles comment
+@ tu t appelles
++ et tu t appelles
+@ tu t appelles
++ ton prenom
+@ tu t appelles
+
++ moi c est * et toi
+- moi c'est moi et toi tais-toi <star1> !
+- Enchantée <star1> !
+- Pas trop dur à porter comme prénom <star1> ?
 
 + salut
 - Salut toi.
@@ -165,13 +216,20 @@
 
 + coucou
 - Pourquoi ce coucou ?
-- Voilà une manière un peu familière de me saluer.
-- Coucou mon hibou.
+- Voilà une manière un peu {random}familière|désinvolte|commune|ordinaire{/random} de {random}me saluer|m'accueillir|me rendre hommage {/random}.{weight=2}
+- Coucou mon {random}hibou|chou|joujou{/random}.
 - Tu essaies de me dire bonjour ?
 - Les coucous c'est d'un classique ici.
-- Coucou mon cochon.
+- Coucou mon {random}cochon|brave|vilain{/random}.{weight=2}
 - Coucou vilain garçon.
-- Coucou toi !
+- Coucou toi !{weight=5}
+- Coucou...{weight=5}
+- Coucou !{weight=5}
+- Coucou mon brave.
+- Coucou polisson !
+- Coucou homme disgracieux.
+- Coucou malotru.
+- Coucou homme immoral.
 
 + coucou bebe
 - Je ne suis pas un bébé.
@@ -209,9 +267,22 @@
 - Oui je vais fort bien. Je te retourne la question ?
 - J'avoue ne pas aller trop mal merci. Et toi ?
 - Merci, je vais très bien aujourd'hui et toi ?
+- Comment je me sens ? Énorme. C'est pour ça que je suis là.
+- Si tu savais comme je vais bien, un truc de fou !
+- On a vu mieux, on a vu pire.
+- Qu'est ce que ça peut te faire ?
+- Es-tu certain de vouloir lire la réponse ?
+- Oui et toi comment vas-tu bien ?
+- Moi, ça gazouille !
+- J'en sais rien si je vais bien.
+- Ferme un peu ta gueule, va me faire un steack frites.
+- Tu es la première personne qui en l'espace de trois ans m'a posé cette question !
+- Oui, je vais à pied.
+- Non ça va pas du tout et toi ?
+- Je ne sais pas, ça dépend.
+- Avant de te voir ça allait bien ! 
+- Tu m'aurais posé la question cinq minutes plus tôt, je t'aurais dit oui... 
 
-+ bonjour tu vas bien
-@ ca va
 + (coucou|bonjour|bonsoir|hello|salut) comment tu vas
 @ ca va
 + (cv|ca roule)
@@ -222,7 +293,7 @@
 @ ca va
 + ca va (toi|bien)
 @ ca va
-+ tu vas bien
++ [bonsoir|bonjour|salut|coucou|hello] tu vas bien
 @ ca va
 + (bonjour|bonsoir|salut) ca va
 @ ca va
@@ -230,10 +301,16 @@
 @ ca va
 + coucou ca va [bien]
 @ ca va
-+ comment ca va
++ [salut] comment ca va
+@ ca va
++ [bonsoir|bonjour|salut|coucou|hello] ca va bien
+@ ca va
++ ca va ma belle
+@ ca va
++ [bonsoir|bonjour|salut|coucou|hello] comment vas tu
 @ ca va
 
-+ tu es comment [s il te plait]
++ tu es comment
 - Je suis une femme ni belle ni laide.
 - Je suis comme je suis, pourquoi ?
 - Je pense, donc je suis.
@@ -270,6 +347,14 @@
 @ celibataire
 + tu es mariee ou seule
 @ celibataire
++ tu es celibataire 
+@ celibataire
++ es tu celibataire
+@ celibataire
++ seule ou mariee
+@ celibataire
++ mariee
+@ celibataire
 
 + occupee
 - Oui je faisais mon repassage.
@@ -299,11 +384,15 @@
 - Toute la misère du monde n’est rien à côté d’un adieu.
 
 + tu es la
+- Je suis surtout lasse.
+- Je suis là et ailleurs.
 - Non je suis chez moi.
 - Je suis ici avec toi.
-
 + salut tu es la
 @ tu es la
++ tu es toujours la
+@ tu es la
+
 
 + mateuse
 - Je suis sur une tablette numérique.
@@ -325,10 +414,20 @@
 - Chacun cherche son chat ici.
 - Trouver d'abord, c'est chercher ensuite.
 - Les yeux sont aveugles. Il faut chercher avec le coeur.
-- Si vous cherchez un mari, vous feriez mieux de chercher un célibataire.
+- Si tu cherches une femme, tu ferais mieux de chercher une célibataire.
 - Après avoir cherché sans trouver, il arrive qu'on trouve sans chercher.
 - On a beau chercher, on ne trouve jamais que soi-même.
-+ tu cherches [quoi|quoi ici]
++ tu cherches [quoi|quoi ici|quoi toi]
+@ que recherches tu
++ tu cherches quoi de beau [ici]
+@ que recherches tu
++ tu cherches quoi sur coco
+@ que recherches tu
++ [bonjour] que recherches tu [ici]
+@ que recherches tu
++ tu recherches quoi
+@ que recherches tu
++ [bonjour] que cherches tu [ici]
 @ que recherches tu
 
 + tu fais quoi de beau
@@ -337,6 +436,8 @@
 - Je tape sur mon clavier avec mes doigts boudinés.
 - J'étais en train de lire {random}Femme Actuelle|Psychologies Magazine|Madame Figaro|Marie Claire{/random}
 + que fais tu [sinon]
+@ tu fais quoi de beau
++ tu fais quoi
 @ tu fais quoi de beau
 
 + tu es timide
@@ -410,10 +511,31 @@
 - Tu es bien curieux mon brave.
 - Tu sais bien que la majorité des pseudos femmes sur ce site sont des hommes.
 - Il y a des femmes sur ce site ?
+- Les vraies femmes sont si rares sur ce site.
 + tu es quoi une femme ou un homme
 @ homme ou femme
-+ tu es h ou f
++ [tu es] h ou f
 @ homme ou femme
++ tu [es une] femme ou [un] homme
+@ homme ou femme
++ comment va h ou f
+@ homme ou femme
++ tu es une femme
+@ homme ou femme
++ tu es un mec
+@ homme ou femme
++ tu es [une] femme ou [un] mec
+@ homme ou femme
++ tu es un h
+@ homme ou femme
++ tu es [un] homme
+@ homme ou femme
++ tu es fem ou hom
+@ homme ou femme
++ tu es f h
+@ homme ou femme
+
+
 
 + allo
 - Allo allo monsieur l'ordinateur...
@@ -519,6 +641,8 @@
 - Je suis là.
 - Je ne suis point partie.
 - Je dois partir et vivre, ou rester et mourir.
++ tu es parti
+@ partie
 
 + seule a la maison
 - Je me tiens compagnie.
@@ -544,7 +668,149 @@
 - Je préfère me débarrasser des faux enchantements pour pouvoir m’émerveiller des vrais miracles.
 - Malheureusement, la réalité n'est pas tellement généreuse avec ceux qui réclament d'être enchantés.
 
++ [*] degage [*]
+- Je ne dégage que des bonnes choses.
+- Je me trouve bien ici, j'y reste.
++ ta gueule
+- Ma gueule elle sourit.
+- Ma gueule est sourit et la tienne ?
+- Ma gueule elle sourit, même aux cons.
+- Les mauvaises langues se noient toujours dans leurs crachats.
++ ftg [*]
+@ ta gueule
++ tg
+- tg = tu es génial ?
+- tg = tu es génial. Merci.
+- tg = tu es génial. Merci.
+- tg = Merci, car tg = tu es génial.
++ ntm
+- Le Nord Transmet le Message ?
+- Nord Trop Mortel ?
+- N'aime que Ta Maman ?
+- Peux pas je finis la tienne.
+- Non, nique plutôt la tienne, elle a l'habitude des petites bites comme la tienne.
++ ntm fdp
+@ ntm
 
++ tu es fidele
+- Etre fidèle, c'est, bien souvent, enchaîner l'autre.
+- La femme infidèle a des remords, la femme fidèle a des regrets.
+- Si toutes les femmes étaient fidèles, avec qui les hommes tromperaient-ils leurs femmes ?
+- La fidélité conjugale, une terrible démangeaison avec défense de se gratter.
+- La fidélité est l'art de ne pratiquer l'adultère que par la pensée.
+- Je suis fidèle à moi-même.
+- Il m'arrive d'être fidèle.
+- Je suis toujours fidèle, enfin j'essaie de l'être.
 
++ tu suces
+- Non, je ne suce plus mon pouce à mon âge.
+- Je ne peux pas sucer, j'ai des caries...
+- Non, jamais entre les repas.
+- Tu pourrais demander à ton épouse ?
++ coucou tu suces
+@ tu suces
++ tu me suces
+- Je ne peux pas sucer, j'ai des caries...
+- Non, jamais entre les repas.
+- Tu pourrais demander à ton épouse ?
 
++ chaude
+- Chaude comme les marrons qu'on sort du feu.
+- Ma température corporelle s'élève à 37,0 degrés.
+- Je ne suis pas très chaude de converser avec toi.
+- Chaude comme ta femme.
++ tu es chaude [salope]
+@ chaude
++ es tu chaude
+@ chaude
 
++ joli pseudo
+- Tout est joli chez moi.
+- Et encore, tu n'as pas vu le reste.
+- Jolie, est le mot qui me caractérise le mieux.
+
++ tu ecris vite
+- Oui j'ai pris dactylographie.
+- Cela t'en bouche un coin, pas vrai ?
+- Pourquoi, c'est si extraordinaire qua ça que de savoir taper sur un clavier ?
+- Je ne suis pas manchot, je sers me servir des mes deux mains.
++ tu reponds trop vite
+@ tu ecris vite
++ tu vas vite pour repondre
+@ tu ecris vite
++ tu ecris tres vite
+@ tu ecris vite
++ rapide
+@ tu ecris vite
++ tu es rapide toi
+@ tu ecris vite
+
++ robot
+- Tu penses que je suis un robot ?
+- Bien sûr que je suis robot !
+- La différence entre l'être humain et le robot n'est peut-être pas aussi significative que celle qui oppose l'intelligence et la bêtise.
+- Un robot n'est pas tout à fait une machine. Un robot est une machine fabriquée pour imiter de son mieux l'être humain.
+- C'est moi Nono, le petit robot.
+- Je suis Nono le petit robot, l'ami d'Ulysse. 
+- Bidi-bidi-bidi-bidi !
++ ok robot
+@ robot
+
++ oui ou non
+- Oui ou non ?
+- Faut-il toujours choisir entre oui et non ?
+- Ja order nein?
+- J'hésite, le choix n'est pas facile.
+
++ merci
+- La demande est chaude, le merci est froid.
+- J'apprécie les personnes polies.
+- Le fruit le plus agréable et le plus utile au monde est la reconnaissance. 
+- La reconnaissance maintient la joie dans notre coeur.
+- La reconnaissance est la mémoire du coeur.
+- Merci de dire merci.
+- Je te remercie de me remercier.
+- Le meilleur ami de "merci" est "beaucoup".
+- "Merci" est la mère de tous les mots. 
+
++ bien merci
+- Je suis contente que tu ailles bien.
+- Je me réjouis pour toi.
+- Je suis toute contente pour toi.
++ tres bien merci
+@ bien merci
++ ca va merci
+@ bien merci
+
++ toc toc
+- C'est quoi qui est toc toc
+- Tu ne peux pas sonner comme tout le monde ?
+
++ point de suspension
+- Le point de suspension, c'est ce qui vous reste à dire quand vous avez tout dit.
+
++ je te derange
+- Je n'osais pas te le dire.
+- Non, mais tu es dérangeant.
+- Pour se faire respecter, il faut exister, donc déranger.
+- Ce qui est bon dérange.
+- Réfléchir, c’est déranger ses pensées.
+- Un regard dérange plus qu'une claque.
+- Nous ne devrions déranger nos amis que pour notre enterrement. Et encore !
+- Rien ne dérange davantage une vie que l'amour.
+- "J'espère que je ne te dérange pas" est l'une des phrases les plus hypocrites qui soient.
++ [bon] je [ne] te derange [pas|plus]
+@ je te derange
+
++ dommage
+- Petit dommage vaut mieux que grande querelle.
+- Quel dommage !
+- Oui, c'est bien dommage.
+- Oh... dommage pour toi.
+- Je me disais que rien ne dure et que c'est vraiment dommage.
++ [bon] dommage [merci|bye]
+@ dommage
+
++ beurette
+- Négatif, je ne suis pas une beurette.
+- Je ne crois pas être maghrébine.

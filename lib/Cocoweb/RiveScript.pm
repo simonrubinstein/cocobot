@@ -1,5 +1,5 @@
 # @created 2016-07-04
-# @date 2016-07-14
+# @date 2016-07-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -74,18 +74,29 @@ sub init {
     );
 }
 
+##@method bool loadDirectory($pathname)
+#@brief Load a directory full of RiveScript documents.
+#@param string $pathname Must be a path to a directory
+#@return true on success, false on failure.
 sub loadDirectory {
     my ( $self, $pathname ) = @_;
     $pathname = Cocoweb::Config->instance()->getDirPath($pathname);
-    $self->{'rs'}->loadDirectory($pathname);
+    return $self->{'rs'}->loadDirectory($pathname);
 }
 
+##@method void sortReplies()
+#@brief Call this method after loading replies to create an internal sort
+#       buffer. This is necessary for trigger matching purposes.
 sub sortReplies {
     my $self = shift;
     $self->{'rs'}->sortReplies();
-
 }
 
+##@method string reply($user, $message)
+#@brief Fetch a response to $message from user $user.
+#@param string $user Name of user
+#@param string $messsage Message from user
+#@return string response from the RiveScript brain.
 sub reply {
     my ( $self, $user, $message ) = @_;
     if ( $message =~ m{^http://www\.coco.fr/pub/photo0?\.htm.*} ) {
@@ -111,10 +122,13 @@ sub reply {
 #@return string
 sub unacString {
     my ( $self, $string ) = @_;
+    return '' if length($string) == 0;
+    $string =~ s{-}{ }g;
     $string = Encode::decode( 'UTF-8', $string );
 
     #replace euro sign
     $string =~ s{\x{20AC}}{E}g;
+
     my $offsetMax = length($string) - 1;
     my $strOut    = '';
     for my $offset ( 0 .. $offsetMax ) {

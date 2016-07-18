@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-19
-# @date 2016-07-07
+# @date 2016-07-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -356,7 +356,8 @@ sub isRiveScriptEnable {
     my ($self) = @_;
     if ( defined $self->{'rivescript'} ) {
         return 1;
-    } else {
+    }
+    else {
         return 0;
     }
 }
@@ -373,20 +374,21 @@ sub setAddNewWriterUserIntoList {
 sub riveScriptLoop {
     my ($self) = @_;
     return if !defined $self->{'rivescript'};
-    my $rs =  $self->{'rivescript'};
-    my $users_ref  = $self->request()->usersList()->all();
+    my $rs        = $self->{'rivescript'};
+    my $users_ref = $self->request()->usersList()->all();
     foreach my $niknameId ( keys %$users_ref ) {
         my $user = $users_ref->{$niknameId};
         next if !$user->isMessageWasSent();
         $user->isMessageWasSent(0);
         my $messageLast = trim( $user->messageLast() );
         next if !defined $messageLast or length($messageLast) == 0;
+        info( $user->mynickname() . '> ' . $messageLast );
         my $reply = $rs->reply( 'localuser', $messageLast );
         if ( $reply eq 'ERR: No Reply Matched' ) {
             error("No reply matched for $messageLast");
             next;
         }
-        info("> $reply");
+        info( $self->user()->mynickname() . '> ' . $reply );
         $self->requestWriteMessage( $user, $reply );
     }
 }
