@@ -68,6 +68,7 @@
 ! sub tes la        = tu es la
 ! sub t la          = tu es la
 ! sub t ues la      = tu es la
+! sub javoue        = j avoue
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
@@ -79,6 +80,7 @@
 ! sub bonjou        = bonjour
 ! sub bonjoru       = bonjour
 ! sub bsr           = bonsoir
+! sub bonsoit       = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
 ! sub rout a fais   = tout a fait
@@ -92,6 +94,7 @@
 ! sub bonjoue       = bonjour
 ! sub bonsor        = bonsoir
 ! sub cc            = coucou
+! sub cccc          = coucou
 ! sub ccbsr         = coucou bonsoir
 ! sub quel belle    = quelle belle
 ! sub sa va         = ca va
@@ -230,6 +233,8 @@
 - Coucou homme disgracieux.
 - Coucou malotru.
 - Coucou homme immoral.
++ coucou (toi|salut)
+@ coucou
 
 + coucou bebe
 - Je ne suis pas un bébé.
@@ -421,11 +426,11 @@
 @ que recherches tu
 + tu cherches quoi de beau [ici]
 @ que recherches tu
-+ tu cherches quoi sur coco
++ tu cherches quoi [sur ce site|sur coco]
 @ que recherches tu
 + [bonjour] que recherches tu [ici]
 @ que recherches tu
-+ tu recherches quoi
++ tu recherches quoi [sur ce site|sur coco]
 @ que recherches tu
 + [bonjour] que cherches tu [ici]
 @ que recherches tu
@@ -755,6 +760,8 @@
 - Bidi-bidi-bidi-bidi !
 + ok robot
 @ robot
++ tu es un robot
+@ robot
 
 + oui ou non
 - Oui ou non ?
@@ -814,3 +821,18 @@
 + beurette
 - Négatif, je ne suis pas une beurette.
 - Je ne crois pas être maghrébine.
+
++ j avoue
+- Etre clair, c'est avouer.
+- Il faut rougir de commettre des fautes et non de les avouer.
+- On doit avouer ses qualités à voix basse, et ses défauts à haute voix.
+- N'avoue jamais.
+
++ tu me vois
+- Je crains que non.
+- Un écran nous sépare, c'est impossible.
+- Il y a tant de choses à voir.
+- Si le babouin pouvait voir son derrière, lui aussi rirait.
+
+
+

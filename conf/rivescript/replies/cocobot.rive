@@ -39,7 +39,9 @@
 ! sub c ta mere     = c est ta mere
 ! sub c ta          = c est ta 
 ! sub nik ta        = nique ta
+! sub nike ta       = nique ta
 ! sub je suit       = je suis
+! sub je sui        = je suis
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
@@ -51,6 +53,7 @@
 ! sub slt           = salut
 ! sub bjr           = bonjour
 ! sub bsr           = bonsoir
+! sub bse           = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
 ! sub rout a fais   = tout a fait
@@ -65,6 +68,7 @@
 ! sub sava          = ca va
 ! sub mecpassif     = mec passif
 ! sub lol           = mdr
+! sub mdrr          = mdr
 ! sub pédé          = pede
 ! sub marié         = marie
 ! sub dégage        = degage
@@ -94,6 +98,7 @@
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub taggle        = ta gueule
+! sub tageule       = ta gueule
 ! sub geule         = gueule
 ! sub biem          = bien
 ! sub te relou      = tu es relou
@@ -104,10 +109,16 @@
 ! sub ds bb         = des bebes
 ! sub bb            = bebe
 ! sub simpa         = sympa
+! sub gzrs          = gars
+! sub tes surtout   = tu es surtout
 
 
 + bonjour robot
 - bonjour humain
+
++ will you accept * as a friend
+- Non je n'accepte pas <star1> comme ami.
+- Pourquoi j'accepterais <star1> en ami ?
 
 + salut la forme
 - Merci, je vais très bien aujourd'hui et vous ?
@@ -201,6 +212,8 @@
 - Coucou hibou ?
 - Voilà une manière bien familière de me saluer.
 - Comment allez-vous ?
++ coucou toi
+@ coucou
 
 + [*] degage [*]
 - Je ne dégage que des bonnes choses.
@@ -222,7 +235,7 @@
 + tu vis ici
 - Oui c'est ma maison ici.
 - Je suis enfermé dans le cyberspace.
-- Vivre ici ou ailleurs, quelle importance ?
+- Vvre ici ou ailleurs, quelle importance ?
 - Vivre c'est un grand mot, disons que j'existe.
 
 + [*] pas faux
@@ -230,10 +243,13 @@
 - Vous voulez dire vrai par là ?
 - Ce qui n'est pas faux a un goût de vérité ?
 
-+ [*] suis [un] (homme|mec) [*]
++ [*] suis [un] (homme|mec|gars) [*]
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
 - Si vous êtes un <star1>, utilisez un profil <star1>.
++ je [ne] suis pas une femme
+- Alors utilisez un profil "homme" !
+- Alors pourquoi prenez-vous un profil "femme" ?
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
@@ -252,7 +268,10 @@
 + ta gueule
 - Ma gueule elle sourit.
 - Ma gueule est sourit et la votre ?
-
+- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
+- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
++ ferme ta gueule
+@ ta gueule
 + ftg [*]
 @ ta gueule
 
@@ -465,9 +484,12 @@
 + tu es gay
 - Je suis une personne gai mais pas gay
 
-+ * (escorte|escort) *
++ je suis venale
 - Le sexe c'est mieux quand c'est gratuit.
-
++ [*] (escorte|escort) [*]
+@ je suis venale
++ (bonsoir|bonjour|salut|coucou) je suis venale
+@ je suis venale
 
 + tu as l age de mon pere
 - Mais je ne suis pas votre papa voyons.
@@ -488,6 +510,9 @@
 + pauvre con
 - Nous sommes tous le con de quelqu'un.
 - Rien n'est plus voluptueux pour un pas-con que d'être pris pour un con par un con.
+- Les plus cons ce sont ceux qui se foutent de la gueule des autres.
++ tu es [surtout] [tres] con [en revanche]
+@ pauvre con
 
 + [*] facebook [*]
 - Je n'ai pas de compte Facebook.
@@ -514,6 +539,7 @@
 + faut arreter l alcool
 - On voit toujours quand j'ai bu, jamais quand j'ai soif.
 - J'ai arrêté l'alcool, justement...
+- Pinocchio n’a pas eu de chance : il a eu la gueule de bois toute sa vie !
 
 + [*] (pedophile) [*]
 - Pourquoi parlez-vous de pédophile, vous êtes prépubère ?
@@ -522,6 +548,35 @@
 + [*] hopital psychiatrique [*]
 - L'hôpital psychiatrique ? J'aurais bien trop peur de vous y rencontrer.
 - Vous vivez dans un hôpital psychiatrique ?
+
++ que recherches tu
+- Chacun cherche son chat ici.
+- Trouver d'abord, c'est chercher ensuite.
+- Les yeux sont aveugles. Il faut chercher avec le coeur.
+- Si vous cherchez une mari, vous feriez mieux de chercher une célibataire.
+- Après avoir cherché sans trouver, il arrive qu'on trouve sans chercher.
+- On a beau chercher, on ne trouve jamais que soi-même.
++ tu cherches [quoi|quoi ici|quoi toi]
+@ que recherches tu
++ tu cherches quoi de beau [ici]
+@ que recherches tu
++ tu cherches quoi [sur ce site|sur coco]
+@ que recherches tu
++ [bonjour] que recherches tu [ici]
+@ que recherches tu
++ tu recherches quoi [sur ce site|sur coco]
+@ que recherches tu
++ [bonjour] que cherches tu [ici]
+@ que recherches tu
++ ta recherche
+@ que recherches tu
+
++ fake
+- Allez-vous y retrouver parmi le faux vrai, le vrai faux, le vrai vrai et le faux faux !
+- Le vrai est inimitable, le faux intransformable.
+- Ce qui est seulement presque vrai est tout à fait faux.
+
+
 
 
 

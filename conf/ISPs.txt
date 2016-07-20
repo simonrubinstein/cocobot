@@ -39,6 +39,7 @@ AllTele Allmanna Svenska Telefonaktiebolaget
 Alpha Networks S.P.R.L.
 AlphaLink
 Alsace Connexia
+Alstom UK Ltd/Alstom Inc Global Network Range
 Altitude Infrastructure Exploitation
 Altitude Infrastructure Exploitation SAS
 Altitude Telecom SAS
@@ -65,6 +66,7 @@ Assigned for dynamic DHCP pool for RINGO S.A.s cu
 Assigned for servers and network infrastructure fo
 Assistance Publique-Hopitaux de Paris
 Association de Gestion Ecole Centrale Delectroniqu
+Association Gitoyen
 association KAZAR
 Association KAZAR
 Association ORT France
@@ -92,6 +94,7 @@ AXA-TECH
 Axinet Communication sarl
 Axione S.a.s.
 AXIONE S.A.S.
+Axway Software SA
 Azuria
 B2B2C
 B3G Telecom
@@ -163,6 +166,7 @@ Celeste
 Cell-C (Pty) Ltd
 Centre de Calcul du CNRS
 Centre de Ressources Informatique (CRI)
+Centre De Ressources Informatique De Haute-normand
 Centre Interuniversitaire de Calcul de Toulouse
 Centre National de la Recherche Scientifique
 CERN dynamic addresses
@@ -171,6 +175,7 @@ Cesarius Media GmbH IPNETZ
 Cesser Informatica y Organizacion, S.L
 CeTEL GmbH
 CEVA LOGISTICS
+Chambre de commerce et dIndustrie de Paris
 Chambre de Commerce et dIndustrie Nice Cote dAzu
 Chaos Computer Club Event Network provided by Chao
 Charter Communications
@@ -293,6 +298,7 @@ e-leven sa
 e-Qual
 E-TERA
 EarthLink
+Eastman Kodak Company
 Easyhost Network
 Easynet
 easynet DV GmbH
@@ -376,6 +382,7 @@ Financial Art S.A.
 Fingerprint Technologies
 Finsecur SA
 FLORIDA CABLE
+Focus Consulting S.A.
 Foremost Technologies Corporation
 FORUM DES IMAGES
 FR-EUROPSTAT
@@ -387,6 +394,7 @@ France Telecom
 France Telecom R{D
 Free Mobile SAS
 Free SAS
+Fullsave SAS
 Gabon Telecom
 GABON TELECOM Libreville xDSL POP.
 Galop Telecom
@@ -405,6 +413,7 @@ Ghana Telecom
 GHOSTnet GmbH
 Gie Gitoyen
 GIE Groupement Informatique De La Protection Socia
+Gl Events Si Snc
 Globacom Ltd
 Global Access Resources
 Global Caribbean Network
@@ -469,6 +478,7 @@ Ikoula Net SAS
 IMAG et UJF
 Inconet Data Management SAL
 incubatec GmbH - Srl
+Infoclip SA
 INFOR IT SP. z o.o.
 INFOSAT ICPS
 Infosat Telecom S.A.
@@ -519,6 +529,7 @@ ISP in Nigeria
 ISPpro Internet KG
 IT - Solid Solutions
 ITC Deltacom
+ITSVision S.A.R.L.
 IUnet
 iWeb Technologies
 Izzycom SAS
@@ -556,6 +567,7 @@ Lanestel Lanestel Sarl
 Lanet Network Ltd.
 LaSer Contact
 LASER CONTACT
+Lasotel Sarl
 Layo Net SRL
 Le118000 118000 SAS
 LeaderTelecom Ltd.
@@ -634,6 +646,7 @@ MULTILINK SA
 MWEB Connect (Pty) Ltd
 MyStream
 nacamar GmbH
+Naitways SAS
 Namincheon Brodcasting Co., Ltd.
 Nautile
 Nautile SARL
@@ -672,6 +685,7 @@ Nobis Technology Group, LLC
 Nomotech
 Nomotech SAS
 NordNet
+Normhost Sarl
 Nortel Networks
 North Carolina State University
 NTT America
@@ -790,6 +804,7 @@ Redstation Limited
 REG.I.E.S
 Regie Autonome Electric Cable Chauffage EPIC
 REGIE COMMUNALE ELECTRICITE (Regie dune collectiv
+Regie Gaz Electricite De Sallanches Epic
 Region Picardie
 Reliance Globalcom Limited
 Relians Ltd
@@ -823,6 +838,7 @@ RSS Internet Network
 RTLNET
 RTVC-Stiring
 Rue du commerce SA
+S.a.s. National Cloud
 S.c. Gvm Sistem 2003 S.r.l.
 S.I Building
 SA ALTIUS
@@ -861,6 +877,7 @@ Schlumberger Limited
 Schneider Automation
 Schneider Electric Industries SAS
 SdV-Plurimedia
+Sealed Air Corporation
 Sentris Network LLC
 SERES SA
 SERRANA TELECOMUNICACOES LTDA
@@ -877,6 +894,7 @@ Ses Astra S.A.
 Sewan Communications S.A.S.
 SFR
 Sfr Collectivites SA
+Sgca Sarl Sgca
 Shaw Communications
 Shaw Telecom G.P.
 SIA Lattelecom
@@ -904,6 +922,7 @@ SM Etude Devel Sces Reseaux Com
 Smartjog SAS
 Societe Air France S.A.
 Societe Atlantique de Telephonie et Communication
+Societe Commerciale De Telecommunication Sct SAS
 Societe de developpement Informatique
 Societe Francaise du Radiotelephone -SFR S.A.
 Societe Nationale de Radiodiffusion Radio France
@@ -945,6 +964,7 @@ Switchward { Trostmann AG
 Sympatico
 Syndicat Mixte Somme Numerique
 T-Systems International GmbH
+Tachyon Europe BV
 Tango Mobile S.A.
 Tata Communications
 TATA Communications (Canada)ULC
@@ -953,6 +973,7 @@ Techcrea Solutions Sarl
 Technion Network
 Technipnet Technipnet SAS
 Technology Services Group Limited
+Teclib SAS
 Teikhos
 Telconet S.A
 Tele Danmark
@@ -1093,6 +1114,7 @@ Vodafone Telekomunikasyon A.S.
 VTX Services SA
 Washington State Dept. of State and Ind.
 Waycom International SARL
+WAYSCOM
 WebRunner Limited
 Websense Hosted R{D Ltd.
 WIBOX SASU
