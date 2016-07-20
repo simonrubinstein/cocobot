@@ -2,9 +2,9 @@
 
 Cette page explique l'installation et l'utilisation pas à pas du script « save-logged-user-in-database.pl ».
 
-Le script « save-logged-user-in-database.pl » créé un bot qui se connecte sur Coco.fr et va lire la liste des pseudos connectés sur le chat plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr](cocoRegistration.md).
+Le script « save-logged-user-in-database.pl » créé un bot qui se connecte sur Coco.fr et va lire la liste des pseudos connectés sur le chat plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr](cocoRegistration).
 
-Cette documentation se base sur le système d'exploitation [Ubuntu 12.10 Desktop](http://www.ubuntu-fr.org/telechargement), donc pour installer ce script un système d'exploitation Ubuntu 12.10 Desktop est requis.
+Cette documentation se base sur le système d'exploitation [Ubuntu 16.04 Desktop](http://www.ubuntu-fr.org/telechargement), donc pour installer ce script un système d'exploitation Ubuntu 16.04 Desktop est requis.
 
 Toutes les manipulations se font à l'aide de la [ligne de commande](http://fr.wikipedia.org/wiki/Ligne_de_commande), donc une connaissance minimum de l'utilisation de la ligne de commande dans un terminal est nécessaire.
 
@@ -17,12 +17,12 @@ Lancer le logiciel [Terminal](http://fr.wikipedia.org/wiki/Gnome_Terminal) pour 
 
 Pour lancer le Terminal, cliquer tout en haut à droite de l'écran sur le logo Ubuntu. Ensuite taper le mot « terminal » dans la zone de recherche :
 
-![Photo GNOME Terminal](terminal.png)
+![Photo GNOME Terminal](images/saveLoggedUserInDatabase/terminal.png)
 
 
 Taper la commande suivante pour installer certains logiciels :
 ```
-sudo apt-get install git libconfig-general-perl libwww-perl libdbd-sqlite3-perl libnet-xmpp-perl mysql-server
+sudo apt install git libconfig-general-perl libwww-perl libdbd-mysql-perl libdbd-sqlite3-perl libnet-xmpp-perl mysql-server librivescript-perl
 ```
 
 À l'installation de MySQL, le programme d'installation demande un mot de passe pour l'utilisateur « root ». Dans cet exemple le mot de passe « toto » a été donné.
@@ -40,17 +40,18 @@ La base de données MySQL utilisée dans l'exemple est la base de données « te
 
 Taper les quatre commandes suivants dans Terminal pour créer l'utilisateur MySQL « test » :
 ```
-mysql -u root -ptoto 
+mysql -u root -ptoto mysql
+CREATE DATABASE test;
 GRANT ALL PRIVILEGES ON `test`.* TO test@"localhost" IDENTIFIED BY 'Gim9p6gW';
 FLUSH PRIVILEGES;
 exit
 ```
 
-![MySQL ajout d'un utilisateur](mysql-add-user.png)
+![MySQL ajout d'un utilisateur](images/saveLoggedUserInDatabase/mysql-add-user.png)
 
-Pour utiliser une autre base de données MySQL, un autre utilisateur ou un autre mot de passe, le fichier « database.conf » doit-être modifié en conséquence :
+Pour utiliser une autre base de données MySQL, un autre utilisateur ou un autre mot de passe, le fichier « database.conf » doit-être modifié en conséquence :
 ```
-cat ~/cocobot-read-only/conf/database.conf 
+cat ~/cocobot/conf/database.conf 
 <conf>
   #database-class     = SQLite
   database-class     = MySQL 
@@ -68,7 +69,7 @@ cat ~/cocobot-read-only/conf/database.conf
 
 Les tables de la base de données MySQL doivent-être créées et certaines tables peuplées avec des données :
 ```
-cd ~/cocobot-read-only/tools/
+cd ~/cocobot/tools/
 ./initializes-database.pl
 ```
 
@@ -79,13 +80,13 @@ Le script peut prendre quelques secondes ou minutes avant de rendre la main.
 
 L'objectif est de lancer le script « save-logged-user-in-database.pl » toutes les minutes. Pour cela nous allons configurer le programme [cron](http://fr.wikipedia.org/wiki/Cron) pour qu'il exécute le script « save-logged-user-in-database.pl » toutes les minutes.
 
-Tout d'abord vous devez récupérer les valeurs de « myavatar » et « mypass » d'un compte ayant un abonnement payant Premium. Lire la documentation sur [comment souscrire à un abonnement Premium sur le site Coco.fr et récupérer les valeurs de « myavatar » et « mypass »](cocoRegistration.md).
+Tout d'abord vous devez récupérer les valeurs de « myavatar » et « mypass » d'un compte ayant un abonnement payant Premium. Lire la documentation sur [comment souscrire à un abonnement Premium sur le site Coco.fr et récupérer les valeurs de « myavatar » et « mypass »](cocoRegistration).
 
 Dans notre exemple nous utiliserons :
   * « myavatar » correspond à la valeur « 816356817 »
   * « mypass » correspond à la valeur « XYZPAHPFLFRIEBWDNDZD ».
 
-Ces valeurs de « myavatar » et « mypass » sont données uniquement à titre d'exemple et ne fonctionneront pas. Vous [devez souscrire à un abonnement Premium](cocoRegistration.md) de cinq euros par mois.
+Ces valeurs de « myavatar » et « mypass » sont données uniquement à titre d'exemple et ne fonctionneront pas. Vous [devez souscrire à un abonnement Premium](cocoRegistration) de cinq euros par mois.
 
 Nous allons lancer [le programme crontab](http://fr.wikipedia.org/wiki/Crontab) qui permet d'éditer des tables de configuration du programme _cron_.
 
@@ -96,17 +97,17 @@ crontab -e
 
 À la première utilisation, le programme _crontab_ vous demande quel éditeur texte vous allez utiliser. Sélectionner le choix conseillé en tapant sur la touche _2_ du clavier pour choisir l'éditeur [nano](http://fr.wikipedia.org/wiki/GNU_nano)] :
 
-![select-editor.png](select-editor.png)
+![select-editor.png](images/saveLoggedUserInDatabase/select-editor.png)
 
 Une fois l'éditeur _nano_ lancé, presser sur la touche directionnelle bas pour se rendre tout à la fin du texte et insérer la ligne suivante :
 
 ```
-*/1 * * * * cd ~/cocobot-read-only/scripts/ && ./save-logged-user-in-database.pl -s M -a 816356817 -p XYZPAHPFLFRIEBWDNDZD -v -d -D -x 38 -w
+*/1 * * * * cd ~/cocobot/scripts/ && ./save-logged-user-in-database.pl -s M -a 816356817 -p XYZPAHPFLFRIEBWDNDZD -v -d -D -x 38 -w
 ```
 
 Ensuite taper les touches _Ctrl + X_ pour quitter l'éditeur _nano_. Le message «  Sauver l'espace modifié (RÉPONDRE « Non » EFFACERA LES CHANGEMENTS) ? » s'affichera alors. Presser la touche _O_ puis ensuite la touche _entrée_ pour sauvegarder :
 
-![nano-sauver-l-espace-modifie.png](nano-sauver-l-espace-modifie.png)
+![nano-sauver-l-espace-modifie.png](images/saveLoggedUserInDatabase/nano-sauver-l-espace-modife.png)
 
 Pour vérifier si la table de configuration du programme _cron_ est bien paramétrée taper la commande :
 ```
@@ -115,7 +116,7 @@ crontab -l
 
 Si la table de configuration du programme _cron_ est bien paramétrée vous devriez voir ce résultat :
 
-![crontab-l.png](crontab-l.png)
+![crontab-l.png](images/saveLoggedUserInDatabase/crontab-l.png)
 
 Voici une explication des paramètres passés au script « save-logged-user-in-database.pl » :
   * -s M : le pseudo créé sera toujours un pseudo homme.
@@ -125,25 +126,25 @@ Voici une explication des paramètres passés au script « save-logged-user-in-d
   * -d : mode debug, le script affiche des messages de debug.
   * -D : mode debug, le script affiche encore plus de messages de debug.
   * -x 38 : le script réalise trente-huit itérations avant de quitter.
-  * -w  : le script écrira les logs dans le répertoire « ~/cocobot-read-only/var/log ».
+  * -w  : le script écrira les logs dans le répertoire « ~/cocobot/var/log ».
 
 Visionner le fichier de log du script pour vérifier que le script « save-logged-user-in-database.pl » est bien lancé toutes les minutes. Le fichier de log est composé avec la date du jour. Par exemple cette documentation a été écrite le 7 décembre 2012, donc le fichier de log se nomme « 2012-12-07\_save-logged-user-in-database.pl.log ». Utiliser la commande suivante pour le visionner :
 
 ```
-tail -f ~/cocobot-read-only/var/logs/2012-12-07_save-logged-user-in-database.pl.log
+tail -f ~/cocobot/var/logs/2012-12-07_save-logged-user-in-database.pl.log
 ```
 
 
 Si vous voyez un résultat semblable à cette capture d'écran, alors le script « save-logged-user-in-database.pl » fonctionne :
 
-![tail-f-log.png](tail-f-log.png)
+![tail-f-log.png](images/saveLoggedUserInDatabase/tail-f-log.png)
 
 
 Taper CTRL + C pour stopper la [commande tail](http://fr.wikipedia.org/wiki/Tail_%28Unix%29). Et maintenant vous pouvez utiliser la commande « db-search.pl » pour consulter la base de données.
 
 Exemple cette commande affiche les pseudos femmes actuellement connectés sur le tchat :
 ```
-cd ~/cocobot-read-only/scripts
+cd ~/cocobot/scripts
 ./db-search.pl -O -s 2,7
 ```
 
@@ -184,5 +185,4 @@ save-logged-user-in-database.pl [-A] -x maxOfLoop -S seconds -a myavatar -p mypa
   * **-d**  : Affiche des messages de debug.
   * **-D**  : Affiche davantage de messages de debug.
   * **-w**  : Affiche les logs dans un fichier.
-  * **-A**  : Active les alertes. Permet d'envoyer des messages XMPP ou écrire aux utilisateurs connectés sur le tchat en se basant sur le fichier « alert.conf ». [Lire la page sur les alertes](LesAlertes.md).
-
+  * **-A**  : Active les alertes. Permet d'envoyer des messages XMPP ou écrire aux utilisateurs connectés sur le tchat en se basant sur le fichier « alert.conf ». [Lire la page sur les alertes](LesAlertes).
