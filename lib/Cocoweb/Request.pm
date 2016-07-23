@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-07-02
+# @date 2016-07-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
 # copyright (c) Simon Rubinstein 2010-2016
@@ -56,6 +56,7 @@ __PACKAGE__->attributes(
     'isInfuzNotToFast',
     'infuzNotToFastRegex',
     'profilTooNewRegex',
+    'beenDisconnectedRegex',
     'infuzMaxOfTries',
     'infuzPause1',
     'infuzPause2',
@@ -94,13 +95,13 @@ sub init {
             ->getConfigFile( 'request.conf', 'File' );
         $conf_ref = $conf->all();
         foreach my $name (
-            'urly0',             'urlprinc',
-            'current-url',       'avatar-url',
-            'avaref',            'urlcocoland',
-            'urlav',             'url_initio.js',
-            'infuz-not-to-fast', 'profile-too-new',
-            'magic-auth-string', 'get-ip-address-url',
-            'remote-address-ipv4-default'
+            'urly0',                       'urlprinc',
+            'current-url',                 'avatar-url',
+            'avaref',                      'urlcocoland',
+            'urlav',                       'url_initio.js',
+            'infuz-not-to-fast',           'profile-too-new',
+            'magic-auth-string',           'get-ip-address-url',
+            'remote-address-ipv4-default', 'been-disconnected'
             )
         {
             $conf->isString($name);
@@ -150,6 +151,8 @@ sub init {
     $infuzNotToFast = qr/$infuzNotToFast/;
     my $profilTooNew = $conf_ref->{'profile-too-new'};
     $profilTooNew = qr/$profilTooNew/;
+    my $beenDisconnected = $conf_ref->{'been-disconnected'};
+    $beenDisconnected = qr/$beenDisconnected/;
 
     if ( !defined $publicIP ) {
         my $req = HTTP::Request->new(
@@ -194,23 +197,24 @@ sub init {
             'logUsersListInDB' => $logUsersListInDB,
             'removeListDelay'  => $removeListDelay
         ),
-        'speco'               => 0,
-        'convert'             => Cocoweb::Encode->instance(),
-        'timz1'               => 0,
-        'rechrech'            => 0,
-        'isAvatarRequest'     => $isAvatarRequest,
-        'isInfuzNotToFast'    => 0,
-        'infuzNotToFastRegex' => $infuzNotToFast,
-        'magicAuthString'     => $conf_ref->{'magic-auth-string'},
-        'publicIP'            => $publicIP,
-        'localIP'             => $localIP,
-        'profilTooNewRegex'   => $profilTooNew,
-        'infuzMaxOfTries'     => $conf_ref->{'infuz-max-of-tries'},
-        'infuzPause1'         => $conf_ref->{'infuz-pause1'},
-        'infuzPause2'         => $conf_ref->{'infuz-pause2'},
+        'speco'                 => 0,
+        'convert'               => Cocoweb::Encode->instance(),
+        'timz1'                 => 0,
+        'rechrech'              => 0,
+        'isAvatarRequest'       => $isAvatarRequest,
+        'isInfuzNotToFast'      => 0,
+        'infuzNotToFastRegex'   => $infuzNotToFast,
+        'magicAuthString'       => $conf_ref->{'magic-auth-string'},
+        'publicIP'              => $publicIP,
+        'localIP'               => $localIP,
+        'profilTooNewRegex'     => $profilTooNew,
+        'beenDisconnectedRegex' => $beenDisconnected,
+        'infuzMaxOfTries'       => $conf_ref->{'infuz-max-of-tries'},
+        'infuzPause1'           => $conf_ref->{'infuz-pause1'},
+        'infuzPause2'           => $conf_ref->{'infuz-pause2'},
         'infuzMaxOfTriesAfterPause' =>
             $conf_ref->{'infuz-max-of-tries-after-pause'},
-        'isConfHTTPrequests' => $isConfHTTPrequests,
+        'isConfHTTPrequests'         => $isConfHTTPrequests,
         'isAddNewWriterUserIntoList' => 0
     );
 }
@@ -365,6 +369,7 @@ sub getCityco {
     my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
     my $response = $self->execute( 'GET', $url );
     my $res      = $response->content();
+
     #debug($res);
 
     # Retrieves a string like "var cityco='30926*PARIS*';"
@@ -376,6 +381,7 @@ sub getCityco {
                 . $res );
     }
     my $cityco = $1;
+
     #debug("===> cityco: $cityco");
     return $cityco;
 }

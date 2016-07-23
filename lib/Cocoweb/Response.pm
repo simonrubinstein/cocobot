@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2016-07-07
+# @date 2016-07-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -33,11 +33,12 @@ use utf8;
 no utf8;
 
 __PACKAGE__->attributes(
-    'profileTooNew',             'infuzString',
-    'userFound',                 'messageString',
-    'userFriends',               'isRestrictedAccount',
-    'isUserMustBeAuthenticated', 'isMenAreBlocked',
-    'isPrivateAreBlocked',       'convert'
+    'beenDisconnected',    'profileTooNew',
+    'infuzString',         'userFound',
+    'messageString',       'userFriends',
+    'isRestrictedAccount', 'isUserMustBeAuthenticated',
+    'isMenAreBlocked',     'isPrivateAreBlocked',
+    'convert'
 );
 
 ##@method void init($args)
@@ -45,16 +46,17 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults(
-        'profileTooNew'              => 0,
-        'infuzString'                => '',
-        'userFound'                  => undef,
-        'messageString'              => '',
-        'userFriends'                => undef,
-        'isRestrictedAccount'        => 0,
-        'isUserMustBeAuthenticated'  => 0,
-        'isMenAreBlocked'            => 0,
-        'isPrivateAreBlocked'        => 0,
-        'convert'                    => Cocoweb::Encode->instance(),
+        'beenDisconnected'          => 0,
+        'profileTooNew'             => 0,
+        'infuzString'               => '',
+        'userFound'                 => undef,
+        'messageString'             => '',
+        'userFriends'               => undef,
+        'isRestrictedAccount'       => 0,
+        'isUserMustBeAuthenticated' => 0,
+        'isMenAreBlocked'           => 0,
+        'isPrivateAreBlocked'       => 0,
+        'convert'                   => Cocoweb::Encode->instance(),
     );
 }
 
@@ -179,8 +181,15 @@ sub process1Int {
         if ( $bud == 444 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
-            my $profileTooNewRegex = $request->profilTooNewRegex();
-            $self->profileTooNew(1) if $urlu =~ $profileTooNewRegex;
+            my $regex = $request->profilTooNewRegex();
+            if ( $urlu =~ $regex ) {
+                $self->profileTooNew(1);
+            }
+            else {
+                #"vous avez ete deconnecte du serveur de messages prives..."
+                $regex = $request->beenDisconnectedRegex();
+                $self->beenDisconnected(1) if $urlu =~ $regex;
+            }
             debug($urlu);
             message($urlu);
             $self->messageString($urlu);
@@ -192,17 +201,18 @@ sub process1Int {
             die error($urlu);
         }
 
-        # Retrieves information about an user, for Premium subscribers only
-        # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
+# Retrieves information about an user, for Premium subscribers only
+# i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
             $self->infuzString($urlu);
         }
 
-        #Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
-        #Return Cocoweb::Request::searchCode() function.
+      #Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
+      #Return Cocoweb::Request::searchCode() function.
         if ( $bud == 557 ) {
+
             #urlo i.e.: 9955713461399032501marco0
             #urlo i.e.: 99557099null0null
             if ( $urlo =~ m{\d{8}null\dnull$} ) {
@@ -509,7 +519,9 @@ sub process1Int {
                             'myver'      => $okb
                         );
                         if ( $request->isAddNewWriterUserIntoList() ) {
-                            debug("Add new user $moknickID/$mokpseudo in the list");
+                            debug(
+                                "Add new user $moknickID/$mokpseudo in the list"
+                            );
                             $request->usersList()->addUser($user);
                         }
                     }

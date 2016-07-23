@@ -52,6 +52,7 @@
 ! sub je suit       = je suis
 ! sub je sui        = je suis
 ! sub jesuis        = je suis
+! sub sui mec       = suis mec
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
@@ -337,6 +338,9 @@
 - Alors pourquoi prenez-vous un profil "femme" ?
 + je suis h
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
++ tu sais lire
+- Oui, je sais très bien lire bien mieux que vous...
+- Oui
 
 
 + (mdr|haha|rire)

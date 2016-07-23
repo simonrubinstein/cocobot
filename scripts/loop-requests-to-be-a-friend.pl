@@ -1,16 +1,11 @@
 #!/usr/bin/perl
 # @created 2013-12-15
-# @date 2015-01-07
+# @date 2016-07-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2015
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
-#
+# copyright (c) Simon Rubinstein 2010-2016
+
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation; either version 3 of the License, or
@@ -46,7 +41,7 @@ sub run {
     my $userWanted = $CLI->getUserWanted($bot);
     return if !defined $userWanted;
 
-    my ( $failCount, $totalCount ) = ( 0, 0);
+    my ( $failCount, $totalCount ) = ( 0, 0 );
     my %fails = ();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
@@ -55,13 +50,16 @@ sub run {
             $bot->searchChatRooms();
             $bot->actuam();
             $bot->display();
-            my $user = $bot->user();
+            my $user     = $bot->user();
             my $response = $bot->requestToBeAFriend($userWanted);
+            if ( $response->beenDisconnected() ) {
+                die error("you have been disconnected from the server!");
+            }
             $totalCount++;
             if ( $response->profileTooNew() ) {
                 $failCount++;
-                $fails{$user->myavatar()} = $user->mypass();
-            } 
+                $fails{ $user->myavatar() } = $user->mypass();
+            }
             debug(    'Delays the program execution for '
                     . $CLI->delay()
                     . ' second(s)' );
@@ -71,7 +69,7 @@ sub run {
     }
     info("$failCount fails / $totalCount");
     info("The $Bin script was completed successfully.");
-    foreach my $myavatar (keys %fails) {
+    foreach my $myavatar ( keys %fails ) {
         print $myavatar . $fails{$myavatar} . "\n";
     }
 }
@@ -80,7 +78,11 @@ sub run {
 #@brief Perform some initializations
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getOpts( 'enableLoop' => 1, 'searchEnable' => 1, 'myavatarsListEnable' => 1 );
+    my $opt_ref = $CLI->getOpts(
+        'enableLoop'          => 1,
+        'searchEnable'        => 1,
+        'myavatarsListEnable' => 1
+    );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -104,6 +106,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2014-01-29');
+    $CLI->VERSION_MESSAGE('2016-07-23');
 }
 

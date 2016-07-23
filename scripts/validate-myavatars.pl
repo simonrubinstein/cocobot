@@ -5,7 +5,7 @@
 #
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2015
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -154,10 +154,12 @@ sub process {
             . "\n" );
     if ( $counter % 28 == 9 ) {
         my $response = $bot->requestToBeAFriend($userWanted);
-        if ( $response->profileTooNew() ) {
+        if ( $response->beenDisconnected() ) {
+            error("you have been disconnected from the server!");
+            return 1;
+        } elsif ( $response->profileTooNew() ) {
             debug("The profile is still too recent.");
-        }
-        else {
+        } else {
             $myAvatarValided++;
             info("The profile is validated.");
             if (    !defined $CLI->myavatar()
