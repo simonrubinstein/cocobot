@@ -1,15 +1,11 @@
 #!/usr/bin/perl
 # @created 2015-01-03
-# @date 2015-01-07
+# @date 2016-07-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+#
+# https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2015
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -170,12 +166,14 @@ sub process {
             {
                 my ( $myavatar, $mypass )
                     = ( $user->myavatar(), $user->mypass() );
-                $myavatarFiles->moveNewToRun( $myavatar, $mypass );
+                $myavatarFiles->moveNewToRun( $myavatar, $mypass )
+                    if !$isRunFilesUsed;
                 $myavatarFiles->updateRun( $myavatar, $mypass );
             }
             return 1;
         }
-        $response = $bot->requestWriteMessage( $userWanted, $Script );
+        $response = $bot->requestWriteMessage( $userWanted,
+            $Script . ' ' . $counter );
         if ( $response->isRestrictedAccount()
             and !$isRestrictedAccountAllowed )
         {
@@ -212,15 +210,23 @@ sub HELP_MESSAGE {
     $CLI->printLineOfArgs('-R -N');
     print <<ENDTXT;
   -R                Enable the process of restricted accounts. 
-  -N                Use the files in the 'run' directory. 
+  -N                Use the files (containing 'myavatar' and 'mypass')
+                    from the '/var/myavatar/run' directory instead
+                    from the '/var/myavatar/new' directory
 ENDTXT
     $CLI->HELP();
+    print <<ENDTXT;
+ 
+Examples:
+validate-myavatars.pl -v -i 218185 -N -s M
+
+ENDTXT
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2015-01-07');
+    $CLI->VERSION_MESSAGE('2016-07-23');
 }
 

@@ -20,17 +20,21 @@
 ! sub j ene vous         = je ne te
 ! sub je ne vous         = je ne te
 
+! sub t as          = tu as
 ! sub tu est        = tu es
 ! sub t es          = tu es
+! sub t en          = tu en
 ! sub t aime        = tu aimes
 ! sub t aimes       = tu aimes
 ! sub tu aime       = tu aimes
 ! sub t ecris       = tu ecris
 ! sub je m apel     = je m appelle
+! sub tu t apel     = tu t appelles
 ! sub t comment     = tu es comment
 ! sub t appelle     = t appelles
 ! sub t appelels    = t appelles
 ! sub tu tappelle   = tu t apppeles
+! sub c4est         = c est
 ! sub c ca          = c est ca
 ! sub c qui         = c est qui
 ! sub va tu         = vas tu
@@ -42,9 +46,13 @@
 ! sub c ta mere     = c est ta mere
 ! sub c ta          = c est ta 
 ! sub nik ta        = nique ta
+! sub nike ta       = nique ta
 ! sub je suit       = je suis
+! sub je sui        = je suis
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
+! sub pk            = pourquoi
+! sub povre         = pauvre
 ! sub byye          = bye
 ! sub pk            = pourquoi
 ! sub povre         = pauvre
@@ -81,8 +89,10 @@
 ! sub bonjoru       = bonjour
 ! sub bsr           = bonsoir
 ! sub bonsoit       = bonsoir
+! sub bse           = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
+! sub robooooooooooooooooooot = robot
 ! sub rout a fais   = tout a fait
 ! sub rech tu       = recherches tu
 ! sub recherche tu  = recherches tu
@@ -106,6 +116,7 @@
 ! sub mecpassif     = mec passif
 ! sub lol           = mdr
 ! sub loll          = mdr
+! sub mdrr          = mdr
 ! sub pédé          = pede
 ! sub marié         = marie
 ! sub dégage        = degage
@@ -138,6 +149,7 @@
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub taggle        = ta gueule
+! sub tageule       = ta gueule
 ! sub geule         = gueule
 ! sub biem          = bien
 ! sub te relou      = tu es relou
@@ -154,6 +166,8 @@
 ! sub jolipseudo    = joli pseudo
 ! sub tjr           = toujours
 ! sub tjrs          = toujours
+! sub gzrs          = gars
+! sub tes surtout   = tu es surtout
 
 + bonjour
 - Bonjour mon brave.
@@ -680,13 +694,15 @@
 - Ma gueule elle sourit.
 - Ma gueule est sourit et la tienne ?
 - Ma gueule elle sourit, même aux cons.
+- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
+- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
 - Les mauvaises langues se noient toujours dans leurs crachats.
 + ftg [*]
 @ ta gueule
 + tg
 - tg = tu es génial ?
 - tg = tu es génial. Merci.
-- tg = tu es génial. Merci.
+- tg = tu es génial. C'est gentil.
 - tg = Merci, car tg = tu es génial.
 + ntm
 - Le Nord Transmet le Message ?
@@ -752,6 +768,7 @@
 
 + robot
 - Tu penses que je suis un robot ?
+- Tu penses {random}vraiment|réellement|sérieusement{/random} que je suis un robot ?
 - Bien sûr que je suis robot !
 - La différence entre l'être humain et le robot n'est peut-être pas aussi significative que celle qui oppose l'intelligence et la bêtise.
 - Un robot n'est pas tout à fait une machine. Un robot est une machine fabriquée pour imiter de son mieux l'être humain.

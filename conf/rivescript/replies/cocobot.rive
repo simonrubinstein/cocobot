@@ -1,81 +1,138 @@
 ! version = 2.0
 
 ! sub vous etes          = tu es
+! sub comment allez vous = comment vas tu
 ! sub vous en avez       = tu en as 
 ! sub vous cherchez      = tu cherches
-! sub vas-tu             = vas tu
+! sub recherchez vous    = recherches tu
 ! sub propose tu         = proposes tu
-! sub proposes-tu        = proposes tu
 ! sub vous avez          = tu as
 ! sub vous faire         = te faire
-! sub vous n'en avez pas = tu n en as pas
+! sub vous n en avez pas = tu n en as pas
+! sub puis je vous       = puis je te
 ! sub votre              = ton
+! sub vous recherchez    = tu cherches
+! sub vous allee         = tu vas
+! sub vous allez         = tu vas
+! sub allez vous         = vas tu
+! sub allez vous         = vas tu
+! sub vs rech quoi       = tu cherches quoi
+! sub j ene vous         = je ne te
+! sub je ne vous         = je ne te
 
-! sub t'es          = tu es
-! sub t'as          = tu as
+! sub t as          = tu as
+! sub tu est        = tu es
 ! sub t es          = tu es
-! sub t'en          = tu en
-! sub j'ai          = j ai
-! sub j'en          = j en
-! sub j'aime        = j aime
-! sub t'aimes       = tu aimes
-! sub c'est         = c est
-! sub t'epouse      = t epouse
-! sub m'envoyer     = m envoyer
-! sub l'honneur     = l honneur
-! sub l'age         = l age
-! sub l'alcool      = l alcool
-! sub d'accord      = d accord
-! sub l'hopital     = l hopital
+! sub t en          = tu en
+! sub t aime        = tu aimes
+! sub t aimes       = tu aimes
+! sub tu aime       = tu aimes
+! sub t ecris       = tu ecris
+! sub je m apel     = je m appelle
+! sub tu t apel     = tu t appelles
+! sub t comment     = tu es comment
+! sub t appelle     = t appelles
+! sub t appelels    = t appelles
+! sub tu tappelle   = tu t apppeles
+! sub c4est         = c est
 ! sub c ca          = c est ca
 ! sub c qui         = c est qui
-! sub ai-je         = ai je
-! sub qu'est ce     = qu est ce
-! sub qu'est-ce     = qu est ce
+! sub va tu         = vas tu
 ! sub keske         = qu est ce
 ! sub kestu         = qu est ce tu
 ! sub kes tu        = qu est ce tu
 ! sub tu veu        = tu veux
+! sub ont ve        = on veut
+! sub on peu        = on peut
+! sub tu va         = tu vas
 ! sub c ta mere     = c est ta mere
 ! sub c ta          = c est ta 
 ! sub nik ta        = nique ta
 ! sub nike ta       = nique ta
 ! sub je suit       = je suis
 ! sub je sui        = je suis
+! sub jesuis        = je suis
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
 ! sub povre         = pauvre
+! sub byye          = bye
+! sub pk            = pourquoi
+! sub povre         = pauvre
+! sub stp           = s il te plait
+! sub cava          = ca va
+! sub peu etrr      = peut etre
+! sub pseud         = pseudo
+! sub t celibat     = tu es celibataire
+! sub celib         = celibataire
+! sub vas tyu       = vas tu
+! sub jte bouffe    = je te bouffe
+! sub tu habite     = tu habites
+! sub tu suce       = tu suces
+! sub tu me suce    = tu me suces
+! sub tu fait       = tu fais
+! sub on ce connais = on se connait
+! sub t une meuf    = tu es une femme
+! sub pour tepondre = pour repondre
+! sub tes fidele    = tu es fidele
+! sub tes celib     = tu es celibataire
+! sub tes la        = tu es la
+! sub t la          = tu es la
+! sub t ues la      = tu es la
+! sub javoue        = j avoue
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
 
 ! sub slt           = salut
+! sub saluuut       = salut
 ! sub bjr           = bonjour
+! sub bjrrrr        = bonjour
+! sub bonjou        = bonjour
+! sub bonjoru       = bonjour
 ! sub bsr           = bonsoir
+! sub bonsoit       = bonsoir
 ! sub bse           = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
+! sub robooooooooooooooooooot = robot
 ! sub rout a fais   = tout a fait
+! sub rech tu       = recherches tu
+! sub recherche tu  = recherches tu
+! sub que cherchees = que cherches
+! sub cherche tu    = cherches tu
+! sub tu fume       = tu fumes
+! sub tu me saoule  = tu me saoules
+! sub tu saoule     = tu saoules
+! sub tu dort       = tu dors
 
 ! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
 ! sub bonsor        = bonsoir
 ! sub cc            = coucou
+! sub cccc          = coucou
+! sub ccbsr         = coucou bonsoir
 ! sub quel belle    = quelle belle
-! sub tais-toi      = tais toi
 ! sub sa va         = ca va
 ! sub sava          = ca va
+! sub cava          = ca va
+! sub slt cv        = salut ca va
+! sub qsa va        = ca ca
+! sub sa te di      = ca te dit
 ! sub mecpassif     = mec passif
 ! sub lol           = mdr
+! sub loll          = mdr
 ! sub mdrr          = mdr
 ! sub pédé          = pede
 ! sub marié         = marie
 ! sub dégage        = degage
 ! sub vous avez     = tu as
+! sub tu cherche s  = tu cherches
 ! sub tu cherche    = tu cherches
+! sub tu recherche  = tu recherches
 ! sub tu raconte    = tu racontes
 ! sub tu ch         = tu cherches
+! sub tu cher koi   = tu cherches quoi
 ! sub je repond     = je reponds
 ! sub je vait       = je vais
 ! sub di moi        = dis moi
@@ -95,10 +152,12 @@
 ! sub ...           = point de suspension
 ! sub piroquet      = perroquet
 ! sub mm msg        = meme message
+! sub tes message   = tes messages
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub taggle        = ta gueule
 ! sub tageule       = ta gueule
+! sub gueuele       = gueule
 ! sub geule         = gueule
 ! sub biem          = bien
 ! sub te relou      = tu es relou
@@ -109,12 +168,31 @@
 ! sub ds bb         = des bebes
 ! sub bb            = bebe
 ! sub simpa         = sympa
+! sub dediscuter    = de discuter
+! sub saloe         = salope
+! sub pseudi        = pseudo
+! sub jolipseudo    = joli pseudo
+! sub tjr           = toujours
+! sub tjrs          = toujours
 ! sub gzrs          = gars
 ! sub tes surtout   = tu es surtout
+! sub unhomme       = un homme
+! sub pascompris    = pas compris
 
 
 + bonjour robot
 - bonjour humain
+
++ allo
+- Allo allo monsieur l'ordinateur...
+- A l'eau, à l'huile !
+- Allo allo ! Il n'a personne au bout du fil !
+- Allo ! Non mais allo quoi !
+- Pourquoi allo, on est au téléphone ?
+- Allo qui est à l'appareil ?
+- Allo ! Je passe sous un tunnel là, ça va couper !
++ allo allo
+@ allo
 
 + will you accept * as a friend
 - Non je n'accepte pas <star1> comme ami.
@@ -165,7 +243,7 @@
 + [*] (adios|adieu)
 - Il ne faut jamais dire adieu, cela porte malheur.
 - A qui ne regarde rien, tout adieu est facile.
-- Toute la misère du monde n’est rien à côté d’un adieu.
+- Toute la misère du monde n'est rien à côté d'un adieu.
 
 + bonsoir
 - Les fleurs se disent bonsoir à la hâte et ferment leurs paupières.
@@ -180,12 +258,21 @@
 - Autant le mot est léger pour celui qui le jette, autant il est lourd pour celui qui le reçoit.
 
 + t es un robot
+- Bien sûr que je suis robot !
 - Vous pensez que je suis un robot ?
+- Vous pensez {random}vraiment|réellement|sérieusement{/random} que je suis un robot ?
 - La différence entre l'être humain et le robot n'est peut-être pas aussi significative que celle qui oppose l'intelligence et la bêtise.
 - Un robot n'est pas tout à fait une machine. Un robot est une machine fabriquée pour imiter de son mieux l'être humain.
-
+- C'est moi Nono, le petit robot.
+- Je suis Nono le petit robot, l'ami d'Ulysse. 
+- Bidi-bidi-bidi-bidi !
 + [*] robot [*]
 @ t es un robot
++ bye robot
+- {random}Au revoir|Adieu|Au plaisir{/random} être humain.
++ (robi|robby) le robot
+- Je ne crois pas être Robby le robot.
+- Robby le robot est un robot de science-fiction.
 
 + effectivement
 - Vous êtes d'accord avec moi ?
@@ -194,7 +281,7 @@
 @ effectivement
 
 + [euh|je suis|je suis bien|je suis|tout a fait] d accord
-- Je n’ai jamais rien appris d’une personne qui était d’accord avec moi.
+- Je n'ai jamais rien appris d'une personne qui était d'accord avec moi.
 - J'ai tendance à donner raison à ceux avec qui je suis d'accord.
 - La vérité est l'accord entre l'intelligence et les choses.
 - Etre d'accord avec soi-même, je ne connais pas meilleur bulletin de santé !
@@ -203,6 +290,9 @@
 - Je suis marié et hétérosexuel.
 - Ne peut-on pas être homosexuel et marié ?
 - Je suis un homme marié, pourquoi cette question étrange ?
++ tu es marie
+- Je suis un homme marié, pourquoi cette question étrange ?
+
 
 + 1984
 - Nineteen Eighty-Four.
@@ -214,11 +304,6 @@
 - Comment allez-vous ?
 + coucou toi
 @ coucou
-
-+ [*] degage [*]
-- Je ne dégage que des bonnes choses.
-- Je me trouve bien ici, j'y reste.
-
 
 + tu aimes
 - J'aime quoi ?
@@ -250,30 +335,24 @@
 + je [ne] suis pas une femme
 - Alors utilisez un profil "homme" !
 - Alors pourquoi prenez-vous un profil "femme" ?
++ je suis h
+- Pourquoi avez-vous sélectionné un pseudo femme alors ?
+
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
 - Je suis content de vous avoir amusé.
 - Rien n'est meilleur que le rire.
 - Le rire dilate l'esprit.
-- L’erreur, comme le rire, est humaine.
+- L'erreur, comme le rire, est humaine.
 - Le rire est le grelot du sexe.
 - On peut rire de tout, mais pas pour rien.
+- J’adore être pris en flagrant délire.
 
 + [*] je marche sur des oeufs
 - Vous n'êtes pas rassuré ?
 - Vous agissez avec précaution ?
-- On ne fait pas d’omelette sans écraser des oeufs.
-
-+ ta gueule
-- Ma gueule elle sourit.
-- Ma gueule est sourit et la votre ?
-- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
-- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
-+ ferme ta gueule
-@ ta gueule
-+ ftg [*]
-@ ta gueule
+- On ne fait pas d'omelette sans écraser des oeufs.
 
 + tu as raison
 - C'est mon plus gros défault, d'avoir souvent raison.
@@ -290,7 +369,7 @@
 + tu veux quoi [*]
 - Je vous veux vous.
 - Vouloir du bien à une femme, est-ce en vouloir à son mari ?
-- A vouloir trop avoir, l’on perd tout.
+- A vouloir trop avoir, l'on perd tout.
 - Vouloir oublier quelqu'un, c'est y penser. 
 - Il faut vouloir vivre et savoir mourir. 
 - Il faut vouloir ce qu'on ne peut empêcher.
@@ -310,7 +389,7 @@
 - A chaque fois que vous changez de ?
 
 + tu es grave
-- Rien n’est grave, puisque tout est grave.
+- Rien n'est grave, puisque tout est grave.
 - La vie est une chose grave. Il faut gravir.
 - Il est moins grave de perdre que de se perdre.
 - La plus grave maladie du cerveau c'est de réfléchir.
@@ -346,10 +425,10 @@
 - Il vaut mieux faire que dire.
 - Il faut parfois dire des paroles inutiles.
 - Pourparlers. Très souvent pour ne rien dire.
-- S’ennuyer veut dire : ennuyer les autres...
+- S'ennuyer veut dire : ennuyer les autres...
 - Certains non-dits vont sans dire.
 - Quand on n'a rien à dire, comment le dire simplement.
-- L’ivresse fait dire les mots qu’on aurait pu dire en étant sobre.
+- L'ivresse fait dire les mots qu'on aurait pu dire en étant sobre.
 
 + oui
 - Pour dire oui, il faut pouvoir dire non.
@@ -366,15 +445,44 @@
 @ oui
 
 + oui mon esclave
-- Esclave de corps, d’esprit libre.
+- Esclave de corps, d'esprit libre.
 - Une maîtresse est reine, une femme est esclave.
-- L’esclave se satisfait de la jouissance de son maître.
+- L'esclave se satisfait de la jouissance de sa maîtresse.
 - Pour devenir le maître, il faut agir en esclave.
+- Qui domine les autres est fort. Qui se domine est puissant.
+- La domination, la domination totale et absolue de mon être, c'est là où je trouve ma liberté.
+- Le désir de dominer est une passion dévorante qui étouffe tout sentiment.
+- Dominez vos passions pour qu'elles ne vous dominent pas.
++ [bonjour|bonsoir|salut|hello] je suis une dominatrice [*]
+@ oui mon esclave
 
++ [*] degage [*]
+- Je ne dégage que des bonnes choses.
+- Je me trouve bien ici, j'y reste.
++ ta gueule
+- Ma gueule elle sourit.
+- Ma gueule est sourit et la votre ?
+- Ma gueule elle sourit, même aux cons.
+- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
+- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
++ ferme ta gueule
+@ ta gueule
++ ftg [*]
+@ ta gueule
 + tg
 - tg = tu es génial ?
 - tg = tu es génial. Merci.
 - tg = Merci, car tg = tu es génial.
+- tg = tu es génial. C'est gentil.
+- tg = Merci, car tg = tu es génial.
++ ntm
+- Le Nord Transmet le Message ?
+- Nord Trop Mortel ?
+- N'aime que Ta Maman ?
+- Peux pas je finis la tienne.
+- Non, nique plutôt la tienne, elle a l'habitude des petites bites comme la tienne.
++ ntm fdp
+@ ntm
 
 + (tu bien|k mek jmen balek) [*]
 - Vous savoir parler la France ?
@@ -388,8 +496,8 @@
 - Une photographie, c'est un arrêt du coeur d'une fraction de seconde.
 
 + va manger (tes|des) (mulot|mulots) (toi)
-- Quiconque a entendu les cris d’un animal qu’on tue ne peut plus jamais manger de sa chair.
-- Qu’y a-t-il de plus repoussant que de se nourrir continuellement de chair de cadavre ?
+- Quiconque a entendu les cris d'un animal qu'on tue ne peut plus jamais manger de sa chair.
+- Qu'y a-t-il de plus repoussant que de se nourrir continuellement de chair de cadavre ?
 
 + que proposes tu
 - Je propose tout.
@@ -422,7 +530,7 @@
 + [*] je t epouse [*]
 - Merci, mais je suis déjà un homme marié.
 
-+ (point d interrogation|hein)
++ pas compris
 - Vous ne comprenez pas ?
 - Vous avez du mal à me lire ?
 - Crois pour comprendre.
@@ -432,10 +540,12 @@
 - Qui veut tout comprendre finit par mourir de colère.
 - Il faut parfois une grande intelligence pour ne pas comprendre.
 - On passe la moitié de sa vie à retenir sans comprendre, et l'autre moitié à comprendre sans retenir.
++ (point d interrogation|hein|rien compris|j ai pas compris)
+@ pas compris
 
 + je prefere avoir des bebes
 - Vraiment ?
-- Bébés : facile à faire, difficile d’en accoucher.
+- Bébés : facile à faire, difficile d'en accoucher.
 - Ca commence par un baiser, ça finit par un bébé.
 - Les femmes n'aiment ni les hommes ni les femmes mais les bébés.
 - A quoi de mieux peut servir une femme qu'à accueillir au plus chaud d'elle-même un ancien bébé qui a un peu froid ?
@@ -463,12 +573,12 @@
 - Une oeuvre originale, c'est du plagiat pas encore détecté.
 - Avoir une idée originale, c'est se souvenir de quelque chose qu'on a entendu quelque part et avoir oublié où.
 
-+ tu dors (jamais|pas) [*]
++ tu [ne] dors (jamais|pas) [*]
 - Dormir à deux rend la nuit moins opaque. 
 - Mieux vaut dormir debout que courir couché.
 - L'amour est une histoire à dormir couché.
-- Dormir, c’est du temps perdu. Dormir me fait peur. C’est une forme de mort.
-- Le café est un breuvage qui fait dormir quand on n’en prend pas.
+- Dormir, c'est du temps perdu. Dormir me fait peur. C'est une forme de mort.
+- Le café est un breuvage qui fait dormir quand on n'en prend pas.
 - On aura bien assez de temps dans la tombe pour dormir.
 - Un bon traitement contre l'insomnie est de beaucoup dormir.
 
@@ -478,7 +588,7 @@
 + pardon
 - Ma vengeance sera le pardon.
 - Tout pardon a sa récompense.
-- L’erreur est humaine, le pardon divin.
+- L'erreur est humaine, le pardon divin.
 - Le pardon est la plus belle des choses, mais la vengeance est tellement plus satisfaisante.
 
 + tu es gay
@@ -539,7 +649,7 @@
 + faut arreter l alcool
 - On voit toujours quand j'ai bu, jamais quand j'ai soif.
 - J'ai arrêté l'alcool, justement...
-- Pinocchio n’a pas eu de chance : il a eu la gueule de bois toute sa vie !
+- Pinocchio n'a pas eu de chance : il a eu la gueule de bois toute sa vie !
 
 + [*] (pedophile) [*]
 - Pourquoi parlez-vous de pédophile, vous êtes prépubère ?
@@ -576,7 +686,62 @@
 - Le vrai est inimitable, le faux intransformable.
 - Ce qui est seulement presque vrai est tout à fait faux.
 
++ tu t appelles 
+- Les femmes m'appellent "mon cheri", mais toi tu peux m'appeler "mon amour"
+- J'avoue avoir oublié mon nom.
+- Vous pouvez m'appeler comme vous voulez.
++ c est quoi ton prenom
+@ tu t appelles 
++ c est quoi ton nom
+@ tu t appelles 
 
++ copier coller
+- Il est plus facile de copier que de penser, c’est ce qui fait la mode.
+- C'est en copiant qu’on invente.
+- Lorsque quelque chose a été dit et bien dit, n'ayez pas de scrupules. Prennez-le et copiez-le.
++ [*] copier coller [*]
+@ copier coller
+
++ ta mere
+- Merci de vous {random}inquiéter|préoccuper|soucier|tracasser|enquérir|{/random} pour ma {random}chère|tendre{/random} mère, mais elle va {random}très|vraiment{/random} bien.
+
++ racine carre de (2|deux)
+- 1,41421356237
+
++ tais toi
+- Pour faire taire autrui, commencez par vous taire.
+- J'écris pour me taire.
+- Savoir bien se taire est plus malaisé que bien parler.
+- C'est déjà assez triste de n'avoir rien à dire. Si, en plus, il fallait se taire !
+
++ j escomptais une reponse
+- A folle demande, point de réponse.
+- A sotte question, point de réponse.
+- Mauvaise question ? Mauvaise réponse !
+- La plus courte réponse est l’action.
+- Les bouteilles à la mer ne ramènent pas souvent les réponses.
+- La réponse est oui. Mais quelle était la question ?
+- Toute question ne mérite pas de réponse.
+
++ je t adore
+- Femme, je vous adore comme on adore une édition originale, avec ses fautes.
+- L'émerveillement est à la base de l'adoration.
+- Rien n'est plus ennuyeux que d'être adoré. Comment Dieu le supporte-t-il ?
+
++ tu saoules
+- Vraiment, vous êtes sérieuse ?
+- Je suis comme le bon vin, je ne saoule pas.
+- Allez-donc vous reposer, ça ira mieux demain.
++ tu me saoules
+@ tu saoules
++ ca me saoule la
+- tu saoules
++ [*] tu saoules avec tes messages [*]
+@ tu saoules
+
++ va te faire foutre
+- Merci, c'est une invitation à copuler avec vous ?
+- Une jolie fille ne doit s'occuper que de foutre et jamais d'engendrer.
 
 
 

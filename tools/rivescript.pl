@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2016-07-02
-# @date 2016-07-18
+# @date 2016-07-22
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -42,6 +42,8 @@ my $filenameFilter;
 my $isReplyAll     = 1;
 my $matchReply_ref = {};
 my $matchReplyFilename;
+my $onlyMan        = 0;
+my $onlyWoman      = 0;
 
 init();
 run();
@@ -90,9 +92,11 @@ FILELOOP:
             }
             my ( $code, $town, $ISP, $mysex, $myage, $mynickname, $message )
                 = ( $4, $5, $6, $7, $8, $9, $10 );
-
-            #next if $mysex eq 1 or $mysex eq 6;
-
+           if ($onlyWoman) {
+                next if $mysex eq 1 or $mysex eq 6;
+           } elsif ($onlyMan) {
+                next if $mysex eq 2 or $mysex eq 7;
+           }
             if ($isReplyAll) {
                 $totalCount++;
                 my $reply = $rs->reply( "user", $message );
@@ -199,7 +203,7 @@ sub bot {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'cm:V:f:a' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'cm:V:f:a:WM' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -209,6 +213,8 @@ sub init {
     $riveScriptDir     = $opt_ref->{'V'} if exists $opt_ref->{'V'};
     $filenameFilter    = $opt_ref->{'f'} if exists $opt_ref->{'f'};
     $isReplyAll        = 0               if exists $opt_ref->{'a'};
+    $onlyMan           = 1               if exists $opt_ref->{'M'};
+    $onlyWoman         = 1               if exists $opt_ref->{'W'};
     if ( defined $maxFailsCheck ) {
         if ( !defined $isCheckAllAnswers ) {
             error("The option m works only with the option c");
