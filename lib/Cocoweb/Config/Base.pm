@@ -1,14 +1,9 @@
 # @created 2012-02-18
-# @date 2012-12-09
+# @date 2016-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2012
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -44,7 +39,7 @@ sub isHash {
     my ( $self, $key ) = @_;
     my $hash = $self->all();
     croak error("$key hash not found or wrong")
-      if ( !exists $hash->{$key} or ref $hash->{$key} ne 'HASH' );
+        if ( !exists $hash->{$key} or ref $hash->{$key} ne 'HASH' );
 }
 
 ## @method string getString($key)
@@ -59,7 +54,14 @@ sub isString {
     my ( $self, $key ) = @_;
     my $hash = $self->all();
     croak error("$key string not found or wrong")
-      if ( !exists $hash->{$key} or $hash->{$key} !~ m{^.+$}m );
+        if ( !exists $hash->{$key} or $hash->{$key} !~ m{^.+$}m );
+}
+
+## @method string getRegex($key)
+sub getRegex {
+    my ( $self, $key ) = @_;
+    my $str = $self->getString($key);
+    return qr/$str/;
 }
 
 ## @method interger getInt($key)
@@ -74,32 +76,33 @@ sub isInt {
     my ( $self, $key ) = @_;
     my $hash = $self->all();
     croak error("$key integer not found or wrong")
-      if ( !exists $hash->{$key} or $hash->{$key} !~ m{^\d+$} );
+        if ( !exists $hash->{$key} or $hash->{$key} !~ m{^\d+$} );
     return $hash->{$key};
 }
 
+##@method bool getBool($key)
 sub getBool {
     my ( $self, $key ) = @_;
     my $hash = $self->all();
     croak error("$key boolean not found or wrong")
-      if ( !exists $hash->{$key} );
-    if ($hash->{$key} =~m{^(1|true)$}i) {
+        if ( !exists $hash->{$key} );
+    if ( $hash->{$key} =~ m{^(1|true)$}i ) {
         return 1;
-    } elsif ($hash->{$key} =~m{^(0|false)$}i) {
+    }
+    elsif ( $hash->{$key} =~ m{^(0|false)$}i ) {
         return 0;
-    } else {
-        croak error("$key boolean value is wrong")
+    }
+    else {
+        croak error("$key boolean value is wrong");
     }
 }
-
-
 
 ## @method arrayref getArray($key)
 sub getArray {
     my ( $self, $key ) = @_;
     my $hash = $self->all();
     croak error("$key was not found")
-      if !exists $hash->{$key};
+        if !exists $hash->{$key};
     my $r = ref $hash->{$key};
     my $array_ref;
     if ( $r eq 'ARRAY' ) {

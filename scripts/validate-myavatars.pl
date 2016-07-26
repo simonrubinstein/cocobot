@@ -1,6 +1,6 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # @created 2015-01-03
-# @date 2016-07-23
+# @date 2016-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
 # https://github.com/simonrubinstein/cocobot
@@ -38,6 +38,8 @@ my @botsList                   = ();
 my @countersList               = ();
 my @startTimeList              = ();
 my $myAvatarValided            = 0;
+my $restrictedCount            = 0;
+my $disconnectedCount          = 0;
 my $myavatarCount              = 0;
 my $isRestrictedAccountAllowed = 0;
 my $isRunFilesUsed             = 0;
@@ -85,7 +87,7 @@ sub run {
                 )
                 )
             {
-                debug( "delay: " . $CLI->delay() . ' second(s)' );
+                #debug( "delay: " . $CLI->delay() . ' second(s)' );
                 sleep $CLI->delay() if $numConcurrentUsers < 2;
                 next;
             }
@@ -96,6 +98,9 @@ sub run {
         }
         last if $processCount < 1;
     }
+    info(     "Number of avatars:$myavatarNumOf; success:$myAvatarValided"
+            . "; Restricted: $restrictedCount; disconnected: $disconnectedCount"
+    );
     info("The $Bin script was completed successfully.");
 }
 
@@ -131,7 +136,7 @@ sub process {
     if ( $counter % 160 == 39 ) {
         $bot->requestCheckIfUsersNotSeenAreOffline();
     }
-    if ( $counter % 28 == 9 ) {
+    if ( $counter % 28 == 0 ) {
 
         #This request is necessary to activate the server side time counter.
         $bot->searchChatRooms();
@@ -139,27 +144,28 @@ sub process {
     }
     $bot->requestMessagesFromUsers();
     my $user = $bot->user();
-    info(     '**'
-            . $myavatarCount . '/'
-            . $myavatarNumOf . '**' . '<'
-            . ( time - $starttime )
-            . ' seconds>; counter: ['
-            . $counter
-            . ']; myavatar:'
-            . $user->myavatar()
-            . '; mypass:'
-            . $user->mypass()
-            . '; number of validated myavatars: '
-            . $myAvatarValided
-            . "\n" );
-    if ( $counter % 28 == 9 ) {
+    my $infoStr
+        = $myavatarCount . '/'
+        . $myavatarNumOf . ' ' . '('
+        . ( time - $starttime )
+        . ' sec); ['
+        . $counter . ']; '
+        . $user->myavatar() . ' '
+        . $user->mypass()
+        . '; validated: '
+        . $myAvatarValided;
+    if ( $counter % 28 == 5 ) {
         my $response = $bot->requestToBeAFriend($userWanted);
+        info( '**' . $infoStr );
         if ( $response->beenDisconnected() ) {
             error("you have been disconnected from the server!");
+            $disconnectedCount++;
             return 1;
-        } elsif ( $response->profileTooNew() ) {
+        }
+        elsif ( $response->profileTooNew() ) {
             debug("The profile is still too recent.");
-        } else {
+        }
+        else {
             $myAvatarValided++;
             info("The profile is validated.");
             if (    !defined $CLI->myavatar()
@@ -174,14 +180,19 @@ sub process {
             }
             return 1;
         }
-        $response = $bot->requestWriteMessage( $userWanted,
-            $Script . ' ' . $counter );
+        #my $message = $Script . ' ' . $counter;
+        my $message = ';02';
+        $response = $bot->requestWriteMessage( $userWanted, $message );
         if ( $response->isRestrictedAccount()
             and !$isRestrictedAccountAllowed )
         {
             debug("The account is restricted. Gives up.");
+            $restrictedCount++;
             return 1;
         }
+    }
+    else {
+        info( '--' . $infoStr );
     }
     return 0;
 }
@@ -229,6 +240,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-23');
+    $CLI->VERSION_MESSAGE('2016-07-26');
 }
 

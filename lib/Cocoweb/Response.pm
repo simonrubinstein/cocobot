@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2016-07-23
+# @date 2016-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -473,7 +473,9 @@ sub process1Int {
                     if ( $diase < 3 ) {
                         $kopo = 1;
                         my $idgars = parseInt( substr( $urlo, $hzq, 6 ) );
-                        warning("The user $idgars is disconnected");
+                        warning(
+                            "The $idgars user you want to write is disconnected"
+                        );
                     }
                     else {
                         my $zami = parseInt( substr( $urlo, $hzq, 6 ) );
@@ -623,7 +625,7 @@ sub incomingMessage {
         $s2 = $user->mynickname() . 'Bob accepted you as a friend.';
     }
     $user->hasSentMessage($s2);
-    info($s2);
+    info( $user->mynickname() . '> ' . $s2 );
 
 }
 

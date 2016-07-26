@@ -23,6 +23,7 @@
 ! sub t as          = tu as
 ! sub tu est        = tu es
 ! sub t es          = tu es
+! sub  est tu       = es tu
 ! sub t en          = tu en
 ! sub t aime        = tu aimes
 ! sub t aimes       = tu aimes
@@ -37,6 +38,7 @@
 ! sub c4est         = c est
 ! sub c ca          = c est ca
 ! sub c qui         = c est qui
+! sub ki es tu      = qui es tu
 ! sub va tu         = vas tu
 ! sub keske         = qu est ce
 ! sub kestu         = qu est ce tu
@@ -149,6 +151,7 @@
 ! sub pfffffff      = pff
 ! sub pfffffffffff  = pff
 ! sub oke           = ok
+! sub oki           = ok
 ! sub ^^            = emoticone style nippon 
 ! sub ...           = point de suspension
 ! sub piroquet      = perroquet
@@ -158,8 +161,10 @@
 ! sub t lourd       = tu es lourd
 ! sub taggle        = ta gueule
 ! sub tageule       = ta gueule
+! sub tagueule      = ta gueule
 ! sub gueuele       = gueule
 ! sub geule         = gueule
+! sub gueulle       = gueule
 ! sub biem          = bien
 ! sub te relou      = tu es relou
 ! sub mulo          = mulot
@@ -223,6 +228,10 @@
 - J'ai dû lire cette <star1> quelque part.
 
 + [*] jolie (phrase)
+- J'ai bien peu que cette <star1> ne soit pas de moi.
+- J'ai dû lire cette <star1> quelque part.
++ j aime beaucoup cette (phrase) 
+- J'avoue que j'apprécie aussi beaucoup cette <star1>.
 - J'ai bien peu que cette <star1> ne soit pas de moi.
 - J'ai dû lire cette <star1> quelque part.
 
@@ -483,8 +492,7 @@
 - Le Nord Transmet le Message ?
 - Nord Trop Mortel ?
 - N'aime que Ta Maman ?
-- Peux pas je finis la tienne.
-- Non, nique plutôt la tienne, elle a l'habitude des petites bites comme la tienne.
+- Je ne puis point, je suis en train de terminer la votre.
 + ntm fdp
 @ ntm
 
@@ -756,5 +764,30 @@
 @ tu sais lire
 + tu sais pas lire du con [*]
 @ tu sais lire
+
++ bref
+- Ce qui est bref et bon est deux fois bon.
+- Soyez bref, car les discours qui n’en finissent pas ne plaisent pas.
+
++ tu es penible
+- Merci, j'apprécie les compliments.
+- C'est très pénible de peigner la girafe. Surtout sans échelle.
+- Le pénible fardeau de n'avoir rien à faire.
+- Ce qui est le plus pénible est l'absence totale de solitude.
++ tu es penible monsieur
+@ tu es penible
+
++ qui es tu
+- Je suis celui dont le nom est écrit dans l'eau.
+- Je ne suis que le fils de mon père.
+- Je suis une simple suite d'octets dans la mémoire d'un ordinateur.
+- Je suis celui que tu as recherché toute ta vie.
++ mais qui es tu
+@ qui es tu
+
+
+
+
+
 
 

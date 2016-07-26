@@ -1,6 +1,7 @@
 # @created 2012-01-26
-# @date 2016-06-28
+# @date 2016-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
+#
 # https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2016
@@ -47,7 +48,8 @@ __PACKAGE__->attributes(
     'hasChange',
     ##Counter user
     'notViewCount',
-    #True if some user values have changed which must be updated in the database
+
+  #True if some user values have changed which must be updated in the database
     'updateDbRecord',
     ##The id colum of "codes" table.
     #The value is 0 if the user has not been inserted into database.
@@ -55,7 +57,7 @@ __PACKAGE__->attributes(
     ##The id column of "nicknames" table.
     #The value is 0 if the user has not been inserted into database.
     'DBUserId',
-    ##User has been created. Used for alams
+    ##User has been created. Used for alarms
     'isRecent'
 );
 
@@ -64,18 +66,18 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     confess error("Missing argument")
-      if !exists $args{'mynickname'}
-          or !exists $args{'myage'}
-          or !exists $args{'mysex'}
-          or !exists $args{'mynickID'}
-          or !exists $args{'citydio'}
-          or !exists $args{'mystat'}
-          or !exists $args{'mystat'};
-    debug(  'Creates new user "'
-          . $args{'mynickname'}
-          . '" (mynickID: '
-          . $args{'mynickID'}
-          . ')' );
+        if !exists $args{'mynickname'}
+        or !exists $args{'myage'}
+        or !exists $args{'mysex'}
+        or !exists $args{'mynickID'}
+        or !exists $args{'citydio'}
+        or !exists $args{'mystat'}
+        or !exists $args{'mystat'};
+    debug(    'Creates new user "'
+            . $args{'mynickname'}
+            . '" (mynickID: '
+            . $args{'mynickID'}
+            . ')' );
     $self->attributes_defaults(
         'mynickname'       => $args{'mynickname'},
         'myage'            => $args{'myage'},
@@ -118,12 +120,12 @@ sub checkAndupdate {
         if ( $oldVal ne $newVal ) {
             $self->$name($oldVal);
             $self->updateDbRecord(1);
-            info(   $self->mynickname()
-                  . ': Replace "'
-                  . $name
-                  . '" from '
-                  . $self->$name() . ' to '
-                  . $newVal );
+            info(     $self->mynickname()
+                    . ': Replace "'
+                    . $name
+                    . '" from '
+                    . $self->$name() . ' to '
+                    . $newVal );
             $self->$name($newVal);
             next if $name eq 'mystat' or $name eq 'myXP' and $name eq 'myver';
             if ( $name eq 'mysex' ) {
