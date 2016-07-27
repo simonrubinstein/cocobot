@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-07-23
+# @date 2016-07-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
 # copyright (c) Simon Rubinstein 2010-2016
@@ -57,6 +57,7 @@ __PACKAGE__->attributes(
     'infuzNotToFastRegex',
     'profilTooNewRegex',
     'beenDisconnectedRegex',
+    'accountproblemRegex',
     'infuzMaxOfTries',
     'infuzPause1',
     'infuzPause2',
@@ -65,7 +66,8 @@ __PACKAGE__->attributes(
     'localIP',
     'publicIP',
     'isConfHTTPrequests',
-    'isAddNewWriterUserIntoList'
+    'isAddNewWriterUserIntoList',
+    'isDieIfDisconnected'
 );
 
 my $conf_ref;
@@ -75,6 +77,11 @@ my $removeListDelay;
 my $localIP;
 my $publicIP;
 my $isConfHTTPrequests;
+my $infuzNotToFast;
+my $profilTooNew;
+my $beenDisconnected;
+my $accountproblemRegex;
+my $myport;
 
 ##@method void init($args)
 #@brief Perform some initializations
@@ -95,13 +102,12 @@ sub init {
             ->getConfigFile( 'request.conf', 'File' );
         $conf_ref = $conf->all();
         foreach my $name (
-            'urly0',                       'urlprinc',
-            'current-url',                 'avatar-url',
-            'avaref',                      'urlcocoland',
-            'urlav',                       'url_initio.js',
-            'infuz-not-to-fast',           'profile-too-new',
-            'magic-auth-string',           'get-ip-address-url',
-            'remote-address-ipv4-default', 'been-disconnected'
+            'urly0',             'urlprinc',
+            'current-url',       'avatar-url',
+            'avaref',            'urlcocoland',
+            'urlav',             'url_initio.js',
+            'magic-auth-string', 'get-ip-address-url',
+            'remote-address-ipv4-default'
             )
         {
             $conf->isString($name);
@@ -141,18 +147,13 @@ sub init {
         $conf->isInt('infuz-pause2');
         $conf->isInt('infuz-max-of-tries-after-pause');
         $conf->isInt('remote-port-default');
-        $isConfHTTPrequests = $conf->getBool('isConfHTTPrequests');
+        $isConfHTTPrequests  = $conf->getBool('isConfHTTPrequests');
+        $infuzNotToFast      = $conf->getRegex('infuz-not-to-fast');
+        $profilTooNew        = $conf->getRegex('profile-too-new');
+        $beenDisconnected    = $conf->getRegex('been-disconnected');
+        $accountproblemRegex = $conf->getRegex('account-problem');
+        $myport              = 80;
     }
-
-    #my $myport = 3000 + randum(10);
-    my $myport = 80;
-
-    my $infuzNotToFast = $conf_ref->{'infuz-not-to-fast'};
-    $infuzNotToFast = qr/$infuzNotToFast/;
-    my $profilTooNew = $conf_ref->{'profile-too-new'};
-    $profilTooNew = qr/$profilTooNew/;
-    my $beenDisconnected = $conf_ref->{'been-disconnected'};
-    $beenDisconnected = qr/$beenDisconnected/;
 
     if ( !defined $publicIP ) {
         my $req = HTTP::Request->new(
@@ -209,13 +210,15 @@ sub init {
         'localIP'               => $localIP,
         'profilTooNewRegex'     => $profilTooNew,
         'beenDisconnectedRegex' => $beenDisconnected,
+        'accountproblemRegex'   => $accountproblemRegex,
         'infuzMaxOfTries'       => $conf_ref->{'infuz-max-of-tries'},
         'infuzPause1'           => $conf_ref->{'infuz-pause1'},
         'infuzPause2'           => $conf_ref->{'infuz-pause2'},
         'infuzMaxOfTriesAfterPause' =>
             $conf_ref->{'infuz-max-of-tries-after-pause'},
         'isConfHTTPrequests'         => $isConfHTTPrequests,
-        'isAddNewWriterUserIntoList' => 0
+        'isAddNewWriterUserIntoList' => 0,
+        'isDieIfDisconnected'        => 1
     );
 }
 

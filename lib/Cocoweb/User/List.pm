@@ -411,6 +411,12 @@ sub checkIfNicknameExists {
     return;
 }
 
+sub getRandomUser {
+    my ($self)     = @_;
+    my $user_ref   = $self->all();
+    return $user_ref->{ (keys %$user_ref )[ rand keys %$user_ref ]};
+}
+
 ##@method string nickIdToNickname($nickid)
 #@brief Returns a nickanme from a nickname id
 #@param integer $nickid A nickname ID (i.e. 314857)

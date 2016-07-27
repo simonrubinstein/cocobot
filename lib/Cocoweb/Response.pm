@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2016-07-26
+# @date 2016-07-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -33,12 +33,13 @@ use utf8;
 no utf8;
 
 __PACKAGE__->attributes(
-    'beenDisconnected',    'profileTooNew',
-    'infuzString',         'userFound',
-    'messageString',       'userFriends',
-    'isRestrictedAccount', 'isUserMustBeAuthenticated',
-    'isMenAreBlocked',     'isPrivateAreBlocked',
-    'convert'
+    'beenDisconnected',          'isAccountProblem',
+    'profileTooNew',             'infuzString',
+    'userFound',                 'messageString',
+    'userFriends',               'isRestrictedAccount',
+    'isUserMustBeAuthenticated', 'isMenAreBlocked',
+    'isPrivateAreBlocked',       'convert',
+    'isUserWantToWriteIsdisconnects'
 );
 
 ##@method void init($args)
@@ -46,17 +47,19 @@ __PACKAGE__->attributes(
 sub init {
     my ( $self, %args ) = @_;
     $self->attributes_defaults(
-        'beenDisconnected'          => 0,
-        'profileTooNew'             => 0,
-        'infuzString'               => '',
-        'userFound'                 => undef,
-        'messageString'             => '',
-        'userFriends'               => undef,
-        'isRestrictedAccount'       => 0,
-        'isUserMustBeAuthenticated' => 0,
-        'isMenAreBlocked'           => 0,
-        'isPrivateAreBlocked'       => 0,
-        'convert'                   => Cocoweb::Encode->instance(),
+        'beenDisconnected'               => 0,
+        'isAccountProblem'               => 0,
+        'profileTooNew'                  => 0,
+        'infuzString'                    => '',
+        'userFound'                      => undef,
+        'messageString'                  => '',
+        'userFriends'                    => undef,
+        'isRestrictedAccount'            => 0,
+        'isUserMustBeAuthenticated'      => 0,
+        'isMenAreBlocked'                => 0,
+        'isPrivateAreBlocked'            => 0,
+        'convert'                        => Cocoweb::Encode->instance(),
+        'isUserWantToWriteIsdisconnects' => 0
     );
 }
 
@@ -181,14 +184,18 @@ sub process1Int {
         if ( $bud == 444 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
-            my $regex = $request->profilTooNewRegex();
-            if ( $urlu =~ $regex ) {
+            if ( $urlu =~ $request->profilTooNewRegex() ) {
                 $self->profileTooNew(1);
             }
-            else {
+            elsif ( $urlu =~ $request->beenDisconnectedRegex() ) {
                 #"vous avez ete deconnecte du serveur de messages prives..."
-                $regex = $request->beenDisconnectedRegex();
-                $self->beenDisconnected(1) if $urlu =~ $regex;
+                $self->beenDisconnected(1);
+                die error($urlu) if $request->isDieIfDisconnected();
+            }
+            elsif ( $urlu =~ $request->accountproblemRegex() ) {
+                #Probleme avec votre compte . Essayez de vous reconnecter..."
+                $self->isAccountProblem(1);
+                die error($urlu) if $request->isDieIfDisconnected();
             }
             debug($urlu);
             message($urlu);
@@ -201,16 +208,16 @@ sub process1Int {
             die error($urlu);
         }
 
-# Retrieves information about an user, for Premium subscribers only
-# i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
+        # Retrieves information about an user, for Premium subscribers only
+        # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
             my $urlu = $request->convert()
                 ->transformix( substr( $urlo, 5 ), -1, 0 );
             $self->infuzString($urlu);
         }
 
-      #Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
-      #Return Cocoweb::Request::searchCode() function.
+        # Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
+        # Return Cocoweb::Request::searchCode() function.
         if ( $bud == 557 ) {
 
             #urlo i.e.: 9955713461399032501marco0
@@ -476,6 +483,7 @@ sub process1Int {
                         warning(
                             "The $idgars user you want to write is disconnected"
                         );
+                        $self->isUserWantToWriteIsdisconnects(1);
                     }
                     else {
                         my $zami = parseInt( substr( $urlo, $hzq, 6 ) );

@@ -115,6 +115,7 @@ sub getNewBot {
         'myavatar'       => $myavatar,
         'mypass'         => $mypass
     );
+    $bot->request()->isDieIfDisconnected(0);
     $bot->display();
     $bot->searchChatRooms();
     $bot->actuam();
@@ -162,6 +163,10 @@ sub process {
             $disconnectedCount++;
             return 1;
         }
+        elsif ( $response->isAccountProblem() ) {
+            $disconnectedCount++;
+            return 1;
+        }
         elsif ( $response->profileTooNew() ) {
             debug("The profile is still too recent.");
         }
@@ -189,6 +194,9 @@ sub process {
             debug("The account is restricted. Gives up.");
             $restrictedCount++;
             return 1;
+        }
+        elsif ( $response->isUserWantToWriteIsdisconnects() ) {
+            error("Target user is disconnects!");
         }
     }
     else {
