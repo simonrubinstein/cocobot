@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # @created 2015-01-03
-# @date 2016-07-26
+# @date 2016-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
 # https://github.com/simonrubinstein/cocobot
@@ -40,9 +40,13 @@ my @startTimeList              = ();
 my $myAvatarValided            = 0;
 my $restrictedCount            = 0;
 my $disconnectedCount          = 0;
+my $accountProblemCount        = 0;
 my $myavatarCount              = 0;
 my $isRestrictedAccountAllowed = 0;
 my $isRunFilesUsed             = 0;
+my $isSendsMessageAlways       = 0;
+my $isSkipTooNewAccounts       = 0;
+my $messageSent;
 my $myavatars_ref;
 my $userWanted;
 my $myavatarNumOf;
@@ -156,6 +160,7 @@ sub process {
         . '; validated: '
         . $myAvatarValided;
     if ( $counter % 28 == 5 ) {
+        writeMessage( $bot, $counter ) if $isSendsMessageAlways;
         my $response = $bot->requestToBeAFriend($userWanted);
         info( '**' . $infoStr );
         if ( $response->beenDisconnected() ) {
@@ -164,11 +169,12 @@ sub process {
             return 1;
         }
         elsif ( $response->isAccountProblem() ) {
-            $disconnectedCount++;
+            $accountProblemCount++;
             return 1;
         }
         elsif ( $response->profileTooNew() ) {
             debug("The profile is still too recent.");
+            return 1 if $isSkipTooNewAccounts;
         }
         else {
             $myAvatarValided++;
@@ -185,22 +191,33 @@ sub process {
             }
             return 1;
         }
-        #my $message = $Script . ' ' . $counter;
-        my $message = ';02';
-        $response = $bot->requestWriteMessage( $userWanted, $message );
-        if ( $response->isRestrictedAccount()
-            and !$isRestrictedAccountAllowed )
-        {
-            debug("The account is restricted. Gives up.");
-            $restrictedCount++;
-            return 1;
-        }
-        elsif ( $response->isUserWantToWriteIsdisconnects() ) {
-            error("Target user is disconnects!");
-        }
+        return writeMessage( $bot, $counter ) if !$isSendsMessageAlways;
     }
     else {
         info( '--' . $infoStr );
+    }
+    return 0;
+}
+
+sub writeMessage {
+    my ( $bot, $counter ) = @_;
+    my $message;
+    if ( defined $messageSent ) {
+        $message = $messageSent;
+    }
+    else {
+        $message = $Script . ' ' . $counter;
+    }
+    my $response = $bot->requestWriteMessage( $userWanted, $message );
+    if ( $response->isRestrictedAccount()
+        and !$isRestrictedAccountAllowed )
+    {
+        debug("The account is restricted. Gives up.");
+        $restrictedCount++;
+        return 1;
+    }
+    elsif ( $response->isUserWantToWriteIsdisconnects() ) {
+        error("Target user is disconnects!");
     }
     return 0;
 }
@@ -212,7 +229,7 @@ sub init {
     my $opt_ref = $CLI->getOpts(
         'enableLoop'    => 1,
         'searchEnable'  => 1,
-        'argumentative' => 'RN'
+        'argumentative' => 'RNWKm:'
     );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
@@ -220,6 +237,9 @@ sub init {
     }
     $isRestrictedAccountAllowed = $opt_ref->{'R'} if exists $opt_ref->{'R'};
     $isRunFilesUsed             = $opt_ref->{'N'} if exists $opt_ref->{'N'};
+    $isSendsMessageAlways       = $opt_ref->{'W'} if exists $opt_ref->{'W'};
+    $isSkipTooNewAccounts       = $opt_ref->{'K'} if exists $opt_ref->{'K'};
+    $messageSent                = $opt_ref->{'m'} if exists $opt_ref->{'m'};
     $myavatarFiles = Cocoweb::MyAvatar::File->instance();
 
 }
@@ -228,12 +248,15 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print STDOUT $Script . ', valide MyAvatar accounts.' . "\n";
-    $CLI->printLineOfArgs('-R -N');
+    $CLI->printLineOfArgs('-R -N -m message');
     print <<ENDTXT;
   -R                Enable the process of restricted accounts. 
   -N                Use the files (containing 'myavatar' and 'mypass')
                     from the '/var/myavatar/run' directory instead
                     from the '/var/myavatar/new' directory
+  -W                Sends a message after each request to become a friend         
+  -K                Skip 'too recent' accounts 
+  -m message        The text message to send. 
 ENDTXT
     $CLI->HELP();
     print <<ENDTXT;
@@ -248,6 +271,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-26');
+    $CLI->VERSION_MESSAGE('2016-07-29');
 }
 

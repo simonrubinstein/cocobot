@@ -2,7 +2,7 @@
 
 Cette page explique l'installation et l'utilisation pas à pas du script « save-logged-user-in-database.pl ».
 
-Le script « save-logged-user-in-database.pl » créé un bot qui se connecte sur Coco.fr et va lire la liste des pseudos connectés sur le chat plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr](cocoRegistration).
+Le script « save-logged-user-in-database.pl » créé un bot qui se connecte sur Coco.fr et va lire la liste des pseudos connectés sur le chat plusieurs fois par minutes, puis enregistre toutes les connexions et déconnexions des pseudos dans une base de données MySQL. Le script est prévu pour fonctionner 24 heures sur 24 et sept jours sur sept et nécessite de souscrire un abonnement Premium payant sur Coco.fr. [Lire la documentation sur comment souscrire à un abonnement Premium sur le site Coco.fr](cocoRegistration.md).
 
 Cette documentation se base sur le système d'exploitation [Ubuntu 16.04 Desktop](http://www.ubuntu-fr.org/telechargement), donc pour installer ce script un système d'exploitation Ubuntu 16.04 Desktop est requis.
 
@@ -80,13 +80,13 @@ Le script peut prendre quelques secondes ou minutes avant de rendre la main.
 
 L'objectif est de lancer le script « save-logged-user-in-database.pl » toutes les minutes. Pour cela nous allons configurer le programme [cron](http://fr.wikipedia.org/wiki/Cron) pour qu'il exécute le script « save-logged-user-in-database.pl » toutes les minutes.
 
-Tout d'abord vous devez récupérer les valeurs de « myavatar » et « mypass » d'un compte ayant un abonnement payant Premium. Lire la documentation sur [comment souscrire à un abonnement Premium sur le site Coco.fr et récupérer les valeurs de « myavatar » et « mypass »](cocoRegistration).
+Tout d'abord vous devez récupérer les valeurs de « myavatar » et « mypass » d'un compte ayant un abonnement payant Premium. Lire la documentation sur [comment souscrire à un abonnement Premium sur le site Coco.fr et récupérer les valeurs de « myavatar » et « mypass »](cocoRegistration.md).
 
 Dans notre exemple nous utiliserons :
   * « myavatar » correspond à la valeur « 816356817 »
   * « mypass » correspond à la valeur « XYZPAHPFLFRIEBWDNDZD ».
 
-Ces valeurs de « myavatar » et « mypass » sont données uniquement à titre d'exemple et ne fonctionneront pas. Vous [devez souscrire à un abonnement Premium](cocoRegistration) de cinq euros par mois.
+Ces valeurs de « myavatar » et « mypass » sont données uniquement à titre d'exemple et ne fonctionneront pas. Vous [devez souscrire à un abonnement Premium](cocoRegistration.md) de cinq euros par mois.
 
 Nous allons lancer [le programme crontab](http://fr.wikipedia.org/wiki/Crontab) qui permet d'éditer des tables de configuration du programme _cron_.
 

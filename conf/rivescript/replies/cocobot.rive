@@ -4,6 +4,7 @@
 ! sub comment allez vous = comment vas tu
 ! sub vous en avez       = tu en as 
 ! sub vous cherchez      = tu cherches
+! sub vous chercher quoi = tu cherches quoi
 ! sub recherchez vous    = recherches tu
 ! sub propose tu         = proposes tu
 ! sub vous avez          = tu as
@@ -19,6 +20,7 @@
 ! sub vs rech quoi       = tu cherches quoi
 ! sub j ene vous         = je ne te
 ! sub je ne vous         = je ne te
+! sub etes vous          = es tu
 
 ! sub t as          = tu as
 ! sub tu est        = tu es
@@ -32,6 +34,7 @@
 ! sub je m apel     = je m appelle
 ! sub tu t apel     = tu t appelles
 ! sub t comment     = tu es comment
+! sub t komen       = tu es comment
 ! sub t appelle     = t appelles
 ! sub t appelels    = t appelles
 ! sub tu tappelle   = tu t apppeles
@@ -49,6 +52,7 @@
 ! sub tu va         = tu vas
 ! sub c ta mere     = c est ta mere
 ! sub c ta          = c est ta 
+! sub c normal      = c est normal
 ! sub nik ta        = nique ta
 ! sub nike ta       = nique ta
 ! sub je suit       = je suis
@@ -83,6 +87,9 @@
 ! sub t la          = tu es la
 ! sub t ues la      = tu es la
 ! sub javoue        = j avoue
+! sub t partie      = tu es parti
+! sub t parti       = tu es parti
+! sub tu sorts      = tu sors
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
@@ -126,6 +133,7 @@
 ! sub lol           = mdr
 ! sub loll          = mdr
 ! sub mdrr          = mdr
+! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
 ! sub pédé          = pede
 ! sub marié         = marie
 ! sub dégage        = degage
@@ -184,6 +192,9 @@
 ! sub tes surtout   = tu es surtout
 ! sub unhomme       = un homme
 ! sub pascompris    = pas compris
+! sub pas tt compris = pas tout compris
+! sub j sui h       = je suis un homme
+! sub casses toi    = casse toi
 
 
 + bonjour robot
@@ -210,9 +221,10 @@
 - Oui je vais fort bien. Je vous retourne la question ?
 - Je pète la forme, je vous laisse imaginer l'état des chaises.
 
-+ (bonjour|salut)
++ (bonjour|salut|bj)
 - je suis enchanté que vous me saluiez.
 - j'aime qu'une dame me dise bonjour.
+- C'est aimable à vous de me saluer !
 
 + comment vas tu
 @ salut la forme
@@ -300,6 +312,9 @@
 - Je suis marié et hétérosexuel.
 - Ne peut-on pas être homosexuel et marié ?
 - Je suis un homme marié, pourquoi cette question étrange ?
++ trav ou pede
+- Ni l'un ni l'autre, je suis un homme hétérosexuel.
+- Je suis ni travesti, ni homosexuel.
 + tu es marie
 - Je suis un homme marié, pourquoi cette question étrange ?
 
@@ -468,6 +483,8 @@
 - Dominez vos passions pour qu'elles ne vous dominent pas.
 + [bonjour|bonsoir|salut|hello] je suis une dominatrice [*]
 @ oui mon esclave
++ slavemoney
+@ oui mon esclave
 
 + [*] degage [*]
 - Je ne dégage que des bonnes choses.
@@ -554,6 +571,11 @@
 - On passe la moitié de sa vie à retenir sans comprendre, et l'autre moitié à comprendre sans retenir.
 + (point d interrogation|hein|rien compris|j ai pas compris)
 @ pas compris
++ pas tout compris
+@ pas compris
++ je [ne] comprends rien
+@ pas compris
+
 
 + je prefere avoir des bebes
 - Vraiment ?
@@ -596,6 +618,14 @@
 
 + casse toi
 - Je suis incassable.
++ casse toi connard
+- Monsieur Connard, s'il vous plaît. Et je suis incassable.
++ tu fais chier
+- On m'a souvent dit que j'avais des vertus laxatives.
+- Plus on est chiant, plus on se fait respecter.
+- Les gens qui ont l’air constipé sont souvent les plus chiants !
++ tu fais chier toi
+@ tu fais chier
 
 + pardon
 - Ma vengeance sera le pardon.
@@ -605,6 +635,9 @@
 
 + tu es gay
 - Je suis une personne gai mais pas gay
+- Non, je suis un homme hétérosexuel.
++ tu es homo
+@ tu es gay
 
 + je suis venale
 - Le sexe c'est mieux quand c'est gratuit.
@@ -648,10 +681,12 @@
 - Je ne possède pas de compte Skype.
 - Je ne possède pas et ne veux pas posséder de compte Skype. 
 
-+ * fils de pute *
++ fdp
 - Je ne pense pas être votre frère, vous faites erreur.
 - Je ne suis pas l'enfant de votre mère, vous vous trompez.
 - Vous devez me confondre avec votre frère.
++ * fils de pute *
++ @fdp
 
 + (nique|baise) ta mere
 - Je ne fais pas dans l'inceste, contrairement à vous.
@@ -670,6 +705,8 @@
 + [*] hopital psychiatrique [*]
 - L'hôpital psychiatrique ? J'aurais bien trop peur de vous y rencontrer.
 - Vous vivez dans un hôpital psychiatrique ?
++ tu sors de l asile
+- L'asile psychiatrique ? J'aurais bien trop peur de vous y rencontrer.
 
 + que recherches tu
 - Chacun cherche son chat ici.
@@ -779,15 +816,51 @@
 
 + qui es tu
 - Je suis celui dont le nom est écrit dans l'eau.
-- Je ne suis que le fils de mon père.
+- Je ne suis que le fils de {random}mon père|ma mère{/random}.
 - Je suis une simple suite d'octets dans la mémoire d'un ordinateur.
-- Je suis celui que tu as recherché toute ta vie.
+- Je suis celui que vous avez recherché toute votre vie.
 + mais qui es tu
 @ qui es tu
++ (bonsoir|bonjour|hello|coucou) qui es tu
+@ qui es tu
 
++ tu en as beaucoup comme ca
+- Quelques unes oui.
+- J'en ai pas mal en stock.
 
++ tu es comment
+- Là, je suis {random}confortablement|bien|douillettement|correctement{/random} assis {random}dans mon fauteuil|sur ma chaise{/random}.
+- Je suis comme je suis, pourquoi ?
 
++ c est normal
+- Si vous pensez que c'est normal.
+- Qu'est la normalité ?
 
++ tu es normal
+- Anormal : ce qui est normal chez les anormaux.
+- On ne peut être normal et vivant à la fois.
+- Etre normal, c'est aimer et travailler.
+- L'état normal d'un homme est d'être un original.
+- On n'aspire pas à être normal, c'est plutôt quelque chose dont on veut sortir.
+- Avant d'insulter les gens de fous, essayez de trouver quelqu'un de normal.
 
++ parti
+- Il faut bien partir un jour.
+- Quand on aime il faut partir.
+- Partir, c'est mourir un peu, mais mourir, c'est partir beaucoup.
+- Je suis toujours avec toi ici.
+- Je suis là.
+- Je ne suis point partie.
+- Je dois partir et vivre, ou rester et mourir.
++ tu es parti
+@ parti
++ partie
+@ parti
 
++ pauvre type
+- Je ne suis pas si pauvre que ça vous savez.
+- Il n'est pauvreté que d'ignorance.
+
++ tu ne me reponds jamais
+- Non je ne réponds jamais.
 
