@@ -2,13 +2,13 @@
 
 Le [script « save-logged-user-in-database.pl »](saveLoggedUserInDatabase.md) permet de déclencher certaines alertes. Une alerte est soit un message _XMPP_ ou soit un message envoyé à l'utilisateur connecté.
 
-Des alertes peuvent-être déclenchées en analysant les propriétés des utilisateurs connectés, par exemple on peut déclencher une alerte si l'utilisateur avec le pseudo « _Laws_ » se connecte, ou si un pseudo femme de trente ans se connecte, ou encore si un pseudo se connecte avec un code de vote « _MYY_ ».
+Des alertes peuvent-être déclenchées en analysant les propriétés des utilisateurs connectés, par exemple on peut déclencher une alerte si l'utilisateur avec le pseudo « Laws » se connecte, ou si un pseudo femme de trente ans se connecte, ou encore si un pseudo se connecte avec un code de vote « MYY ».
 
-L'option « -A » du « _save-logged-user-in-database.pl_ » active la fonction des alertes et le fichier « conf/alert.conf » est utilisé.
+L'option « -A » du « save-logged-user-in-database.pl » active la fonction des alertes et le fichier « conf/alert.conf » est utilisé.
 
 ## La section `<alert>` ##
 
-Le fichier « _alert.conf_ » comporte la section `<alert>` pour déclarer une nouvelle alerte.
+Le fichier « alert.conf » comporte la section `<alert>` pour déclarer une nouvelle alerte.
 
 Exemple :
 ```
@@ -20,7 +20,7 @@ Exemple :
   </alert>
 ```
 
-Dans cette exemple une alarme de type _XMPP_ est déclenché si un pseudonyme « _Laws_ » est connecté.
+Dans cette exemple une alarme de type _XMPP_ est déclenché si un pseudonyme « Laws » est connecté.
 
 Les différentes directives sont :
   * enable :  « 1 » l'alerte est activée ou « 0 » elle est désactivée.
@@ -37,14 +37,14 @@ Les directives conditions utilisent les propriétés de l'objet _Cocoweb::user::
   * mysex : le sexe : 1 ou 6 pour un homme, 2 ou 7 pour une femme
   * citydio : le code spécifique correspondant au code postal. Si cette valeur est comprise entre 30915 et 30935 l'utilisateur à entré un code postal de la ville de Paris.
   * myver : 4 si l'utilisateur dispose d'un abonnement Premium
-  * isNew : 1 si l'utilisateur vient de se connecter sur le tchat
-  * hasChange : 1 si le pseudo s'est reconnecté en changeant certaines propriétés, comme le pseudo, l'âge, le sexe, ...
+  * isRecent : 1 si l'utilisateur vient de se connecter sur le tchat ou de se reconnecter en changeant certaines propriétés, comme le pseudo, l'âge, le sexe, ...
   * ISP : le FAI utilisé comme « Free SAS », « Orange » ou « SFR ».
   * town : le point de connexion. Exemples : « FR- Neuilly-sur-seine », « FR- Paris », « FR- Sevran" », ...
+  * isMessageWasSent : l'utilisateur a envoyé au moins un message.
 
 Plusieurs directives _condition_ peuvent se suivre. L'alerte est déclenchée si au moins une des directives _condition_ est vraie.
 
-Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme « _Laws_ » ou un utilisateur avec le code de vote « _uhy_ » est connecté :
+Exemple l'alerte sera déclenchée si un utilisateur avec le pseudonyme femme « Laws » ou un utilisateur avec le code de vote « uhy » est connecté :
 ```
  condition = $mynickname eq 'Laws' and ($mysex eq "2" or $mysex eq "7")
  condition = $code eq 'uhy'
@@ -90,7 +90,7 @@ Voici par exemple une alerte utilisant le gestionnaire d'alerte _XMPP_ précéde
   </alert>
 ```
 
-Voici à quoi ressemble l'alerte envoyée quand l'utilisateur avec le code de vote « _uhy_ » est connecté sur le site « _Coco.fr_ » :
+Voici à quoi ressemble l'alerte envoyée quand l'utilisateur avec le code de vote « uhy » est connecté sur le site « Coco.fr » :
 
 ![http://cocobot.googlecode.com/svn/wiki/alerts/alert-cocobot-mmechat.jpg](http://cocobot.googlecode.com/svn/wiki/alerts/alert-cocobot-mmechat.jpg)
 
@@ -116,7 +116,7 @@ Voici par exemple une alerte utilisant le gestionnaire d'alerte _Message_ préc�
 ```
   <alert>
     enable    = 1 
-    condition = ($isNew != 0 or $hasChange != 0) and ($mysex eq "1" or $mysex eq "6") and eq $mynickname eq 'SimonTemplar' and $myage == 37 
+    condition = $isRecent != 0 and ($mysex eq "1" or $mysex eq "6") and eq $mynickname eq 'SimonTemplar' and $myage == 37 
     transport = Message 
     recipient = salutations
   </alert>
@@ -162,12 +162,32 @@ La directive _write_ peut-être aussi spécifier un fichier texte si la chaîne 
 ```
 Le fichier texte doit se trouver dans le répertoire « ~/cocobot/conf » et comporter un message par ligne. Un message sera sélectionné au hasard.
 
+## La section `<RiveScript>` ##
+
+La section `<RiveScript>` sert à déclarer le gestionnaire de l'alerte pouvant répondre aux Internautes ayant envoyés des messages au robot connecté. Le langage RiveScript est utilisé, ce langage de script est destiné à faciliter le développement de chatbots interactifs.
+
+Exemple d'alerte répondant aux messages des pseudos femmes. Dans la condition, la propriété de l'utilisateur _isMessageWasSent_ est testé pour savoir si l'utilisateur a envoyé un message au robot : 
+
+```
+  <alert>
+    enable    = 1 
+    condition = ($mysex eq "2" or $mysex eq "7") and $isMessageWasSent eq '1' 
+    transport = RiveScript
+    recipient = chatbot 
+  </alert>
+  <RiveScript>
+    name       = chatbot 
+    repliesdir = rivescript/replies 
+  </RiveScript>
+```
+
+La directive _repliesdir_ contient le nom du dossier contenant les fichiers écrits en langage RiveScript. Ce dossier doit être localisé dans le répertoire le répertoire « ~/cocobot/conf/rivescript »
 
 ### Log de messages envoyés et reçus ###
 
 Les messages envoyés aux utilisateurs son enregistrés dans des fichiers logs du répertoire « ~/var/alert-messages ».
 
-Les messages envoyés par les utilisateur au bot son enregistrés dans des fichiers logs du répertoire « ~/var/messages ».
+Les messages envoyés par les utilisateur au bot son enregistrés dans des fichiers logs du répertoire « ~/var/messages ».
 
 Le script « ~/cocobot/tools/read-messages.pl » permet d'afficher les réponses envoyés par les utilisateurs au bot en lisant les fichiers logs des deux répertoires précédents.
 

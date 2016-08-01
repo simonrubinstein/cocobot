@@ -1,10 +1,10 @@
 # Introduction #
 
-Cette page donne quelques informations sur le script « db-search.pl ». Ce script est un des scripts les plus utiles couplé au [script « save-logged-user-in-database.pl »](saveLoggedUserInDatabase.md).
+Cette page donne quelques informations sur le script « db-search.pl ». Ce script est un des scripts les plus utiles couplé au [script « save-logged-user-in-database.pl »](saveLoggedUserInDatabase.md).
 
-Le script « db-search.pl » permet de lancer des recherches sur les connexions d'utilisateurs enregistrés dans la bases de données.
+Le script « db-search.pl » permet de lancer des recherches sur les connexions d'utilisateurs enregistrés dans la bases de données.
 
-Pour que le script « db-search.pl » fonctionne, la base de données doit être constamment mis à jour par le [script « save-logged-user-in-database.pl »](saveLoggedUserInDatabase.md), ce dernier est normalement lancé toutes les minutes et met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web « Coco.fr ».
+Pour que le script « db-search.pl » fonctionne, la base de données doit être constamment mis à jour par le [script « save-logged-user-in-database.pl »](saveLoggedUserInDatabase.md), ce dernier est normalement lancé toutes les minutes et met à jour la base de données dès qu'un nouvel utilisateur se connecte où se déconnecte du site web [Coco.fr](http://www.coco.fr/).
 
 ## Options du script ##
 
@@ -41,32 +41,32 @@ Affiche les connexions ayant les codes de votes WcL, PXd, uyI, 0fN, rs6 :
 db-search.pl -c WcL,PXd,uyI,0fN,rs6 
 ```
 
-Affiche les connexions ayant un pseudonyme commençant par le nom « BetterDays ». Attention les noms sont sensibles à la case.
+Affiche les connexions ayant un pseudonyme commençant par le nom « BetterDays ». Attention les noms sont sensibles à la case.
 ```
 db-search.pl -l BetterDays%
 ```
 
-Affiche les connexions avec les pseudonymes « BlueVelvet » et « Babycat » :
+Affiche les connexions avec les pseudonymes « BlueVelvet » et « Babycat » :
 ```
 db-search.pl -l BlueVelvet,Babycat
 ```
 
-Affiche les connexions ayant été faites puis les points « FR- Aulnay-sous-bois » et « FR- Sevran » avec un pseudonyme femme sans avatar et avec le FAI « Free SAS » :
+Affiche les connexions ayant été faites puis les points « FR- Aulnay-sous-bois » et « FR- Sevran » avec un pseudonyme femme sans avatar et avec le FAI « Free SAS » :
 ```
 db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
 ```
 
-Affiche les connexions avec un code de vote « JiC » et un FAI « Orange » :
+Affiche les connexions avec un code de vote « JiC » et un FAI « Orange » :
 ```
 db-search.pl -c JiC -i "Orange"
 ```
 
-Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France en ignorant tous les pseudonymes contenu dans le fichier « plain-text/nicknames-to-filter.txt » :
+Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France en ignorant tous les pseudonymes contenu dans le fichier « conf/plain-text/nicknames-to-filter.txt » :
 ```
 db-search.pl -O -I -s 2,7 -f plain-text/nicknames-to-filter.txt
 ```
 
-Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France et ayant entrés un code postal de Paris en ignorant tous les pseudonymes contenu dans le fichier « plain-text/nicknames-to-filter.txt » et « plain-text/nicknames-to-filter-2.txt », ignorant aussi les pseudonymes commançant par un caractère en minuscule :
+Affiche les connexions des pseudonymes femmes actuellement connectés sur Coco.fr depuis l'Île de France et ayant entrés un code postal de Paris en ignorant tous les pseudonymes contenu dans le fichier « conf/plain-text/nicknames-to-filter.txt » et « conf/plain-text/nicknames-to-filter-2.txt », ignorant aussi les pseudonymes commençant par un caractère en minuscule :
 ```
 db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknames-to-filter-2.txt -y 30 -F 1
 ```
@@ -74,15 +74,15 @@ db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknam
 
 ## Repérer les hommes se faisant passer pour des femmes ##
 
-Sur les Coco.fr un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemple les pseudonymes femmes « Jeunegay », « LolaTravestie » ou « MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
+Sur le site Coco.fr, un nombre important de pseudonymes de femmes sont en fait pilotés par des hommes. Certains hommes homosexuels prennent sciemment un pseudonyme de femme avec un nom sans équivoque sur ce qu'ils sont vraiment. Ainsi par exemple les pseudonymes femmes « Jeunegay », « LolaTravestie » ou « MecChMec » ne laissent que peu de doute sur le sexe de leurs propriétaires.
 
-Cependant il existe un nombre de pseudonyme femmes qui sont créés par des hommes dans le but de tromper les autres utilisateurs en se faisant passer pour des femmes.
+Cependant, il existe un nombre important de pseudonymes femmes qui sont créés par des hommes dans le but de tromper les autres utilisateurs en se faisant passer pour des femmes.
 
 Le script « db-search.pl » peut aider à débusquer ces hommes malhonnêtes.
 
-### Exemple 1 : Pseudonyme femme « Qwerty » ###
+### Exemple 1 : Pseudonyme femme « Qwerty » ###
 
-Le pseudonyme femme « Qwerty » avec le code de votre « QVa  » était connecté sur « Coco.fr ». Voilà ce que donne une recherche du code vote « QVa  » dans la base de données. La liste a été épurée de plusieurs connexions pour plus de clarté :
+Le pseudonyme femme « Qwerty » avec le code de votre « QVa » était connecté sur [Coco.fr](http://www.coco.fr/). Voilà ce que donne une recherche du code vote « QVa » dans la base de données. La liste a été épurée de plusieurs connexions pour plus de clarté :
 
 ```text
 
@@ -116,14 +116,14 @@ Dans notre cas plus indices laissent supposer que c'est un homme :
 
 Ces trois points ne donnent pas une preuve formelle, mais de fortes présomptions.
 
-Cependant si on regarde la valeur du nickID « 237380 » du 24 juin elle est identique pour les pseudos hommes « Kimenik » et « SuceBeat » et le pseudo femme « DayOff ». Nous avons la même chose pour le nickID « 320648 » du 1er juillet qui est partagé le pseudo homme « !Alive » et le pseudo femme « SuperNan ».
+Cependant si on regarde la valeur nickID « 237380 » du 24 juin elle est identique pour les pseudos hommes « Kimenik » et « SuceBeat » et le pseudo femme « DayOff ». Nous avons la même chose pour le nickID « 320648 » du 1er juillet qui est partagé le pseudo homme « Alive » et le pseudo femme « SuperNan ».
 
-Nous avons de fortes chances que c'est un homme se faisant passer pour une femme. Ce qui a été confirmé, difficilement, par l'utilisateur après lui avoir fourni son historique de connexion.
+Nous avons de fortes chances que l'internaute soit un homme se faisant passer pour une femme. Ce qui a été confirmé, difficilement, par l'utilisateur après lui avoir fourni son historique de connexion.
 
 ### Exemple 2 : Pseudonyme femme « chaude12 » ###
 
 
-Le pseudonyme femme « chaude12 » avec le code de votre « HgZ  » était connecté sur « Coco.fr » :
+Le pseudonyme femme « chaude12 » avec le code de votre « HgZ  » était connecté sur [Coco.fr](http://www.coco.fr/) :
 ```text
 
 ./db-search.pl -c QVa
@@ -147,16 +147,16 @@ Le pseudonyme femme « chaude12 » avec le code de votre « HgZ  » était conne
 ```
 
 
-La première connexion du pseudo « lala0 » semble être un autre utilisateur.
+La première connexion du pseudo « lala0 » semble être un autre utilisateur.
 
-Par contre pour les connexions suivantes c'est le même utilisateur, le FAI, le point de connexion, le code postal et même l'âge correspondent. Le pseudonyme est toujours suffixé de « 12 » ce qui donne un indice de plus.
+Par contre pour les connexions suivantes c'est le même utilisateur, le FAI, le point de connexion, le code postal et même l'âge correspondent. Le pseudonyme est toujours suffixé de « 12 » ce qui donne un indice de plus.
 
-Enfin le nickID « 107958 » sert pour le pseudo « Meccool12 » et « chaude12 » ce qui ne laisse aucun doute sur le sexe de l'utilisateur.
+Enfin le nickID « 107958 » sert pour le pseudo « Meccool12 » et « chaude12 » ce qui ne laisse aucun doute sur le sexe de l'utilisateur.
 
 
-### Exemple 3 : Pseudonyme femme « LittleBoat » ###
+### Exemple 3 : Pseudonyme femme « LittleBoat » ###
 
-Le pseudonyme femme « LittleBoat » avec le code de votre « 7FH  » était connecté sur « Coco.fr ». Une seule connexion, celle est en cours, était présente dans la base de données. Mais la commande « ./db-search.pl -l LittleBoat » retournait six connexions avec les codes de votes : « 7FH », « EoF », « ZvF », « Xti » et « fho ».
+Le pseudonyme femme « LittleBoat » avec le code de votre « 7FH » était connecté sur [Coco.fr](http://www.coco.fr/). Une seule connexion, celle est en cours, était présente dans la base de données. Mais la commande « ./db-search.pl -l LittleBoat » retournait six connexions avec les codes de votes : « 7FH », « EoF », « ZvF », « Xti » et « fho ».
 
 Voici ce que retourne une recherche de ces cinq codes de votes :
 ```text
@@ -180,8 +180,8 @@ Voici ce que retourne une recherche de ces cinq codes de votes :
 !--------------------------------------------------------------------------------------------------------------------------------------!
 ```
 
-Nous avons affaire à une personne qui utilise la navigation privée, donc plus difficilement traçable puisque son code de vote change, le cookie « samedi » étant supprimé quand il quitte son navigateur web.
+Nous avons affaire à une personne qui utilise la navigation privée, donc plus difficilement traçable puisque son code de vote change, le cookie « samedi » étant supprimé à la fermeture de son navigateur web.
 
-Cependant le 20 juin le nickID « 122704 » est utilisé pour le pseudo homme « ThomasMore » et le pseudo femme « LittleBoat ». Le 23 juin le nickID « 199368 » est utilisé pour le pseudo femme « LittleBoat » et le pseudo homme « !david8 ».
+Cependant le 20 juin le nickID « 122704 » est utilisé pour le pseudo homme « ThomasMore » et le pseudo femme « LittleBoat ». Le 23 juin le nickID « 199368 » est utilisé pour le pseudo femme « LittleBoat » et le pseudo homme « david8 ».
 
 Après avoir contacté l'utilisateur en question ce dernier avoue être un homme bisexuel se faisant passer pour une jeune femme.

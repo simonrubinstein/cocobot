@@ -185,4 +185,4 @@ save-logged-user-in-database.pl [-A] -x maxOfLoop -S seconds -a myavatar -p mypa
   * **-d**  : Affiche des messages de debug.
   * **-D**  : Affiche davantage de messages de debug.
   * **-w**  : Affiche les logs dans un fichier.
-  * **-A**  : Active les alertes. Permet d'envoyer des messages XMPP ou écrire aux utilisateurs connectés sur le tchat en se basant sur le fichier « alert.conf ». [Lire la page sur les alertes](LesAlertes).
+  * **-A**  : Active les alertes. Permet d'envoyer des messages XMPP ou écrire aux utilisateurs connectés sur le tchat en se basant sur le fichier « alert.conf ». [Lire la page sur les alertes](LesAlertes.md).

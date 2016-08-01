@@ -73,7 +73,10 @@ Si le bouton _info_ ne fonctionne pas, fermer la fenêtre de _tchat_ et reconnec
 
 L'utilisateur est authentifié par deux valeurs, appelées « myavatar »  et « mypass », concaténées et contenues dans le cookie portant le nom « samedi ».
 
-Cliquer sur l'icône de en forme de planète terre juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche. Cliquer sur le bouton « Plus d'informations... » de cette boîte de dialogue :
+Dans Mozilla Firefox, cliquer sur l'icône en forme de point d'interrogation juste à gauche de l'URL dans la barre d'adresse. Une petite boîte de dialogue s'affiche, cliquer ensuite sur le signe « > » à droite de « www.coco.fr » :
+![Information site web](images/coco-subscribe/coco-website-info.png)
+
+Le panneau défile, ensuite cliquer en bas sur « Plus d'informations » de cette boîte de dialogue :
 
 ![Cliquer bouton Plus d'informations](images/coco-subscribe/coco-more-info.png)
 
@@ -85,9 +88,9 @@ Une autre boîte de dialogue « Cookie » s'ouvre. Chercher le cookie « samedi 
 
 ![Le cookie samedi](images/coco-subscribe/coco-samedi-cookie.png)
 
-Dans cet exemple, la valeur du cookie est « 816356817XYZPAHPFLFRIEBWDNDZD » :
-  * « myavatar » correspond aux neufs premiers chiffres c'est à dire « 816356817 »
-  * « mypass » correspond au vingt derniers caractères alphabétiques c'est à dire « XYZPAHPFLFRIEBWDNDZD ».
+Dans cet exemple, la valeur du cookie est « 786919131WKHBNCONUGADQYKEIOFA » :
+  * « myavatar » correspond aux neufs premiers chiffres c'est à dire « 786919131 »
+  * « mypass » correspond au vingt derniers caractères alphabétiques c'est à dire « WKHBNCONUGADQYKEIOFA ».
 
 
 Les valeurs de « myavatar »  et « mypass »  peuvent être passées en argument aux scripts avec respectivement les options « -a » et « -p ».
@@ -96,8 +99,6 @@ Exemples d'utilisation des ces deux valeurs avec le script « list-users.pl » :
 
 ```
 cd ~/cocobot-read-only/scripts/
-./list-users.pl -a 816356817 -p XYZPAHPFLFRIEBWDNDZ
+./list-users.pl -a 786919131 -p WKHBNCONUGADQYKEIOFA
 ```
-
-
-Le script retourne beaucoup plus d'utilisateurs lorsque le compte a souscrit un abonnement _Premium_.
+Le script « list-users.pl » retourne un nombre d'utilisateurs beaucoup plus important lorsque le compte a souscrit un abonnement _Premium_.
