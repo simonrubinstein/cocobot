@@ -1,15 +1,10 @@
 # @brief
 # @created 2012-03-30
-# @date 2014-02-15
+# @date 2016-07-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2014
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2016
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -424,18 +419,38 @@ sub setUsersOffline {
 #@brief Executes a user search
 sub searchUsers {
     my ( $self, %args ) = @_;
-    my $query = q/
-    SELECT
-        `ISPs`.`name` as `ISP`,
-        `codes`.`code` as `code`,
-        `towns`.`name` as `town`,
-        `mynickID` as `nickID`, `mysex` AS `sex`,
-        `nickname`,
-        `myage` as `age`,
-        `citydios`.`townzz` as `city`,
-        `users`.`creation_date`,
-        `users`.`update_date`,
-        `users`.`logout_date` AS `logout` FROM `users` 
+
+    my $isonlynicks;
+    if ( exists $args{'__onlynicks'} ) {
+        delete $args{'__onlynicks'};
+        $isonlynicks = 1;
+    }
+    else {
+        $isonlynicks = 0;
+    }
+
+    my $query;
+    if ($isonlynicks) {
+        $query = q/
+        SELECT DISTINCT
+           `nickname` /;
+    }
+    else {
+        $query = q/
+        SELECT
+            `ISPs`.`name` as `ISP`,
+            `codes`.`code` as `code`,
+            `towns`.`name` as `town`,
+             `mynickID` as `nickID`, `mysex` AS `sex`,
+            `nickname`,
+            `myage` as `age`,
+            `citydios`.`townzz` as `city`,
+            `users`.`creation_date`,
+            `users`.`update_date`,
+            `users`.`logout_date` AS `logout` /;
+    }
+    $query .= q/
+        FROM `users` 
         LEFT OUTER JOIN `codes` ON `codes`.`id` = id_code
         LEFT OUTER JOIN `ISPs` ON `id_ISP` = `ISPs`.`id`
         LEFT OUTER JOIN `towns` ON `towns`.`id` = `id_town`
@@ -444,6 +459,7 @@ sub searchUsers {
         LEFT OUTER JOIN `nicknames`
         ON `id_mynickname` = `nicknames`.`id` 
         WHERE /;
+
     my @values   = ();
     my $and      = '';
     my %name2col = (
@@ -539,8 +555,7 @@ sub searchUsers {
         $query .= ')';
     }
 
-    #$query .= ' ORDER BY `update_date`';
-    $query .= ' ORDER BY `creation_date`';
+    $query .= ' ORDER BY `creation_date`' if !$isonlynicks;
     my $sth = $self->execute( $query, @values );
     my $hash_ref;
     my @result = ();
@@ -552,11 +567,18 @@ sub searchUsers {
 
 ##@method void displaySearchUsers(%args)
 #@brief Displays the result of a query on the console
+#@param boolean isOnlyNicks 1: Displays only the nickname.
+#@param integer integer $filtersCode 0 or 1
+#@param boolean $output 1 HTML output or plain text otherwise
 sub displaySearchUsers {
     my $self        = shift;
+    my $isOnlyNicks = shift;
     my $filtersCode = shift;
     my $output      = shift;
-    my $result_ref  = $self->searchUsers(@_);
+
+    push @_, '__onlynicks', 1 if $isOnlyNicks;
+
+    my $result_ref = $self->searchUsers(@_);
     if ( scalar @$result_ref == 0 ) {
         print STDOUT "No user was found.\n";
         return;
@@ -575,16 +597,20 @@ sub displaySearchUsers {
         {
             $row_ref->{'town'} = $1;
         }
-        my $startime = $row_ref->{'creation_date'};
-        my $endtime;
-        if ( exists $row_ref->{'logout'} and defined $row_ref->{'logout'} ) {
-            $endtime = $row_ref->{'logout'};
+        if ( exists $row_ref->{'creation_date'} ) {
+            my $startime = $row_ref->{'creation_date'};
+            my $endtime;
+            if ( exists $row_ref->{'logout'}
+                and defined $row_ref->{'logout'} )
+            {
+                $endtime = $row_ref->{'logout'};
+            }
+            else {
+                $endtime = $row_ref->{'update_date'};
+            }
+            my $delta = ( str2time($endtime) ) - ( str2time($startime) );
+            $totalTime += $delta;
         }
-        else {
-            $endtime = $row_ref->{'update_date'};
-        }
-        my $delta = ( str2time($endtime) ) - ( str2time($startime) );
-        $totalTime += $delta;
         foreach my $name ( 'creation_date', 'logout', 'update_date' ) {
             if (    exists $row_ref->{$name}
                 and defined $row_ref->{$name}
@@ -605,44 +631,51 @@ sub displaySearchUsers {
     }
 
     #Create the separation line
-    my $lineSize = 0;
-    foreach my $name (@names) {
-        $lineSize += $max{$name} + 3;
-    }
-    $lineSize--;
-    my $separator = '!' . ( '-' x $lineSize ) . '!';
+    my ( $line, $separator, $border, $border1, $border2, $border3 );
+    if ( !$isOnlyNicks ) {
+        my $lineSize = 0;
+        foreach my $name (@names) {
+            $lineSize += $max{$name} + 3;
+        }
+        $lineSize--;
+        $separator = '!' . ( '-' x $lineSize ) . '!';
 
-    my ( $border, $border1, $border2, $border3 );
-    if ($output) {
-        $border1 = '<tr><td>';
-        $border2 = '</td><td>';
-        $border3 = '</td></tr>';
+        if ($output) {
+            $border1 = '<tr><td>';
+            $border2 = '</td><td>';
+            $border3 = '</td></tr>';
+        }
+        else {
+            $border1 = $border2 = $border3 = '! ';
+        }
+
+        #Displays the table header
+        $border = $border1;
+        $line   = '';
+        for ( my $i = 0; $i < scalar(@names); $i++ ) {
+            $line
+                .= $border
+                . sprintf( '%-' . $max{ $names[$i] } . 's', $names[$i] )
+                . ' ';
+            $border = $border2;
+        }
+        $line .= $border3;
+        print STDOUT $separator . "\n" if !$output;
+        if ($output) {
+            print
+                '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
+            print
+                '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr_FR" lang="fr_FR">';
+            print
+                '<head><title>Cocobot</title><meta content="text/html; charset=UTF-8" http-equiv="content-type"/></head><body><table><thead>';
+        }
+        print STDOUT $line . "\n";
+        print STDOUT $separator . "\n" if !$output;
+        print '</thead><tbody>' if $output;
     }
     else {
-        $border1 = $border2 = $border3 = '! ';
+        ( $border, $border1, $border2, $border3 ) = ( '', '', '', '' );
     }
-
-    #Displays the table header
-    $border = $border1;
-    my $line = '';
-    for ( my $i = 0; $i < scalar(@names); $i++ ) {
-        $line .= $border
-            . sprintf( '%-' . $max{ $names[$i] } . 's', $names[$i] ) . ' ';
-        $border = $border2;
-    }
-    $line .= $border3;
-    print STDOUT $separator . "\n" if !$output;
-    if ($output) {
-        print
-            '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">';
-        print
-            '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr_FR" lang="fr_FR">';
-        print
-            '<head><title>Cocobot</title><meta content="text/html; charset=UTF-8" http-equiv="content-type"/></head><body><table><thead>';
-    }
-    print STDOUT $line . "\n";
-    print STDOUT $separator . "\n" if !$output;
-    print '</thead><tbody>' if $output;
 
     #Displays the result of the query
     my $count = 0,;
@@ -663,12 +696,16 @@ sub displaySearchUsers {
         print STDOUT $line . "\n";
         $count++;
     }
-    print STDOUT '</tbody></table></body></html>' if $output;
-    print STDOUT $separator . "\n" if !$output;
-    print STDOUT "- $count user(s) displayed\n";
-    print STDOUT "- $totalTime second(s);\n";
-    my $val = Time::Seconds->new($totalTime);
-    print STDOUT "- " . $val->pretty() . "\n";
+    if ( !$isOnlyNicks ) {
+        print STDOUT '</tbody></table></body></html>' if $output;
+        print STDOUT $separator . "\n" if !$output;
+        print STDOUT "- $count user(s) displayed\n";
+        print STDOUT "- $totalTime second(s);\n";
+        my $val = Time::Seconds->new($totalTime);
+        print STDOUT "- " . $val->pretty() . "\n";
+    } else {
+        print STDOUT "- $count user(s) displayed\n";
+   }
 }
 
 1;

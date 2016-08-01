@@ -25,7 +25,7 @@
 ! sub t as          = tu as
 ! sub tu est        = tu es
 ! sub t es          = tu es
-! sub  est tu       = es tu
+! sub est tu        = es tu
 ! sub t en          = tu en
 ! sub t aime        = tu aimes
 ! sub t aimes       = tu aimes
@@ -37,6 +37,7 @@
 ! sub t komen       = tu es comment
 ! sub t appelle     = t appelles
 ! sub t appelels    = t appelles
+! sub ta fumer toi  = tu as fume toi
 ! sub tu tappelle   = tu t apppeles
 ! sub c4est         = c est
 ! sub c ca          = c est ca
@@ -132,11 +133,9 @@
 ! sub mecpassif     = mec passif
 ! sub lol           = mdr
 ! sub loll          = mdr
+! sub lool          = mdr
 ! sub mdrr          = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
-! sub pédé          = pede
-! sub marié         = marie
-! sub dégage        = degage
 ! sub vous avez     = tu as
 ! sub tu cherche s  = tu cherches
 ! sub tu cherche    = tu cherches
@@ -191,6 +190,7 @@
 ! sub gzrs          = gars
 ! sub tes surtout   = tu es surtout
 ! sub unhomme       = un homme
+! sub ungarcon      = un garcon
 ! sub pascompris    = pas compris
 ! sub pas tt compris = pas tout compris
 ! sub j sui h       = je suis un homme
@@ -362,10 +362,11 @@
 - Alors pourquoi prenez-vous un profil "femme" ?
 + je suis h
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
+- Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
++ je suis un garcon [passif]
+@ je suis h
 + tu sais lire
 - Oui, je sais très bien lire bien mieux que vous...
-- Oui
-
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
@@ -486,7 +487,7 @@
 + slavemoney
 @ oui mon esclave
 
-+ [*] degage [*]
++ degage
 - Je ne dégage que des bonnes choses.
 - Je me trouve bien ici, j'y reste.
 + ta gueule
@@ -495,6 +496,15 @@
 - Ma gueule elle sourit, même aux cons.
 - Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
 - C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
++ ta gueule toi
+@ ta gueule
++ non tg ta gueule
+@ ta gueule
++ [*] degage [*]
+@ degage
++ degages
+@ degage
+
 + ferme ta gueule
 @ ta gueule
 + ftg [*]
@@ -512,6 +522,11 @@
 - Je ne puis point, je suis en train de terminer la votre.
 + ntm fdp
 @ ntm
++ la ferme
+- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
+- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
++ mais ferme la
+@ la ferme
 
 + (tu bien|k mek jmen balek) [*]
 - Vous savoir parler la France ?
@@ -615,6 +630,7 @@
 - Le café est un breuvage qui fait dormir quand on n'en prend pas.
 - On aura bien assez de temps dans la tombe pour dormir.
 - Un bon traitement contre l'insomnie est de beaucoup dormir.
+- Dormir est une façon de mourir ou tout au moins de mourir à la réalité, mieux encore, c'est la mort de la réalité.
 
 + casse toi
 - Je suis incassable.
@@ -668,6 +684,14 @@
 - Les plus cons ce sont ceux qui se foutent de la gueule des autres.
 + tu es [surtout] [tres] con [en revanche]
 @ pauvre con
++ le con
+@ pauvre con
++ vieux con
+- Avant j'étais un jeune con comme vous, mais maintenant j'ai de l'expérience.
++ encore le vieux con
+@ vieux con
++ encore (c|ce) vieux con
+@ vieux con
 
 + [*] facebook [*]
 - Je n'ai pas de compte Facebook.
@@ -776,6 +800,7 @@
 - Femme, je vous adore comme on adore une édition originale, avec ses fautes.
 - L'émerveillement est à la base de l'adoration.
 - Rien n'est plus ennuyeux que d'être adoré. Comment Dieu le supporte-t-il ?
+- Il y a toujours un moment dans leur vie où les gens s'aperçoivent qu'ils m'adorent.
 
 + tu saoules
 - Vraiment, vous êtes sérieuse ?
@@ -863,4 +888,22 @@
 
 + tu ne me reponds jamais
 - Non je ne réponds jamais.
+
++ tu as fume toi
+- Il y a des jours où je pense que je vais mourir d'une overdose d'autosatisfaction.
+- L'unique différence entre un fou et moi, c'est que moi je ne suis pas fou.
+
++ il est premium
+- Effectivement, j'ai souscrit à un abonnement Premium.
+
++ encore toi
+- Je peux en dire autant à votre sujet : encore vous !
+- C'est en essayant encore et encore que le singe apprend à bondir.
+- Je serai encore et encore là pour vous.
+
++ achete toi une vie
+- Il vaut mieux rêver sa vie que la vivre, encore que la vivre, ce soit encore la rêver.
+
+
+
 

@@ -1,16 +1,11 @@
-#!/usr/bin/perl
-# @brief
+#!/usr/bin/env perl
+# @brief This script runs SQL queries from the database.
 # @created 2012-05-18
-# @date 2016-06-29
+# @date 2016-07-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,6 +37,7 @@ use Cocoweb::CLI;
 use Cocoweb::DB::Base;
 use Cocoweb::File;
 use Cocoweb::Config;
+use Cocoweb::User::CheckInput;
 my $DB;
 my $CLI;
 my @args = ();
@@ -58,8 +54,9 @@ sub run {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
+    my $userCheck = Cocoweb::User::CheckInput->instance();
     my $opt_ref
-        = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPIf:F:H' );
+        = $CLI->getMinimumOpts( 'argumentative' => 'l:c:s:t:i:y:OPIf:F:HN' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -80,15 +77,28 @@ sub init {
         my @vals = split( /,/, $opt_ref->{$opt} );
         die "$opt was not found" if !exists $opt2name{$opt};
         my $name = $opt2name{$opt};
+        if ( $opt eq 'c' ) {
+            foreach my $code (@vals) {
+                die 'Bad infuz code: ' . $code 
+                    if !$userCheck->checkVoteCode($code);
+            }
+        } elsif ( $opt eq 'y' ) {
+            foreach my $age (@vals) {
+                die 'Bad age: ' . $age 
+                    if !$userCheck->checkAge($age);
+            }
+        }
+        elsif ( $opt eq 's' ) {
+            foreach my $sex (@vals) {
+                die 'Bad sex: ' . $sex 
+                    if !$userCheck->checkSex($sex);
+            }
+        }
         if ( scalar(@vals) == 1 ) {
             push @args, $name, $vals[0];
         }
         else {
             push @args, $name, \@vals;
-        }
-        if ( $opt eq 'c' ) {
-            die 'Bad infuz code: ' . $opt_ref->{$opt}
-                if !checkInfuzCode( $opt_ref->{$opt} );
         }
     }
     if ( scalar @args == 0 ) {
@@ -127,6 +137,13 @@ sub init {
         $filtersCode = $opt_ref->{'F'};
     }
     unshift @args, $filtersCode;
+
+    my $isOnlyNicks = 0;
+    if ( exists $opt_ref->{'N'} ) {
+        $isOnlyNicks = $opt_ref->{'N'};
+    }
+    unshift @args, $isOnlyNicks;
+
 }
 
 ## @method void HELP_MESSAGE()
@@ -155,6 +172,7 @@ Usage:
   -f filters  Filters
   -F 1        Enable custime filter
   -H          Displays the results in HTML
+  -N          Displays nicknames only
 
 Examples:
 db-search.pl -c WcL,PXd,uyI,0fN,rs6 
@@ -172,6 +190,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-06-29');
+    $CLI->VERSION_MESSAGE('2016-07-31');
 }
 

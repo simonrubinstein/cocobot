@@ -1,6 +1,6 @@
 # @brief
 # @created 2016-07-01
-# @date 2016-07-05
+# @date 2016-08-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -79,6 +79,10 @@ sub process {
         my $reply = $rs->reply( 'localuser', $messageLast );
         if ( $reply eq 'ERR: No Reply Matched' ) {
             error("No reply matched for $messageLast");
+            next;
+        }
+        elsif ( $reply eq 'ERR: No Reply Found' ) {
+            error("No reply found for $messageLast");
             next;
         }
         my $logStr = ref($self);
