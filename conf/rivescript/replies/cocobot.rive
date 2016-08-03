@@ -81,6 +81,7 @@
 ! sub tu fait       = tu fais
 ! sub on ce connais = on se connait
 ! sub t une meuf    = tu es une femme
+! sub un femme      = une femme
 ! sub pour tepondre = pour repondre
 ! sub tes fidele    = tu es fidele
 ! sub tes celib     = tu es celibataire
@@ -295,6 +296,10 @@
 + (robi|robby) le robot
 - Je ne crois pas être Robby le robot.
 - Robby le robot est un robot de science-fiction.
++ es tu une machine
+- Un robot n'est pas tout à fait une machine. Un robot est une machine fabriquée pour imiter de son mieux l'être humain.
+- Je me défie de la machine qui est en moi.
+- La machine a gagné l'homme, l'homme s'est fait machine, fonctionne et ne vit plus.
 
 + effectivement
 - Vous êtes d'accord avec moi ?
@@ -682,6 +687,8 @@
 - Nous sommes tous le con de quelqu'un.
 - Rien n'est plus voluptueux pour un pas-con que d'être pris pour un con par un con.
 - Les plus cons ce sont ceux qui se foutent de la gueule des autres.
+- Heureux soient les fêlés, car ils laisseront passer la lumière.
+- Quand on mettra les cons sur orbite, vous n'aurez pas fini de tourner.
 + tu es [surtout] [tres] con [en revanche]
 @ pauvre con
 + le con

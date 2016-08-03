@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2016-07-02
+# @date 2016-08-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -37,9 +37,25 @@ use Cocoweb::User;
 use Cocoweb::User::BaseList;
 use base 'Cocoweb::User::BaseList';
 __PACKAGE__->attributes(
-    'logUsersListInDB', 'DB',
-    'DBUsersOffline',   'removeListDelay',
-    'checkUserIsReallyOfflineCount'
+
+    # If true, register users list into database
+    'logUsersListInDB',
+
+    # A 'Cocoweb::DB::Base' object
+    'DB',
+
+    # Users list (array) that not appear in the list of connected
+    'DBUsersOffline',
+
+    # Delay in seconds before deleting a user no longer appears
+    # in the list of connected.
+    'removeListDelay',
+
+    # Count the number of times the function searchCode() was called.
+    'checkUserIsReallyOfflineCount',
+
+# If true, use search function of "vote code" to check if users are disconnected
+    'removeListSearchCode'
 );
 
 ##@method void init(%args)
@@ -48,6 +64,8 @@ sub init {
     my ( $self, %args ) = @_;
     croak error('removeListDelay is missing')
         if !exists $args{'removeListDelay'};
+    croak error('removeListSearchCode is missing')
+        if !exists $args{'removeListSearchCode'};
     my $logUsersListInDB
         = ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
         ? 1
@@ -60,6 +78,7 @@ sub init {
         'DB'                            => $DB,
         'DBUsersOffline'                => [],
         'removeListDelay'               => $args{'logUsersListInDB'},
+        'removeListSearchCode'          => $args{'removeListSearchCode'},
         'checkUserIsReallyOfflineCount' => 0
     );
 }
@@ -149,7 +168,7 @@ sub purgeUsersUnseen {
     my ( $count, $countPurge ) = ( 0, 0 );
     $self->checkUserIsReallyOfflineCount(0);
     my $DBUsersOffline_ref = $self->DBUsersOffline();
-    my $userCount = 0;
+    my $userCount          = 0;
     foreach my $id (
         sort {
             $user_ref->{$a}->{'dateLastSeen'}
@@ -200,7 +219,7 @@ sub purgeUsersUnseen {
 #@method boolean checkUserIsReallyOffline()
 sub checkUserIsReallyOffline {
     my ( $self, $user, $bot ) = @_;
-    return 1 if !defined $bot;
+    return 1 if !defined $bot or !$self->removeListSearchCode();
     my $code = $user->code();
     if ( !checkInfuzCode($code) ) {
         error("$code infuz code is invalid");
@@ -280,6 +299,8 @@ sub setUsersOfflineInDB {
 }
 
 ##@method void addOrUpdateInDB()
+#@brief
+#@param $updateDates If true update
 sub addOrUpdateInDB {
     my ( $self, $updateDates ) = @_;
     if ( !$self->logUsersListInDB() ) {
@@ -412,9 +433,9 @@ sub checkIfNicknameExists {
 }
 
 sub getRandomUser {
-    my ($self)     = @_;
-    my $user_ref   = $self->all();
-    return $user_ref->{ (keys %$user_ref )[ rand keys %$user_ref ]};
+    my ($self) = @_;
+    my $user_ref = $self->all();
+    return $user_ref->{ ( keys %$user_ref )[ rand keys %$user_ref ] };
 }
 
 ##@method string nickIdToNickname($nickid)
