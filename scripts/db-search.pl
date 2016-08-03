@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # @brief This script runs SQL queries from the database.
 # @created 2012-05-18
-# @date 2016-07-31
+# @date 2016-08-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -89,6 +89,18 @@ sub init {
             }
         }
         elsif ( $opt eq 's' ) {
+            my @tmp = ();
+            foreach my $sex (@vals) {
+                if ( $sex eq 'M' ) {
+                    push @tmp, 1, 6;
+                }
+                elsif ( $sex eq 'W' ) {
+                    push @tmp, 2, 7;
+                } else {
+                    push @tmp, $sex;
+                }
+            }
+            @vals = @tmp;
             foreach my $sex (@vals) {
                 die 'Bad sex: ' . $sex 
                     if !$userCheck->checkSex($sex);
@@ -152,7 +164,7 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 $Script, Search for users in database according to different criteria. 
 Usage: 
- $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O -I -P -F 1]
+ $Script [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O -I -P -F 1 -H -N]
   -l logins   A single nickname or more nicknames separated by commas.
               (i.e. -l RomeoKnight or -l RomeoKnight,Delta,UncleTom 
   -c codes    A single nickname code or more nickame codes separated by commas.
@@ -161,7 +173,8 @@ Usage:
               (i.e. -t "FR- Paris" or -t "FR- Aulnay-sous-bois","FR- Sevran"
   -i ISPs     A single ISP or more ISPs separated by commas.
               (i.e. -i "Free SAS" or -i "Orange","Free SAS")
-  -s sex      Gender. 2: woman without an avatar; 7: woman with an avatar
+  -s sex      Gender. W: woman; M: man;
+                      2: woman without an avatar; 7: woman with an avatar
                       1: man without an avatar; 6: man with an avatar
   -y age      An age in years
   -O          Users who are connected.
@@ -190,6 +203,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-31');
+    $CLI->VERSION_MESSAGE('2016-08-02');
 }
 

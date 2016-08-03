@@ -1,7 +1,7 @@
 #!/bin/sh
 #Copies the wiki documentation in this directory.
 baseurl=https://raw.githubusercontent.com/wiki/simonrubinstein/cocobot
-pages="cocoRegistration CodeDeVote dbSearch LesAlertes saveLoggedUserInDatabase"
+pages="Home cocoRegistration cocoweb CodeDeVote dbSearch LesAlertes saveLoggedUserInDatabase"
 for pagename in $pages
 do
     filename="$pagename.md"

@@ -36,9 +36,9 @@ git clone https://github.com/simonrubinstein/cocobot.git
 
 ## Créer la base de données MySQL ##
 
-La base de données MySQL utilisée dans l'exemple est la base de données « test ». Cette base de données est créée par défaut à l'installation de MySQL. L'utilisateur de la base de données aura le même nom, c'est à dire « test » et le mot de passe sera « Gim9p6gW ». Ces trois paramètres peuvent être changés dans le fichier de configuration.
+La base de données MySQL utilisée dans l'exemple est la base de données « test ». Cette base de données était créée par défaut à l'installation des précédentes version de MySQL, ce n'est plus le cas avec la version 5.7 de MySQL. L'utilisateur de la base de données aura le même nom, c'est à dire « test » et le mot de passe sera « Gim9p6gW ». Ces trois paramètres peuvent être changés dans le fichier de configuration.
 
-Taper les quatre commandes suivants dans Terminal pour créer l'utilisateur MySQL « test » :
+Taper les quatre commandes suivants dans Terminal pour créer la base de données « test » et son utilisateur MySQL « test » :
 ```
 mysql -u root -ptoto mysql
 CREATE DATABASE test;
@@ -140,7 +140,7 @@ Si vous voyez un résultat semblable à cette capture d'écran, alors le script 
 ![tail-f-log.png](images/saveLoggedUserInDatabase/tail-f-log.png)
 
 
-Taper CTRL + C pour stopper la [commande tail](http://fr.wikipedia.org/wiki/Tail_%28Unix%29). Et maintenant vous pouvez utiliser la commande « db-search.pl » pour consulter la base de données.
+Taper CTRL + C pour stopper la [commande tail](http://fr.wikipedia.org/wiki/Tail_%28Unix%29). Et maintenant vous pouvez utiliser la commande « [db-search.pl](dbSearch.md) » pour consulter la base de données.
 
 Exemple cette commande affiche les pseudos femmes actuellement connectés sur le tchat :
 ```

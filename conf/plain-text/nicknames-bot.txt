@@ -38,6 +38,7 @@ Catatonie
 CaughtUp
 CelibataireMarie
 ChouFarceur
+CircuitBreaker
 CloserThanClose
 ClubbedToDeath
 ComeAndSeeMe
@@ -180,6 +181,7 @@ PileOuFace
 PlaisirDePerdre
 PlanetCalledLove
 PlasticDreams
+Plastikman
 ProfessorFeat
 QueDuBonheur
 RainDownLove
@@ -189,6 +191,7 @@ ReleaseYourMind
 RetourAToi
 Retrouvailles
 RideTheStorm
+Robotman
 RoiDePique
 RomeoKnight
 RunAway

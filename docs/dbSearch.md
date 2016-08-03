@@ -9,7 +9,7 @@ Pour que le script « db-search.pl » fonctionne, la base de données doit êt
 ## Options du script ##
 
 ```
- db-search.pl [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O -I -P -F 1]
+ db-search.pl [-v -d] [-l logins -c codes -t towns -i ISPs -s sex -y age -O -I -P -F 1 -H -N]
   -l logins   Un pseudonyme ou une suite de pseudonymes séparés par une virgule
               (exemples : -l RomeoKnight or -l RomeoKnight,Delta,UncleTom) 
   -c codes    Un code de vote ou une suite de codes de votes séparés par une virgule
@@ -18,7 +18,8 @@ Pour que le script « db-search.pl » fonctionne, la base de données doit êt
               (exemples : -t "FR- Paris" ou -t "FR- Aulnay-sous-bois","FR- Sevran"
   -i ISPs     Un ou des noms de FAI séparés par une virgule
               (exemples : -i "Free SAS" or -i "Orange","Free SAS")
-  -s sex      Genre : 2 : femme sans avatar ; 7 : femme avec un avatar
+  -s sex      Genre : W : femme ; M : homme ;
+                      2 : femme sans avatar ; 7 : femme avec un avatar
                       1 : homme sans avatar ; 6 : homme avec un avatar
   -y age      Âge
   -O          Utilisateurs connectés actuellement.
@@ -31,6 +32,7 @@ Pour que le script « db-search.pl » fonctionne, la base de données doit êt
   -F 1        Active un filtre spécial. 
               Affiche uniquement les pseudonymes commençant par un caractère majuscule.
   -H          Affiche le résultat en HTML
+  -N          Retourne uniquement la liste des pseudos uniques
 ```
 
 
