@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-08-03
+# @date 2016-08-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
 # copyright (c) Simon Rubinstein 2010-2016
@@ -74,6 +74,7 @@ my $conf_ref;
 my $agent_ref;
 my $userAgent;
 my $removeListSearchCode;
+my $removeListSearchcodePause1;
 my $removeListDelay;
 my $localIP;
 my $publicIP;
@@ -124,6 +125,9 @@ sub init {
         );
 
         $removeListSearchCode = $conf->getBool('remove_list_searchcode');
+        $removeListSearchcodePause1
+            = $conf->getInt('remove_list_searchcode_pause1');
+
         my $delay = $conf->getString('remove_list_delay');
         if ( $delay =~ m{^(\d+)s?$} ) {
             $removeListDelay = $1;
@@ -197,9 +201,10 @@ sub init {
         'genru'     => 0,
         'yearu'     => 0,
         'usersList' => Cocoweb::User::List->new(
-            'logUsersListInDB'     => $logUsersListInDB,
-            'removeListDelay'      => $removeListDelay,
-            'removeListSearchCode' => $removeListSearchCode
+            'logUsersListInDB'           => $logUsersListInDB,
+            'removeListDelay'            => $removeListDelay,
+            'removeListSearchCode'       => $removeListSearchCode,
+            'removeListSearchcodePause1' => $removeListSearchcodePause1
         ),
         'speco'                 => 0,
         'convert'               => Cocoweb::Encode->instance(),

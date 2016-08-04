@@ -1,5 +1,5 @@
 # @created 2012-03-19
-# @date 2016-08-03
+# @date 2016-08-04
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -30,6 +30,7 @@ use warnings;
 use Carp;
 use Data::Dumper;
 use POSIX;
+use Time::HiRes qw(usleep);
 
 use Cocoweb;
 use Cocoweb::File;
@@ -54,18 +55,26 @@ __PACKAGE__->attributes(
     # Count the number of times the function searchCode() was called.
     'checkUserIsReallyOfflineCount',
 
-# If true, use search function of "vote code" to check if users are disconnected
-    'removeListSearchCode'
+    # If true, use search function of "vote code" to check
+    # if users are disconnected
+    'removeListSearchCode',
+
+    # Time to pause between searchCode() requests
+    'removeListSearchcodePause1',
+    'removeListSearchcodePause2'
+
 );
 
 ##@method void init(%args)
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    croak error('removeListDelay is missing')
-        if !exists $args{'removeListDelay'};
-    croak error('removeListSearchCode is missing')
-        if !exists $args{'removeListSearchCode'};
+    foreach my $name ( 'removeListDelay', 'removeListSearchCode',
+        'removeListSearchcodePause1' )
+    {
+        croak error("$name is missing")
+            if !exists $args{$name};
+    }
     my $logUsersListInDB
         = ( exists $args{'logUsersListInDB'} and $args{'logUsersListInDB'} )
         ? 1
@@ -73,12 +82,14 @@ sub init {
     my $DB;
     $DB = Cocoweb::DB::Base->getInstance() if $logUsersListInDB;
     $self->attributes_defaults(
-        'all'                           => {},
-        'logUsersListInDB'              => $logUsersListInDB,
-        'DB'                            => $DB,
-        'DBUsersOffline'                => [],
-        'removeListDelay'               => $args{'logUsersListInDB'},
-        'removeListSearchCode'          => $args{'removeListSearchCode'},
+        'all'                        => {},
+        'logUsersListInDB'           => $logUsersListInDB,
+        'DB'                         => $DB,
+        'DBUsersOffline'             => [],
+        'removeListDelay'            => $args{'logUsersListInDB'},
+        'removeListSearchCode'       => $args{'removeListSearchCode'},
+        'removeListSearchcodePause1' => $args{'removeListSearchcodePause1'},
+        'removeListSearchcodePause2' => $args{'removeListSearchcodePause1'},
         'checkUserIsReallyOfflineCount' => 0
     );
 }
@@ -167,6 +178,7 @@ sub purgeUsersUnseen {
     my $removeListDelay = $self->removeListDelay();
     my ( $count, $countPurge ) = ( 0, 0 );
     $self->checkUserIsReallyOfflineCount(0);
+    $self->removeListSearchcodePause2( $self->removeListSearchcodePause1() );
     my $DBUsersOffline_ref = $self->DBUsersOffline();
     my $userCount          = 0;
     foreach my $id (
@@ -217,6 +229,8 @@ sub purgeUsersUnseen {
 }
 
 #@method boolean checkUserIsReallyOffline()
+#@param $user A 'Cocoweb::User' object
+#@param $bot
 sub checkUserIsReallyOffline {
     my ( $self, $user, $bot ) = @_;
     return 1 if !defined $bot or !$self->removeListSearchCode();
@@ -225,23 +239,35 @@ sub checkUserIsReallyOffline {
         error("$code infuz code is invalid");
         return 1;
     }
-    my $response = $bot->requestCodeSearch($code);
-    my $count    = $self->checkUserIsReallyOfflineCount();
+    my $count = $self->checkUserIsReallyOfflineCount();
+    my $pause = $self->removeListSearchcodePause2();
+    if ( $count > 0 and $pause > 0 ) {
+        debug( '(' . ($count + 1) . ') ' . 'Remove user: pause between searchCode() request: ' . $pause );
+        Time::HiRes::usleep($pause);
+    }
     $self->checkUserIsReallyOfflineCount( ++$count );
+    my $response;
+    eval { $response = $bot->requestCodeSearch($code); };
+    if ($@) {
+        error("requestCodeSearch($code) was failed: $@");
+        $self->removeListSearchcodePause2( $pause * 2 );
+        #$self->removeListSearchCode(0);
+        return 1;
+    }
     my $userFound = $response->userFound();
     return 1 if !defined $userFound;
-    debug(    "Remove user: requestCodeSearch() returns: "
+    debug(    "($count) Remove user: requestCodeSearch() returns: "
             . $userFound->mynickname() . '; '
             . $userFound->mynickID() . '; '
             . $userFound->mysex() . '; '
             . $userFound->myage() . '; '
             . $userFound->citydio() );
     if ( $userFound->myage() eq '99' ) {
-        debug("Remove user:  age 99 = offline ");
+        debug("($count) Remove user:  age 99 = offline ");
         return 1;
     }
     if ( $userFound->mynickID() ne $user->mynickID() ) {
-        debug("Remove user:  mynickID differ = offline ");
+        debug("($count) Remove user:  mynickID differ = offline ");
         return 1;
     }
 
