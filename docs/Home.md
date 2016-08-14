@@ -35,7 +35,7 @@ La deuxième version se compose d'une suite de scripts réécrites pour être pl
 
 ### Première version du script « cocoweb.pl » ###
 
-Le script « cocoweb.pl » est la première version développée est une commande autonome, sans bibliothèques externes, prenant une multitude d'options en paramètres. 
+Le script « [cocoweb.pl](cocoweb.md) » est la première version développée est une commande autonome, sans bibliothèques externes, prenant une multitude d'options en paramètres. 
 
 ### Deuxième version modulaires des script ###
 
@@ -43,12 +43,12 @@ Le script « cocoweb.pl » est la première version développée est une command
 
   * **bot-test.pl** : crée juste un bot connecté.
   * **checks-if-nickname-is-offline.pl** : crée un bot et vérifie qu'un pseudo donné est hors-ligne.
-  * **db-search.pl** : recherche dans la base de données enregistrés par le script « save-logged-user-in-database.pl ».
+  * **[db-search.pl](dbSearch.md)** : recherche dans la base de données enregistrés par le script « save-logged-user-in-database.pl ».
   * **get-amiz.pl** : crée un bot et affiche la liste des amis de ce bot.
   * **list-users.pl** : créé un bot et afficher la liste des utilisateurs connectés sur le tchat.
   * **loop-requests-report-abuse.pl** : crée des bots en boucle qui lancent des rapports d'abus sur un utilisateur connecté.
   * **loop-requests-to-be-a-friend.pl** : crée des bots en boucle qui font des demandes à un utilisateur connecté de faire parti de sa liste d'amis.
-  * **save-logged-user-in-database.pl** : crée un bot et enregistre toutes les connexions et déconnexions dans une base de données. Ce script requiert un abonnement Premium.
+  * **[save-logged-user-in-database.pl](saveLoggedUserInDatabase.md)** : crée un bot et enregistre toutes les connexions et déconnexions dans une base de données. Ce script requiert un abonnement Premium.
   * **search-code.pl** : Crée un bot et cherche un pseudo d'après son code de vode. Ce script requiert un abonnement Premium.
   * **user-info.pl** : Crée un bot et donne des information sur le compte utilisé par le bot.
   * **write.pl** : Crée un bot et écrit un message à un utilisateur connecté.

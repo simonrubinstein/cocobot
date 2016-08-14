@@ -1,12 +1,11 @@
 #!/usr/bin/perl
 # @author
 # @created 2010-07-31
-# @date 2016-06-16
+# @date 2016-08-13
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
 # copyright (c) Simon Rubinstein 2010-2016
-# $Id$
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,7 +36,7 @@ use POSIX;
 use utf8;
 no utf8;
 use vars qw($VERSION);
-$VERSION                            = '0.1.8';
+$VERSION                            = '0.1.9';
 $Getopt::Std::STANDARD_HELP_VERSION = 1;
 my $isVerbose    = 0;
 my $isDebug      = 0;
@@ -84,10 +83,6 @@ my $currentYear;
 my @doc = ();
 
 init();
-
-#print writo("123é5à7") . "\n"; exit;
-#print writo( $agent_ref->{'agent'}) . "\n"; exit;
-#exit;
 run();
 
 ## @method void run()
@@ -352,7 +347,23 @@ sub actionList {
         print $line . "\n";
         $count++;
     }
-    print Dumper \%sexCount;
+    print "\n";
+    my ( $mcount, $wcount ) = ( 0, 0 );
+    for my $sex ( sort keys %sexCount ) {
+        my $cnt = $sexCount{$sex};
+        print 'number of sex codes "' . $sex . '": ' . $cnt . "\n";
+        if ( $sex eq '1' or $sex eq '6' ) {
+            $mcount += $cnt;
+        }
+        elsif ( $sex eq '2' or $sex eq '7' ) {
+            $wcount += $cnt;
+        }
+        else {
+            die "$sex sex code was not recognizing";
+        }
+    }
+    print "$mcount of man's nicknames\n";
+    print "$wcount of woman's nicknames\n";
     print "$count users displayed\n;";
 }
 
@@ -550,8 +561,40 @@ sub process1Int {
         my $bud = parseInt( substr( $urlo, 2, 3 ) );
         sayInfo("bud: $bud");
 
+        if ( $bud == 443 ) {
+            my $str = 'Restricted account.';
+            sayInfo($str);
+        }
+
+        if ( $bud == 444 ) {
+            my $urlu = substr( $urlo, 5 );
+            if ( $urlu
+                =~ m{^Vous devez avoir un profil plus ancien pour ajouter des amiz. Patientez ou demandez a votre correspondant de vous ajouter en amiz$}
+                )
+            {
+            }
+            elsif ( $urlu
+                =~ m{^vous avez été déconnecté du serveur de messages privés par une autre fenetre coco chez vous: diagno-motdepasse incorrect .*$}
+                )
+            {
+                die sayError($urlu);
+            }
+            elsif ( $urlu
+                =~ m{^Probleme avec votre compte \. Essayez de vous reconnecter dans 15 secondes et envoyez un mail a contact arobase coco.fr$}
+                )
+            {
+                die sayError($urlu);
+            }
+            sayInfo($urlu);
+        }
+
         #
         if ( $bud == 556 ) {
+        }
+
+        if ( $bud == 148 ) {
+            die sayError( 'This account has been permanently banned: '
+                    . substr( $urlo, 14 ) );
         }
 
         #searchnow($user_ref);
@@ -667,12 +710,13 @@ sub getCityco {
     my @tmp = split( /\*/, $cityco );
     my ( $citydio, $townzz );
     my $count = scalar @tmp;
+
     #print $count % 2 . "\n";
     die sayError("cityco has bad length") if $count % 2 != 0 or $count == 0;
 
     if ( $count == 2 ) {
         $citydio = sprintf( "%05d", $tmp[0] );
-        $townzz  = $tmp[1];
+        $townzz = $tmp[1];
     }
     else {
         my $r = int( rand( $count / 2 ) );
@@ -966,8 +1010,7 @@ sub parseInt {
                   $_ =~ /[0-9]/
                 ? $_
                 : ord(uc) - 55
-                )
-                * $radix**$place++;
+            ) * $radix**$place++;
         }
         $ret = $num * $sign;
     }
@@ -1427,7 +1470,7 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $VERSION (2016-06-16) 
+    $Script $VERSION (2016-08-13) 
      Copyright (C) 2010-2016 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT

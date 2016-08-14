@@ -51,7 +51,7 @@ On peut répéter le nombre de fois que le message sera écrit avec l'option « 
 ./cocoweb.pl -s W -y 37 -i 218530 -a write -m "Hello" -w 2 -x 10
 </pre>
 
-#### Action « write » ####
+#### Action « hello » ####
 
 L'action  « write » crée un bot qui va écrire une salutation aléatoire à un utilisateur connecté. L'option « -i » précise le _mynickID_ de l'utilisateur à qui écrire.
 

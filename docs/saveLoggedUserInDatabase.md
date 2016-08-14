@@ -73,7 +73,7 @@ cd ~/cocobot/tools/
 ./initializes-database.pl
 ```
 
-Le script peut prendre quelques secondes ou minutes avant de rendre la main.
+Le script peut prendre quelques secondes ou minutes avant de rendre la main. Par exemple, le script « initializes-database.pl » s'est exécuté en 1 537 secondes, donc plus de vingt-cinq minutes, sur une petite machine physique pas très rapide.
 
 
 ## Configurer le script dans la table du programme cron ##
