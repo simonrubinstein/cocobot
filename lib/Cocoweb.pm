@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-07-14
+# @date 2016-08-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -25,7 +25,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.7004';
+our $VERSION     = '0.7005';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
@@ -189,10 +189,10 @@ sub indexOf {
     my ( $string, $searchString, $start ) = @_;
     $start = 0 if !defined $start;
     return index( $string, $searchString ) if $start == 0;
-    my $substing = substr( $string, $start );
-    my $pos = index( $substing, $searchString );
+    my $substring = substr( $string, $start );
+    my $pos = index( $substring, $searchString );
     return $pos if $pos < 0;
-    return $pos + length($string) - length($substing);
+    return $pos + length($string) - length($substring);
 }
 
 ##@method string substring($string, $from, $to)

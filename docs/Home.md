@@ -43,6 +43,7 @@ Le script « [cocoweb.pl](cocoweb.md) » est la première version développée e
 
   * **bot-test.pl** : crée juste un bot connecté.
   * **checks-if-nickname-is-offline.pl** : crée un bot et vérifie qu'un pseudo donné est hors-ligne.
+  * **create-myavatars.pl** : crée un bot et stocke l'avatar son mot de passe dans le répertoire « var/myavatar/new ».
   * **[db-search.pl](dbSearch.md)** : recherche dans la base de données enregistrés par le script « save-logged-user-in-database.pl ».
   * **get-amiz.pl** : crée un bot et affiche la liste des amis de ce bot.
   * **list-users.pl** : créé un bot et afficher la liste des utilisateurs connectés sur le tchat.
@@ -50,16 +51,22 @@ Le script « [cocoweb.pl](cocoweb.md) » est la première version développée e
   * **loop-requests-to-be-a-friend.pl** : crée des bots en boucle qui font des demandes à un utilisateur connecté de faire parti de sa liste d'amis.
   * **[save-logged-user-in-database.pl](saveLoggedUserInDatabase.md)** : crée un bot et enregistre toutes les connexions et déconnexions dans une base de données. Ce script requiert un abonnement Premium.
   * **search-code.pl** : Crée un bot et cherche un pseudo d'après son code de vode. Ce script requiert un abonnement Premium.
+  * **search-nickname.pl** : Crée un bot qui va rechercher un pseudo dans la liste des connectés.
   * **user-info.pl** : Crée un bot et donne des information sur le compte utilisé par le bot.
   * **write.pl** : Crée un bot et écrit un message à un utilisateur connecté.
+  * **x-requests-to-be-a-friend.pl** : crée des bots en boucle qui lancent des demandes à des utilisateurs connectés de faire parti de sa liste d'amis.
 
 #### Les scripts du répertoire « tools » ####
-  * **initializes-database.pl** : crée et peuple les tables de la base de données utilisés par le script « save-logged-user-in-database.pl » pour enregistrer toutes les connexions et déconnexions des utilisateurs sur Coco.fr.
-  * **get-town-code-from-coco.pl** :
+  * **check-alerts.pl** : vérifie que les alertes fonctionnent.
+  * **check-cocoweb-user-list-data.pl** : vérifie le fichier « var/cocoweb-user-list.data »
+  * **check-town-dump-file.pl** : Affiche la liste des _towns_ et _ISPs_ existants dans la base de données et n'existant pas dans les fichiers de configuration « conf/towns.txt » et « conf/ISPs.txt ».
   * **check-xmpp.pl** : vérifie que l'envoi d'un message XMPP utilisé par les alertes fonctionne.
+  * **create-myavatars-list.pl** :
+  * **get-town-code-from-coco.pl** :
   * **get-zip-citydio.pl** : récupère tous les codes spécifiques utilisés par Coco.fr pour les codes postaux. Ce script est utilisé pour générer le fichier « conf/zip-codes.txt ».
-  * **check-town-dump-file.pl** : Affiche la liste des _towns_ et _ISPs_ existants dans la base de données et n'existant pas dans les fichiers de configuration.
   * **get-zip-from-wikipedia.pl** :
-  * **sort-conf-plain-text-file.pl** : trie supprime les doublons des fichiers de configuration contenant une information par ligne, comme une liste de pseudos ou de citations.
+  * **initializes-database.pl** : crée et peuple les tables de la base de données utilisés par le script « save-logged-user-in-database.pl » pour enregistrer toutes les connexions et déconnexions des utilisateurs sur Coco.fr.
   * **read-messages.pl** : affiche les réponses envoyés au bot créé par le script « save-logged-user-in-database.pl ».
+  * **rivescript.pl** : Test RiveScript.
+  * **sort-conf-plain-text-file.pl** : trie supprime les doublons des fichiers de configuration contenant une information par ligne, comme une liste de pseudos ou de citations.
 

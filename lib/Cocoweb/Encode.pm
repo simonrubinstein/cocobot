@@ -1,6 +1,6 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2016-06-30
+# @date 2016-08-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -32,6 +32,7 @@ use warnings;
 
 #__PACKAGE__->attributes('pathnames');
 
+my @tabsmil            = ();
 my %dememeMatch        = ();
 my %shiftuMatch        = ();
 my %demeleMatch        = ();
@@ -144,7 +145,25 @@ sub initializeTables {
         63  => '?',
         96  => '',
         95  => '_',
-        126 => ' '
+        126 => ' ',
+        124 => 'y'
+    );
+
+    @tabsmil = (
+        'rigole',   'triste',   'clin',    'eclat',
+        'etonne',   'confus',   'rougi',   'dubitatif',
+        'fatigue',  'perplexe', 'langue',  'coeur',
+        'amour',    'cry',      'classe',  'rose',
+        'enerve',   'up',       'down',    'kiss',
+        'angry',    'ange',     'diable',  'cross',
+        'ill',      'na',       'oh',      'mal',
+        'emu',      'shit',     'fuck',    'noword',
+        'drool',    'aoh',      'diablo',  'siffle',
+        'songe',    'content',  'enbiais', 'circon',
+        'victoire', 'mouais',   'aa',      'clope',
+        'touche',   'baffe',    'sleep',   'annif',
+        'decu',     'mmh',      'quoi',    'argh',
+        'euh',      'ouf',      'oups',    'secret'
     );
 
     my $rku = 0;
@@ -270,10 +289,11 @@ sub writo {
     return $s2;
 }
 
-#@method string transformix($sx, $tyb, $syx)
+#@method string transformix($sx, $tyb, $syx, $stt)
 #@param string $sx A string to convert
 #@param integer $tyb -1 or -23
 #@param integer $syx
+#@param integer $stt
 #@return string The string of characters converted
 sub transformix {
     my ( $self, $sx, $tyb, $syx, $stt ) = @_;
@@ -309,19 +329,21 @@ sub transformix {
             or ( $numerox > 122 ) )
         {
 
-            # 59 = ';'
+            # 59 = ';' : emoticon
             if ( $numerox == 59 ) {
                 my $resiz = ';';
-                my $numoz = parseInt( substr( $i + 1, 2 ), 10 );
-
-                #TODO: emoticons suppport
-                warning("The support of smileys is not implemented");
-                $s2 .= $resiz;
+                my $numoz = parseInt( substring( $s1, $i + 1, $i + 3 ), 10 );
+                if ( $numoz < scalar(@tabsmil) and $numoz > -1 ) {
+                    $s2 .= $tabsmil[$numoz];
+                    $i += 2;
+                }
+                else {
+                    $s2 .= $resiz;
+                }
             }
             else {
                 $s2 .= $self->demele( $numerox, $tyb );
             }
-
         }
         else {
             $s2 .= $c;
@@ -358,6 +380,7 @@ sub transformix {
                         $sqm = 0;
                     }
                 }
+                $sqm = '' if !defined $sqm;
                 $s2 = 'http://www.coco.fr/pub/photo' . $sqm . '.htm?' . $tr9;
             }
         }

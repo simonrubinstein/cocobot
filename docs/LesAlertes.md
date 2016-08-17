@@ -84,19 +84,21 @@ Voici par exemple une alerte utilisant le gestionnaire d'alerte _XMPP_ précéde
 ```
   <alert>
     enable    = 1 
-    condition = $code eq 'uhy'
+    condition = $code eq 'nst'
     transport = XMPP 
     recipient = cocoxmpp
   </alert>
 ```
 
-Voici à quoi ressemble l'alerte envoyée quand l'utilisateur avec le code de vote « uhy » est connecté sur le site « Coco.fr » :
+Voici à quoi ressemble l'alerte envoyée quand l'utilisateur avec le code de vote « nst » est connecté sur le site « Coco.fr » :
 
-![http://cocobot.googlecode.com/svn/wiki/alerts/alert-cocobot-mmechat.jpg](http://cocobot.googlecode.com/svn/wiki/alerts/alert-cocobot-mmechat.jpg)
+![Alerte affichée dans le client Pidgin](images/alerts/alert-cocobot-rocknswing.png)
 
-L'alerte a été envoyée à une personne qui a configuré le client de messagerie instantané [Pidgin](http://fr.wikipedia.org/wiki/Pidgin_(logiciel)) sous [Ubuntu Linux 13.10](http://fr.wikipedia.org/wiki/Ubuntu).
+L'alerte a été envoyée à une personne qui a configuré le client de messagerie instantané [Pidgin](http://fr.wikipedia.org/wiki/Pidgin_(logiciel)) sous [Ubuntu Linux 16.04](http://fr.wikipedia.org/wiki/Ubuntu).
 
-Pour que le client Pidgin fonctionne avec un compte GMail, vous devez aller sur la page « https://myaccount.google.com/security?pli=1#signin », dans la la section  « Connexion et sécurité » et sous-section « Se connecter à Google », tout en bas de la page, et désactiver l'option « Paramètre "Autoriser les applications moins sécurisées" désactivé ».  
+Pour que le client Pidgin fonctionne avec un compte GMail, vous devez aller sur la page « https://myaccount.google.com/security?pli=1#signin », dans la la section  « Connexion et sécurité » et sous-section « Se connecter à Google », tout en bas de la page, et désactiver l'option « Paramètre "Autoriser les applications moins sécurisées" désactivé » :
+
+![Connexion et sécurité du compte Google](images/alerts/myaccount-google-connection-and-security.png)
 
 ## La section `<Message>` ##
 
