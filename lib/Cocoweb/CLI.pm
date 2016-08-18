@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2016-07-07
+# @date 2016-08-17
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -48,7 +48,7 @@ __PACKAGE__->attributes(
     'writeLogInFile',      'isAvatarRequest',
     'delay',               'zip',
     'myavatarsListEnable', 'myavatarsListRequired',
-    'myavatarsListi',      'riveScriptDir'
+    'myavatarsList',      'riveScriptDir'
 );
 
 ##@method object init($class, $instance)
@@ -325,7 +325,7 @@ sub HELP {
         "  -x maxOfLoop      A maximum number of iterations to perform.\n"
         . "  -S seconds        Delays the loop execution for the given number of seconds.\n"
         if $self->enableLoop();
-    print STDOUT "  -M                Uses the pre-created myavatars list.\n"
+    print STDOUT "  -M                Uses the pre-created myavatars list from \"var/myavatar/list.txt\" file\n"
         if $self->myavatarsListEnable();
 
     print STDOUT <<ENDTXT;
