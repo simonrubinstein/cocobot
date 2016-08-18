@@ -1,6 +1,6 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # @created 2012-02-25
-# @date 2016-07-07
+# @date 2016-08-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot 
 #
@@ -50,6 +50,8 @@ sub run {
             $bot->requestCheckIfUsersNotSeenAreOffline();
         }
         if ( $count % 28 == 9 ) {
+            #This request is necessary to activate the server side time counter.
+            $bot->searchChatRooms();
             $usersList = $bot->requestUsersList();
         }
         $bot->requestMessagesFromUsers();
@@ -74,15 +76,19 @@ sub init {
 # Display help message
 sub HELP_MESSAGE {
     print STDOUT $Script . ', just create a bot.' . "\n";
-#bot-test.pl -v -x 1000 -s W -V rivescript/woman-replies
     $CLI->printLineOfArgs();
     $CLI->HELP();
+    print <<END;
+
+Examples:
+bot-test.pl -v -x 1000 -s W -V rivescript/woman-replies
+END
     exit 0;
 }
 
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-07');
+    $CLI->VERSION_MESSAGE('2016-08-18');
 }
 
