@@ -37,7 +37,7 @@ La deuxième version se compose d'une suite de scripts réécrites pour être pl
 
 Le script « [cocoweb.pl](cocoweb.md) » est la première version développée est une commande autonome, sans bibliothèques externes, prenant une multitude d'options en paramètres. 
 
-### Deuxième version modulaires des script ###
+### Deuxième version modulaires des scripts ###
 
 #### Les scripts du répertoire « scripts » ####
 

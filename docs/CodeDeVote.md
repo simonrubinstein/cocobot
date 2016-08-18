@@ -4,7 +4,16 @@ Un abonnement Premium permet de visualiser le _code de vote_, le _FAI_, le _stat
 
 Par exemple voici les informations affichées en appuyant sur le bouton information en forme de point d'interrogation :
 
-![http://cocobot.googlecode.com/svn/wiki/infuz/bouton-info-MMY.jpg](http://cocobot.googlecode.com/svn/wiki/infuz/bouton-info-MMY.jpg)
+![Information données par le bouton info](images/code-de-vote/code-de-vote-alia-of-the-knife.png)
+  * **Code de vote** : RvW
+  * **Fournisseur d'accès** : Free SAS
+  * **Statut** : 0
+  * **Niveau** : 0
+  * **Temps de connexion** : 0 minute
+  * **Ville de connexion** : FR- Ivry-sur-seine.
+Dans l'exemple précédent, l'internaute est bien connecté depuis Ivry-sur-seine.
+
+Autre exemple :
   * **Code de vote** : MYY
   * **Fournisseur d'accès** : Orange
   * **Statut** : 0
