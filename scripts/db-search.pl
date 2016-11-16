@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 # @brief This script runs SQL queries from the database.
 # @created 2012-05-18
-# @date 2016-08-02
+# @date 2016-11-13
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -195,6 +195,7 @@ db-search.pl -t "FR- Aulnay-sous-bois","FR- Sevran" -s 2 -i "Free SAS"
 db-search.pl -c JiC -i "Orange"
 db-search.pl -O -I -s 2,7 -f plain-text/nicknames-to-filter.txt
 db-search.pl -P -I -s 2 -f plain-text/nicknames-to-filter.txt,plain-text/nicknames-to-filter-2.txt -y 30 -F 1
+db-search.pl -f plain-text/nicknames-to-filter.txt -N -s W -l Homme%
 
 ENDTXT
     exit 0;
@@ -203,6 +204,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-08-02');
+    $CLI->VERSION_MESSAGE('2016-11-13');
 }
 
