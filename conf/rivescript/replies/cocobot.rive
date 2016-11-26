@@ -66,7 +66,6 @@
 ! sub pk            = pourquoi
 ! sub povre         = pauvre
 ! sub byye          = bye
-! sub pk            = pourquoi
 ! sub povre         = pauvre
 ! sub stp           = s il te plait
 ! sub cava          = ca va
@@ -160,6 +159,7 @@
 ! sub pfffffff      = pff
 ! sub pfffffffffff  = pff
 ! sub oke           = ok
+! sub okok          = ok
 ! sub oki           = ok
 ! sub ^^            = emoticone style nippon 
 ! sub ...           = point de suspension
@@ -174,6 +174,7 @@
 ! sub gueuele       = gueule
 ! sub geule         = gueule
 ! sub gueulle       = gueule
+! sub ferme taggle  = ferme ta gueule 
 ! sub biem          = bien
 ! sub te relou      = tu es relou
 ! sub mulo          = mulot
@@ -359,6 +360,11 @@
 - Vous voulez dire vrai par là ?
 - Ce qui n'est pas faux a un goût de vérité ?
 
++ c est vrai
+- Donc ce n'est pas faux, si c'est vrai ?
+- Vous voulze dire que ce n'est pas faux ?
+- Ce qui est vrai a un goût de vérité ?
+
 + [*] suis [un] (homme|mec|gars) [*]
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
@@ -443,6 +449,9 @@
 
 + emoticone style nippon
 - Je vois, vous appréciez les émoticônes de style nippon  (^_^)
+- Vous appréciez les émoticônes de style nippon  (^_^)
+- Vous préférez les émoticônes japonais ?
+- Vous préférez le style nippon au style occidental donc ?
 
 + point de suspension
 - Le point de suspension, c'est ce qui vous reste à dire quand vous avez tout dit.
@@ -511,16 +520,14 @@
 + degages
 @ degage
 
-+ ferme ta gueule
++ [mais] [putain] ferme ta gueule
 @ ta gueule
 + ftg [*]
 @ ta gueule
 + tg
 - tg = tu es génial ?
 - tg = tu es génial. Merci.
-- tg = Merci, car tg = tu es génial.
-- tg = tu es génial. C'est gentil.
-- tg = Merci, car tg = tu es génial.
+- Merci, car tg = tu es génial.
 + ntm
 - Le Nord Transmet le Message ?
 - Nord Trop Mortel ?
@@ -717,8 +724,10 @@
 - Je ne pense pas être votre frère, vous faites erreur.
 - Je ne suis pas l'enfant de votre mère, vous vous trompez.
 - Vous devez me confondre avec votre frère.
-+ * fils de pute *
-+ @fdp
++ [*] fils de pute [*]
+@fdp
++ ta mere la pute
+@fdp
 
 + (nique|baise) ta mere
 - Je ne fais pas dans l'inceste, contrairement à vous.
@@ -916,6 +925,10 @@
 
 + (connard de merde)
 - C'est votre nom ? Enchanté <star1>.
++ merde
+- Mangez-la donc votre merde. 
+- Vous devriez la manger votre merde. 
+- Mangez donc votre merde.
 
 + tu radotes
 - Il y a un âge pour se raconter sans trop de mensonges : la quarantaine. Avant on enjolive ; après on radote.
@@ -924,5 +937,17 @@
 + tu radotes c est lassant
 @ tu radotes
 
++ pourquoi
+- La rose est sans pourquoi.
+- Pourquoi ne perd-on jamais le Sud ?
+- Pourquoi avoir peur du bonheur ?
+- Toutes choses ont un pourquoi, mais Dieu n'a pas de pourquoi.
+- Je vous résume le freudisme : Pourquoi ? Parce queue...
+- Pourquoi philosopher alors qu’on peut chanter ?
 
-
++ change de disque
+- Le disque est mort avec l'air du numérique.
+- Mon disque est rayé, comme vous l'avez remarqué.
+- Le soleil se lève chaque jour comme un disque rayé.
+- Je pourrais peut-être passer un de ces soirs et glisser mon disque dans votre lecteur.
+- Pour sortir un disque, il faut avoir quelque chose à dire.
