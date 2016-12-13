@@ -79,7 +79,7 @@ AUTH:
     }
     $bot->getMyInfuz();
     $bot->requestConnectedUserInfo();
-    $bot->request()->isDieIfDisconnected(0);
+    #$bot->request()->isDieIfDisconnected(0);
 
     # Return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
