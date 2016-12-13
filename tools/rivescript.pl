@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2016-07-02
-# @date 2016-07-22
+# @date 2016-11-27
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -203,7 +203,7 @@ sub bot {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'cm:V:f:a:WM' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 'cm:V:f:aWM' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
@@ -267,6 +267,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-18');
+    $CLI->VERSION_MESSAGE('2016-11-27');
 }
 

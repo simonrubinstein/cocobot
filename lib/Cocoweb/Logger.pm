@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-17
-# @date 2016-07-24
+# @date 2016-12-10 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -91,7 +91,7 @@ sub _log {
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
     $self->_display( $priority, "$message $hourStr [$identity]\n" )
         if exists $ENV{'TERM'};
-    $self->_writeLog( "[$$][method: $function; line: $line] "
+    $self->_writeLog( "$$ $function:$line "
             . $hourStr
             . " ($priority) $message\n" );
 }

@@ -79,6 +79,7 @@ AUTH:
     }
     $bot->getMyInfuz();
     $bot->requestConnectedUserInfo();
+    $bot->request()->isDieIfDisconnected(0);
 
     # Return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
@@ -113,25 +114,35 @@ sub checkUsers {
     # Reset at zero 'isNew', 'isView', 'hasChange' and 'updateDbRecord' 
     # data members of each current user.  
     # Request and returns the list of connected users
+    debug('[checkUsers] $bot->requestUsersList();');
     $usersList = $bot->requestUsersList();
 
     # Makes an request to retrieve the 'infuz' value for all new users.
+    debug('[checkUsers] $bot->requestInfuzForNewUsers');
     $bot->requestInfuzForNewUsers();
 
     # 
+    debug('[checkUsers] $usersList->addOrUpdateInDB(1)');
     $usersList->addOrUpdateInDB(1);
+    debug('[checkUsers] $usersList->serialize');
     $usersList->serialize();
 
     # Requests on Coco.fr to determine if users are disconnected.
+    debug('[checkUsers] $bot->requestCheckIfUsersNotSeenAreOffline();');
     $bot->requestCheckIfUsersNotSeenAreOffline();
+    debug('[checkUsers] $usersList->purgeUsersUnseen($bot)');
     $usersList->purgeUsersUnseen($bot);
+    debug('[checkUsers] $usersList->addOrUpdateInDB(0);');
     $usersList->addOrUpdateInDB(0);
+    debug('[checkUsers]');
     $bot->setUsersOfflineInDB();
+    debug('[checkUsers] $usersList->serialize();');
     $usersList->serialize();
 
-
+    debug('[checkUsers] alarmProcess( $bot, $usersList ); ');
     alarmProcess( $bot, $usersList );
     # Reset at zero 'recent' data member of each user
+    debug('[checkUsers] $usersList->clearRecentFlags();');
     $usersList->clearRecentFlags();
 }
 

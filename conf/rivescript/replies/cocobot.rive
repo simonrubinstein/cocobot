@@ -61,15 +61,19 @@
 ! sub je sui        = je suis
 ! sub jesuis        = je suis
 ! sub sui mec       = suis mec
+! sub je ss h       = je suis un homme
+! sub j suis pas    = je ne suis pas
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
 ! sub povre         = pauvre
 ! sub byye          = bye
+! sub bye bye       = bye
 ! sub povre         = pauvre
 ! sub stp           = s il te plait
 ! sub cava          = ca va
 ! sub peu etrr      = peut etre
+! sub peu etre      = peut etre
 ! sub pseud         = pseudo
 ! sub t celibat     = tu es celibataire
 ! sub celib         = celibataire
@@ -113,6 +117,7 @@
 ! sub recherche tu  = recherches tu
 ! sub que cherchees = que cherches
 ! sub cherche tu    = cherches tu
+! sub que ch tu     = que cherches tu
 ! sub tu fume       = tu fumes
 ! sub tu me saoule  = tu me saoules
 ! sub tu saoule     = tu saoules
@@ -137,6 +142,7 @@
 ! sub lool          = mdr
 ! sub mdrr          = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
+! sub ouiiiiiiiiiii = oui
 ! sub vous avez     = tu as
 ! sub tu cherche s  = tu cherches
 ! sub tu cherche    = tu cherches
@@ -168,9 +174,12 @@
 ! sub tes message   = tes messages
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
+! sub t gueule      = ta gueule
 ! sub taggle        = ta gueule
 ! sub tageule       = ta gueule
 ! sub tagueule      = ta gueule
+! sub tagueul       = ta gueule
+! sub tgueule       = ta gueule
 ! sub gueuele       = gueule
 ! sub geule         = gueule
 ! sub gueulle       = gueule
@@ -197,7 +206,10 @@
 ! sub pascompris    = pas compris
 ! sub pas tt compris = pas tout compris
 ! sub j sui h       = je suis un homme
+! sub j suis pas une f = je ne suis pas une femme
+! sub je ne siis pas femme = je ne suis pas une femme
 ! sub casses toi    = casse toi
+! sub caqse toi     = casse toi
 
 
 + bonjour robot
@@ -252,6 +264,9 @@
 
 + jolie
 - Pas aussi jolie que vous, j'en suis certain.
+
++ jaime beaucoup vos phrases
+- Moi également, j'apprécie beaucoup mes phrases.
 
 + bye
 - Ce fut un réel plaisir de croiser votre chemin ici.
@@ -324,7 +339,10 @@
 - Je suis ni travesti, ni homosexuel.
 + tu es marie
 - Je suis un homme marié, pourquoi cette question étrange ?
-
++ trav ou lope
+@ trav ou pede
++ lope ou trav 
+@ trav ou pede
 
 + 1984
 - Nineteen Eighty-Four.
@@ -345,6 +363,10 @@
 - Vous êtes d'accord donc ?
 - Ce OK signifie quoi pour vous ?
 - Sauf qu'on sait tous les deux que OK est un mot extrêmement provocateur. Il dégouline de sensualité.
+
++ peut etre
+- Peut-être ?
+- Chacun peut être Caïn. Chacun peut être Abel.
 
 + oui tout a fait cher ami
 - Nous sommes déjà ami ?
@@ -501,6 +523,8 @@
 @ oui mon esclave
 + slavemoney
 @ oui mon esclave
++ je suis domina
+@ oui mon esclave
 
 + degage
 - Je ne dégage que des bonnes choses.
@@ -551,6 +575,13 @@
 - Suggérer, c'est créer. Décrire, c'est détruire.
 - Une photographie, c'est un fragment de temps qui ne reviendra pas.
 - Une photographie, c'est un arrêt du coeur d'une fraction de seconde.
+
++ photo
+- Vous désirez une photogaphie de quoi ?
+- Je suis très timide, je n'ose me dévoiler.
+- Je préfére vous laisser imaginer.
++ foto
+@ photo
 
 + va manger (tes|des) (mulot|mulots) (toi)
 - Quiconque a entendu les cris d'un animal qu'on tue ne peut plus jamais manger de sa chair.
@@ -655,6 +686,16 @@
 - Les gens qui ont l’air constipé sont souvent les plus chiants !
 + tu fais chier toi
 @ tu fais chier
++ connard
+- C'est votre nom ? Enchanté Connard.
+- Les connards, ce n'est malheureusement pas ce qui manque ! Je parle surtout en pensant à vous.
+- N’étant pas trop connard de nature, j’arrivais jeune à distinguer un bon texte. 
+- Connard. C'est une rime pauvre. 
+
++ de quelle origine es tu
+- Je suis un simple terrien.
+- Je suis originaire de la planète Terre.
+- Je suis originaire de la troisième planète du Système solaire.
 
 + pardon
 - Ma vengeance sera le pardon.
@@ -951,3 +992,18 @@
 - Le soleil se lève chaque jour comme un disque rayé.
 - Je pourrais peut-être passer un de ces soirs et glisser mon disque dans votre lecteur.
 - Pour sortir un disque, il faut avoir quelque chose à dire.
+
++ abruti
+- L'abrutissement est l'état le plus proche de l'innocence.
+- Il n'y a pas de mal à se moquer des abrutis. Ils sont là pour ça, non ?
+- Les abrutis ont des certitudes... Les autres ont des doutes.
+- L'homme méchant n'est jamais qu'un pauvre imbécile.
+
++ suce ma bite
+- Désolé, je ne mange pas de {random}porc|cochon|cochonnailles{/random}.
+- Désolé, {random}le porc|le cochon|la cochonnaille{/random} ne fait pas parti de mon alimentation.
+
++ va te soigner
+- Je ne suis point malade.
+- Pourquoi vous êtes contagieuse ?
+
