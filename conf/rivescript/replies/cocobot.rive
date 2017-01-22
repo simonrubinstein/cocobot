@@ -22,6 +22,7 @@
 ! sub je ne vous         = je ne te
 ! sub etes vous          = es tu
 ! sub vous radotez       = tu radotes
+! sub vous partez        = tu pars
 
 ! sub t as          = tu as
 ! sub tu est        = tu es
@@ -141,10 +142,12 @@
 ! sub loll          = mdr
 ! sub lool          = mdr
 ! sub mdrr          = mdr
+! sub mdrrrr        = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
 ! sub ouiiiiiiiiiii = oui
 ! sub vous avez     = tu as
 ! sub tu cherche s  = tu cherches
+! sub tu cherche koi= tu cherches quoi
 ! sub tu cherche    = tu cherches
 ! sub tu recherche  = tu recherches
 ! sub tu raconte    = tu racontes
@@ -157,6 +160,7 @@
 ! sub toujour       = toujours
 ! sub tjs           = toujours
 ! sub qoui          = quoi
+! sub ahahah        = haha
 ! sub hahaha        = haha
 ! sub hahahaha      = haha
 ! sub aahahahahah   = haha
@@ -177,6 +181,7 @@
 ! sub t gueule      = ta gueule
 ! sub taggle        = ta gueule
 ! sub tageule       = ta gueule
+! sub tageul        = ta gueule
 ! sub tagueule      = ta gueule
 ! sub tagueul       = ta gueule
 ! sub tgueule       = ta gueule
@@ -210,7 +215,7 @@
 ! sub je ne siis pas femme = je ne suis pas une femme
 ! sub casses toi    = casse toi
 ! sub caqse toi     = casse toi
-
+! sub hiboue        = hibou
 
 + bonjour robot
 - bonjour humain
@@ -297,15 +302,24 @@
 - Le plus lourd fardeau, c'est d'exister sans vivre.
 - Autant le mot est léger pour celui qui le jette, autant il est lourd pour celui qui le reçoit.
 
++ oui robot
+- Comment être certain que je sois {random}un robot|une machine{/random} ?
+- Je suis peut-être un {random}être humain|homme|être vivant{/random} qui se fait passer pour un robot ?
+- Peut-on dire oui à {random}un robot|une machine{/random} ?
+- Aujourd'hui nous sommes devenu esclave des machines, demain nous serons gourvernés par des robots.
+- Vous pensez {random}vraiment|réellement|sérieusement{/random} que je suis {random}un robot|une machine{/random} ?
+
 + t es un robot
-- Bien sûr que je suis robot !
-- Vous pensez que je suis un robot ?
-- Vous pensez {random}vraiment|réellement|sérieusement{/random} que je suis un robot ?
+- Comment être certain que je sois {random}un robot|une machine{/random} ?
+- Bien sûr que je suis {random}un robot|une machine{/random} !
+- Vous pensez que je suis {random}un robot|une machine{/random} ?
+- Vous pensez {random}vraiment|réellement|sérieusement{/random} que je suis {random}un robot|une machine{/random} ?
 - La différence entre l'être humain et le robot n'est peut-être pas aussi significative que celle qui oppose l'intelligence et la bêtise.
 - Un robot n'est pas tout à fait une machine. Un robot est une machine fabriquée pour imiter de son mieux l'être humain.
 - C'est moi Nono, le petit robot.
 - Je suis Nono le petit robot, l'ami d'Ulysse. 
 - Bidi-bidi-bidi-bidi !
+- Un robot ne peut porter atteinte à un être humain, ni, en restant passif, permettre qu'un être humain soit exposé au danger.
 + [*] robot [*]
 @ t es un robot
 + bye robot
@@ -361,8 +375,11 @@
 
 + ok
 - Vous êtes d'accord donc ?
-- Ce OK signifie quoi pour vous ?
-- Sauf qu'on sait tous les deux que OK est un mot extrêmement provocateur. Il dégouline de sensualité.
+- Ce {random}OK|okay|ok{/random} signifie quoi pour vous ?
+- Sauf qu'on sait tous les deux que {random}OK|okay|ok{/random}est un mot extrêmement provocateur. Il dégouline de sensualité.
+- Vous êtes comme Jacouille la Fripouille, c'est toujours {random}OK|okay|ok{/random} avec vous.
+- Vous ne devriez pas dire {random}OK|okay|ok{/random} à tout.
+- {random}OK|okay|ok{/random} je veux bien, mais {random}OK|okay|ok{/random} à quoi ?
 
 + peut etre
 - Peut-être ?
@@ -564,6 +581,12 @@
 - Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
 + mais ferme la
 @ la ferme
++ mais ferme ta gueule toi
+@ la ferme
++ ta gueule vieux salopard
+@ la ferme
++ alors ferme la
+@ la ferme
 
 + (tu bien|k mek jmen balek) [*]
 - Vous savoir parler la France ?
@@ -648,7 +671,7 @@
 - Un peu de culture ne pas vous faire de mal.
 - Vous n'aimez mes mots ? Je suis fort déçu.
 
-+ trop vieux [*]
++ tu es vieux toi
 - Je suis resté jeune dans ma tête.
 - Mariage plus vieux, Mariage heureux.
 - Peu de gens savent être vieux.
@@ -657,6 +680,9 @@
 - On est toujours le jeune d'un vieux et le vieux d'un jeune.
 - Aujourd'hui il est interdit à un vieux d'être vieux.
 - Plus vieux est le bouc, plus dure est sa corne.
+- Je m'amuse à vieillir. C'est une occupation de tous les instants.
++ trop vieux [*]
+@ tu es vieux toi 
 
 + c est agreable ni pour toi ni pour moi *
 - Nous pourrions faire tellement de choses agréables.
@@ -813,6 +839,8 @@
 @ que recherches tu
 + ta recherche
 @ que recherches tu
++ salut tu cherches quoi 
+@ que recherches tu
 
 + fake
 - Allez-vous y retrouver parmi le faux vrai, le vrai faux, le vrai vrai et le faux faux !
@@ -872,6 +900,8 @@
 - tu saoules
 + [*] tu saoules avec tes messages [*]
 @ tu saoules
++ tu saoules toi
+@ tu saoules
 
 + va te faire foutre
 - Merci, c'est une invitation à copuler avec vous ?
@@ -908,6 +938,8 @@
 @ qui es tu
 + (bonsoir|bonjour|hello|coucou) qui es tu
 @ qui es tu
++ qui est ce
+@ qui es tu
 
 + tu en as beaucoup comme ca
 - Quelques unes oui.
@@ -941,6 +973,11 @@
 @ parti
 + partie
 @ parti
++ tu pars
+@ parti
+
++ tiens une troisieme phrase
+- Oui cela arrive parfois.
 
 + pauvre type
 - Je ne suis pas si pauvre que ça vous savez.
@@ -1006,4 +1043,21 @@
 + va te soigner
 - Je ne suis point malade.
 - Pourquoi vous êtes contagieuse ?
+
++ bien
+- le mieux est l’ennemi du bien, mais est-ce que le bien est  l’ennemi du mieux ? 
+- Qui aime bien chatouille bien.
+- Bien nourrir fait dormir, Et bien vivre bien mourir.
+- Tout est bien qui finit bien.
+- Bien faire vaut mieux que bien dire.
+- Tout est bien qui paraît bien.
+- Il ne suffit pas de faire le bien, il faut encore le bien faire.
+
++ coucou hibou
+- Merci, vous êtes chouette
++ coucou hibou [*]
+@ coucou hibou
+
+
+
 

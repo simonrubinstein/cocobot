@@ -1,5 +1,5 @@
 # @created 2012-02-17
-# @date 2016-08-17
+# @date 2017-01-22
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -25,7 +25,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.7005';
+our $VERSION     = '0.7006';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;

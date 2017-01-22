@@ -1,10 +1,10 @@
 # @brief
 # @created 2016-07-01
-# @date 2016-08-01
+# @date 2017-01-22 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2017
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -78,11 +78,11 @@ sub process {
         next if !defined $messageLast or length($messageLast) == 0;
         my $reply = $rs->reply( 'localuser', $messageLast );
         if ( $reply eq 'ERR: No Reply Matched' ) {
-            error("No reply matched for $messageLast");
+            warning("No reply matched for $messageLast");
             next;
         }
         elsif ( $reply eq 'ERR: No Reply Found' ) {
-            error("No reply found for $messageLast");
+            warning("No reply found for $messageLast");
             next;
         }
         my $logStr = ref($self);
