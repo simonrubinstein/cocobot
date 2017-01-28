@@ -1,0 +1,22 @@
+Amiens:Hauts-de-France
+Annemasse:Auvergne-Rhône-Alpe
+Auzouer-en-touraine:Centre-Val de Loire
+Bazouges-la-perouse:Bretagne
+Bonnieres-sur-seine:Île-de-France
+Chatellerault:Nouvelle-Aquitaine
+Chuzelles:Auvergne-Rhône-Alpes
+Domont:Île-de-France
+Fourmies:Hauts-de-France
+Le Pallet:Pays de la Loire
+Lille:Hauts-de-France
+Marseille:Provence-Alpes-Côte
+Morteau:Bourgogne-Franche-Comté
+Nantes:Pays de la Loire
+Pontault:Île-de-France
+Raches:Hauts-de-France
+Strasbourg:Grand Est
+Tinchebray:Basse-Normandie
+Toulouse:Occitanie
+Tourcoing:Hauts-de-France
+Troyes:Grand Est
+Villefranche-sur-saone:Auvergne-Rhône-Alpes
