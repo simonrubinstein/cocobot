@@ -23,6 +23,7 @@
 ! sub etes vous          = es tu
 ! sub vous radotez       = tu radotes
 ! sub vous partez        = tu pars
+! sub ca vous amuse      = ca t amuse
 
 ! sub t as          = tu as
 ! sub tu est        = tu es
@@ -102,6 +103,7 @@
 ! sub cest          = c est
 
 ! sub slt           = salut
+! sub lu            = salut
 ! sub saluuut       = salut
 ! sub bjr           = bonjour
 ! sub bjrrrr        = bonjour
@@ -123,6 +125,8 @@
 ! sub tu me saoule  = tu me saoules
 ! sub tu saoule     = tu saoules
 ! sub tu dort       = tu dors
+! sub je te comprend pas    = je ne te comprends pas
+! sub je ne te comprend pas = je ne te comprends pas
 
 ! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
@@ -134,6 +138,7 @@
 ! sub sa va         = ca va
 ! sub sava          = ca va
 ! sub cava          = ca va
+! sub cccv          = coucou ca va
 ! sub slt cv        = salut ca va
 ! sub qsa va        = ca ca
 ! sub sa te di      = ca te dit
@@ -247,6 +252,8 @@
 - C'est aimable à vous de me saluer !
 
 + comment vas tu
+@ salut la forme
++ tu vas bien
 @ salut la forme
 
 + [*] ca va
@@ -427,7 +434,7 @@
 - L'erreur, comme le rire, est humaine.
 - Le rire est le grelot du sexe.
 - On peut rire de tout, mais pas pour rien.
-- J’adore être pris en flagrant délire.
+- J'adore être pris en flagrant délire.
 
 + [*] je marche sur des oeufs
 - Vous n'êtes pas rassuré ?
@@ -548,10 +555,11 @@
 - Je me trouve bien ici, j'y reste.
 + ta gueule
 - Ma gueule elle sourit.
-- Ma gueule est sourit et la votre ?
+- Ma gueule elle sourit et la votre ?
 - Ma gueule elle sourit, même aux cons.
 - Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
 - C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
+- Avec votre gueule de cul, vous devez utiliser du papier hygiénique comme démaquillant.
 + ta gueule toi
 @ ta gueule
 + non tg ta gueule
@@ -657,7 +665,8 @@
 @ pas compris
 + je [ne] comprends rien
 @ pas compris
-
++ je [ne] te comprends pas
+@ pas compris
 
 + je prefere avoir des bebes
 - Vraiment ?
@@ -709,13 +718,13 @@
 + tu fais chier
 - On m'a souvent dit que j'avais des vertus laxatives.
 - Plus on est chiant, plus on se fait respecter.
-- Les gens qui ont l’air constipé sont souvent les plus chiants !
+- Les gens qui ont l'air constipé sont souvent les plus chiants !
 + tu fais chier toi
 @ tu fais chier
 + connard
 - C'est votre nom ? Enchanté Connard.
 - Les connards, ce n'est malheureusement pas ce qui manque ! Je parle surtout en pensant à vous.
-- N’étant pas trop connard de nature, j’arrivais jeune à distinguer un bon texte. 
+- N'étant pas trop connard de nature, j'arrivais jeune à distinguer un bon texte. 
 - Connard. C'est une rime pauvre. 
 
 + de quelle origine es tu
@@ -796,10 +805,12 @@
 + ta mere la pute
 @fdp
 
-+ (nique|baise) ta mere
++ nique ta mere la pute
 - Je ne fais pas dans l'inceste, contrairement à vous.
 - Je préfère copuler avec la votre.
 - Originale comme réplique, on me l'a jamais faite encore.
++ (nique|baise) ta mere
+@ nique ta mere la pute
 + nique ta race
 - Votre réplique est fort originale, on me l'avait jamais dite encore.
 
@@ -857,8 +868,8 @@
 @ tu t appelles 
 
 + copier coller
-- Il est plus facile de copier que de penser, c’est ce qui fait la mode.
-- C'est en copiant qu’on invente.
+- Il est plus facile de copier que de penser, c'est ce qui fait la mode.
+- C'est en copiant qu'on invente.
 - Lorsque quelque chose a été dit et bien dit, n'ayez pas de scrupules. Prennez-le et copiez-le.
 + [*] copier coller [*]
 @ copier coller
@@ -879,7 +890,7 @@
 - A folle demande, point de réponse.
 - A sotte question, point de réponse.
 - Mauvaise question ? Mauvaise réponse !
-- La plus courte réponse est l’action.
+- La plus courte réponse est l'action.
 - Les bouteilles à la mer ne ramènent pas souvent les réponses.
 - La réponse est oui. Mais quelle était la question ?
 - Toute question ne mérite pas de réponse.
@@ -919,7 +930,7 @@
 
 + bref
 - Ce qui est bref et bon est deux fois bon.
-- Soyez bref, car les discours qui n’en finissent pas ne plaisent pas.
+- Soyez bref, car les discours qui n'en finissent pas ne plaisent pas.
 
 + tu es penible
 - Merci, j'apprécie les compliments.
@@ -1021,7 +1032,7 @@
 - Pourquoi avoir peur du bonheur ?
 - Toutes choses ont un pourquoi, mais Dieu n'a pas de pourquoi.
 - Je vous résume le freudisme : Pourquoi ? Parce queue...
-- Pourquoi philosopher alors qu’on peut chanter ?
+- Pourquoi philosopher alors qu'on peut chanter ?
 
 + change de disque
 - Le disque est mort avec l'air du numérique.
@@ -1045,7 +1056,7 @@
 - Pourquoi vous êtes contagieuse ?
 
 + bien
-- le mieux est l’ennemi du bien, mais est-ce que le bien est  l’ennemi du mieux ? 
+- le mieux est l'ennemi du bien, mais est-ce que le bien est  l'ennemi du mieux ? 
 - Qui aime bien chatouille bien.
 - Bien nourrir fait dormir, Et bien vivre bien mourir.
 - Tout est bien qui finit bien.
@@ -1057,6 +1068,56 @@
 - Merci, vous êtes chouette
 + coucou hibou [*]
 @ coucou hibou
+
++ ca t amuse
+- J'avoue que je m'amuse follement.
+- Deux choses comptent : gagner et s'amuser. Gagner sans s'amuser n'a aucun intérêt.
+- L'homme travaille une année pour s'amuser une journée.
+- Fou celui qui veut éclairer le soleil, fou celui qui veut amuser son âne.
+- Nous avons toute la vie pour nous amuser et toute la mort pour nous reposer.
+- Amuser les autres est une des façons les plus émouvantes d'exister.
+- Le sens de la vie c'est justement de s'amuser avec la vie.
+- S'amuser est une bonne chose, seulement si l'on a rien de mieux à faire.
+- Il y a deux sortes d'hommes ; ceux qui pensent à s'amuser, et ceux qui s'amusent à penser.
+- Moi je me demande encore si la vie, c'est fait pour s'amuser ou pour se rendre utile.
++ tu t amuses bien toi
+@ ca t amuse
+
++ pauvre mec
+- Il ne tient à vous que je sois riche.
+- Il n'est pauvreté que d'ignorance.
+
++ encule
+- Il y deux façons d'enculer les mouches : avec ou sans leur consentement.
+- Je ne suis pas un Jean-Cul comme vous, un traître qui agit par derrière.
+- Je ne suis point un adepte de la sodomie comme vous.
++ va te faire enculer
+@ encule
+
++ reponds
+- Répondre aux sots est un travail extrême.
+- On répond à la folie par le silence.
+- Un homme intelligent ne répond aux offenses que par le silence.
+- Bien écouter, c'est presque répondre.
+- La folie, ce n'est pas de parler aux murs, c'est de les entendre répondre.
+- Un imbécile peut demander plus que dix sages ne peuvent répondre.
+- La moitié des difficultés de l'homme provient de son envie de répondre à chaque question par oui ou par non.
+- J'adore le silence, l'abus que l'on fait de la parole m'a dégoûté de son usage.
+- Le silence en dit souvent trop pour être un sûr moyen de ne rien dire.
+- Ce qu'il y a de plus important dans la conversation, c'est peut-être le silence.
+- Le silence est la réponse des sages.
++ tu reponds enfin
+@ reponds
++ tu [ne] reponds jamais [pourquoi]
+@ reponds
++ tu ne reponds qu a ok 
+@ reponds
++ [et] tu [ne] reponds pas
+@ reponds
+
+
++ sourire
+- A un sourire on ne peut répondre que par un sourire.
 
 
 

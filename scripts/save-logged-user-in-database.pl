@@ -1,16 +1,11 @@
 #!/usr/bin/perl
 # @brief This script saves all users connected to the database
 # @created 2012-03-09
-# @date 2016-06-26
+# @date 2017-10-30
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2017
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -79,6 +74,7 @@ AUTH:
     }
     $bot->getMyInfuz();
     $bot->requestConnectedUserInfo();
+
     #$bot->request()->isDieIfDisconnected(0);
 
     # Return an empty  'Cocoweb::User::List' object
@@ -94,15 +90,19 @@ AUTH:
 
     checkUsers();
     my $count = 0;
+BOOTLOOP:
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         $bot->setTimz1($count);
+        last BOOTLOOP if $bot->beenDisconnected();
         my $mynickname = $bot->user()->mynickname();
         message(
             'Iteration number: ' . $count . '; mynickname: ' . $mynickname );
         if ( $count % 28 == 9 ) {
             checkUsers();
+            last BOOTLOOP if $bot->beenDisconnected();
         }
         $bot->requestMessagesFromUsers();
+        last BOOTLOOP if $bot->beenDisconnected();
         sleep 1 if $count < $CLI->maxOfLoop();
     }
     $usersList->serialize();
@@ -111,17 +111,20 @@ AUTH:
 
 ##@method void checkUsers()
 sub checkUsers {
-    # Reset at zero 'isNew', 'isView', 'hasChange' and 'updateDbRecord' 
-    # data members of each current user.  
+
+    # Reset at zero 'isNew', 'isView', 'hasChange' and 'updateDbRecord'
+    # data members of each current user.
     # Request and returns the list of connected users
     debug('[checkUsers] $bot->requestUsersList();');
     $usersList = $bot->requestUsersList();
+    return if $bot->beenDisconnected();
 
     # Makes an request to retrieve the 'infuz' value for all new users.
     debug('[checkUsers] $bot->requestInfuzForNewUsers');
     $bot->requestInfuzForNewUsers();
+    return if $bot->beenDisconnected();
 
-    # 
+    #
     debug('[checkUsers] $usersList->addOrUpdateInDB(1)');
     $usersList->addOrUpdateInDB(1);
     debug('[checkUsers] $usersList->serialize');
@@ -141,15 +144,17 @@ sub checkUsers {
 
     debug('[checkUsers] alarmProcess( $bot, $usersList ); ');
     alarmProcess( $bot, $usersList );
+    return if $bot->beenDisconnected();
+
     # Reset at zero 'recent' data member of each user
     debug('[checkUsers] $usersList->clearRecentFlags();');
     $usersList->clearRecentFlags();
 }
 
-##@method void alarmProcess()
-#@brief The parameters entered in the "conf/alert.conf" configuration file to:
-#       - To send messages XMMP if a specified user is connected.
-#       - To write messages to connected users.
+## @method void alarmProcess()
+# @brief The parameters entered in the "conf/alert.conf" configuration file to:
+#        - To send messages XMMP if a specified user is connected.
+#        - To write messages to connected users.
 sub alarmProcess {
     my ( $bot, $usersList ) = @_;
     return if !$isAlarmEnabled;
@@ -162,7 +167,7 @@ sub alarmProcess {
     error($@) if $@;
 }
 
-##@method void init()
+## @method void init()
 sub init {
     $DB  = Cocoweb::DB::Base->getInstance();
     $CLI = Cocoweb::CLI->instance();
@@ -181,7 +186,7 @@ sub init {
 }
 
 ## @method void HELP_MESSAGE()
-# Display help message
+# @brief Display help message
 sub HELP_MESSAGE {
     print STDOUT $Script
         . ', This script will log the user in the database.' . "\n";
@@ -193,9 +198,9 @@ ENDTXT
     exit 0;
 }
 
-##@method void VERSION_MESSAGE()
-#@brief Displays the version of the script
+## @method void VERSION_MESSAGE()
+# @brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-06-25');
+    $CLI->VERSION_MESSAGE('2017-01-30');
 }
 

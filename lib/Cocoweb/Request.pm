@@ -1,8 +1,8 @@
 # @created 2012-02-17
-# @date 2016-08-04
+# @date 2017-30-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2017
 #
 # https://github.com/simonrubinstein/cocobot
 # cocobot is free software; you can redistribute it and/or modify
@@ -57,6 +57,7 @@ __PACKAGE__->attributes(
     'infuzNotToFastRegex',
     'profilTooNewRegex',
     'beenDisconnectedRegex',
+    'beenDisconnected',
     'accountproblemRegex',
     'infuzMaxOfTries',
     'infuzPause1',
@@ -81,7 +82,7 @@ my $publicIP;
 my $isConfHTTPrequests;
 my $infuzNotToFast;
 my $profilTooNew;
-my $beenDisconnected;
+my $beenDisconnectedRegex;
 my $accountproblemRegex;
 my $myport;
 
@@ -153,12 +154,12 @@ sub init {
         $conf->isInt('infuz-pause2');
         $conf->isInt('infuz-max-of-tries-after-pause');
         $conf->isInt('remote-port-default');
-        $isConfHTTPrequests  = $conf->getBool('isConfHTTPrequests');
-        $infuzNotToFast      = $conf->getRegex('infuz-not-to-fast');
-        $profilTooNew        = $conf->getRegex('profile-too-new');
-        $beenDisconnected    = $conf->getRegex('been-disconnected');
-        $accountproblemRegex = $conf->getRegex('account-problem');
-        $myport              = 80;
+        $isConfHTTPrequests    = $conf->getBool('isConfHTTPrequests');
+        $infuzNotToFast        = $conf->getRegex('infuz-not-to-fast');
+        $profilTooNew          = $conf->getRegex('profile-too-new');
+        $beenDisconnectedRegex = $conf->getRegex('been-disconnected');
+        $accountproblemRegex   = $conf->getRegex('account-problem');
+        $myport                = 80;
     }
 
     if ( !defined $publicIP ) {
@@ -217,7 +218,8 @@ sub init {
         'publicIP'              => $publicIP,
         'localIP'               => $localIP,
         'profilTooNewRegex'     => $profilTooNew,
-        'beenDisconnectedRegex' => $beenDisconnected,
+        'beenDisconnectedRegex' => $beenDisconnectedRegex,
+        'beenDisconnected'      => 0, 
         'accountproblemRegex'   => $accountproblemRegex,
         'infuzMaxOfTries'       => $conf_ref->{'infuz-max-of-tries'},
         'infuzPause1'           => $conf_ref->{'infuz-pause1'},
@@ -464,6 +466,8 @@ sub agix {
     die error( 'The method called "' . $function . '()" is unknown!' )
         if $function ne 'process1';
     $response = Cocoweb::Response->new() if !defined $response;
+    my $beenDisconnected = $response->beenDisconnected();
+    $self->beenDisconnected($beenDisconnected) if $beenDisconnected;
     $response->$function( $self, $user, $arg );
     return $response;
 }

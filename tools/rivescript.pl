@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2016-07-02
-# @date 2016-11-27
+# @date  2017-02-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2017
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -251,6 +251,8 @@ Usage:
   -V directory  RiveScript directory
   -f filter     Filename filter
   -a            Done statistics on messages.
+  -W            Only the answers of women.
+  -M            Only the answers of man.
 
 Exemples:
 rivescript.pl
@@ -267,6 +269,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-11-27');
+    $CLI->VERSION_MESSAGE('2017-02-03');
 }
 

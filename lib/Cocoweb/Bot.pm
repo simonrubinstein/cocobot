@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-19
-# @date 2016-07-18
+# @date 2017-02-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2017
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -368,6 +368,14 @@ sub isRiveScriptEnable {
 sub setAddNewWriterUserIntoList {
     my ($self) = @_;
     $self->request()->isAddNewWriterUserIntoList(1);
+}
+
+## @method public beenDisconnected()
+# @brief Checks whether the bot has been disconnected or not
+# @return boolean 1 The bot has been disconnected.
+sub beenDisconnected {
+    my ($self) = @_;
+    return $self->request()->beenDisconnected();
 }
 
 ##@method void riveScriptLoop()

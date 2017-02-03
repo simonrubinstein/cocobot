@@ -20,3 +20,33 @@ Toulouse:Occitanie
 Tourcoing:Hauts-de-France
 Troyes:Grand Est
 Villefranche-sur-saone:Auvergne-Rhône-Alpes
+Forges-les-bains:Île-de-France
+Montmagny:Île-de-France
+Roubaix:Hauts-de-France
+Montevrain:Île-de-France
+Rehon:Grand Est
+Reze:Pays de la Loire
+Mont-saint-aignan:Normandie
+Mareau-aux-pres:Centre-Val de Loire
+Lyon:Auvergne-Rhône-Alpes
+Le Haillan:Nouvelle-Aquitaine
+Antibes:Provence-Alpes-Côte
+Marines:Île-de-France
+Saujon:Nouvelle-Aquitaine
+Saint-pierre-les-elbeuf:Normandie
+Fleurville:Bourgogne-Franche-Comté
+Verneuil-l etang:Île-de-France
+Les Mureaux:Île-de-France
+Evreux:Normandie
+Nans-les-pins:Provence-Alpes-Côte d'Azur
+Auterrive:Nouvelle-Aquitaine
+Luxe:Nouvelle-Aquitaine
+Grande-synthe:Hauts-de-France
+Le Havre:Normandie
+Caudry:Hauts-de-France
+Rennes:Bretagne
+Frontonas:Auvergne-Rhône-Alpes
+Bordeaux:Nouvelle-Aquitaine
+Ancone:Auvergne-Rhône-Alpes
+Rive-de-gier:Auvergne-Rhône-Alpes
+
