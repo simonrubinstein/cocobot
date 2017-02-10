@@ -48,7 +48,7 @@ my $isAlarmEnabled = 0;
 init();
 run();
 
-##@method void run()
+## @function run()
 sub run {
     $DB->initialize();
     my $try = 3;
@@ -84,8 +84,9 @@ AUTH:
     $usersList->deserialize();
 
     # Cleans the list of users who have not been seen in the list
-    # returned by the seveur for several minutes.
+    # returned by the sever for several minutes.
     $usersList->purgeUsersUnseen($bot);
+    return if $bot->beenDisconnected();
     $usersList->addOrUpdateInDB(0);
 
     checkUsers();

@@ -24,6 +24,8 @@
 ! sub vous radotez       = tu radotes
 ! sub vous partez        = tu pars
 ! sub ca vous amuse      = ca t amuse
+! sub pour vos ecrits    = pour tes ecrits
+! sub vous ne dormez     = tu ne dors
 
 ! sub t as          = tu as
 ! sub tu est        = tu es
@@ -34,6 +36,7 @@
 ! sub t aimes       = tu aimes
 ! sub tu aime       = tu aimes
 ! sub t ecris       = tu ecris
+! sub tu ert qui    = tu es qui
 ! sub je m apel     = je m appelle
 ! sub tu t apel     = tu t appelles
 ! sub t comment     = tu es comment
@@ -61,6 +64,8 @@
 ! sub nike ta       = nique ta
 ! sub je suit       = je suis
 ! sub je sui        = je suis
+! sub chui un mec   = je suis un mec
+! sub jsui mec      = je suis un mec 
 ! sub jesuis        = je suis
 ! sub sui mec       = suis mec
 ! sub je ss h       = je suis un homme
@@ -70,6 +75,7 @@
 ! sub pk            = pourquoi
 ! sub povre         = pauvre
 ! sub byye          = bye
+! sub bbbbbbbyyyyyyyy = bye
 ! sub bye bye       = bye
 ! sub povre         = pauvre
 ! sub stp           = s il te plait
@@ -265,6 +271,8 @@
 + quelle belle (citation|phrase)
 - J'ai bien peu que cette <star1> ne soit pas de moi.
 - J'ai dû lire cette <star1> quelque part.
++ merci pour tes ecrits
+- Merci à vous de me lire.
 
 + [*] jolie (phrase)
 - J'ai bien peu que cette <star1> ne soit pas de moi.
@@ -411,7 +419,7 @@
 - Vous voulze dire que ce n'est pas faux ?
 - Ce qui est vrai a un goût de vérité ?
 
-+ [*] suis [un] (homme|mec|gars) [*]
++ [*] suis [un] [jeune] (homme|mec|gars) [*]
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
 - Si vous êtes un <star1>, utilisez un profil <star1>.
@@ -421,10 +429,17 @@
 + je suis h
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
+- Si vous êtes un homme, à l'avenir, sélectionnez donc un pseudo "homme" !
 + je suis un garcon [passif]
+@ je suis h
++ mais je [ne] suis pas une femme
 @ je suis h
 + tu sais lire
 - Oui, je sais très bien lire bien mieux que vous...
++ je suis bi
+- Moi aussi je suis un homme bipède.
+- Vous êtes bicéphale, vous avez donc deux têtes ?
+- Quelle est la nature de vos troubles bipolaires ?
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
@@ -701,7 +716,7 @@
 - Une oeuvre originale, c'est du plagiat pas encore détecté.
 - Avoir une idée originale, c'est se souvenir de quelque chose qu'on a entendu quelque part et avoir oublié où.
 
-+ tu [ne] dors (jamais|pas) [*]
++ tu dors pas
 - Dormir à deux rend la nuit moins opaque. 
 - Mieux vaut dormir debout que courir couché.
 - L'amour est une histoire à dormir couché.
@@ -710,6 +725,8 @@
 - On aura bien assez de temps dans la tombe pour dormir.
 - Un bon traitement contre l'insomnie est de beaucoup dormir.
 - Dormir est une façon de mourir ou tout au moins de mourir à la réalité, mieux encore, c'est la mort de la réalité.
++ [bonjour|bonsoir] tu [ne] dors (jamais|pas) [*]
+@ tu dors pas
 
 + casse toi
 - Je suis incassable.
@@ -743,6 +760,8 @@
 - Non, je suis un homme hétérosexuel.
 + tu es homo
 @ tu es gay
++ sale pd
+- Je suis un homme propre et hétérosexuel, vous devez me confondre avec votre père.
 
 + je suis venale
 - Le sexe c'est mieux quand c'est gratuit.
@@ -805,14 +824,19 @@
 + ta mere la pute
 @fdp
 
-+ nique ta mere la pute
++ nique ta mere
 - Je ne fais pas dans l'inceste, contrairement à vous.
 - Je préfère copuler avec la votre.
 - Originale comme réplique, on me l'a jamais faite encore.
-+ (nique|baise) ta mere
-@ nique ta mere la pute
+- Si vous avez des fantasmes incestueux, cela vous regarde, ce n'est pas mon cas.
++ baise ta mere
+@ nique ta mere
++ nique ta mere la pute
+@ nique ta mere 
 + nique ta race
 - Votre réplique est fort originale, on me l'avait jamais dite encore.
++ bon nique ta mere
+@ nique ta mere
 
 + faut arreter l alcool
 - On voit toujours quand j'ai bu, jamais quand j'ai soif.
@@ -950,6 +974,8 @@
 + (bonsoir|bonjour|hello|coucou) qui es tu
 @ qui es tu
 + qui est ce
+@ qui es tu
++ tu es qui
 @ qui es tu
 
 + tu en as beaucoup comme ca
@@ -1119,6 +1145,18 @@
 + sourire
 - A un sourire on ne peut répondre que par un sourire.
 
++ bisous
+- Un bisou sur une joue Fait rougir les deux joues.
+- Sans petit bisou, les rêves sont flous.
+- On écrit "je t' aime" sur bouche par les bisous qui la touchent. 
+- Fourmis s'embrassent pour se nourrir. Un seul bisou peut nous nourrir. 
+- Les bisous dans le cou donnent les meilleurs frissons du monde.
+- Attention la guerre des bisous est déclarée
++ bisou
+@ bisous
+
++ un homme pas loin de creteil miam
+- Non, j'habite sur la planète {random}Mercure|Vénus|Mars|Jupiter|Saturne|Uranus|Neptune{/random}.
 
 
 

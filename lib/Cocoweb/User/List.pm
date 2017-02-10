@@ -170,8 +170,9 @@ sub showUsersUnseen {
     print STDOUT "- $count user(s) displayed\n";
 }
 
-##@method void purgeUsersUnseen()
-#@brief Purge users who have not been seen in the remote list for some time
+## @method purgeUsersUnseen($bot)
+# @brief Purge users who have not been seen in the remote list for some time
+# @param bot - required an Cocoweb:bot object
 sub purgeUsersUnseen {
     my ( $self, $bot ) = @_;
     my $user_ref        = $self->all();
@@ -201,7 +202,7 @@ sub purgeUsersUnseen {
                 . '; last seen: '
                 . $dateStr );
 
-        if ( $self->checkUserIsReallyOffline( $user, $bot ) ) {
+        if ( $self->_checkUserIsReallyOffline( $user, $bot ) ) {
             debug(    'Remove user '
                     . $user->mynickID() . ' '
                     . $user->mynickname() );
@@ -228,10 +229,11 @@ sub purgeUsersUnseen {
             . $countPurge );
 }
 
-#@method boolean checkUserIsReallyOffline()
-#@param $user A 'Cocoweb::User' object
-#@param $bot
-sub checkUserIsReallyOffline {
+#@method private _checkUserIsReallyOffline($user, $bot)
+# @param user - required an Cocoweb::User object
+# @param bot - required an Cocoweb:bot object
+# @retval
+sub _checkUserIsReallyOffline {
     my ( $self, $user, $bot ) = @_;
     return 1 if !defined $bot or !$self->removeListSearchCode();
     my $code = $user->code();
@@ -251,7 +253,8 @@ sub checkUserIsReallyOffline {
     if ($@) {
         error("requestCodeSearch($code) was failed: $@");
         $self->removeListSearchcodePause2( $pause * 2 );
-        #$self->removeListSearchCode(0);
+        # FIXME accept a couple errors before 
+        $self->removeListSearchCode(0);
         return 1;
     }
     my $userFound = $response->userFound();
@@ -324,9 +327,9 @@ sub setUsersOfflineInDB {
     $self->DBUsersOffline( [] );
 }
 
-##@method void addOrUpdateInDB()
-#@brief
-#@param $updateDates If true update
+## @method public addOrUpdateInDB(updateDates)
+# @brief
+# @param updateDates - required, boolean if true update 
 sub addOrUpdateInDB {
     my ( $self, $updateDates ) = @_;
     if ( !$self->logUsersListInDB() ) {

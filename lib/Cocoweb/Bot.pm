@@ -1,6 +1,7 @@
+##@file Bot.pm
 # @brief
 # @created 2012-02-19
-# @date 2017-02-03
+# @date 2017-02-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -247,8 +248,8 @@ sub isAuthenticated {
     return $self->user()->isAuthenticated();
 }
 
-##@method requestInfuzForNewUsers()
-#@brief Search "informz" string for new users.
+## @method public requestInfuzForNewUsers()
+# @brief Search "informz" string for new users.
 sub requestInfuzForNewUsers {
     my ($self)     = @_;
     my $users_ref  = $self->request()->usersList()->all();
@@ -284,6 +285,7 @@ sub requestInfuzForNewUsers {
             }
             $infuzCount++;
             $user = $self->request()->infuz( $self->user(), $user );
+            last if $self->beenDisconnected();
             debug(
                 "---> $userCount/$numberOfUsers; infuzCount: $infuzCount <---"
             );
@@ -317,6 +319,7 @@ sub requestInfuzForNewUsers {
     info( $count . ' new "infuz" was requested and returned' ) if $count > 0;
 }
 
+## @method public void getMyInfuz()
 sub getMyInfuz {
     my ($self) = @_;
     $self->request()->infuz( $self->user(), $self->user() );

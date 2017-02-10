@@ -49,4 +49,5 @@ Frontonas:Auvergne-Rhône-Alpes
 Bordeaux:Nouvelle-Aquitaine
 Ancone:Auvergne-Rhône-Alpes
 Rive-de-gier:Auvergne-Rhône-Alpes
-
+Le Perreux:Île-de-France
+Saint-peray:Auvergne-Rhône-Alpes
