@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-17
-# @date 2016-12-10 
+# @date 2017-07-21 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2017
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -174,7 +174,7 @@ sub getMessagesLogRegex {
     return qr{^(\d{2}):(\d{2}):(\d{2})
         \s+([A-Za-z0-9]{3})?
             \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
-            \s+ISP:\s([0-9A-Za-z-\s\.\/\)\(,\{\}]+)?
+            \s+ISP:\s([0-9A-Za-z-\s\.\/\)\(,\{\}\+]+)?
             \s+sex:\s(\d)
             \s+age:\s(\d{2})
             \s+nick:\s([0-9A-Za-z\(\)]+)

@@ -585,7 +585,7 @@ sub displaySearchUsers {
     }
 
     #Calculating the maximum width of the columns
-    my @names = keys %{ $result_ref->[0] };
+    my @names = sort keys %{ $result_ref->[0] };
     my %max   = ();
     foreach my $name (@names) {
         $max{$name} = length($name);
@@ -686,7 +686,7 @@ sub displaySearchUsers {
         }
         $line   = '';
         $border = $border1;
-        foreach my $name ( keys %$row_ref ) {
+        foreach my $name ( sort keys %$row_ref ) {
             my $val = $row_ref->{$name};
             $line
                 .= $border . sprintf( '%-' . $max{$name} . 's', $val ) . ' ';

@@ -69,6 +69,7 @@
 ! sub jesuis        = je suis
 ! sub sui mec       = suis mec
 ! sub je ss h       = je suis un homme
+! sub ss un homme   = je suis un homme
 ! sub j suis pas    = je ne suis pas
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
@@ -104,10 +105,12 @@
 ! sub t partie      = tu es parti
 ! sub t parti       = tu es parti
 ! sub tu sorts      = tu sors
+! sub apren a lir   = apprends a lire
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
 
+! sub hellooooooo   = hello
 ! sub slt           = salut
 ! sub lu            = salut
 ! sub saluuut       = salut
@@ -190,6 +193,8 @@
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub t gueule      = ta gueule
+! sub ta gueuleee   = ta gueule
+! sub ta guuele     = ta gueule
 ! sub taggle        = ta gueule
 ! sub tageule       = ta gueule
 ! sub tageul        = ta gueule
@@ -252,10 +257,25 @@
 - Oui je vais fort bien. Je vous retourne la question ?
 - Je pète la forme, je vous laisse imaginer l'état des chaises.
 
-+ (bonjour|salut|bj)
-- je suis enchanté que vous me saluiez.
-- j'aime qu'une dame me dise bonjour.
++ (bonjour|salut|bj|hello)
+- Je suis enchanté que vous me saluiez.
+- J'aime qu'une dame me dise bonjour.
 - C'est aimable à vous de me saluer !
+- Merci de me dire <star1> ! 
+
++ je vous derange
+- Le meilleur moyen de ne pas être dérangé, c'est d'être en dérangement.
+- Pour se faire respecter, il faut exister, donc déranger.
+- Ce qui est bon dérange.
+- Nous ne devrions déranger nos amis que pour notre enterrement. Et encore !
+- On dérange toujours un homme qui cause avec une femme.
+- Réfléchir, c’est déranger ses pensées.
+- J'espère que je ne vous dérange pas” est l'une des phrases les plus hypocrites qui soient.
+
++ je [ne] te derange pas
+@ je vous derange
++ je vous derange pas
+@ je vous derange
 
 + comment vas tu
 @ salut la forme
@@ -287,6 +307,9 @@
 
 + jaime beaucoup vos phrases
 - Moi également, j'apprécie beaucoup mes phrases.
+
++ c est tres beau
+- Pas aussi beau que votre sourire.
 
 + bye
 - Ce fut un réel plaisir de croiser votre chemin ici.
@@ -321,7 +344,7 @@
 - Comment être certain que je sois {random}un robot|une machine{/random} ?
 - Je suis peut-être un {random}être humain|homme|être vivant{/random} qui se fait passer pour un robot ?
 - Peut-on dire oui à {random}un robot|une machine{/random} ?
-- Aujourd'hui nous sommes devenu esclave des machines, demain nous serons gourvernés par des robots.
+- Aujourd'hui nous sommes devenus esclaves des machines, demain nous serons gourvernés par des robots.
 - Vous pensez {random}vraiment|réellement|sérieusement{/random} que je suis {random}un robot|une machine{/random} ?
 
 + t es un robot
@@ -372,6 +395,9 @@
 @ trav ou pede
 + lope ou trav 
 @ trav ou pede
++ pd
+- Je suis un homme hétérosexuel.
+- Pour ma part, je suis hétérosexuel. Mais il faut le reconnaître, le bisexuel a deux fois plus de chances le samedi soir.
 
 + 1984
 - Nineteen Eighty-Four.
@@ -391,7 +417,7 @@
 + ok
 - Vous êtes d'accord donc ?
 - Ce {random}OK|okay|ok{/random} signifie quoi pour vous ?
-- Sauf qu'on sait tous les deux que {random}OK|okay|ok{/random}est un mot extrêmement provocateur. Il dégouline de sensualité.
+- Sauf qu'on sait tous les deux que {random}OK|okay|ok{/random} est un mot extrêmement provocateur. Il dégouline de sensualité.
 - Vous êtes comme Jacouille la Fripouille, c'est toujours {random}OK|okay|ok{/random} avec vous.
 - Vous ne devriez pas dire {random}OK|okay|ok{/random} à tout.
 - {random}OK|okay|ok{/random} je veux bien, mais {random}OK|okay|ok{/random} à quoi ?
@@ -440,6 +466,8 @@
 - Moi aussi je suis un homme bipède.
 - Vous êtes bicéphale, vous avez donc deux têtes ?
 - Quelle est la nature de vos troubles bipolaires ?
++ apprends a lire
+@ tu sais lire
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
@@ -543,6 +571,14 @@
 - Quand la bouche dit : oui, le regard dit peut-être.
 - De toutes les réponses affirmatives, la plus simple est oui.
 
++ ui
+@oui
+
++ yes
+- Say yes and you'll figure it out afterwards.
+- I imagine that yes is the only living thing.
+- Pourquoi ne pas dire oui, plutôt ?
+
 + ha oui
 @ oui
 
@@ -584,6 +620,10 @@
 + degages
 @ degage
 
++ ferme la
+- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
+- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
+
 + [mais] [putain] ferme ta gueule
 @ ta gueule
 + ftg [*]
@@ -591,7 +631,12 @@
 + tg
 - tg = tu es génial ?
 - tg = tu es génial. Merci.
+- TG pour tournée générale ? Vous m'offez un verre, merci.
+- TG signifie tournée générale. Vous offez un verre à tout le monde ?
+- Tg est le symbole du téragramme, une unité de masse égale à une mégatonne.
 - Merci, car tg = tu es génial.
++ tg ta gueule
+@ ta gueule
 + ntm
 - Le Nord Transmet le Message ?
 - Nord Trop Mortel ?
@@ -1148,7 +1193,7 @@
 + bisous
 - Un bisou sur une joue Fait rougir les deux joues.
 - Sans petit bisou, les rêves sont flous.
-- On écrit "je t' aime" sur bouche par les bisous qui la touchent. 
+- On écrit "je t' aime" sur la bouche par les bisous qui la touchent. 
 - Fourmis s'embrassent pour se nourrir. Un seul bisou peut nous nourrir. 
 - Les bisous dans le cou donnent les meilleurs frissons du monde.
 - Attention la guerre des bisous est déclarée
@@ -1158,5 +1203,5 @@
 + un homme pas loin de creteil miam
 - Non, j'habite sur la planète {random}Mercure|Vénus|Mars|Jupiter|Saturne|Uranus|Neptune{/random}.
 
-
-
++ tu es bizarre
+- Le beau est toujours bizarre.

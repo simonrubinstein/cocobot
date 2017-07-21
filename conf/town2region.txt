@@ -51,3 +51,27 @@ Ancone:Auvergne-Rhône-Alpes
 Rive-de-gier:Auvergne-Rhône-Alpes
 Le Perreux:Île-de-France
 Saint-peray:Auvergne-Rhône-Alpes
+Reims:Grand Est
+Guipry:Bretagne
+Castanet-tolosan:Occitanie
+Echire:Nouvelle-Aquitaine
+Sechilienne:Auvergne-Rhône-Alpes
+Chamalieres:Auvergne-Rhône-Alpes
+Clermont-ferrand:Auvergne-Rhône-Alpes
+Amilly:Centre-Val de Loire
+Martigues:Provence-Alpes-Côte d’Azur
+Etoges:Grand Est
+Chambray-les-tours:Centre-Val de Loire
+Aurillac:Auvergne-Rhône-Alpe
+Chavagneux:Auvergne-Rhône-Alpes
+Javene:Bretagne
+Herblay:Île-de-France
+Tassin-la-demi-lune:Auvergne-Rhône-Alpes
+Schiltigheim:Grand Est
+La Penne:Provence-Alpes-Côte d'Azur
+Soissons:Hauts-de-France
+Chartres:Centre-Val de Loire
+Voujeaucourt:Bourgogne-Franche-Comté
+Etrat:Auvergne-Rhône-Alpes
+Champs-sur-marne:Île-de-France 
+Sains-en-gohelle:Hauts-de-France
