@@ -75,3 +75,14 @@ Voujeaucourt:Bourgogne-Franche-Comté
 Etrat:Auvergne-Rhône-Alpes
 Champs-sur-marne:Île-de-France 
 Sains-en-gohelle:Hauts-de-France
+Pau:Nouvelle-Aquitaine
+Lezignan-corbieres:Occitanie
+Argenton-sur-creuse:Centre-Val de Loire
+Essuiles:Hauts-de-France
+Harnes:Hauts-de-France
+Villeurbanne:Auvergne-Rhône-Alpes
+Meneac:Bretagne
+Arbois:Bourgogne-Franche-Comté
+Mionnay:Auvergne-Rhône-Alpes
+Esclanedes:Occitanie
+Cahors:Occitanie

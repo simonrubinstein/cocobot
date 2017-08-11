@@ -1,6 +1,7 @@
 ! version = 2.0
 
 ! sub vous etes          = tu es
+! sub vs ets             = tu es
 ! sub comment allez vous = comment vas tu
 ! sub vous en avez       = tu en as 
 ! sub vous cherchez      = tu cherches
@@ -26,6 +27,7 @@
 ! sub ca vous amuse      = ca t amuse
 ! sub pour vos ecrits    = pour tes ecrits
 ! sub vous ne dormez     = tu ne dors
+! sub vous dormez jamais = tu ne dors jamais
 
 ! sub t as          = tu as
 ! sub tu est        = tu es
@@ -136,6 +138,7 @@
 ! sub tu dort       = tu dors
 ! sub je te comprend pas    = je ne te comprends pas
 ! sub je ne te comprend pas = je ne te comprends pas
+! sub tu fais chiiiiii = tu fais chier
 
 ! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
@@ -156,9 +159,11 @@
 ! sub loll          = mdr
 ! sub lool          = mdr
 ! sub mdrr          = mdr
+! sub mdrrr         = mdr
 ! sub mdrrrr        = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
 ! sub ouiiiiiiiiiii = oui
+! sub ouii          = oui
 ! sub vous avez     = tu as
 ! sub tu cherche s  = tu cherches
 ! sub tu cherche koi= tu cherches quoi
@@ -192,6 +197,7 @@
 ! sub tes message   = tes messages
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
+! sub t bizarre     = tu es bizarre
 ! sub t gueule      = ta gueule
 ! sub ta gueuleee   = ta gueule
 ! sub ta guuele     = ta gueule
@@ -205,6 +211,7 @@
 ! sub geule         = gueule
 ! sub gueulle       = gueule
 ! sub ferme taggle  = ferme ta gueule 
+! sub fermle tea putain = ferme ta putain
 ! sub biem          = bien
 ! sub te relou      = tu es relou
 ! sub mulo          = mulot
@@ -225,13 +232,15 @@
 ! sub unhomme       = un homme
 ! sub ungarcon      = un garcon
 ! sub pascompris    = pas compris
-! sub pas tt compris = pas tout compris
+! sub pas tt compris= pas tout compris
+! sub pas kompri    = pas compris
 ! sub j sui h       = je suis un homme
 ! sub j suis pas une f = je ne suis pas une femme
 ! sub je ne siis pas femme = je ne suis pas une femme
 ! sub casses toi    = casse toi
 ! sub caqse toi     = casse toi
 ! sub hiboue        = hibou
+! sub copie colle   = copier coller
 
 + bonjour robot
 - bonjour humain
@@ -244,6 +253,8 @@
 - Pourquoi allo, on est au téléphone ?
 - Allo qui est à l'appareil ?
 - Allo ! Je passe sous un tunnel là, ça va couper !
+- Ne coupez pas !
+- Allo Allo ! Y a personne au bout du fil !
 + allo allo
 @ allo
 
@@ -262,6 +273,10 @@
 - J'aime qu'une dame me dise bonjour.
 - C'est aimable à vous de me saluer !
 - Merci de me dire <star1> ! 
+
++ buna ziua
+- Buna ziua, ce faci? 
+- Buna ziua, incantat de cunostinta. 
 
 + je vous derange
 - Le meilleur moyen de ne pas être dérangé, c'est d'être en dérangement.
@@ -468,6 +483,12 @@
 - Quelle est la nature de vos troubles bipolaires ?
 + apprends a lire
 @ tu sais lire
++ tu es bi
+- Oui je suis un homme bipède.
+- Effectivement, je suis un être bipède, pas vous ?
+- Je ne pense pas avoir des troubles bipolaires.
++ salut tu es bi
+@ tu es bi
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
@@ -478,6 +499,7 @@
 - Le rire est le grelot du sexe.
 - On peut rire de tout, mais pas pour rien.
 - J'adore être pris en flagrant délire.
+- Le rire est satanique, il est donc profondément humain.
 
 + [*] je marche sur des oeufs
 - Vous n'êtes pas rassuré ?
@@ -613,6 +635,8 @@
 - Avec votre gueule de cul, vous devez utiliser du papier hygiénique comme démaquillant.
 + ta gueule toi
 @ ta gueule
++ mais ta gueule
+@ ta gueule
 + non tg ta gueule
 @ ta gueule
 + [*] degage [*]
@@ -654,6 +678,8 @@
 + ta gueule vieux salopard
 @ la ferme
 + alors ferme la
+@ la ferme
++ ferme ta putain de gueule
 @ la ferme
 
 + (tu bien|k mek jmen balek) [*]
@@ -783,6 +809,10 @@
 - Les gens qui ont l'air constipé sont souvent les plus chiants !
 + tu fais chier toi
 @ tu fais chier
++ tu fais chier putain
+@ tu fais chier
++ tu me fais chier
+@ tu fais chier
 + connard
 - C'est votre nom ? Enchanté Connard.
 - Les connards, ce n'est malheureusement pas ce qui manque ! Je parle surtout en pensant à vous.
@@ -847,6 +877,8 @@
 @ vieux con
 + encore (c|ce) vieux con
 @ vieux con
++ sale con
+@ pauvre con
 
 + [*] facebook [*]
 - Je n'ai pas de compte Facebook.
@@ -1022,6 +1054,8 @@
 @ qui es tu
 + tu es qui
 @ qui es tu
++ tu es
+@ qui es tu
 
 + tu en as beaucoup comme ca
 - Quelques unes oui.
@@ -1089,6 +1123,8 @@
 - Mangez-la donc votre merde. 
 - Vous devriez la manger votre merde. 
 - Mangez donc votre merde.
+- Plus vous brassez la merde, plus elle pue.
+- Vous me dites merde pour me souhaiter bonne chance ?
 
 + tu radotes
 - Il y a un âge pour se raconter sans trop de mensonges : la quarantaine. Avant on enjolive ; après on radote.
@@ -1205,3 +1241,18 @@
 
 + tu es bizarre
 - Le beau est toujours bizarre.
+
++ cocobot
+- Vous pouvez trouver les sources de ce robot sur : https://github.com/ simonrubinstein/cocobot
+
++ qui t a programme
+- Simon Rubinstein a programmé ce robot. Les sources sont sur GitHub.
+
++ a demain
+- Le futur sera meilleur demain.
+- Demain est un autre jour.
+- Mangeons et buvons ; car demain nous mourrons.
+- Ne remets pas à demain ce que tu peux faire après-demain.
+- Demain il sera trop tard. Vis aujourd'hui !
+
+

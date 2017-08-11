@@ -57,6 +57,8 @@ sub run {
     } else {
         $botList = $bot;
     }
+
+    # Return an empty  'Cocoweb::User::List' object
     $usersList = $botList->getUsersList();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
         message( "Loop $count / " . $CLI->maxOfLoop() );
