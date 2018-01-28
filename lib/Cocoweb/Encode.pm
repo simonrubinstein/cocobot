@@ -1,10 +1,10 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2016-08-17
+# @date 2018-01-28 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -81,8 +81,8 @@ sub shiftu {
 sub initializeTables {
     my ($self) = @_;
     %dememeMatch = (
-        32   => "~",
-        33   => '!',
+        32   => "_",
+        33   => '*x',
         34   => "*8",
         36   => "*7",
         37   => "*g",
@@ -95,7 +95,7 @@ sub initializeTables {
         64   => "*m",
         94   => "*l",
         95   => "*0",
-        164  => "_",
+        164  => "*0",
         8364 => "*d",
         224  => "*a",    # à
         226  => "*k",    # â
@@ -144,7 +144,7 @@ sub initializeTables {
         61  => '?',
         63  => '?',
         96  => '',
-        95  => '_',
+        95  => ' ',
         126 => ' ',
         124 => 'y'
     );
@@ -310,7 +310,7 @@ sub transformix {
         my $c = substr( $s1, $i, 1 );
         $numerox = ord($c);
         $toolong++ if $tyb != 23;
-        $toolong = 0 if $numerox == 126 or $numerox == 32 or $tyb == 117;
+        $toolong = 0 if $numerox == 95 or $numerox == 32 or $tyb == 117;
         next if $toolong >= 27;
         if ( $shifto != 0 ) {
             $s2 .= $self->shiftu($numerox);
@@ -355,7 +355,7 @@ sub transformix {
     if ( $mmj > -1 ) {
     }
     else {
-        my $hwo = indexOf( $s1, '_' );
+        my $hwo = indexOf( $s1, '!' );
         if ( $hwo > -1 ) {
             my $tr8 = substring( $s2, $hwo + 1, $hwo + 2 );
             my $tr9 = substring( $s1, $hwo + 2 );
