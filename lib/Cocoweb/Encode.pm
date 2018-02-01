@@ -297,6 +297,7 @@ sub writo {
 #@return string The string of characters converted
 sub transformix {
     my ( $self, $sx, $tyb, $syx, $stt ) = @_;
+    debug("sx: $sx");
     $tyb = -1 if !defined $tyb;
     $syx = 0  if !defined $syx;
     $stt = 0  if !defined $stt;

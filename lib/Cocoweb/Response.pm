@@ -1,9 +1,9 @@
 # @created 2012-03-29
-# @date 2016-07-27
+# @date 2018-02-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -188,11 +188,13 @@ sub process1Int {
                 $self->profileTooNew(1);
             }
             elsif ( $urlu =~ $request->beenDisconnectedRegex() ) {
+
                 #"vous avez ete deconnecte du serveur de messages prives..."
                 $self->beenDisconnected(1);
                 die error($urlu) if $request->isDieIfDisconnected();
             }
             elsif ( $urlu =~ $request->accountproblemRegex() ) {
+
                 #Probleme avec votre compte . Essayez de vous reconnecter..."
                 $self->isAccountProblem(1);
                 die error($urlu) if $request->isDieIfDisconnected();
@@ -211,13 +213,20 @@ sub process1Int {
         # Retrieves information about an user, for Premium subscribers only
         # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
-            my $urlu = $request->convert()
-                ->transformix( substr( $urlo, 5 ), -1, 0 );
-            $self->infuzString($urlu);
+            #debug("********* bud: $bud: $urlo **********");
+            if ( $urlo eq '99555`pas trop VITE !`' ) {
+                #debug("FIXME");
+                $self->infuzString('pas trop VITE !');
+            }
+            else {
+                my $urlu = $request->convert()
+                    ->transformix( substr( $urlo, 5 ), -1, 0 );
+                $self->infuzString($urlu);
+            }
         }
 
-        # Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
-        # Return Cocoweb::Request::searchCode() function.
+     # Result of a search query from a 'code de vote' (i.g. "r9x", "Mm9", ...)
+     # Return Cocoweb::Request::searchCode() function.
         if ( $bud == 557 ) {
 
             #urlo i.e.: 9955713461399032501marco0

@@ -1,15 +1,10 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # @created 2012-03-11
-# @date 2012-05-15
+# @date 2018-02-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2012
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,11 +36,17 @@ init();
 run();
 
 sub run {
+    my $res = confirmation( 'Are you sure you want to drop all the tables'
+            . ' from the database and recreate it' );
+    if ( $res eq 'no' ) {
+        print STDOUT "The operation was aborted.\n";
+        return;
+    }
     my $DB = Cocoweb::DB::Base->getInstance();
     $DB->connect();
     $DB->dropTables();
     $DB->createTables();
-    
+
     # initializes 'towns' table
     my ( $town_ref, $towns ) = $DB->getInitTowns();
     undef $town_ref;
@@ -65,8 +66,8 @@ sub run {
     undef $ISP_ref;
 
     # initializes 'citydios' table
-    my $allZipCodes =
-      Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+    my $allZipCodes = Cocoweb::Config->instance()
+        ->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
     $allZipCodes->extract();
     my $citydio2zip_ref = $allZipCodes->citydio2zip();
     foreach my $citydio ( keys %$citydio2zip_ref ) {
@@ -102,8 +103,8 @@ ENDTXT
 ## @method void VERSION_MESSAGE()
 sub VERSION_MESSAGE {
     print STDOUT <<ENDTXT;
-    $Script $Cocoweb::VERSION (2012-05-15) 
-     Copyright (C) 2010-2012 Simon Rubinstein 
+    $Script $Cocoweb::VERSION (2018-02-01) 
+     Copyright (C) 2010-2018 Simon Rubinstein 
      Written by Simon Rubinstein 
 ENDTXT
 }

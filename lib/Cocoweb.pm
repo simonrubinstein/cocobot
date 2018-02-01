@@ -1,7 +1,9 @@
 # @created 2012-02-17
-# @date 2017-01-22
+# @date 2018-02-01
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
+#
+# copyright (c) Simon Rubinstein 2010-2012
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +27,7 @@ use FindBin qw($Script $Bin);
 use Data::Dumper;
 use POSIX;
 use Storable;
-our $VERSION     = '0.7006';
+our $VERSION     = '0.7007';
 our $AUTHORITY   = 'TEST';
 our $isVerbose   = 0;
 our $isDebug     = 0;
@@ -52,6 +54,7 @@ our @EXPORT = qw(
     isNumeric
     charCodeAt
     checkInfuzCode
+    confirmation
 );
 use Cocoweb::Logger;
 
@@ -167,8 +170,7 @@ sub parseInt {
                   $_ =~ /[0-9]/
                 ? $_
                 : ord(uc) - 55
-                )
-                * $radix**$place++;
+            ) * $radix**$place++;
         }
         $ret = $num * $sign;
     }
@@ -278,6 +280,21 @@ sub checkInfuzCode {
     else {
         return 0;
     }
+}
+
+sub confirmation {
+    my ($message) = @_;
+    my $response = '';
+    while ( lc($response) ne "yes\n" && lc($response) ne "no\n" ) {
+        print "$message? (";
+        print 'yes';
+        print ' or ';
+        print 'no';
+        print ') : ';
+        $response = <STDIN>;
+    }
+    $response =~ s{\n}{}g;
+    return lc($response);
 }
 
 ##@method void BEGIN()

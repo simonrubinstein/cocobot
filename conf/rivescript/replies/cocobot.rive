@@ -64,6 +64,7 @@
 ! sub c normal      = c est normal
 ! sub nik ta        = nique ta
 ! sub nike ta       = nique ta
+! sub nike tta msere= nique ta mere
 ! sub je suit       = je suis
 ! sub je sui        = je suis
 ! sub chui un mec   = je suis un mec
@@ -116,6 +117,7 @@
 ! sub slt           = salut
 ! sub lu            = salut
 ! sub saluuut       = salut
+! sub salur         = salut
 ! sub bjr           = bonjour
 ! sub bjrrrr        = bonjour
 ! sub bonjou        = bonjour
@@ -308,6 +310,11 @@
 - J'ai dû lire cette <star1> quelque part.
 + merci pour tes ecrits
 - Merci à vous de me lire.
++ merci
+- Le meilleur ami de merci est beaucoup.
+- La demande est chaude, le merci est froid.
+- Un seul mot, usé, mais qui brille comme une vieille pièce de monnaie : merci !
+- Dieu t’a offert 86 400 secondes aujourd’hui. Tu as utilisée une pour dire merci.
 
 + [*] jolie (phrase)
 - J'ai bien peu que cette <star1> ne soit pas de moi.
@@ -425,6 +432,12 @@
 + coucou toi
 @ coucou
 
++ pourquoi hibou
+- Parce que la femme du hibou est chouette.
+- Parce que le hibou ne vole que la nuit.
+- Quand le hibou chante, la nuit est silence.
+- Mon pauvre coeur est un hibou.
+
 + tu aimes
 - J'aime quoi ?
 - J'aime tout, même le chou farci
@@ -460,6 +473,9 @@
 - Vous voulze dire que ce n'est pas faux ?
 - Ce qui est vrai a un goût de vérité ?
 
++ je suis gay
+- Pourquoi avez-vous sélectionné un profil femme alors ? Les gays sont des hommes.
+- Vous avez fait une erreur, un gay est un homme et vous avez sélectionné "femme" à la connexion.
 + [*] suis [un] [jeune] (homme|mec|gars) [*]
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
@@ -1254,5 +1270,13 @@
 - Mangeons et buvons ; car demain nous mourrons.
 - Ne remets pas à demain ce que tu peux faire après-demain.
 - Demain il sera trop tard. Vis aujourd'hui !
+
++ interessant
+- Il faut toujours surprendre une femme si on veut l'intéresser.
+- Pour être intéressant, soyez intéressé.
+- Ce qui ne fait pas de bruit n'intéresse personne.
+- Il suffit de regarder une chose avec attention pour qu’elle devienne intéressante.
+- Pour qu’une chose soit intéressante, il suffit de la regarder longtemps.
+
 
 
