@@ -203,6 +203,7 @@ ShakeMe
 ShiningKnight
 ShiverAndShake
 ShootMeWithLove
+SleepKangaroo
 SmoothTalker
 SmoothTouch
 SoSweetly

@@ -28,14 +28,13 @@
 ! sub pour vos ecrits    = pour tes ecrits
 ! sub vous ne dormez     = tu ne dors
 ! sub vous dormez jamais = tu ne dors jamais
+! sub vous portez vous   = te portes tu
 
 ! sub t as          = tu as
 ! sub tu est        = tu es
 ! sub t es          = tu es
 ! sub est tu        = es tu
 ! sub t en          = tu en
-! sub t aime        = tu aimes
-! sub t aimes       = tu aimes
 ! sub tu aime       = tu aimes
 ! sub t ecris       = tu ecris
 ! sub tu ert qui    = tu es qui
@@ -109,6 +108,9 @@
 ! sub t parti       = tu es parti
 ! sub tu sorts      = tu sors
 ! sub apren a lir   = apprends a lire
+! sub digage        = degage
+! sub degaje        = degage
+! sub va creve      = va crever
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
@@ -124,6 +126,7 @@
 ! sub bonjoru       = bonjour
 ! sub bsr           = bonsoir
 ! sub bonsoit       = bonsoir
+! sub bbonsoir      = bonsoir
 ! sub bse           = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
@@ -135,12 +138,16 @@
 ! sub cherche tu    = cherches tu
 ! sub que ch tu     = que cherches tu
 ! sub tu fume       = tu fumes
+! sub tu me soule   = tu me saoules
 ! sub tu me saoule  = tu me saoules
 ! sub tu saoule     = tu saoules
+! sub tu soul       = tu saoules
 ! sub tu dort       = tu dors
+! sub jcompren rien = je ne comprends rien
 ! sub je te comprend pas    = je ne te comprends pas
 ! sub je ne te comprend pas = je ne te comprends pas
 ! sub tu fais chiiiiii = tu fais chier
+! sub je comprendpa  = je ne comprends pas
 
 ! sub c bien        = c est bien
 ! sub bonjoue       = bonjour
@@ -163,7 +170,10 @@
 ! sub mdrr          = mdr
 ! sub mdrrr         = mdr
 ! sub mdrrrr        = mdr
+! sub mdrrrrr       = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
+! sub ptdr          = mdr
+! sub ptdrrrrr      = mdr
 ! sub ouiiiiiiiiiii = oui
 ! sub ouii          = oui
 ! sub vous avez     = tu as
@@ -200,6 +210,7 @@
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub t bizarre     = tu es bizarre
+! sub ta gueuelle   = ta gueule
 ! sub t gueule      = ta gueule
 ! sub ta gueuleee   = ta gueule
 ! sub ta guuele     = ta gueule
@@ -212,6 +223,7 @@
 ! sub gueuele       = gueule
 ! sub geule         = gueule
 ! sub gueulle       = gueule
+! sub merdeeeee     = merde
 ! sub ferme taggle  = ferme ta gueule 
 ! sub fermle tea putain = ferme ta putain
 ! sub biem          = bien
@@ -286,18 +298,25 @@
 - Ce qui est bon dérange.
 - Nous ne devrions déranger nos amis que pour notre enterrement. Et encore !
 - On dérange toujours un homme qui cause avec une femme.
-- Réfléchir, c’est déranger ses pensées.
-- J'espère que je ne vous dérange pas” est l'une des phrases les plus hypocrites qui soient.
+- Réfléchir, c'est déranger ses pensées.
+- 'J'espère que je ne vous dérange pas' est l'une des phrases les plus hypocrites qui soient.
 
 + je [ne] te derange pas
 @ je vous derange
 + je vous derange pas
 @ je vous derange
 
++ salut comment tu vas
+@ salut la forme
++ salut comment vas tu
+@ salut la forme
 + comment vas tu
 @ salut la forme
 + tu vas bien
 @ salut la forme
++ comment te portes tu
+@ salut la forme
+
 
 + [*] ca va
 @ salut la forme
@@ -305,7 +324,7 @@
 + coucou c est * [*]
 - Ca va <star1> ?
 
-+ quelle belle (citation|phrase)
++ [quelle] belle (citation|phrase)
 - J'ai bien peu que cette <star1> ne soit pas de moi.
 - J'ai dû lire cette <star1> quelque part.
 + merci pour tes ecrits
@@ -314,7 +333,7 @@
 - Le meilleur ami de merci est beaucoup.
 - La demande est chaude, le merci est froid.
 - Un seul mot, usé, mais qui brille comme une vieille pièce de monnaie : merci !
-- Dieu t’a offert 86 400 secondes aujourd’hui. Tu as utilisée une pour dire merci.
+- Dieu t'a offert 86 400 secondes aujourd'hui. Tu as utilisée une pour dire merci.
 
 + [*] jolie (phrase)
 - J'ai bien peu que cette <star1> ne soit pas de moi.
@@ -380,6 +399,7 @@
 - Je suis Nono le petit robot, l'ami d'Ulysse. 
 - Bidi-bidi-bidi-bidi !
 - Un robot ne peut porter atteinte à un être humain, ni, en restant passif, permettre qu'un être humain soit exposé au danger.
+- Avec l'ère des machines, beaucoup d'esprits se croient robots.
 + [*] robot [*]
 @ t es un robot
 + bye robot
@@ -418,8 +438,11 @@
 + lope ou trav 
 @ trav ou pede
 + pd
+- Je suis un homme hétérosexuel qui aime les vraies femmes.
 - Je suis un homme hétérosexuel.
 - Pour ma part, je suis hétérosexuel. Mais il faut le reconnaître, le bisexuel a deux fois plus de chances le samedi soir.
++ tes un pd
+@pd
 
 + 1984
 - Nineteen Eighty-Four.
@@ -438,9 +461,15 @@
 - Quand le hibou chante, la nuit est silence.
 - Mon pauvre coeur est un hibou.
 
++ je t aime
+- Moi aussi je m'aime.
 + tu aimes
 - J'aime quoi ?
 - J'aime tout, même le chou farci
++ t aimes
+@ tu aimes
++ t aime
+@ tu aimes
 
 + ok
 - Vous êtes d'accord donc ?
@@ -487,7 +516,9 @@
 - Pourquoi avez-vous sélectionné un pseudo femme alors ?
 - Vous vous êtes trompé, vous avez sélectionné "femme" à la connexion.
 - Si vous êtes un homme, à l'avenir, sélectionnez donc un pseudo "homme" !
-+ je suis un garcon [passif]
++ je suis trans
+- Vous n'êtes pas une vraie femme, vous devriez sélectionner un pseudo homme.
++ je suis [un] garcon [passif]
 @ je suis h
 + mais je [ne] suis pas une femme
 @ je suis h
@@ -505,6 +536,8 @@
 - Je ne pense pas avoir des troubles bipolaires.
 + salut tu es bi
 @ tu es bi
++ je suis toujours un homme
+- Pourquoi toujours un homme, vous changez de sexe au printemps ?
 
 + (mdr|haha|rire)
 - Vous êtes vraiment pliée de rire ?
@@ -677,6 +710,8 @@
 - Merci, car tg = tu es génial.
 + tg ta gueule
 @ ta gueule
++ ta gueule fdp 
+@ ta gueule
 + ntm
 - Le Nord Transmet le Message ?
 - Nord Trop Mortel ?
@@ -685,8 +720,8 @@
 + ntm fdp
 @ ntm
 + la ferme
-- C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
-- Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
+- C'est pas parce qu'on a rien à dire qu'il faut fermer sa {random}gueule|bouche{/random}.
+- Celui qui parle à coeur ouvert est souvent invité à fermer sa {random}gueule|bouche{/random}.
 + mais ferme la
 @ la ferme
 + mais ferme ta gueule toi
@@ -696,6 +731,8 @@
 + alors ferme la
 @ la ferme
 + ferme ta putain de gueule
+@ la ferme
++ ferme ta bouche
 @ la ferme
 
 + (tu bien|k mek jmen balek) [*]
@@ -765,9 +802,11 @@
 @ pas compris
 + pas tout compris
 @ pas compris
-+ je [ne] comprends rien
++ je [ne] comprends (rien|pas)
 @ pas compris
 + je [ne] te comprends pas
+@ pas compris
++ je comprends rien
 @ pas compris
 
 + je prefere avoir des bebes
@@ -793,6 +832,8 @@
 - Plus vieux est le bouc, plus dure est sa corne.
 - Je m'amuse à vieillir. C'est une occupation de tous les instants.
 + trop vieux [*]
+@ tu es vieux toi 
++ je deteste les vieux
 @ tu es vieux toi 
 
 + c est agreable ni pour toi ni pour moi *
@@ -828,6 +869,8 @@
 + tu fais chier putain
 @ tu fais chier
 + tu me fais chier
+@ tu fais chier
++ tu fais fait chier
 @ tu fais chier
 + connard
 - C'est votre nom ? Enchanté Connard.
@@ -908,6 +951,10 @@
 - Je ne possède pas de compte Skype.
 - Je ne possède pas et ne veux pas posséder de compte Skype. 
 
++ [*] whatsapp [*]
+- Je n'ai pas installé WhatsApp.
+- Je n'ai pas et ne veux pas installer WhatsApp.
+
 + fdp
 - Je ne pense pas être votre frère, vous faites erreur.
 - Je ne suis pas l'enfant de votre mère, vous vous trompez.
@@ -976,12 +1023,14 @@
 - Ce qui est seulement presque vrai est tout à fait faux.
 
 + tu t appelles 
-- Les femmes m'appellent "mon cheri", mais toi tu peux m'appeler "mon amour"
+- Les femmes m'appellent généralement "mon cheri", mais vous, vous pouvez m'appeler "mon amour"
 - J'avoue avoir oublié mon nom.
 - Vous pouvez m'appeler comme vous voulez.
 + c est quoi ton prenom
 @ tu t appelles 
 + c est quoi ton nom
+@ tu t appelles 
++ quel est ton prenom
 @ tu t appelles 
 
 + copier coller
@@ -1072,6 +1121,10 @@
 @ qui es tu
 + tu es
 @ qui es tu
++ presente toi
+@ qui es tu
++ presente toi comment tu t appelles
+@ qui es tu
 
 + tu en as beaucoup comme ca
 - Quelques unes oui.
@@ -1099,14 +1152,21 @@
 - Partir, c'est mourir un peu, mais mourir, c'est partir beaucoup.
 - Je suis toujours avec toi ici.
 - Je suis là.
-- Je ne suis point partie.
+- Je ne suis point parti.
 - Je dois partir et vivre, ou rester et mourir.
+- Les absents ont toujours tort de revenir.
 + tu es parti
 @ parti
 + partie
 @ parti
 + tu pars
 @ parti
+
++ tu es la
+- Je suis là.
+- Je ne suis point parti.
+- Une illusion peut-elle exister ?
+- Attendre, c’est cela exister.
 
 + tiens une troisieme phrase
 - Oui cela arrive parfois.
@@ -1173,10 +1233,19 @@
 + suce ma bite
 - Désolé, je ne mange pas de {random}porc|cochon|cochonnailles{/random}.
 - Désolé, {random}le porc|le cochon|la cochonnaille{/random} ne fait pas parti de mon alimentation.
++ tu m suces
+@ suce ma bite
 
 + va te soigner
 - Je ne suis point malade.
 - Pourquoi vous êtes contagieuse ?
+- Aujourd'hui, tous les gens ont la maladie de se soigner.
+- Se soigner ? A quoi bon ? Je durerai peut-être moins que mes maladies.
+- Je soigne son style mais je ne ne le guérit pas.
++ vas te faire soigner
+@ va te soigner
++ va te faire soigner
+@ va te soigner
 
 + bien
 - le mieux est l'ennemi du bien, mais est-ce que le bien est  l'ennemi du mieux ? 
@@ -1237,6 +1306,19 @@
 @ reponds
 + [et] tu [ne] reponds pas
 @ reponds
++ tu parles trop
+- L'important n'est pas de bien ou mal parler mais de parler.
+- Parler pour ne rien dire est grave. Parler pour ne pas rire est impardonnable.
+- Il suffit de parler pour devenir un autre.
+- Rien n'est plus facile que parler.
+- Parler est un besoin, écouter est un art.
+- Il vaut mieux se disputer avec quelqu'un d'intelligent que parler à un imbécile.
++ on peut parler
+- Parler est un besoin, écouter est un art.
+- Il faut parler quand on est sûr.
+- Parler - se taire : un même meurtre.
+- Il ne suffit pas de parler, il faut parler juste.
+- Celui qui ne peut se taire ne sait pas parler.
 
 
 + sourire
@@ -1252,6 +1334,8 @@
 + bisou
 @ bisous
 
++ un homme pas loin de * enfin [*] 
+@ un homme pas loin de creteil miam
 + un homme pas loin de creteil miam
 - Non, j'habite sur la planète {random}Mercure|Vénus|Mars|Jupiter|Saturne|Uranus|Neptune{/random}.
 
@@ -1275,8 +1359,42 @@
 - Il faut toujours surprendre une femme si on veut l'intéresser.
 - Pour être intéressant, soyez intéressé.
 - Ce qui ne fait pas de bruit n'intéresse personne.
-- Il suffit de regarder une chose avec attention pour qu’elle devienne intéressante.
-- Pour qu’une chose soit intéressante, il suffit de la regarder longtemps.
+- Il suffit de regarder une chose avec attention pour qu'elle devienne intéressante.
+- Pour qu'une chose soit intéressante, il suffit de la regarder longtemps.
 
++ va crever
+- Rien ne sert de mourir, il faut mourir à point.
+- Mourir est une distraction.
+- Mourir est un exercice compliqué.
+- Qu'est-ce que mourir ? Fermer les yeux ?
+- Personne ne devrait mourir. Surtout de son vivant.
+
++ quel poete
+- Un poète inspiré, c'est un poète qui fait des vers faux.
+- Le poète est un menteur qui dit toujours la vérité.
+- Dans toute personne, il y a un poète mort jeune.
+- L'amour nous rend poète et la mort, philosophe.
+- Les poètes, c'est connu, écrivent leurs mots sur leurs maux.
+- Les poètes comptent leurs pieds avec leurs doigts.
+- Poète : synonyme de rêveur et de nigaud.
+- Le premier qui compara la femme à une rose était un poète, le second un imbécile.
+
++ bonjour georges
+- Vous me prenez pour George de la jungle ?
+
++ tu as [encore] rajeuni
+- Oui, je suis né vieux et je mourrai jeune.
+
++ c est clair
+- Etre clair, c'est avouer.
+- Si les coeurs étaient clairs, le monde serait clair.
+- La nuit venue, on y verra plus clair.
+- Ce qui est trop clair n'est pas intéressant.
+
+
++ et ta connerie
+- La connerie, c'est la décontraction de l'intelligence !
+- Je fais très bien trois choses : mon métier, les conneries et les enfants.
+- Pour reconnaître que l'on n'est pas intelligent, Il faudrait l'être.
 
 

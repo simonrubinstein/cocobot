@@ -1,6 +1,6 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2018-01-28 
+# @date 2018-02-09 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -38,6 +38,10 @@ my %shiftuMatch        = ();
 my %demeleMatch        = ();
 my $hasBeenInitialized = 0;
 my @doc                = ();
+#FIXME: to move into configuration file
+my $base               = 'http://www.coco.fr/';
+my $urlphoto           = 'http://pix1.coco.fr/';
+my $soundip            = '149.202.31.184';
 
 ##@method object init($class, $instance)
 sub init {
@@ -305,7 +309,7 @@ sub transformix {
     my ( $numerox, $shifto, $s2, $toolong, $unefoi ) = ( 0, 0, '', 0, 0 );
     $s1 =~ s{http://}{}g;
     my $mmj = index( $s1, 'www' );
-    $toolong = -70 if $stt > 5 and $mmj > -1;
+    $toolong = -90 if $stt > 5 and $mmj > -1;
 
     for ( my $i = 0; $i < length($s1); $i++ ) {
         my $c = substr( $s1, $i, 1 );
@@ -380,9 +384,38 @@ sub transformix {
                     else {
                         $sqm = 0;
                     }
+                    #$sqm = "2" if $contor > 2;
+                    $s2 = $base . 'pub/photo"+sqm+".htm?' . $tr9;
+                } elsif ( $tr8 eq '2' ) {
+                    $s2 = 'mp3.html?' . $tr9;
                 }
-                $sqm = '' if !defined $sqm;
-                $s2 = 'http://www.coco.fr/pub/photo' . $sqm . '.htm?' . $tr9;
+                elsif ( $tr8 eq '3' ) {
+                    if ( $tyb > 1000 ) {
+                        $s2 = $urlphoto + 'photo/' . $tr9 if $tyb > 1000;
+                    } else {
+                        $s2 = 'err-bmp';
+                    }
+                }
+                elsif ( $tr8 eq '5' ) {
+                    $s2 = 'mic.html?' . $tr9 . $soundip
+                        if $tyb > 1000 and $syx > 3;
+                }
+                elsif ( $tr8 eq '7' ) {
+                    if ( $tyb > 1000 ) {
+                        if ( ord( substr( $tr9, 0, 1 ) ) > 60 ) {
+                            $s2 = 'webcam:' . $tr9;
+                        }
+                        else {
+                            $s2 = 'arnaque';
+                        }
+                    }
+                }
+                elsif ( $tr8 eq 'a' ) {
+                    $s2 = 'video.html?daily' . $tr9;
+                }
+                elsif ( $tr8 eq 'b' ) {
+                    $s2 = 'video.html?yout' . $tr9;
+                }
             }
         }
     }
