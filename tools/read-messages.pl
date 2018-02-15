@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2016-07-14
+# @date 2018-02-10
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,6 +37,8 @@ my $CLI;
 my $startTime;
 my $lastTime;
 my $messagesRegex;
+my $wantedCode;
+my %messageCode2Maxtime = ();
 
 init();
 run();
@@ -48,6 +50,7 @@ sub run {
         my $messages_ref      = readMessageFile($t);
         my $alertMessages_ref = readAlertMessageFile($t);
         process( $messages_ref, $alertMessages_ref );
+        showNotDisplayed( $messages_ref, $alertMessages_ref );
     }
 }
 
@@ -83,8 +86,34 @@ sub process {
             showMessage($next_ref);
         }
 
+        searchRiveScriptMessages( $message_ref, $alertMessages_ref );
+
         #last if $i > 70;
     }
+
+}
+
+sub showNotDisplayed {
+    my ( $message_ref, $alertMessages_ref ) = @_;
+    print "=" x 72 . "\n";
+    for ( my $i = 0; $i < scalar(@$alertMessages_ref); $i++ ) {
+        my $alerts_ref = $alertMessages_ref->[$i];
+        next if $alerts_ref->{'hasBeenProcessed'};
+        next if !$alerts_ref->{'isRiveScript'};
+        showAlert($alerts_ref);
+    }
+}
+
+sub showAlert {
+    my ($alerts_ref) = @_;
+    printf( $alerts_ref->{'date'}
+            . " %-19s => "
+            . '                              '
+            . '                            '
+            . "%-4s %-19s: $alerts_ref->{message}\n",
+        $alerts_ref->{'botNickname'},
+        $alerts_ref->{'code'}, $alerts_ref->{'mynickname'}
+    );
 }
 
 sub showMessage {
@@ -113,12 +142,12 @@ sub searchAlertMessages {
 
     for ( my $i = 0; $i < scalar(@$alertMessages_ref); $i++ ) {
         my $alerts_ref = $alertMessages_ref->[$i];
+        next if $alerts_ref->{'hasBeenProcessed'};
         if ( !defined $alerts_ref->{'code'} ) {
             print Dumper $alerts_ref;
             exit;
         }
         next if $alerts_ref->{'code'} ne $code;
-        next if $alerts_ref->{'hasBeenProcessed'};
         if ( $alerts_ref->{'time'} > $_time ) {
             $nextTime = $alerts_ref->{'time'} if $nextTime eq '0';
             next;
@@ -142,18 +171,61 @@ sub searchAlertMessages {
             $first = 1;
             next;
         }
-        printf( $alerts_ref->{'date'}
-                . " %-19s => "
-                . '                              '
-                . '                            '
-                . "%-4s %-19s: $alerts_ref->{message}\n",
-            $alerts_ref->{'botNickname'},
-            $alerts_ref->{'code'}, $alerts_ref->{'mynickname'}
-        );
-
+        showAlert($alerts_ref);
     }
     return $nextTime;
 
+}
+
+sub searchRiveScriptMessages {
+    my ( $message_ref, $alertMessages_ref ) = @_;
+    my $code       = $message_ref->{'code'};
+    my $mynickname = $message_ref->{'mynickname'};
+    my $_time      = $message_ref->{'time'};
+
+    my @results  = ();
+    my $maxtime  = 0;
+    my $nextTime = 0;
+
+    for ( my $i = 0; $i < scalar(@$alertMessages_ref); $i++ ) {
+        my $alerts_ref = $alertMessages_ref->[$i];
+        next if $alerts_ref->{'hasBeenProcessed'};
+        next if !$alerts_ref->{'isRiveScript'};
+        if ( !defined $alerts_ref->{'code'} ) {
+            print Dumper $alerts_ref;
+            exit;
+        }
+        next if $alerts_ref->{'code'} ne $code;
+        if ( $alerts_ref->{'time'} < $_time ) {
+
+            #$nextTime = $alerts_ref->{'time'} if $nextTime eq '0';
+            next;
+        }
+
+        $nextTime = $alerts_ref->{'time'} if $nextTime eq '0';
+        $maxtime  = $alerts_ref->{'time'} if $alerts_ref->{'time'} > $maxtime;
+        push @results, $alerts_ref;
+        print "maxtime : $messageCode2Maxtime{$code} $alerts_ref->{'time'}\n";
+        if ( exists $messageCode2Maxtime{$code}
+            and $alerts_ref->{'time'} < $messageCode2Maxtime{$code} )
+        {
+            print "$alerts_ref->{time} < $messageCode2Maxtime{$code}\n";
+            last;
+        }
+    }
+    return $nextTime if scalar(@results) < 1;
+    print "\n";
+
+    #print Dumper \@results;
+    foreach my $alerts_ref (@results) {
+
+        #next if $alerts_ref->{'time'} < ( $maxtime - 2 );
+
+        #print "$alerts_ref->{time} >= $maxtime\n";
+        $alerts_ref->{'hasBeenProcessed'} = 1;
+        showAlert($alerts_ref);
+    }
+    return $nextTime;
 }
 
 sub readMessageFile {
@@ -183,11 +255,18 @@ sub readMessageFile {
         $town = '' if !defined $town;
         $code = '' if !defined $code;
         $ISP  = '' if !defined $code;
+        next if defined $wantedCode and $wantedCode ne $code;
 
         #my $_date = "$year-$month-$day $h:$m:$s";
         my $_date = "$h:$m:$s";
         my $_time = Date::Parse::str2time($_date);
         die "str2time($_date) was failed" if !defined $_time;
+
+        if ( defined $code ) {
+            $messageCode2Maxtime{$code} = $_time
+                if !exists $messageCode2Maxtime{$code}
+                or $_time > $messageCode2Maxtime{$code};
+        }
 
         push @messages,
             {
@@ -255,7 +334,15 @@ sub readAlertMessageFile {
         my $_time = Date::Parse::str2time($_date);
         die "str2time($_date) was failed" if !defined $_time;
         $code = '' if !defined $code;
-
+        next if defined $wantedCode and $wantedCode ne $code;
+        my $isRiveScriptMessage;
+        if ( $message =~ m{^Cocoweb::Alert::RiveScript\s(.*)$} ) {
+            $isRiveScriptMessage = 1;
+            $message             = "[$1]";
+        }
+        else {
+            $isRiveScriptMessage = 0;
+        }
         push @messages,
             {
             'hasBeenProcessed' => 0,
@@ -264,7 +351,8 @@ sub readAlertMessageFile {
             'botNickname'      => $botNickname,
             'mynickname'       => $mynickname,
             'code'             => $code,
-            'message'          => trim($message)
+            'message'          => trim($message),
+            'isRiveScript'     => $isRiveScriptMessage
             };
 
         #printf( "$h:$m:$s %-19s => %-19s %-4s $message\n",
@@ -272,9 +360,7 @@ sub readAlertMessageFile {
         #print "$line\n\n";
     }
     close $fh;
-
     return \@messages;
-
 }
 
 sub getYearMonthDay {
@@ -290,14 +376,15 @@ sub getYearMonthDay {
 ## @method void init()
 sub init {
     $CLI = Cocoweb::CLI->instance();
-    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 't:s:l:' );
+    my $opt_ref = $CLI->getMinimumOpts( 'argumentative' => 't:s:l:c:' );
     if ( !defined $opt_ref ) {
         HELP_MESSAGE();
         exit;
     }
     my $myTime = $opt_ref->{'t'} if exists $opt_ref->{'t'};
-    $startTime = $opt_ref->{'s'} if exists $opt_ref->{'s'};
-    $lastTime  = $opt_ref->{'l'} if exists $opt_ref->{'l'};
+    $startTime  = $opt_ref->{'s'} if exists $opt_ref->{'s'};
+    $lastTime   = $opt_ref->{'l'} if exists $opt_ref->{'l'};
+    $wantedCode = $opt_ref->{'c'} if exists $opt_ref->{'c'};
     if ( defined $myTime ) {
         if ( defined $startTime or defined $lastTime ) {
             error("The -t and the -s/-l options are mutually exclusive.");
@@ -352,9 +439,11 @@ sub HELP_MESSAGE {
     print <<ENDTXT;
 $Script, read 'var/alert-messages/*' and 'var/messages/*' files 
 Usage: 
- $Script [-v -d ] [-t daysBefore | -s startDate -l lastDate]
+ $Script [-v -d ] [-t daysBefore | -s startDate -l lastDate] [-c code]
   -v            Verbose mode
   -d            Debug mode
+  -c code       The nickname code searched, an alphanumeric code
+                of three characters, i.e. WcL
   -s startDate  The date of the first file to be processed.
   -l lastDate   The date of the last file to be processed.
   -t daysBefore The number of days before today. 
@@ -366,6 +455,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2016-07-02');
+    $CLI->VERSION_MESSAGE('2018-08-1');
 }
 

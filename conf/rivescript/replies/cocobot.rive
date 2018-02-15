@@ -42,6 +42,7 @@
 ! sub tu t apel     = tu t appelles
 ! sub t comment     = tu es comment
 ! sub t komen       = tu es comment
+! sub tes jamais    = tu n es jamais
 ! sub t appelle     = t appelles
 ! sub t appelels    = t appelles
 ! sub ta fumer toi  = tu as fume toi
@@ -110,7 +111,9 @@
 ! sub apren a lir   = apprends a lire
 ! sub digage        = degage
 ! sub degaje        = degage
+! sub degazger      = degage
 ! sub va creve      = va crever
+! sub pedofil       = pedophile
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
@@ -171,11 +174,13 @@
 ! sub mdrrr         = mdr
 ! sub mdrrrr        = mdr
 ! sub mdrrrrr       = mdr
+! sub mdrrrrrrrrrrrrrrr = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
 ! sub ptdr          = mdr
 ! sub ptdrrrrr      = mdr
 ! sub ouiiiiiiiiiii = oui
 ! sub ouii          = oui
+! sub ouioui        = oui
 ! sub vous avez     = tu as
 ! sub tu cherche s  = tu cherches
 ! sub tu cherche koi= tu cherches quoi
@@ -210,6 +215,7 @@
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub t bizarre     = tu es bizarre
+! sub ta gzule      = ta gueule
 ! sub ta gueuelle   = ta gueule
 ! sub t gueule      = ta gueule
 ! sub ta gueuleee   = ta gueule
@@ -255,6 +261,8 @@
 ! sub caqse toi     = casse toi
 ! sub hiboue        = hibou
 ! sub copie colle   = copier coller
+! sub lao steu      = lao tseu
+! sub whatsappp     = whatsapp
 
 + bonjour robot
 - bonjour humain
@@ -499,7 +507,7 @@
 
 + c est vrai
 - Donc ce n'est pas faux, si c'est vrai ?
-- Vous voulze dire que ce n'est pas faux ?
+- Vous voulez dire que ce n'est pas faux ?
 - Ce qui est vrai a un goût de vérité ?
 
 + je suis gay
@@ -518,9 +526,13 @@
 - Si vous êtes un homme, à l'avenir, sélectionnez donc un pseudo "homme" !
 + je suis trans
 - Vous n'êtes pas une vraie femme, vous devriez sélectionner un pseudo homme.
++ suis trav
+@ je suis h
 + je suis [un] garcon [passif]
 @ je suis h
 + mais je [ne] suis pas une femme
+@ je suis h
++ je ne suis pas une fille
 @ je suis h
 + tu sais lire
 - Oui, je sais très bien lire bien mieux que vous...
@@ -855,6 +867,13 @@
 - Dormir est une façon de mourir ou tout au moins de mourir à la réalité, mieux encore, c'est la mort de la réalité.
 + [bonjour|bonsoir] tu [ne] dors (jamais|pas) [*]
 @ tu dors pas
++ tu n es jamais fatigue
+- L'excès de sommeil fatigue.
+- Seule la paresse fatigue le cerveau.
+- La gaieté chasse la fatigue, or de la fatigue provient le découragement.
+- Un cerveau bien soigné ne se fatigue jamais.
+- Il n'y a pas de fatigue pour celui qui crée.
+
 
 + casse toi
 - Je suis incassable.
@@ -953,7 +972,10 @@
 
 + [*] whatsapp [*]
 - Je n'ai pas installé WhatsApp.
+- Je n'ai pas installé la messagerie instantanée WhatsApp.
+- Je n'ai pas installé WhatsApp Messenger.
 - Je n'ai pas et ne veux pas installer WhatsApp.
+- Je n'ai pas et ne veux pas installer WhatsApp Messenger.
 
 + fdp
 - Je ne pense pas être votre frère, vous faites erreur.
@@ -1083,6 +1105,8 @@
 + va te faire foutre
 - Merci, c'est une invitation à copuler avec vous ?
 - Une jolie fille ne doit s'occuper que de foutre et jamais d'engendrer.
++ vas te faire foutre
+@ va te faire foutre
 
 + tu sais lire
 - Oui je sais lire, par exemple quand je me suis connecté j'ai lu Homme et j'ai sélectionné Homme.
@@ -1348,6 +1372,9 @@
 + qui t a programme
 - Simon Rubinstein a programmé ce robot. Les sources sont sur GitHub.
 
++ tu es un logiciel automatique
+- Oui je suis un logiciel écrit en langage Perl.
+
 + a demain
 - Le futur sera meilleur demain.
 - Demain est un autre jour.
@@ -1368,6 +1395,14 @@
 - Mourir est un exercice compliqué.
 - Qu'est-ce que mourir ? Fermer les yeux ?
 - Personne ne devrait mourir. Surtout de son vivant.
++ suicide toi
+- Le suicide, la seule façon de baiser la mort.
+- Suicide : monter au ciel par une corde de pendu.
+- La vie n'est qu'un long suicide inconscient.
+- Accepter de vivre, n'est-ce pas parfois une forme de suicide ?
+- C'est par peur de la mort que je pense au suicide.
+- Le suicide n'est pas une fin en soi. C'est la fin de soi !
+- Il faut réussir un suicide au moins une fois dans sa vie, ne serait-ce que pour éviter de mourir idiot.
 
 + quel poete
 - Un poète inspiré, c'est un poète qui fait des vers faux.
@@ -1396,5 +1431,12 @@
 - La connerie, c'est la décontraction de l'intelligence !
 - Je fais très bien trois choses : mon métier, les conneries et les enfants.
 - Pour reconnaître que l'on n'est pas intelligent, Il faudrait l'être.
+
++ lao tseu
+- Savoir se contenter de ce que l'on a : c'est être riche.
+- Plus le sage donne aux autres, plus il possède.
+- Les hommes sont différents dans la vie, semblables dans la mort.
+- Mieux vaut allumer une bougie que maudire les ténèbres.
+- L’expérience n’est une lumière qui n’éclaire que soi-même.
 
 

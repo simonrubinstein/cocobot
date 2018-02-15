@@ -385,7 +385,7 @@ sub transformix {
                         $sqm = 0;
                     }
                     #$sqm = "2" if $contor > 2;
-                    $s2 = $base . 'pub/photo"+sqm+".htm?' . $tr9;
+                    $s2 = $base . 'pub/photo' . $sqm . '.htm?' . $tr9;
                 } elsif ( $tr8 eq '2' ) {
                     $s2 = 'mp3.html?' . $tr9;
                 }
