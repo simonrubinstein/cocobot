@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-03-30
-# @date 2016-07-31
+# @date 2018-04-05 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -126,26 +126,29 @@ sub createTables {
     UNIQUE KEY `code` (`code`)
     ) ENGINE=InnoDB
 ENDTXT
+    debug('Creation of the "codes" table.');
     $self->do($query);
 
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `ISPs` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `name`          varchar(255) BINARY NOT NULL,
+    `name`          varchar(128) BINARY NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
     ) ENGINE=InnoDB
 ENDTXT
+    debug('Creation of the "ISPs" table.');
     $self->do($query);
 
     $query = <<ENDTXT;
     CREATE TABLE IF NOT EXISTS `towns` (
     `id`            int(10) unsigned NOT NULL auto_increment, 
-    `name`          varchar(255) BINARY NOT NULL,
+    `name`          varchar(128) BINARY NOT NULL,
      PRIMARY KEY  (`id`),
      UNIQUE KEY `name` (`name`)
     ) ENGINE=InnoDB
 ENDTXT
+    debug('Creation of the "towns" table.');
     $self->do($query);
 
     $query = <<ENDTXT;
@@ -166,6 +169,7 @@ ENDTXT
      UNIQUE KEY `townzz` (`townzz`)
     ) ENGINE=InnoDB
 ENDTXT
+    debug('Creation of the "citydios" table.');
     $self->do($query);
 
     $query = <<ENDTXT;
@@ -204,6 +208,7 @@ ENDTXT
        REFERENCES `nicknames` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE=InnoDB
 ENDTXT
+    debug('Creation of the "users" table.');
     $self->do($query);
 
     #CONSTRAINT `users_ibfk_5` FOREIGN KEY (`citydio`)
