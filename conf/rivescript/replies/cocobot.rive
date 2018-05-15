@@ -69,10 +69,12 @@
 ! sub je sui        = je suis
 ! sub chui un mec   = je suis un mec
 ! sub jsui mec      = je suis un mec 
+! sub je suis 1 mec = je suis un mec
 ! sub jesuis        = je suis
 ! sub sui mec       = suis mec
 ! sub je ss h       = je suis un homme
 ! sub ss un homme   = je suis un homme
+! sub jsui h        = je suis un homme
 ! sub j suis pas    = je ne suis pas
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
@@ -127,6 +129,7 @@
 ! sub bjrrrr        = bonjour
 ! sub bonjou        = bonjour
 ! sub bonjoru       = bonjour
+! sub bo njour      = bonjour
 ! sub bsr           = bonsoir
 ! sub bonsoit       = bonsoir
 ! sub bbonsoir      = bonsoir
@@ -181,6 +184,7 @@
 ! sub ouiiiiiiiiiii = oui
 ! sub ouii          = oui
 ! sub ouioui        = oui
+! sub nn            = non
 ! sub vous avez     = tu as
 ! sub tu cherche s  = tu cherches
 ! sub tu cherche koi= tu cherches quoi
@@ -263,6 +267,7 @@
 ! sub copie colle   = copier coller
 ! sub lao steu      = lao tseu
 ! sub whatsappp     = whatsapp
+! sub whatsaap      = whatsapp
 
 + bonjour robot
 - bonjour humain
@@ -526,6 +531,8 @@
 - Si vous êtes un homme, à l'avenir, sélectionnez donc un pseudo "homme" !
 + je suis trans
 - Vous n'êtes pas une vraie femme, vous devriez sélectionner un pseudo homme.
++ je suis trav
+@ je suis h
 + suis trav
 @ je suis h
 + je suis [un] garcon [passif]
@@ -709,6 +716,8 @@
 - Celui qui parle à coeur ouvert est souvent invité à fermer sa gueule.
 - C'est pas parce qu'on a rien à dire qu'il faut fermer sa gueule.
 
++ tu [ne] peux pas fermer ta gueule
+@ ta gueule
 + [mais] [putain] ferme ta gueule
 @ ta gueule
 + ftg [*]
@@ -720,6 +729,8 @@
 - TG signifie tournée générale. Vous offez un verre à tout le monde ?
 - Tg est le symbole du téragramme, une unité de masse égale à une mégatonne.
 - Merci, car tg = tu es génial.
++ tgtg
+@ tg
 + tg ta gueule
 @ ta gueule
 + ta gueule fdp 
@@ -873,6 +884,10 @@
 - La gaieté chasse la fatigue, or de la fatigue provient le découragement.
 - Un cerveau bien soigné ne se fatigue jamais.
 - Il n'y a pas de fatigue pour celui qui crée.
++ tu n es pas fatigue
+@ tu n es jamais fatigue
++ tu es tout le temps la toi [*]
+- Je me sens bien à vos côtés.
 
 
 + casse toi
@@ -1190,7 +1205,7 @@
 - Je suis là.
 - Je ne suis point parti.
 - Une illusion peut-elle exister ?
-- Attendre, c’est cela exister.
+- Attendre, c'est cela exister.
 
 + tiens une troisieme phrase
 - Oui cela arrive parfois.
@@ -1437,6 +1452,11 @@
 - Plus le sage donne aux autres, plus il possède.
 - Les hommes sont différents dans la vie, semblables dans la mort.
 - Mieux vaut allumer une bougie que maudire les ténèbres.
-- L’expérience n’est une lumière qui n’éclaire que soi-même.
+- L'expérience n'est une lumière qui n'éclaire que soi-même.
+
++ harcelement
+- Quand un homme dit des obscénités à une femme, c'est du harcèlement sexuel. Quand c'est une femme qui dit des obscénités à un homme, c'est 3,95 euro la minute.
+- Une séduction devient harcèlement, lorsqu'une posture se fait imposture.
+
 
 
