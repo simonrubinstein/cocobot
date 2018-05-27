@@ -130,10 +130,12 @@
 ! sub bonjou        = bonjour
 ! sub bonjoru       = bonjour
 ! sub bo njour      = bonjour
+! sub bonjours      = bonjour
 ! sub bsr           = bonsoir
 ! sub bonsoit       = bonsoir
 ! sub bbonsoir      = bonsoir
 ! sub bse           = bonsoir
+! sub bonjoir       = bonsoir
 ! sub koi           = quoi
 ! sub bot           = robot
 ! sub robooooooooooooooooooot = robot
@@ -532,6 +534,9 @@
 + je suis trans
 - Vous n'êtes pas une vraie femme, vous devriez sélectionner un pseudo homme.
 + je suis trav
++ trav
+@ je suis h
++ salut je suis h
 @ je suis h
 + suis trav
 @ je suis h

@@ -83,6 +83,7 @@ sub process {
         }
         elsif ( $reply eq 'ERR: No Reply Found' ) {
             warning("No reply found for $messageLast");
+            #$bot->requestWriteMessage( $user, ';)' );
             next;
         }
         my $logStr = ref($self);
