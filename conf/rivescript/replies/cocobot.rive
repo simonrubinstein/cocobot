@@ -35,6 +35,8 @@
 ! sub t es          = tu es
 ! sub est tu        = es tu
 ! sub t en          = tu en
+! sub t aime        = tu aimes
+! sub t aimes       = tu aimes
 ! sub tu aime       = tu aimes
 ! sub t ecris       = tu ecris
 ! sub tu ert qui    = tu es qui
@@ -81,6 +83,7 @@
 ! sub pk            = pourquoi
 ! sub povre         = pauvre
 ! sub byye          = bye
+! sub pk            = pourquoi
 ! sub bbbbbbbyyyyyyyy = bye
 ! sub bye bye       = bye
 ! sub povre         = pauvre
