@@ -69,6 +69,7 @@ EyeToEye
 FallForYou
 Fantomas
 FeelingUnknown
+FlagrantDelire
 FleshAndBone
 FlyAway
 FollowMe
@@ -219,6 +220,7 @@ StrongLove
 StrongMan
 SugarBeets
 SugarMan
+SuperMenteur
 SweetDisposal
 SweetTalk
 SweetTears
