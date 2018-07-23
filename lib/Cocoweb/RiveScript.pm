@@ -1,9 +1,9 @@
 # @created 2016-07-04
-# @date 2016-07-18
+# @date 2018-07-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -67,7 +67,14 @@ __PACKAGE__->attributes('rs');
 #@brief Perform some initializations
 sub init {
     my ( $self, %args ) = @_;
-    my $rs = RiveScript->new( 'utf8' => 0, 'debug' => 0 );
+    my $rsdebug;
+    if ( exists $args{'debug'} ) {
+        $rsdebug = $args{'debug'};
+    }
+    else {
+        $rsdebug = 0;
+    }
+    my $rs = RiveScript->new( 'utf8' => 0, 'debug' => $rsdebug );
     $self->attributes_defaults(
         'rs'      => $rs,
         'convert' => Cocoweb::Encode->instance(),
@@ -106,10 +113,17 @@ sub reply {
         $message = "point d interrogation";
     }
     else {
+        $message =~ s{(?:whatsaapp|
+                         whatsapp|
+                         whatsap|
+                         whatsapp_au|
+                         whaatsaap|
+                         whatsapp|
+                         watsapp)(?:_|:)*((?:\+)?\d+)}
+                         {whatsapp $1}gixms;
         $message =~ s{'}{ }g;
         $message = $self->unacString($message);
     }
-
     my $reply = $self->{'rs'}->reply( $user, $message );
     utf8::encode($reply);
     return $reply;

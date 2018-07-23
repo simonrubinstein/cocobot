@@ -7,6 +7,7 @@
 ! sub vous cherchez      = tu cherches
 ! sub vous chercher quoi = tu cherches quoi
 ! sub recherchez vous    = recherches tu
+! sub votre recherche    = ta recherche
 ! sub propose tu         = proposes tu
 ! sub vous avez          = tu as
 ! sub vous faire         = te faire
@@ -129,6 +130,7 @@
 ! sub saluuut       = salut
 ! sub salur         = salut
 ! sub bjr           = bonjour
+! sub bnj           = bonjour
 ! sub bjrrrr        = bonjour
 ! sub bonjou        = bonjour
 ! sub bonjoru       = bonjour
@@ -179,11 +181,13 @@
 ! sub loll          = mdr
 ! sub lool          = mdr
 ! sub mdrr          = mdr
+! sub mddr          = mdr
 ! sub mdrrr         = mdr
 ! sub mdrrrr        = mdr
 ! sub mdrrrrr       = mdr
 ! sub mdrrrrrrrrrrrrrrr = mdr
 ! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
+! sub mdrrrrrrrrr   = mdr
 ! sub ptdr          = mdr
 ! sub ptdrrrrr      = mdr
 ! sub ouiiiiiiiiiii = oui
@@ -199,6 +203,7 @@
 ! sub tu ch         = tu cherches
 ! sub tu cher koi   = tu cherches quoi
 ! sub je repond     = je reponds
+! sub reponde       = reponds
 ! sub je vait       = je vais
 ! sub di moi        = dis moi
 ! sub koi           = quoi
@@ -210,6 +215,7 @@
 ! sub hahahaha      = haha
 ! sub aahahahahah   = haha
 ! sub pfff          = pff
+! sub ppfff         = pff
 ! sub pffff         = pff
 ! sub pfffffff      = pff
 ! sub pfffffffffff  = pff
@@ -224,6 +230,7 @@
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub t bizarre     = tu es bizarre
+! sub tes bizaard   = tu es bizarre
 ! sub ta gzule      = ta gueule
 ! sub ta gueuelle   = ta gueule
 ! sub t gueule      = ta gueule
@@ -235,6 +242,9 @@
 ! sub tagueule      = ta gueule
 ! sub tagueul       = ta gueule
 ! sub tgueule       = ta gueule
+! sub t a gueule    = ta gueule
+! sub tggggggggggggggggggggggggg = ta gueule
+! sub ta geuleeeeeeeeeeeeeee     = ta gueule 
 ! sub gueuele       = gueule
 ! sub geule         = gueule
 ! sub gueulle       = gueule
@@ -261,6 +271,7 @@
 ! sub unhomme       = un homme
 ! sub ungarcon      = un garcon
 ! sub pascompris    = pas compris
+! sub pa compri     = pas compris
 ! sub pas tt compris= pas tout compris
 ! sub pas kompri    = pas compris
 ! sub j sui h       = je suis un homme
@@ -271,8 +282,28 @@
 ! sub hiboue        = hibou
 ! sub copie colle   = copier coller
 ! sub lao steu      = lao tseu
+! sub encire        = encore
+! sub alos          = alors 
+! sub instale alors = installe alors
+! sub installe sa   = installe ca
+! sub instale       = installe
+! sub instaler      = installer
+! sub faux installe = faut installer
+! sub fau installe  = faut installer
 ! sub whatsappp     = whatsapp
 ! sub whatsaap      = whatsapp
+! sub watsap        = whatsapp
+! sub whaatsaap     = whatsapp
+! sub whaatsaapps   = whatsapp
+! sub wathzap       = whatsapp
+! sub whasapp       = whatsapp
+! sub wathsap       = whatsapp
+! sub whatssap      = whatsapp
+! sub whtsaap       = whatsapp
+! sub whtsapp       = whatsapp
+! sub whasap        = whatsapp
+! sub wthassp       = whatsapp
+! sub watsapp       = whatsapp
 
 + bonjour robot
 - bonjour humain
@@ -333,6 +364,8 @@
 + tu vas bien
 @ salut la forme
 + comment te portes tu
+@ salut la forme
++ comment tu vas
 @ salut la forme
 
 
@@ -999,6 +1032,7 @@
 - Je n'ai pas installé WhatsApp Messenger.
 - Je n'ai pas et ne veux pas installer WhatsApp.
 - Je n'ai pas et ne veux pas installer WhatsApp Messenger.
+- Je n'installerai pas le logiciel espion WhatsApp Messenger.
 
 + fdp
 - Je ne pense pas être votre frère, vous faites erreur.
@@ -1084,6 +1118,11 @@
 - Lorsque quelque chose a été dit et bien dit, n'ayez pas de scrupules. Prennez-le et copiez-le.
 + [*] copier coller [*]
 @ copier coller
+
++ coco
+- Je vois que vous essayez d'utiliser le copier coller.
+- Le copier coller est désactivé sur ce site.
+- Faites donc un effort d'écrire et de ne pas utiliser le copier coller.
 
 + ta mere
 - Merci de vous {random}inquiéter|préoccuper|soucier|tracasser|enquérir|{/random} pour ma {random}chère|tendre{/random} mère, mais elle va {random}très|vraiment{/random} bien.
@@ -1465,6 +1504,61 @@
 + harcelement
 - Quand un homme dit des obscénités à une femme, c'est du harcèlement sexuel. Quand c'est une femme qui dit des obscénités à un homme, c'est 3,95 euro la minute.
 - Une séduction devient harcèlement, lorsqu'une posture se fait imposture.
+
++ installe
+- Que voulez-vous je j'installe ?
+- Je n'installe pas de logiciels espions.
+- Je n'installe que des logiciels libres ou open source.
++ installe (le|ca|alors)
+@ installe
++ [il|alors|mais] faut installer [*]
+@ installe
++ alors installe [et ecris|et ecrit]
+@ installe
+
+
++ soumis
+- Etre vaincu parfois. Etre soumis jamais.
+- Les hommes sont soumis, soumis aux faveurs des femmes.
+- Un être soumis est un être mort.
+- L'homme peut dominer les choses, mais les événements le dominent.
+
++ chomeur
+- Le chômage a un seul avantage : les accidents du travail y sont rares.
+- Au bout de quinze ans de chômage, on devrait avoir droit à une retraite de chômeur.
+- J'ai souscrit à une assurance-chômage : Pour être sûr de ne jamais retrouver de boulot. 
+
++ pauvre chomeur
+@ chomeur
+
++ roboter
+- Vous êtes juste un bot mal programmé.
+- Vous êtes tout simplement un bot programmé avec les pieds.
++ moi je cherche des rencontres coquines ici j habite [*] 
+@ roboter
++ si tu cherches aussi une rencontre deja on peut echanger des photos
+@ roboter
++ je te laisse mon adresse pour m ecrire (fleur2wamailfr|mature4wamailfr) je te repondrai des que je pourrai[*] 
+@ roboter
++ je te laisse mon email pour me contacter (noravomailfr|surprisevomailfr) je te repondrai des que je pourrai[*]
+@ roboter
++ inutile de me (recontacter|repondre) ici j aime pas ce (chat|tchat) (c est|ceci est) un repondeur auto j assume  
+@ roboter
++ et je suis une jeune femme chaude si tu cherches l amour me fait pas perdre mon temps merci[*]
+@ roboter
++ moi je cherche des plans culs j habite (nanterre|paris|creteil|bobigny|lille|limoges|rennes|la rochelle|mons le saunier|nimes) 
+@ roboter
++ plan cul cougar gratuit sur chantalcougar com
+@ roboter
++ rendez vous sur dealrencontre com
+@ roboter
++ profite de l ete pour rencontrer des etudiantes chaudes de ta region sur liligameuse com 
+@ roboter
++ plan cul etudiante gratuit sur liligameuse com 
+@ roboter
+
+
+
 
 
 

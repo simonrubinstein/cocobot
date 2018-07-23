@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 # @created 2016-07-02
-# @date  2017-02-03
+# @date  2018-07-23
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2017
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -42,8 +42,8 @@ my $filenameFilter;
 my $isReplyAll     = 1;
 my $matchReply_ref = {};
 my $matchReplyFilename;
-my $onlyMan        = 0;
-my $onlyWoman      = 0;
+my $onlyMan   = 0;
+my $onlyWoman = 0;
 
 init();
 run();
@@ -92,11 +92,12 @@ FILELOOP:
             }
             my ( $code, $town, $ISP, $mysex, $myage, $mynickname, $message )
                 = ( $4, $5, $6, $7, $8, $9, $10 );
-           if ($onlyWoman) {
+            if ($onlyWoman) {
                 next if $mysex eq 1 or $mysex eq 6;
-           } elsif ($onlyMan) {
+            }
+            elsif ($onlyMan) {
                 next if $mysex eq 2 or $mysex eq 7;
-           }
+            }
             if ($isReplyAll) {
                 $totalCount++;
                 my $reply = $rs->reply( "user", $message );
@@ -152,9 +153,10 @@ FILELOOP:
     }
     else {
         eval { $matchReply_ref = deserializeHash($matchReplyFilename); };
-        foreach
-            my $message ( sort { $message2count{$a} <=> $message2count{$b} }
-            keys %message2count )
+        foreach my $message (
+            sort { $message2count{$a} <=> $message2count{$b} }
+            keys %message2count
+            )
         {
             my $count = $message2count{$message};
             if ( exists $matchReply_ref->{$message} ) {
@@ -215,6 +217,7 @@ sub init {
     $isReplyAll        = 0               if exists $opt_ref->{'a'};
     $onlyMan           = 1               if exists $opt_ref->{'M'};
     $onlyWoman         = 1               if exists $opt_ref->{'W'};
+
     if ( defined $maxFailsCheck ) {
         if ( !defined $isCheckAllAnswers ) {
             error("The option m works only with the option c");
@@ -232,7 +235,7 @@ sub init {
     $filenameFilter = qr/$filenameFilter/  if defined $filenameFilter;
 
     # Create a new RiveScript interpreter object.
-    $rs = new Cocoweb::RiveScript();
+    $rs = new Cocoweb::RiveScript( 'debug' => $Cocoweb::isDebug );
 
     $matchReplyFilename = getVarDir() . '/matchReplies.data';
 }
@@ -269,6 +272,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2017-02-03');
+    $CLI->VERSION_MESSAGE('2018-07-23');
 }
 
