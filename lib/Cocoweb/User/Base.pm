@@ -1,14 +1,9 @@
 # @created 2012-03-19
-# @date 2016-06-29
+# @date 2018-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2016
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -45,6 +40,7 @@ __PACKAGE__->attributes(
     'mysex',
     ## nickname ID for current session
     'mynickID',
+
     #Real zip code
     'zip',
     ## Custom code that corresponds to zip code.
@@ -66,7 +62,7 @@ __PACKAGE__->attributes(
     'level',
     'since',
     ## Geolocation extracted from "infuz" string.
-    ## i.g.: FR- La Rochelle, FR- Paris, FR- Montpellier 
+    ## i.g.: FR- La Rochelle, FR- Paris, FR- Montpellier
     'town',
     ## Total messages sent by the user
     'messageCounter',
@@ -102,8 +98,9 @@ sub isPremiumSubscription {
 sub display {
     my $self  = shift;
     my @names = (
-        'mynickname', 'myage',  'mysex', 'mynickID',
-        'zip', 'citydio',    'mystat', 'myXP',  'myver'
+        'mynickname', 'myage',   'mysex',  'mynickID',
+        'zip',        'citydio', 'mystat', 'myXP',
+        'myver'
     );
     foreach my $name (@names) {
         print STDOUT $name . ':' . $self->$name() . '; ';
@@ -116,7 +113,8 @@ sub display {
 sub show {
     my $self  = shift;
     my @names = (
-        'mynickname', 'myage', 'mysex', 'mynickID', 'citydio', 'mystat', 'myXP',
+        'mynickname', 'myage', 'mysex', 'mynickID', 'citydio', 'mystat',
+        'myXP',
         'myver', 'code', 'ISP', 'status', 'premium', 'level', 'since', 'town',
 
     );
@@ -126,22 +124,24 @@ sub show {
     }
     $max++;
     foreach my $name (@names) {
-        print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
-          . "\n";
+        print STDOUT
+            sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
+            . "\n";
     }
 }
 
 ##@method void dump()
 sub dump {
-    my $self  = shift;
-    my $max = 1;
+    my $self = shift;
+    my $max  = 1;
     foreach my $name ( keys %$self ) {
         $max = length($name) if length($name) > $max;
     }
     $max++;
     foreach my $name ( keys %$self ) {
-        print STDOUT sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
-          . "\n";
+        print STDOUT
+            sprintf( '%-' . $max . 's ' . $self->$name(), $name . ':' )
+            . "\n";
     }
 }
 
@@ -176,28 +176,31 @@ sub isWoman {
 #@param string $infuz
 sub setInfuz {
     my ( $self, $infuz ) = @_;
+    debug($infuz);
     $self->infuz($infuz);
     my @lines = split( /\n/, $infuz );
-    die error( 'The string "' . $infuz . '" does not have three lines! mynickname:' . $self->mynickname() )
-      if ( scalar(@lines) != 3 );
-    if (
-        $lines[0] =~ m{.*code:\s([A-Za-z0-9]{3})
+    die error('The string "'
+            . $infuz
+            . '" does not have three lines! mynickname:'
+            . $self->mynickname() )
+        if ( scalar(@lines) != 3 );
+    if ($lines[0] =~ m{.*code:\s(...)
                         \s\-(.*)$}xms
-      )
+        )
     {
         $self->code($1);
         $self->ISP( trim($2) );
     }
     else {
-        die error("string '$lines[0]' is bad. infuz: $infuz! mynickname:" . $self->mynickname() );
+        die error( "string '$lines[0]' is bad. infuz: $infuz! mynickname:"
+                . $self->mynickname() );
     }
-    if (
-        $lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)
+    if ($lines[1] =~ m{.*statu(?:t:)?\s([0-9]+)
                        \s*(PREMIUM)?
                        \s*niveau:\s([0-9]+)
                        \sdepuis
                        \s(-?[0-9]+).*$}xms
-      )
+        )
     {
         $self->status($1);
         $self->premium( defined $2 ? 1 : 0 );
@@ -224,8 +227,8 @@ sub setInfuz {
 #@return string Real zip code and city (i.e. '92100 Boulogne Billancourt')
 sub citydio2zip {
     my ($self) = @_;
-    my $allZipCodes =
-      Cocoweb::Config->instance()->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
+    my $allZipCodes = Cocoweb::Config->instance()
+        ->getConfigFile( 'zip-codes.txt', 'ZipCodes' );
     $self->zip( $allZipCodes->getZipAndTownFromCitydio( $self->citydio() ) );
     return $self->zip();
 }
@@ -249,12 +252,15 @@ sub hasSentMessage {
     $messageCounter++;
     $self->messageCounter($messageCounter);
     $self->messageLast($message);
-    writeLog('messages',  sprintf(
-          '%3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
-          . $message,
-        $self->code(),  $self->town(),  $self->ISP(),
-        $self->mysex(), $self->myage(), $self->mynickname()
-    ));
+    writeLog(
+        'messages',
+        sprintf(
+            '%3s town: %-26s ISP: %-27s sex: %1s age: %2s nick: %-19s: '
+                . $message,
+            $self->code(),  $self->town(),  $self->ISP(),
+            $self->mysex(), $self->myage(), $self->mynickname()
+        )
+    );
 }
 1;
 

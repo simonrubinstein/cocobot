@@ -1,10 +1,10 @@
 # @brief
 # @created 2012-02-17
-# @date 2017-07-21 
+# @date 2018-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2017
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -91,9 +91,8 @@ sub _log {
     my $hourStr = sprintf( '%02d:%02d:%02d', $dt[2], $dt[1], $dt[0] );
     $self->_display( $priority, "$message $hourStr [$identity]\n" )
         if exists $ENV{'TERM'};
-    $self->_writeLog( "$$ $function:$line "
-            . $hourStr
-            . " ($priority) $message\n" );
+    $self->_writeLog(
+        "$$ $function:$line " . $hourStr . " ($priority) $message\n" );
 }
 
 ##@method _display($priority, $string)
@@ -172,7 +171,7 @@ sub _writeLog {
 #@return string A regex
 sub getMessagesLogRegex {
     return qr{^(\d{2}):(\d{2}):(\d{2})
-        \s+([A-Za-z0-9]{3})?
+        \s+(...)?
             \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
             \s+ISP:\s([0-9A-Za-z-\s\.\/\)\(,\{\}\+]+)?
             \s+sex:\s(\d)

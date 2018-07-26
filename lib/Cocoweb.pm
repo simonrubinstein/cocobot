@@ -1,9 +1,9 @@
 # @created 2012-02-17
-# @date 2018-02-01
+# @date 2018-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2012
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -274,7 +274,7 @@ sub charCodeAt {
 #@return boolean 1 if code is valid premium or 0 otherwise
 sub checkInfuzCode {
     my ($code) = @_;
-    if ( $code =~ m{^[A-Za-z0-9]{3}$} ) {
+    if ( $code =~ m{^...$} ) {
         return 1;
     }
     else {

@@ -1,5 +1,5 @@
 # @created 2012-03-29
-# @date 2018-02-15
+# @date 2018-07-26
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -213,21 +213,14 @@ sub process1Int {
         # Retrieves information about an user, for Premium subscribers only
         # i.e.: code: AkL -Free SAS`statut: 0 niveau: 4 depuis 0`Ville: FR- Aubervilliers
         if ( $bud == 555 ) {
+
             #debug("********* bud: $bud: $urlo **********");
-            my $urlu = $request->convert()->transformix( substr( $urlo, 5 ), -1, 0 );
-            #if ( $urlo eq '99555`pas trop VITE !`' ) {
-            #    my $r = qr/^<br>pas\ trop\ VITE\ !<br>$/;
-            #    if ( $urlu =~ $r ) {
-            #        debug("FIXME OK : $urlu");
-            #    } else {
-            #        debug("FIXME NOT OK : $urlu");
-            #    }
-            #    $self->infuzString('pas trop VITE !');
-            #}
-            #else {
-            #    $self->infuzString($urlu);
-            #}
-            #debug("urlu: $urlu");
+            my $lin = indexOf( $urlo, '`' );
+            my $urlu
+                = substring( $urlo, 5, $lin )
+                . $request->convert()
+                ->transformix( substr( $urlo, $lin, length($urlo) ), -1, 0 );
+            debug("urlu: $urlu");
             $self->infuzString($urlu);
         }
 

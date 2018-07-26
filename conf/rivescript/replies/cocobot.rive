@@ -176,6 +176,7 @@
 ! sub slt cv        = salut ca va
 ! sub qsa va        = ca ca
 ! sub sa te di      = ca te dit
+! sub mzrci         = merci
 ! sub mecpassif     = mec passif
 ! sub lol           = mdr
 ! sub loll          = mdr
@@ -227,6 +228,7 @@
 ! sub piroquet      = perroquet
 ! sub mm msg        = meme message
 ! sub tes message   = tes messages
+! sub t fou         = tu es fou
 ! sub te relou      = tu es roulou
 ! sub t lourd       = tu es lourd
 ! sub t bizarre     = tu es bizarre
@@ -284,6 +286,7 @@
 ! sub lao steu      = lao tseu
 ! sub encire        = encore
 ! sub alos          = alors 
+! sub phpto         = photo
 ! sub instale alors = installe alors
 ! sub installe sa   = installe ca
 ! sub instale       = installe
@@ -609,6 +612,7 @@
 - On peut rire de tout, mais pas pour rien.
 - J'adore être pris en flagrant délire.
 - Le rire est satanique, il est donc profondément humain.
+- Le fou rire est immortel.
 
 + [*] je marche sur des oeufs
 - Vous n'êtes pas rassuré ?
@@ -1465,6 +1469,8 @@
 - C'est par peur de la mort que je pense au suicide.
 - Le suicide n'est pas une fin en soi. C'est la fin de soi !
 - Il faut réussir un suicide au moins une fois dans sa vie, ne serait-ce que pour éviter de mourir idiot.
++ je te souhaite la mort
+@ va crever
 
 + quel poete
 - Un poète inspiré, c'est un poète qui fait des vers faux.
@@ -1516,6 +1522,24 @@
 + alors installe [et ecris|et ecrit]
 @ installe
 
++ cretin
+- Vous devriez supporter les crétins. Il est probable que vous finissiez sous les ordres de l'un d'entre eux”
+- Le crétin diffère moins de l'homme ordinaire que celui-ci ne diffère de l'homme de génie.
+- Avez-vous remarqué ? Quiconque est plus lent que vous est un idiot et quiconque est plus rapide est un crétin.
+- Il y a quatre types idéals : le crétin, l'imbécile, le stupide et le fou. Le normal, c'est le mélange équilibré des quatre.
+- Mieux vaut être un crétin qui baise qu'un génie qui se masturbe.
+
++ fou
+- Impossible n'est pas fou !
+- Le fou est l'échelle du sage.
+- Parmi les fous, on craint d'être fou. 
+- Qui ne sait être fou n'est pas sage.
+- On est toujours le fou de quelqu'un.
+- La raison du plus fou est toujours la meilleure.
++ tu es fou
+@ fou
++ tu es un fou [*]
+@ fou
 
 + soumis
 - Etre vaincu parfois. Etre soumis jamais.
@@ -1532,13 +1556,13 @@
 @ chomeur
 
 + roboter
-- Vous êtes juste un bot mal programmé.
-- Vous êtes tout simplement un bot programmé avec les pieds.
+- Vous êtes {random}juste |tout simplement |rien qu'{/random}un bot mal {random}programmé|développé|écrit{/random}.
+- Vous êtes {random}juste |tout simplement |rien qu'{/random}un bot {random}programmé|développé{/random} avec les pieds.
 + moi je cherche des rencontres coquines ici j habite [*] 
 @ roboter
 + si tu cherches aussi une rencontre deja on peut echanger des photos
 @ roboter
-+ je te laisse mon adresse pour m ecrire (fleur2wamailfr|mature4wamailfr) je te repondrai des que je pourrai[*] 
++ je te laisse mon adresse pour m ecrire (fleur2wamailfr|mature4wamailfr|lunaireoptimailfr) je te repondrai des que je pourrai[*] 
 @ roboter
 + je te laisse mon email pour me contacter (noravomailfr|surprisevomailfr) je te repondrai des que je pourrai[*]
 @ roboter
