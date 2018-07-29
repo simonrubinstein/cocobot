@@ -171,7 +171,7 @@ sub _writeLog {
 #@return string A regex
 sub getMessagesLogRegex {
     return qr{^(\d{2}):(\d{2}):(\d{2})
-        \s+(...)?
+        \s+([a-zA-Z0-9\(\)\*\+:=\-\!]{3})?
             \s+town:\s([A-Z]{2}-\s[A-Za-z-\s]*)?
             \s+ISP:\s([0-9A-Za-z-\s\.\/\)\(,\{\}\+]+)?
             \s+sex:\s(\d)

@@ -29,7 +29,7 @@ pauvre type
 -
 Tu t'es trompé
 Tu t'es gouré
-Petite erreu
+Petite erreur
 Erreur
 Tu as fais une boulette
 Tu as fais un impair
@@ -51,7 +51,7 @@ un pseudo de donzelle
 un pseudo de femme
 un pseudo de gonzesse
 un pseudo de fille
-pseudo de meuf
+un pseudo de meuf
 femme
 fille
 

@@ -1,0 +1,12 @@
+! version = 2.0
+
++ [*]
+- {random}Coucou|Salut|Hello|Bonjour{/random}, tu sais qu'il existe des pseudos hommes pour les hommes ?
+- Hé mon gars, savais-tu qu'il existait des pseudos hommes pour les {random}hommes|messieurs|mecs|gars|mâles{/random} ?
+- {random}Coucou|Salut|Hello|Bonjour{/random}, tu as fait {random}une erreur|une bourde| un impair{/random}, tu as sélectionné un pseudo femme.
+- {random}Coucou|Salut|Hello|Bonjour{/random}, vu que tu es un {random}homme|mec|gars|mâle{/random} je t'invite à {random}sélectionner|choisir|prendre{/random} un pseudo homme.
+- {random}Coucou|Salut|Hello|Bonjour{/random} toi ! Tu n'es pas une {random}femme|demoiselle|dame{/random} alors utilise un pseudo homme !
+- {random}Coucou|Salut|Hello|Bonjour{/random} vilain bonhomme, les pseudos filles c'est uniquement pour les vraies filles !
+- {random}Coucou|Salut|Hello|Bonjour{/random} mon brave {random}homme|monsieur{/random}, tu es un homme pas une {random}femme|demoiselle|dame{/random}, alors utilise un pseudo homme.
+- {random}Coucou|Salut|Hello|Bonjour{/random} {random}homme|monsieur{/random}, un pseudo homme serait plus adapté pour un {random}homme|mec|gars|mâle{/random}  comme toi.
+- Hé {random}monsieur|mon gars|bonhomme|bel homme{/random}, un pseudo homme serait plus adapté pour un {random}homme|mec|gars|mâle{/random} comme toi.

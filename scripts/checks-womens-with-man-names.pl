@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
-# @created 2017-07-30 
-# @date 2017-07-31
+# @created 2017-07-30
+# @date 2018-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
-# https://github.com/simonrubinstein/cocobot 
+# https://github.com/simonrubinstein/cocobot
 #
-# copyright (c) Simon Rubinstein 2010-2017
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -30,12 +30,15 @@ use lib "../lib";
 use Cocoweb;
 use Cocoweb::CLI;
 use Cocoweb::Config;
+use Cocoweb::RiveScript;
 my $CLI;
 my $usersList;
 my $bot;
 my %nickid2process   = ();
 my %nicknames2filter = ();
-my @sentences = ();
+my @sentences        = ();
+my $rsAlerts;
+my $filtersFile;
 
 init();
 run();
@@ -48,6 +51,7 @@ sub run {
     }
     $bot->requestAuthentication();
     $bot->show();
+
     # Return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
@@ -57,9 +61,11 @@ sub run {
             $bot->requestCheckIfUsersNotSeenAreOffline();
         }
         if ( $count % 28 == 9 ) {
+
             #This request is necessary to activate the server side time counter.
             $bot->searchChatRooms();
             checkBadNicknames();
+            sendMessages();
         }
         $bot->requestMessagesFromUsers();
         $bot->riveScriptLoop();
@@ -69,59 +75,79 @@ sub run {
 }
 
 
-# $bot->requestWriteMessage( $userWanted, $message );
-
 sub checkBadNicknames {
     $usersList = $bot->requestUsersList();
     return if !defined $usersList;
     my $user_ref = $usersList->all();
+    my $count    = 0;
+
+    # reading or re-reading "plain-text/nicknames-to-filter.txt" file
+    readNickmanesToFilter();
     foreach my $nickid ( keys %$user_ref ) {
-        next if exists $nickid2process{$nickid};
-        my $name = $user_ref->{$nickid}->{'mynickname'};
-        $user_ref->{$nickid}->{'mynickname'} = 1;
-        next if !exists $nicknames2filter{$name};
-        print "$name\n";
-    }
-}
 
-sub getSentence {
-    my @res = ();
-    my @message = ();
-    my $words = '';
-    for my $i (0 .. scalar( @sentences ) -1 ) {
-        my $words_ref = $sentences[$i];
-        my $j = randum( scalar @$words_ref -1 );
-        if ( length($words) < 1 ) {
-            $words = $words_ref->[$j];
-        } else {
-            my $p = getPunctuation();
-            $words = $words . $p . ' ' . $words_ref->[$j];
+        # $user is an "Cocoweb::User" object
+        my $user     = $user_ref->{$nickid};
+        my $nickname = $user->{'mynickname'};
+        if ( $user->isMan() ) {
+            delete $nickid2process{$nickid}
+                if exists $nickid2process{$nickid};
+            next;
         }
-        my $r = randum(10);
-        next if $r > 2; 
-        push @message, $words;
-        $words = '';
+        if ( exists $nickid2process{$nickid} ) {
+            my $lastname = $nickid2process{$nickid}->{'mynickname'};
+            next if $lastname eq $nickname;
+            delete $nickid2process{$nickid};
+        }
+        next if !exists $nicknames2filter{$nickname};
+        $nickid2process{$nickid}->{'mynickname'} = $nickname;
+        $nickid2process{$nickid}->{'processed'}  = 0;
+        $nickid2process{$nickid}->{'user'}       = $user;
+        $count++;
+        debug("Nickname man in a woman profile: $nickname");
     }
-    push @message, $words if length($words) > 0;
-    print Dumper \@message;
+    debug("Number of nicknames of women using a man's name: $count");
 }
 
-sub getPunctuation {
-    my $r = randum(4);
-    my $p;
-    if ($r == 0 ) {
-        $p = '.';
-    } elsif ( $r == 1 ) {
-        $p = ' ;'
-    } elsif ( $r == 2 ) {
-        $p = ',';
-    } else {
-        $p = '!';
+sub sendMessages {
+    my ( $totalCount, $sendCount ) = ( 0, 0 );
+    foreach my $nickid ( keys %nickid2process ) {
+        $totalCount++;
+        next if $nickid2process{$nickid}->{'processed'};
+        my $user    = $nickid2process{$nickid}->{'user'};
+        my $message = $rsAlerts->reply( "user", 'This message will be ignored.' );
+        $message  = "Salut, sais-tu qu'il existe des pseudos hommes pour les hommes"
+            if $message eq 'ERR: No Reply Matched';
+        message("$nickid2process{$nickid}->{mynickname} => $message");
+        $bot->requestWriteMessage( $user, $message );
+        $nickid2process{$nickid}->{'processed'} = 1;
+        $sendCount++;
     }
-    print "$r: $p\n";
-    return $p;
+    message("$sendCount messages sent to a total of $totalCount users");
 }
 
+#** function public readNickmanesToFiler ()
+sub readNickmanesToFilter {
+    my $hasBeenRead;
+    my $filename = 'plain-text/nicknames-to-filter.txt';
+    if ( !defined $filtersFile ) {
+        $filtersFile = Cocoweb::Config->instance()
+            ->getConfigFile( $filename, 'Plaintext' );
+        $hasBeenRead = 1;
+    }
+    else {
+        #If the configuration file has been modified it is read again.
+        $hasBeenRead = $filtersFile->readFile();
+    }
+    return if !$hasBeenRead;
+    %nicknames2filter = ();
+    my $lines_ref = $filtersFile->getAll();
+    my $count     = 0;
+    foreach my $nickname (@$lines_ref) {
+        $nicknames2filter{$nickname} = 1;
+        $count++;
+    }
+    debug( "The $filename file was been read, number of lines: " . $count );
+}
 
 #** function public init ()
 # @brief Perform some initializations
@@ -132,30 +158,13 @@ sub init {
         HELP_MESSAGE();
         exit;
     }
-    my $filename = 'plain-text/nicknames-to-filter.txt';
-    my $file = Cocoweb::Config->instance()->getConfigFile( $filename, 'Plaintext' );
-    my $lines_ref = $file->getAll();
-    foreach my $nickname (@$lines_ref) {
-        $nicknames2filter{$nickname} = 1;
-    }
-
-    $filename = 'plain-text/checks-womens-with-man-names.txt';
-    $file = Cocoweb::Config->instance()->getConfigFile( $filename, 'Plaintext' );
-    my $lines_ref = $file->getAll();
-    my $index = 0;
-    foreach my $line ( @$lines_ref ) {
-        chomp($line);
-        if ( $line =~m{^-+$} ) {
-            $index++;
-            next;
-        }
-        push @{$sentences[$index]}, $line;
-
-    }
-    #print Dumper \@sentences;
-    getSentence();
-
-    exit;
+    $rsAlerts = new Cocoweb::RiveScript();
+    $rsAlerts->loadDirectory("rivescript/checks-womens-with-man-names-alerts");
+    $rsAlerts->sortReplies();
+    #for (my $i = 0; $i < 100; $i++) {
+    #    my $reply = $rsAlerts->reply( "user", 'This message will be ignored.' );
+    #    print "$reply\n";
+    #}
 }
 
 #** function public HELP_MESSAGE ()
@@ -167,7 +176,7 @@ sub HELP_MESSAGE {
     print <<END;
 
 Examples:
-$Script -v -x 1000 -s W -V rivescript/woman-replies
+$Script -v -x 5000 -s W -V rivescript/checks-womens-with-man-names 
 END
     exit 0;
 }
@@ -175,6 +184,6 @@ END
 #** function public VERSION_MESSAGE ()
 # @brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2017-07-30');
+    $CLI->VERSION_MESSAGE('2018-07-29');
 }
 

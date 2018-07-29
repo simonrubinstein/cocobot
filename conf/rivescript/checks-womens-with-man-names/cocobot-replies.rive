@@ -1,0 +1,519 @@
+! version = 2.0
+
+! sub vous etes          = tu es
+! sub vs ets             = tu es
+! sub comment allez vous = comment vas tu
+! sub vous en avez       = tu en as 
+! sub vous cherchez      = tu cherches
+! sub vous chercher quoi = tu cherches quoi
+! sub recherchez vous    = recherches tu
+! sub votre recherche    = ta recherche
+! sub propose tu         = proposes tu
+! sub vous avez          = tu as
+! sub vous faire         = te faire
+! sub vous n en avez pas = tu n en as pas
+! sub puis je vous       = puis je te
+! sub votre              = ton
+! sub vous recherchez    = tu cherches
+! sub vous allee         = tu vas
+! sub vous allez         = tu vas
+! sub allez vous         = vas tu
+! sub allez vous         = vas tu
+! sub vs rech quoi       = tu cherches quoi
+! sub j ene vous         = je ne te
+! sub je ne vous         = je ne te
+! sub etes vous          = es tu
+! sub vous radotez       = tu radotes
+! sub vous partez        = tu pars
+! sub ca vous amuse      = ca t amuse
+! sub pour vos ecrits    = pour tes ecrits
+! sub vous ne dormez     = tu ne dors
+! sub vous dormez jamais = tu ne dors jamais
+! sub vous portez vous   = te portes tu
+
+! sub t as          = tu as
+! sub tu est        = tu es
+! sub t es          = tu es
+! sub est tu        = es tu
+! sub t en          = tu en
+! sub t aime        = tu aimes
+! sub t aimes       = tu aimes
+! sub tu aime       = tu aimes
+! sub t ecris       = tu ecris
+! sub tu ert qui    = tu es qui
+! sub je m apel     = je m appelle
+! sub tu t apel     = tu t appelles
+! sub t comment     = tu es comment
+! sub t komen       = tu es comment
+! sub tes jamais    = tu n es jamais
+! sub t appelle     = t appelles
+! sub t appelels    = t appelles
+! sub ta fumer toi  = tu as fume toi
+! sub tu tappelle   = tu t apppeles
+! sub c4est         = c est
+! sub c ca          = c est ca
+! sub c qui         = c est qui
+! sub ki es tu      = qui es tu
+! sub va tu         = vas tu
+! sub keske         = qu est ce
+! sub kestu         = qu est ce tu
+! sub kes tu        = qu est ce tu
+! sub tu veu        = tu veux
+! sub ont ve        = on veut
+! sub on peu        = on peut
+! sub tu va         = tu vas
+! sub c ta mere     = c est ta mere
+! sub c ta          = c est ta 
+! sub c normal      = c est normal
+! sub nik ta        = nique ta
+! sub nike ta       = nique ta
+! sub nike tta msere= nique ta mere
+! sub je suit       = je suis
+! sub je sui        = je suis
+! sub chui un mec   = je suis un mec
+! sub jsui mec      = je suis un mec 
+! sub je suis 1 mec = je suis un mec
+! sub jesuis        = je suis
+! sub sui mec       = suis mec
+! sub je ss h       = je suis un homme
+! sub ss un homme   = je suis un homme
+! sub jsui h        = je suis un homme
+! sub j suis pas    = je ne suis pas
+! sub tafiolle      = tafiole
+! sub oh revoir     = au revoir
+! sub pk            = pourquoi
+! sub povre         = pauvre
+! sub byye          = bye
+! sub pk            = pourquoi
+! sub bbbbbbbyyyyyyyy = bye
+! sub bye bye       = bye
+! sub povre         = pauvre
+! sub stp           = s il te plait
+! sub cava          = ca va
+! sub peu etrr      = peut etre
+! sub peu etre      = peut etre
+! sub pseud         = pseudo
+! sub t celibat     = tu es celibataire
+! sub celib         = celibataire
+! sub vas tyu       = vas tu
+! sub jte bouffe    = je te bouffe
+! sub tu habite     = tu habites
+! sub tu suce       = tu suces
+! sub tu me suce    = tu me suces
+! sub tu fait       = tu fais
+! sub on ce connais = on se connait
+! sub t une meuf    = tu es une femme
+! sub un femme      = une femme
+! sub pour tepondre = pour repondre
+! sub tes fidele    = tu es fidele
+! sub tes celib     = tu es celibataire
+! sub tes la        = tu es la
+! sub t la          = tu es la
+! sub t ues la      = tu es la
+! sub javoue        = j avoue
+! sub t partie      = tu es parti
+! sub t parti       = tu es parti
+! sub tu sorts      = tu sors
+! sub apren a lir   = apprends a lire
+! sub digage        = degage
+! sub degaje        = degage
+! sub degazger      = degage
+! sub va creve      = va crever
+! sub pedofil       = pedophile
+
+! sub ten a         = tu en as
+! sub cest          = c est
+
+! sub hellooooooo   = hello
+! sub slt           = salut
+! sub lu            = salut
+! sub saluuut       = salut
+! sub salur         = salut
+! sub bjr           = bonjour
+! sub bnj           = bonjour
+! sub bjrrrr        = bonjour
+! sub bonjou        = bonjour
+! sub bonjoru       = bonjour
+! sub bo njour      = bonjour
+! sub bonjours      = bonjour
+! sub bsr           = bonsoir
+! sub bonsoit       = bonsoir
+! sub bbonsoir      = bonsoir
+! sub bse           = bonsoir
+! sub bonjoir       = bonsoir
+! sub koi           = quoi
+! sub quio          = quoi 
+! sub bot           = robot
+! sub robooooooooooooooooooot = robot
+! sub rout a fais   = tout a fait
+! sub rech tu       = recherches tu
+! sub recherche tu  = recherches tu
+! sub que cherchees = que cherches
+! sub cherche tu    = cherches tu
+! sub que ch tu     = que cherches tu
+! sub tu fume       = tu fumes
+! sub tu me soule   = tu me saoules
+! sub tu me saoule  = tu me saoules
+! sub tu saoule     = tu saoules
+! sub tu soul       = tu saoules
+! sub tu dort       = tu dors
+! sub jcompren rien = je ne comprends rien
+! sub je te comprend pas    = je ne te comprends pas
+! sub je ne te comprend pas = je ne te comprends pas
+! sub tu fais chiiiiii = tu fais chier
+! sub je comprendpa  = je ne comprends pas
+
+! sub c bien        = c est bien
+! sub bonjoue       = bonjour
+! sub bonsor        = bonsoir
+! sub cc            = coucou
+! sub cccc          = coucou
+! sub ccbsr         = coucou bonsoir
+! sub quel belle    = quelle belle
+! sub sa va         = ca va
+! sub sava          = ca va
+! sub cava          = ca va
+! sub cccv          = coucou ca va
+! sub slt cv        = salut ca va
+! sub qsa va        = ca ca
+! sub sa te di      = ca te dit
+! sub mzrci         = merci
+! sub mecpassif     = mec passif
+! sub lol           = mdr
+! sub loll          = mdr
+! sub lool          = mdr
+! sub mdrr          = mdr
+! sub mddr          = mdr
+! sub mdrrr         = mdr
+! sub mdrrrr        = mdr
+! sub mdrrrrr       = mdr
+! sub mdrrrrrrrrrrrrrrr = mdr
+! sub mdrrrrrrrrrrrrrrrrrrrrrrrr = mdr
+! sub mdrrrrrrrrr   = mdr
+! sub ptdr          = mdr
+! sub ptdrrrrr      = mdr
+! sub ouiiiiiiiiiii = oui
+! sub ouii          = oui
+! sub ouioui        = oui
+! sub nn            = non
+! sub vous avez     = tu as
+! sub tu cherche s  = tu cherches
+! sub tu cherche koi= tu cherches quoi
+! sub tu cherche    = tu cherches
+! sub tu recherche  = tu recherches
+! sub tu raconte    = tu racontes
+! sub tu ch         = tu cherches
+! sub tu cher koi   = tu cherches quoi
+! sub je repond     = je reponds
+! sub reponde       = reponds
+! sub je vait       = je vais
+! sub di moi        = dis moi
+! sub koi           = quoi
+! sub toujour       = toujours
+! sub tjs           = toujours
+! sub qoui          = quoi
+! sub ahahah        = haha
+! sub hahaha        = haha
+! sub hahahaha      = haha
+! sub aahahahahah   = haha
+! sub pfff          = pff
+! sub ppfff         = pff
+! sub pffff         = pff
+! sub pfffffff      = pff
+! sub pfffffffffff  = pff
+! sub oke           = ok
+! sub okok          = ok
+! sub oki           = ok
+! sub ^^            = emoticone style nippon 
+! sub ...           = point de suspension
+! sub piroquet      = perroquet
+! sub mm msg        = meme message
+! sub tes message   = tes messages
+! sub t fou         = tu es fou
+! sub te relou      = tu es roulou
+! sub t lourd       = tu es lourd
+! sub t bizarre     = tu es bizarre
+! sub tes bizaard   = tu es bizarre
+! sub ta gzule      = ta gueule
+! sub ta gueuelle   = ta gueule
+! sub t gueule      = ta gueule
+! sub ta gueuleee   = ta gueule
+! sub ta guuele     = ta gueule
+! sub taggle        = ta gueule
+! sub tageule       = ta gueule
+! sub tageul        = ta gueule
+! sub tagueule      = ta gueule
+! sub tagueul       = ta gueule
+! sub tgueule       = ta gueule
+! sub t a gueule    = ta gueule
+! sub tggggggggggggggggggggggggg = ta gueule
+! sub ta geuleeeeeeeeeeeeeee     = ta gueule 
+! sub gueuele       = gueule
+! sub geule         = gueule
+! sub gueulle       = gueule
+! sub merdeeeee     = merde
+! sub ferme taggle  = ferme ta gueule 
+! sub fermle tea putain = ferme ta putain
+! sub biem          = bien
+! sub te relou      = tu es relou
+! sub mulo          = mulot
+! sub faire encule  = faire enculer 
+! sub bloqued       = bloque
+! sub jprefere      = je prefere
+! sub ds bb         = des bebes
+! sub bb            = bebe
+! sub simpa         = sympa
+! sub dediscuter    = de discuter
+! sub saloe         = salope
+! sub pseudi        = pseudo
+! sub jolipseudo    = joli pseudo
+! sub tjr           = toujours
+! sub tjrs          = toujours
+! sub gzrs          = gars
+! sub tes surtout   = tu es surtout
+! sub unhomme       = un homme
+! sub ungarcon      = un garcon
+! sub pascompris    = pas compris
+! sub pa compri     = pas compris
+! sub pas tt compris= pas tout compris
+! sub pas kompri    = pas compris
+! sub j sui h       = je suis un homme
+! sub j suis pas une f = je ne suis pas une femme
+! sub je ne siis pas femme = je ne suis pas une femme
+! sub casses toi    = casse toi
+! sub caqse toi     = casse toi
+! sub hiboue        = hibou
+! sub copie colle   = copier coller
+! sub lao steu      = lao tseu
+! sub encire        = encore
+! sub alos          = alors 
+! sub corp          = corps
+! sub phpto         = photo
+! sub tocar         = tocard
+! sub je vais change = je vais changer
+! sub tu m excite    = tu m excites
+! sub on ta rien demander = on t a rien demande
+! sub instale alors = installe alors
+! sub installe sa   = installe ca
+! sub instale       = installe
+! sub instaler      = installer
+! sub faux installe = faut installer
+! sub fau installe  = faut installer
+! sub whatsappp     = whatsapp
+! sub whatsaap      = whatsapp
+! sub watsap        = whatsapp
+! sub whaatsaap     = whatsapp
+! sub whaatsaapps   = whatsapp
+! sub wathzap       = whatsapp
+! sub whasapp       = whatsapp
+! sub wathsap       = whatsapp
+! sub whatssap      = whatsapp
+! sub whtsaap       = whatsapp
+! sub whtsapp       = whatsapp
+! sub whasap        = whatsapp
+! sub wthassp       = whatsapp
+! sub watsapp       = whatsapp
+
++ con
+- Je ne suis pas assez con pour prendre un pseudo de femme comme toi.
+- Je ne suis pas aussi con que toi pour utlise un pseudo de femme comme toi.
++ vieux con
+@con
++ connard
+- Le connard c'est l'homme qui se connecte sous un pseudo femme.
++ tocard
+- Un tocard c'est un homme de ton genre qui se connecte ici avec un pseudo femme.
+
++ je suis femme dans ma tete
+- Tu es femme dans ta tête, mais tu as un corps d'homme, donc sélectionne un pseudo homme.
+- Mais tu as un corps d'homme, donc sélectionne homme.
+- Ce qui est important c'est ton corps, pas ce que tu as dans la tête. Alors utilise un pseudo homme.
++ je suis une femme dans un corps d homme
+@ je suis femme dans ma tete
+
++ merde
+- Oui merde, tu t'es trompé, tu as utilisé un pseudo de femme.
++ ah merde
+@ merde
+
++ cad
+- C'est à dire que tu es un homme et que tu utilises un pseudo de femme.
+- C'est à dire que vu que tu es un homme, tu dois te reconnecter avec un pseudo homme.
++ c est a dire
+@ cad
+
++ merci
+- De rien et n'oublie pas de te reconntecter en homme.
+
++ mdr 
+- Au lieu de rire bêtement, reconnecte toi avec un pseudo d'homme.
+
++ rose gay
+- Les pseudos roses sont pour les femmes. D'ailleurs tu as sélectioné femme et pas gay.
++ oui et rose pour les gays t au courant
+@ rose gay
+
++ ntm
+- Nom je niquerais pas ma mère. Par contre toi reconnecte toi avec un pseudo d'homme.
++ nique ta mere
+@ ntm
+
++ bye
+- Oui à bientôt, mais n'oublie pas de te reconnecter avec un pseudo homme.
+- Au revoir et reconnecte toi vie avec un pseudo homme.
+
+
++ pseudo trav
+- Oui un travesti est un homme, merci de te reconnecter avec un pseudo homme.
+- Tu es un travesti, donc un homme. Reconnecte-toi avec un pseudo homme.
+- Si tu es un travesti, tu n'es donc pas une femme, mais un homme.
++ y a ecrit trav dans mon pseudo
+@ pseudo trav
++ et je suis trav
+@ pseudo trav
++ suis trav [*]
+@ pseudo trav
++ oui mais moi trav
+@ pseudo trav
+
++ je suis gay
+- Si tu es  {random}gay|homosexuel{/random}, alors tu es un homme, Reconnecte-toi avec un pseudo homme.
++ je suis pd [*]
+@ je suis gay
+
++ david
+- Je ne suis pas David, mais toi dois te reconnecter avec un pseudo homme.
+
++ actif
+- Je ne suis pas homosexuel mais toi dois te reconnecter avec un pseudo homme.
+
+
++ on est sur internet on est libre ici[*]
+- Oui tu es libre de respecter les règles. Tu dois donc te reconnecter avec un pseudo homme.
+
++ va le dire a ta mere
+- Ma mère est entièrement d'accord avec moi, tu dois te reconnecter avec un pseudo homme.
++ bah va le dire a ta mere
+@ va le dire a ta mere
+
++ bonjour
+- Tu dois donc te reconnecter avec un pseudo homme.
++ coucou
+@bonjour
+
++ pourquoi
+- Parce que tu es un homme, tu dois donc te reconnecter avec un pseudo homme.
+
++ non
+- Si tu es un homme, donc tu dois te connecter avec un pseudo homme.
+
++ oui
+- Oui tu es un homme, alors tu dois te connecter avec un pseudo homme.
++ oui ok [*]
+@ oui
+
++ ok
+- Ok ? Alors reconnecte toi de suite avec un pseudo homme. Merci.
++ ok bebe
+@ ok
+
++ mince
+- Oui boulette tu as pris un pseudo femme. Alors reconnecte toi de suite avec un pseudo homme. Merci.
+
++ merci
+- De rien, je serai là toujours pour de prévenir quand tu utiliseras un pseudo femme.
+- Au lieu de me remercier, reconnecte toi avec un pseudo femme.
++ ah ok merci 
+@ merci
++ merci pour l invitation
+@ merci
++ merci a toi
+@ merci
+
++ t occupe pas de ca
+- Si je m'occupe de ça, car tu poullues la liste des femmes.
+
++ on t a rien demande
+- Moi je te demande de te reconnecter immédiatement avec un pseudo homme.
++ ecoute on t a rien demande
+@ on t a rien demande
+
++ t occuppe pas de ca vis ta vie
+@ t occupe pas de ca
+
++ de quoi je me mele
+- Je m'en mêle car tu pollues la liste des femmes, donc tu dois te connecter avec un pseudo homme.
++ de quoi je (le|me) mele[*]
+@ de quoi je me mele
+
+
++ je suis une madame
+- Non tu n'es pas une femme, tu possède une paire de chromosomes XY. Les femmes la paire de chromosomes XX.
+- Non une femme a une paire de chromosomes XX, toi tu as un paire de chromosomes XY, tu es un homme.
++ je suis une emme
+@ je suis une madame
++ je me sens femme
+@ je suis une madame
+
++ si j etais un homme
+- Tu es un homme tu as une paire de chromosomes XY.
+- Génétiquement tu es un homme.
++ mais oui si j etais un homme
+@ si j etais un homme
+
++ je ne t ai rien demande
+- Moi je te demande d'utiliser un pseudo homme. Merci.
++ j ai rien t demande
+@ je ne t ai rien demande
+
++ frustre
+- Je ne suis pas frusté. Mais vu que tu es un homme, prends un pseudo homme.
++ frustre va
+@ frustre
+
++ je vais changer
+- Oui pour changer tu dois te reconnecter avec un pseudo homme.
++ ok je vais changer
+@je vais changer
+
++ tu m excites
+- Moi cela m'excite pas les hommes comme toi qui utilisent un pseudo femme.
++ [*] tu m excites
+@ tu m excites
+
++ rebeu
+- Je ne suis pas plus arabe que tu es une femme. Alors reconnecte toi vite avec un pseudo homme.
+
++ je sais
+- Si tu sais, alors reconnecte toi vite avec un pseudo femme.
++ bonjour je sais merci
+@ je sais
+
++ la preuve
+- Le fait que tu séléctionnes un pseudo femme ne fait pas toi une femme.
++ non la preuve par l exemple
+@ la preuve
+
++ je t emmerde
+- Je sais que c'est ta vocation d'emmerder le monde, mais reconnecte toi avec un pseudo homme. 
++ je t emmerde profondemment
+@ je t emmerde
+
+
++ http *
+- Je vois que tu es un homme, alors reconnecte toi vite avec un pseudo homme.
+
++ degage
+- Non je ne dégage pas, par contre toi reconnecte toi vite avec un pseudo homme.
+
+
++ pas grave
+- Ce sera encore moins grave quand tu te seras reconnecté sous un pseudo homme.
+
+
+
+
+
+
+
+

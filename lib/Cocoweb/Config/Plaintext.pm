@@ -1,14 +1,9 @@
 # @created 2012-02-24
-# @date 2103-10-25
+# @date 2107-07-29
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot 
 #
-# copyright (c) Simon Rubinstein 2010-2012
-# Id: $Id$
-# Revision: $Revision$
-# Date: $Date$
-# Author: $Author$
-# HeadURL: $HeadURL$
+# copyright (c) Simon Rubinstein 2010-2018
 #
 # cocobot is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -68,7 +63,7 @@ sub readFile {
     if ( $stat->mtime() == $self->mtime() ) {
         debug("The file $filename was not changed");
         close $fh;
-        return;
+        return 0;
     }
     $self->mtime( $stat->mtime() );
     while ( defined( my $line = $fh->getline() ) ) {
@@ -79,6 +74,7 @@ sub readFile {
     close $fh;
     $self->all( \@file );
     debug( $filename . ' file was read successfully' );
+    return 1;
 }
 
 ##@method arrayref getAll()
