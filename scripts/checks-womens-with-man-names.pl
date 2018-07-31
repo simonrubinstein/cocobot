@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # @created 2017-07-30
-# @date 2018-07-29
+# @date 2018-07-31
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -55,14 +55,19 @@ sub run {
     # Return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
     for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
-        message( "Loop $count / " . $CLI->maxOfLoop() );
+        my $mynickname = $bot->user()->mynickname();
+        message(  'Iteration number: '
+                . $count . ' / '
+                . $CLI->maxOfLoop()
+                . '; mynickname: '
+                . $mynickname );
         $bot->setTimz1($count);
         if ( $count % 160 == 39 ) {
             $bot->requestCheckIfUsersNotSeenAreOffline();
         }
         if ( $count % 28 == 9 ) {
 
-            #This request is necessary to activate the server side time counter.
+          #This request is necessary to activate the server side time counter.
             $bot->searchChatRooms();
             checkBadNicknames();
             sendMessages();
@@ -74,15 +79,23 @@ sub run {
     info("The $Bin script was completed successfully.");
 }
 
-
 sub checkBadNicknames {
     $usersList = $bot->requestUsersList();
     return if !defined $usersList;
     my $user_ref = $usersList->all();
     my $count    = 0;
 
+    foreach my $nickid ( keys %nickid2process ) {
+        next if exists $user_ref->{$nickid};
+        debug("Delete $nickid user ID");
+        delete $nickid2process{$nickid};
+        $count++;
+    }
+    debug("Number of nicknames deleted: $count");
+
     # reading or re-reading "plain-text/nicknames-to-filter.txt" file
     readNickmanesToFilter();
+    $count = 0;
     foreach my $nickid ( keys %$user_ref ) {
 
         # $user is an "Cocoweb::User" object
@@ -105,7 +118,8 @@ sub checkBadNicknames {
         $count++;
         debug("Nickname man in a woman profile: $nickname");
     }
-    debug("Number of nicknames of women using a man's name: $count");
+    debug("Number of new nicknames of women using a man's name: $count");
+
 }
 
 sub sendMessages {
@@ -113,9 +127,11 @@ sub sendMessages {
     foreach my $nickid ( keys %nickid2process ) {
         $totalCount++;
         next if $nickid2process{$nickid}->{'processed'};
-        my $user    = $nickid2process{$nickid}->{'user'};
-        my $message = $rsAlerts->reply( "user", 'This message will be ignored.' );
-        $message  = "Salut, sais-tu qu'il existe des pseudos hommes pour les hommes"
+        my $user = $nickid2process{$nickid}->{'user'};
+        my $message
+            = $rsAlerts->reply( "user", 'This message will be ignored.' );
+        $message
+            = "Salut, sais-tu qu'il existe des pseudos hommes pour les hommes"
             if $message eq 'ERR: No Reply Matched';
         message("$nickid2process{$nickid}->{mynickname} => $message");
         $bot->requestWriteMessage( $user, $message );
@@ -159,12 +175,9 @@ sub init {
         exit;
     }
     $rsAlerts = new Cocoweb::RiveScript();
-    $rsAlerts->loadDirectory("rivescript/checks-womens-with-man-names-alerts");
+    $rsAlerts->loadDirectory(
+        "rivescript/checks-womens-with-man-names-alerts");
     $rsAlerts->sortReplies();
-    #for (my $i = 0; $i < 100; $i++) {
-    #    my $reply = $rsAlerts->reply( "user", 'This message will be ignored.' );
-    #    print "$reply\n";
-    #}
 }
 
 #** function public HELP_MESSAGE ()
@@ -176,7 +189,7 @@ sub HELP_MESSAGE {
     print <<END;
 
 Examples:
-$Script -v -x 5000 -s W -V rivescript/checks-womens-with-man-names 
+$Script -v -x 5000 -s M -V rivescript/checks-womens-with-man-names 
 END
     exit 0;
 }
@@ -184,6 +197,6 @@ END
 #** function public VERSION_MESSAGE ()
 # @brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2018-07-29');
+    $CLI->VERSION_MESSAGE('2018-07-31');
 }
 
