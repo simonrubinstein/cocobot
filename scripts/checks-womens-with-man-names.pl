@@ -34,6 +34,7 @@ use Cocoweb::RiveScript;
 my $CLI;
 my $usersList;
 my $bot;
+my $totalSendCount   = 0;
 my %nickid2process   = ();
 my %nicknames2filter = ();
 my @sentences        = ();
@@ -123,9 +124,9 @@ sub checkBadNicknames {
 }
 
 sub sendMessages {
-    my ( $totalCount, $sendCount ) = ( 0, 0 );
+    my ( $usersCount, $sendCount ) = ( 0, 0 );
     foreach my $nickid ( keys %nickid2process ) {
-        $totalCount++;
+        $usersCount++;
         next if $nickid2process{$nickid}->{'processed'};
         my $user = $nickid2process{$nickid}->{'user'};
         my $message
@@ -137,8 +138,10 @@ sub sendMessages {
         $bot->requestWriteMessage( $user, $message );
         $nickid2process{$nickid}->{'processed'} = 1;
         $sendCount++;
+        $totalSendCount++;
     }
-    message("$sendCount messages sent to a total of $totalCount users");
+    message(  "$sendCount messages sent to a total of $usersCount users."
+            . " Number of total messages sent: $totalSendCount" );
 }
 
 #** function public readNickmanesToFiler ()

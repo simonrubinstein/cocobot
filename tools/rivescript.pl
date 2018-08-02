@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2016-07-02
-# @date  2018-07-29
+# @date  2018-08-02
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -258,14 +258,15 @@ Usage:
   -M            Only the answers of man.
 
 Exemples:
-rivescript.pl
-rivescript.pl -c
-rivescript.pl -c -m 20
-rivescript.pl -c -V rivescript/woman-replies
-rivescript.pl -c -V rivescript/woman-replies -f bot-test.pl.log
-rivescript.pl -c -V rivescript/woman-replies -f 2016-07-18 -a -v -d
-rivescript.pl -v -c -m 20 -V rivescript/checks-womens-with-man-names -f checks-womens-with-man-names
-
+$Script
+$Script -d
+$Script -c
+$Script -c -m 20
+$Script -c -V rivescript/woman-replies
+$Script -c -V rivescript/woman-replies -f bot-test.pl.log
+$Script -c -V rivescript/woman-replies -f 2016-07-18 -a -v -d
+$Script -v -c -m 20 -V rivescript/checks-womens-with-man-names -f checks-womens-with-man-names
+$Script -c -V rivescript/checks-womens-with-man-names -f 2018-08-02_checks-womens-with-man-names  -m 300
 
 ENDTXT
     exit 0;
@@ -274,6 +275,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2018-07-29');
+    $CLI->VERSION_MESSAGE('2018-08-02');
 }
 
