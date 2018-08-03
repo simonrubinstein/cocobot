@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # @created 2017-07-30
-# @date 2018-07-31
+# @date 2018-08-03
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -127,16 +127,22 @@ sub sendMessages {
     my ( $usersCount, $sendCount ) = ( 0, 0 );
     foreach my $nickid ( keys %nickid2process ) {
         $usersCount++;
-        next if $nickid2process{$nickid}->{'processed'};
+        my $str;
+        if ( $nickid2process{$nickid}->{'processed'} ) {
+            next if randum(100) > 1;
+            $str = $rsAlerts->reply( "user", 'rappel' );
+        }
+        else {
+            $str
+                = $rsAlerts->reply( "user", 'This message will be ignored.' );
+        }
         my $user = $nickid2process{$nickid}->{'user'};
-        my $message
-            = $rsAlerts->reply( "user", 'This message will be ignored.' );
-        $message
-            = "Salut, sais-tu qu'il existe des pseudos hommes pour les hommes"
-            if $message eq 'ERR: No Reply Matched';
-        message("$nickid2process{$nickid}->{mynickname} => $message");
-        $bot->requestWriteMessage( $user, $message );
-        $nickid2process{$nickid}->{'processed'} = 1;
+        $str = "Sais-tu qu'il existe des pseudos hommes pour les hommes"
+            if $str eq 'ERR: No Reply Matched';
+        message("$nickid2process{$nickid}->{mynickname} => $str");
+
+        $bot->requestWriteMessage( $user, $str );
+        $nickid2process{$nickid}->{'processed'}++;
         $sendCount++;
         $totalSendCount++;
     }
@@ -200,6 +206,6 @@ END
 #** function public VERSION_MESSAGE ()
 # @brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2018-07-31');
+    $CLI->VERSION_MESSAGE('2018-08-03');
 }
 

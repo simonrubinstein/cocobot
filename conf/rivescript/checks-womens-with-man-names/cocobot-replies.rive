@@ -118,6 +118,7 @@
 ! sub meuf          = femme
 ! sub un femme      = une femme
 ! sub femmme        = femme
+! sub fem           = femme
 ! sub je suis unz femme = je suis une femme
 ! sub je ss femme   = je suis une femme
 ! sub pour tepondre = pour repondre
@@ -155,6 +156,7 @@
 ! sub bonjoru       = bonjour
 ! sub bo njour      = bonjour
 ! sub bonjours      = bonjour
+! sub journne       = journee
 ! sub bsr           = bonsoir
 ! sub bonsoit       = bonsoir
 ! sub bbonsoir      = bonsoir
@@ -171,6 +173,8 @@
 ! sub que cherchees = que cherches
 ! sub cherche tu    = cherches tu
 ! sub que ch tu     = que cherches tu
+! sub quil ny a pas = qu il n y a pas
+! sub quand ya      = quand il y a
 ! sub tu fume       = tu fumes
 ! sub tu me soule   = tu me saoules
 ! sub tu me saoule  = tu me saoules
@@ -272,12 +276,14 @@
 ! sub tgueule       = ta gueule
 ! sub t a gueule    = ta gueule
 ! sub ta guele      = ta gueule
+! sub t gzuel       = ta gueule
 ! sub tggggggggggggggggggggggggg = ta gueule
 ! sub ta geuleeeeeeeeeeeeeee     = ta gueule 
 ! sub gueuele       = gueule
 ! sub geule         = gueule
 ! sub gueulle       = gueule
 ! sub merdeeeee     = merde
+! sub emerde        = emmerde
 ! sub ferme taggle  = ferme ta gueule 
 ! sub fermle tea putain = ferme ta putain
 ! sub biem          = bien
@@ -307,6 +313,7 @@
 ! sub j sui h       = je suis un homme
 ! sub j suis pas une f = je ne suis pas une femme
 ! sub je ne siis pas femme = je ne suis pas une femme
+! sub syis operer   = suis opere
 ! sub casses toi    = casse toi
 ! sub caqse toi     = casse toi
 ! sub hiboue        = hibou
@@ -366,6 +373,8 @@
 + je me sens femme dans ma tete
 @ je suis femme dans ma tete
 + je suis une fille dans ma tete
+@ je suis femme dans ma tete
++ je me sens fille [*]
 @ je suis femme dans ma tete
 
 + merde
@@ -434,13 +443,15 @@
 @ pseudo trav
 + un trav cheri
 @ pseudo trav
-+ [non|oui] je suis [une|un] trav
++ [non|oui] [mais] je suis [une|un] trav [*]
 @ pseudo trav
 + hello comment definis tu un travesti
 - Un travesti est un homme qui se déguise en femme. Donc merci de te reconnecter avec un pseudo homme.
 + je t emmerde je suis [une] trav
 @ pseudo trav
 + [*] j aime me travestir
+@ pseudo trav
++ je me trav [*]
 @ pseudo trav
 
 
@@ -466,7 +477,7 @@
 - Oui tu es libre de respecter les règles. Tu dois donc te reconnecter avec un pseudo homme.
 
 + va le dire a ta mere
-- Ma mère est entièrement d'accord avec moi, tu dois te reconnecter avec un pseudo homme.
+- Ma mère est {random}entièrement|absolument|éperdument|parfaitement|pleinement|totalement|profondément{/random} d'accord avec moi, tu dois te reconnecter avec un pseudo homme.
 + bah va le dire a ta mere
 @ va le dire a ta mere
 + [et] ta mere
@@ -475,6 +486,8 @@
 - Ma mère est une vraie femme contrairement à toi. Tu dois te reconnecter avec un pseudo homme.
 + je suis ta mere salope
 @ je suis ta mere
++ et ta soeur
+- Ma soeur est {random}entièrement|absolument|éperdument|parfaitement|pleinement|totalement|profondément{/random} d'accord avec moi, tu dois te reconnecter avec un pseudo homme.
 
 + dis le a ton pere
 - Mon père est entièrement d'accord avec moi, tu dois te reconnecter avec un pseudo homme.
@@ -507,11 +520,19 @@
 - Alors tu es un {random}homme|mec|monsieur|gars|garçon{/random}, donc tu dois te connecter avec un pseudo homme.
 
 + oui
-- Oui tu es un homme, alors tu dois te connecter avec un pseudo homme.
+- Oui tu es un {random}homme|mec|monsieur|gars|garçon{/random}, alors tu dois te connecter avec un pseudo homme.
 + oui ok [*]
 @ oui
 + ah (oui|bon)
 @ oui
++ oui chef
+- Si je suis le chef, alors {random}obéis|soumets toi|exécute toi{/random} et reconnecte toi avec un pseudo homme.
++ oui madame
+- Je ne suis pas plus une {random}femme|fille|dame{/random} que toi alors reconnecte toi avec un pseudo homme.
++ madame tu es la
+@ oui madame
++ ok madame
+@ oui madame
 
 + ok
 - {random}Ok|Okey|D'accord{/random} ? {random}Alors|Donc{/random} reconnecte toi {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme. Merci.
@@ -522,6 +543,8 @@
 
 + mince
 - Oui boulette tu as pris un pseudo femme. Alors reconnecte toi de suite avec un pseudo homme. Merci.
++ a mince [*]
+@ mince
 
 + merci
 - De rien, je serai là toujours pour de prévenir quand tu utiliseras un pseudo homme.
@@ -604,7 +627,7 @@
 
 + je suis trans
 - Tu es un transsexuel, mais tu possèdes une paire de chromosomes XY. Donc tu dois te connecter avec un pseudo homme.
-+ [oui] je suis [a|une|un] (transe|trans|transsexuel|transsexuelle) [*]
++ [oui] [je] suis [a|une|un] (transe|trans|transsexuel|transsexuelle) [*]
 @ je suis trans
 
 + une femme et demi
@@ -613,6 +636,8 @@
 
 + lis bien mon pseudo
 - Oui je lis dans ton pseudo que tu es un {random}homme|mec|monsieur|gars|garçon{/random}. Toi la prochaine fois que tu te connectes, lis bien le genre et sélectionne ""Homme"".
++ [*] lis bien mon pseudo
+@ lis bien mon pseudo
 
 + si j etais un homme
 - Tu es un homme tu as une paire de chromosomes XY.
@@ -665,8 +690,11 @@
 - Non je ne dégage pas, par contre toi reconnecte toi {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme.
 + degage connard
 @ degage
-+ degage pd
++ (degage|degages) [pd]
 @ degage
+
++ va dormir
+- J'irai {random}dormir|me coucher|roupiller|pioncé{/random} {random}dès|aussitôt{/random} que tu te seras reconnecté avec un pseudo homme.
 
 
 + pas grave
@@ -674,14 +702,23 @@
 
 + photo
 - Je {random}t'enverrai|te ferai parvenir|t'adresserai|te donnerai{/random} {random}une photo|un cliché|un portrait|une image{/random} quand tu te seras reconnecté avec un pseudo homme.
++ photo bebe
+@ photo
++ salut ta photo
+@ photo
 
 
 + qui es tu pour me dicter ma conduite
 - Qui es-tu pour ne pas respecter les règles et sélectionner un pseudo femme ?
 
 + il n y a pas de femmes sur ce site
-- Si il y a des femmes sur ce sites, j'en ai déjà recontrées. Alors reconnecte toi {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme.
+- Si il y a des {random}femmes|filles{/random} sur ce site, j'en ai déjà recontrées. Alors reconnecte toi {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme.
+- Si il y a des {random}femmes|filles{/random} sur ce site. Mais vu que tu es {random}gay|homosexuel{/random}, tu ne les as jamais remarquées.
 + salut tu sais qu il n y a pas de femmes sur ce site [*]
+@ il n y a pas de femmes sur ce site
++ savais tu qu il n y a pas de (femmes|femme) sur coco
+@ il n y a pas de femmes sur ce site
++ depuis quand il y a [des] (femmes|femme) sur coco [*]
 @ il n y a pas de femmes sur ce site
 
 + ta gueule
@@ -689,12 +726,14 @@
 - {random}Ma gueule|Ma bouche|Mon bec{/random} se fermera quand tu te seras reconnecté avec un pseudo homme.
 + ta gueule pd
 @ ta gueule
-+ ferme ta gueule
++ [mais] ferme ta gueule [*]
 @ ta gueule
 + ta gueule larbin
 @ ta gueule
 + tg
 @ ta gueule
++ ta gueule fils de pute
+- Ne prends pas ton cas pour une généralité, je ne suis pas le fils d'une {random}péripatéticienne|prostituée|fille de joie{/random}. Et je fermerai {random}ma gueule|ma bouche|mon bec{/random} dès que tu te sera connecté avec un pseudo homme.
 
 + laisse tomber
 - Non je ne laisse pas tomber, alors reconnecte toi {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme.
@@ -714,6 +753,8 @@
 @ desole
 + [merci] je m excuse
 @ desole
++ desolee
+- Tu es désolé pas désolée car tu es un homme. Mais je te pardonne si tu te reconnectes {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme.
 
 + tu aimes quoi
 - J'aime les {random}hommes|mecs|messieurs|gars|garçons{/random} qui se connectent avec un pseudo homme. 
@@ -763,13 +804,14 @@
 - Un eunuque n'est pas considéré comme une femme. Alors reconnecte toi avec un pseudo homme.
 + si j avais une bite je pourrais
 @ si j avais un penis
++ [je] suis opere [*]
+@ si j avais un penis
 
 + va te faire soigner
 - Je suis en {random}bonne|parfaite{/random} santé, je n'ai pas {random}la maladie|le syndrome|les troubles|la tare|l'infirmité{/random} des {random}hommes|mecs|messieurs|gars|garçons{/random} qui utilisent un pseudo femme comme toi.
 
 + je refuse
 - Ne refuse pas ton destin d'homme et reconnecter toi avec un pseudo homme.
-
 
 + qui es tu
 - Je suis celui dont le nom est écrit dans l'eau.
@@ -785,7 +827,6 @@
 + tu es qui
 @ qui es tu
 
-
 + will you accept * as a friend
 - Je n'accepte pas ""<star1>"" comme ami qui ne veut pas utiliser un pseudo hommme.
 - Pourquoi j'accepterais ""<star1>"" en ami qui ne veut pas utiliser un pseudo homme ?
@@ -794,15 +835,31 @@
 - {random}Oui|Absolument|Assurément{/random}, stop aux {random}hommes|mecs|messieurs|gars|garçons{/random} comme toi qui {random}utilisent|emploient|ont recours à {/random} un pseudo femme. 
 
 + ca te derange
-- Le nombre de pseudos {random}femmes|filles{/random} affichés est limités. Tu occupes la place d'un vrai pseudo femme.
+- Le nombre de pseudos {random}femmes|filles{/random} affiché est limité. Tu occupes la place d'un vrai pseudo femme.
 + en quoi (sa|ca|cela) te derange
 @ ca te derange
 + ca te pose un probleme
 @ ca te derange
++ en quoi ca te gene
+@ ca te derange
+
 
 + je te baise
 - Oui je sais tu es un homme homosexuel, mais je ne le suis pas. Alors reconnecte-toi avec un pseudo homme.
 
++ c est une histoire triste
+- Oui c'est triste d'utiliser un pseudo femme quand on est un homme comme toi.
+
++ [et] encore une fois
+- Oui encore une fois, merci d'utilisateur un pseudo homme.
+
++ harcelement
+- {random}Halte|Stop{/random} à l'harcèlement des {random}hommes|mecs|messieurs|gars|garçons{/random} qui {random}utilisent|prennent|emploient{/random} des pseudos de {random}femmes|filles{/random} 
++ (stop|c est du) harcelement
+@ harcelement
+
++ qui te permet de decider de mon genre
+- Ton genre est {random}décidé|fixé|défini{/random} à ta naissance par tes deux chromosomes XY.
 
 
 
