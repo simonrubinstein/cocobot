@@ -1,7 +1,7 @@
 ##@file Bot.pm
 # @brief
 # @created 2012-02-19
-# @date 2017-02-10
+# @date 2018-08-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -32,7 +32,8 @@ use Cocoweb::Config;
 use Cocoweb::Request;
 use Cocoweb::User::Connected;
 use base 'Cocoweb::Object';
-__PACKAGE__->attributes( 'user', 'request', 'rivescript' );
+__PACKAGE__->attributes( 'user', 'request', 'rivescript',
+    'riveScriptGenderAnswer' );
 
 ##@method void init($args)
 sub init {
@@ -63,6 +64,14 @@ sub init {
         $rivescript->loadDirectory( $args{'riveScriptDir'} );
         $rivescript->sortReplies();
         delete $args{'riveScriptDir'};
+
+    }
+    my $riveScriptGenderAnswer;
+    if ( exists $args{'riveScriptGenderAnswer'}
+        and length( $args{'riveScriptGenderAnswer'} ) > 0 )
+    {
+        $riveScriptGenderAnswer = $args{'riveScriptGenderAnswer'};
+        delete $args{'riveScriptGenderAnswer'};
     }
 
     if ( exists $args{'mynickname'} ) {
@@ -86,9 +95,10 @@ sub init {
     );
 
     $self->attributes_defaults(
-        'user'       => $user,
-        'request'    => $request,
-        'rivescript' => $rivescript
+        'user'                   => $user,
+        'request'                => $request,
+        'rivescript'             => $rivescript,
+        'riveScriptGenderAnswer' => $riveScriptGenderAnswer
     );
 }
 
@@ -394,12 +404,29 @@ sub riveScriptLoop {
         my $messageLast = trim( $user->messageLast() );
         next if !defined $messageLast or length($messageLast) == 0;
         info( $user->mynickname() . '> ' . $messageLast );
+        if ( defined $self->{'riveScriptGenderAnswer'} ) {
+            if ( $self->{'riveScriptGenderAnswer'} eq 'W' and $user->isMan() )
+            {
+                debug( "No answers given to male profiles: "
+                        . $user->mynickname() );
+                next;
+            }
+            elsif ( $self->{'riveScriptGenderAnswer'} eq 'M'
+                and $user->isWoman() )
+            {
+                debug( "No answers given to women profiles: "
+                        . $user->mynickname() );
+                next;
+            }
+        }
         my $reply = $rs->reply( 'localuser', $messageLast );
         if ( $reply eq 'ERR: No Reply Matched' ) {
             error("No reply matched for $messageLast");
             next;
         }
-        info( $self->user()->mynickname() . '> ' . $reply );
+        info(     $self->user()->mynickname() . ' > '
+                . $user->mynickname() . ' => '
+                . $reply );
         $self->requestWriteMessage( $user, $reply );
     }
 }

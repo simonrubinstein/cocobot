@@ -1,6 +1,6 @@
 # @brief
 # @created 2012-02-26
-# @date 2016-08-17
+# @date 2018-08-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -48,7 +48,8 @@ __PACKAGE__->attributes(
     'writeLogInFile',      'isAvatarRequest',
     'delay',               'zip',
     'myavatarsListEnable', 'myavatarsListRequired',
-    'myavatarsList',      'riveScriptDir'
+    'myavatarsList',       'riveScriptDir',
+    'riveScriptGenderAnswer'
 );
 
 ##@method object init($class, $instance)
@@ -74,7 +75,8 @@ sub init {
         'myavatarsListEnable'     => 0,
         'myavatarsListRequired'   => 0,
         'myavatarsList'           => 0,
-        'riveScriptDir'           => undef
+        'riveScriptDir'           => undef,
+        'riveScriptGenderAnswer'  => undef
     );
     return $instance;
 }
@@ -103,7 +105,7 @@ sub getOpts {
     }
     my $argumentative = '';
     $argumentative = $argv{'argumentative'} if exists $argv{'argumentative'};
-    $argumentative .= 'wdvDu:s:y:z:a:p:gV:';
+    $argumentative .= 'wdvDu:s:y:z:a:p:gV:G:';
     $argumentative .= 'l:i:' if $self->searchEnable();
     $argumentative .= 'x:S:' if $self->enableLoop();
     $argumentative .= 'M' if $self->myavatarsListEnable();
@@ -120,19 +122,20 @@ sub getOpts {
     $Cocoweb::isMoreDebug = 1 if exists $opt{'D'};
     $writeLogInFile       = 1 if exists $opt{'w'};
     Cocoweb::Logger->instance()->writeLogInFile($writeLogInFile);
-    $self->mynickname( $opt{'u'} )     if exists $opt{'u'};
-    $self->myage( $opt{'y'} )          if exists $opt{'y'};
-    $self->mysex( $opt{'s'} )          if exists $opt{'s'};
-    $self->zip( $opt{'z'} )            if exists $opt{'z'};
-    $self->myavatar( $opt{'a'} )       if exists $opt{'a'};
-    $self->mypass( $opt{'p'} )         if exists $opt{'p'};
-    $self->searchId( $opt{'i'} )       if exists $opt{'i'};
-    $self->searchNickname( $opt{'l'} ) if exists $opt{'l'};
-    $self->maxOfLoop( $opt{'x'} )      if exists $opt{'x'};
-    $self->delay( $opt{'S'} )          if exists $opt{'S'};
-    $self->isAvatarRequest(1)          if exists $opt{'g'};
-    $self->myavatarsListRequired(1)    if exists $opt{'M'};
-    $self->riveScriptDir( $opt{'V'} )  if exists $opt{'V'};
+    $self->mynickname( $opt{'u'} )             if exists $opt{'u'};
+    $self->myage( $opt{'y'} )                  if exists $opt{'y'};
+    $self->mysex( $opt{'s'} )                  if exists $opt{'s'};
+    $self->zip( $opt{'z'} )                    if exists $opt{'z'};
+    $self->myavatar( $opt{'a'} )               if exists $opt{'a'};
+    $self->mypass( $opt{'p'} )                 if exists $opt{'p'};
+    $self->searchId( $opt{'i'} )               if exists $opt{'i'};
+    $self->searchNickname( $opt{'l'} )         if exists $opt{'l'};
+    $self->maxOfLoop( $opt{'x'} )              if exists $opt{'x'};
+    $self->delay( $opt{'S'} )                  if exists $opt{'S'};
+    $self->isAvatarRequest(1)                  if exists $opt{'g'};
+    $self->myavatarsListRequired(1)            if exists $opt{'M'};
+    $self->riveScriptDir( $opt{'V'} )          if exists $opt{'V'};
+    $self->riveScriptGenderAnswer( $opt{'G'} ) if exists $opt{'G'};
 
     info( "isAvatarRequest: " . $self->isAvatarRequest() );
 
@@ -149,6 +152,21 @@ sub getOpts {
             return;
         }
     }
+    if (    defined $self->riveScriptGenderAnswer()
+        and $self->riveScriptGenderAnswer() ne 'W'
+        and $self->riveScriptGenderAnswer() ne 'M' )
+    {
+        error(    'The gender argument value must be either M or W.'
+                . ' (-G option)' );
+        return;
+    }
+    if ( defined $self->riveScriptGenderAnswer()
+        and !defined $self->riveScriptDir() )
+    {
+        error('Option -G only works with option -V');
+        return;
+    }
+
     if ( defined $self->myage() and $self->myage() !~ m{^\d+$} ) {
         error("The age should be an integer. (-y option)");
         return;
@@ -244,7 +262,8 @@ sub getBot {
         'mynickname',      'myage',
         'mysex',           'zip',
         'myavatar',        'mypass',
-        'isAvatarRequest', 'riveScriptDir'
+        'isAvatarRequest', 'riveScriptDir',
+        'riveScriptGenderAnswer'
         )
     {
         next if exists $param{$name};
@@ -325,7 +344,8 @@ sub HELP {
         "  -x maxOfLoop      A maximum number of iterations to perform.\n"
         . "  -S seconds        Delays the loop execution for the given number of seconds.\n"
         if $self->enableLoop();
-    print STDOUT "  -M                Uses the pre-created myavatars list from \"var/myavatar/list.txt\" file\n"
+    print STDOUT
+        "  -M                Uses the pre-created myavatars list from \"var/myavatar/list.txt\" file\n"
         if $self->myavatarsListEnable();
 
     print STDOUT <<ENDTXT;
@@ -350,6 +370,8 @@ sub HELP {
   -D                More debug messages
   -w                Written logs to a file 
   -V dirname        RiveScript directory
+  -G gender         Limits  RiveScript anwsers to male "M"
+                    or female "F" gender profiles.
 ENDTXT
 }
 
@@ -360,7 +382,7 @@ sub VERSION_MESSAGE {
     $version = $Cocoweb::VERSION if !defined $version;
     print STDOUT <<ENDTXT;
     $Script $version ($date) 
-    Copyright (C) 2010-2016 Simon Rubinstein 
+    Copyright (C) 2010-2018 Simon Rubinstein 
     Written by Simon Rubinstein 
 ENDTXT
 }

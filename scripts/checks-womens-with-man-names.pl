@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # @created 2017-07-30
-# @date 2018-08-03
+# @date 2018-08-05
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -108,12 +108,16 @@ sub checkBadNicknames {
             next;
         }
         if ( exists $nickid2process{$nickid} ) {
-            my $lastname = $nickid2process{$nickid}->{'mynickname'};
-            next if $lastname eq $nickname;
+            my $nick_ref = $nickid2process{$nickid};
+            next if $nick_ref->{'mynickname'} eq $nickname and
+                    $nick_ref->{'citydio'}   eq  $user->{'citydio'} and
+                    $nick_ref->{'myage'}     eq  $user->{'myage'}; 
             delete $nickid2process{$nickid};
         }
         next if !exists $nicknames2filter{$nickname};
         $nickid2process{$nickid}->{'mynickname'} = $nickname;
+        $nickid2process{$nickid}->{'myage'}      = $user->{'myage'};
+        $nickid2process{$nickid}->{'citydio'}    = $user->{'citydio'};
         $nickid2process{$nickid}->{'processed'}  = 0;
         $nickid2process{$nickid}->{'user'}       = $user;
         $count++;
@@ -206,6 +210,6 @@ END
 #** function public VERSION_MESSAGE ()
 # @brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2018-08-03');
+    $CLI->VERSION_MESSAGE('2018-08-05');
 }
 
