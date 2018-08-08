@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 # @created 2013-11-11
-# @date 2018-02-10
+# @date 2018-08-08
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -318,7 +318,7 @@ sub readAlertMessageFile {
             \s+([0-9A-Za-z]+)
             \s+=>
             \s+([0-9A-Za-z:]+)
-            \s+([A-Za-z0-9]{3})?
+            \s+([A-Za-z0-9\(\)\*\+:=\-\!]{3})?
             \s+(.*)$}xms
             )
         {
@@ -455,6 +455,6 @@ ENDTXT
 ##@method void VERSION_MESSAGE()
 #@brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2018-08-1');
+    $CLI->VERSION_MESSAGE('2018-08-08');
 }
 

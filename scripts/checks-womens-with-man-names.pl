@@ -202,7 +202,7 @@ sub HELP_MESSAGE {
     print <<END;
 
 Examples:
-$Script -v -x 5000 -s M -V rivescript/checks-womens-with-man-names 
+$Script -v -x 5000 -s M -V rivescript/checks-womens-with-man-names -G W -w 
 END
     exit 0;
 }

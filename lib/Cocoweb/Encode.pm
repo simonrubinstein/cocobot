@@ -1,6 +1,6 @@
 # @brief Handle character encoding specific to Coco.fr chat
 # @created 2012-03-10
-# @date 2018-02-09 
+# @date 2018-08-06 
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -154,20 +154,20 @@ sub initializeTables {
     );
 
     @tabsmil = (
-        'rigole',   'triste',   'clin',    'eclat',
-        'etonne',   'confus',   'rougi',   'dubitatif',
-        'fatigue',  'perplexe', 'langue',  'coeur',
-        'amour',    'cry',      'classe',  'rose',
-        'enerve',   'up',       'down',    'kiss',
-        'angry',    'ange',     'diable',  'cross',
-        'ill',      'na',       'oh',      'mal',
-        'emu',      'shit',     'fuck',    'noword',
-        'drool',    'aoh',      'diablo',  'siffle',
-        'songe',    'content',  'enbiais', 'circon',
-        'victoire', 'mouais',   'aa',      'clope',
-        'touche',   'baffe',    'sleep',   'annif',
-        'decu',     'mmh',      'quoi',    'argh',
-        'euh',      'ouf',      'oups',    'secret'
+        '{RIGOLE}',   '{TRISTE}',   '{CLIN}',    '{ECLAT}',
+        '{ETONNE}',   '{CONFUS}',   '{ROUGI}',   '{DUBITATIF}',
+        '{FATIGUE}',  '{PERPLEXE}', '{LANGUE}',  '{COEUR}',
+        '{AMOUR}',    '{CRY}',      '{CLASSE}',  '{ROSE}',
+        '{ENERVE}',   '{UP}',       '{DOWN}',    '{KISS}',
+        '{ANGRY}',    '{ANGE}',     '{DIABLE}',  '{CROSS}',
+        '{ILL}',      '{NA}',       '{OH}',      '{MAL}',
+        '{EMU}',      '{SHIT}',     '{FUCK}',    '{NOWORD}',
+        '{DROOL}',    '{AOH}',      '{DIABLO}',  '{SIFFLE}',
+        '{SONGE}',    '{CONTENT}',  '{ENBIAIS}', '{CIRCON}',
+        '{VICTOIRE}', '{MOUAIS}',   '{AA}',      '{CLOPE}',
+        '{TOUCHE}',   '{BAFFE}',    '{SLEEP}',   '{ANNIF}',
+        '{DECU}',     '{MMH}',      '{QUOI}',    '{ARGH}',
+        '{EUH}',      '{OUF}',      '{OUPS}',    '{SECRET}'
     );
 
     my $rku = 0;
