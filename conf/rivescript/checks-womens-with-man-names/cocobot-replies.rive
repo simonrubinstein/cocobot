@@ -100,6 +100,7 @@
 ! sub tafiolle      = tafiole
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
+! sub prk           = pourquoi
 ! sub povre         = pauvre
 ! sub byye          = bye
 ! sub pk            = pourquoi
@@ -323,6 +324,7 @@
 ! sub ferme taggle  = ferme ta gueule 
 ! sub ferme ta gule = ferme ta gueule
 ! sub fermle tea putain = ferme ta putain
+! sub connar        = connard
 ! sub biem          = bien
 ! sub te relou      = tu es relou
 ! sub mulo          = mulot
@@ -405,6 +407,8 @@
 - Le connard c'est l'homme qui se connecte sous un pseudo femme.
 + tocard
 - Un tocard c'est un homme de ton genre qui se connecte ici avec un pseudo femme.
++ oui connard
+@ connard
 
 + je suis femme dans ma tete
 - Tu es femme dans ta tête, mais tu as un corps d'homme, donc sélectionne un pseudo homme.
@@ -808,6 +812,9 @@
 + bonjour petit connard
 @ connard
 
++ va te faire foutre
+- Je ne suis pas un {random}gay|homosexuel{/random} comme toi, ne ne vais pas me faire foutre.
+
 + va dormir
 - J'irai {random}dormir|me coucher|roupiller|pioncé{/random} {random}dès|aussitôt{/random} que tu te seras reconnecté avec un pseudo homme.
 
@@ -993,6 +1000,8 @@
 + et alors ca te derange
 @ ca te derange
 + mais en quoi ca te derange
+@ ca te derange
++ et alors ca te gene 
 @ ca te derange
 
 
