@@ -152,11 +152,13 @@
 ! sub digage        = degage
 ! sub degaje        = degage
 ! sub degazger      = degage
+! sub degageeeeee   = degage
 ! sub va creve      = va crever
 ! sub pedofil       = pedophile
 ! sub baiz          = baise
 ! sub dsl           = desole
 ! sub prblm         = probleme
+! sub je mens pas   = je ne mens pas
 
 ! sub ten a         = tu en as
 ! sub cest          = c est
@@ -320,6 +322,7 @@
 ! sub merdeeeee     = merde
 ! sub emerde        = emmerde
 ! sub jtemmerde     = je t emmerde
+! sub je t enmerde  = je t emmerde
 ! sub je t en merde = je t emmerde 
 ! sub ferme taggle  = ferme ta gueule 
 ! sub ferme ta gule = ferme ta gueule
@@ -791,10 +794,12 @@
 @ la preuve
 
 + je t emmerde
-- Je sais que c'est ta vocation d'emmerder le monde, mais reconnecte toi avec un pseudo homme. 
+- Je sais que c'est ta {random}vocation|mission|destinée{/random} d'emmerder {random}le monde|les gens|le genre humain{/random}, mais {random}reconnecte-toi|reviens{/random} avec un pseudo homme. 
 + je t emmerde profondemment
 @ je t emmerde
-+ je t emmerde connard 
++ je t emmerde (connard|compris) 
+@ je t emmerde
++ et je t emmerde
 @ je t emmerde
 
 + http *
@@ -861,6 +866,8 @@
 + (ferme|fermes) la
 @ ta gueule
 + [*] ta gueule [*]
+@ ta gueule
++ ferme ta sale gueule
 @ ta gueule
 + ta gueule fils de pute
 - Ne prends pas ton cas pour une généralité, je ne suis pas le fils d'une {random}péripatéticienne|prostituée|fille de joie{/random}. Et je fermerai {random}ma gueule|ma bouche|mon bec{/random} dès que tu te sera connecté avec un pseudo homme.
@@ -1077,6 +1084,8 @@
 + tu n as pas de couilles [*]
 @ tu n as pas de couilles
 
++ je ne mens pas
+- Pour ne pas mentir, tu devrais être connecté un {random}profil|pseudo{/random} homme.
 
 
 
