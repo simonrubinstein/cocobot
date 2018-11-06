@@ -137,6 +137,7 @@
 ! sub je suis unz   = je suis une
 ! sub je susi uen   = je suis une
 ! sub je ss femme   = je suis une femme
+! sub suis meuf     = je suis une femme
 ! sub pour tepondre = pour repondre
 ! sub tes fidele    = tu es fidele
 ! sub tes celib     = tu es celibataire
@@ -312,6 +313,7 @@
 ! sub t gzuel       = ta gueule
 ! sub ta hueule     = ta gueule
 ! sub ta guuel      = ta gueule
+! sub taaaagle      = ta gueule
 ! sub tggggggggggggggggggggggggg = ta gueule
 ! sub ta geuleeeeeeeeeeeeeee     = ta gueule 
 ! sub gueuele       = gueule
@@ -440,7 +442,7 @@
 @ merde
 
 + ha bon
-- Oui, tu t'es trompé, tu dois te reconnecter avec un pseudo homme.
+- Oui, tu t'es trompé, tu dois te reconnecter {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme.
 + ah bon ok
 @ ha bon
 
@@ -471,10 +473,12 @@
 @ rose gay
 
 + ntm
-- Nom je niquerais pas ma mère. Par contre toi reconnecte toi avec un pseudo d'homme.
+- Nom je niquerais pas ma {random}mère|maman|génitrice{/random}. Par contre, toi, reconnecte toi {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo d'homme.
 + nique ta mere
 @ ntm
 + va niquer ta mere [*]
+@ ntm
++ nikomok
 @ ntm
 
 + ta mere la pute
@@ -548,6 +552,7 @@
 
 + pd
 - Je ne suis pas {random}un homme homosexuel|gay{/random} comme toi, mais toi, {random}tu dois|il est nécessaire de|il est souhaitable de{/random} te reconnecter avec un pseudo homme.
+- Tu {random}t'égares|te fourvoies|divagues{/random}, je ne suis pas comme toi un {random}un homme homosexuel|gay{/random}, les {random}hommes homosexuels|gays{/random} dans ton genre doivent se connecter avec un pseudo homme.
 + (actif|pede|oui pd)
 @ pd
 + ok pd
@@ -555,6 +560,10 @@
 + tu es [un] (pede|gay|homo|homsexuel)
 @ pd
 + [alors] lopette
+@ pd
++ pedale
+@ pd
++ tu es donc gay
 @ pd
 
 
@@ -728,6 +737,7 @@
 + je [ne] suis pas un bonhomme [*]
 @ je ne suis pas un garcon
 
+
 + tu cherches des femmes
 - Oui et tu n'es pas une femme. Alors reconnecte toi avec un pseudo homme.
 
@@ -740,10 +750,12 @@
 - Tu es mieux qu'une femme, mais tu n'es pas une femme. Alors reconnecte toi avec un pseudo homme.
 
 + je suis trans
-- Tu es un transsexuel, mais tu possèdes une paire de chromosomes XY. Donc tu dois te connecter avec un pseudo homme.
+- Tu es un transsexuel, mais tu possèdes une paire de chromosomes XY. {random}Donc|C'est pourquoi|En conséquence{/random} {random}tu dois|il est impératif{/random} te connecter avec un pseudo homme.
 + [oui] [je] suis [a|une|un] (transe|trans|transsexuel|transsexuelle) [*]
 @ je suis trans
 + transsexuel
+@ je suis trans
++ trans
 @ je suis trans
 
 + une femme et demi
@@ -926,6 +938,8 @@
 @ robot
 + tu es un robot
 @ robot
++ salut robot
+@ robot
 + j oubliais tu es un robot
 - Tu oublies tout, tu oublies même que tu es un {random}homme|mec|monsieur|gars|garçon{/random}, la preuve tu te connecte avec un pseudo femme.
 + ah oui j oubliais tu es un robot [*]
@@ -1087,5 +1101,16 @@
 + je ne mens pas
 - Pour ne pas mentir, tu devrais être connecté un {random}profil|pseudo{/random} homme.
 
++ tu veux verifier
+- Non je ne veux pas vérifier, je veux juste que tu te reconnectes {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec un pseudo homme. 
+
++ si tu veux verifier
+@ tu veux verifier
+
++ beep
+- {random}L'oiseau du désert|L'étrange oiseau bleu{/random} doit se reconnecter {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec pseudo homme.
+- {random}Au lieu|A la place de|Plutôt que de {/random} biper, {random}reconnecte-toi|reviens|rejoins{/random} {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec pseudo homme.
++ beep beep
+@ beep
 
 
