@@ -101,6 +101,7 @@
 ! sub oh revoir     = au revoir
 ! sub pk            = pourquoi
 ! sub prk           = pourquoi
+! sub porquoi       = pourquoi
 ! sub povre         = pauvre
 ! sub byye          = bye
 ! sub pk            = pourquoi
@@ -336,6 +337,7 @@
 ! sub faire encule  = faire enculer 
 ! sub je tencule    = je t encule
 ! sub jtencule      = je t encule
+! sub les couille   = les couilles
 ! sub bloqued       = bloque
 ! sub jprefere      = je prefere
 ! sub je pourrait   = je pourrais
@@ -565,6 +567,8 @@
 @ pd
 + tu es donc gay
 @ pd
++ (t gay|t es gay|tu es gay)
+@ pd
 
 
 + on est sur internet on est libre ici[*]
@@ -611,7 +615,9 @@
 @ pourquoi
 
 + non
-- Si tu es un {random}homme|mec|monsieur|gars|garçon{/random}, donc tu dois te connecter avec un pseudo homme.
+- {random}Si|Bien sûr que{/random} tu es un {random}homme|mec|monsieur|gars|garçon{/random}, donc tu dois {random}te connecter|revenir{/random} avec un pseudo homme.
++ no
+@ non
 + oui et alors
 - Alors tu es un {random}homme|mec|monsieur|gars|garçon{/random}, donc tu dois te connecter avec un pseudo homme.
 + et alors
@@ -620,12 +626,14 @@
 @ oui et alors
 
 + oui
-- Oui tu es un {random}homme|mec|monsieur|gars|garçon{/random}, alors tu dois te connecter avec un pseudo homme.
+- Oui tu es un {random}homme|mec|monsieur|gars|garçon{/random}, {random}alors|donc|ainsi|c'est pourquoi|en conséquence{/random} tu dois {random}te connecter|rejoindre|revenir{/random} avec un {random}pseudo|profil{/random} homme.
 + oui ok [*]
 @ oui
 + ah (oui|bon)
 @ oui
 + oui je sais [*]
+@ oui
++ oui certainement
 @ oui
 
 + oui chef
@@ -699,6 +707,8 @@
 @ je suis une madame
 + je me sens femme
 @ je suis une madame
++ je me considere comme (femme|dame|file)
+@ je suis une madame
 + normal j en suis une
 @ je suis une madame
 + mais j ai un mental un cul et une bouche de femelle
@@ -745,6 +755,7 @@
 - Une {random}femme|fille{/random} a une paire de chromosomes XX, toi tu as un paire de chromosomes XY, tu es un homme.
 
 + c est ton avis pas le mien
+- Au yeux de tous tu restes un homme.
 
 + je suis mieux qu une femme
 - Tu es mieux qu'une femme, mais tu n'es pas une femme. Alors reconnecte toi avec un pseudo homme.
@@ -830,7 +841,11 @@
 @ connard
 
 + va te faire foutre
-- Je ne suis pas un {random}gay|homosexuel{/random} comme toi, ne ne vais pas me faire foutre.
+- Je ne suis pas un {random}gay|homosexuel|homo{/random} comme toi, {random}alors|donc|ainsi|c'est pourquoi|en conséquence{/random} je ne ne vais pas me faire foutre.
++ va te faire
+@ va te faire foutre
++ va te faire enculer
+- Je ne suis pas un {random}gay|homosexuel|homo{/random} comme toi, {random}alors|donc|ainsi|c'est pourquoi|en conséquence{/random} je ne ne vais pas me faire enculer.
 
 + va dormir
 - J'irai {random}dormir|me coucher|roupiller|pioncé{/random} {random}dès|aussitôt{/random} que tu te seras reconnecté avec un pseudo homme.
@@ -863,8 +878,8 @@
 @ il n y a pas de femmes sur ce site
 
 + ta gueule
-- Je fermerai {random}ma gueule|ma bouche|mon bec{/random} dès que tu te sera connecté avec un pseudo homme.
-- {random}Ma gueule|Ma bouche|Mon bec{/random} se fermera quand tu te seras reconnecté avec un pseudo homme.
+- Je fermerai {random}ma gueule|ma bouche|mon bec{/random} dès que tu te seras connecté avec un {random}pseudo|profile{/random} homme.
+- {random}Ma gueule|Ma bouche|Mon bec{/random} se fermera quand tu te seras reconnecté avec un {random}pseudo|profile{/random} homme.
 + ta gueule pd
 @ ta gueule
 + [mais] ferme ta gueule [*]
@@ -876,6 +891,8 @@
 + tais toi
 @ ta gueule
 + (ferme|fermes) la
+@ ta gueule
++ la ferme
 @ ta gueule
 + [*] ta gueule [*]
 @ ta gueule
@@ -961,6 +978,9 @@
 - Donc si tu as des testicules, c'est que tu es un {random}homme|mec|monsieur|gars|garçon{/random}. Alors reconnecte toi avec un pseudo homme.
 + [ne] me casse pas les couilles
 @ tu me casses les couilles
++ casse pas les couilles
+@ tu me casses les couilles
+
 
 + le site est pour les jeunes
 - Le site est ouvert aux personnes de dix-huit ans à quatre-vingt-huit ans. Alors reconnecte toi avec un pseudo homme.
@@ -1109,8 +1129,21 @@
 
 + beep
 - {random}L'oiseau du désert|L'étrange oiseau bleu{/random} doit se reconnecter {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec pseudo homme.
-- {random}Au lieu|A la place de|Plutôt que de {/random} biper, {random}reconnecte-toi|reviens|rejoins{/random} {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec pseudo homme.
+- {random}Au lieu|A la place de|Plutôt que de {/random}biper, {random}reconnecte-toi|reviens|rejoins{/random} {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec pseudo homme.
 + beep beep
 @ beep
+
++ je vais te signaler
+- {random}Oui|Bien|D'accord|Bien sûr{/random} signale-moi, mais {random}avant tout de chose|au préalable{/random} {random}reconnecte-toi|reviens|rejoins{/random} {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec pseudo homme.
+
+
++ hitler
+- {random}Adolf Hitler|Adolf|Hitler{/random} était un {random}homme|mec|monsieur|gars|garçon{/random} tout comme toi et se serait {random}connecté|identifié{/random} en homme. Alors {random}reconnecte-toi|reviens|rejoins{/random} {random}de suite|immédiatement|illico|sans délai|sur-le-champ|promptement|vite{/random} avec {random}pseudo|profil{/random} homme.
+
++ comment vas tu
+- J'irai {random}extrêmement|considérablement|formidablement|beaucoup|bien|bougrement|extraordinairement{/random} mieux {random}dès|aussitôt{/random} que tu seras {random}reconnecté|revenu|connecté{/random} sous un {random}profil|pseudo{/random} homme. {random}Alors|Donc|Eh bien{/random} {random}active|dépêche|presse|grouille{/random}-toi !
++ bonjour comment vas tu
+@ comment vas tu
+
 
 
