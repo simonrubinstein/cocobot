@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 # @created 2017-07-30
-# @date 2018-08-05
+# @date 2018-12-18
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 # https://github.com/simonrubinstein/cocobot
 #
@@ -35,6 +35,7 @@ my $CLI;
 my $usersList;
 my $bot;
 my $totalSendCount   = 0;
+my $gobalCount       = 0;
 my %nickid2process   = ();
 my %nicknames2filter = ();
 my @sentences        = ();
@@ -46,6 +47,19 @@ run();
 
 #** @function public run()
 sub run {
+    $gobalCount = 0;
+    while (1) {
+        eval { process(); };
+        if ($@) {
+            sleep 5;
+        }
+        else {
+            last;
+        }
+    }
+}
+
+sub process {
     $bot = $CLI->getBot( 'generateRandom' => 1 );
     if ( $bot->isRiveScriptEnable() ) {
         $bot->setAddNewWriterUserIntoList();
@@ -55,18 +69,18 @@ sub run {
 
     # Return an empty  'Cocoweb::User::List' object
     $usersList = $bot->getUsersList();
-    for ( my $count = 1; $count <= $CLI->maxOfLoop(); $count++ ) {
+    for ( ; $gobalCount <= $CLI->maxOfLoop(); $gobalCount++ ) {
         my $mynickname = $bot->user()->mynickname();
         message(  'Iteration number: '
-                . $count . ' / '
+                . $gobalCount . ' / '
                 . $CLI->maxOfLoop()
                 . '; mynickname: '
                 . $mynickname );
-        $bot->setTimz1($count);
-        if ( $count % 160 == 39 ) {
+        $bot->setTimz1($gobalCount);
+        if ( $gobalCount % 160 == 39 ) {
             $bot->requestCheckIfUsersNotSeenAreOffline();
         }
-        if ( $count % 28 == 9 ) {
+        if ( $gobalCount % 28 == 9 ) {
 
           #This request is necessary to activate the server side time counter.
             $bot->searchChatRooms();
@@ -109,9 +123,10 @@ sub checkBadNicknames {
         }
         if ( exists $nickid2process{$nickid} ) {
             my $nick_ref = $nickid2process{$nickid};
-            next if $nick_ref->{'mynickname'} eq $nickname and
-                    $nick_ref->{'citydio'}   eq  $user->{'citydio'} and
-                    $nick_ref->{'myage'}     eq  $user->{'myage'}; 
+            next
+                if $nick_ref->{'mynickname'} eq $nickname
+                and $nick_ref->{'citydio'} eq $user->{'citydio'}
+                and $nick_ref->{'myage'} eq $user->{'myage'};
             delete $nickid2process{$nickid};
         }
         next if !exists $nicknames2filter{$nickname};
@@ -210,6 +225,6 @@ END
 #** function public VERSION_MESSAGE ()
 # @brief Displays the version of the script
 sub VERSION_MESSAGE {
-    $CLI->VERSION_MESSAGE('2018-08-05');
+    $CLI->VERSION_MESSAGE('2018-12-188');
 }
 
