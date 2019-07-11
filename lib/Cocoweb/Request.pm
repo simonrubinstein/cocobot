@@ -1,8 +1,8 @@
 # @created 2012-02-17
-# @date 2017-30-01
+# @date 2019-07-11
 # @author Simon Rubinstein <ssimonrubinstein1@gmail.com>
 #
-# copyright (c) Simon Rubinstein 2010-2017
+# copyright (c) Simon Rubinstein 2010-2019
 #
 # https://github.com/simonrubinstein/cocobot
 # cocobot is free software; you can redistribute it and/or modify
@@ -124,6 +124,8 @@ sub init {
             'agent'   => $agent_ref->{'agent'},
             'timeout' => $agent_ref->{'timeout'}
         );
+        $isConfHTTPrequests = $conf->getBool('isConfHTTPrequests');
+        $self->isConfHTTPrequests($isConfHTTPrequests);
 
         $removeListSearchCode = $conf->getBool('remove_list_searchcode');
         $removeListSearchcodePause1
@@ -154,7 +156,6 @@ sub init {
         $conf->isInt('infuz-pause2');
         $conf->isInt('infuz-max-of-tries-after-pause');
         $conf->isInt('remote-port-default');
-        $isConfHTTPrequests    = $conf->getBool('isConfHTTPrequests');
         $infuzNotToFast        = $conf->getRegex('infuz-not-to-fast');
         $profilTooNew          = $conf->getRegex('profile-too-new');
         $beenDisconnectedRegex = $conf->getRegex('been-disconnected');
@@ -219,7 +220,7 @@ sub init {
         'localIP'               => $localIP,
         'profilTooNewRegex'     => $profilTooNew,
         'beenDisconnectedRegex' => $beenDisconnectedRegex,
-        'beenDisconnected'      => 0, 
+        'beenDisconnected'      => 0,
         'accountproblemRegex'   => $accountproblemRegex,
         'infuzMaxOfTries'       => $conf_ref->{'infuz-max-of-tries'},
         'infuzPause1'           => $conf_ref->{'infuz-pause1'},
@@ -239,11 +240,12 @@ sub getInitioJSVar {
     my ( $self, $url ) = @_;
     return if !$self->isConfHTTPrequests();
     my $response = $self->execute( 'GET', $url );
-    my $res = $response->content();
+    my $res = $response->decoded_content();
     foreach my $line ( split /\n/, $res ) {
 
         # var urly0="http://91.121.52.98";
-        if ( $line =~ m{^\s*var\s+urly0="(http://\d+\.\d+\.\d+\.\d+)"} ) {
+        # var urly0="http://cloud.coco.fr";
+        if ( $line =~ m{^\s*var\s+urly0="(http://.+)".*$} ) {
             my $urly0 = $1;
             debug( 'urly0 was found: ' . $urly0 );
             if ( $conf_ref->{'urly0'} ne $urly0 ) {
@@ -381,7 +383,7 @@ sub getCityco {
     }
     my $url      = $conf_ref->{'urlcocoland'} . $zip . '.js';
     my $response = $self->execute( 'GET', $url );
-    my $res      = $response->content();
+    my $res      = $response->decoded_content();
 
     #debug($res);
 
